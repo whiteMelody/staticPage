@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>课程搜索</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/yc.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script>
+	$(function(){
+		
+		$(".ul-nav-second li").hover(function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			_this.addClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+		},function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+		});
+		
+		$(".nav-btn,.nav-area").hover(function(){
+			$(".nav-area").show(0);
+		},function(){
+			$(".nav-area").hide(0);
+		})
+		
+		$(".my-nav-area,.my-nav-btn").hover(function(){
+			$(".my-nav-area").toggle(0);	
+		})
+		
+		$(".slide-btn-3,.slide-area-3").mouseover(function(){
+			$(".slide-area-3").show(0);
+		})
+		$(".slide-area-3,.slide-btn-3").mouseleave(function(){
+			$(".slide-area-3").hide(0);	
+		})
+		
+		$(".slide-area-3 p").click(function(){
+			var val = $(this).attr("data-value");
+			var val2 = $(this).text();
+			$(".slide-btn-3 span").text(val2);
+			$("input[name=key_type]").val(val);
+			$(".slide-area-3").hide(0);	
+			if(val == "pro")
+				$("form[name=search-form]").attr("action","/Productlist");
+			else
+				$("form[name=search-form]").attr("action","/Businelist");
+			
+		})
+		
+		/*
+		var height = $(".nav-warpper").height();
+		
+		$(".li-ext").each(function(index, element) {
+            $(this).height(height);
+			var top = -72 * index;
+			$(this).css({
+				top : top + "px"	
+			})
+        });*/
+		
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+	})
+	
+</script>
+
+</head>
+
+<body>
+	
+    <div class="wb100 h30px lh30px bor-gray bor-solid-1b warpper-white-2">
+    	<div class="w1150px center Fgray-3">
+        	<div class="wb30 fl F125em">
+            	英才招生网欢迎您！
+            </div>
+            <div class="wb60 fr text-right F125em">
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">登录</a>
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">注册</a>
+            	<a href="javascript:void(0)" class="gray mal15">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wb100">
+    	<div class="w1150px center h80px pat20 ">
+            <div class="wb22 fl">
+                <img src="images/logo.png">
+            </div>
+            <div class="wb10 h50px fl relative mar2per mal2per">
+                <p class="F150em Fgray-3 text-center">重庆市</p>
+                <div class="clear h5px"></div>
+                <p class="h30px lh30px wb100 text-center Fgray-3 F125em pointer my-nav-btn">【切换城市<img src="images/arrow-down-2.png">】</p>
+              <div class="my-nav-area F125em" style="position:absolute; background:#fff; width:610px; display:none; z-index:9999; margin-top:0px; border:1px solid #e1e1e1;" >
+                   <div class="wb95 pal5per pat15 pab15 F90em lh25px">
+                        <p class="Fgray-3 F110em lh35px">热门城市:</p>
+                        <a href="javascript:void(0)" class="orange fl pal4per par4per">重庆</a>
+                        <a href="javascript:void(0)" class="orange fl pal4per par4per">北京</a>
+                        <a href="javascript:void(0)" class="orange fl pal4per par4per">成都</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear1 warpper-gray-1"></div>
+                </div>
+                
+            </div>
+            <div class="fl wb45">
+               <form method="get" action="/Productlist" name="search-form">    	
+                <div class="wb95 relative">
+                    <div class="bor-solid-2t bor-solid-2b bor-solid-2l bor-green2 h35px lh35px">
+                    	<div class="wb1625 fl slide-btn-3 h35px lh35px Fgray-3 text-center warpper-gray-1 F125em">
+                        	<span>课程</span>
+                            <img src="images/arrow-down.png" class="middle">
+                        </div>
+                      <div style="position:absolute; z-index:99; height:50px; width:80px; background:#fff; left:0px;  display:none; line-height:25px; text-align:center; top:37px;"class="slide-area-3 bor-solid-2b bor-solid-2l bor-solid-2r bor-green2 F125em">
+                        <p class="pointer" data-value="class">课程</p>
+                        <p class="pointer" data-value="school">学校</p>
+                    	</div>
+                        <div class="fl wb55">
+                            <input type="text" class="wb100 bor-none h35px lh35px F14 Fgray-3 pal10" name="keywords" placeholder="请输入搜索关键字"/>
+                      </div>
+                        <div class="fr wb20">
+                         <input type="hidden" name="key_type" value="pro" />
+                          <input type="submit" class="bor-none warpper-green-4 F14 Fwhite Fb text-center wb100 h35px" value="搜 索"/> 
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                </div>
+               </form>
+               	<div class="clear h10px"></div>
+                <div class="F125em Fgray-3 text-left">
+                    热门搜索：
+                    <a class="par10 Fgray-2" href="javascript:void(0)">雅思</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="wb100 h35px warpper-green-4">
+    	<div class="w1150px center">
+            <div class="wb20 fl h35px lh35px text-center F175em Fwhite pointer warpper-green-5 nav-btn">
+                全部课程分类 <img src="images/arrow-down-3.png" class="middle">
+            </div>                                          
+            <ul class="ul-nav">                                        
+                <li><img src="images/bg-shadow.png" class="fl h35px"><a href="javascript:void(0)" class="white">首页</a></li>
+                <li><a href="javascript:void(0)" class="white">课程</a></li>
+                <li><a href="javascript:void(0)" class="white">学校</a></li>
+                <li><a href="javascript:void(0)" class="white">教育资讯</a></li>
+                <li><a href="javascript:void(0)" class="white">留言问答</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    
+    <div class="wb100 relative nav-area hidden">
+    	<div class="w1150px center absolute" style="top:0; left:0; right:0; margin:0 auto; z-index:999;">
+        	<div class="wb20 h545px fl nav-warpper">
+            	<ul class="ul-nav-second">
+                	<li>
+                    	<div class="li-pro">
+                            <a href="javascript:void(0)" class="gray lh40px fl mal10 mar5">电脑IT</a>
+                            <img src="images/arrow-right.png" class="fr ma15">
+                            <div class="clear"></div>
+                            <p class="F75em wb100 lh20px">
+                            	<a href="javascript:void(0)" class="gray fl mal10 mar5">电脑基础</a>
+                            	<a href="javascript:void(0)" class="gray fl mal10 mar5">网站建设</a>
+                            	<a href="javascript:void(0)" class="gray fl mal10 mar5">平面广告</a>
+                            </p>
+                        </div>
+                        <div class="li-ext">
+                        	<div class="wb100 F80em lh25px">
+                                <div class="wb100">
+                                	<div class="clear"></div>
+                                    <div class="wb100">
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="orange">电脑基础</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="blue fl mal10 mar10">电脑基础</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1150px center">
+        	<div class="wb100">
+            	<p class="Fgray-3 lh30px h30px F150em"><img src="images/icon-home.png" class="middle mar10">您的位置：<a href="javascript:void(0)" class="gray">首页</a> > <a href="javascript:void(0)" class="gray">学校后台主页</a>  > <a href="javascript:void(0)" class="gray">报名留言</a> </p>
+            </div>
+            <div class="clear1"></div>
+            
+            <div class="wb19 fl bor-gray bor-solid-1a F150em text-center Fgray-3">
+            	
+            	<p class="h40px lh40px warpper-gray-1 bor-gray bor-solid-1b">
+                	<img src="images/icon-paper.png" class="fl mal20 mat10">
+                    <span style="margin-left:-40px;">基本信息</span>
+                </p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">学校logo</p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">资质认证</p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">分校设置</p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">修改密码</p>
+            	<p class="h40px lh40px warpper-gray-1 bor-gray bor-solid-1b">
+                	<img src="images/icon-note.png" class="fl mal20 mat10">
+                    <span style="margin-left:-40px;">留言信息</span>
+                </p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">报名留言</p>
+            	<p class="h40px lh40px warpper-gray-1 bor-gray bor-solid-1b">
+                	<img src="images/icon-pen.png" class="fl mal20 mat10">
+                    <span style="margin-left:-40px;">课程管理</span>
+                </p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">新闻管理</p>
+            	<p class="h40px lh40px bor-gray bor-solid-1b">学校环境</p>
+            	<p class="h40px lh40px">师资力量</p>
+                <div class="clear"></div>
+                
+            </div>
+            
+            <div class="wb79 fr">
+            	<div class="wb100 bor-gray bor-solid-1a">
+                    <p class="h40px lh40px bor-gray bor-solid-1b F150em Fgray-3 wb98 pal2per">
+                        <img src="images/line-green.jpg" class="fl mat10 mar10"> 课程管理
+                    </p>
+                    <div class="clear1"></div>
+                    
+                    <div class="wb90 center F125em Fgray-3">
+                    	<p class="Fb wb30 fl h30px lh30px">学校课程设置</p>
+                        
+                        <a href="javascript:void(0)" class="h30px lh30px w80px fr text-center  bor-none warpper-green-4 Fwhite display-inline radius5">添加课程</a>
+                        
+                    	<div class="clear h30px"></div>
+                    
+                        <table cellpadding="0" cellspacing="0" class="wb100 myTable7 Fgray-3">
+                            <thead>
+                                <tr>
+                                    <td>课程名称</td>
+                                    <td>发布时间</td>
+                                    <td>状态</td>
+                                    <td>设为首页推荐</td>
+                                    <td>操作</td>
+                                </tr>                                                                                                                        
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>雅思听力训练（200）</td>
+                                    <td>2015-11-11 09:20:59</td>
+                                    <td>状态</td>
+                                    <td>设为首页推荐</td>
+                                    <td><a href="javascript:void(0)" class="gray">预览</a> <a href="javascript:void(0)" class="gray mal5">编辑</a> <a href="javascript:void(0)" class="gray mal5">删除</a></td>
+                                </tr> 
+                            </tbody>
+                                                                                                                                                   
+                                                                                                
+                        </table>
+                    </div>
+                    
+                    <div class="clear1"></div>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+        <div class="clear h40px"></div>
+        <div class="wb100 img-Warea">
+        	<img src="images/bg-footer.jpg">
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="w1150px center F125em">
+        	<p class="h30px lh30px Fgray-3 bor-gray bor-solid-1b Fb">全国分站</p>
+            <div class="clear h5px"></div>
+            <div class="wb100">
+            	<a href="javascript:void(0)" class="fl gray ma5">北京</a>
+            </div>
+            <div class="clear h10px"></div>
+        	<p class="h30px lh30px Fgray-3 bor-gray bor-solid-1b Fb">友情链接</p>
+            <div class="clear h5px"></div>
+            <div class="wb100">
+            	<a href="javascript:void(0)" class="fl gray ma5">北京翻译公司</a>
+            </div>
+            <div class="clear h5px"></div>
+       
+            <div class="wb100 text-center">
+            	<a href="javascript:void(0)" class="gray ma5 bor-gray bor-solid-1r par20">北京</a>
+            	<a href="javascript:void(0)" class="gray ma5 bor-gray bor-solid-1r par20">北京</a>
+            	<a href="javascript:void(0)" class="gray ma5 bor-gray bor-solid-1r par20">北京</a>
+            	<a href="javascript:void(0)" class="gray ma5 bor-gray bor-solid-1r par20">北京</a>
+            	<a href="javascript:void(0)" class="gray ma5 par20">北京</a>
+                <div class="clear1"></div>
+                
+        		<p class="Fgray-3 h40px lh40px">Copyright @ 2013-2015 www.xingjiaoshi.com ALL Right Reserved 网站备案号：晋ICP本备：010121231</p>
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+</html>

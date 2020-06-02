@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>英才招生网</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/yc.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script>
+	$(function(){
+		
+		$(".ul-nav-second li").hover(function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			_this.addClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+		},function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+		});
+		
+		$(".nav-btn,.nav-area").hover(function(){
+			$(".nav-area").show(0);
+		},function(){
+			$(".nav-area").hide(0);
+		})
+		
+		$(".my-nav-area,.my-nav-btn").hover(function(){
+			$(".my-nav-area").toggle(0);	
+		})
+		
+		$(".slide-btn-3,.slide-area-3").mouseover(function(){
+			$(".slide-area-3").show(0);
+		})
+		$(".slide-area-3,.slide-btn-3").mouseleave(function(){
+			$(".slide-area-3").hide(0);	
+		})
+		
+		$(".slide-area-3 p").click(function(){
+			var val = $(this).attr("data-value");
+			var val2 = $(this).text();
+			$(".slide-btn-3 span").text(val2);
+			$("input[name=key_type]").val(val);
+			$(".slide-area-3").hide(0);	
+			if(val == "pro")
+				$("form[name=search-form]").attr("action","/Productlist");
+			else
+				$("form[name=search-form]").attr("action","/Businelist");
+			
+		})
+		
+		/*
+		var height = $(".nav-warpper").height();
+		
+		$(".li-ext").each(function(index, element) {
+            $(this).height(height);
+			var top = -72 * index;
+			$(this).css({
+				top : top + "px"	
+			})
+        });*/
+		
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+	})
+	
+</script>
+</head>
+
+<body>
+	
+    <div class="wb100 h30px lh30px bor-gray bor-solid-1b warpper-white-2">
+    	<div class="w1150px center Fgray-3">
+        	<div class="wb30 fl F125em">
+            	英才招生网首页
+            </div>
+            <div class="wb60 fr text-right F125em">
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">登录</a>
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">注册</a>
+            	<a href="javascript:void(0)" class="gray mal15">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear h30px"></div>
+    
+    <div class="wb100">
+    	<div class="w1150px center F200em Fgray-4">
+        	<p class="wb50 fl F175em h40px lh40px">四川外国语大学</p>
+        	<p class="wb50 fr text-right h40px lh40px"><img src="images/icon-phone.png" class="middle">咨询电话：13108910278</p>
+        </div>
+    </div>
+    
+    <div class="clear h30px"></div>
+    
+    <div class="wb100 h40px warpper-blue-7">
+    	<div class="w1150px center">
+        	<ul class="ul-sub-nav F175em">
+            	<a href="javascript:void(0)" class="white"><li>学校首页</li></a>
+            	<a href="javascript:void(0)" class="white"><li>学校简介</li></a>
+            	<a href="javascript:void(0)" class="white"><li>学校课程</li></a>
+            	<a href="javascript:void(0)" class="white"><li>学校环境</li></a>
+            	<a href="javascript:void(0)" class="white"><li>师资力量</li></a>
+            	<a href="javascript:void(0)" class="white"><li>学校资讯</li></a>
+            	<a href="javascript:void(0)" class="white"><li>联系我们</li></a>                                                                   
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1150px center">
+        	<div class="wb100 img-Warea">
+        		<img src="images/banner-1.jpg">
+            </div>
+            <div class="clear1"></div>
+            
+            <div class="wb76 fl">
+            	<div class="wb100 bor-gray bor-solid-1a">
+                    <p class="h40px lh40px bor-gray bor-solid-1b F150em Fgray-4 wb99 pal1per Fb">
+                        <img src="images/line-blue.jpg" class="fl mat10 mar10"> 学校资讯
+                    </p>
+                    
+                    <div class="clear"></div>
+                    
+                    <div class="wb90 pal5per par5per Fgray-3 F125em">
+                        <p class="h40px lh40px bor-gray bor-dashed-1b">
+                        	<a href="javascript:void(0)" class="gray fl">雅思学习计划——寒假篇</a>
+                            <span class="fr">[ 2016-09-26 ]</span>
+                        </p>
+                        <p class="h40px lh40px bor-gray bor-dashed-1b">
+                        	<a href="javascript:void(0)" class="gray fl">雅思学习计划——寒假篇</a>
+                            <span class="fr">[ 2016-09-26 ]</span>
+                        </p>
+                        <p class="h40px lh40px bor-gray bor-dashed-1b">
+                        	<a href="javascript:void(0)" class="gray fl">雅思学习计划——寒假篇</a>
+                            <span class="fr">[ 2016-09-26 ]</span>
+                        </p>
+                    </div>
+                    
+                </div>
+          	</div>
+            
+            <div class="wb22 fr"> 
+            	<div class="wb100 bor-gray bor-solid-1a">
+                	<p class="h40px lh40px bor-gray bor-solid-1b F150em Fgray-4 wb94 pal3per par3pe">
+                    	<img src="images/line-blue.jpg" class="fl mat10 mar10"> 课程分类
+                        <a href="javascript:void(0)" class="gray fr lh40px F80em">查看更多>></a>
+             		</p>
+                    <div class="clear1"></div>
+                    <div class="wb85 center F125em">
+                    	<a href="javascript:void(0)" class="gray display-inline wb50 fl mab20">语言培训</a>
+                    	<a href="javascript:void(0)" class="gray display-inline wb50 fl mab20">语言培训</a>
+                    	<a href="javascript:void(0)" class="gray display-inline wb50 fl mab20">语言培训</a>
+                    	<a href="javascript:void(0)" class="gray display-inline wb50 fl mab20">语言培训</a>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <div class="clear1"></div>
+            	<div class="wb100 bor-gray bor-solid-1a">
+                	<p class="h40px lh40px bor-gray bor-solid-1b F150em Fgray-4 wb94 pal3per par3pe">
+                    	<img src="images/line-blue.jpg" class="fl mat10 mar10"> 分校校区
+                        <a href="javascript:void(0)" class="gray fr lh40px F80em">查看更多>></a>
+             		</p>
+                    <div class="clear"></div>
+                    <div class="wb90 center F125em">
+                        <p class="h40px lh40px bor-gray bor-dashed-1b">
+                        	<a href="javascript:void(0)" class="gray">总校区</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="clear1"></div>
+            	<div class="wb100 bor-gray bor-solid-1a">
+                	<p class="h40px lh40px bor-gray bor-solid-1b F150em Fgray-4 wb94 pal3per par3pe">
+                    	<img src="images/line-blue.jpg" class="fl mat10 mar10"> 同类课程
+                        <a href="javascript:void(0)" class="gray fr lh40px F80em">查看更多>></a>
+             		</p>
+                    <div class="clear"></div>
+                    <div class="wb90 pal5per par5per center F125em">
+                    	<ul class="ul-news2">
+                        	<a href="javascript:void(0)" class="gray"><li>雅思写作培训班</li></a>
+                        </ul>
+                    </div>
+                </div>
+          	</div>
+            
+        </div>
+    </div>
+        
+    <div class="wb100">
+        <div class="clear h40px bor-blue2 bor-solid-2b"></div>
+        <div class="clear1"></div>
+        
+        <div class="w1150px center F125em">
+            <div class="wb100 text-center">
+        		<p class="Fgray-3 h40px lh40px">Copyright @ 2013-2015 www.xingjiaoshi.com ALL Right Reserved 网站备案号：晋ICP本备：010121231</p>
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+</html>

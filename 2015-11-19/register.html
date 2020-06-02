@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>英才招生网</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/yc.css" type="text/css" rel="stylesheet">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script>
+	$(function(){
+		
+		$(".ul-nav-second li").hover(function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			_this.addClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+		},function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+		});
+		
+		$(".nav-btn,.nav-area").hover(function(){
+			$(".nav-area").show(0);
+		},function(){
+			$(".nav-area").hide(0);
+		})
+		
+		$(".my-nav-area,.my-nav-btn").hover(function(){
+			$(".my-nav-area").toggle(0);	
+		})
+		
+		$(".slide-btn-3,.slide-area-3").mouseover(function(){
+			$(".slide-area-3").show(0);
+		})
+		$(".slide-area-3,.slide-btn-3").mouseleave(function(){
+			$(".slide-area-3").hide(0);	
+		})
+		
+		$(".slide-area-3 p").click(function(){
+			var val = $(this).attr("data-value");
+			var val2 = $(this).text();
+			$(".slide-btn-3 span").text(val2);
+			$("input[name=key_type]").val(val);
+			$(".slide-area-3").hide(0);	
+			if(val == "pro")
+				$("form[name=search-form]").attr("action","/Productlist");
+			else
+				$("form[name=search-form]").attr("action","/Businelist");
+			
+		})
+		
+		/*
+		var height = $(".nav-warpper").height();
+		
+		$(".li-ext").each(function(index, element) {
+            $(this).height(height);
+			var top = -72 * index;
+			$(this).css({
+				top : top + "px"	
+			})
+        });*/
+		
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+	})
+	
+</script>
+</head>
+
+<body>
+	
+    <div class="wb100 h30px lh30px bor-gray bor-solid-1b warpper-white-2">
+    	<div class="w1150px center Fgray-3">
+        	<div class="wb30 fl F125em">
+            	英才招生网欢迎您！
+            </div>
+            <div class="wb60 fr text-right F125em">
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">登录</a>
+            	<a href="javascript:void(0)" class="gray mal15 par15 bor-gray1 bor-solid-1r">注册</a>
+            	<a href="javascript:void(0)" class="gray mal15">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wb100">
+    	
+        <div class="clear h30px"></div>
+    
+    	<div class="w1150px center h60px ">
+            <div class="wb22 fl">
+                <img src="images/logo.png">
+            </div>
+            <div class="wb70 fl bor-gray bor-solid-1l Fgray-3 F200em pal2per h60px lh60px">
+            	<span class="F125em">欢迎注册</span>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="clear h50px"></div>
+    
+    <div class="wb100">
+    	<div class="w900px center">
+            <div class="wb100">
+                <ul class="ul-reg-step">
+                    <li class="li-hover">
+                        <div class="li-line"></div>
+                        <div class="li-num">1</div>
+                        <div class="li-line"></div>
+                        <div class="clear"></div>
+                        <p>基本信息</p>
+                    </li>
+                    <li>
+                        <div class="li-line"></div>
+                        <div class="li-num">2</div>
+                        <div class="li-line"></div>
+                        <div class="clear"></div>
+                        <p>完善学校信息</p>
+                    </li>
+                    <li>
+                        <div class="li-line"></div>
+                        <div class="li-num">3</div>
+                        <div class="li-line"></div>
+                        <div class="clear"></div>
+                        <p>完成注册</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="clear1"></div>
+            
+            <div class="wb100 bor-gray bor-solid-1a">
+            	<div class="clear1"></div>
+                
+                <div class="wb50 center F150em lh40px Fgray-3">
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>账号：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="text" class="bor-none h30px lh30px wb80 pal2per">
+                        <img src="images/icon-name.jpg" class="fr ma10">
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>密码：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="password" class="bor-none h30px lh30px wb80 pal2per">
+                        <img src="images/icon-pwd.jpg" class="fr ma10">
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>确认密码：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="password" class="bor-none h30px lh30px wb80 pal2per">
+                        <img src="images/icon-pwd.jpg" class="fr ma10">
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>学校全称：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="text" class="bor-none h30px lh30px wb80 pal2per">
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>所在地区：</p>
+                    <div class="wb75 h40px fr">
+                    	<select class="bor-gray bor-solid-1a h40px lh40px wb40">
+                        	<option>请选择</option>
+                        </select>
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>联系人：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="text" class="bor-none h30px lh30px wb80 pal2per">
+                    </div>
+                    <div class="clear1"></div>
+                	<p class="wb23 fl text-right mar1per"><span class="Fred mar5">*</span>联系电话：</p>
+                    <div class="wb75 h40px bor-gray bor-solid-1a fr">
+                        <input type="text" class="bor-none h30px lh30px wb80 pal2per">
+                    </div>
+                    <div class="clear h100px"></div>
+                    
+                    <input type="submit" class="wb75 fr warpper-green-4 h40px text-center bor-none Fwhite F125em pointer" value="下一步">
+                    
+                    <div class="clear1"></div>
+                </div>
+                
+                
+                <div class="clear1"></div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="clear h160px bor-green2 bor-solid-2b"></div>
+    
+    <div class="wb100">
+        <div class="clear h40px"></div>
+       
+        <div class="w1150px center F125em">
+            <div class="wb100 text-center">
+        		<p class="Fgray-3 h40px lh40px">Copyright @ 2013-2015 www.xingjiaoshi.com ALL Right Reserved 网站备案号：晋ICP本备：010121231</p>
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+</html>
