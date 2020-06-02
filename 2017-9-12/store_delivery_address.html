@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+
+
+    <style>
+
+        .el-radio__input.is-checked .el-radio__inner{border-color: #48a44a;background: #48a44a;}
+
+    </style>
+
+    <title>收货地址</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_delivery_address_page html
+|
+-->
+
+<div id="store_delivery_address_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+
+
+        <template v-for="(item,key) in deliveryList">
+            <div class="wb100 warpper-white">
+                <div class="pa15 ">
+                    <p>
+
+                        <span class="fl">{{item.recipients}}</span>
+                        <span class="fr Fnum">{{item.mobilePhone}}</span>
+                    </p>
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <p class="F14  h30px bor-solid-1b bor-gray">{{item.address}}</p>
+
+                </div>
+
+                <div class="pa15">
+
+                    <div class="radio fl h30px lh30px" @click="myClick(item.addressID)">
+                        <el-radio  v-model="radio" :label="item.addressID" >设为默认地址</el-radio>
+                    </div>
+
+                    <div class="fr bor-solid-1a w60px h30px lh30px text-center radius5"  @click="exchange(item.addressID)">
+                        删除
+                    </div>
+
+                    <a href="javascript:;" @click="redirect('store_edit_address.html?addressID='+item.addressID+'&recipients='+item.recipients+'&mobilePhone='+item.mobilePhone+'&address='+item.address)">
+
+                        <div class="fr bor-solid-1a w60px h30px lh30px text-center radius5 mar15 Fblack">
+                          编辑
+                        </div>
+                    </a>
+
+                </div>
+                <div class="clear1"></div>
+                <div class="clear1 warpper-gray-3"></div>
+            </div>
+
+        </template>
+
+        <div class="wb100" id="dialog" style="display: none">
+            <div class="dialogBg"></div>
+            <div class="wb100 fixed" style="bottom:50%;z-index: 99">
+                <div class=" warpper-white radius5 wb70 center ">
+                    <div class="wb100 h150px">
+                        <div class="text-center">
+                            <p class="lh100px h100px bor-solid-1b bor-gray">确定删除地址吗？</p>
+                            <!--<p class="F14 Fgray-3 bor-solid-1b bor-gray  h40px">需花费<span class="Fred Fnum"></span>金币</p>-->
+                            <p class="lh50px h50px">
+                                <span class="fl  wb50 bor-solid-1r bor-gray " style="height: 49px" @click="cancel">取消</span>
+                                <span class="fr  wb49 Fgreen" @click="remove">确定</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clear h45px"></div>
+
+        <div class="fixed wb100"  style="bottom:0;">
+
+              <div class="wb100" @click="submitOrder">
+                  <div class="wb100 Fwhite h45px lh45px text-center warpper-green-4">
+                      新增收货地址
+                  </div>
+              </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_delivery_address_page",
+        data: {
+            fullscreenLoading: true,
+            radio: 0,
+            deliveryList: [],
+            page: 1,
+            pageSize: 20,
+            removeID: 0,
+        },
+        methods: {
+
+            myClick: function myClick(key) {
+
+                var _this = this;
+
+                _this.radio = key;
+
+                console.log(key);
+                baseAjax.defaultAddress(key, function (data) {
+
+                    console.log(data);
+                });
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            getaddressList: function getMatchList() {
+
+                var _this = this;
+
+                baseAjax.addressList(_this.page, _this.pageSize, function (data) {
+
+                    var _tmp = data.returnJSON.indexData;
+
+                    console.log(data);
+
+                    for (var i = 0; i < _tmp.length; i++) {
+                        if (_tmp[i].isDefault == 1) {
+                            _this.radio = _tmp[i].addressID;
+                            console.log(_tmp[i]);
+                            break;
+                        }
+                    }
+
+                    _this.deliveryList = _this.deliveryList.concat(_tmp);
+
+                    //                    _this.addressID = data.returnJSON.indexData.addressID;
+
+                });
+            },
+
+            exchange: function exchange(key) {
+
+
+                $("#dialog").show(0);
+                this.removeID = key;
+                console.log(key)
+            },
+
+            cancel: function cancel(key) {
+
+
+                $("#dialog").hide(0);
+                this.removeID = key;
+            },
+
+            remove: function remove() {
+
+                var _this = this;
+
+                baseAjax.delAddress(_this.removeID, function (data) {
+
+
+                    if (data) {
+                        _this.deliveryList = [];
+                        _this.getaddressList();
+                    }
+                });
+
+                $("#dialog").hide(0);
+
+            },
+
+            submitOrder: function submitOrder() {
+
+                var _this = this;
+
+                //判断用户登录状态
+                var _user = base.getCookie('userInfo');
+
+                if (base.isNull(_user)) {
+                    //前去登录
+                    window.location.href = 'login.html?call=true';
+                    return false;
+                }
+
+                window.location.replace('store_add_address.html');
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            var _user = base.getCookie('userInfo');
+
+            if (base.isNull(_user)) {
+                //- 未登录
+            } else {
+                _this.user = JSON.parse(_user);
+
+                console.log(_this.user);
+            }
+
+            _this.getaddressList();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _user = base.getCookie('userInfo');
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                } else {
+                    _this.user = JSON.parse(_user);
+
+                    console.log(_this.user);
+                }
+
+                _this.getaddressList();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

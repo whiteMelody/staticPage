@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sign.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+
+        .bg{
+            width:500px; height: 500px; background: rgba(0,0,0,.9); overflow: hidden;
+        }
+
+        .lrc-bg{
+            filter:blur(25px);
+            -webkit-filter:blur(25px);
+            -moz-filter:blur(25px);
+            -ms-filter:blur(25px);
+            -o-filter:blur(25px);
+        }
+
+        .lrc-bg2{
+            background-size: auto 100%;
+            background-position: center center;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+            -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            /* transform: scale(1.5); */
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+
+        .is-active .el-carousel__button{ background: #1b87fd;}
+        .el-badge__content{ background-color:#f5a623; width: 16px; height: 16px; line-height: 16px; font-size: 12px; padding: 0; border-radius:2px;}
+        .el-badge__content.is-fixed{ right: 2px;}
+
+    </style>
+
+
+    <title>搜索</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| search_page
+| ------------------------------------------
+| Here are search_page html
+|
+-->
+<div id="search_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="search-area">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="'搜索'"></en-header-new>
+
+        <div class="clear"></div>
+
+        <div class="pa15 relative">
+
+            <div class="wb100 h40px lh40px radius5 over-hidden" style="border:1px solid #bfcbd9;">
+                <div class="wb77 fl pal3per">
+                    <input @keypress="mySearch" v-model="keyWord" placeholder="请输入课程" type="search" class="bor-none wb100 " style="height: 38px; line-height: 38px;">
+                </div>
+                <div class="wb18 fr lh40px h40px Fblue F14 text-center" style="border-left:1px solid #bfcbd9" @click="search">
+                    搜索
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="wb100" v-if="!empty && keyWord.length != 0">
+            <layout-lesson-list :datas="searchList" :size="50"></layout-lesson-list>
+        </div>
+
+        <div class="wb100" v-else>
+
+            <template v-if="loading">
+                <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15">
+                    <img src="images/loading-2.gif" class="h20px fl">
+                    <span class="fl mal10">搜索中...</span>
+                </div>
+            </template>
+            <template v-else>
+                <div class="pa15">
+                    <p class="Fgray-3 F14">热门搜索</p>
+
+                    <div class="clear1"></div>
+
+                    <el-row :gutter="15" class="hotKey">
+                        <el-col :span="6" class="text-center lh35px F14" v-for="item in hotKey">
+                            <el-badge value="H" class="item" v-if="item.isHot">
+                                <p class="mab15 Forange" @click="searchKey(item.keyword)">{{item.keyword}}</p>
+                            </el-badge>
+                            <p class="mab15 Fgray-2" v-else @click="searchKey(item.keyword)">{{item.keyword}}</p>
+                        </el-col>
+                    </el-row>
+
+                    <p class="h40px lh40px text-center Fgray-3 F14" v-if="empty2">没有相关数据</p>
+                </div>
+            </template>
+
+        </div>
+
+        <en-footer></en-footer>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#search_page",
+        data : {
+            showLoader : true,
+            keyWord: '',
+            hotKey : [],
+            searchList : null,
+            empty : true,
+            empty2 : false,
+            loading : false,
+
+        },
+        methods : {
+
+
+            mySearch(e){
+                let keycode = e.keyCode;
+
+                if(keycode=='13') {
+                    this.search();
+                }
+
+            },
+
+            search(){
+                let _this = this;
+
+                _this.searchList = [];
+
+                if(base.isNull(_this.keyWord)){
+                    _this.empty = true;
+                    return false;
+                }
+                _this.loading = true;
+
+                baseAjax.searchChannelKeyword(_this.keyWord,1,20, function(data){
+
+                    _this.searchList = data.returnJSON.indexData;
+
+                    if(base.isNull(_this.searchList)){
+                        _this.empty = true;
+                    }else{
+                        _this.empty = false;
+                    }
+                    _this.loading = false;
+                })
+                _this.empty2 = true;
+            },
+            searchKey(keyWord){
+                let _this = this;
+                _this.keyWord = keyWord;
+
+                _this.loading = true;
+                baseAjax.searchChannelKeyword(keyWord,1,20, function(data){
+                    _this.searchList = data.returnJSON.indexData;
+
+                    if(base.isNull(_this.searchList)){
+                        _this.empty = true;
+                    }else{
+                        _this.empty = false;
+                    }
+
+                    _this.loading = false;
+                })
+                _this.empty2 = true;
+            }
+
+        },
+        created(){
+            let _this = this;
+
+            baseAjax.getHotKeywords(function (data) {
+                _this.hotKey = data.returnJSON.slice(0,12);
+                setTimeout(function(){
+                    _this.showLoader = false;
+                    $(".search_page_content").removeClass("hidden");
+                },ajaxConfig.lazy);
+            })
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{ overflow:auto; overflow-x:hidden; margin:0; padding:0; font: 12px/1 "宋体","Microsoft Yahei",arial,simhei; color:#333;}
+
+/* link */
+
+.blue:link{color:#0063cc;text-decoration:none;}
+.blue:visited{color:#0063cc;text-decoration:none;}
+.blue:hover{color:#ff6600;text-decoration:underline;}
+.blue:actived{color:#0063cc;text-decoration:none;}
+.white:link{color:white;text-decoration:none;}
+.white:visited{color:white;text-decoration:none;}
+.white:hover{color:white;text-decoration:underline;}
+.white:actived{color:white;text-decoration:none;}
+.yellow:link{color:white;text-decoration:none;}
+.yellow:visited{color:white;text-decoration:none;}
+.yellow:hover{color:#CF0;text-decoration:none;}
+.yellow:actived{color:white;text-decoration:none;}
+.orange:link{color:#fc4c01;text-decoration:none;}
+.orange:visited{color:#fc4c01;text-decoration:none;}
+.orange:hover{color:red;text-decoration:none;}
+.orange:actived{color:red;text-decoration:none;}
+.green:link{color:#75be04;text-decoration:none;}
+.green:visited{color:#75be04;text-decoration:none;}
+.green:hover{color:green;text-decoration:none;}
+.green:actived{color:green;text-decoration:none;}
+.gray:link{color:#777;text-decoration:none;}
+.gray:visited{color:#777;text-decoration:none;}
+.gray:hover{color:#333;text-decoration:none;}
+.gray:actived{color:#333;text-decoration:none;}
+.black:link{color:#000;text-decoration:none;}
+.black:visited{color:#000;text-decoration:none;}
+.black:hover{color:#999;text-decoration:none;}
+.black:actived{color:#CCC;text-decoration:none;}
+.red:link{color:#F00;text-decoration:none;}
+.red:visited{color:#F03;text-decoration:none;}
+.red:hover{color:#F06;text-decoration:none;}
+.red:actived{color:#F06;text-decoration:none;}
+.gray01{color: #666;}
+.gray02{color: #999;}
+.gray03{color: #bbb;}
+.Fred{ color:#F00;}
+.Fblue{color:#0063cc;}
+.Fblue01{color:#6cc6ed;}
+.Fblue02{color:#30b6e9;}
+.Fwhite{color:white;}
+.Fyellow{color:white;}
+.Forange{color:#fc4c01;}
+.Fblack{color:#000;}
+.Fgreen{color:#75be04;}
+
+
+* {margin: 0;padding: 0;}img {border: 0;}ul,li {list-style: none;}div,ul,li,dl,dt,dd,table,td,input {font-size: 12px;}
+a {color: #333;text-decoration: none;}
+a:hover {color: #E2383A;}
+a:active {star: expression(this.onFocus=this.blur());}
+.clear {width: 100%;height: 0;clear: both;overflow: hidden;}
+.clear1 {width: 100%;height: 15px;clear: both;overflow: hidden;}
+i,em {font-style: normal;}
+.Fb {font-weight: bold;}
+.F12{ font-size:12px;}
+.F14{ font-size:14px;}
+.F16{ font-size:16px;}
+.F18{ font-size:18px;}
+.F20{ font-size:20px;}
+.F22{ font-size:22px;}
+.F24{ font-size:24px;}
+.fl,.fl-img {float: left;}
+.fr {float: right;}
+.FL{ text-decoration:line-through;}
+.mat10 {margin-top: 10px;}
+.mab10 {margin-bottom: 10px;}
+.blank10 {height: 10px;font-size: 0;overflow: hidden;line-height: 0;background: none;}
+.hidden {display: none;}
+.show {display: block;}
+
+
+.orangebut,.bluebut,.graybut,.cancelBtn,.greenbut,.pinkbut {
+	display: inline-block;
+	font-size: 12px;
+	border-radius: 2px;
+	text-align: center;
+	padding: 0 19px;
+	*overflow: visible;
+	cursor: pointer;
+}
+
+input.orangebut,input.bluebut,input.graybut,input.cancelBtn {
+	padding: 4px 19px;
+	padding: 6px 19px 2px\9;
+	*padding: 5px 19px 1px;
+	_padding: 5px 19px 1px;
+}
+
+a.orangebut,a.bluebut,a.graybut,a.cancelBtn,a.greenbut {
+	height: 23px;
+	line-height: 23px;
+	line-height: 26px\9;
+	_line-height: 22px;
+}
+
+input[type=button]::-moz-focus-inner {
+	border: 0;
+}
+
+.greenbut {
+	background: #49b8ff;
+	border: 1px solid #1ba3fa;
+	color: #fff;
+}
+
+.greenbut:hover {
+	background: #1ba3fa;
+	color: #fff;
+	color: #fff;
+}
+
+.orangebut {
+	background: #f60;
+	border: 1px solid #f65802;
+	color: #fff;
+}
+
+.orangebut:hover {
+	background: #f65802;
+	color: #fff;
+}
+
+.pinkbut {
+	background: #ff76ac;
+	border: 1px solid #f65802;
+	color: #fff;
+}
+
+.pinkbut:hover {
+	background: #ff76ca;
+	color: #fff;
+}
+
+.bluebut {
+	background: #49b8ff;
+	border: 1px solid #1ba3fa;
+	color: #fff;
+}
+
+.bluebut:hover {
+	background: #1ba3fa;
+	color: #fff;
+	color: #fff;
+}
+
+.graybut {
+	background: #f3f3f3;
+	border: #cfcfcf 1px solid;
+	color: #999;
+}
+
+.graybut:hover {
+	background: #bbb;
+	color: #fffeee;
+}
+
+.cancelBtn {
+	background: #f4f4f4;
+	border: #ddd 1px solid;
+	color: #747474;
+}
+
+.cancelBtn:hover {
+	background: #f4f4f4;
+	border: #bbb 1px solid;
+	color: #747474;
+}

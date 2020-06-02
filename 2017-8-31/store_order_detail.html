@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+
+
+    <title>订单详情</title>
+</head>
+<body class="warpper-gray-1">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_order_detail_page html
+|
+-->
+
+<div id="store_order_detail_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+        <div class="wb100 pat15 pab15 warpper-green-4" >
+
+            <div class="w100px center" v-if="data.status == 2">
+                <div class="w30px img-area fl  mat15" >
+                    <img src="images/icon-dispose.png">
+                </div>
+                <span class="fr h60px lh60px Fwhite F18" >处理中</span>
+            </div>
+
+            <div class="w100px center" v-else>
+                <div class="w30px img-area fl  mat15" >
+                    <img src="images/icon-complete.png">
+                </div>
+                <span class="fr h60px lh60px Fwhite F18" >已完成</span>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="pa15 warpper-white pat15 pab15" v-if="bigtype == 1">
+            <p class="h25px lh25px">卡号 <span class="Fnum">{{data.cardno}}</span></p>
+            <p class="h25px lh25px">卡密 <span class="Fnum">{{data.cardpassword}}</span></p>
+        </div>
+
+
+
+        <div class="warpper-white" v-else>
+
+            <div class="pa15 ">
+                <p>
+                    <span class="fl">{{data.username}}</span>
+                    <span class="fr Fnum">{{data.telephone}}</span>
+                </p>
+            </div>
+
+
+            <div class="pa15">
+                <p class="F14 Fgray-3">{{data.address}}</p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="clear1"></div>
+        <div class="wb100 warpper-white">
+            <div class="pa15 ">
+                    <p><span class="Fgray-3">商品名称：</span>{{data.name}}</p>
+            </div>
+        </div>
+        <div class="wb100" v-if="bigtype != 1">
+
+            <div class="clear1"></div>
+            <div class="wb100">
+                <div class="pa15 warpper-white pat15 pab15">
+                    <p class="Fgray-3">快递公司：{{data.express}}</p>
+                </div>
+                <div class="pal15 warpper-white">
+                    <div class="wb100">
+                        <div class="clear bor-gray bor-solid-1b"></div>
+                    </div>
+                </div>
+                <div class="pa15 warpper-white pat15 pab15">
+                    <p class="Fgray-3">运单号：<span class="Fnum">{{data.expressno}}</span></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clear1"></div>
+        <div class="wb100">
+            <div class="pa15 warpper-white pat15 pab15">
+                <p class="Fgray-3">创建时间：<span class="Fnum">{{data.createtime}}</span></p>
+            </div>
+            <div class="pal15 warpper-white">
+                <div class="wb100">
+                    <div class="clear bor-gray bor-solid-1b"></div>
+                </div>
+            </div>
+            <div class="pa15 warpper-white pat15 pab15">
+                <p class="Fgray-3">订单编号：<span class="Fnum">{{data.ordernum}}</span></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_order_detail_page",
+        data: {
+            fullscreenLoading: true,
+            data: {},
+
+
+        },
+        methods: {
+
+            getData: function getData() {
+                var _this = this;
+
+                _this.ordernum = base.getParmar('ordernum');
+
+                _this.bigtype = base.getParmar('bigtype');
+
+                baseAjax.showOrder(_this.bigtype, _this.ordernum, function (data) {
+
+                    if(data){
+
+                        console.log(data);
+
+                        _this.data = data.data;
+
+
+                        }
+
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

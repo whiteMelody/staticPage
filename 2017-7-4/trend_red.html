@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .el-table .cell, .el-table th>div {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        .el-table th {
+            background-color: #fff !important;
+        }
+
+    </style>
+
+
+
+    <title>双色球走势图</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| trend_red_page
+| ------------------------------------------
+| Here are trend_red_page html
+|
+-->
+
+<div id="trend_red_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <ticket-header :title="title" :back="true"></ticket-header>
+
+        <div class="clear"></div>
+        <div class="wb100 h40px lh40px text-center Fgray-3">
+            <el-row>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_synthesize.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3">综合指数</span>
+                        </div>
+                    </a>
+                </el-col>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_red.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3 bor-red bor-solid-2b pab5">红球趋势</span>
+                        </div>
+                    </a>
+                </el-col>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_blue.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3">蓝球趋势</span>
+                        </div>
+                    </a>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="data-area">
+
+            <template>
+                <el-table
+                        :data="allBall"
+                        border
+                        :height="_height2">
+                    <el-table-column
+                        v-for="(item,key) in allBall[0]"
+                        :label="key == 0 ? '期次' : item + ''"
+                        :width="key == 0 ? 90 : 40"
+                        :fixed="key == 0 ? true : false">
+                        <template scope="scope">
+                            <p>{{ scope.row[key]  }}</p>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#trend_red_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            _height2 : 0,
+            title : '双色球红球走势图',
+            nav : [ '综合指数', '红球走势', '蓝球走势'],
+            currentNav : 1,
+            showHistory : false,
+            allBall : [],
+            redBall : [],
+        },
+        methods : {
+
+            changeNav(key){
+                this.currentNav = key;
+                console.log(key);
+            },
+
+            init(){
+                let _this = this;
+                let _arr = [];
+                let _arr2 = [];
+                for(let k=1; k<52; k++){
+                    _arr = [];
+                    _arr.push('201700'+base.addZero(k));
+
+                    if(k<=50){
+                        for(let i=1; i<34; i++){
+                            _arr.push(base.addZero(i));
+                        }
+                        _this.allBall.push(_arr);
+
+                        _arr2 = [];
+                        for(let j=0; j<6; j++){
+                            _arr2.push(base.random_num(1,34));
+                        }
+
+                        _this.redBall.push(_arr2);
+                    }
+
+                }
+
+                console.log(_this.redBall);
+
+            },
+
+            draw(){
+
+                let _this = this;
+                let stageNum = 50;
+                let _width = 33 * 40 + 40;
+                let _height = 40 * stageNum;
+
+                $(".el-table__body-wrapper").css({
+                    position : 'relative',
+                    zIndex : 2,
+                })
+
+                $(".el-table__body-wrapper").append('<canvas id="myCanvas" width="'+_width+'" height="'+_height+'" style="position: absolute; top: 0; left: 50px; z-index: 0;"></canvas>');
+
+                let c = document.getElementById("myCanvas");
+
+                let cxt = c.getContext("2d");
+                cxt.fillStyle = "#e34444";
+                cxt.strokeStyle = "#e34444";
+                cxt.lineWidth = 1;
+                cxt.lineCap="round";
+                cxt.lineJoin="round";
+
+                let _w = 40;
+                let _r = 15;
+                let _x = 0;
+                let _y = -_w/2;
+
+                //绘圆
+                for(let i=0; i<stageNum; i++){
+
+                    let _item = _this.redBall[i];
+
+                    _y += _w;
+
+                    for(let j=0; j<_item.length; j++){
+                        _x = _item[j] * _w  + _w/2;
+
+                        console.log(_x + '      ' + _y);
+
+                        cxt.beginPath();
+                        cxt.arc(_x,_y,_r,0,Math.PI*2,true);
+                        cxt.closePath();
+                        cxt.fill();
+                    }
+
+
+                }
+
+                _x = 0;
+                _y = -15;
+                cxt.fillStyle = "#ffffff";
+                cxt.font = "14px Microsoft YaHei";
+                cxt.textAlign ="center";
+
+                //填数
+                for(let i=0; i<stageNum; i++){
+
+                    let _item = _this.redBall[i];
+
+                    _y += _w;
+
+                    for(let j=0; j<_item.length; j++){
+                        _x = _item[j] * _w  + _w/2;
+
+                        cxt.fillText(base.addZero(_item[j]) , _x, _y);
+                    }
+
+                }
+
+            }
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this._width = $(window).width();
+            _this._height = $(window).height();
+            _this._height2 = $(window).height() - 105;
+
+            _this.init();
+
+            setTimeout(() => {
+                $("#trend_red_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+
+                if((".el-table__body-wrapper").length > 0){
+                    _this.draw();
+                }
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+//    var test=[1,2,3,3,2,2,2,3,3,3,3,5,3,3,3];
+//    Array.prototype.ct = function(c){
+//        var reg = new RegExp(c+"+","g")
+//            ,t = this.join('').match(reg)
+//            ,m = 0;
+//        for(var i=0,j=t.length;i<j;i++){
+//            m = Math.max(t[i].length,m)
+//        }
+//        return m;
+//    }
+//    console.log(test.ct(2));
+
+
+</script>
+
+</body>
+</html>

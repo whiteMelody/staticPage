@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">添加信息</div>
+        	<a class="h40px lh40px w60px absolute pointer" data-role="none" data-transition="slide" style="right:5px; top:5px;">
+            <span class="Fwhite F90em fr">完成</span></a>
+        </div>
+    </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	
+        <div class="warpper-gray-1 wb100 pat15">
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px lh80px bor-gray bor-solid-1a center warpper-blue-10 text-center">
+                	<img src="images/icon-add-3.png" class="middle">
+                </div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 bor-gray bor-solid-1t radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">营业区域</p>
+            <input type="text" placeholder="请填写区域" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+            <img src="images/arrow-right.png" class=" fr mat10">
+        </div>
+        <div class="wb90 center bor-gray bor-solid-1t"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 bor-gray bor-solid-1b radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">详细地址</p>
+            <input type="text" placeholder="至少6字" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+            <img src="images/arrow-right.png" class=" fr mat10">
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 bor-gray bor-solid-1t bor-solid-1b radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">类别</p>
+            <input type="text" placeholder="保姆" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+            <img src="images/arrow-right.png" class=" fr mat10">
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+      
+        <div class="wb90 center bor-gray bor-solid-1t"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">标题</p>
+            <input type="text" placeholder="至少2字" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+        </div>
+        <div class="wb90 center bor-gray bor-solid-1t"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">提供服务</p>
+            <input type="text" placeholder="至少6字" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+        </div>
+        <div class="wb90 center bor-gray bor-solid-1t"></div>
+
+        <div class="wb90 pal5per par5per h80px pat15 pab15 radius5 warpper-white">
+            <p class="wb30 fl h80px lh80px text-left bor-gray bor-solid-1r">详情介绍</p>
+            <textarea class="Fgray-2 bor-none fl mal4per h80px lh25px F90em wb65" data-role="none" placeholder="10-800字，如岗位职责，任职资格，工作时间等，不能填写电话，qq号和特殊字符"></textarea>
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 bor-gray bor-solid-1t radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">联系人</p>
+            <input type="text" placeholder="至少2字" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+        </div>
+        <div class="wb90 center bor-gray bor-solid-1t"></div>
+        <div class="wb90 pal5per par5per h30px pat10 pab10 bor-gray bor-solid-1b radius5 warpper-white">
+            <p class="wb30 fl h30px lh30px text-left bor-gray bor-solid-1r">手机号</p>
+            <input type="text" placeholder="只允许填手机号或固定电话" class="Fgray-2 bor-none fl mal4per h30px lh30px F90em wb60" data-role="none" />
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        
+        <div class="clear1"></div>
+        <div class="wb50 center">
+            <input type="submit" data-role="none" value="确认发布" class="wb100 warpper-orange-2 pointer h40px lh40px text-center bor-none Fwhite radius5" />
+        </div>
+        <div class="clear1"></div>
+       
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>双色球投注单</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| lotter_ssq_order_page
+| ------------------------------------------
+| Here are lotter_ssq_order_page html
+|
+-->
+
+<div id="lotter_ssq_order_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <!--<ticket-header :title="'双色球 投注单'" :back="true"></ticket-header>-->
+        <div class="wb100 h50px relative warpper-red" style="z-index: 99999;">
+            <div class="w50px h50px fl"  @click="add">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">双色球 投注单</p>
+        </div>
+
+
+        <ticket-login :show="dialogLogin" v-on:callback="loginCallback"></ticket-login>
+
+        <ticket-pay :show="dialogPay" v-on:callback="payCallback"></ticket-pay>
+
+        <ticket-conserve :show="dialogConserve" v-on:callback="conserveCallback"></ticket-conserve>
+
+        <el-dialog
+                :visible.sync="dialogBuySuccess"
+                size="large"
+                :show-close="false">
+
+            <p class="text-center F24">购买成功</p>
+
+            <div class="clear1"></div>
+
+            <p class="Fgray-3 text-center F16">购买成功，请关注出票状态，祝您中奖</p>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <div class="wb100">
+                <div class="wb40 text-center radius5 Fred h38px lh38px bor-red bor-solid-1a F16 fl" @click="back">
+                    返回
+                </div>
+
+                <div class="wb40 text-center radius5 h38px lh38px pa1 fr warpper-red Fwhite F16" @click="toDetail">
+                    查看详情
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </el-dialog>
+
+        <ticket-agreement :show="dialogAgreement" v-on:closecall="closeCallback"></ticket-agreement>
+
+        <div class="clear1"></div>
+        <div class="pal15 par15 text-center Fgray-3 F14">
+            <el-row :gutter="10">
+                <el-col :span="8">
+                    <!--<a href="lottery_ssq.html">-->
+                        <div class="wb100 h40px lh40px bor-gray bor-solid-1a Fgray-3 warpper-white" @click="add">
+                            + 手动添加
+                        </div>
+                    <!--</a>-->
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="randomSelect">
+                        + 机选1注
+                    </div>
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="emptyall">
+                        <img src="images/icon-clear.png" class="h20px middle"> 清空全部
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+
+
+        <div class="pa15">
+            <template v-for="(item,key) in ticket">
+
+                <template v-if="item.red_Ball">
+                    <!--胆拖-->
+                    <div class="pat15 pab15 par30 pal50 lh25px bor-gray bor-solid-1a F14 relative warpper-white">
+
+                        <div class="h50px w25px absolute" @click="removeTicket(item.original.id)" style="left: 15px; top: 15px;">
+                            <img src="images/icon-remove.png" style="float: left; margin-top: 15px; width: 20px;">
+                        </div>
+
+                        <p>
+                            <span class="Fred">（胆 {{item.red_Ball}}）</span>
+                            <span class="Fred">{{item.redBall}}</span>
+                            <span class="Fblue"> {{item.blueBall}}</span>
+                        </p>
+                        <p class="Fgray-2 F12">{{item.title}}</p>
+
+                        <a :href="'lottery_ssq.html?ticketID='+item.original.id">
+                            <div class="h50px w25px absolute" style="right: 0; top: 15px;">
+                                <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                            </div>
+                        </a>
+
+                    </div>
+                </template>
+
+                <template v-else>
+
+                    <div class="pat15 pab15 pal50 par30 lh25px bor-gray bor-solid-1a F14 relative warpper-white">
+                        <div class="h50px w25px absolute" @click="removeTicket(item.original.id)" style="left: 15px; top: 15px;">
+                            <img src="images/icon-remove.png" style="float: left; margin-top: 15px; width: 20px;">
+                        </div>
+
+                        <a :href="'lottery_ssq.html?ticketID='+item.original.id">
+                            <div class="">
+                        <p>
+                            <span class="Fred">{{item.redBall}}</span>
+                            <span class="Fblue"> {{item.blueBall}}</span>
+                        </p>
+                        <p class="Fgray-2 F12">{{item.title}}</p>
+
+
+                            <div class="h50px w25px absolute" style="right: 0; top: 15px;">
+                                <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                            </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </template>
+
+                <div class="clear1"></div>
+
+            </template>
+        </div>
+
+
+        <div class="center over-hidden F14 Fgray-3" style="width: 233px" v-if="ticket.length>0">
+
+            <div class="fl" @click="cancel"><el-checkbox v-model="checked" style="z-index: -1"></el-checkbox></div>
+            <div class="fl mal5" @click="dialogAgreement = true">我已阅读并同意《<span class="Fblue">用户购彩协议</span>》</div>
+
+        </div>
+
+        <div class="text-center F16" style="color: #999999" v-else>亲，你还没投注哦~</div>
+
+        <div class="clear h80px"></div>
+
+        <!--<div class="wb100 fixed warpper-white" style="bottom: 100px;">-->
+            <!--<div class="pa15 F14 Fgray-3 lh30px">-->
+                <!--<span class="fl">-->
+                    <!--连续追-->
+                <!--</span>-->
+                <!--<div class="fl mal10 mar10">-->
+                    <!--<el-input-number size="small" v-model="periods" @change="periodsChange" :min="1" :max="999" />-->
+                <!--</div>-->
+                <!--<span class="fl">-->
+                    <!--期（最多可追999期）-->
+                <!--</span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="wb100 bor-gray bor-solid-1t fixed warpper-white" style="bottom: 0;">
+
+            <div class="pal15 par15 h30px lh30px pat5 pab5 warpper-gray-1 bor-gray bor-solid-1t bor-solid-1b">
+                <span class="fl Fgray-3 F14">余额：<span class="Fred">￥{{user.accountBalance}}</span></span>
+
+                <div class="w150px fr Fgray-3 F14">
+                    <div class="fl">
+                        <el-input-number class="fl" size="small" v-model="multiple" @change="multipleChange" :min="1" :max="999" />
+                    </div>
+                    <span class="fr w20px text-right">倍</span>
+                </div>
+
+            </div>
+
+            <div class="pat10 pab10 relative h40px">
+                <!--<div class="w80px text-center radius5 Fred h38px lh38px bor-red bor-solid-1a absolute F14" @click="openTrace" style="left: 15px; top: 10px;">-->
+                    <!--追号投注-->
+                <!--</div>-->
+
+                <div class="w80px text-center radius5 h38px lh38px pa1 absolute F14" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'" @click="submitOrder" style="right: 15px; top: 10px;">
+                    立即支付
+                </div>
+
+                <div class="  lh20px h20px F14 Fgray-3 fl pa10">
+
+                    <p>{{sumNum}}注 {{multiple}}倍 {{periods}}期 共<span class="Fred">{{sumPrice}}</span>元</p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lotter_ssq_order_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            multiple : 1,
+            periods : 1,
+            sumNum : 0,
+            sumPrice : 0,
+            user : {
+                accountBalance : 0,
+                nickName : '',
+            },
+            lock: true,
+            dialogBuySuccess: false,
+            dialogAgreement: false,
+            dialogLogin: false,
+            dialogConserve:false,
+            dialogPay: false,
+            duplex : true,
+            ticket : [],
+            checked: true,
+            ticketID : '',
+        },
+        methods : {
+
+            init(){
+
+                let _this = this;
+
+                let ticket = sessionStorage.getItem("ssq_ticket");
+
+                baseAjax.userBaseInfo(function(data){
+                    if(data){
+                        if(base.isNull(data.returnJSON)){
+                            //未登录
+                        }else{
+                            //已登录
+                            _this.user = data.returnJSON;
+                            window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                        }
+                    }else{
+                        //获取失败
+                    }
+                })
+
+                ticket = JSON.parse(ticket);
+                _this.ticket = [];
+
+                if(base.isNull(ticket) || ticket.length == 0){
+                    _this.calculate();
+                    return false;
+                }
+
+                //重组票
+
+                for(let i=0; i<ticket.length; i++){
+                    let original = ticket[i];
+                    let _item = ticket[i].numbers;
+                    let _num = ticket[i].num;
+
+                    let _index = _item.indexOf('$');
+
+                    if(_index == -1){
+                        //普通
+                        let _index2 = _item.indexOf('#');
+
+                        let _red = _item.substring(0, _index2);
+                        let _blue = _item.substring(_index2+1);
+
+                        _red = _red.split(',');
+                        _red = _red.join(' ');
+
+                        _blue = _blue.split(',');
+                        _blue = _blue.join(' ');
+
+                        _this.ticket.push({
+                            title : '普通玩法 ' + _num + '注 ' + _num * 2 + '元',
+                            redBall : _red,
+                            blueBall : _blue,
+                            original : original
+                        })
+
+                    }else{
+                        //胆拖
+                        let _red1 = _item.substring(0, _index);
+                        let _red2_blue = _item.substring(_index+1);
+
+                        let _index2 = _red2_blue.indexOf('#');
+
+                        let _red2 = _red2_blue.substring(0, _index2);
+                        let _blue = _red2_blue.substring(_index2+1);
+
+                        _red1 = _red1.split(',');
+                        _red1 = _red1.join(' ');
+
+                        _red2 = _red2.split(',');
+                        _red2 = _red2.join(' ');
+
+                        _blue = _blue.split(',');
+                        _blue = _blue.join(' ');
+
+                        _this.ticket.push({
+                            title : '胆拖玩法 ' + _num + '注 ' + _num * 2 + '元',
+                            red_Ball : _red1,
+                            redBall : _red2,
+                            blueBall : _blue,
+                            original : original
+                        })
+
+                    }
+
+                }
+
+                if(_this.ticket.length>0){
+                    _this.ticket = _this.ticket.reverse();
+                    _this.lock = false;
+                    _this.calculate();
+                }
+
+            },
+
+            cancel(){
+
+                this.checked = !this.checked;
+
+            },
+
+            closeCallback(val){
+
+                console.log(val);
+
+                if(val == 'close'){
+                    this.dialogAgreement = false;
+                }
+            },
+
+            openTrace(){
+
+            },
+
+            loginCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    this.dialogLogin = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消登录'
+                    });
+                }
+
+                if(val == 'success'){
+                    this.dialogLogin = false;
+                   //登录成功
+                    this.$message({
+                        type: 'success',
+                        message: '登录成功'
+                    });
+
+                    baseAjax.userBaseInfo(function(data){
+                        if(data){
+                            if(base.isNull(data.returnJSON)){
+                                //未登录
+                            }else{
+                                //已登录
+                                _this.user = data.returnJSON;
+                                window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                            }
+                        }else{
+                            //获取失败
+                        }
+                    })
+                }
+
+            },
+
+            payCallback(val){
+
+                if(val == 'cancel'){
+                    this.dialogPay = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消充值'
+                    });
+                }
+
+                if(val == 'success'){
+                    this.dialogPay = false;
+                    //充值成功
+                    this.$message({
+                        type: 'success',
+                        message: '充值成功'
+                    });
+                }
+            },
+
+            conserveCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    _this.dialogConserve = false;
+                }
+                if(val == 'success'){
+                    _this.dialogConserve = false;
+                    //保存成功
+                    window.location.href = 'lottery_ssq.html';
+                }
+                if(val == 'fail'){
+                    _this.dialogConserve = false;
+                    //不保存
+                    _this.emptyall()
+                    window.location.href = 'lottery_ssq.html';
+                }
+            },
+
+
+            add(){
+
+                let _this = this;
+                if(_this.ticket.length>0){
+                    _this.dialogConserve = true;
+                }else{
+                    _this.dialogConserve = false;
+                    window.location.href = 'lottery_ssq.html';
+                }
+
+            },
+
+            toDetail(){
+                this.dialogBuySuccess = false;
+
+                if(base.isNull(this.ticketID)){
+                    //投注失败
+                }else{
+                    window.location.href = 'ticket_detail.html?ticketID='+this.ticketID;
+                }
+
+                this.dialogBuySuccess = false;
+
+            },
+
+            back(){
+                this.dialogBuySuccess = false;
+            },
+
+            calculate(){
+                let _this = this;
+
+                let ticket = sessionStorage.getItem("ssq_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                if(base.isNull(ticket)){
+                    _this.sumNum = 0;
+                    _this.sumPrice = 0;
+                    _this.multiple = 1;
+                    _this.periods = 1;
+                    _this.lock = true;
+                    return false;
+                }
+
+                let _sumNum = 0;
+                let _sumMultiple = 0;
+
+                for(let i=0; i<ticket.length; i++){
+                    _sumNum += ticket[i].num;
+                }
+
+                _sumMultiple = _this.multiple;
+
+                _this.sumNum = _sumNum;
+
+                _this.sumPrice = _sumNum * 2 * _sumMultiple * _this.periods;
+
+                if(_sumNum>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+
+            },
+
+            multipleChange(val){
+                this.multiple = val;
+                this.calculate();
+            },
+
+            periodsChange(val){
+                this.periods = val;
+                this.calculate();
+            },
+
+            removeTicket(id){
+                base.delTicketByID(id,'ssq');
+                this.init();
+            },
+
+            randomSelect(){
+
+                let _this = this;
+
+                let _rball = [];
+                let _blue = base.addZero(base.random_num(1,16));
+                _rball.push(base.addZero(base.random_num(1,33)));
+                for(let i=0; i<5; i++){
+                    //剩下5个红球
+                    let rd = base.addZero(base.random_num(1,33));
+                    let _flag = true;
+                    for(let i=0;i<_rball.length; i++){
+                        //去重
+                        if(rd == _rball[i]){
+                            _flag = false;
+                        }
+                    }
+                    if(_flag){
+                        _rball.push(rd);
+                    }else{
+                        i--;
+                    }
+
+                }
+
+                _this.ticket.push({
+                    title : '普通玩法 1注 2元',
+                    redBall :  _rball.join(' '),
+                    blueBall : _blue,
+                })
+
+
+                let _result = _rball.join(',') + '#' + _blue;
+
+                //添加至session
+
+                let ticket = sessionStorage.getItem("ssq_ticket");
+
+                if(base.isNull(ticket)){
+                    ticket = [];
+                }else{
+                    ticket = JSON.parse(ticket);
+                }
+
+                let _tmp = [];
+
+                _tmp.push(_blue);
+
+                ticket.push({
+                    id : base.getUuid(),
+                    num : 1,
+                    numbers : _result,
+                    type : 101,
+                    red : _rball,
+                    blue2 : _tmp
+                });
+
+                sessionStorage.setItem('ssq_ticket',JSON.stringify(ticket));
+
+                _this.init();
+
+            },
+
+            //清空全部
+            emptyall(){
+                let _this = this;
+
+//                _this.$confirm('确认清空数据吗', '消息', {
+//                    callback: function(e) {
+//                        if(e == 'confirm'){
+                            //清空数据
+                            let ticket = sessionStorage.getItem("ssq_ticket");
+                            ticket = [];
+                            sessionStorage.setItem('ssq_ticket',JSON.stringify(ticket));
+                            _this.init();
+                            _this.calculate();
+//                        }
+//                    }
+//                });
+            },
+
+            submitOrder(){
+
+                let _this = this;
+
+                if(_this.lock == true){
+                    return false;
+                }
+
+                //判断用户登录，这里弹出登录
+                let _userID = baseAjax.getUserId();
+
+                if(_userID == 0){
+                    _this.dialogLogin = true;
+                    return false;
+                }
+
+                //判断余额,余额不足弹出充值界面
+                if(baseAjax.getBalance() < _this.sumPrice){
+                    _this.dialogPay = true;
+                    return false;
+                }
+
+                //重组票
+
+                let _anteCodeList = [];
+
+                let ticket = sessionStorage.getItem("ssq_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                for(let i=0; i<ticket.length; i++){
+                    _anteCodeList.push({
+                        playType : ticket[i].type,
+                        anteCode : ticket[i].numbers,
+                    })
+                }
+
+                //判断奖期
+
+                baseAjax.awardPeriod(lotteryType.SSQ,function(data){
+
+                    let _tmp = data.returnJSON.pop();
+
+                    if(_tmp){
+                        baseAjax.ssqTicket(_anteCodeList, _tmp.number,_this.multiple,function (data, errorMsg) {
+
+                            if(data){
+                                _this.dialogBuySuccess = true;
+
+                                //- 2017年6月14日16:55:51
+                                //下单成功，清空所有临时票
+                                let ticket = sessionStorage.getItem("ssq_ticket");
+                                ticket = JSON.parse(ticket);
+                                sessionStorage.setItem("ssq_ticket", JSON.stringify(ticket));
+
+                                _this.ticketID = data.returnJSON;
+
+                                _this.init();
+
+                            }else{
+                                _this.$message({
+                                    type: 'error',
+                                    message: errorMsg
+                                });
+                            }
+                        })
+                    }
+
+                });
+
+
+
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            _this.init();
+
+            setTimeout(() => {
+                $("#lotter_ssq_order_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

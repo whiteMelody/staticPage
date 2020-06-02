@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .el-table .cell, .el-table th>div {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        .el-table th {
+            background-color: #fff !important;
+        }
+
+    </style>
+
+
+
+    <title>双色球走势图</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| trend_synthesize_page
+| ------------------------------------------
+| Here are trend_synthesize_page html
+|
+-->
+
+<div id="trend_synthesize_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <ticket-header :title="title" :back="true"></ticket-header>
+
+        <div class="clear"></div>
+        <div class="wb100 h40px lh40px text-center Fgray-3">
+            <el-row>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_synthesize.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3 bor-red bor-solid-2b pab5">综合指数</span>
+                        </div>
+                    </a>
+                </el-col>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_red.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3">红球趋势</span>
+                        </div>
+                    </a>
+                </el-col>
+                <el-col :span="8" class="h40px lh40px">
+                    <a href="trend_blue.html">
+                        <div class="wb100 h40px">
+                            <span class="Fgray-3">蓝球趋势</span>
+                        </div>
+                    </a>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="data-area">
+
+            <template>
+                <el-table
+                        :data="tableData"
+                        :height="_height2"
+                        style="width: 100%">
+                    <el-table-column
+                            prop="stage"
+                            label="期次"
+                            width="90">
+                    </el-table-column>
+                    <el-table-column
+                            prop="number"
+                            label="开奖号码">
+                    </el-table-column>
+                    <el-table-column
+                            prop="span"
+                            label="跨度"
+                            width="70">
+                    </el-table-column>
+                    <el-table-column
+                            prop="region"
+                            label="区间比"
+                            width="70">
+                    </el-table-column>
+                    <el-table-column
+                            prop="parity"
+                            label="奇偶比"
+                            width="70">
+                    </el-table-column>
+                </el-table>
+            </template>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#trend_synthesize_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            _height2 : 0,
+            title : '双色球走势图',
+            nav : [ '综合指数', '红球走势', '蓝球走势'],
+            currentNav : 0,
+            tableData: [{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            },{
+                stage: '2017001',
+                number: '01 05 07 09 11 13 18',
+                span: '23',
+                region: '2:1:3',
+                parity: '3:3',
+            }, ]
+
+        },
+        methods : {
+
+            changeNav(key){
+                this.currentNav = key;
+                console.log(key);
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this._width = $(window).width();
+            _this._height = $(window).height();
+            _this._height2 = $(window).height() - 105;
+
+            setTimeout(() => {
+                $("#trend_synthesize_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+//    var test=[1,2,3,3,2,2,2,3,3,3,3,5,3,3,3];
+//    Array.prototype.ct = function(c){
+//        var reg = new RegExp(c+"+","g")
+//            ,t = this.join('').match(reg)
+//            ,m = 0;
+//        for(var i=0,j=t.length;i<j;i++){
+//            m = Math.max(t[i].length,m)
+//        }
+//        return m;
+//    }
+//    console.log(test.ct(2));
+
+
+</script>
+
+</body>
+</html>

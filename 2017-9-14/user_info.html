@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <title>个人信息</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| user_info_page
+| ------------------------------------------
+| Here are user_info_page html
+|
+-->
+
+<div id="user_info_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div v-show="userShow">
+
+        <div class="wb100 warpper-white Fgray-3">
+            <div class="h70px lh70px pal15">
+                <div class="wb100 bor-gray bor-solid-1b pat10 pab10">
+                    头像
+                    <div class="w20px h50px fr mar15 mat10">
+                        <img src="images/arrow-right.png" class="fr h15px mat15">
+                    </div>
+                    <img src="images/head-default.png" class="w70px h70px radius50per bor-white bor-solid-2a fr">
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear1"></div>
+            <div class="h50px lh50px pal15">
+                <div class="wb100 bor-gray bor-solid-1b" @click="editName">
+                    昵称
+                    <div class="w50px h50px fr mar15">
+                        <img src="images/arrow-right.png" class="fr h15px mat15">
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="h50px lh50px pal15">
+                <div class="wb100" @click="editName">
+                    签名
+                    <div class="w50px h50px fr mar15">
+                        <img src="images/arrow-right.png" class="fr h15px mat15">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-show="!userShow">
+
+        <div class="wb100 h50px relative warpper-red" style="z-index: 99999;">
+            <div class="w50px h50px fl" @click="userShow = true">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">修改昵称</p>
+        </div>
+
+        <div class="wb100">
+            <div class="pa15">
+                <div class="pal15 par15 relative F14 warpper-white">
+                    <div style="padding-left: 60px;">
+                        <div class="w50px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                            昵称
+                        </div>
+                        <input type="text" class="bor-none wb100 h45px lh45px phone-num" v-model="nickName" placeholder="请输入昵称" data-role="none">
+                    </div>
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="pa15">
+                    <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5 btn-login" :class="nickName.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="submit">立即修改</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear1"></div>
+</div>
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/loading.js"></script>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#user_info_page",
+        data: {
+            login: false,
+            fullscreenLoading: true,
+            userShow: true,
+            nickName: '',
+            user: {},
+            favDisabled: false,
+        },
+        methods: {
+            editName: function editName() {
+                this.userShow = false;
+            },
+            submit: function submit() {
+
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                baseAjax.updateUserInfo(_this.nickName, function (data, errorMsg) {
+                    if (data) {
+                        _this.$message({
+                            type: 'success',
+                            message: '修改成功',
+                            duration: 1500
+                        });
+
+                        _this.favDisabled = true;
+
+                        setTimeout(function(){
+                            _this.favDisabled = false;
+                        },1500);
+
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+
+                        _this.favDisabled = true;
+
+                        setTimeout(function(){
+                            _this.favDisabled = false;
+                        },1500);
+
+                    }
+                });
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            //判断登录
+
+            baseAjax.userBaseInfo(function (data) {
+                console.log(data);
+                if (data) {
+                    if (base.isNull(data.returnJSON)) {
+                        _this.login = false;
+                    } else {
+                        _this.login = true;
+                        _this.nickName = data.returnJSON.nickName;
+                    }
+                } else {
+                    _this.login = false;
+                }
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                baseAjax.userBaseInfo(function (data) {
+                    console.log(data);
+                    if (data) {
+                        if (base.isNull(data.returnJSON)) {
+                            _this.login = false;
+                        } else {
+                            _this.login = true;
+                            _this.nickName = data.returnJSON.nickName;
+                        }
+                    } else {
+                        _this.login = false;
+                    }
+                });
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

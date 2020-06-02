@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css?v=23">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js?v=23"></script>
+    <script src="js/base.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/interface.js?v=23"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+    </style>
+
+    <title>7天英语</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| index_page
+| ------------------------------------------
+| Here are index_page html
+|
+-->
+
+<div id="index_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="wb100 hidden index_page_content warpper-gray-3">
+
+        <en-head></en-head>
+
+        <div class="clear"></div>
+
+        <el-carousel :height="_height + 'px'" ref="carousel">
+            <el-carousel-item v-for="item in banner" :key="item">
+                <a :href="item.type == 2 ? item.typeID : 'lesson_detail.html?channelID='+item.typeID" @touchstart="moveStart" @touchend="moveEnd">
+                    <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                        <img :src="item.imageURL + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />
+                    </div>
+                </a>
+            </el-carousel-item>
+        </el-carousel>
+
+        <div class="clear1"></div>
+
+        <p>
+            <span class="h15px lh15px fl bor-blue bor-solid-4l mal15 pal5">每日推荐</span>
+            <a href="every_list.html">
+                <img src="images/icon-arrow-right.png" class="fr h14px mat3 mar15 mal5"><span class="Fblue fr lh20px F14">更多</span>
+            </a>
+        </p>
+        <div class="clear"></div>
+
+        <div class="wb100">
+
+            <layout-lesson-en :item="everyDay"></layout-lesson-en>
+
+            <layout-lesson-text :datas="everyMsg"></layout-lesson-text>
+
+        </div>
+
+        <div class="clear1"></div>
+        <p>
+            <span class="h15px lh15px fl bor-blue bor-solid-4l mal15 pal5">最近更新</span>
+        </p>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 par15 over-scroll">
+            <div :style="'width:'+_width2+'px'">
+                <div class="warpper-white box-shadow-gray3 radius5 fl mar15 mab5" v-for="item in newList" :style="'width:'+_height2+'px'">
+                    <a :href="'lesson_detail.html?channelID='+item.channelID">
+                        <div class="img-area" :style="'width:'+_height2+'px; height:'+_height2+'px;'">
+                            <img :src="item.iconURL + '?x-oss-process=image/resize,m_fill,h_'+_height2 * 2 +',w_'+_height2 * 2" class="radius5t" />
+                        </div>
+                        <p class="F12 h30px lh30px text-over-hidden1 Fgray-3 pal5 par5 text-center">{{item.channelName}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+        <p>
+            <span class="h15px lh15px fl bor-blue bor-solid-4l mal15 pal5">热门音频</span>
+            <a href="audio_list.html">
+                <img src="images/icon-arrow-right.png" class="fr h14px mat3 mar15 mal5"><span class="Fblue fr lh20px F14">更多</span>
+            </a>
+        </p>
+        <div class="clear"></div>
+
+        <div class="pa15 Fgray-3">
+            <el-row :gutter="15">
+                <el-col :span="12" v-for="item in audioList" class="mab15">
+                    <div class="wb100 warpper-white box-shadow-gray3 radius5">
+                        <a :href="'lesson_detail.html?channelID='+item.channelID">
+                            <div class="wb100 img-area relative" :style="'height:'+height3+'px'">
+                                <!--<div class="absolute wb100" style="background: rgba(0,0,0,.35); bottom: 0; right: 0; height: 22px; line-height: 22px;">-->
+                                    <!--<img src="images/icon-movie.png" style="height: 12px; width: 14px; margin-top: 5px; margin-left: 5px;" class="fl">-->
+                                    <!--<span class="fl mal5 Fwhite F12">{{ item.openCount ? item.openCount : 0 }}</span>-->
+                                <!--</div>-->
+                                <img :src="item.iconURL1 + '?x-oss-process=image/resize,m_fill,h_'+height3 * 2 +',w_'+height4 * 2" class="radius5t" />
+                            </div>
+                            <p class="F12 h30px lh30px text-over-hidden1 Fgray-3 pal5 par5">{{item.subtitle}}</p>
+                            <!--<p class="F12 h20px lh20px text-over-hidden1 Fgray-2 pal5 par5 pab5">{{item.subtitle}}</p>-->
+                        </a>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <!--<div class="pa15 Fgray-3">-->
+            <!--<el-row :gutter="15">-->
+                <!--<el-col :span="8" v-for="item in audioList">-->
+                    <!--<div class="wb100 warpper-white box-shadow-gray3 radius5">-->
+                        <!--<a :href="'lesson_detail.html?channelID='+item.ID">-->
+                            <!--<div class="wb100 img-area relative">-->
+                                <!--<div class="absolute wb100" style="background: rgba(0,0,0,.35); bottom: 4px; right: 0; height: 22px; line-height: 22px;">-->
+                                    <!--<img src="images/icon-music.png" style="height: 12px; width: 14px; margin-top: 5px; margin-left: 5px;" class="fl">-->
+                                    <!--<span class="fl mal5 Fwhite F12">{{ item.openCount ? item.openCount : 0 }}</span>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;<img :src="item.iconURL" />&ndash;&gt;-->
+                                <!--<img :src="item.iconURL + '?x-oss-process=image/resize,m_fill,h_'+height2 * 2 +',w_'+height2 * 2" class="radius5t" />-->
+                            <!--</div>-->
+                            <!--<p class="F12 h30px lh30px text-over-hidden1 Fgray-3 pal5 par5">{{item.subtitle}}</p>-->
+                            <!--&lt;!&ndash;<p class="F12 h20px lh20px text-over-hidden1 Fgray-2 pal5 par5 pab5">{{item.subtitle}}</p>&ndash;&gt;-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
+        <!--</div>-->
+
+        <div class="clear"></div>
+        <p>
+            <span class="h15px lh15px fl bor-blue bor-solid-4l mal15 pal5">热门视频</span>
+            <a href="video_list.html">
+                <img src="images/icon-arrow-right.png" class="fr h14px mat3 mar15 mal5"><span class="Fblue fr lh20px F14">更多</span>
+            </a>
+        </p>
+        <div class="clear"></div>
+
+        <!--<layout-lesson :item="hotVideo" :size="120"></layout-lesson>-->
+        <!--<layout-lesson-col :datas="videoList" :size="100"></layout-lesson-col>-->
+
+        <div class="pa15 Fgray-3">
+            <el-row :gutter="15">
+                <el-col :span="12" v-for="item in videoList" class="mab15">
+                    <div class="wb100 warpper-white box-shadow-gray3 radius5">
+                        <a :href="'lesson_detail.html?channelID='+item.channelID">
+                            <div class="wb100 img-area relative" :style="'height:'+height3+'px'">
+                                <!--<div class="absolute wb100" style="background: rgba(0,0,0,.35); bottom: 0; right: 0; height: 22px; line-height: 22px;">-->
+                                    <!--<img src="images/icon-movie.png" style="height: 12px; width: 14px; margin-top: 5px; margin-left: 5px;" class="fl">-->
+                                    <!--<span class="fl mal5 Fwhite F12">{{ item.openCount ? item.openCount : 0 }}</span>-->
+                                <!--</div>-->
+                                <img :src="item.iconURL1 + '?x-oss-process=image/resize,m_fill,h_'+height3 * 2 +',w_'+height4 * 2" class="radius5t" />
+                            </div>
+                            <p class="F12 h30px lh30px text-over-hidden1 Fgray-3 pal5 par5">{{item.subtitle}}</p>
+                            <!--<p class="F12 h20px lh20px text-over-hidden1 Fgray-2 pal5 par5 pab5">{{item.subtitle}}</p>-->
+                        </a>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+
+        <div class="clear"></div>
+
+        <p class="text-center Fgray-1 F12 lh30px">版权所有©7english.cn</p>
+
+        <en-footer></en-footer>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+    let vm = new Vue({
+        el : "#index_page",
+        data : {
+            keyWord : "",
+            userTarget : -1,
+            showLoader : true,
+            hotVideo : {},
+            videoList : [],
+            newList : [],
+            hotAudio : {},
+            audioList : [],
+            everyDay : {},
+            everyMsg :[],
+            banner: [],
+            hotKey : [],
+            isSearch : false,
+            width : 0,
+            width2 : 0,
+            _width2 : 0,
+            _width : 0,
+            height : 0,
+            _height2 : 0,
+            height2 : 0,
+            height3 : 0,
+            height4 : 0,
+            _height : 0,
+            startX : 0,
+            endX : 0,
+            searchHeight : 0,
+            isWeixin : true,
+            call: window.location.href,
+            noLogin: this.noLogin,
+            searchList : [],
+        },
+        methods : {
+            toTop(){
+                $('body,html').animate({scrollTop:0},500);
+            },
+
+            moveStart(e){
+                let _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd(e){
+                let _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                let _result = _this.startX - _this.endX;
+
+                if(_result>=50){
+                    this.$refs.carousel.next();
+                }
+                if(_result<-50){
+                    this.$refs.carousel.prev();
+                }
+            },
+            openSearch(){
+                $(".search-area").show(500);
+            },
+            closeSearch(){
+                $(".search-area").hide(500);
+            },
+            searchKey(keyWord){
+                let _this = this;
+                baseAjax.searchChannelKeyword(keyWord,1,20, function(data){
+                    _this.searchList = data.returnJSON.indexData;
+
+                    if(!base.isNull(_this.searchList)){
+                        _this.searchHeight = _this.height - $(".hotKey").height() - 90;
+                    }
+                })
+            }
+        },
+        created(){
+
+            let _this = this;
+            let userTarget = window.localStorage.getItem("userTarget");
+//            window.localStorage.removeItem("userTarget");
+            if(base.isNull(userTarget)){
+                userTarget = -1;
+            }
+            _this.userTarget = userTarget;
+
+            let userInfo = window.sessionStorage.getItem("userInfo");
+
+            if (base.isNull(userInfo)) {
+                this.noLogin = true;
+            } else {
+                this.noLogin = false;
+            }
+
+            if(base.versions.isWeiXin){
+                this.isWeixin = true;
+            }else{
+                this.isWeixin = false;
+            }
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._width2 = parseInt($(window).width());
+            _this._height = parseInt((_this._width + 30) * 160 / 375);
+
+            baseAjax.getHotChannelV3(userTarget,function (data) {
+
+                let _data = data.returnJSON;
+
+                for(let i=0; i<_data.length; i++){
+                    console.log(_data[i]);
+
+                    if(_data[i].moduleType == 1){
+                        //为您订制
+                    }
+                    if(_data[i].moduleType == 2){
+                        //每日推荐
+                    }
+                    if(_data[i].moduleType == 3){
+                        //大卡推荐
+                    }
+                    if(_data[i].moduleType == 4){
+                        //热门音频
+                        _this.audioList = _data[i].dataList.slice(0,4);
+                    }
+                    if(_data[i].moduleType == 5){
+                        //热门视频
+                        _this.videoList = _data[i].dataList.slice(0,4);
+                    }
+                    if(_data[i].moduleType == 6){
+                        //最近更新
+                        _this.newList = _data[i].dataList;
+                        _this._height2 = Math.ceil(($(window).width() - 45) * 0.3);
+                        _this._width2 = (_this._height2 +15) * _this.newList.length + 30;
+                    }
+
+                }
+
+                _this.height2 = Math.ceil(($(window).width() - 60) / 3);
+                _this.height4 = Math.ceil(($(window).width() - 45) / 2);
+                _this.width2 = (_this.height2 +15) * _this.audioList.length + 30;
+
+                _this.height3 = Math.ceil(($(window).width() - 45) * 0.315);
+
+                setTimeout(function(){
+                    _this.showLoader = false;
+                    $(".index_page_content").removeClass("hidden");
+                },ajaxConfig.lazy);
+
+            })
+
+            baseAjax.getEveryDay(function(data){
+                data[0].date = base.toLocalTime(data[0].belongsTimestamp)[2];
+                _this.everyDay = data[0];
+                _this.everyMsg = data[1];
+
+                console.log(_this.everyMsg)
+
+                setTimeout(function(){
+                    _this.showLoader = false;
+                    $(".index_page_content").removeClass("hidden");
+                },ajaxConfig.lazy);
+
+            })
+
+            baseAjax.getFocusConfig(function (data) {
+                _this.banner = data.returnJSON;
+
+                console.log(JSON.stringify(_this.banner) )
+
+            })
+
+//            baseAjax.getLatestChannelV2(20,1,function (data) {
+//                _this.newList = data.returnJSON;
+//                _this._height2 = Math.ceil(($(window).width() - 45) * 0.3);
+//                _this._width2 = (_this._height2 +15) * _this.newList.length + 30;
+//            })
+
+            baseAjax.getTicket(function(data){
+                let now = Math.floor(new Date().getTime() / 1000);
+                let noncestr = base.getUuid();
+                let jsapi_ticket = 'jsapi_ticket='+ data.returnJSON + '&noncestr='+ noncestr + '&timestamp='+ now +'&url='+ encodeURI(location.href.split('#')[0]);
+                let signature = hex_sha1(jsapi_ticket);
+                wx.config({
+                    debug: false,
+                    appId: 'wx484ec69840157a5a',
+                    timestamp: now,
+                    nonceStr: noncestr,
+                    signature: signature,
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone'
+                    ]
+                });
+            })
+
+        }
+
+    })
+
+
+    wx.ready(function () {
+
+        wx.onMenuShareTimeline({
+            title: '7天英语', // 分享标题
+            link: '',
+            imgUrl: 'http://h5.7english.cn/new/images/shareLogo.png', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '7天英语', // 分享标题
+            desc: '学英语从坚持7天开始', // 分享描述
+            link: '',
+            imgUrl: 'http://h5.7english.cn/new/images/shareLogo.png', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: '7天英语', // 分享标题
+            desc: '学英语从坚持7天开始', // 分享描述
+            link: '',
+            imgUrl: 'http://h5.7english.cn/new/images/shareLogo.png', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

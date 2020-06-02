@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+
+    <title>身份绑定</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| id_card_bind_page
+| ------------------------------------------
+| Here are id_card_bind_page html
+|
+-->
+
+<div id="id_card_bind_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <ticket-header :title="'身份绑定'" :back="true" :back_url="'safe_center.html'"></ticket-header>
+
+        <div class="clear1"></div>
+
+        <template v-if="identityCard == ''">
+            <ticket-input-code :show="step1" :input_name="'手机号'" :code_name="'验证码'" :btn_name="'下一步'" v-on:callback="btnCallback"></ticket-input-code>
+
+            <div class="wb100" v-show="step1 == false">
+                <div class="wb100">
+
+                    <div class="pal15 par15 relative F14 warpper-white">
+                        <div style="padding-left: 80px;">
+                            <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                                真实姓名
+                            </div>
+                            <input type="text" class="bor-none wb100 h45px lh45px" v-model="name" placeholder="请输入真实姓名">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="pal15 par15 relative F14 warpper-white">
+                        <div style="padding-left: 80px;">
+                            <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                                身份证号
+                            </div>
+                            <input type="text" class="bor-none wb100 h45px lh45px" v-model="cardNum" placeholder="请输入身份证号">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                    <div class="pa15">
+                        <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5 btn-login" :class="name.length>0 && cardNum.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="submit">确定</div>
+                    </div>
+
+                    <div class="clear1"></div>
+
+                    <div class="pal15 par15 F12 lh20px Fgray-2">
+                        <p class="Fred lh30px F14">温馨提示：</p>
+                        <p>*真实姓名和身份是作为大奖领取信息的唯一凭证，提交之后不可更改，请谨慎操作！</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </template>
+
+        <template v-else>
+            <div class="pal15 par15 warpper-white lh50px F14 Fgray-3">
+                <p>
+                    <span class="w70px fl">真实姓名</span>
+                    <span class="fl">张三</span>
+                </p>
+                <div class="clear bor-gray bor-solid-1b"></div>
+
+                <p>
+                    <span class="w70px fl">身份证号</span>
+                    <span class="fl">{{identityCard}}</span>
+                </p>
+                <div class="clear"></div>
+            </div>
+
+        </template>
+
+
+    </div>
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#id_card_bind_page",
+        data : {
+            fullscreenLoading: true,
+            step1 : true,
+            name: '',
+            cardNum: '',
+            identityCard : '',
+            code : '',
+            mobile : '',
+        },
+        methods : {
+            submit(){
+
+                let _this = this;
+
+                console.log(_this.mobile)
+                console.log(_this.code)
+                console.log(_this.name)
+                console.log(_this.cardNum)
+
+                baseAjax.realNameAuth(_this.mobile,_this.code,_this.name,_this.cardNum, function (data) {
+                    if(data){
+                        _this.$message({
+                            type: 'success',
+                            message: '提交成功'
+                        });
+
+                        window.location.href = 'safe_center.html';
+                    }
+                })
+
+            },
+            btnCallback(data){
+
+                let _this = this;
+
+                if(data.state == 'success'){
+                    _this.step1 = false;
+                    _this.code = data.data.code;
+                    _this.mobile = data.data.mobile;
+
+                    console.log(data.data.code)
+                    console.log(data.data.mobile)
+                }
+            }
+        },
+        created(){
+            let _this = this;
+
+            baseAjax.securityInfo(function(data){
+                if(data){
+                    let _tmp = data.returnJSON;
+                    if(base.isNull(_tmp.identityCard))
+                        _this.identityCard = '';
+                    else
+                        _this.identityCard = _tmp.identityCard;
+                }
+                console.log(data);
+            })
+
+            setTimeout(function(){
+                _this.fullscreenLoading = false;
+                $("#id_card_bind_page").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

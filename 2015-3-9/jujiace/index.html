@@ -1,0 +1,2118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="js/flickerplate.min.js" type="text/javascript"></script>
+<script src="js/responsiveslides.js" type="text/javascript"></script>
+<script>
+    $(function(){
+		
+		// Slideshow 1
+	  $("#slider1").responsiveSlides({
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks"
+	  });
+	  // Slideshow 2
+	  $("#slider2").responsiveSlides({
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks"
+	  });
+	  // Slideshow 3
+	  $("#slider3").responsiveSlides({
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks"
+	  });
+	  // Slideshow 4
+	  $("#slider4").responsiveSlides({
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks"
+	  });
+      
+	  $(".js-last").find("span:last").css("display","none");
+	  
+	  $(".nav-menu a").click(function(){
+	      $(this).addClass("warpper-red-3").siblings().removeClass("warpper-red-3");
+		});
+	  
+	  $(".js-integral li").hover(function(){
+	    $(this).find(".js-int-con1").addClass("hidden");
+		$(this).find(".js-int-con2").removeClass("hidden");
+		$(this).siblings().find(".js-int-con1").removeClass("hidden");
+		$(this).siblings().find(".js-int-con2").addClass("hidden");
+	  
+	  });
+	  
+	  $(".js-ul-tab").find(".js-tab-con:first").css("display","block");
+	  $(".js-ul-tab li").hover(function(){
+		$(this).find(".js-tab-til").addClass("li-tab-til");
+		$(this).siblings().find(".js-tab-til").removeClass("li-tab-til");
+		
+		var num = $(this).index();
+		$(".js-tab-con").hide();
+		$(".js-tab-con:eq("+num+")").show();	  
+	  });
+	  
+	  $(".js-ul-tab2").find(".js-tab2-con:first").css("display","block");
+	  $(".js-ul-tab2 li").hover(function(){
+		$(this).find(".js-tab2-til").addClass("li-tab-til");
+		$(this).siblings().find(".js-tab2-til").removeClass("li-tab-til");
+		
+		var num = $(this).index();
+		$(".js-tab2-con").hide();
+		$(".js-tab2-con:eq("+num+")").show();	  
+	  });
+	   
+	  $(".js-div-last").find("div.div-last:last").css("margin-right","0");  
+	  
+	  
+	});
+	$(document).ready(function(){
+		$('.flicker-example').flicker();
+	});
+    </script>
+</head>
+
+<body>
+<!-- header -->
+<div class="header wb100">
+  <div class="top h30px lh30px F12 Fgray-3 bgc-gray-1 bor-solid-1b borc-gray-1">
+    <div class="w1200px center">
+      <div class="fl">
+        <span>您好，欢迎光临本店！</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">登录</a>]</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">免费注册</a>]</span>
+      </div>
+      <div class="fr wb47">
+        <ul>
+          <li class="fl">
+            <a class="Fgray-3" href="javascript:void(0)">我的订单<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">用户中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">帮助中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">商家入住</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">收藏我们</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <p class="Fgray-3">服务热线：<span class="Fred-2 Fb">400-8000-800</span></p>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="w1200px center pat20 pab20">
+      <div class="fl wb25">
+        <div class="fl wb55">
+          <a href="javascript:void(0)"><img src="images/logo.jpg"></a>
+        </div>
+        <div class="fl wb25 mal10">
+          <div class="mat10"><img class="middle mar5" src="images/bq-02.jpg"><span class="F14 Fb Fgray-3">重庆市</span></div>
+          <div class="mat10 bor-solid-1a bor-gray1 h25px lh25px text-center">
+            <a href="javascript:void(0)" class="F14 Fgray-2">切换城市</a>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="fl wb60 pat10">
+        <div class="wb66 center">
+          <div class="bor-solid-1a bor-red h35px lh35px">
+            <div class="wb15 fl text-center warpper-gray-1 h35px lh35px">
+              <a class="F12 Fgray-3 display-inline h35px lh35px wb100" href="javascript:void(0)">商品<img class="middle mal5" src="images/bq-01.jpg" />
+              </a>
+            </div>
+            <div class="fl wb70 h35px bor-gray-solid-1a lh35px F125em" >
+              <img class="middle pal10" src="images/bq-04.jpg" />
+              <input class="wb85 h25px lh25px Fgray-3 bor-none" type="text" placeholder="请输入关键字" />
+            </div>
+            <div class="fl wb15 text-center warpper-red-1" >
+              <a class="F12 Fwhite display-inline h35px lh35px wb100" href="javascript:void(0)">搜索</a>
+            </div> 
+            <div class="clear"></div>
+          </div>
+          <div class="mat10">
+            <span class="F12 Fgray-2">热门搜索：</span>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">衣柜</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">卫浴</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱电</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">窗帘</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱柜定制</a>
+          </div>
+        </div>
+      </div>
+      <div class="fr wb15 pat10">
+        <div class="bor-solid-1a bor-gray1 h30px lh30px text-center warpper-gray-1 wb90 mal15">
+          <a class="F14 Fgray-3" href="javascript:void(0)"><img class="middle mar15" src="images/bq-03.jpg">去购物车结算<img class="middle mal10" src="images/bq-019.jpg" /></a>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="nav wb100 h40px warpper-red-2">
+    <div class="w1200px center h40px lh40px">
+      <div class="fl wb18 relative">
+        <div class="wb100 absolute h46px lh50px text-center top6 warpper-red-5">
+          <img class="absolute left5" src="images/ml.jpg">
+          <span class="F16 Fb Fwhite">全部商品分类</span>
+          <img class="absolute right5" src="images/mr.jpg">
+        </div>
+      </div>
+      <div class="fr wb18 warpper-red-3">
+        <div class="wb100 text-center h40px">
+          <img src="images/bq-05.jpg">
+          <a class="F15 Fb Fwhite mal10" href="javascript:void(0)">居家秀</a>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fr wb64 nav-menu">       
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px warpper-red-3" href="javascript:void(0)">首页</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">限时购</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">积分兑换</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">品牌体验馆</a>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- body -->
+<div class="body">
+  <div class="w1200px center">
+    <div class="">
+      <div class="">
+        <div class="fl wb18">
+          <div class="bor-gray2 bor-solid-1b bor-solid-1r">
+            <ul class="js-hover menu-list">
+              <li class="" style="border-left:2px solid #cc2a2a;">
+                <div class="bor-gray2 bor-dotted-1b menu-con ">
+                  <div class="pal10 par5 pat15">
+                    <div class="mab10">
+                      <a href="javascript:void(0)" class="display-inline bg-img-1 h25px lh25px F16 Fb Fgray-3 pal35">家具城</a>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">客厅</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">卧室</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">餐厅</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">书房书房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">儿童房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-box hidden">
+                  todo....
+                </div>
+              </li> 
+              <li style="border-left:2px solid #e19106; ">
+                <div class="bor-gray2 bor-dotted-1b menu-con ">
+                  <div class="pal10 par5 pat15">
+                    <div class="mab10">
+                      <a href="javascript:void(0)" class="display-inline bg-img-6 h25px lh25px F16 Fb Fgray-3 pal35">家具城</a>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">卧室</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">餐厅</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">书房书房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">儿童房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li style="border-left:2px solid #06a1e1; ">
+                <div class="bor-gray2 bor-dotted-1b menu-con ">
+                  <div class="pal10 par5 pat15">
+                    <div class="mab10">
+                      <a href="javascript:void(0)" class="display-inline bg-img-7 h25px lh25px F16 Fb Fgray-3 pal35">家具城</a>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">餐厅</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">书房书房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li style="border-left:2px solid #e63b87; ">
+                <div class="bor-gray2 bor-dotted-1b menu-con ">
+                  <div class="pal10 par5 pat15">
+                    <div class="mab10">
+                      <a href="javascript:void(0)" class="display-inline bg-img-8 h25px lh25px F16 Fb Fgray-3 pal35">家具城</a>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">书房书房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">儿童房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li style="border-left:2px solid #66c63b; ">
+                <div class="bor-gray2 bor-dotted-1b menu-con ">
+                  <div class="pal10 par5 pat15">
+                    <div class="mab10">
+                      <a href="javascript:void(0)" class="display-inline bg-img-9 h25px lh25px F16 Fb Fgray-3 pal35">家具城</a>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">餐厅</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">书房书房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">沙发</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">茶几</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb25"><span class="F12 Fb Fgray-3">儿童房</span></div>
+                      <div class="fr wb70 js-last">
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                        <a href="javascript:void(0)" class="F12 Fgray-3">电视柜</a>
+                        <span class="F12 Fgray-3">|</span>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="fl wb64">
+          <div class="pal10 par10 pat5">
+            <div class="">
+              <div class="flicker-example" data-block-text="false">
+                <ul>
+                  <li class=""><img src="images/banner-01.jpg"></li>
+                  <li class=""><img src="images/banner-01.jpg" ></li>
+                  <li class=""><img src="images/banner-01.jpg"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="bor-solid-1a borc-gray-2 mat10">
+              <div class="h50px lh50px bgc-gray-2 bor-solid-1b borc-gray-2">
+                <div class="fl wb20">
+                  <span class="F18 Fgray-3 mal10">限时抢购</span>
+                </div>
+                <div class="fr wb80 h50px">
+                  <span class="F14 Fgray-3 mar5">还剩</span>
+                  <span class="radius5 warpper-blue-1 F26 Fwhite Fb">36</span>
+                  <span class="F30 Fgray-3 Fb">:</span>
+                  <span class="radius5 warpper-blue-1 F26 Fwhite Fb">36</span>
+                  <span class="F30 Fgray-3 Fb">:</span>
+                  <span class="radius5 warpper-blue-1 F26 Fwhite Fb">36</span>
+                  <span class="F14 Fgray-3 mal5">结束</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="">
+                <ul class="timer">
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                  <li class="fl wb33333 h150px">
+                    <div class="bor-solid-1r borc-gray-2 h110px pat20 pab20 pal10 par10">
+                      <div class="fl wb44 h100px img-area">
+                        <a href="javascript:void(0)"><img src="images/tp-01.png"></a>
+                      </div>
+                      <div class="fr wb50">
+                        <p><span class="F18 Fc-red01">￥ 899.00</span></p>
+                        <p class="mat10 h30px lh15px over-hidden"><a class="Fgray-3 F12" href="javascript:void(0)">布艺沙发组合简约 现代大小户型 可拆卸</a></p>
+                        <p class="mat20 pal15">
+                          <a class="display-inline wb70 Fwhite warpper-red-2 h25px lh25px F14 radius5 text-center" href="javascript:void(0)">立即抢购</a>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fr wb18">
+          <div class="bor-solid-1a borc-gray-2 mat5 pat15 pab15">
+            <div class="fl wb33333 text-center">
+              <p><img src="images/bq-013.jpg"></p>
+              <p class="mat20"><span class="F12 Fgray-3">品质保证</span></p>
+            </div>
+            <div class="fl wb33333 text-center">
+              <p><img src="images/bq-011.jpg"></p>
+              <p class="mat20"><span class="F12 Fgray-3">配送保证</span></p>
+            </div>
+            <div class="fl wb33333 text-center">
+              <p><img src="images/bq-012.jpg"></p>
+              <p class="mat20"><span class="F12 Fgray-3">装修保证</span></p>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="bor-solid-1a borc-gray-2 mat10">
+            <div class="bor-solid-1b borc-gray-2 h30px lh30px bgc-gray-2">
+              <span class="F12 Fb Fgray-3 mal15">网站快讯</span>
+            </div>
+            <div class="pal10 par10 pab10">
+              <ul>
+                <li class="mat10 h15px lh15px over-hidden">
+                  <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                </li>
+                <li class="mat10 h15px lh15px over-hidden">
+                  <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">家居服务更贴心</a>
+                </li>
+                <li class="mat10 h15px lh15px over-hidden">
+                  <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014国庆放假安</a>
+                </li>
+                <li class="mat10 h15px lh15px over-hidden">
+                  <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                </li>
+                <li class="mat10 h15px lh15px over-hidden">
+                  <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mat10 bor-solid-1a borc-gray-2">
+            <div class="bor-solid-1b borc-gray-2 h30px lh30px warpper-red-2">
+              <div class="fl"><span class="F12 Fb Fwhite mal15">积分兑换榜</span></div>
+              <div class="fr"><a class="F12 Fwhite mar15" href="javascript:void(0)">更多></a></div>
+            </div>
+            <div class="pat10 pab5">
+              <ul class="js-integral">
+                <li class="mab10">
+                  <div class="js-int-con1 hidden">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">1</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">1</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">2</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">2</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">3</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">3</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">4</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">4</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">5</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">5</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">6</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">6</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">7</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">7</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">8</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">8</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+                <li class="mab10">
+                  <div class="js-int-con1">
+                    <div class="h18px lh18px over-hidden par10">
+                      <span class="F12 Fgray-2 mal7">9</span>
+                      <a class="F12 Fgray-2 mal15" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                    </div>
+                  </div>
+                  <div class="js-int-con2 pab10 bor-dotted-1b borc-gray-2 hidden">
+                    <div class="fl wb12">
+                      <div class="js-int-num h18px lh18px bg-img-11">
+                        <span class="F12 Fgray-2 mal7" style="color:#FFF;">9</span>
+                      </div>
+                    </div>
+                    <div class="fr wb85">
+                      <div class="js-int-con1 h18px lh18px over-hidden par10 hidden">
+                        <a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a>
+                      </div>
+                      <div class="js-int-con2 ">
+                        <div class="fl wb35">
+                          <a href="javascript:void(0)">
+                            <img class="bor-solid-1a borc-gray-2" src="images/tp-02.jpg">
+                          </a>
+                        </div>
+                        <div class="fr wb56 par10">
+                          <p class="h30px lh15px over-hidden"><a class="F12 Fgray-2" href="javascript:void(0)">奔腾 电吹风 PW608 1000W 迷你</a></p>
+                          <p class="mat10"><span class="F12 Fb Fc-red02">积分：2010</span></p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    
+    <div class="js-ul-tab bor-solid-1a borc-gray-2 mat10">
+      <div class="h45px lh45px bgc-gray-2 bor-solid-1b borc-gray-2">
+        <ul class="ul-tab">
+          <li class="wb25 fl">
+            <div class="js-tab-til wb998 text-center li-tab-til">
+              <span class="F14 Fgray-3">热门推荐</span>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="js-tab-til wb998 text-center">
+              <span class="F14 Fgray-3">猜你喜欢</span>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="js-tab-til wb998 text-center">
+              <span class="F14 Fgray-3">优惠促销</span>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="js-tab-til wb998 text-center">
+              <span class="F14 Fgray-3">新品上架</span>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="pat20 pab20">
+        <div class="js-tab-con hidden">
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-03.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-03.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-03.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-03.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!---->
+        <div class="js-tab-con hidden">
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-04.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-04.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-04.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-04.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!---->
+        <div class="js-tab-con hidden">
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-05.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-05.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-05.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-05.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!---->
+        <div class="js-tab-con hidden">
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-06.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-06.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-06.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="fl wb25">
+            <div class="wb94 center text-center">
+              <p class="h220px img-area"><a href="javascript:void(0)"><img src="images/tp-06.jpg" /></a></p>
+              <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              <p class="mat5"><span class="F12 Fgray-2 FLine mar10">原价￥8899.00</span><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="wb100 h80px img-area mat10">
+      <a href="javascript:void(0)"><img src="images/tp-07.jpg" /></a>
+    </div>
+    <div class="">
+    <!-- 1F -->
+      <div class="wb100 mat20">
+        <div class="h35px lh35px pal20">
+          <i class="F20 Fb Fgray-3">1F</i><span class="F18 Fgray-3 mal10">家具城</span>
+        </div>
+        <div class="wb100">
+          <div class="bor-solid-1a borc-gray-2">
+            <div class="fl wb175">
+              <div class="h325px over-hidden">
+                <ul class="pat15 pal15 par15">
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative">
+                <div class="text-center h45px lh35px bg-img-12 w217px absolute left-7">
+                  <span class="F14 Fb Fwhite">家具品牌推荐</span>
+                </div>
+                <div class="pat35">
+                  <table width="100%" border="0">
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="fr wb825">
+              <div class="">
+                <div class="fl wb747 h325px img-area">
+                  <div id="wrapper">
+                    <div class="callbacks_container">
+                      <ul class="rslides" id="slider1">
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-08.jpg" alt=""></a>
+                        </li>
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-020.jpg" alt=""></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>       
+                </div>
+                <div class="fr wb24 h325px img-area">
+                  <a href="javascript:void(0)"><img src="images/tp-09.jpg"></a>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="mat10 js-div-last">
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      
+    <!-- 2F -->
+      <div class="wb100 mat20">
+        <div class="h35px lh35px pal20">
+          <i class="F20 Fb Fgray-3">2F</i><span class="F18 Fgray-3 mal10">建材城</span>
+        </div>
+        <div class="wb100">
+          <div class="bor-solid-1a borc-gray-2">
+            <div class="fl wb175">
+              <div class="h325px over-hidden">
+                <ul class="pat15 pal15 par15">
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative">
+                <div class="text-center h45px lh35px bg-img-13 w217px absolute left-7">
+                  <span class="F14 Fb Fwhite">家具品牌推荐</span>
+                </div>
+                <div class="pat35">
+                  <table width="100%" border="0">
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="fr wb825">
+              <div class="">
+                <div class="fl wb495 h325px img-area">
+                  <div id="wrapper">
+                    <div class="callbacks_container">
+                      <ul class="rslides" id="slider2">
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-024.jpg" alt=""></a>
+                        </li>
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-025.jpg" alt=""></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>       
+                </div>
+                <div class="fl wb24 h325px img-area mal10">
+                  <a href="javascript:void(0)"><img src="images/tp-025.jpg"></a>
+                </div>
+                <div class="fr wb24 h325px img-area">
+                  <a href="javascript:void(0)"><img src="images/tp-09.jpg"></a>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="mat10 js-div-last">
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><a href="javascript:void(0)"><img src="images/tp-026.jpg"></a></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- 3F -->
+      <div class="wb100 mat20">
+        <div class="h35px lh35px pal20">
+          <i class="F20 Fb Fgray-3">3F</i><span class="F18 Fgray-3 mal10">家具家饰</span>
+        </div>
+        <div class="wb100">
+          <div class="bor-solid-1a borc-gray-2">
+            <div class="fl wb175">
+              <div class="h325px over-hidden">
+                <ul class="pat15 pal15 par15">
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative">
+                <div class="text-center h45px lh35px bg-img-14 w217px absolute left-7">
+                  <span class="F14 Fb Fwhite">家具品牌推荐</span>
+                </div>
+                <div class="pat35">
+                  <table width="100%" border="0">
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="fr wb825">
+              <div class="">
+                <div class="fl wb747 h325px img-area">
+                  <div id="wrapper">
+                    <div class="callbacks_container">
+                      <ul class="rslides" id="slider3">
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-08.jpg" alt=""></a>
+                        </li>
+                        <li class="h325px">
+                         <a href="javascript:void(0)"><img src="images/tp-020.jpg" alt=""></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>       
+                </div>
+                <div class="fr wb24 h325px img-area">
+                  <a href="javascript:void(0)"><img src="images/tp-09.jpg"></a>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="mat10 js-div-last">
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-010.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- 4F -->  
+      <div class="wb100 mat20">
+        <div class="h35px lh35px pal20">
+          <i class="F20 Fb Fgray-3">4F</i><span class="F18 Fgray-3 mal10">家电城</span>
+        </div>
+        <div class="wb100">
+          <div class="bor-solid-1a borc-gray-2">
+            <div class="fl wb175">
+              <div class="h325px over-hidden">
+                <ul class="pat15 pal15 par15">
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                  <li class="mab15">
+                    <div class="h20px over-hidden">
+                      <a href="javascript:void(0)" class="F14 Fb Fgray-3">床类</a>
+                    </div>
+                    <div class="h20px lh20px over-hidden">
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">板式床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">软床</a>
+                      <a href="javascript:void(0)" class="F12 Fgray-2 mar10">实木床</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative">
+                <div class="text-center h45px lh35px bg-img-15 w217px absolute left-7">
+                  <span class="F14 Fb Fwhite">家具品牌推荐</span>
+                </div>
+                <div class="pat35">
+                  <table width="100%" border="0">
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                      <td align="center" valign="middle" class="wb50 pat10 pab10 h32px img-area"><a href="javascript:void(0)"><img src="images/tp-011.jpg" height="32"></a></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="fr wb825">
+              <div class="">
+                <div class="fl wb495 h325px img-area">
+                  <div id="wrapper">
+                    <div class="callbacks_container">
+                      <ul class="rslides" id="slider4">
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-024.jpg" alt=""></a>
+                        </li>
+                        <li class="h325px">
+                          <a href="javascript:void(0)"><img src="images/tp-025.jpg" alt=""></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>       
+                </div>
+                <div class="fl wb24 h325px img-area mal10">
+                  <a href="javascript:void(0)"><img src="images/tp-025.jpg"></a>
+                </div>
+                <div class="fr wb24 h325px img-area">
+                  <a href="javascript:void(0)"><img src="images/tp-09.jpg"></a>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="mat10 js-div-last">
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="div-last fl wb24 mar13">
+                  <div class="wb100">
+                    <div class="wb100 h170px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-026.jpg"></a>
+                    </div>
+                    <div class="text-center">
+                      <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+                      <p class="mat5"><span class="F16 Fb Fc-red03">￥4899.00</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- 线下体验馆 -->
+      <div class="mat10">
+        <div class="h35px lh35px">
+          <span class="F18 Fb Fgray-3 mal10">线下体验馆</span>
+        </div>
+        <div class="mat10 js-div-last">
+          <div class="div-last fl wb24 mar13">
+            <div class="wb100">
+              <div class="wb100 h185px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-016.jpg" height="184"></a>
+              </div>
+              <div class="text-center">
+                <p class="mat10 h15px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="div-last fl wb24 mar13">
+            <div class="wb100">
+              <div class="wb100 h185px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-016.jpg" height="184"></a>
+              </div>
+              <div class="text-center">
+                <p class="mat10 h15px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="div-last fl wb24 mar13">
+            <div class="wb100">
+              <div class="wb100 h185px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-016.jpg" height="184"></a>
+              </div>
+              <div class="text-center">
+                <p class="mat10 h15px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="div-last fl wb24 mar13">
+            <div class="wb100">
+              <div class="wb100 h185px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-016.jpg" height="184"></a>
+              </div>
+              <div class="text-center">
+                <p class="mat10 h15px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">高档雪尼尔碎花布艺沙发</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <!-- 居家秀 -->
+      <div class="mat15">
+        <div class="fl wb74">
+          <div class="h35px lh35px">
+            <span class="F18 Fb Fgray-3 mal10">居家秀</span>
+          </div>
+          <div class="mat15">
+            <div class="fl wb69 h405px img-area">
+              <a href="javascript:void(0)"><img src="images/tp-020.jpg"></a>
+            </div>
+            <div class="fr wb30">
+              <p class="wb100 h200px img-area"><a href="javascript:void(0)"><img src="images/tp-021.jpg"></a></p>
+              <p class="mat5 wb100 h200px img-area"><a href="javascript:void(0)"><img src="images/tp-022.jpg"></a></p>
+            </div>
+            <div class="clear"></div>
+          </div>  
+        </div>
+        <div class="fr wb25">
+          <div class="js-ul-tab2 bor-solid-1a borc-gray-2 mat10">
+            <div class="h45px lh45px bgc-gray-2 bor-solid-1b borc-gray-2">
+              <ul class="ul-tab">
+                <li class="wb50 fl">
+                  <div class="js-tab2-til wb998 text-center li-tab-til">
+                    <span class="F14 Fgray-3">最新成交</span>
+                  </div>
+                </li>
+                <li class="wb50 fl">
+                  <div class="js-tab2-til wb998 text-center">
+                    <span class="F14 Fgray-3">热门文章</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="clear"></div>
+            </div>
+            
+            <div class="">
+              <div class="js-tab2-con hidden">
+                <div class="h396px over-hidden">
+                  <div class="mal5 mar5 pa9 bor-dotted-1b borc-gray-2">
+                    <div class="fl h80px wb45 img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-023.jpg"></a>
+                    </div>
+                    <div class="fr wb50">
+                      <p class="h20px lh20px over-hidden">
+                        <a class="F12 Fgray-3" href="javascript:void(0)">进口全实木床头柜</a>
+                      </p>
+                      <p class="lh15px">
+                        <span class="F12 Fc-red01">￥ 899.00</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat10">
+                        <span class="F12 Forange">jujiace</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat5">
+                        <span class="F12 Fgray-2">9小时前购买此商品</span>
+                      </p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="mal5 mar5 pa9 bor-dotted-1b borc-gray-2">
+                    <div class="fl h80px wb45 img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-023.jpg"></a>
+                    </div>
+                    <div class="fr wb50">
+                      <p class="h20px lh20px over-hidden">
+                        <a class="F12 Fgray-3" href="javascript:void(0)">进口全实木床头柜</a>
+                      </p>
+                      <p class="lh15px">
+                        <span class="F12 Fc-red01">￥ 899.00</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat10">
+                        <span class="F12 Forange">jujiace</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat5">
+                        <span class="F12 Fgray-2">9小时前购买此商品</span>
+                      </p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="mal5 mar5 pa9 bor-dotted-1b borc-gray-2">
+                    <div class="fl h80px wb45 img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-023.jpg"></a>
+                    </div>
+                    <div class="fr wb50">
+                      <p class="h20px lh20px over-hidden">
+                        <a class="F12 Fgray-3" href="javascript:void(0)">进口全实木床头柜</a>
+                      </p>
+                      <p class="lh15px">
+                        <span class="F12 Fc-red01">￥ 899.00</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat10">
+                        <span class="F12 Forange">jujiace</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat5">
+                        <span class="F12 Fgray-2">9小时前购买此商品</span>
+                      </p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="mal5 mar5 pa9 bor-dotted-1b borc-gray-2">
+                    <div class="fl h80px wb45 img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-023.jpg"></a>
+                    </div>
+                    <div class="fr wb50">
+                      <p class="h20px lh20px over-hidden">
+                        <a class="F12 Fgray-3" href="javascript:void(0)">进口全实木床头柜</a>
+                      </p>
+                      <p class="lh15px">
+                        <span class="F12 Fc-red01">￥ 899.00</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat10">
+                        <span class="F12 Forange">jujiace</span>
+                      </p>
+                      <p class="h15px lh15px over-hidden mat5">
+                        <span class="F12 Fgray-2">9小时前购买此商品</span>
+                      </p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="js-tab2-con hidden">
+                <div class="h396px over-hidden">
+                  <div class="pal10 par10 pab10">
+                    <p class="mat10 h15px lh15px over-hidden">
+                      <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                    </p>
+                    <p class="mat10 h15px lh15px over-hidden">
+                      <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">家居服务更贴心</a>
+                    </p>
+                    <p class="mat10 h15px lh15px over-hidden">
+                      <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014国庆放假安</a>    
+                    </p>
+                    <p class="mat10 h15px lh15px over-hidden">
+                      <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                    </p>
+                    <p class="mat10 h15px lh15px over-hidden">
+                      <a class="bg-img-10 pal10 F12 Fgray-2" href="javascript:void(0)">2014CIKB-樱花荣获</a>
+                    </p>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      
+      
+    </div>
+    
+  </div>
+</div>
+<!-- footer -->
+<div class="footer mat25"> 
+  <div class="wb100 warpper-red-4">
+    <div class="w1200px center h92px">
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-01.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">正规渠道 正品行货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">购物有保障</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-02.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">网站 门店多渠道购物</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">货到付款</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-03.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">48小时价格保护</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">降价可退差额</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-04.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">先行赔付</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">一站式售后服务</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-05.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">七天无理由退货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">15天换货</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="w1200px center">
+    <div class="mat30">
+      <div class="fl wb80">
+        <ul>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-2 pal25">关于我们</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">居家介绍</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网站快讯</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-3 pal25">新手指南</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">会员注册</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">购物流程</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">买家指南</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">找回密码</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-4 pal25">支付/配送</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">商品验货与签收</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">配送时间与范围</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">支付常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网上支付</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-5 pal25">售后服务</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">7天低价保证政策</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">退换货政策</a></p>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="fr wb20">
+        <div class="text-center">
+          <p><span class="F16 Fgray-3">居家策官方微信</span></p>  
+          <p class="mat25"> <img src="images/erweima.jpg" /> </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="bor-solid-1b bor-gray2 mat50 mab20"></div>
+    <div class="text-center h20px lh20px js-last">
+      <a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">广告服务</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">新闻公告</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">意见反馈</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">诚聘英才</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+    </div>
+    <div class="text-center mat10">
+      <p class="F12 Fgray-2 mab10">经营许可证：B2-20100288 备案许可证：苏 出版经营许可证：苏</p>
+      <p class="F12 Fgray-2">居家策 JUJIACE.COM 版权所有</p>
+    </div>
+    <div class="mat20 text-center mab50">
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-07.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-08.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-09.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-010.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-011.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-012.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-013.jpg" /></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

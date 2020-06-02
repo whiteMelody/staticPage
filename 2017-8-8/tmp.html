@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js?v=2"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js?v=3"></script>
+
+    <title>测试微信支付</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| tmp_page
+| ------------------------------------------
+| Here are tmp_page html
+|
+-->
+<div id="tmp_page">
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el: '#tmp_page',
+        data : {
+            showLoader : true,
+        },
+        methods : {
+
+        },
+        created(){
+            let _this = this;
+
+//            {
+//                "totalFee": 0,
+//                "uuid": "string",
+//                "deviceID": "string",
+//                "deviceType": 1,
+//                "source": "string",
+//                "s": "string",
+//                "t": "string"
+//            }
+
+            $.ajax({
+                type: "post",
+                url: "http://devapi.7english.cn/race/p/wxWebPay",
+                data: { totalFee: 1, attType: '', attInfo: '', uuid: 'string', deviceID: 'string', source: 'string', deviceType: 1, s: 'string', t: 'string' },
+                success: function success(data) {
+                    if(data){
+
+                        var _url = 'http://h5.7english.cn/new/index.html';
+
+                        window.location.href = data.returnJSON.mweb_url + '&redirect_url=' + encodeURI(_url);
+                    }
+                    console.log(data);
+                }
+            });
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

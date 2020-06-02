@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/hostSdk.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+
+
+    <title>商品详情</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_detail_page html
+|
+-->
+
+<div id="store_detail_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <div class="warpper-gray-1 wb100 img-area " style="height: 220px">
+
+            <div class="wb50 img-area relative center "  style="top: 50%;transform: translateY(-50%);">
+
+                <img :src="data.headerimg" class="" />
+
+            </div>
+
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="warpper-white">
+            <p class="F16 text-over-hidden1 Fblack pal15 ">{{data.name}}</p>
+            <div class="clear h5px"></div>
+            <p class="F16 text-over-hidden1 Fred pal15 "><span class="Fnum">{{data.virtualprice}}</span> <span class="Fred F14">金币</span></p>
+        </div>
+
+        <div class="clear1"></div>
+        <div class="clear1 warpper-gray-1"></div>
+
+        <div class="pa15 img-area">
+
+            <p>商品介绍</p>
+
+            <!--{{decodeURI(data.content)}}-->
+            <!--<div v-html="decodeURI(data.content)">-->
+            <div v-html="data.content">
+                <!--{{data.content}}-->
+
+            </div>
+
+        </div>
+
+        <div class="clear h45px"></div>
+
+        <div class="fixed wb100"  style="bottom:0;"  @click="exchange">
+            <div class="wb100 ">
+                <div class="wb100 Fwhite h45px lh45px text-center warpper-green-4">
+                    <span class="Fnum">{{data.virtualprice}}</span>金币抽奖
+                </div>
+            </div>
+        </div>
+
+
+        <div class="wb100" id="dialog" style="display: none">
+            <div class="dialogBg"></div>
+            <div class="wb100 fixed" style="bottom:50%;z-index: 99">
+                <div class=" warpper-white radius5 wb70 center ">
+                    <div class="wb100 h150px">
+                       <div class="text-center">
+                           <p class="lh60px h60px">抽奖{{data.name}}</p>
+                           <p class="F14 Fgray-3 bor-solid-1b bor-gray  h40px">需花费<span class="Fred Fnum">{{data.virtualprice}}</span>金币</p>
+                           <p class="lh50px h50px">
+                               <span class="fl  wb50 bor-solid-1r bor-gray " style="height: 49px" @click="cancel">取消</span>
+                               <span class="fr  wb49 Fgreen" @click="submitOrder(data)">确定</span>
+                           </p>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wb100" id="dialog1" style="display: none">
+            <div class="dialogBg"></div>
+            <div class="wb100 fixed" style="bottom:50%;z-index: 99">
+                <div class=" warpper-white radius5 wb70 center ">
+                    <div class="wb100 h150px">
+                        <div class="text-center">
+                            <p class="lh60px h60px">您的余额不足</p>
+                            <p class="F14 Fgray-3 bor-solid-1b bor-gray  h40px">快去竞猜赢金币吧~</p>
+                            <p class="lh50px h50px">
+                                <span class="fl  wb50 bor-solid-1r bor-gray " style="height: 49px" @click="cancel">取消</span>
+                                <span class="fr  wb49 Fgreen" @click="guess">去竞猜</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dialogBg" style="z-index: 99; background: rgba(0,0,0,.7);" v-show="showBuySuccess == true" @click="showBuySuccess = false"></div>
+        <div class="w270px h250px fixed Fwhite F16 text-center" v-show="showBuySuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 999;">
+            <img src="images/zt.png" class="w130px absolute" style="top: 0; left: 0; right: 0; margin: 0 auto; z-index: 9999; width: 134px;">
+            <img src="images/gx.png" class="w270px rotater absolute" style="top: -77px; left: -7px; z-index: 999;">
+            <div class="clear h130px"></div>
+            <div class="wb100">
+                <p class="F16 lh40px">恭喜您抽中</p>
+                <p class="lh20px Fyellow F20">{{data.name}}</p>
+
+                <div class="clear h20px"></div>
+
+                <div class="wb45 fl warpper-yellow pa1 radius4 h40px lh40px Fblack text-center" @click="showBuySuccess = false">
+                    返回
+                </div>
+
+                <a href="javascript:;" @click="redirect('store_order_detail.html?ordernum='+ordernum + '&bigtype='+bigtype)">
+                    <div class="wb45 fr  radius4 h40px lh40px text-center Fwhite warpper-red">
+                        查看详情
+                    </div>
+                </a>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_detail_page",
+        data: {
+            fullscreenLoading: true,
+            data: {},
+            login: false,
+            address: false,
+            page: 1,
+            pageSize: 20,
+            addressID: "",
+            showBuySuccess: false,
+            ordernum:"",
+            bigtype:"",
+            rotateTimer: 0,
+            angle: 0,
+            username:"",
+            telephone:"",
+            location:"",
+
+        },
+        methods: {
+
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+
+            getData: function getData() {
+                var _this = this;
+
+                var _id = base.getParmar('id');
+
+                BaseAjax.detail(_id, function (data) {
+
+                    console.log(data);
+
+                    _this.data = data.data;
+                });
+            },
+
+
+            rotation: function rotation(){
+                var _this = this;
+                window.clearInterval(_this.rotateTimer);
+                _this.rotateTimer = setInterval(function(){
+                    _this.angle += 3;
+                    $(".rotater").rotate(_this.angle);
+                },50);
+
+
+            },
+
+            exchange: function exchange() {
+
+                var _this = this;
+
+
+                //IOS客户端版本
+//                if(base.versions.isIosApp){
+//                    hostsdk.getUser({
+//                        successCallback : function(res){
+//
+//                            alert("调用成功" + res);
+//
+//                            if (_this.user.coinsQty < _this.data.virtualprice) {
+//
+//                                _this.$message({
+//                                    type: 'error',
+//                                    message: '商品库存不足'
+//                                });
+//                                return false;
+//
+//                            } else {
+//
+//                                $("#dialog").show(0);
+//                            }
+//
+//                        },
+//                        errorCallback : function(res){
+//                            alert("调用失败" + res);
+//
+//                            hostsdk.login({
+//                                successCallback : function(res){
+//                                    alert("调用成功" + res);
+//                                },
+//                                errorCallback : function(res){
+//                                    alert("调用失败" + res);
+//                                }
+//                            })
+//
+//                        }
+//                    })
+//                    return false;
+//                }
+
+
+                if (_this.login == false) {
+                    //前去登录
+                    window.location.href = 'login.html?call=true';
+                    return false;
+                }
+
+                if (_this.user.coinsQty < _this.data.virtualprice) {
+
+                    $("#dialog1").show(0);
+
+                } else {
+
+                    $("#dialog").show(0);
+                }
+            },
+
+            guess: function guess() {
+
+                var _this = this;
+
+                //判断用户登录状态
+                if (_this.login == false) {
+                    //前去登录
+                    window.location.href = 'login.html?call=true';
+                    return false;
+                }
+
+                window.location.href = 'index.html?call=true';
+            },
+
+            cancel: function cancel() {
+
+                $("#dialog").hide(0);
+
+                $("#dialog1").hide(0);
+
+
+            },
+
+            submitOrder: function submitOrder(param) {
+
+                var _this = this;
+
+                //判断用户登录状态
+                if (_this.login == false) {
+                    //前去登录
+                    window.location.href = 'login.html?call=true';
+                    return false;
+                }
+
+
+                //判断商品余额
+                if (_this.data.num < 1) {
+
+                    _this.$message({
+                        type: 'error',
+                        message: '商品库存不足'
+                    });
+                    return false;
+                }
+
+
+                if(_this.data.bigtype == 2 ){
+
+                    if (_this.address == false) {
+                        //提示新增收货地址
+//                        alert('请去添加收货地址');
+
+                        window.location.href = 'store_add_order_address.html?goodsid=' + param.id
+                        return false;
+                    }
+
+                }
+
+
+                if(_this.data.bigtype == 1 ){
+
+                  //goodsid, username, telephone
+                    baseAjax.createOrder(param.id, _this.username, _this.telephone, _this.location, function (data, errorMsg) {
+                        if (data) {
+
+                            _this.showBuySuccess = true;
+
+                            _this.ordernum = data.data.ordernum;
+
+                            _this.bigtype = data.data.bigtype;
+
+
+
+                            _this.rotation();
+
+                            $("#dialog").hide(0);
+
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: errorMsg
+                            });
+                        }
+
+                        console.log(data);
+                    });
+
+
+
+                }else{
+
+                    window.location.replace('store_order_address.html?goodsid=' + param.id);
+
+
+
+                }
+
+
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            //- 判断登录
+            baseAjax.userInfo(function (data) {
+                var _user = data.returnJSON;
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                    _this.login = false;
+                } else {
+                    _this.user = _user;
+
+                    _this.login = true;
+                    console.log(_this.user);
+
+                    baseAjax.addressList(_this.page, _this.pageSize, function (data) {
+
+                        var _tmp = data.returnJSON.indexData;
+
+                        if (_tmp.length == 0) {
+                            _this.address = false;
+                            return false;
+                        } else {
+                            _this.address = true;
+                        }
+
+                        console.log(_tmp);
+
+                        for (var i = 0; i < _tmp.length; i++) {
+                            if (_tmp[i].isDefault == 1) {
+                                _this.addressID = _tmp[i].addressID;
+                                _this.username = _tmp[i].recipients;
+                                _this.telephone = _tmp[i].mobilePhone;
+                                _this.location = _tmp[i].address;
+                                console.log(_tmp[i]);
+                                break;
+                            } /*else {
+                                _this.addressID = false;
+                            }*/
+                        }
+                    });
+                }
+            });
+
+            _this.getData();
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                baseAjax.userInfo(function (data) {
+                    var _user = data.returnJSON;
+
+                    if (base.isNull(_user)) {
+                        //- 未登录
+                        _this.login = false;
+                    } else {
+                        _this.user = _user;
+
+                        _this.login = true;
+                        console.log(_this.user);
+
+                        baseAjax.addressList(_this.page, _this.pageSize, function (data) {
+
+                            var _tmp = data.returnJSON.indexData;
+
+                            if (_tmp.length == 0) {
+                                _this.address = false;
+                                return false;
+                            } else {
+                                _this.address = true;
+                            }
+
+                            console.log(_tmp);
+
+                            for (var i = 0; i < _tmp.length; i++) {
+                                if (_tmp[i].isDefault == 1) {
+                                    _this.addressID = _tmp[i].addressID;
+                                    _this.username = _tmp[i].recipients;
+                                    _this.telephone = _tmp[i].mobilePhone;
+                                    _this.location = _tmp[i].address;
+                                    console.log(_tmp[i]);
+                                    break;
+                                } /*else {
+                                 _this.addressID = false;
+                                 }*/
+                            }
+                        });
+                    }
+                });
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

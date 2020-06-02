@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- plugIn css -->
+    <link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="weui/lib/weui.min.css">
+    <link rel="stylesheet" href="weui/css/jquery-weui.min.css">
+    <!-- 7E css -->
+    <link rel="stylesheet" href="source/css/base.css">
+    <link rel="stylesheet" href="source/css/style.css">
+    <!-- plugIn js -->
+    <script src="source/js/jquery-2.1.4.js"></script>
+    <script src="weui/js/jquery-weui.min.js"></script>
+    <script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+
+    <title>意见反馈</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="user_feedback_page" style="text-shadow:none; font-weight:normal; background:#fff;" data-dom-cache="false">
+
+    <div data-role="header" data-theme="a" class="bor-none ui-header ui-bar-a" role="banner" style="background: #fff;">
+        <div class="wb100 h30px pat5 pab5 relative">
+            <a class="my-icon-back h30px w30px absolute pointer" data-role="none" data-rel="back"  style="left:5px; top:5px; z-index:99"></a>
+            <div class="wb60 center text-center h30px lh30px Fblack F18 Fb">
+                意见反馈
+            </div>
+            <!--<a class="my-text h30px lh30px absolute pointer Fblue par10" data-role="none" data-transition="slide" style="right:5px; top:5px;">编辑</a>-->
+        </div>
+    </div>
+
+    <div data-role="content" class="pa0">
+
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" placeholder="在这里输入您的意见或建议" data-role="none" rows="3"></textarea>
+                    <div class="weui_textarea_counter">最多200字</div>
+                </div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="input" name="user_name" data-role="none" placeholder="手机号/QQ/微信">
+                </div>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pa15">
+
+            <a href="javascript:;" class="display-inline h50px lh50px text-center Fwhite warpper-red wb100 F18 radius5 my-sub" data-role="none">
+                <span class="Fwhite">保存</span>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

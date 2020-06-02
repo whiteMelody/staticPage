@@ -1,0 +1,529 @@
+@charset "utf-8";
+/* CSS Document */
+body, button {
+    font-size: 14px !important;
+    text-shadow: none !important;
+    background: #333;
+}
+.ui-page, .ui-overlay-a {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Chrome and Safari */
+    -moz-backface-visibility: hidden; /* Firefox */
+    background: #333333;
+}
+a:focus, button:focus {
+    box-shadow: none !important;
+}
+a {
+    text-decoration: none !important
+}
+input:focus {
+    outline: none;
+}
+input {
+    padding-left: .5em
+}
+.ui-header {
+    width: 100% !important;
+    background-color: #2F2F2F !important;
+    text-shadow: none !important;
+    color: #fff !important;
+    border: none !important;
+    padding: .1em 0 !important
+}
+.ui-header .ui-title, .ui-footer .ui-title {
+    font-size: 1.3em !important
+}
+.lingqu_header a{
+    position:absolute;
+    right:auto !important;
+    left:1em !important}
+.gz_header a {
+    position:absolute;
+    color: #fff !important;
+    background-color:transparent !important;
+    border:none !important;
+    right:0;
+	padding:0 !important;
+    top:1em;
+}
+.gz_header .ui-btn-left {
+    left: auto !important
+}
+.zp_div {
+    position: absolute;
+    width: 282px;
+    height: 290px;
+    text-align: left
+}
+.zp_jp_img {
+    margin-top: 11.5px;
+    margin-left: 12.5px;
+}
+.zp_btn_yh_img {
+    margin-top: 77px;
+    margin-left: 90px
+}
+.zp_div img {
+    position: absolute
+}
+.lottery {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+}
+.lot-btn span {
+    position: absolute;
+    background: url(../images/click_btn.png) no-repeat scroll 0 0 transparent;
+    background-size: 100% 100%;
+    width: 76px;
+    height: 76px;
+    display: block;
+    margin-top: 107px;
+    margin-left: 102.5px;
+    z-index: 111;
+    cursor: pointer !important
+}
+.lot_active {
+    background-color: #000
+}
+.lot-btn {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+}
+.lottery_btn_div {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    bottom: 0;
+    height: 24px;
+    line-height: 24px;
+    text-align: left;
+    padding-left: 1em;
+    text-shadow: none !important;
+    color: #B1EC80 !important;
+    background-color: #6BAA43 !important;
+    font-size: 12px;
+}
+.lottery_btn_div div {
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.lottery_btn_div >div:first-child {
+    margin-right: 11px;
+}
+.gz_btn {
+    display: block;
+    padding: .5em !important;
+    font-size: 14px !important;
+    border-radius: 2em;
+    margin-top: .5em;
+    border: none !important;
+    color: #EE5629 !important;
+    text-shadow: none !important;
+	margin-right:1em;
+	float:right;
+	position:relative;
+	z-index:10;
+}
+.myRecord {
+    position: absolute;
+    bottom: 35px;
+	left:0;
+	right:0;
+    background: rgba(147,198,105,0.8) none repeat scroll !important;
+	border:none ;
+    padding: .3em 1em !important;
+    width: 7.5em;
+    font-size: 12px !important;
+    margin: auto !important;
+    border-radius: 2em;
+    margin-top: .5em;
+    text-shadow: none !important;
+    color: #fff !important
+}
+/*****活动规则********/
+.gz_hang p {
+    color: #FA9300 !important;
+    font-weight: bolder;
+    margin-bottom: 7px !important
+}
+.gz_hang {
+    margin-bottom: 1.5em !important
+}
+.gz_hang div {
+    line-height: 23px;
+    text-align: left;
+    float: inherit !important
+}
+.gz_font_table tr >td:first-child {
+    width: 25px !important;
+}
+.gz_font_table span {
+    display: block;
+    width: 19px !important;
+    height: 19px !important;
+    background: #FA9300 !important;
+    border-radius: 19px;
+    float: left;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 3px;
+}
+.close-img {
+    position: absolute;
+    right: 10px;
+}
+/****名单******/
+.tzp_table {
+    background-color: #333333 !important;
+    border-collapse: collapse;
+    color: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 0.5em !important;
+    text-shadow: none !important;
+}
+.tzp_table tr {
+    border-bottom: 1px solid #3F3F3F !important;
+}
+.tb_child-1 {
+    padding: 10px !important
+}
+.tb_child-1 img {
+    border-radius: 50%;
+    float: left;
+    width: 50px;
+    margin-right: 10px;
+    border: #FEFDF9 2px solid
+}
+.tb_child-1 div:first-child {
+    margin-top: 5px;
+    font-size: 1.2em !important
+}
+.tb_child-1 .hf {
+    margin-top: 3px;
+    font-size: 10px !important
+}
+.tb_child-1 .hf span {
+    color: #FA9300 !important
+}
+.times_div {
+    position: absolute;
+    right: 15px;
+    margin-top: -27px;
+    font-size: 10px !important;
+    color: #939192 !important
+}
+.click_back_a {
+    width: 100px !important;
+    height: 100px !important;
+}
+/**popup*/
+.ui-popup-screen {
+    background-color: #333;
+    opacity: 0.05;
+}
+.ui-popup {
+    box-shadow: none !important
+}
+.popup_btn_div {
+    width: 100% !important;
+    overflow: auto !important;
+    border-top: 1px solid #adabac !important;
+}
+.popup_btn_div button {
+    background-color: #fff !important;
+    margin: 0 !important;
+    float: left !important;
+    border-radius: 0 !important;
+    border-color: #B5B5B5 !important;
+    font-size: 16px !important;
+    color: #ff9000 !important;
+    border: none !important;
+    line-height: 20px;
+    border-radius: 0 0 0.5em 0.5em !important;
+}
+
+.popup_btn_div2 {
+    width: 100% !important;
+    overflow: auto !important;
+	border-radius: 0 0 0.5em 0.5em !important;
+}
+
+.popup_btn_div2 a {
+    background-color: #fff !important;
+    margin: 0 !important;
+    float: left !important;
+    border-radius: 0 !important;
+    font-size: 16px !important;
+    color: #ff9000 !important;
+	border:none;
+	line-height: 20px;
+	width:27.5% !important;
+}
+.popup_ts_content {
+    margin: 1.2em !important;
+    padding-top: 1em;
+}
+.popup_ts_content h3 {
+    font-size: 16px;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 16px !important;
+    margin-top: 0.5em !important
+}
+.popup_ts_content p {
+    margin-top: 0.8em !important;
+    font-size: 14px !important;
+}
+.ts_popup_style {
+    width: 250px !important;
+    text-align: center !important;
+    border: none !important;
+    border-radius: 0.5em !important;
+}
+.loadmore_div:focus {
+    box-shadow: none !important
+}
+/****获奖纪录*****/
+.record_table {
+    text-shadow: none !important;
+    color: #fff;
+}
+.record_table thead >tr:first-child {
+    background-color: #333 !important;
+}
+.record_table thead >tr:first-child >th:first-child {
+    line-height: 2em !important;
+    color: #828282;
+    padding-left: .8em !important;
+}
+.record_table thead >tr:first-child th {
+    line-height: 2em !important;
+    color: #828282;
+}
+.record_table thead >tr:first-child >th:last-child {
+    padding-right: 0.4em !important;
+}
+.record_table tr {
+    text-align: center;
+}
+.record_table tr td {
+    padding: .5em 0 !important;
+    border-bottom: 1px solid #3F3F3F !important;
+    height: 28px;
+}
+.record_table tr >td:first-child {
+    text-align: left;
+    padding-left: .8em !important;
+    width: 6em
+}
+.record_table tr >td:first-child img {
+    width: 14px;
+    margin-top: -2px;
+    margin-right: 2px;
+}
+.record_table tr >td:last-child {
+    color: #828282;
+    font-size: 14px !important;
+    padding-right: 0.4em !important
+}
+.record_table tr >td:last-child button {
+    width: auto !important;
+    background-color: #FF9000 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: .3em !important;
+    margin: auto;
+    font-size: 14px !important
+}
+.record_table tr >td:last-child button:focus {
+    box-shadow: none !important
+}
+/***领取****/
+.button_div {
+    padding: 1em !important
+}
+.button_div button {
+    background-color: #FF9408 !important;
+    color: #fff !important;
+    border-color: #FF9408 !important
+}
+.lq_jl_ts_div {
+    font-size: 1.2em
+}
+.lq_jl_ts_div span {
+    color: #F1423E;
+}
+.jl_hs_p {
+    text-align: left !important;
+    padding: 0 1em!important;
+    font-size: 13px !important;
+    color: #B8B6B7
+}
+.lq_phone_div {
+    height: 3em;
+    width: 100%;
+    border: #D9D7D8 1px solid;
+    margin-top: 1em;
+    text-align: left
+}
+.lq_phone_div p {
+    height: 3em;
+    border-right: #D9D7D8 1px solid !important;
+    float: left;
+    padding: 0;
+    margin: 0;
+    line-height: 3em;
+    padding: 0 .7em;
+}
+.lq_phone_div input {
+    height: 3em !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important
+}
+.loadmore_div {
+    background-color: #3A3A3A !important;
+    border-color: #3A3A3A !important;
+    color: #646464 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    height: 40px !important;
+}
+/***我的中奖纪录*****/
+.nomessage {
+    text-shadow: none !important;
+    color: #fff;
+    margin-top: 20%;
+    width: 100%;
+    text-align: center;
+}
+.nomessage div {
+    margin-top: 1em
+}
+/****剩余擂豆*****/
+.ui_lottery_header {
+    background-color: transparent !important;
+    height: 48px;
+}
+.ui_lottery_header .left_zz_div {
+    background: rgba(0,0,0,0.3) none repeat scroll !important;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 2em;
+    text-align: center;
+    margin-left: 1em;
+    margin-top: 1em;
+    padding: .4em
+}
+.ui_lottery_header .left_zz_div img {
+    margin-left: -.22em
+}
+.ui_lottery_header .right_zz_div {
+    position: absolute;
+    border-radius: 2em;
+    background: rgba(0,0,0,0.3) none repeat scroll !important;
+    height: 1.8em;
+    width: auto !important;
+    right: 1em;
+    top: 1.2em;
+    padding: .1em .7em !important;
+	line-height:1.8em;
+}
+.ui_lottery_header .right_zz_div >img:last-child {
+    border-radius: 2em;
+    margin-right: -.5em;
+	border: #fff solid 1px !important;
+	float:left; 
+	margin:1px -7px 1px 5px;
+}
+.ui_lottery_header .right_zz_div >img:first-child {
+    float:left; 
+	margin:6px 6px 6px 0px;
+}
+.ui-grid-b a:focus, .ui-grid-b li:active, .ui-grid-b a:active, .ui-grid-b li:focus {
+    box-shadow: none !important;
+    border: none !important
+}
+/*****领取******/    
+.jd_ul {
+    margin: 1em!important;
+    padding: 0 !important;
+    overflow: auto;
+}
+.jd_ul li {
+    float: left;
+    text-decoration: none;
+    outline: none;
+    width: 30%;
+    text-align: center;
+    padding: 0 !important;
+    list-style-type: none;
+}
+.jd_ul >li:first-child, .jd_ul >li:last-child {
+    width: 20% !important;
+}
+.jd_ul li >div:first-child {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 5px;
+    ;
+    border-bottom: #D9D9D9 2px solid;
+}
+.jd_ul >li:first-child .jd_yq {
+    margin-left: 0.4em
+}
+.jd_ul >li:first-child >div:last-child {
+    text-align: left;
+}
+.jd_ul >li:last-child .jd_yq {
+    margin-right: 0.4em
+}
+.jd_ul >li:last-child >div:last-child {
+    text-align: right;
+}
+.jd_ul li .jd_yq {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    background-color: #D9D9D9;
+    margin: auto;
+    margin-top: -0.5em;
+    z-index: 111;
+}
+.jd_ul li >div:last-child {
+    margin: 0.7em 0 !important;
+    color: #D9D9D9
+}
+.jd_ul .border_active {
+    border-color: #9BB72B !important;
+}
+.jd_ul .background_active {
+    background-color: #9BB72B !important;
+}
+.jd_ul .font_active {
+    color: #717071 !important;
+}
+.share_phone_number {
+    margin-bottom: 1em;
+    text-align: left;
+}
+.lq_leidou_div {
+    margin: 0 1em !important;
+    text-align: left
+}
+.lq_leidou_div >span:first-child {
+    margin-right: 2em
+}
+.lq_leidou_div span {
+    color: #AAAAAA;
+}
+.lq_leidou_div span span {
+    color: #515151 !important;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+
+    <title>投注记录</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| user_ticket_all_page
+| ------------------------------------------
+| Here are user_ticket_all_page html
+|
+-->
+
+<div id="user_ticket_all_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <ticket-header :title="'投注记录'" :back="true"></ticket-header>
+
+    <div class="wb100 lh45px text-center warpper-red">
+
+        <div class="wb33333 fl" v-for="(item,key) in navList" @click="navChange(key)">
+            <span class="tab-nav pal10 par10" :class="current == (key-1) ? 'tab-nav-active' : ''">{{item}}</span>
+        </div>
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="wb100">
+        <div class="pal15">
+            <template v-for="item in recordList" v-if="empty==false">
+
+                <a :href="'ticket_detail.html?ticketID='+item.ticketID">
+                    <div class="wb100 bor-gray bor-solid-1b">
+                        <div class="par40 relative">
+                            <p class="lh30px F16">
+                                <span class="Fgray-3 fl">{{item.title}}</span>
+                                <span class="Fblue fr" v-if="item.status == 0">待开奖</span>
+                                <span class="Fred fr" v-if="item.status == 1">已中奖</span>
+                                <span class="Fgray-2 fr" v-if="item.status == 2">未中奖</span>
+                            </p>
+                            <div class="clear"></div>
+                            <p class="lh20px F12">
+                                <span class="Fgray-2 fl">{{item.createOn}}</span>
+                                <span class="Fgray-2 fr">投注{{item.lotMoney}}元</span>
+                            </p>
+                            <img src="images/arrow-right.png" class="absolute h16px" style="right: 15px; top: 17px;">
+                        </div>
+                        <div class="clear1"></div>
+                    </div>
+                </a>
+                <div class="clear1"></div>
+            </template>
+
+            <p v-if="empty==true" class="text-center mat50 Fgray-2 F14">暂无投注记录</p>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#user_ticket_all_page",
+        data : {
+            login : false,
+            fullscreenLoading : false,
+            empty : false,
+            user : {},
+            current: -1,
+            page: 1,
+            pageSize: 20,
+            navList : ['全部','待开奖','已中奖'],
+            recordList : ['','',''],
+        },
+        methods : {
+            getData(){
+
+                let _this = this;
+
+                baseAjax.ticketList(_this.current, _this.page, _this.pageSize, function(data){
+
+                    if(data){
+                        let _tmp = data.returnJSON.indexData;
+
+                        if(_tmp.length>0){
+                            _this.empty = false;
+                        }else{
+                            _this.empty = true;
+                            return false;
+                        }
+
+                        for(let i=0; i<_tmp.length; i++){
+
+                            if(_tmp[i].lotteryType == 'ssq'){
+                                _tmp[i].title = '双色球';
+                            }
+                            if(_tmp[i].lotteryType == 'JXK3'){
+                                _tmp[i].title = '江西快三';
+                            }
+                            if(_tmp[i].lotteryType == 'D11'){
+                                _tmp[i].title = '11选5';
+                            }
+                            if(_tmp[i].lotteryType == 'dlc'){
+                                _tmp[i].title = '11选5';
+                            }
+                            if(_tmp[i].lotteryType == 'dlt'){
+                                _tmp[i].title = '大乐透';
+                            }
+
+                        }
+
+                        _this.recordList = _tmp;
+                    }else{
+                        _this.empty = true;
+                    }
+
+                })
+//
+
+            },
+            navChange(key){
+                this.current = key - 1;
+                this.getData();
+            }
+        },
+        created(){
+            let _this = this;
+
+            let _current = base.getParmar('nav');
+
+            if(base.isNull(_current)){
+                _current = -1;
+            }
+
+            _this.current = _current;
+
+            _this.getData();
+
+            setTimeout(function(){
+                this.fullscreenLoading = false;
+                $("#user_ticket_all_page").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

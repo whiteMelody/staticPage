@@ -1,0 +1,651 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>逛出趣</title>
+
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/tyj.css" rel="stylesheet" type="text/css">
+<link href="css/wqw.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script src="js/jQuery-shopping.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script>
+	$(function(){
+		
+		$(".ul-nav-second li").hover(function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			_this.addClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+		},function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+		});
+		
+		$(".nav-btn,.nav-area").hover(function(){
+			$(".nav-area").show(0);
+		},function(){
+			$(".nav-area").hide(0);
+		})
+		
+	})
+	
+</script>
+</head>
+
+<body>
+	<div class="wb100 bor-gray bor-solid-1t bor-solid-1b warpper-white-1 h35px">
+    	<div class="w1200px h35px center">
+        	<div class="wb30 fl h35px lh35px text-left Fgray-3 F125em">
+            	您好，欢迎光临本店！<a href="javascript:void(0)" class="red mal5 mar5">[登录]</a><a href="javascript:void(0)" class="red mal5 mar5">[免费注册]</a>
+            </div>                                 
+            <div class="wb50 fr F125em h35px lh35px text-left middle Fgray">
+            	<a href="javascript:void(0)" class="gray fr">服务热线 <span class="Fred">400-8888-8888</span></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">收藏我们</a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">客服中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">用户中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">我的订单<img src="images/ico-arrow-down.png" class="middle mal5"></a>                    
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-white h150px">
+    	<div class="w1200px pat25 center h115px">
+        	<div class="wb17 h115px img-area fl mar3per">
+            	<img src="images/logo.png">
+            </div>
+            <div class="wb10 mat25 h60px fl">
+            	<img src="images/icon-location.png" class="fl"><span class="F150em Fgray-3 mal10 fl">重庆市</span>
+                <div class="clear1"></div>
+                <p class="h30px lh30px bor-gray bor-solid-1a wb70 text-center Fgray-3 F125em pointer">切换城市 <img src="images/arrow-gray-down.png"></p>
+            </div>
+            <div class="fl wb45 mat10 mal5per">
+                <div class="wb80 mat15">
+                    <div class="bor-solid-1t bor-solid-1b bor-solid-1l bor-red h35px lh35px">
+                        <div class="fl pal5 pat5 par5">
+                            <img src="images/ico-search.png">
+                        </div>
+                        <div class="fl wb70">
+                            <input type="text" class="wb100 bor-none h35px lh35px F14 Fgray-3 pal10" placeholder="请输入搜索关键字">
+                        </div>
+                        <div class="fr wb20">
+                            <a href="javascript:void(0)" class="display-inline warpper-red F14 Fwhite Fb text-center wb100">搜 索</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="F12 Fgray-2 mat20">
+                    <span>热门搜索：</span>
+                    <a class="par20 Fgray-2" href="javascript:void(0)">衣柜</a>
+                    <a class="par20 Fgray-2" href="javascript:void(0)">衣柜</a>
+                    <a class="par20 Fgray-2" href="javascript:void(0)">衣柜</a>
+                    <a class="par20 Fgray-2" href="javascript:void(0)">衣柜</a>
+                </div>
+            </div>
+            
+            <div class="wb16666 fr h40px bor-gray bor-solid-1a mat25 F125em text-center middle">
+            	<a href="javascript:void(0)" class="gray">
+                    <div class="wb30 fl h40px lh40px warpper-yellow ">
+                        <img src="images/ico-cart3.png" class="middle">
+                    </div>
+                    <div class="fr h40px lh40px wb69">
+                        我的购物车 (<span class="Forange">0</span>) 
+                    </div>
+                </a>
+            </div>
+            <div class="clear1"></div>
+            
+        </div>
+    </div>
+    
+    <div class="wb100 h40px warpper-red-7">
+    	<div class="w1200px center">
+            <div class="wb1625 fl h40px lh40px text-center F175em Fwhite pointer nav-btn">
+                全部商品分类 <img src="images/ico-arrow-down-2.png" class="middle">
+            </div>
+            <ul class="ul-nav">                      
+                <li class="warpper-red-8"><a href="javascript:void(0)" class="white">首页</a></li>
+                <li><a href="javascript:void(0)" class="white">食品</a></li>
+                <li><a href="javascript:void(0)" class="white">爱美丽</a></li>
+                <li><a href="javascript:void(0)" class="white">数码</a></li>
+                <li><a href="javascript:void(0)" class="white">生鲜果蔬</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="wb100 relative nav-area hidden">
+    	
+    	<div class="w1200px center absolute" style="top:0; left:0; right:0; margin:0 auto; z-index:999;">
+            <div class="wb1625 fl">
+            	<ul class="ul-nav-second">
+                	<li>
+                    	<div class="li-pro">
+                            <img src="images/ico-candy.png" data-value="images/ico-candy-hover.png">
+                            进口/休闲/特产
+                        </div>
+                        <div class="li-ext">
+                        	<div class="wb100 display-inline F80em lh25px">
+                                <div class="wb69 fl bor-gray bor-solid-1r">
+                                	<div class="clear1"></div>
+                                    <div class="wb90 center">
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+                                        <div class="clear1 bor-gray bor-solid-1b"></div>
+                                        <div class="clear1"></div>
+                                        <div class="wb20 fl">
+                                            <a href="javascript:void(0)" class="blue ">进口食品</a>
+                                        </div>
+                                        <div class="wb75 fr">
+                                            <p>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                                <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                           </p>
+                                        </div>
+									</div>	
+                                    
+                                </div>
+                                <div class="wb30 fr">
+                                	<div class="clear1"></div>
+                                	<div class="wb80 fl">
+                                    	<p class="wb90 h35px lh35px text-center warpper-green pointer">
+                                        	<a href="javascript:void(0)" class="white">食品饮料频道 ></a>
+                                        </p>
+                                        <div class="clear1"></div>
+                                        <p class="Fb F125em Fblack text-left wb100">全部品牌：</p>
+                                        <div class="clear"></div>
+                                        <p class="wb90 fr mar3per">
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                              <a href="javascript:void(0)" class="gray fl mal10 mar10">进口休闲零食</a>
+                                         </p>
+                                        
+                                    </div>
+                                    <div class="wb12 fl h20px warpper-green radius50per Fwhite pointer lh20px text-center"> X </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>    
+           
+            </div>
+        </div>
+    </div>
+
+<!-- body -->
+
+<script type="text/javascript">
+	$(function(){
+		$(".js-binding-box:first").removeClass("hidden");
+		$(".js-binding-tit").click(function(){
+			$(this).addClass(" warpper-white").siblings(".js-binding-tit").removeClass(" warpper-white");
+			
+			var num = $(this).index();
+			$(".js-binding-box").hide();
+			$(".js-binding-box:eq("+num+")").show();
+		});
+	});
+</script>
+<div class="body warpper-white">
+  <div class="w1080px center pab50">
+    <div class="wb90 center pat35">
+      <div class="relative" style="border-bottom:6px solid #e8e6e6;">
+        <div class="absolute wb100" style="z-index:11; bottom:-20px;">
+          <div class="fl wb33 text-center reg-nav-sel">
+            <div class="Fgray-2 F14 tit-col">填写账户信息</div>
+            <div class="mat10">
+              <span class="display-inline reg-nav F16 lh35px Fb">1</span>
+            </div>
+          </div>
+          <div class="fl wb33 text-center">
+            <div class="Fgray-2 F14 tit-col">验证手机/邮箱</div>
+            <div class="mat10">
+              <span class="display-inline reg-nav F16 lh35px Fb">2</span>
+            </div>
+          </div>
+          <div class="fl wb33 text-center">
+            <div class="Fgray-2 F14 tit-col">注册成功</div>
+            <div class="mat10">
+              <span class="display-inline reg-nav F16 lh35px Fb">3</span>
+            </div>
+          </div>
+          
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="bor-solid-1a borc-gray01 pat50 pab120 mat40">
+        <!-- 第一步 -->
+        <div class="wb31 center">
+          <form>
+            <div class="bor-solid-1a borc-gray01 mat15">
+              <img class="middle pal15 par5" src="images/login-tb01.jpg">
+              <input type="text" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb85" placeholder="用户名">
+            </div>
+            <div class="bor-solid-1a borc-gray01 mat15">
+              <img class="middle pal15 par5" src="images/login-tb02.jpg">
+              <input type="password" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb85" placeholder="密码">
+            </div>
+            <div class="bor-solid-1a borc-gray01 mat15">
+              <div class="fl wb53">
+                <img class="middle pal10 par5" src="images/reg-tb01.jpg">
+                <input type="text" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb70" placeholder="验证码">
+              </div>
+              <div class="fr pat3 par10">
+                <img src="images/reg-yz.jpg" class="middle">
+                <a href="javascript:void(0)" title="点这里，刷新验证码" class="middle display-inline bor-solid-1a borc-gray01 warpper-white pa2 mal10">
+                  <img src="images/reg-tb02.jpg">
+                </a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15">
+              <input type="checkbox" class="middle mar5"><a href="javascript:void(0)" class="F12 fc-gray01 middle hover-red">《同意网站协议》</a>
+            </div>
+            <div class="mat15">
+              <input type="button" class="F16 Fwhite bgc-yellow01 radius5 bor-none wb100 h40px pointer Fb" value="下一步">
+            </div>
+          </form>
+        </div>
+        <!-- 第二步 -->
+        <div class="wb31 center">
+          <form>
+            <div class="h30px bgc-gray01 bor-solid-1a borc-gray01 bor-bottom-none">
+              <div class="js-binding-tit fl wb30 text-center h31px lh31px pointer Fgray-3 warpper-white">
+                <span class="F14">手机验证</span>
+              </div>
+              <div class="js-binding-tit fl wb30 text-center h31px lh31px pointer Fgray-3">
+                <span class="F14">邮箱验证</span>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="js-binding-box pa20 bor-solid-1a borc-gray01 hidden">
+              <div class="bor-solid-1a borc-gray01 mat20">
+                <img class="middle pal15 par5" src="images/login-tb01.jpg">
+                <input type="text" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb80" placeholder="手机号">
+              </div>
+              <div class="mat20">
+                <div class="fl wb53 bor-solid-1a borc-gray01">
+                  <img class="middle pal10 par5" src="images/reg-tb01.jpg">
+                  <input type="text" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb67" placeholder="验证码">
+                </div>
+                <div class="fr wb40">
+                  <input type="button" class="F14 h38px fc-gray02 pointer bor-solid-1a borc-gray01 bgc-gray01 radius5 wb100" value="获取短信">
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="mat20">
+                <input type="button" class="F16 Fwhite bgc-yellow01 radius5 bor-none wb100 h40px pointer Fb" value="完成">
+              </div>
+            </div>
+            <div class="js-binding-box pa20 bor-solid-1a borc-gray01 hidden">
+              <div class="bor-solid-1a borc-gray01 mat20">
+                <img class="middle pal15 par5" src="images/login-tb01.jpg">
+                <input type="text" class="F14 h18px lh18px fc-gray02 bor-none pat10 pab10 middle wb80" placeholder="邮箱">
+              </div>
+              <div class="mat20">
+                <input type="button" class="F16 Fwhite bgc-yellow01 radius5 bor-none wb100 h40px pointer Fb" value="进入邮箱">
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- 第三步 -->
+        <div class="wb31 center">
+          <div class="text-center">
+            <img class="middle" src="images/s01.jpg"><span class="F24 fc-gray02 mal10 middle">恭喜您！手机验证成功</span>
+          </div>
+          <div class="mat20 text-center">
+            <span class="F14 fc-gray02 mar30">您验证的手机号码：18561854851</span><a href="javascript:void(0)" class="F14 Fblue hover-red">逛商城</a>
+          </div>
+          
+          <div class="text-center">
+            <img class="middle" src="images/s01.jpg"><span class="F24 fc-gray02 mal10 middle">恭喜您！邮箱验证成功</span>
+          </div>
+          <div class="mat20 text-center">
+            <span class="F14 fc-gray02 mar30">您验证的邮箱号码：123465@163.com</span><a href="javascript:void(0)" class="F14 Fblue hover-red">逛商城</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+
+<!-- footer -->
+<div class="wb100 bor-gray bor-solid-2t warpper-gray-1">
+    	
+        <div class="w1200px center h200px">
+        	
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (37).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (38).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (39).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (40).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (41).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (42).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="w1200px center text-center F125em lh20px">
+        	<div class="wb14 fl mal1per">
+            	<img src="images/gqw (43).png">
+                <p class="Fb">100%</p>
+                <p>正品保障</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (44).png">
+                <p class="Fb">7天</p>
+                <p>无理由退货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (45).png">
+                <p class="Fb">每日</p>
+                <p>新品上新</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (46).png">
+                <p class="Fb">100%</p>
+                <p>质检流程</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (47).png">
+                <p class="Fb">全部商品</p>
+                <p>实物拍摄</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (48).png">
+                <p class="Fb">用心服务</p>
+                <p>闪电发货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (49).png">
+                <p class="Fb">400-888-888</p>
+                <p>客服热线</p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+         
+        <div class="w1200px center">
+        	<div class="wb80 center Fgray F125em text-center">
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <div class="clear1"></div>
+                <p class="Fgray-3">鲁ICP备140046号-2 © 2006-2015 guangqu.com All Rights Reserved. 逛出趣电商有限公司，禁止非法复制   </p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+    </div>
+</body>
+</html>

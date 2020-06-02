@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+
+    <title>提现</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| cash_page
+| ------------------------------------------
+| Here are cash_page html
+|
+-->
+
+<div id="cash_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+
+    <template v-if="addCard == true">
+        <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+            <div class="w50px h50px fl absolute" @click="addCard = false">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <p class="text-center Fwhite"> 银行卡绑定</p>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="wb100">
+
+            <div class="pal15 par15 relative F14 warpper-white">
+                <div style="padding-left: 80px;">
+                    <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                        开户姓名
+                    </div>
+                    <input type="text" class="bor-none wb100 h45px lh45px" v-model="name" placeholder="请输入真实姓名">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear bor-gray bor-solid-1b"></div>
+
+            <div class="pal15 par15 relative F14 warpper-white">
+                <div style="padding-left: 80px;">
+                    <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                        银行卡号
+                    </div>
+                    <input type="text" class="bor-none wb100 h45px lh45px" v-model="num1" placeholder="请输入银行卡号">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear bor-gray bor-solid-1b"></div>
+
+            <div class="pal15 par15 relative F14 warpper-white">
+                <div style="padding-left: 80px;">
+                    <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                        银行卡号
+                    </div>
+                    <input type="text" class="bor-none wb100 h45px lh45px" v-model="num2" placeholder="确认银行卡号">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="pa15">
+                <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5" :class="name.length>0 && num1.length>0 && num2.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="submit">确定</div>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="pa15 F12 lh20px Fgray-2">
+                <p class="Fred lh30px F14">温馨提示：</p>
+                <p>*请尽量填写您长期使用的银行卡</p>
+                <p>*银行卡开户姓名必须与您实名认证的姓名一致，否知提现申请将被退回</p>
+                <p>*目前暂不支持信用卡和存折账号提现，绑定时请使用银行借记卡（储蓄卡）</p>
+            </div>
+        </div>
+
+    </template>
+
+    <template v-if="addCard != true">
+
+        <div class="wb100">
+
+            <ticket-header :title="'提现'" :back="true"></ticket-header>
+
+            <div class="pa15">
+
+                <div class="pa15 bor-gray bor-solid-1a relative warpper-white F14" @click="showCardList">
+                    <img src="images/icon-bank.png" class="w50px h50px fl">
+
+                    <div class="w100px fl lh25px mal15">
+                        <p>{{bankCardList[0].bankName}}</p>
+                        <p class="F14 Fgray-3">{{bankCardList[0].cardTypeDesc}}</p>
+                    </div>
+                    <div class="w80px fr h50px lh50px">
+                        尾号{{bankCardList[0].bankCard}}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear1"></div>
+
+                <div class="clear1"></div>
+
+                <div class="wb100 h50px lh50px relative bor-gray bor-solid-1a">
+                    <div class="w50px fl h30px lh30px mat10 mal15 Fgray-3">金额</div>
+                    <input type="tel" class="bor-none wb75 h45px lh45px Fgray-3" v-model="money" placeholder="可提现100.00元" data-role="none">
+                </div>
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+
+                <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5 btn-login" :class="money.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="submit">确人提现</div>
+
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+
+                <div class="wb100 F12 lh20px Fgray-2">
+                    <p class="Fred lh30px F14">温馨提示：</p>
+                    <p>1、中奖金额在1小时后方可提现。</p>
+                    <p>2、为保障您的资金安全，我们将审核您的提现申请后再汇至您的  银行卡</p>
+                    <p>3、如您在提现时遇到问题，请致电客服：400-2121-2121</p>
+                    <p>4、网站活动奖金只能用户购彩，不可提现</p>
+                </div>
+
+            </div>
+
+            <div class="dialogBg" @click="hideCardList"></div>
+
+            <div class="card-area" :style="cardStyle">
+
+                <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+                    <div class="w50px h50px lh50px fl absolute Fwhite" style="top: 0; left: 15px;" @click="hideCardList">
+                        确定
+                    </div>
+                    <p class="text-center Fwhite"> 选择银行卡</p>
+                    <div class="w50px h50px lh50px fl absolute Fwhite text-right" style="top: 0; right: 15px;" @click="hideCardList">
+                        取消
+                    </div>
+                </div>
+
+                <div class="pal15 par15 F14" style="height: 200px; overflow-y: scroll;">
+                    <div class="clear1"></div>
+                    <template v-for="item in bankCardList">
+                        <div class="pa15 bor-gray bor-solid-1a relative warpper-white F14">
+                            <img src="images/icon-bank.png" class="w50px h50px fl">
+
+                            <div class="w100px fl lh25px mal15">
+                                <p>{{item.bankName}}</p>
+                                <p class="F14 Fgray-3">{{item.cardTypeDesc}}</p>
+                            </div>
+                            <div class="w80px fr h50px lh50px">
+                                尾号{{ item.bankCard}}
+                            </div>
+                            <img src="images/icon-selected.png" class="absolute h25px" style="top: 0; right: 0;" v-if="item.defaultCard == 1">
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear1"></div>
+                    </template>
+                </div>
+            </div>
+
+        </div>
+    </template>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#cash_page",
+        data : {
+            fullscreenLoading : true,
+            money : '',
+            addCard : true,
+            name: '',
+            num1: '',
+            num2: '',
+            bankCardList: [],
+            cardStyle :{
+                position: 'fixed',
+                bottom: '-240px',
+                left: 0,
+                zIndex:99999,
+                background: 'rgba(255,255,255,1)',
+                width: '100%',
+                height: '240px',
+                overflow: 'hidden',
+                transition : "all .3s"
+            },
+        },
+        methods : {
+            submit(){
+
+            },
+
+            hideCardList(e) {
+                this.cardStyle.bottom = "-240px";
+                $(".dialogBg").hide(0);
+            },
+
+            showCardList(e) {
+                if(this.cardStyle.bottom == "-5px"){
+                    this.cardStyle.bottom = "-240px";
+                }else{
+                    this.cardStyle.bottom = "-5px";
+                }
+                $(".dialogBg").show(0);
+            },
+
+            changeCard(){
+
+            },
+        },
+        created(){
+
+            let _this = this;
+
+            _this.showCardList();
+
+            baseAjax.bankCardList(function(data){
+                if(data){
+
+                    let _item = data.returnJSON;
+
+                    if(_item.length == 0){
+                        _this.addCard = true;
+                    }else{
+                        _this.addCard = false;
+                    }
+
+                    for(let i=0; i<_item.length; i++){
+
+                        if(_item.abbreviation == 'BOC'){
+                            _item.icon = 'images/bank-zgyh.png';
+                        }if(_item.abbreviation == 'CBC'){
+                            _item.icon = 'images/bank-jsyh.png';
+                        }if(_item.abbreviation == 'ABC'){
+                            _item.icon = 'images/bank-nyyh.png';
+                        }if(_item.abbreviation == 'ICBC'){
+                            _item.icon = 'images/bank-gsyh.png';
+                        }if(_item.abbreviation == 'CMSB'){
+                            _item.icon = 'images/bank-msyh.png';
+                        }if(_item.abbreviation == 'CMBC'){
+                            _item.icon = 'images/bank-zsyh.png';
+                        }
+
+                        _item[i].bankCard = _item[i].bankCard.substring(_item[i].bankCard.length-4);
+                    }
+
+                    _this.bankCardList = _item;
+
+                }else{
+                    window.location.href = 'add_bank_card.html';
+                }
+
+                setTimeout(function(){
+                    _this.fullscreenLoading = false;
+                    $("#user_bank_card_page").removeClass("hidden");
+                },ajaxConfig.lazy);
+
+            })
+
+            setTimeout(() => {
+                $("#cash_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+
+
+    })
+
+</script>
+
+</body>
+</html>

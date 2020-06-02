@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.Spinner.js"></script>
+<script>
+    $(function(){
+	  //
+	  $(".js-last").find("span:last").css("display","none");
+	  //数量加减
+	  $('.spinnerExample').spinner({});
+	  
+	  $(".js-tab .js-tab-til").click(function(){
+		 $(this).addClass("Fc-red01 borc-gray-2 warpper-white").siblings().removeClass("Fc-red01 borc-gray-2 warpper-white");
+		 
+		 var carnum = $(this).index();
+		 
+		 $(".js-tab-con").hide();
+		 $(".js-tab-con:eq("+carnum+")").show();
+	  });
+
+	});
+    </script>
+</head>
+
+<body>
+<!-- header -->
+<div class="header wb100">
+  <div class="top h30px lh30px F12 Fgray-3 bgc-gray-1 bor-solid-1b borc-gray-1">
+    <div class="w1200px center">
+      <div class="fl">
+        <span>您好，欢迎光临本店！</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">登录</a>]</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">免费注册</a>]</span>
+      </div>
+      <div class="fr wb47">
+        <ul>
+          <li class="fl">
+            <a class="Fgray-3" href="javascript:void(0)">我的订单<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">用户中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">帮助中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">商家入住</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">收藏我们</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <p class="Fgray-3">服务热线：<span class="Fred-2 Fb">400-8000-800</span></p>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="w1200px center">
+    <div class="pat30 pab30">
+      <div class="fl">
+        <a href="javascript:void(0)"><img src="images/logo.jpg"></a>
+      </div>
+      <div class="fr wb42">
+        <ul>
+          <li class="fl wb25">
+            <div class="h20px lh20px text-center mab5">
+              <span class="F12 Fred-1">订单提交</span>
+            </div>
+            <div class="bg-img-18 h32px lh32px text-center">
+              <span class="F16 Fb Fred-1">1</span>
+            </div>
+          </li>
+          <li class="fl wb25">
+            <div class="h20px lh20px text-center mab5">
+              <span class="F12 Fgray-2">确认支付信息</span>
+            </div>
+            <div class="bg-img-17 h32px lh32px text-center">
+              <span class="F16 Fb Fwhite">2</span>
+            </div>
+          </li>
+          <li class="fl wb25">
+            <div class="h20px lh20px text-center mab5">
+              <span class="F12 Fgray-2">支付订单</span>
+            </div>
+            <div class="bg-img-17 h32px lh32px text-center">
+              <span class="F16 Fb Fwhite">3</span>
+            </div>
+          </li>
+          <li class="fl wb25">
+            <div class="h20px lh20px text-center mab5">
+              <span class="F12 Fgray-2">确认收货</span>
+            </div>
+            <div class="bg-img-17 h32px lh32px text-center">
+              <span class="F16 Fb Fwhite">4</span>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- body -->
+<div class="w1200px center">
+  <div class="">
+    <div class="h30px lh30px pal10"><span class="F18 Fgray-3">我的购物车</span></div>
+    <div class="bor-solid-1a borc-gray-2 bor-solid-3t h40px lh40px pal20 bgc-gray-2" style="border-top-color:#ec4141;">
+      <div class="fl"><span class="F16 Fred-1">全部商品</span><span class="F16 Fred-1 mal10">11</span></div>
+      <div class="fr mar20">
+        <span class="F12 Fgray-3">已选商品（不含运费）：</span>
+        <span class="F14 Fred-1 mar20">￥18656.00</span>
+        <a class="display-inline h25px lh25px warpper-red-5 radius5 F12 Fwhite pal10 par10" href="javascript:void(0)">去结算</a>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="">
+    <form>
+      <div class="pat20 pab20 pal30 par30">
+        <div class="fl wb10 text-center">
+          <input type="checkbox" class="middle mar5"><span class="F12 Fgray-3 middle">全选</span>
+        </div>
+        <div class="fl wb26 text-center">
+          <span class="F12 Fgray-3">商品信息</span>
+        </div>
+        <div class="fl wb30 text-center">
+          <span class="F12 Fgray-3">单价（元）</span>
+        </div>
+        <div class="fl wb10 text-center">
+          <span class="F12 Fgray-3">数量</span>
+        </div>
+        <div class="fl wb10 text-center">
+          <span class="F12 Fgray-3">金额（元）</span>
+        </div>
+        <div class="fl wb10 text-center pal20">
+          <span class="F12 Fgray-3">操作</span>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="">
+        <ul>
+          <li class="mab20">
+            <div class="">
+              <input type="checkbox" class="middle mar5"><a class="F12 Fgray-3 middle" href="javascript:void(0)">店铺：极美家居</a><a class="mal10" href="javascript:void(0)"><img class="middle" src="images/tp-056.jpg" /></a>
+            </div>
+            <div class="pat20 pab20 pal30 par30 bor-solid-1a borc-gray-2 mat5">
+              <div class="fl wb2">
+                <input type="checkbox" class="mat20">
+              </div>
+              <div class="fl wb8 h85px img-area mar10">
+                <a href="javascript:void(0)"><img class="middle" src="images/tp-057.jpg" /></a>
+              </div>
+              <div class="fl wb25">
+                <p class="h40px lh20px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+                <p class="mat10"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+              </div>
+              <div class="fl wb30 text-center pat20">
+                <p><span class="F14 Fgray-2 FLine">￥4855</span></p>
+                <p class="mat10"><span class="F14 Fgray-3">￥2808</span></p>
+              </div>
+              <div class="fl wb10 text-center pat25">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="fl wb10 text-center lh85px">
+                <span class="F14 Fred-1 Fb">￥2808</span>
+              </div>
+              <div class="fl wb10">
+                <div class="pat20 pal45">
+                  <p><a class="F12 Fgray-3" href="javascript:void(0)">移入收藏夹</a></p>
+                  <p class="mat10"><a class="F12 Fgray-3" href="javascript:void(0)">删除</a></p>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+          <li class="mab20">
+            <div class="">
+              <input type="checkbox" class="middle mar5"><a class="F12 Fgray-3 middle" href="javascript:void(0)">店铺：极美家居</a><a class="mal10" href="javascript:void(0)"><img class="middle" src="images/tp-056.jpg" /></a>
+            </div>
+            <div class="pat20 pab20 pal30 par30 bor-solid-1a borc-gray-2 mat5">
+              <div class="fl wb2">
+                <input type="checkbox" class="mat20">
+              </div>
+              <div class="fl wb8 h85px img-area mar10">
+                <a href="javascript:void(0)"><img class="middle" src="images/tp-057.jpg" /></a>
+              </div>
+              <div class="fl wb25">
+                <p class="h40px lh20px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+                <p class="mat10"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+              </div>
+              <div class="fl wb30 text-center pat20">
+                <p><span class="F14 Fgray-2 FLine">￥4855</span></p>
+                <p class="mat10"><span class="F14 Fgray-3">￥2808</span></p>
+              </div>
+              <div class="fl wb10 text-center pat25">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="fl wb10 text-center lh85px">
+                <span class="F14 Fred-1 Fb">￥2808</span>
+              </div>
+              <div class="fl wb10">
+                <div class="pat20 pal45">
+                  <p><a class="F12 Fgray-3" href="javascript:void(0)">移入收藏夹</a></p>
+                  <p class="mat10"><a class="F12 Fgray-3" href="javascript:void(0)">删除</a></p>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+          <li class="mab20">
+            <div class="">
+              <input type="checkbox" class="middle mar5"><a class="F12 Fgray-3 middle" href="javascript:void(0)">店铺：极美家居</a><a class="mal10" href="javascript:void(0)"><img class="middle" src="images/tp-056.jpg" /></a>
+            </div>
+            <div class="pat20 pab20 pal30 par30 bor-solid-1a borc-gray-2 mat5">
+              <div class="fl wb2">
+                <input type="checkbox" class="mat20">
+              </div>
+              <div class="fl wb8 h85px img-area mar10">
+                <a href="javascript:void(0)"><img class="middle" src="images/tp-057.jpg" /></a>
+              </div>
+              <div class="fl wb25">
+                <p class="h40px lh20px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+                <p class="mat10"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+              </div>
+              <div class="fl wb30 text-center pat20">
+                <p><span class="F14 Fgray-2 FLine">￥4855</span></p>
+                <p class="mat10"><span class="F14 Fgray-3">￥2808</span></p>
+              </div>
+              <div class="fl wb10 text-center pat25">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="fl wb10 text-center lh85px">
+                <span class="F14 Fred-1 Fb">￥2808</span>
+              </div>
+              <div class="fl wb10">
+                <div class="pat20 pal45">
+                  <p><a class="F12 Fgray-3" href="javascript:void(0)">移入收藏夹</a></p>
+                  <p class="mat10"><a class="F12 Fgray-3" href="javascript:void(0)">删除</a></p>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+          <li class="mab20">
+            <div class="">
+              <input type="checkbox" class="middle mar5"><a class="F12 Fgray-3 middle" href="javascript:void(0)">店铺：极美家居</a><a class="mal10" href="javascript:void(0)"><img class="middle" src="images/tp-056.jpg" /></a>
+            </div>
+            <div class="pat20 pab20 pal30 par30 bor-solid-1a borc-gray-2 mat5">
+              <div class="fl wb2">
+                <input type="checkbox" class="mat20">
+              </div>
+              <div class="fl wb8 h85px img-area mar10">
+                <a href="javascript:void(0)"><img class="middle" src="images/tp-057.jpg" /></a>
+              </div>
+              <div class="fl wb25">
+                <p class="h40px lh20px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+                <p class="mat10"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+              </div>
+              <div class="fl wb30 text-center pat20">
+                <p><span class="F14 Fgray-2 FLine">￥4855</span></p>
+                <p class="mat10"><span class="F14 Fgray-3">￥2808</span></p>
+              </div>
+              <div class="fl wb10 text-center pat25">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="fl wb10 text-center lh85px">
+                <span class="F14 Fred-1 Fb">￥2808</span>
+              </div>
+              <div class="fl wb10">
+                <div class="pat20 pal45">
+                  <p><a class="F12 Fgray-3" href="javascript:void(0)">移入收藏夹</a></p>
+                  <p class="mat10"><a class="F12 Fgray-3" href="javascript:void(0)">删除</a></p>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+          <li class="mab20">
+            <div class="">
+              <input type="checkbox" class="middle mar5"><a class="F12 Fgray-3 middle" href="javascript:void(0)">店铺：极美家居</a><a class="mal10" href="javascript:void(0)"><img class="middle" src="images/tp-056.jpg" /></a>
+            </div>
+            <div class="pat20 pab20 pal30 par30 bor-solid-1a borc-gray-2 mat5">
+              <div class="fl wb2">
+                <input type="checkbox" class="mat20">
+              </div>
+              <div class="fl wb8 h85px img-area mar10">
+                <a href="javascript:void(0)"><img class="middle" src="images/tp-057.jpg" /></a>
+              </div>
+              <div class="fl wb25">
+                <p class="h40px lh20px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+                <p class="mat10"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+              </div>
+              <div class="fl wb30 text-center pat20">
+                <p><span class="F14 Fgray-2 FLine">￥4855</span></p>
+                <p class="mat10"><span class="F14 Fgray-3">￥2808</span></p>
+              </div>
+              <div class="fl wb10 text-center pat25">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="fl wb10 text-center lh85px">
+                <span class="F14 Fred-1 Fb">￥2808</span>
+              </div>
+              <div class="fl wb10">
+                <div class="pat20 pal45">
+                  <p><a class="F12 Fgray-3" href="javascript:void(0)">移入收藏夹</a></p>
+                  <p class="mat10"><a class="F12 Fgray-3" href="javascript:void(0)">删除</a></p>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <div class="bor-solid-1a borc-gray-2 h50px lh50px pal20 bgc-gray-2">
+    <div class="fl"><input type="checkbox" class="middle mar5"><a href="javascript:void(0)" class="F12 Fgray-3 middle">删除选中商品</a></div>
+    <div class="fr mar20">
+      <span class="F12 Fgray-3">已选商品<b class="pal5 par5 Fred-1 F14">0</b>件</span>
+      <span class="F12 Fgray-3">商品总价（不含运费）：</span>
+      <span class="F18 Fred-1 mar20">￥18656.00</span>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="mat10">
+    <div class="fl">
+      <a class="display-inline h35px lh35px bgc-gray-2 radius5 F14 Fgray-3 pal20 par20" href="javascript:void(0)">继续购物</a>
+    </div>
+    <div class="fr mar20">
+      <a class="display-inline h35px lh35px warpper-red-5 radius5 F18 Fwhite pal20 par20" href="javascript:void(0)"><img class="middle" src="images/tp-059.jpg"><span class="middle mal10">确认结算</span></a>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="mat30">
+    <div class="js-tab bor-solid-1b borc-gray-2" style="height:31px;">
+      <div class="fl js-tab-til F14 Fgray-3 Fc-red01 h32px lh32px pal20 par20 bor-solid-1a bor-white bor-bottom-none borc-gray-2 warpper-white pointer"><span>购买了同样商品的顾客还购买了</span></div>
+      <div class="fl js-tab-til F14 Fgray-3 h32px lh32px pal20 par20 bor-solid-1a bor-white bor-bottom-none pointer"><span>最近浏览过</span></div>
+      <div class="fl js-tab-til F14 Fgray-3 h32px lh32px pal20 par20 bor-solid-1a bor-white bor-bottom-none pointer"><span>猜你喜欢</span></div>
+      <div class="clear"></div>
+    </div>
+    <!-- 购买了同样商品的顾客还购买了 -->
+    <div class="js-tab-con bor-solid-1a borc-gray-2 bor-top-none pat15 pab20">
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-058.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-058.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-058.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-058.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-058.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!-- 最近浏览过 -->
+    <div class="js-tab-con bor-solid-1a borc-gray-2 bor-top-none pat15 pab20 hidden">
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-060.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-060.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-060.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-060.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-060.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!-- 猜你喜欢 -->
+    <div class="js-tab-con bor-solid-1a borc-gray-2 bor-top-none pat15 pab20 hidden">
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-061.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-061.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-061.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-061.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="fl wb18 mal20">
+        <p class="wb100 h160px img-area"><a href="javascript:void(0)"><img src="images/tp-061.jpg"></a></p>
+        <p class="mat10 h35px lh18px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床 </a></p>
+        <p class="mat10"><span class="F14 Fred-1">¥2808</span></p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer mat25"> 
+  <div class="wb100 warpper-red-4">
+    <div class="w1200px center h92px">
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-01.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">正规渠道 正品行货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">购物有保障</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-02.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">网站 门店多渠道购物</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">货到付款</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-03.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">48小时价格保护</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">降价可退差额</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-04.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">先行赔付</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">一站式售后服务</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-05.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">七天无理由退货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">15天换货</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="w1200px center">
+    <div class="mat30">
+      <div class="fl wb80">
+        <ul>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-2 pal25">关于我们</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">居家介绍</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网站快讯</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-3 pal25">新手指南</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">会员注册</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">购物流程</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">买家指南</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">找回密码</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-4 pal25">支付/配送</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">商品验货与签收</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">配送时间与范围</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">支付常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网上支付</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-5 pal25">售后服务</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">7天低价保证政策</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">退换货政策</a></p>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="fr wb20">
+        <div class="text-center">
+          <p><span class="F16 Fgray-3">居家策官方微信</span></p>  
+          <p class="mat25"> <img src="images/erweima.jpg" /> </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="bor-solid-1b bor-gray2 mat50 mab20"></div>
+    <div class="text-center h20px lh20px js-last">
+      <a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">广告服务</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">新闻公告</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">意见反馈</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">诚聘英才</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+    </div>
+    <div class="text-center mat10">
+      <p class="F12 Fgray-2 mab10">经营许可证：B2-20100288 备案许可证：苏 出版经营许可证：苏</p>
+      <p class="F12 Fgray-2">居家策 JUJIACE.COM 版权所有</p>
+    </div>
+    <div class="mat20 text-center mab50">
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-07.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-08.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-09.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-010.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-011.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-012.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-013.jpg" /></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

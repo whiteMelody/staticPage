@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/hostSdk.js?v=1"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <style>
+
+        .el-radio__input.is-checked .el-radio__inner{border-color: #48a44a;background: #48a44a;}
+        .el-radio__inner:hover{border-color: #48a44a;}
+        .el-radio__input.is-focus .el-radio__inner{border-color: #48a44a;}
+    </style>
+
+    <title>充值</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| recharge_page
+| ------------------------------------------
+| Here are recharge_page html
+|
+-->
+
+<div id="recharge_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <!--支付完成弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showResult == true" @click="calRecharge"></div>
+    <div class="w270px h150px fixed warpper-white Fgray-3 lh45px radius5 F16 text-center" v-show="showResult == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 9999;">
+        <div class="wb100">
+            <p class="h60px lh60px Fblack">请确认充值是否已完成</p>
+            <p class="bor-gray bor-solid-1b bor-solid-1t Fred" @click="doneRecharge">已完成充值</p>
+            <p class="Fgray-2" @click="recharge">充值遇到问题，重新充值</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <p class="warpper-white pal15 par15 h45px lh45px">
+            请选择充值金额<span class="Fgray-2">（<span class="Fnum">1</span>元=<span class="Fnum">1</span>金币）</span>
+        </p>
+
+        <div class="pal15 Fgray-3 F14 lh40px warpper-white">
+
+            <div class="par15">
+                <el-row :gutter="15">
+                    <el-col :span="8" v-for="(item,key) in moneys">
+                        <div @click="money = item" class="wb100 h40px lh40px text-center F16 radius5 mab15 Fnum" :class="money == item ? 'warpper-green Fwhite pa1' : 'bor-green bor-solid-1a Fgray-3'">
+                            {{item}}元
+                        </div>
+                    </el-col>
+                    <el-col :span="8">
+                        <div class="wb100 h40px lh40px text-center F14 radius5 mab15 Fnum bor-green bor-solid-1a Fgray-3">
+                            <div class="relative pal5 par20">
+                                <input type="tel" class="bor-none wb100 F16" placeholder="其他金额" v-model="money">
+                                <span class="absolute" style="top: 0; right: 5px;">元</span>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+
+            <div class="clear1"></div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 Fgray-3 F16 lh40px warpper-white">
+            <p>选择支付方式</p>
+
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <div class="clear1"></div>
+            <div class="wb100">
+
+                <template v-if="showAliPay == true">
+                    <p class="h30px lh30px wb100" @click="radio = 0">
+                        <span class="fl h30px lh30px"> <img src="images/alipay.png" class="h30px fl mar5">支付宝 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="0">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear h5px bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                </template>
+
+                <template v-if="showWxPay == true">
+                    <p class="h30px lh30px wb100" @click="radio = 1">
+                        <span class="fl h30px lh30px"> <img src="images/wxpay.png" class="h30px fl mar5">微信 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="1">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear"></div>
+                </template>
+                <div class="clear1"></div>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pa15">
+            <div class="wb100 warpper-green Fwhite h45px lh45px text-center radius5 F16" @click="recharge">
+                立即充值
+            </div>
+        </div>
+
+    </div>
+    <div class="wb100 payHtml hidden"></div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#recharge_page",
+        data: {
+            fullscreenLoading: true,
+            showResult: false,
+            login: false,
+            showAliPay: true,
+            showWxPay: true,
+            money: 0.01,
+            paymentNo: '',
+            infoMsg: '',
+            call: '',
+            user: {},
+            timerID: 0,
+            timer: 0,
+            title: '充值',
+            state: '',
+            radio: 1,
+            moneys: [50, 100, 300, 500, 1000],
+            favDisabled: false,
+            res: ""
+        },
+        methods: {
+
+            doneRecharge: function doneRecharge() {
+
+                var paymentNo = base.getCookie('paymentNo');
+
+                if (base.isNull(paymentNo))
+                    return false;
+
+                var payType = base.getCookie('payType');
+
+                if (base.isNull(payType))
+                    return false;
+
+                var _this = this;
+
+                _this.showResult = false;
+
+                baseAjax.payResultQuery(paymentNo, payType, function (data, errorMsg) {
+                    if (data) {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+                        window.location.replace('pay_success.html');
+//                        window.history.go(-1);
+                    } else {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+                    }
+                });
+
+            },
+
+            calRecharge: function calRecharge() {
+                base.setCookie('paymentNo', null);
+                base.setCookie('payIng', null);
+                base.setCookie('payType', null);
+                base.setCookie('payMoney', null);
+                this.showResult = false;
+            },
+
+            recharge: function recharge() {
+                hostsdk.openLink({
+                    type:"push",
+                    url:"http://h5.pwabc.cn/app/pay_success.html"
+                });
+                var _this = this;
+
+                if (_this.favDisabled)
+                    return;
+
+                if (_this.login === false) {
+                    hostsdk.login();
+                    return false;
+                }
+
+                //判断金额
+                if (base.isNull(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function () {
+                        _this.favDisabled = false;
+                    }, 1500);
+
+                    return false;
+                }
+
+                if (isNaN(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function () {
+                        _this.favDisabled = false;
+                    }, 1500);
+
+                    return false;
+                }
+
+//                if (_this.money < 1) {
+//                    _this.$message({
+//                        type: 'error',
+//                        message: '充值需大于1元'
+//                    });
+//                    return false;
+//                }
+
+//                if (_this.login) {
+//                    var tradeMoney = parseInt(base.twoDecimal(_this.money * 100));
+//                    var _url = 'http://h5.pwabc.cn/app/pay_result.html';
+//                    if(_this.radio === 0){
+//                        //支付宝
+//                        baseAjax.alipayWapForApp(tradeMoney, _url, '', '', function (data) {
+//                            var index1 = data.indexOf('"out_trade_no":"');
+//                            var index2 = data.indexOf('",', index1);
+//                            var orderNo = data.substring(index1 + 16, index2);
+//                            alert("订单号:" + orderNo);
+//                            data = data.replace('POST', 'GET');
+//                            $(".payHtml").html(data);
+//
+//                            base.setCookie('paymentNo', orderNo);
+//                            base.setCookie('payIng',true);
+//                            base.setCookie('payType',0);
+//                            base.setCookie('payMoney',_this.money);
+//                            //设置支付状态
+//                            base.setCookie('calOrder',true);
+//                            _this.showResult = true;
+//                        });
+//                    }else{
+//                        //微信
+//                        baseAjax.wxWebPay(tradeMoney, '', '',function (data) {
+//                            if(data){
+//                                var orderNo = data.returnJSON.orderNo;
+//                                alert("订单号:" + orderNo);
+//                                window.location.href = data.returnJSON.mweb_url + '&redirect_url=' + _url;
+//                                base.setCookie('payIng',true);
+//                                base.setCookie('paymentNo', orderNo);
+//                                base.setCookie('payType',1);
+//                                base.setCookie('payMoney',_this.money);
+//                                //设置支付状态
+//                                base.setCookie('calOrder',true);
+//                                //_this.showResult = true;  微信不用设置是因为微信支付会刷新页面，created函数里面做了判断，设置了为true
+//                            }
+//                        });
+//                    }
+//                }
+            }
+        },
+        created: function created() {
+            var _this = this;
+            initHostSdk(function (data) {
+                //初始化状态
+                if (data) {
+                    if (base.isNull(data.uuid)) {
+                        _this.login = false;
+                    } else {
+                        _this.login = true;
+                    }
+                } else {
+                    _this.login = false;
+                }
+
+                hostsdk.setLeftIcon({
+                    params:"custom",
+                    text:"左",
+                    successCallback:function (res) {},
+                    errorCallback:function (res) {},
+                    leftClicked:function (res) {
+                        alert("点左边");
+                    }
+                });
+
+                hostsdk.setRightIcon({
+                    params:"custom",
+                    text:"右边",
+                    successCallback:function (res) {},
+                    errorCallback:function (res) {},
+                    rightClicked:function (res) {
+                        alert("点右边");
+                    }
+                });
+            });
+
+            //判断充值状态
+            _this.call = base.getParmar('call');
+            var _money = base.getParmar('money');
+            if (base.isNull(_money)) {
+                //上一个未支付订单
+                _money = base.getCookie('payMoney');
+                if (base.isNull(_money)) {
+                    _money = 50;
+                }
+            }
+
+            //判断是否存在未支付的订单
+            var paymentNo = base.getCookie('paymentNo');
+            if (base.isNull(paymentNo)) {
+                return false;
+            }
+            var payIng = base.getCookie('payIng');
+            if (base.isNull(payIng)) {
+                return false;
+            }
+            var payType = base.getCookie('payType');
+            if (base.isNull(payType)) {
+                return false;
+            } else {
+                _this.radio = parseInt(payType);
+            }
+
+            //获取上一个失败或取消的订单
+            var calOrder = base.getCookie('calOrder');
+
+            if (!base.isNull(calOrder)) {
+                if (payType === "1") {
+                    _this.showResult = true;
+                }
+                base.setCookie('calOrder', null);
+                return false;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

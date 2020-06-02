@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/dropload.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>热门音频</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| audio_list_page
+| ------------------------------------------
+| Here are audio_list_page html
+|
+-->
+<div id="audio_list_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="audio_list_page_content hidden wb100">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="'热门音频'"></en-header-new>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <layout-lesson-list :datas="list" :size="50"></layout-lesson-list>
+
+        <div class="clear"></div>
+
+        <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+            <img src="images/loading-2.gif" v-show="nodata" class="h20px fl">
+            <span class="fl mal10">{{loadtext}}</span>
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#audio_list_page",
+        data : {
+            showLoader : true,
+            list : [],
+            pageSize : 20,
+            page : 0,
+            height : 0,
+            height2 : 0,
+            loading : true,
+            loadtext : '数据加载中',
+            nodata : false,
+        },
+        methods : {
+            getData(){
+                let _this = this;
+                _this.page ++;
+                _this.loading = true;
+                baseAjax.getHotAudioList(_this.pageSize, _this.page, function(data){
+
+                    if(data.returnJSON.length == 0 || data.returnJSON.length < _this.pageSize){
+                        _this.loading = true;
+                        _this.loadtext = '暂无更多数据';
+                        return false;
+                    }
+
+                    _this.list = _this.list.concat(data.returnJSON);
+                    _this.loading = false;
+                })
+            }
+        },
+        created(){
+
+            let _this = this;
+
+            _this.height2 = Math.ceil(($(window).width() - 60) / 3);
+
+            _this.getData();
+            $(window).scroll(function(){
+                if(_this.nodata)
+                    return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if(scrollTop + windowHeight == scrollHeight){
+                     _this.getData();
+                }
+            });
+
+            setTimeout(function(){
+                _this.showLoader = false;
+                $(".audio_list_page_content").removeClass("hidden");
+            },ajaxConfig.lazy);
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

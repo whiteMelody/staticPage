@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>大乐透</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| lottery_dlt_page
+| ------------------------------------------
+| Here are lottery_dlt_page html
+|
+-->
+
+<div id="lottery_dlt_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+            <a href="index.html">
+                <div class="w50px h50px fl absolute">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+            </a>
+
+            <template v-if="currentNav==0">
+            <p class="text-center Fwhite" @click="swicthDuplex" v-if="duplex == true">大乐透-胆拖 <img src="images/arrow-down-white.png" class="h10px"> </p>
+            <p class="text-center Fwhite" @click="swicthDuplex" v-else>大乐透-普通 <img src="images/arrow-down-white.png" class="h10px"> </p>
+            </template>
+
+            <template v-if="currentNav==1">
+                <p class="text-center Fwhite" >
+                    开奖
+                </p>
+            </template>
+
+            <template v-if="currentNav==2">
+                <p class="text-center Fwhite" >
+                    规则
+                </p>
+            </template>
+
+                <!--<div class="w20px h20px img-area absolute" style="top:5px; right: 15px;">-->
+                    <!--<a href="trend_synthesize.html"><img src="images/icon-trend.png"></a>-->
+                <!--</div>-->
+
+        </div>
+
+        <div class="dialogBg" @click="showDuplex = false" v-show="showDuplex == true"></div>
+        <div class="wb100 h40px text-center warpper-white" v-show="showDuplex == true" style="position: fixed; z-index: 99;">
+            <el-row>
+                <el-col :span="12" class="h40px lh40px">
+
+                    <div class="wb100 h40px" @click="empty();showDuplex = false; duplex = false;">
+                        <span :class="duplex == true ? 'Fgray-3' : 'bor-red bor-solid-2b Fgray-3 pab5'">大乐透-普通</span>
+                    </div>
+
+                </el-col>
+                <el-col :span="12" class="h40px lh40px" @click="hideDuplex(1)">
+                    <div class="wb100 h40px" @click="empty();showDuplex = false; duplex = true;">
+                        <span :class="duplex == true ? 'bor-red bor-solid-2b Fgray-3 pab5' : 'Fgray-3'">大乐透-胆拖</span>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+        <div class="wb100 h40px lh40px text-center Fgray-3">
+            <el-row>
+                <el-col :span="8" v-for="(item,key) in nav">
+                    <div @click="changeNav(key)" class="h40px lh40px wb100">
+                        <span :class="key == currentNav ? 'bor-red bor-solid-2b Fblack pab8' : 'Fblack'">{{item}}</span>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+
+        <template v-if="currentNav == 0">
+
+            <div class="warpper-gray-3 wb100 h40px bor-solid-1t bor-solid-1b bor-gray" >
+
+                <div class="h40px lh40px pal15 par15">
+
+                    <div class="fl bor-red bor-solid-3l pal5 F14 Fgray-3 h20px mat10"></div><span class="F14 Fgray-3">第{{current.number}}期</span>
+
+                    <span class="Fgray-2 fr F14" @click="switchHistory">
+                        {{current.endTime}}截止
+                        <img src="images/arrow-down.png" class="w15px" v-show="showHistory == false">
+                        <img src="images/arrow-up.png" class="w15px" v-show="showHistory == true">
+                    </span>
+
+                </div>
+            </div>
+
+            <el-collapse-transition>
+                <div v-show="showHistory">
+                    <div class="pal15 par15 " style="padding-left: 23px;">
+                        <template v-for="item in history">
+                            <p class="lh30px F14">
+                        <span class="fl Fgray-3">
+                            第{{item.number}}期
+                        </span>
+                                <span class="fr Fblue mal15">{{item.blueBall}}</span>
+                                <span class="fr Fred">{{item.redBall}}</span>
+                            </p>
+                            <div class="clear"></div>
+                        </template>
+                        <div class="clear1"></div>
+                    </div>
+                </div>
+            </el-collapse-transition>
+
+
+            <template v-if="!duplex">
+                <p class="lh50px h50px Fgray-2 F14 pal15 par15">
+                    请至少选择5个红球2个蓝球
+                </p>
+
+
+
+                <div class="pal15">
+                    <template v-for="(item,key) in redBall">
+                        <div class="radius50per text-center fl mar10 mab10 F16" @click="selectBall(key,'red')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <template v-for="(item,key) in blueBall">
+                        <div class="radius50per text-center fl mar10 mab10 F16" @click="selectBall(key,'blue')" :class="item.value == true ? 'warpper-blue Fwhite pa1' : 'bor-solid-1a bor-gray2 Fblue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template v-else>
+                <p class="lh50px h50px Fgray-2 F14 pal15 par15">
+                    <span class="Fred fl mar10">前区胆码</span>
+                    <span class="Fgray-2 fl">选择您认为必出的红球（1~4个）</span>
+                </p>
+
+
+
+                <div class="pal15">
+                    <template v-for="(item,key) in duplexRedBall1">
+                        <div v-if="item.disable == true" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar10 mab10 F16">
+                            {{item.num}}
+                        </div>
+                        <div v-else class="radius50per text-center fl mar10 mab10 F16" @click="selectDuplexBall(key,'red1')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+
+                <div class="clear"></div>
+
+                <p class="lh40px h40px Fgray-2 F14 pal15 par15">
+                    <span class="Fred fl mar10">前区拖码</span>
+                    <span class="Fgray-2 fl">选择您认为必出的红球（2~16个）</span>
+                </p>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <template v-for="(item,key) in duplexRedBall2">
+
+                        <div v-if="item.disable == true" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar10 mab10 F16" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+
+                        <div v-else class="radius50per text-center fl mar10 mab10 F16" @click="selectDuplexBall(key,'red2')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+
+                <div class="clear"></div>
+
+                <p class="lh40px h40px Fgray-2 F14 pal15 par15">
+                    <span class="Fblue fl mar10">后区胆码</span>
+                    <span class="Fgray-2 fl">选择您认为必出的号码（0~1个）</span>
+                </p>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <template v-for="(item,key) in duplexBlueBall1">
+                        <div v-if="item.disable == true" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar10 mab10 F16" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                        <div v-else class="radius50per text-center fl mar10 mab10 F16" @click="selectDuplexBall(key,'blue1')" :class="item.value == true ? 'warpper-blue Fwhite pa1' : 'bor-solid-1a bor-gray2 Fblue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+
+                <div class="clear"></div>
+
+                <p class="lh40px h40px Fgray-2 F14 pal15 par15">
+                    <span class="Fblue fl mar10">后区托码</span>
+                    <span class="Fgray-2 fl">选择您认为必出的号码（2~12个）</span>
+                </p>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <template v-for="(item,key) in duplexBlueBall2">
+                        <div v-if="item.disable == true" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar10 mab10 F16" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                        <div v-else class="radius50per text-center fl mar10 mab10 F16" @click="selectDuplexBall(key,'blue2')" :class="item.value == true ? 'warpper-blue Fwhite pa1' : 'bor-solid-1a bor-gray2 Fblue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                            {{item.num}}
+                        </div>
+                    </template>
+                </div>
+
+            </template>
+
+            <div class="clear h65px"></div>
+
+            <div class="wb100 bor-gray bor-solid-1t fixed warpper-white relative h60px" style="bottom: 0;">
+                <div class="pat10 pab10">
+                    <div class="w25px text-center absolute" @click="clearSelect" style="left: 15px; top: 10px;">
+                        <div class="h25px img-Harea center">
+                            <img src="images/icon-clear.png">
+                        </div>
+
+                        <div class=" bor-gray bor-solid-1l h50px absolute " style="margin-top: -30px;margin-left: 32px"></div>
+
+                        <p class="Fgray-2 F12 h25px lh25px text-center">清空</p>
+                    </div>
+
+                    <div class="w25px text-center absolute" style="left: 55px; top: 10px;" @click="randomSelect" v-if="duplex == false">
+                        <div class="h25px img-Harea center">
+                            <img src="images/random.png">
+                        </div>
+                        <p class="Fgray-2 F12 h25px lh25px text-center">机选</p>
+                    </div>
+
+                    <div class="w80px text-center radius5 h40px lh40px absolute" style="top: 10px; right: 15px;" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'"  @click="buyTicket">
+                        确定
+                    </div>
+
+                    <div class="w200px center">
+
+                        <p class="lh50px text-center">
+                            <span class="Fred">{{number}}</span>注
+                            <span class="Fred">{{number * 2}}</span>元
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </template>
+
+        <template v-if="currentNav==1">
+            <ticket-notice :lottery_type="'dlt'"></ticket-notice>
+        </template>
+
+        <template v-if="currentNav==2">
+            <ticket-rule :lottery="4"></ticket-rule>
+        </template>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lottery_dlt_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            nav : [ '投注', '开奖', '规则'],
+            currentNav : 0,
+            current : {
+                number : '',
+                endTime : ''
+            },
+            number : 0,
+            ticketID : '',
+            lock : true,
+            duplex : false,
+            showHistory : false,
+            showDuplex : false,
+            history : [],
+            redBall : [],
+            blueBall : [],
+            duplexRedBall1 : [],
+            duplexRedBall2 : [],
+            duplexBlueBall1 : [],
+            duplexBlueBall2 : [],
+        },
+        methods : {
+            selectBall(i,type){
+
+                let _this = this;
+
+                if(type == 'red'){
+                    _this.redBall[i].value = !_this.redBall[i].value;
+                }
+                if(type == 'blue'){
+                    _this.blueBall[i].value = !_this.blueBall[i].value;
+                }
+
+                _this.calculate();
+
+            },
+
+            calculate(){
+
+                let _this = this;
+
+                let result = 0;
+
+                if(_this.duplex == false){
+                    //普通
+                    let _r = 0;
+                    let _b = 0;
+
+                    for(let i=0; i<_this.redBall.length; i++){
+                        let _ball = _this.redBall[i];
+                        if(_ball.value == true){
+                            _r ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.blueBall.length; i++){
+                        let _ball = _this.blueBall[i];
+                        if(_ball.value == true){
+                            _b ++;
+                        }
+                    }
+
+                    if(_r > 4 && _b > 1){
+                        result = ( base.factorial(_b) / ( base.factorial(2) * base.factorial(_b - 2 )) )   *  ( base.factorial(_r) / ( base.factorial(5) * base.factorial(_r - 5 )) );
+                    }
+
+                }else{
+                    let _r1 = 0;        //红球胆码
+                    let _r2 = 0;        //红球拖码
+                    let _b1 = 0;        //蓝球胆码
+                    let _b2 = 0;        //蓝球拖码
+
+                    for(let i=0; i<_this.duplexRedBall1.length; i++){
+                        let _ball = _this.duplexRedBall1[i];
+                        if(_ball.value == true){
+                            _r1 ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexRedBall2.length; i++){
+                        let _ball = _this.duplexRedBall2[i];
+                        if(_ball.value == true){
+                            _r2 ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexBlueBall1.length; i++){
+                        let _ball = _this.duplexBlueBall1[i];
+                        if(_ball.value == true){
+                            _b1 ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexBlueBall2.length; i++){
+                        let _ball = _this.duplexBlueBall2[i];
+                        if(_ball.value == true){
+                            _b2 ++;
+                        }
+                    }
+
+                    if(_b1<2 && (_b2 > 1 && _b2 < 12 ) && (_r1 + _r2 > 4)){
+                        if(_b1 == 0){
+                            result = _b2 * base.factorial(_r2) / ( base.factorial(5-_r1) * base.factorial( _r2 - (5 - _r1 )));
+                        }else if(_b1 == 1){
+                            result = ( base.factorial(_b2) / ( base.factorial(2) * base.factorial(_b2 - 2 )) ) * (base.factorial(_r2) / ( base.factorial(5-_r1) * base.factorial( _r2 - (5 - _r1 ))));
+                        }else{
+                            return false;
+                        }
+                    }
+
+
+                }
+
+                _this.number = Math.ceil(result);
+
+                if(_this.number>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+
+                return _this.number;
+
+            },
+
+            selectDuplexBall(key,type){
+
+                let _this = this;
+
+                if(type == 'red1'){
+                    _this.duplexRedBall1[key].value = !_this.duplexRedBall1[key].value;
+                    _this.duplexRedBall2[key].disable = !_this.duplexRedBall2[key].disable;
+                }
+                if(type == 'red2'){
+                    _this.duplexRedBall2[key].value = !_this.duplexRedBall2[key].value;
+                    _this.duplexRedBall1[key].disable = !_this.duplexRedBall1[key].disable;
+                }
+                if(type == 'blue1'){
+                    _this.duplexBlueBall1[key].value = !_this.duplexBlueBall1[key].value;
+                    _this.duplexBlueBall2[key].disable = !_this.duplexBlueBall2[key].disable;
+                }
+                if(type == 'blue2'){
+                    _this.duplexBlueBall2[key].value = !_this.duplexBlueBall2[key].value;
+                    _this.duplexBlueBall1[key].disable = !_this.duplexBlueBall1[key].disable;
+                }
+
+                _this.calculate();
+
+                let _r1 = 0;
+                let _r2 = 0;
+                let _b1 = 0;
+                let _b2 = 0;
+
+                for(let i=0; i<_this.duplexRedBall1.length; i++){
+                    let _ball = _this.duplexRedBall1[i];
+                    if(_ball.value == true){
+                        _r1 ++;
+                    }
+                }
+
+                for(let i=0; i<_this.duplexRedBall2.length; i++){
+                    let _ball = _this.duplexRedBall2[i];
+                    if(_ball.value == true){
+                        _r2 ++;
+                    }
+                }
+
+                for(let i=0; i<_this.duplexBlueBall1.length; i++){
+                    let _ball = _this.duplexBlueBall1[i];
+                    if(_ball.value == true){
+                        _b1 ++;
+                    }
+                }
+
+                for(let i=0; i<_this.duplexBlueBall2.length; i++){
+                    let _ball = _this.duplexBlueBall2[i];
+                    if(_ball.value == true){
+                        _b2 ++;
+                    }
+                }
+
+                if(_r1 > 4){
+                    _this.$message({
+                        type: 'error',
+                        message: `最多只能选择4个红球胆码`
+                    });
+                    _this.duplexRedBall1[key].value = !_this.duplexRedBall1[key].value;
+                    _this.duplexRedBall2[key].disable = !_this.duplexRedBall2[key].disable;
+                }
+
+                if(_r2 >16){
+                    _this.$message({
+                        type: 'error',
+                        message: `最多只能选择16个红球拖码`
+                    });
+                    _this.duplexRedBall2[key].value = !_this.duplexRedBall2[key].value;
+                    _this.duplexRedBall1[key].disable = !_this.duplexRedBall1[key].disable;
+                }
+
+                if(_b1 > 1){
+                    _this.$message({
+                        type: 'error',
+                        message: `最多只能选择1个蓝球胆码`
+                    });
+                    _this.duplexBlueBall1[key].value = !_this.duplexBlueBall1[key].value;
+                    _this.duplexBlueBall2[key].disable = !_this.duplexBlueBall2[key].disable;
+                }
+                if(_b2 > 11){
+                    _this.$message({
+                        type: 'error',
+                        message: `最多只能选择12个蓝球拖码`
+                    });
+                    _this.duplexBlueBall2[key].value = !_this.duplexBlueBall2[key].value;
+                    _this.duplexBlueBall1[key].disable = !_this.duplexBlueBall1[key].disable;
+                }
+
+            },
+
+            buyTicket(){
+
+                let _this = this;
+
+                if(_this.lock)
+                    return false;
+
+                let _result = '';
+
+                //整合数组
+                let _r = [];
+                let _r1 = [];
+                let _r2 = [];
+                let _b = [];
+                let _b1 = [];
+                let _b2 = [];
+
+                if(_this.duplex == true){
+                    //胆拖
+
+                    for(let i=0; i<_this.duplexRedBall1.length; i++){
+                        let _ball = _this.duplexRedBall1[i];
+                        if(_ball.value == true){
+                            _r1.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexRedBall2.length; i++){
+                        let _ball = _this.duplexRedBall2[i];
+                        if(_ball.value == true){
+                            _r2.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexBlueBall1.length; i++){
+                        let _ball = _this.duplexBlueBall1[i];
+                        if(_ball.value == true){
+                            _b1.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.duplexBlueBall2.length; i++){
+                        let _ball = _this.duplexBlueBall2[i];
+                        if(_ball.value == true){
+                            _b2.push(_ball.num);
+                        }
+                    }
+
+                    _result = _r1.join(",")  + '$' + _r2.join(",") + '#' + _b1.join(",")  + '$' + _b2.join(",")
+
+                }else{
+                    //普通
+
+                    for(let i=0; i<_this.redBall.length; i++){
+                        let _ball = _this.redBall[i];
+                        if(_ball.value == true){
+                            _r.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.blueBall.length; i++){
+                        let _ball = _this.blueBall[i];
+                        if(_ball.value == true){
+                            _b.push(_ball.num);
+                        }
+                    }
+
+                    _result = _r.join(",") + '#' + _b.join(",");
+
+                }
+
+                //加入session的购票中
+
+                if(_result.length<20){
+                    //格式错误
+                    _this.$message({
+                        type: 'error',
+                        message: `请至少选择5个红球2个蓝球`
+                    });
+                    return false;
+                }
+
+                let ticket = sessionStorage.getItem("dlt_ticket");
+
+                //判断票的类型
+
+                let _type = 101;
+
+                if(_this.duplex == true){
+                    _type = 106;
+                }else{
+                    //单式
+                    if(_result.length == 20){
+                        _type = 101;
+                    }else{
+                        _type = 102;
+                    }
+                }
+
+                if(base.isNull(ticket)){
+                    ticket = [];
+                }else{
+                    ticket = JSON.parse(ticket);
+                }
+
+                if(base.isNull(_this.ticketID)){
+                    //新增
+                    ticket.push({
+                        id : base.getUuid(),
+                        num : _this.number,
+                        red : _r,
+                        red1 : _r1,
+                        red2 : _r2,
+                        blue : _b,
+                        blue1 : _b1,
+                        blue2 : _b2,
+                        numbers : _result,
+                        type : _type
+                    });
+                    sessionStorage.setItem('dlt_ticket',JSON.stringify(ticket));
+                }else{
+                    //编辑
+                    base.editTicketByID(_this.ticketID, 'dlt',{
+                        num: _this.number,
+                        num : _this.number,
+                        red : _r,
+                        red1 : _r1,
+                        red2 : _r2,
+                        blue : _b,
+                        blue1 : _b1,
+                        blue2 : _b2,
+                        numbers : _result,
+                        type : _type
+                    })
+                }
+
+                window.location.href = 'lottery_dlt_order.html';
+
+            },
+
+            randomSelect(){
+
+                let _this = this;
+
+                let _rball = [];
+                let _bball = [];
+                _bball.push(base.random_num(0,11));
+
+                _rball.push(base.random_num(0,34));
+
+                for(let i=0; i<4; i++){
+                    //剩下5个红球
+                    let rd = base.random_num(0,34);
+                    let _flag = true;
+                    for(let i=0;i<_rball.length; i++){
+                        //去重
+                        if(rd == _rball[i]){
+                            _flag = false;
+                        }
+                    }
+                    if(_flag){
+                        _rball.push(rd);
+                    }else{
+                        i--;
+                    }
+                }
+
+                for(let i=0; i<1; i++){
+                    let rd = base.random_num(0,11);
+                    let _flag = true;
+                    for(let i=0;i<_bball.length; i++){
+                        //去重
+                        if(rd == _bball[i]){
+                            _flag = false;
+                        }
+                    }
+                    if(_flag){
+                        _bball.push(rd);
+                    }else{
+                        i--;
+                    }
+                }
+
+                //渲染机选
+                _this.initBall();
+
+                if(_this.duplex == true){
+                    //胆拖
+
+                    for(let i=0; i<_rball.length; i++){
+                        _this.duplexRedBall1[_rball[i]].value = true;
+                        _this.duplexRedBall2[_rball[i]].disable = true;
+                    }
+
+                    for(let i=0; i<_bball.length; i++){
+                        _this.duplexBlueBall2[_bball[i]].value = true;
+                        _this.duplexBlueBall1[_bball[i]].disable = true;
+                    }
+
+                    _this.calculate();
+
+                }else{
+                    //普通
+
+                    for(let i=0; i<_rball.length; i++){
+                        _this.redBall[_rball[i]].value = true;
+                    }
+
+                    for(let i=0; i<_bball.length; i++){
+                        _this.blueBall[_bball[i]].value = true;
+                    }
+
+                    _this.calculate();
+
+                }
+            },
+
+            swicthDuplex(){
+                this.showDuplex = !this.showDuplex;
+            },
+
+            switchHistory(){
+                this.showHistory = !this.showHistory;
+            },
+
+            changeNav(key){
+                this.currentNav = key;
+                console.log(key);
+            },
+
+
+            myBack(){
+                window.history.go(-1);
+            },
+
+            clearSelect(){
+                let _this = this;
+//                _this.$confirm('确认清空吗', '消息', {
+//                    callback: function(e) {
+//                        if(e == 'confirm'){
+                            //删除数据
+                            _this.initBall();
+//                        }
+//                    }
+//                });
+
+            },
+
+            empty(){
+                let _this = this
+                _this.initBall();
+
+            },
+
+            initBall(){
+                let _this = this;
+                _this.redBall = [];
+                _this.duplexRedBall1 = [];
+                _this.duplexRedBall2 = [];
+                _this.blueBall = [];
+                _this.duplexBlueBall1 = [];
+                _this.duplexBlueBall2 = [];
+                _this.number = 0;
+                _this.currentNav = 0;
+                _this.lock = true;
+
+                for(let i=1; i<36; i++){
+                    _this.redBall.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+                for(let i=1; i<36; i++){
+                    _this.duplexRedBall1.push({
+                        num : base.addZero(i),
+                        value : false,
+                        disable : false,
+                    });
+                }
+                for(let i=1; i<36; i++){
+                    _this.duplexRedBall2.push({
+                        num : base.addZero(i),
+                        value : false,
+                        disable : false,
+                    });
+                }
+
+                for(let i=1; i<13; i++){
+                    _this.blueBall.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+
+                for(let i=1; i<13; i++){
+                    _this.duplexBlueBall1.push({
+                        num : base.addZero(i),
+                        value : false,
+                        disable : false,
+                    });
+                }
+                for(let i=1; i<13; i++){
+                    _this.duplexBlueBall2.push({
+                        num : base.addZero(i),
+                        value : false,
+                        disable : false,
+                    });
+                }
+
+            }
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            _this.initBall();
+
+            baseAjax.awardPeriod(lotteryType.SJDLT,function(data){
+
+                let _tmp = data.returnJSON;
+
+                for(let i=0; i<_tmp.length; i++){
+
+                    let _item = _tmp[i];
+
+                    if(base.isNull(_item.bonusCode)){
+                        continue;
+                    }
+
+                    _item.redBall = _item.bonusCode.split("#")[0].split(',').join(' ');
+                    _item.blueBall = _item.bonusCode.split("#")[1].split(',').join(' ');
+
+                }
+
+                _this.history = _tmp.reverse();
+                _this.current = _tmp[0];
+
+            });
+
+            let _ticketID = base.getParmar('ticketID');
+
+            if (base.isNull(_ticketID)) {
+                //初始化
+            }else {
+                _this.ticketID = _ticketID;
+
+                let _ticket = base.getTicketByID(_ticketID, 'dlt');
+
+                if (base.isNull(_ticket)) {
+                    //空数据
+                } else {
+                    if(_ticket.type == 106){
+                        //胆拖
+                        let _r1 = _ticket.red1;
+                        let _r2 = _ticket.red2;
+                        let _b1 = _ticket.blue1;
+                        let _b2 = _ticket.blue2;
+
+                        for(let i=0; i<_r1.length; i++){
+                            _this.duplexRedBall1[base.splitZero(_r1[i])-1].value = true;
+                            _this.duplexRedBall2[base.splitZero(_r1[i])-1].disable = true;
+                        }
+                        for(let i=0; i<_r2.length; i++){
+                            _this.duplexRedBall2[base.splitZero(_r2[i])-1].value = true;
+                            _this.duplexRedBall1[base.splitZero(_r2[i])-1].disable = true;
+                        }
+
+                        for(let i=0; i<_b1.length; i++){
+                            _this.duplexBlueBall1[base.splitZero(_b1[i])-1].value = true;
+                            _this.duplexBlueBall2[base.splitZero(_b1[i])-1].disable = true;
+                        }
+                        for(let i=0; i<_b2.length; i++){
+                            _this.duplexBlueBall2[base.splitZero(_b2[i])-1].value = true;
+                            _this.duplexBlueBall1[base.splitZero(_b2[i])-1].disable = true;
+                        }
+
+                        _this.duplex = true;
+
+                    }else{
+                        //普通
+                        let _r = _ticket.red;
+                        let _b = _ticket.blue;
+
+                        for(let i=0; i<_r.length; i++){
+                            _this.redBall[base.splitZero(_r[i])-1].value = true;
+                        }
+                        for(let i=0; i<_b.length; i++){
+                            _this.blueBall[base.splitZero(_b[i])-1].value = true;
+                        }
+                    }
+                }
+
+                _this.calculate();
+            }
+
+
+            //如果是编辑
+//            let _url = decodeURI(window.location.href);
+//            let _data = base.getParmar('ticket',_url);
+//
+//            if(base.isNull(_data)){
+//                //初始化
+//            }else{
+//                _data = JSON.parse(_data);
+
+//                _this.calculate();
+//
+//            }
+
+            setTimeout(() => {
+                $("#lottery_dlt_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

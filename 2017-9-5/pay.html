@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+    <script src="js/hostSdk.js"></script>
+
+
+    <style>
+
+        .el-radio__input.is-checked .el-radio__inner{border-color: #48a44a;background: #48a44a;}
+        .el-radio__inner:hover{border-color: #48a44a;}
+        .el-radio__input.is-focus .el-radio__inner{border-color: #48a44a;}
+
+    </style>
+
+
+    <title>支付</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| pay_page
+| ------------------------------------------
+| Here are pay_page html
+|
+-->
+
+<div id="pay_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <!--支付完成弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showResult == true" @click="calPay"></div>
+    <div class="w270px h150px fixed warpper-white Fgray-3 lh45px radius5 F16 text-center" v-show="showResult == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 9999;">
+        <div class="wb100">
+            <p class="h60px lh60px Fblack">请确认支付是否已完成</p>
+            <p class="bor-gray bor-solid-1b bor-solid-1t Fred" @click="donePay">已完成支付</p>
+            <p class="Fgray-2" @click="orderPay">支付遇到问题，重新支付</p>
+        </div>
+    </div>
+
+
+    <!--购买成功弹窗-->
+    <div class="dialogBg" style="z-index: 99; background: rgba(0,0,0,.7);" v-show="showBuySuccess == true" @click="closeBuyDialog"></div>
+    <div class="w270px h250px fixed Fwhite F16 text-center" v-show="showBuySuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 999;">
+        <img src="images/buy-success.png" class="w130px absolute" style="top: 0; left: 0; right: 0; margin: 0 auto; z-index: 9999; width: 134px;">
+        <img src="images/buy-success-shadow.png" class="w270px rotater absolute" style="top: -77px; left: -7px; z-index: 999;">
+        <div class="clear h130px"></div>
+        <div class="wb100">
+            <p class="F20 lh40px">竞猜成功</p>
+            <p class="lh20px">预计收益<span class="Fgreen Fnum">{{twoDecimal(money * odds)}}</span>金币</p>
+
+            <div class="clear h20px"></div>
+
+            <div class="wb45 fl bor-green2 bor-solid-1a radius4 h40px lh40px text-center Fgreen-2" @click="closeBuyDialog(0)">
+                查看详情
+            </div>
+
+            <div class="wb45 fr warpper-green-1 pa1 radius4 h40px lh40px Fblack text-center" @click="closeBuyDialog(1)">
+                继续竞猜
+            </div>
+
+        </div>
+    </div>
+
+    <div class="wb100" v-show="showRedBag == true">
+        <template v-for="(item,key) in redBagList">
+
+            <div class="clear1"></div>
+
+            <div class="pa15 relative warpper-white">
+
+                <div class="w80px h50px warpper-red-1 fl text-center Fwhite pat10 pab10 lh25px F14 radius5">
+                    <p><span class="Fnum F30">{{item.faceValue}}</span>金币</p>
+                    <p class="F12">满<span class="Fnum">{{item.limit}}</span>可用</p>
+                </div>
+
+                <div class="w180px fl lh30px pat10 pal10">
+                    <p class="F20">红包</p>
+                    <p class="F12 Fgray-2">有效期至<span class="Fnum">{{item.endTime}}</span></p>
+                </div>
+
+                <div class="w30px h30px fr mat20" @click="myClick(key)">
+                    <el-radio class="radio" v-model="redBagRadio" :label="key">&nbsp;</el-radio>
+                </div>
+
+                <!--<div class="w80px fr h40px lh40px bor-red bor-solid-1a text-center Fred F16 mat15 radius5">-->
+                <!--立即使用-->
+                <!--</div>-->
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="clear"></div>
+
+        </template>
+
+        <div class="clear h80px"></div>
+
+        <div class="wb100 fixed" style="bottom: 0;">
+
+            <div class="pa15">
+                <div class="wb45 fl warpper-green Fwhite pa1 h45px lh45px text-center radius5" @click="selectRedBag(1)">
+                    确定
+                </div>
+
+                <div class="wb45 fr bor-gray bor-solid-1a Fgray-3 h45px lh45px text-center radius5 warpper-white" @click="selectRedBag(0)">
+                    取消
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wb100" v-show="showRedBag == false">
+
+        <div class="wb100 warpper-white">
+
+            <div class="pa15 lh25px">
+                <p class="lh35px">{{decodeURI(title)}}</p>
+                <p class="F14">
+                    <template v-if="lotType == 0">胜平负</template>
+                    <template v-if="lotType == 1">让球胜平负</template>
+                    <template v-if="lotType == 2">全场比分</template>
+                    <template v-if="lotType == 3">总进球数</template>,
+                    <!--胜平负-->
+                    <span v-if="lotType == 0">
+                        <template v-if="val == 0">主胜</template>
+                        <template v-if="val == 1">平</template>
+                        <template v-if="val == 2">客胜</template>
+                    </span>
+                    <!--让球胜平负-->
+                    <span v-if="lotType == 1">
+                        <template v-if="val == 0">主胜</template>
+                        <template v-if="val == 1">平</template>
+                        <template v-if="val == 2">客胜</template>
+                    </span>
+                    <!--全场比分-->
+                    <span v-if="lotType == 2">
+                        <template v-if="val == 0">1:0</template>
+                        <template v-if="val == 1">2:0</template>
+                        <template v-if="val == 2">2:1</template>
+                        <template v-if="val == 3">3:0</template>
+                        <template v-if="val == 4">3:1</template>
+                        <template v-if="val == 5">3:2</template>
+                        <template v-if="val == 6">4:0</template>
+                        <template v-if="val == 7">4:1</template>
+                        <template v-if="val == 8">4:2</template>
+                        <template v-if="val == 9">5:0</template>
+                        <template v-if="val == 10">5:1</template>
+                        <template v-if="val == 11">5:2</template>
+                        <template v-if="val == 12">胜其他</template>
+                        <template v-if="val == 13">0:0</template>
+                        <template v-if="val == 14">1:1</template>
+                        <template v-if="val == 15">2:2</template>
+                        <template v-if="val == 16">3:3</template>
+                        <template v-if="val == 17">平其他</template>
+                        <template v-if="val == 18">0:1</template>
+                        <template v-if="val == 19">0:2</template>
+                        <template v-if="val == 20">1:2</template>
+                        <template v-if="val == 21">0:3</template>
+                        <template v-if="val == 22">1:3</template>
+                        <template v-if="val == 23">2:3</template>
+                        <template v-if="val == 24">0:4</template>
+                        <template v-if="val == 25">1:4</template>
+                        <template v-if="val == 26">2:4</template>
+                        <template v-if="val == 27">0:5</template>
+                        <template v-if="val == 28">1:5</template>
+                        <template v-if="val == 29">2:5</template>
+                        <template v-if="val == 30">负其他</template>
+                    </span>
+                    <!--进球数-->
+                    <span v-if="lotType == 3">
+                        <template v-if="val == 0">进0球</template>
+                        <template v-if="val == 1">进1球</template>
+                        <template v-if="val == 2">进2球</template>
+                        <template v-if="val == 3">进3球</template>
+                        <template v-if="val == 4">进4球</template>
+                        <template v-if="val == 5">进5球</template>
+                        <template v-if="val == 6">进6球</template>
+                        <template v-if="val == 7">进7球</template>
+                    </span>,
+                    预计赢得<span class="Fnum Fred">{{twoDecimal(money * odds)}}</span>金币
+                </p>
+            </div>
+
+            <div class="clear1 warpper-gray-3"></div>
+
+            <div class="pal15 warpper-white lh45px">
+
+                <p class="par15 h45px">
+                    <span class="fl">订单金额</span>
+                    <span class="fr Fnum Fred">{{money}}金币</span>
+                </p>
+                <div class="clear bor-gray bor-solid-1b"></div>
+                <p class="par15 h45px">
+                    <span class="fl">余额抵扣</span>
+                    <span class="fr Fnum Fred">{{user.coinsQty}}金币</span>
+                </p>
+                <div class="clear bor-gray bor-solid-1b"></div>
+
+                <template v-if="redBagList.length == 0">
+                    <p class="par15 h45px">
+                        <span class="fl">红包</span>
+                        <span class="fr Fgray-2">暂无可用</span>
+                    </p>
+                </template>
+
+                <template v-else>
+                    <p class="par15 h45px" @click="showRedBag = true">
+                        <span class="fl">红包</span>
+
+                        <template v-if="redBagMoney == 0">
+                            <span class="fr Fgray-2">{{redBagList.length}}个可用红包 <img src="images/arrow-right.png" class="fr h14px mal5" style="margin-top: 16px;"></span>
+                        </template>
+
+                        <template v-if="redBagMoney != 0">
+                            <span class="fr Fnum Fred">{{redBagMoney}}金币<img src="images/arrow-right.png" class="fr h14px mal5 mat15"></span>
+                        </template>
+
+                    </p>
+                </template>
+
+                <div class="clear bor-gray bor-solid-1b"></div>
+
+            </div>
+
+            <div class="clear1 warpper-gray-3"></div>
+
+            <div class="pal15 par15 lh45px">
+                <span class="fl">应付</span>
+
+                <!-- 金额 - 余额 - 红包 -->
+                <!--需要付款-->
+                <template v-if="resultMoney > 0">
+                    <span class="fr Fnum Fred">{{ twoDecimal(resultMoney) }}元 = {{ twoDecimal(resultMoney) }}金币</span>
+                </template>
+
+                <!--余额支付-->
+                <template v-else>
+                    <span class="fr Fnum Fred">{{resultMoney}} 金币</span>
+                </template>
+
+            </div>
+
+            <div class="clear1 warpper-gray-3"></div>
+
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 Fgray-3 F14 lh40px warpper-white" v-if="resultMoney > 0">
+            <p>选择支付方式</p>
+
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <div class="clear1"></div>
+            <div class="wb100">
+                <template v-if="showAliPay == true">
+                    <p class="h30px lh30px wb100" @click="radio = 0">
+                        <span class="fl h30px lh30px"> <img src="images/alipay.png" class="h30px fl mar5">支付宝 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="0">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear h5px bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                </template>
+
+                <template v-if="showWxPay == true">
+                    <p class="h30px lh30px wb100" @click="radio = 1">
+                        <span class="fl h30px lh30px"> <img src="images/wxpay.png" class="h30px fl mar5">微信 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="1">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear"></div>
+                </template>
+                <div class="clear1"></div>
+            </div>
+        </div>
+
+
+        <div class="clear h80px"></div>
+
+        <div class="wb100 fixed" style="bottom: 0;">
+            <div class="pa15">
+                <div class="wb100 warpper-green Fwhite h45px lh45px text-center radius5 F16" @click="orderPay">
+                    立即购买
+                </div>
+            </div>
+        </div>
+
+        <div class="wb100 payHtml hidden"></div>
+
+    </div>
+
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#pay_page",
+        data: {
+            fullscreenLoading: true,
+            login: false,
+            money: 0,
+            orderID: 0,
+            radio: 1,
+            redBagRadio: -1,
+            redBagMoney: 0,
+            rotateTimer: 0,
+            angle: 0,
+            redBagList: [],
+            user: {
+                photoUrl: '',
+                coinsQty: 0
+            },
+            showRedBag: false,
+            showBuySuccess: false,
+            showResult: false,
+            payHtml: '',
+            title: '',
+            odds: '',
+            lotType: '',
+            val: '',
+            matchID: '',
+            showAliPay: true,
+            showWxPay: true,
+            resultMoney: 0,
+            payment: 0,
+            payType: 0,
+            favDisabled: false,
+            res:""
+        },
+        methods: {
+            donePay: function donePay() {
+
+                var paymentNo = base.getCookie('paymentNo');
+
+                if(base.isNull(paymentNo))
+                    return false;
+
+                var payType = base.getCookie('payType');
+
+                if(base.isNull(payType))
+                    return false;
+
+                var _this = this;
+
+                _this.showResult = false;
+
+                baseAjax.payResultQuery(paymentNo, payType, function (data, errorMsg) {
+                    if (data) {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+
+                        window.location.replace('pay_success.html');
+//                        window.history.go(-1);
+                    } else {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+                    }
+                });
+
+            },
+
+            calPay: function calPay(){
+                base.setCookie('paymentNo', null);
+                base.setCookie('payIng', null);
+                base.setCookie('payType', null);
+                base.setCookie('payMoney', null);
+                this.showResult = false;
+            },
+
+            myClick: function myClick(key) {
+
+//                console.log(key);
+//                if(key == this.redBagRadio){
+//                    this.redBagRadio = -1;
+//                }else{
+                    this.redBagRadio = key;
+//                }
+
+//                console.log(key + '        ' + this.redBagRadio)
+
+            },
+
+            closeBuyDialog: function closeBuyDialog(type) {
+                if(type == 0){
+
+                    window.location.replace('soccer_result.html?orderID='+this.orderID);
+                }else{
+                    window.location.replace('index.html');
+                }
+            },
+
+            selectRedBag: function selectRedBag(val) {
+
+                if (val == 1) {
+                    //
+                    this.redBagMoney = this.redBagList[this.redBagRadio].faceValue;
+                }
+                if (val == 0) {
+                    //
+                    this.redBagMoney = 0;
+                    this.redBagRadio = -1;
+                }
+
+                this.showRedBag = false;
+
+                this.payment = this.money - this.redBagMoney;
+                this.resultMoney =  this.money - this.user.coinsQty - this.redBagMoney;
+
+            },
+
+            rotation: function rotation(){
+                var _this = this;
+                window.clearInterval(_this.rotateTimer);
+                _this.rotateTimer = setInterval(function(){
+                    _this.angle += 3;
+                    $(".rotater").rotate(_this.angle);
+                },50);
+            },
+
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
+
+            orderPay: function orderPay() {
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                if(_this.login === false){
+                    hostsdk.login();
+                    return false;
+                }
+
+                //判断金额
+                if (base.isNull(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                if (isNaN(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                var redBagNo = '';
+                if(_this.redBagMoney === 0){
+                    //未选择红包
+                }else{
+                    redBagNo = _this.redBagList[_this.redBagRadio].serialNumber;
+                }
+
+                //判断支付方式
+                if(_this.resultMoney > 0) {
+                    var _url = 'http://h5.pwabc.cn/app/pay_result.html';
+                    //创建订单
+                    baseAjax.createMatchOrder(_this.matchID, _this.lotType, _this.val, redBagNo, _this.money, function (data,message) {
+                        if (data) {
+                            if(_this.radio === 0){
+                                //支付宝
+                                baseAjax.alipayWapForApp(_this.money, _url, 1, data.returnJSON.orderNo, function (data2) {
+                                    var index1 = data2.indexOf('"out_trade_no":"');
+                                    var index2 = data2.indexOf('",', index1);
+                                    var orderNo = data2.substring(index1 + 16, index2);
+                                    alert("订单号:" + orderNo);
+                                    data2 = data2.replace('POST', 'GET');
+                                    $(".payHtml").html(data2);
+
+                                    base.setCookie('paymentNo', orderNo);
+                                    base.setCookie('payIng',true);
+                                    base.setCookie('payType',0);
+                                    base.setCookie('payMoney',tradeMoney);
+                                    //设置支付状态
+                                    base.setCookie('calOrder',true);
+                                    _this.showResult = true;
+                                });
+                            }else{
+                                //微信
+                                baseAjax.wxWebPay(_this.money, 1, data.returnJSON.orderNo, function (data3) {
+                                    if(data3){
+                                        var orderNo = data3.returnJSON.orderNo;
+                                        alert("订单号:" + orderNo);
+                                        window.location.href = data3.returnJSON.mweb_url + '&redirect_url=' + _url;
+
+                                        base.setCookie('payIng',true);
+                                        base.setCookie('paymentNo', orderNo);
+                                        base.setCookie('payType',1);
+                                        base.setCookie('payMoney',tradeMoney);
+                                        //设置支付状态
+                                        base.setCookie('calOrder',true);
+                                        //_this.showResult = true;  微信不用设置是因为微信支付会刷新页面，created函数里面做了判断，设置了为true
+                                    }
+                                });
+                            }
+                        }else {
+                          alert("订单创建失败：" + message.message);
+                        }
+                    });
+
+                }else{
+                    //余额支付
+                    baseAjax.payMatch(_this.matchID, _this.lotType, _this.val, redBagNo, _this.money, function (data) {
+
+                        if(data){
+                            _this.showBuySuccess = true;
+
+                            _this.orderID = data.returnJSON.orderID;
+
+                            _this.rotation();
+                        }
+
+                    });
+                }
+
+                //不下单测试
+                //判断支付方式
+//                if(_this.resultMoney > 0) {
+//                    var tradeMoney = parseInt(base.twoDecimal(_this.resultMoney * 100));
+//                    var _url = 'http://h5.pwabc.cn/app/pay_result.html';
+//                    if(_this.radio === 0){
+//                        //支付宝
+//                        baseAjax.alipayWapForApp(tradeMoney, _url, '', '', function (data2) {
+//                            var index1 = data2.indexOf('"out_trade_no":"');
+//                            var index2 = data2.indexOf('",', index1);
+//                            var orderNo = data2.substring(index1 + 16, index2);
+//                            alert("订单号:" + orderNo);
+//                            data2 = data2.replace('POST', 'GET');
+//                            $(".payHtml").html(data2);
+//
+//                            base.setCookie('paymentNo', orderNo);
+//                            base.setCookie('payIng',true);
+//                            base.setCookie('payType',0);
+//                            base.setCookie('payMoney',_this.money);
+//                            //设置支付状态
+//                            base.setCookie('calOrder',true);
+//                            _this.showResult = true;
+//                        });
+//                    }else{
+//                        //微信
+//                        baseAjax.wxWebPay(tradeMoney, '', '',function (data3) {
+//                            if(data3){
+//                                var orderNo = data3.returnJSON.orderNo;
+//                                alert("订单号:" + orderNo);
+//                                window.location.href = data3.returnJSON.mweb_url + '&redirect_url=' + _url;
+//
+//                                base.setCookie('payIng',true);
+//                                base.setCookie('paymentNo', orderNo);
+//                                base.setCookie('payType',1);
+//                                base.setCookie('payMoney',_this.money);
+//                                //设置支付状态
+//                                base.setCookie('calOrder',true);
+//                                //_this.showResult = true;
+//                            }
+//                        });
+//                    }
+//                }
+//                //测试代码结束
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            initHostSdk(function (data) {
+                //初始化状态
+                if(data){
+                    if(base.isNull(data.uuid)){
+                        _this.login = false;
+                    }else{
+                        _this.login = true;
+                    }
+                    //获取余额
+                    hostsdk.getUser({
+                        successCallback : function(res){
+                            var user = JSON.parse(res);
+                            //alert(JSON.stringify(user));
+                            _this.user.coinsQty = user.coinsQty;
+                            _this.resultMoney =  _this.money - _this.user.coinsQty;
+                        },
+                        errorCallback : function(res){
+                            alert("调用失败" + res);
+                        }
+                    });
+
+                    //可用的红包
+                    baseAjax.usableCouponList(_this.money, function (data,message) {
+                        if (data) {
+                            _this.redBagList = data.returnJSON;
+                        }
+                    });
+
+                }else{
+                    _this.login = false;
+                }
+            });
+
+            if (base.versions.isWeiXin) {
+                _this.showAliPay = false;
+            }
+
+            _this.showBuySuccess = false;
+
+            _this.title = base.getParmar('title');
+            _this.money = base.getParmar('money');
+            _this.odds = base.getParmar('odds');
+            _this.lotType = base.getParmar('lotType');
+            _this.val = base.getParmar('val');
+            _this.matchID = base.getParmar('matchID');
+
+
+            //判断是否存在未支付的订单
+            var paymentNo = base.getCookie('paymentNo');
+            if(base.isNull(paymentNo)){
+                return false;
+            }
+            var payIng = base.getCookie('payIng');
+            if(base.isNull(payIng)){
+                return false;
+            }
+            var payType = base.getCookie('payType');
+            if(base.isNull(payType)){
+                return false;
+            }else{
+                _this.radio = parseInt(payType);
+            }
+
+            //获取上一个失败或取消的订单
+            var calOrder = base.getCookie('calOrder');
+
+            if(!base.isNull(calOrder)){
+                if(payType === "1") {
+                    _this.showResult = true;
+                }
+                base.setCookie('calOrder',null);
+                return false;
+            }
+        }
+    });
+
+
+//    最后做完要加上这个
+//    function pushHistory() {
+//        var state = {
+//            title: "title",
+//            url: "#"
+//        };
+//        window.history.pushState(state, "title", "#");
+//    }
+//    $(function () {
+//        var isPageHide = false;
+//        window.addEventListener('pageshow', function () {
+//            if (isPageHide) {
+//
+//                var _this = vm;
+//
+//                initHostSdk(function (data) {
+//                    //初始化状态
+//                    if(data){
+//                        if(base.isNull(data.uuid)){
+//                            _this.login = false;
+//                        }else{
+//                            _this.login = true;
+//                        }
+//                        //获取余额
+//                        hostsdk.getUser({
+//                            successCallback : function(res){
+//                                var user = JSON.parse(res);
+//                                //alert(JSON.stringify(user));
+//                                _this.user.coinsQty = user.coinsQty;
+//                                _this.resultMoney =  _this.money - _this.user.coinsQty;
+//                            },
+//                            errorCallback : function(res){
+//                                alert("调用失败" + res);
+//                            }
+//                        });
+//
+//                        //可用的红包
+//                        baseAjax.usableCouponList(_this.money, function (data,message) {
+//                            if (data) {
+//                                _this.redBagList = data.returnJSON;
+//                            }
+//                        });
+//
+//                    }else{
+//                        _this.login = false;
+//                    }
+//                });
+//
+//                if (base.versions.isWeiXin) {
+//                    _this.showAliPay = false;
+//                }
+//
+//                _this.showBuySuccess = false;
+//
+//                _this.title = base.getParmar('title');
+//                _this.money = base.getParmar('money');
+//                _this.odds = base.getParmar('odds');
+//                _this.lotType = base.getParmar('lotType');
+//                _this.val = base.getParmar('val');
+//                _this.matchID = base.getParmar('matchID');
+//
+//
+//                //判断是否存在未支付的订单
+//                var paymentNo = base.getCookie('paymentNo');
+//                if(base.isNull(paymentNo)){
+//                    return false;
+//                }
+//                var payIng = base.getCookie('payIng');
+//                if(base.isNull(payIng)){
+//                    return false;
+//                }
+//                var payType = base.getCookie('payType');
+//                if(base.isNull(payType)){
+//                    return false;
+//                }else{
+//                    _this.radio = parseInt(payType);
+//                }
+//
+//                //获取上一个失败或取消的订单
+//                var calOrder = base.getCookie('calOrder');
+//
+//                if(!base.isNull(calOrder)){
+//                    if(payType === "1") {
+//                        _this.showResult = true;
+//                    }
+//                    base.setCookie('calOrder',null);
+//                    return false;
+//                }
+//
+//                pushHistory();
+//
+//                window.addEventListener("popstate", function(e) {
+//
+//                    var paymentNo = base.getCookie('paymentNo');
+//                    if(base.isNull(paymentNo)){
+//                        return false;
+//                        window.history.back();
+//                    }else{
+//                        _this.showResult = true;
+//                    }
+//
+//                }, false);
+//
+//            }
+//        });
+//        window.addEventListener('pagehide', function () {
+//            isPageHide = true;
+//        });
+//    });
+
+</script>
+
+</body>
+</html>

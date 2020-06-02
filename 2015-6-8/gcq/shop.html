@@ -1,0 +1,858 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>逛出趣</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/wqw.css" rel="stylesheet" type="text/css" />
+<link href="css/tyj.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script>
+	$(function(){
+		
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+	
+		$(".js-shrink2").click(function(){
+			$(this).toggleClass("pat10").siblings(".js-shrink2").removeClass("pat10");
+			$(this).find(".js-shrink2-tit").toggleClass("bgc-purple01 l-jian");
+			$(this).siblings(".js-shrink2").find(".js-shrink2-tit").removeClass("bgc-purple01 l-jian");
+			$(this).next(".js-shrink2-box").slideToggle().siblings(".js-shrink2-box").slideUp();
+		});
+	})
+	
+</script>
+</head>
+
+<body>
+
+    <div class="wb100 bor-gray bor-solid-1t bor-solid-1b warpper-white-1 h35px">
+    	<div class="w1200px h35px center">
+        	<div class="wb30 fl h35px lh35px text-left Fgray-3 F125em">
+            	您好，欢迎光临本店！<a href="javascript:void(0)" class="red mal5 mar5">[登录]</a><a href="javascript:void(0)" class="red mal5 mar5">[免费注册]</a>
+            </div>                                 
+            <div class="wb50 fr F125em h35px lh35px text-left middle Fgray">
+            	<a href="javascript:void(0)" class="gray fr">服务热线 <span class="Fred">400-8888-8888</span></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">收藏我们</a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">客服中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">用户中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">我的订单<img src="images/ico-arrow-down.png" class="middle mal5"></a>                    
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-white h150px">
+    	<div class="w1200px pat25 center h115px">
+        	<div class="wb17 h115px img-area fl mar3per">
+            	<img src="images/logo.png">
+            </div>
+            <div class="fr wb60 mat10">
+                <div class="wb80 mat15">
+                    <div class="bor-solid-1t bor-solid-1b bor-solid-1l bor-red h35px lh35px">
+                        <div class="fl pal5 pat5 par5">
+                            <img src="images/ico-search.png">
+                        </div>
+                        <div class="fl wb60">
+                            <input type="text" class="wb100 bor-none h35px lh35px F14 Fgray-3 pal10" placeholder="请输入搜索关键字">
+                        </div>
+                        <div class="fr wb15">
+                            <a href="javascript:void(0)" class="display-inline warpper-red F14 Fwhite Fb text-center wb100">搜本店</a>
+                        </div>
+                        <div class="fr wb15">
+                            <a href="javascript:void(0)" class="display-inline warpper-red-1 F14 Fwhite Fb text-center wb100">搜全站</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+               
+            </div>
+            
+            <div class="clear"></div>
+            
+            <div class="wb100">
+            	<div class="wb50 fl pal1per F125em Fgray-3">
+                	<span class="mar20">店铺：<a href="javascript:void(0)" class="blue">毛菇小象</a></span>    
+                    <span>[ 描述 <span class="Fred-1 mal5 mar5">4.7</span>  丨  质量 <span class="Fred-1 mal5 mar5">4.7</span>  丨  服务 <span class="Fred-1 mal5 mar5">4.7</span>   ]</span>
+                </div>
+                <span class="fr F125em Fgray-3">
+                	<img src="images/icon-fav.png"> 收藏本店
+                </span>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="clear1 bor-gray bor-solid-1b"></div>
+    <div class="clear1"></div>
+    
+    <div class="wb100 text-center">
+    	<img src="images/logo-1.jpg">
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100 warpper-pink h40px lh40px F150em text-center">
+    	<div class="w1200px center">                                      
+        	<a href="javascript:void(0)" class="white wb10 h40px warpper-pink1 display-inline fl">首页</a>
+            <a href="javascript:void(0)" class="white wb10 h40px display-inline fl">新品上架</a>
+            <a href="javascript:void(0)" class="white wb10 h40px display-inline fl">裤子</a>
+            <a href="javascript:void(0)" class="white wb10 h40px display-inline fl">衣服</a>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 h455px">
+        <div class="slider slider1 img-area">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-1.jpg"></li>
+                <li class="slide"><img src="images/banner-1.jpg"></li>
+                <li class="slide"><img src="images/banner-1.jpg"></li>
+                <li class="slide"><img src="images/banner-1.jpg"></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center">
+            <div class="wb100 bor-gray bor-solid-1b h40px lh40px">
+            	<div class="wb80 fl text-center Fgray-3 F175em">店铺推荐</div>
+                <a href="javascript:void(0)" class="fr F125em gray mar2per">更多>></a>
+            </div>
+            <div class="clear1"></div>
+        </div>
+        
+        <div class="w1200px center">
+        	<div class="wb100 F125em">
+                <div class="wb25 fl mat10">
+                    <div class="wb90 center h295px img-area relative">
+                        <a href="javascript:void(0)" >
+                        	<img src="images/gqw (18).jpg" />
+                        </a>
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                    <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                </div>
+                <div class="wb25 fl mat10">
+                    <div class="wb90 center h295px img-area relative">
+                        <a href="javascript:void(0)" >
+                        	<img src="images/gqw (18).jpg" />
+                        </a>
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                    <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                </div>
+                <div class="wb25 fl mat10">
+                    <div class="wb90 center h295px img-area relative">
+                        <a href="javascript:void(0)" >
+                        	<img src="images/gqw (18).jpg" />
+                        </a>
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                    <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                </div>
+                <div class="wb25 fl mat10">
+                    <div class="wb90 center h295px img-area relative">
+                        <a href="javascript:void(0)" >
+                        	<img src="images/gqw (18).jpg" />
+                        </a>
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                    <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center">
+        	<div class="wb20 fl">
+            	<div class="wb100 bor-gray bor-solid-1a F125em">
+                    <div class="wb95 pal5per Fwhite h35px lh35px F125em warpper-pink2">
+                        店铺信息
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px Fgray-3">
+                        <p class="F125em wb95 pal5per">veromoda官方旗舰店</p>
+                        <p class="Fgray-3 wb95 pal5per">开店时间：2011-05-10</p>
+                        <div class="clear bor-gray bor-dashed-1b"></div>
+                    	<div class="clear1"></div>
+                        <div class="wb33333 fl">
+                        	<p class="Fgray-2">质量</p>
+                            <p class="Fred-1">5.0分 <img src="images/arrow-red-up.png"</p>
+                        </div>
+                        <div class="wb33333 fl">
+                        	<p class="Fgray-2">质量</p>
+                            <p class="Fred-1">5.0分 <img src="images/arrow-red-up.png"</p>
+                        </div>
+                        <div class="wb33333 fl">
+                        	<p class="Fgray-2">质量</p>
+                            <p class="Fred-1">5.0分 <img src="images/arrow-red-up.png"</p>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        <p>公司名称：佛山市顺德区梦美斯宣家具有限公司</p>
+                        <p>所 在 地：广东 佛山市</p>
+                        <p>联系电话：4008008888</p>
+                        <p><img src="images/icon-qq.png" class="middle"> 客服1    小美</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="h30px lh30px mal2per wb40 text-center fl bor-gray bor-solid-1a radius5 blue">收藏店铺</a>
+                        <a href="javascript:void(0)" class="h30px lh30px mar2per wb40 text-center fr bor-gray bor-solid-1a radius5 blue">在线联系</a>
+                        
+                        <div class="clear1"></div>
+                        
+                    </div>
+                    
+                    <div class="wb95 pal5per Fgray-3 h35px lh35px F125em bor-gray bor-solid-1b bor-solid-1t">
+                        商品分类
+                    </div>
+                    
+                    <div class="bor-top-none">
+            
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">新手指引</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red fc-red02">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                      
+                        
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">会员中心</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                      
+                        
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">购物指南</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                      
+                        
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">支付方式</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                      
+                        
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">配送方式</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                      
+                        
+                        <div class="js-shrink2 pal5 par5 pointer">
+                          <div class="js-shrink2-tit l-jiao h35px lh35px pal45"><span class="F14 fc-gray02">售后服务</span></div>
+                        </div>
+                        <div class="js-shrink2-box pat15 pab15 hidden">
+                          <div class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">获得账号</a>
+                          </div >
+                          <div  class="h25px lh25px pal50">
+                            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">购物步骤</a>
+                          </div >
+                        </div>
+                        
+                	</div>
+                    
+                    <div class="clear1"></div>
+                    <div class="wb95 pal5per Fgray-3 h35px lh35px F125em bor-gray bor-solid-1b bor-solid-1t">
+                        热销排行
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center"><span class="Fred-2 fl">￥28.08</span> <span class="Fgray-2 fr">已售1件</span> </p>
+                    </div>
+                    
+                    <div class="clear1"></div>
+                </div>  
+                
+            </div>
+            <div class="wb79 fr">
+            	<div class="wb100 F125em">
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                    <div class="wb25 fl mat10">
+                        <div class="wb90 center h175px img-area relative">
+                            <a href="javascript:void(0)" >
+                                <img src="images/gqw (18).jpg" />
+                            </a>
+                        </div>
+                        <div class="clear1"></div>
+                        <p class="lh20px Fgray-3 wb90 center">夏季新品真丝连衣裙高端时尚桑蚕真丝连衣裙 白色 L</p>
+                        <p class="lh25px wb90 center Fred-2">￥28.08</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100 bor-gray bor-solid-2t warpper-gray-1">
+    	
+        <div class="w1200px center h200px">
+        	
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (37).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (38).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (39).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (40).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (41).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (42).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="w1200px center text-center F125em lh20px">
+        	<div class="wb14 fl mal1per">
+            	<img src="images/gqw (43).png">
+                <p class="Fb">100%</p>
+                <p>正品保障</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (44).png">
+                <p class="Fb">7天</p>
+                <p>无理由退货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (45).png">
+                <p class="Fb">每日</p>
+                <p>新品上新</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (46).png">
+                <p class="Fb">100%</p>
+                <p>质检流程</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (47).png">
+                <p class="Fb">全部商品</p>
+                <p>实物拍摄</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (48).png">
+                <p class="Fb">用心服务</p>
+                <p>闪电发货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (49).png">
+                <p class="Fb">400-888-888</p>
+                <p>客服热线</p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+        
+        <div class="w1200px center">
+        	<div class="wb80 center Fgray F125em text-center">
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <div class="clear1"></div>
+                <p class="Fgray-3">鲁ICP备140046号-2 © 2006-2015 guangqu.com All Rights Reserved. 逛出趣电商有限公司，禁止非法复制   </p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+    </div>
+    
+    
+</body>
+</html>

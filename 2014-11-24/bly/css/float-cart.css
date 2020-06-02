@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+.float-cart{}
+
+.float-floors{ width:135px; position:fixed; margin-top:220px; top:0; background:none; z-index:999; right:5%;}

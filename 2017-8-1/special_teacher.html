@@ -1,0 +1,122 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet" href="css/base.css">
+    <!-- plugIn js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/hostSdk.js"></script>
+
+    <title>名师辅导</title>
+</head>
+<body>
+<div class="wb100 img-Warea">
+
+    <audio src="mp3/class1.mp3" style="display: none;" id="myAudio"></audio>
+
+    <img src="images/teacher-1.png">
+    <img src="images/teacher-2.png" style="margin-top: -5px">
+    <img src="images/teacher-3.png" style="margin-top: -5px">
+    <img src="images/teacher-4.png" style="margin-top: -5px">
+    <img src="images/teacher-5.png" style="margin-top: -5px">
+
+    <img src="images/teacher-6.png" style="margin-top: -5px" class="audio_btn">
+
+
+    <!--<div class="img_button" style="background: blue"><img class="img_btn" style="width: 50%" src="images/icon-play.png"></div>-->
+
+
+
+    <img src="images/teacher-7.png" style="margin-top: -5px">
+
+    <div class="bor-gray bor-solid-1t fixed pay" style="width:100%;bottom:0;background: white;z-index: 99">
+        <div >
+            <div class="wb35 fl">
+                <p class="Forange F20">1889金币</p>
+                <p class="Fgray-2 FLine F14">原价：1285金币</p>
+                <!--<p class="mal15 F20 h35px lh35px wb10" style="color:#ff954b;">89金币</p>-->
+                <!--<p class="mal15 F14 h15px lh15px Fgray" style="text-decoration: line-through;">原价￥1285.00</p>-->
+            </div>
+            <div class="wb65 fr pay" data-value="">
+                <div class="wb100 Fwhite h55px lh55px text-center my-btn F18" data-value="" style="background: #ff954b">
+                    立即购买
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(function(){
+
+
+        $(".audio_btn").click(function() {
+            document.getElementById("myAudio").play();
+        })
+
+
+        })
+
+
+        $(".pay").click(function () {
+
+
+            hostsdk.getUser({
+
+                successCallback : function(res){
+
+
+//                    alert(typeof(res));
+//                    alert(typeof(JSON.parse(res)));
+
+
+                   alert("调用成功" + res);
+
+//                    hostsdk.recharge({
+//                        successCallback : function(res){
+//                            alert("调用成功" + res);
+//                        },
+//                        errorCallback : function(res){
+//                            alert("调用失败" + res);
+//                        },
+//                    })
+
+//                    alert(parseFloat(JSON.parse(res).goldCoinsQty)< 2000);
+
+                   if( parseFloat(JSON.parse(res).goldCoinsQty)< 2000)
+                   {
+
+                       alert("余额不足，请去充值")
+                       hostsdk.recharge({
+                           successCallback : function(res){
+                               alert("调用成功" + res);
+                           },
+                           errorCallback : function(res){
+                               alert("调用失败" + res);
+                           },
+                       })
+                   }else{
+                       alert("失败")
+                   }
+
+                },
+                errorCallback : function(res){
+                    alert("调用失败" + res);
+                },
+
+
+        })
+
+    })
+
+</script>
+
+</body>
+</html>

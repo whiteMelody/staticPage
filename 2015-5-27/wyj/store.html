@@ -1,0 +1,573 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微依家</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/wyj.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+	})
+
+</script>
+</head>
+
+<body>
+	
+    <div class="wb100">
+    	<div class="w1200px pat10 pab10 center">
+        	<img src="images/logo.png">
+            <div class="fr F150em">
+            	
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">网站导航</a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">我的微依家 <img src="images/arrow-gray-down.png"></a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="Fbrown fr mal10 mar10">注册</a>
+            	<span class="Fbrown fr mal10 mar10">|</span>
+                <a href="javascript:void(0)" class="Fbrown fr mal10 mar10">登录</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-green-1 h40px">
+    	<div class="w1200px center F150em">
+            <ul class="ul-nav">
+                <li>首页</li>
+                <li>品牌故事</li>
+                <li class="li-hover">在线商城</li>
+                <li>微依家社区</li>
+                <li>优惠活动</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 h25px pat10 pab10 box-shadow-white2 bor-white2 bor-solid-1b">
+    	<div class="w1200px center">
+        	<div class="wb15 lh25px h25px text-center F150em Fgreen bor-green bor-solid-1r fl">
+            	<img src="images/icon-code.png" class="middle mal10 mar10"> 全部分类 <img src="images/arrow-green-down.png" class="middle mal10 mar10">
+            </div>
+            <div class="wb50 F150em fl lh25px h25px mal3per">
+            	<a href="javascript:void(0)" class="green mal15 mar15">米</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">面</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">粮</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">粥</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">菌</a>
+            </div>
+            <div class="wb25 fr">
+            	<div class="wb90 bor-green bor-solid-1a h25px bor-green bor-solid-1a radius5">
+                	<input type="text" class="bor-none fl h25px mal1per" >
+                	<img src="images/icon-search.png" class="fr mar2per middle" style="margin-top:2px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wb100 bor-green bor-solid-1b hidden">
+    	<div class="w1200px center">
+            <div class="display-inline wb100">
+                <div class="clear h20px"></div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="clear h40px"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 img-Harea text-center">
+    	<div class="slider">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100 warpper-white-1">
+    	<div class="clear h40px"></div>
+        
+        <div class="w1200px center">
+            <div class="wb100">
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-9.jpg" class="radius50per">
+                    </div>
+                </div>
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-10.jpg" class="radius50per">
+                    </div>
+                </div>
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-11.jpg" class="radius50per">
+                    </div>
+                </div>
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-12.jpg" class="radius50per">
+                    </div>
+                </div>
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-13.jpg" class="radius50per">
+                    </div>
+                </div>
+            	<div class="wb16666 fl">
+                	<div class="h120px w120px center img-area">
+                    	<img src="images/product-14.jpg" class="radius50per">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w1200px center">
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">热门推荐</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+            	<div class="wb23 ma1per fl">
+                	<div class="wb100 h275px lh275px img-Warea text-center warpper-white">
+                    	<img src="images/product-9.png" class="middle">
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb80 center lh35px F150em">
+                        <p>儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F175em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                </div>
+            	<div class="wb23 ma1per fl">
+                	<div class="wb100 h275px lh275px img-Warea text-center warpper-white">
+                    	<img src="images/product-9.png" class="middle">
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb80 center lh35px F150em">
+                        <p>儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F175em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                </div>
+            	<div class="wb23 ma1per fl">
+                	<div class="wb100 h275px lh275px img-Warea text-center warpper-white">
+                    	<img src="images/product-9.png" class="middle">
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb80 center lh35px F150em">
+                        <p>儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F175em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                </div>
+            	<div class="wb23 ma1per fl">
+                	<div class="wb100 h275px lh275px img-Warea text-center warpper-white">
+                    	<img src="images/product-9.png" class="middle">
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb80 center lh35px F150em">
+                        <p>儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F175em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">1L  米、面系列</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+            	<div class="wb36 fl h480px img-area">
+                	<img src="images/ad-img-1.jpg">
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h480px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h275px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">2L 糊糊系列</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+                <div class="wb41 fl">
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fl">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fr">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb95 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb95 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb40 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h480px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h275px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+            	<div class="wb36 fl h480px img-area mal1per">
+                	<img src="images/ad-img-2.jpg">
+                </div>
+            </div>
+            
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">3L 粮、粥系列</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+                <div class="wb20 fl">
+                    <div class="wb100 h480px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h275px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+            	<div class="wb36 fl h480px img-area mal1per">
+                	<img src="images/ad-img-3.jpg">
+                </div>
+                
+                <div class="wb41 fl mal1per">
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fl">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fr">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb95 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb95 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb40 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">4L 花茶系列</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+                <div class="wb41 fl">
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb95 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb95 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb40 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fl">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fr">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h480px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h275px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+            	<div class="wb36 fl h480px img-area mal1per">
+                	<img src="images/ad-img-4.jpg">
+                </div>
+            </div>
+            
+            <div class="clear h40px"></div>
+            <p class="pal2per F175em Fgray-3">5L  其他系列</p>
+            <div class="clear1"></div>
+            <div class="wb100">
+            	
+            	<div class="wb36 fl h480px img-area">
+                	<img src="images/ad-img-5.jpg">
+                </div>
+                
+                <div class="wb20 fl mal1per">
+                    <div class="wb100 h480px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h275px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+            
+                <div class="wb41 fl mal1per">
+                    <div class="wb100 h235px warpper-white over-hidden lh30px F125em">
+                        <div class="clear1"></div>
+                        <p class="wb95 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb95 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb40 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="clear h10px"></div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fl">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                    <div class="wb49 h235px warpper-white over-hidden lh30px F125em fr">
+                        <div class="clear1"></div>
+                        <p class="wb90 fr F125em Fgray-3">东北大米10斤长粒香</p>
+                        <p class="wb90 fr"><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20 F125em">原价￥54.00</span></p>
+                        <div class="clear h30px"></div>
+                        <div class="wb80 h130px fr" style="background:url(images/product-7.png) left top no-repeat;"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    	<div class="clear h40px"></div>
+        
+    </div>
+    
+    <div class="wb100 bor-green bor-solid-2t warpper-footer">
+    	<div class="clear1"></div>
+    	<div class="w1200px center bor-gray bor-solid-1b">
+        	<div class="wb100 display-inline lh30px F125em Fgray-3">
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="wb16666 fl">
+                    <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                    <p class="wb60 fr">用户注册</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">购物指南</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">网站导航</p>
+                    <div class="clear"></div>
+                    <p class="wb60 fr">帮助中心</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear h50px"></div>
+            </div>
+            
+        </div>
+        
+        <div class="clear1"></div>
+        
+        <div class="w1200px text-center center lh30px F125em Fgray-3">
+            <p class="Fgray-2">
+                <a href="javascript:void(0)" class="gray mal10 mar10">首页</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">品牌故事</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">加入我们</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">优惠活动</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">联系我们</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">友情链接</a>
+            </p>
+            <p>鲁ICP备140046号-2 © 2006-2015 guangqu.com All Rights Reserved. 微依家有限公司，禁止非法复制   </p>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>我的关注</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| user_fav_page
+| ------------------------------------------
+| Here are user_fav_page html
+|
+-->
+
+<div id="user_fav_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="dialogBg" v-show="showConfirm == true"></div>
+    <div class="wb100 fixed h150px" v-show="showConfirm == true" style="z-index: 99; top: 0; left: 0; right: 0; bottom: 0; margin: auto;">
+        <div class=" warpper-white radius5 wb70 center ">
+            <div class="wb100 h150px">
+                <div class="text-center">
+                    <p class="lh100px h100px bor-solid-1b bor-gray">确定取消关注吗？</p>
+                    <!--<p class="F14 Fgray-3 bor-solid-1b bor-gray  h40px">需花费<span class="Fred Fnum"></span>金币</p>-->
+                    <p class="lh50px h50px">
+                        <span class="fl  wb50 bor-solid-1r bor-gray " style="height: 49px" @click="showConfirm = false">取消</span>
+                        <span class="fr  wb49 Fgreen" @click="calfavUser">确定</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wb100 Fgray-3 warpper-white" v-if="empty==false">
+        <template v-for="item in recordList">
+
+            <div class="clear1"></div>
+
+            <div class="pal15 relative" style="padding-left: 85px; padding-right: 80px;">
+
+                <a href="javascript:;" @click="redirect('expert_detail.html?newsUserID='+item.uuid)">
+                    <div class="w60px h60px absolute" style="top: 0; left: 15px;">
+                        <img :src="item.photoUrl ? item.photoUrl : 'images/head-img1.png'" class="w60px h60px radius50per">
+                    </div>
+                    <div class="wb100 Fgray-2 F14">
+                        <p class="Fgray-3 F16 lh30px">
+                           {{item.nickName}}
+                        </p>
+                        <div class="clear"></div>
+                        <p class="lh15px">
+                           {{item.customSigna ? item.customSigna : '暂无签名'}}
+                        </p>
+                        <div class="clear"></div>
+                        <p class="F12 lh15px">
+                            粉丝：<span class="Fnum">{{item.fansQty}}</span>
+                        </p>
+                    </div>
+                </a>
+
+                <div class="w60px text-center absolute h35px lh35px F14 radius20 pointer warpper-white Fgreen bor-green bor-solid-1a"  @click="currentID = item.uuid; showConfirm = true " style="top: 15px; right: 15px;">
+                    已关注
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="pal15">
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+            </div>
+
+            <div class="clear1"></div>
+
+        </template>
+
+        <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+            <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+            <span class="fl mal10">{{loadtext}}</span>
+        </div>
+
+    </div>
+
+    <div class="wb100 text-center" v-if="empty == true">
+        <img src="images/drtj_kb.png" class="w60px center" style="margin-top: 60px;">
+        <div class="clear1"></div>
+        <p class="Fgray-2 F16 lh25px h25px">还没有关注记录哦~</p>
+        <div class="clear1"></div>
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#user_fav_page",
+        data: {
+            login: false,
+            fullscreenLoading: false,
+            showConfirm: false,
+            user: {},
+            current: 1,
+            currentID: '',
+            page: 1,
+            pageSize: 20,
+            navList: ['比赛', '达人'],
+            recordList: [],
+            loadtext: '数据加载中...',
+            loading: true,
+            empty: false,
+            last: false
+        },
+        methods: {
+            getData: function getData() {
+
+                var _this = this;
+                    //达人
+                baseAjax.focusUserList(_this.page, _this.pageSize, function (data) {
+
+                    if (data) {
+                        var _tmp = data.returnJSON.indexData;
+
+                        if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                                return false;
+                            }
+                        }
+
+                        if (_tmp.length == 0) {
+                            _this.empty = true;
+                            return false;
+                        } else {
+                            _this.empty = false;
+                        }
+
+                        _this.recordList = _this.recordList.concat(_tmp);
+                    } else {
+                        _this.empty = true;
+                    }
+                });
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            navChange: function navChange(key) {
+                this.current = key;
+                this.recordList = [];
+                this.page = 1;
+                this.loading = true;
+                this.last = false;
+                this.loadtext = '数据加载中...';
+                this.getData();
+            },
+
+            calfavMatch: function calfavMatch(matchID) {
+                //取消关注
+
+                var _this = this;
+
+                baseAjax.cancelFoucsMatch(matchID, function (data, errorMsg) {
+                    if (data) {
+                        _this.$message({
+                            type: 'success',
+                            message: '取消关注成功'
+                        });
+
+                        _this.navChange(0);
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg
+                        });
+                    }
+                });
+            },
+
+            calfavUser: function calfavUser() {
+                //取消关注
+
+                var _this = this;
+
+                var uuid = _this.currentID;
+
+                baseAjax.cancelFocusUser(uuid, function (data, errorMsg) {
+                    if (data) {
+                        _this.$message({
+                            type: 'success',
+                            message: '取消关注成功'
+                        });
+
+                        _this.showConfirm = false;
+
+                        _this.navChange(1);
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg
+                        });
+                    }
+                });
+            },
+
+            dateFormat: function timeFormat(date, index) {
+
+                return date.substring(5, index);
+            },
+
+            cutStrForNum: function cutStrForNum(str, num) {
+                if (str.length > num) {
+                    return str.substring(0, num) + '...';
+                } else {
+                    return str;
+                }
+            },
+
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _current = base.getParmar('nav');
+
+                if (base.isNull(_current)) {
+                    _current = 0;
+                }
+
+                _this.current = _current;
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

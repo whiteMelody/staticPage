@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sign.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>购买VIP</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| user_vip_page
+| ------------------------------------------
+| Here are user_vip_page html
+|
+-->
+<div id="user_vip_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <layout-loader-black :show="loading"></layout-loader-black>
+
+    <div class="user_vip_page_content wb100 hidden">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="'购买VIP'"></en-header-new>
+
+        <div class="clear1"></div>
+
+        <div class="pa15">
+
+            <p style="color:#f6a623;" class="text-center">每天三角钱，英语轻松学</p>
+
+            <div class="clear1"></div>
+
+            <div class="wb100 pat15 pab15 lh25px text-center" style="color:#925421; background:#ffd7bf;">
+                <p>付费精品课程全场免费</p>
+                <p class="F12 lh20px">课程价值上万元，优质课程持续更新中</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <div class="wb100 pat15 pab15 lh25px text-center" style="color:#a47e3f; background:#feebca;">
+                <p>直播课程无限畅学</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <div class="wb100 pat15 pab15 lh25px text-center" style="color:#83a78b; background:#d3f1d9;">
+                <p>VIP高速下载通道</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <p>超值特价：{{vipData.salesAmount}}金币/年，原价{{vipData.marketAmount}}金币/年
+
+            <div class="clear1"></div>
+
+            <div class="wb100" v-if="vipData.currencyType == 0">
+
+                <p class="h30px lh30px text-over-hidden1">余额：{{ user.goldCoinsQty ? user.goldCoinsQty : 0}} 金币</p>
+
+                <div class="clear1"></div>
+
+                <a href="javascript:void(0)" v-if="user.goldCoinsQty && user.goldCoinsQty > item.payGoldCoins" @click="buyVip" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                    <span class="Fwhite">确认支付</span>
+                </a>
+                <a href="javascript:void(0)" @click="openRecharge(vip)" v-else class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                    <span class="Fwhite">余额不足，请充值</span>
+                </a>
+
+            </div>
+
+            <div class="wb100" v-else>
+                <a href="javascript:void(0)" @click="buyVip" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                    <span class="Fwhite">确认支付</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#user_vip_page",
+        data : {
+            showLoader : true,
+            loading : false,
+            current : 0,
+            user : {},
+            vipData : {},
+            golds : []
+        },
+        methods : {
+
+            buyVip(){
+
+            },
+
+            pay(){
+                let _this = this;
+
+                _this.loading = true;
+                baseAjax.getWxPayNew(_this.golds[_this.current].productID,function (data) {
+                    _this.loading = false;
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest',
+                        JSON.parse(data.returnJSON),
+                        function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok") {
+                                layer.alert("支付成功");
+                            }else{
+                                layer.alert("支付失败");
+                            }
+                        }
+                    );
+                })
+            }
+        },
+        created(){
+            let _this = this;
+
+            let userInfo = JSON.parse(base.getCookie("userInfo"));
+
+            if(base.isNull(userInfo)){
+               layer.alert("未登录");
+                _this.showLoader = false;
+               return false;
+            }
+
+            baseAjax.productVIP(function(data){
+                _this.vipData = data.returnJSON[0];
+            })
+
+            setTimeout(function(){
+                _this.showLoader = false;
+                $(".user_vip_page_content").removeClass("hidden");
+            },ajaxConfig.lazy);
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

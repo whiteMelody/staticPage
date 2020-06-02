@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- plugIn css -->
+    <link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="weui/lib/weui.min.css">
+    <link rel="stylesheet" href="weui/css/jquery-weui.min.css">
+    <!-- 7E css -->
+    <link rel="stylesheet" href="source/css/base.css">
+    <link rel="stylesheet" href="source/css/style.css">
+    <!-- plugIn js -->
+    <script src="source/js/jquery-2.1.4.js"></script>
+    <script src="weui/js/jquery-weui.min.js"></script>
+    <script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+
+    <title>充值</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| user_recharge_page
+| ------------------------------------------
+| Here are user_recharge_page html
+| 
+-->
+<div data-role="page" id="user_recharge_page" style="text-shadow:none; font-weight:normal; background:#fff;" data-dom-cache="false">
+
+    <div data-role="header" data-theme="a" class="bor-none ui-header ui-bar-a" role="banner" style="background: #fff;">
+        <div class="wb100 h30px pat5 pab5 relative">
+            <a class="my-icon-back h30px w30px absolute pointer" data-role="none" data-rel="back"  style="left:5px; top:5px; z-index:99"></a>
+            <div class="wb60 center text-center h30px lh30px Fblack F18 Fb">
+                充值
+            </div>
+        </div>
+    </div>
+
+    <div data-role="content" class="pa0">
+        <script>
+            $(function(){
+                $(".radius-item").click(function(){
+                    $(".radius-item").removeClass("radius-item-bor-active");
+                    $(this).addClass("radius-item-bor-active");
+                })
+            })
+        </script>
+
+        <div class="wb100">
+            <div class="pa15">
+                <!--<p class="h30px lh30px Fgray-3">当前余额（金币） <span class="Fblue fr F24">5000</span></p>-->
+                <!--<div class="clear1 bor-gray bor-solid-1b"></div>-->
+                <!--<div class="clear1"></div>-->
+
+                <div class="wb100">
+
+                    <div class="radius-item radius-item-bor-active lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">5元</span>
+                        <span class="fr mar15">￥5.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">10元</span>
+                        <span class="fr mar15">￥10.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">20元</span>
+                        <span class="fr mar15">￥20.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">50元</span>
+                        <span class="fr mar15">￥50.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">100元</span>
+                        <span class="fr mar15">￥100.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">500元</span>
+                        <span class="fr mar15">￥500.00</span>
+                    </div>
+                    <div class="radius-item lh25px pat10 pab10 mab15 text-center wb100 fl">
+                        <span class="fl mal15 Forange">1000元</span>
+                        <span class="fr mar15">￥1000.00</span>
+                    </div>
+
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="wb100 Fgray-2 F14 lh20px">
+
+                    <p class="Fgray-3 F16">温馨提示：</p>
+                    <div class="clear1"></div>
+
+                    <p class="mat5">1、充值金额只用作于红包和转盘的抽取，不包含您的网络费用。</p>
+                    <p class="mat5">2、充值金额没有时间使用期限，会一直在您的账户中，可以随时使用。</p>
+                    <p class="mat5">3、充值只支持微信支付。</p>
+                    <p class="mat5">4、充值金额可以在个人中心提现。</p>
+
+                </div>
+
+                <div class="clear1"></div>
+
+                <a href="javascript:;" class="display-inline h50px lh50px text-center Fwhite warpper-red wb100 F18 radius10" data-role="none">
+                    <span class="Fwhite">充值</span>
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    
+</div>
+
+</body>
+</html>

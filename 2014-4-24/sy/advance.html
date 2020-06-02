@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>司仪</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/sy.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+	})
+
+</script>
+</head>
+
+<body>
+	
+    <div class="wb100 h90px box-shadow-white2 bor-white2 bor-solid-1b warpper-nav">
+    	<div class="w1200px fixed-center h90px lh90px center text-center">
+        	<img src="images/logo.png" class="middle">
+            <a href="javascript:void(0)" class="brown fr F200em">在线预约</a>
+        </div>
+    </div>
+    
+    <div class="left-menu">
+        <div class="left-nav">
+        	<ul class="ul-left-nav">
+            	<li>
+                	<img src="images/icon-home.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-cafe.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-guidepost.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-pc.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-car.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-hotal.png">
+                    <p>旅游</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+  
+    <div class="clear h100px"></div>
+    
+    <div class="wb100 pat50 pab100 bg-paper">
+    	<div class="w450px center lh30px text-center F150em">
+            <div class="clear1"></div>
+            <div class="bg-title center Fblue-5 F175em">在线预约</div> 
+            <div class="clear1"></div>
+            <div class="wb100 text-left Fgray-3">
+            	<p>姓名</p>
+                <div class="clear"></div>
+                <div class="wb100 bor-gray bor-solid-1a h40px radius5">
+                	<input type="text" class="bor-none h30px mat5 wb96 mal2per">
+                </div>
+                <div class="clear1"></div>
+            	<p>联系电话</p>
+                <div class="clear"></div>
+                <div class="wb100 bor-gray bor-solid-1a h40px radius5">
+                	<input type="text" class="bor-none h30px mat5 wb96 mal2per">
+                </div>
+                <div class="clear1"></div>
+            	<p>预约时间</p>
+                <div class="clear"></div>
+                <div class="wb100 bor-gray bor-solid-1a h40px radius5">
+                	<input type="text" class="bor-none h30px mat5 wb96 mal2per">
+                </div>
+                <div class="clear1"></div>
+            	<p>性别 <input type="radio" class="mal10"> 男 <input type="radio" class="mal10"> 女</p>
+                <div class="clear1"></div>
+            	<p>预约时间</p>
+                <div class="clear"></div>
+                <textarea class="wb100 h200px bor-gray bor-solid-1a radius5"></textarea>
+                <div class="clear h50px"></div>
+                <input type="submit" class="h50px warpper-blue-11 bor-none Fwhite text-center wb100 pointer radius5 F125em" value="确认信息">
+                <div class="clear1"></div>
+                <p class="F80em">单击“确认信息”按钮，表示您预约成功！</p>
+            </div>
+        </div>    
+    </div>   
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 h90px lh90px text-center warpper-white-1 F150em Fbrown-2">
+    	<span>版权所有 © 2014 重庆壹比壹有限公司</span>              <span class="mal30">Map | Tag WED CM唯一官网：http://www.XXXX.com/ 京ICP备12018289号</span>
+    </div>
+    
+</body>
+</html>

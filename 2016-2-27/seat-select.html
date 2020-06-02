@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+	$(function(){
+		//$("#popDialog").popup('open');	
+		
+		$(".price-btn").click(function(){
+			var _target = $(".price-detail");
+			if(_target.hasClass("hidden"))
+				_target.removeClass("hidden");	
+			else
+				_target.addClass("hidden");	
+		})
+		
+		init();
+		
+	})
+	
+	function initZoom(){
+		$("#zomm").change(function(){
+			
+			var _val = parseFloat($(this).val())/100;
+			
+			$(".seat-area").css("transform","scale("+_val+","+_val+")");
+			
+			$(".preview .current").css("width",50 * (1/_val) + "px");
+			$(".preview .current").css("height",37.5 * (1/_val) + "px");
+			
+		});	
+	}
+	
+	
+	function init(){
+		
+		var preview = $(".preview");
+		
+		preview.height(preview.width()/2);
+		
+		var pHeight = preview.height();
+		var pWidth = preview.width();
+		
+		
+		$(".current").width();
+		
+		initZoom();
+		
+	}
+	
+</script>
+<style>
+	
+	.preview{ position:absolute; top:0; left:0; width:33%; background:rgba(0,0,0,.5); z-index:10;}
+	.current{ border:1px solid #fff; position:absolute; top:0; left:0; bottom:0; right:0; margin:auto;}
+	.mini-seat table{}
+	.mini-seat td{ width:6px; height:6px; background:url(images/seat-img.png); margin:.1px; float:left;}
+	.mini-seat .none{ background:none;}
+	.mini-seat .active{ background:url(images/seat-active.png);}
+	.mini-seat .disable{ background:url(images/seat-disable.png);}
+	
+</style>
+<title>邮政购票</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#f0efed;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#f0efed;">
+	
+   
+    <div data-role="content" class="pa0">
+    	
+        <div class="wb100">
+			
+            <p class="pal5per par5per wb90 lh50px bor-gray bor-solid-1b Fgray-3 warpper-white">
+            	<span>2016-2-8 10:00 星期五</span>
+                <span class="fr"><img src="images/icon-refresh.png" class="h15px middle mar5">换一场</span>
+            </p>
+            
+            
+            <div class="wb90 pal5per par5per text-center lh40px warpper-white">
+           	 	<div class="clear1"></div>
+            	<div class="wb30 session fl radius20">
+                	A区：120元
+                </div>
+            	<div class="wb30 session mal4per mar4per fl radius20">
+                	A区：120元
+                </div>
+            	<div class="wb30 session fl radius20">
+                	A区：120元
+                </div>
+           	 	<div class="clear1"></div>
+            </div>
+            
+            <div class="clear"></div>
+            
+            <div class="relative">
+            
+                <div class="preview">
+                    <div class="current"></div>
+                    <div class="mini-seat"></div>
+               	</div>
+                
+                <div class="wb100 seat-area" style="transform:scale(.5,.5)">
+                    <iframe src="seat.html" style="width:100%; height:300px;" frameborder="0"></iframe>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div data-role="popup" id="popDialog" data-overlay-theme="b" data-theme="a" style="width:300px; height:200px;margin:0; padding:0; box-shadow:none; border:none;">
+            <div role="main" class="ui-content" style="margin:0; padding:0; box-shadow:none; border:none;">
+            	<div class="wb100">
+                	<p class="text-center lh40px F125em">场次选择</p>
+                    <div class="clear1"></div>
+                    <div class="wb90 center">
+                    	<div class="session wb45 fl radius10">02月01 周五19:00</div>
+                        <div class="session wb45 fr radius10">02月01 周五19:00</div>
+                        <div class="clear1"></div>
+                    	<div class="session wb45 fl radius10">02月01 周五19:00</div>
+                        <div class="session wb45 fr radius10">02月01 周五19:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+        
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    	
+        
+        <!-- test code -->
+        <form>
+            <label for="zomm">Zoom:</label>
+            <input name="zomm" id="zomm" min="50" max="100" value="50" type="range">
+        </form>
+        
+        <div class="wb100 warpper-white hidden price-detail">
+            <div class="wb90 pal5per par5per lh30px">
+                <p class="wb20 fl">A区</p>
+                <p class="wb40 fl">10排14号</p>
+                <p class="wb30 fl">100元</p>
+                <p class="wb10 fl"><img src="images/icon-del.png" class="h20px middle"></p>
+                <div class="clear1"></div>
+                <p class="wb20 fl">A区</p>
+                <p class="wb40 fl">10排14号</p>
+                <p class="wb30 fl">100元</p>
+                <p class="wb10 fl"><img src="images/icon-del.png" class="h20px middle"></p>
+                <div class="clear1"></div>
+                <p class="wb20 fl">A区</p>
+                <p class="wb40 fl">10排14号</p>
+                <p class="wb30 fl">100元</p>
+                <p class="wb10 fl"><img src="images/icon-del.png" class="h20px middle"></p>
+            </div>
+            <div class="clear1 bor-gray bor-solid-1b"></div>
+            
+            <p class="pal5per par5per w90 Forange-1 lh40px">160.00+100.00*2张*8折(套票折扣)=320.00元</p>
+            <p class="pal5per par5per w90 Fgray-2 lh20px F80em">提示：同一区域购买套票（2张）折扣8折，3张7折。</p>
+            <div class="clear1"></div>
+        </div>
+    
+		<div class="wb100 warpper-white h50px lh50px text-center F125em">
+        	
+            <div class="wb20 bor-gray bor-solid-1r fl h50px lh50px text-center pointer price-btn">
+                <img src="images/arrow-up.png" class="middle">
+            </div>
+            
+            <div class="wb49 fl h50px lh50px">
+            	<p class="pal5per par5per wb90 Forange-2 F125em">
+                	￥226
+                    <span class="Fgray-2 F75em">（3张）</span>
+                </p>
+            </div>
+            
+            <div class="wb30 fr">
+                <a href="javascript:;" class="display-inline h50px lh50px wb100 warpper-orange-2">
+                    <span class=" Fwhite">结算</span>
+                </a>
+            </div>
+        </div>
+	</div>
+    
+</div>
+
+
+</body>
+</html>

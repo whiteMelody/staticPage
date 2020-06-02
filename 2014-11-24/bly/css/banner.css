@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+.banner{}
+.banner-left-area{ border:1px solid #f00; background:#fff;}
+.banner-left-area .banner-menu-item{}
+.banner-left-area .banner-menu-item .banner-menu-title{ height:30px; line-height:30px; margin:10px; font-size:16px; font-weight:600; clear:both;}
+.banner-left-area .banner-menu-item .banner-menu-content{ clear:both;}
+.banner-left-area .banner-menu-item .banner-menu-line{ border-bottom:2px solid #ededed; width:95%; clear:both; padding:10px 0; margin:0 auto;}
+.banner-center-area{ margin-left:1px;}
+.banner-center-area .banner-ul-area{}
+.banner-center-area .banner-ad-area{ margin-top:10px;}
+.banner-center-area .banner-ad-area .ad{ width:31%; height:160px; border:1px solid #c9c9c9; float:left; margin:1%; background:#fff;}
+.banner-center-area .banner-ad-area .ad .ad-desc{ width:80%; height:30%; margin:0 auto; line-height:25px; padding-top:5%;}
+.banner-center-area .banner-ad-area .ad .ad-img{ width:80%; height:60%; margin:0 auto;}
+.banner-center-area .banner-ad-area .ad .ad-img img{ width:100%; height:100%;}
+
+.banner-right-area{}
+.banner-right-area .banner-right-user{ border:1px solid #c9c9c9; width:90%; padding:5%; background:url(../images/user-head-bg.png) right top no-repeat; margin-top:5px; background-color:#fff;}
+.banner-right-area .banner-right-user .user-info{ width:100%; height:46px;}
+.banner-right-area .banner-right-user .user-head{ width:36px; height:36px; float:left; margin-right:10px;}
+.banner-right-area .banner-right-user .user-welcome{ width:auto; height:36px; }
+.banner-right-area .banner-right-user .user-welcome p{ line-height:18px; text-align:left;}
+.banner-right-area .banner-right-user .user-button{ width:100%; height:30px; float:left; margin-top:10px;}
+.banner-right-area .banner-right-user .user-button a{ background:#d4003c; color:#fff; padding:5px 15px; margin-right:5px;  -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius:15px; }
+.banner-right-area .banner-right-tips{ border:1px solid #c9c9c9; margin-top:5px; width:100%; background:#fff;}
+.banner-right-area .banner-right-tips .banner-tips-title{ width:100%; height:30px; line-height:30px; text-align:center; background:#f6f1f1; color:#d93d60; font-size:14px; }
+.banner-right-area .banner-right-tips .banner-tips-area{ width:100%; font-size:14px; white-space:nowrap; overflow:hidden;  }
+.banner-right-area .banner-ad-area{ width:100%; border:1px solid #c9c9c9; margin-top:8px; }
+.banner-right-area .banner-ad-area img{ width:100%; height:100%;}
+
+
+

@@ -1,0 +1,329 @@
+ <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/diy.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/iColorPicker.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.draggable.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" language="javascript" src="js/scorll.js"></script>
+<script type="text/javascript" language="javascript" src="js/diy-extend.js"></script>
+<script type="text/javascript" language="javascript" src="js/diy.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+		var tool = createTool();
+		//引用diy-tool包
+		tool.initDiy();
+		//引用diy-extend包
+		initExtend();
+	});
+
+</script>
+</head>
+
+<body>
+	
+    <div class="meta-warpper">
+    	<div class="meta">
+        	<div class="meta-welcome">欢迎来到改图网！</div>
+            <div class="meta-nav">
+            	<a href="javascript:void()" class="gray01">[登录]</a>
+            	<a href="javascript:void()" class="gray01">[免费注册]</a>
+            	<span>|</span>
+            	<a href="javascript:void()" class="gray01">设计师入口</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">个人中心</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">购物车0件</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">帮助</a>
+            </div>
+        </div>
+    </div>
+	<div class="top-warpper">
+        <div class="top">
+           <div class="top-ls">
+           		<div class="logo">
+              		<a href="javascript:void(0)"><img src="images/logo.png" /></a>
+                </div>
+                <div class="logo2">
+              		<a href="javascript:void(0)"><img src="images/logo2.png" /></a>
+                </div>
+                <div class="service">
+                	<a href="javascript:void(0)"><img src="images/kf.png" /></a>
+                </div>
+                <div class="serach">
+                	<input type="text" value="serach..." />
+                    <input type="button" value=" " />
+                </div>
+           </div>
+           <div class="top-nav">
+           		<div class="nav-all">
+                	全部商品分类
+                </div>
+                <div class="nav-other">
+                	<ul>
+                    	<li>首页</li>
+                    	<li>优惠活动</li>
+                    	<li>套餐</li>
+                    </ul>
+                </div>
+           </div>
+        </div>
+    </div>
+	<div class="content-warpper">
+      <div class="content">
+
+            <div class="diy-title">
+            	<div class="title-left">
+                	<span class="fl">创意商务名片纯黑色齿轮<font style="margin:0 15px; font-size:13px;">No:<span class="templateNo F12">1212323</span></font></span>
+                    
+                </div>
+                <div class="title-right">
+                	<ul>
+                    	<li style="background-position:1px 0"></li>
+                    	<li style="background-position:-73px 0"></li>
+                    	<li style="background-position:-147px 0"></li>
+                    	<li style="background-position:-222px 0; width:28px; padding-left:50px; padding-top:5px; height:24px;"><input id="bgcolor" name="bgcolor" type="hidden" value=" " class="iColorPicker" /></li>
+                        <li style="background:none; width:26px; margin-right:0;"><img src="images/color-ico.png" style="cursor:pointer; float:right; width:26px; height:26px;" class="thumbBtn" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="diy-area">
+            	<div class="diy">
+                    <div class="diy-front"></div>
+                    <div class="diy-reverse"></div>
+                </div>
+                <div class="edit">
+                   
+                    <div class="edit-tabs">
+                        <ul>
+                            <li class="tabs-hover">编辑内容</li>
+                            <li>新增内容</li>
+                        </ul>
+                    </div>
+                    <div class="edit-contents">
+                        <div class="slide-ul">
+                            <ul>
+                                <li><textarea id="content"></textarea></li>
+                                <li>
+                                    
+                                    <div class="my-select">
+                                        <div class="Svalue">
+                                            <input type="text" value="" readonly class="Sinput" id="family" />
+                                        </div>
+                                        <div class="Sbtn">
+                                            <img src="images/select-ico.png" />
+                                        </div>
+                                        <div class="Soption">
+                                            <div class="my-option" data="黑体">黑体</div>
+                                            <div class="my-option" data="宋体">宋体</div>
+                                            <div class="my-option" data="微软雅黑">微软雅黑</div>
+                                            <div class="my-option" data="仿宋">仿宋</div>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="my-select">
+                                        <div class="Svalue">
+                                            <input type="text" value="" readonly class="Sinput" id="size" />
+                                        </div>
+                                        <div class="Sbtn">
+                                            <img src="images/select-ico.png" />
+                                        </div>
+                                        <div class="Soption">
+                                            <div class="my-option" data="12px">12px</div>
+                                            <div class="my-option" data="13px">13px</div>
+                                            <div class="my-option" data="14px">14px</div>
+                                            <div class="my-option" data="15px">15px</div>
+                                            <div class="my-option" data="16px">16px</div>
+                                            <div class="my-option" data="17px">17px</div>
+                                            <div class="my-option" data="18px">18px</div>
+                                            <div class="my-option" data="19px">19px</div>
+                                            <div class="my-option" data="20px">20px</div>
+                                            <div class="my-option" data="21px">21px</div>
+                                            <div class="my-option" data="22px">22px</div>
+                                            <div class="my-option" data="23px">23px</div>
+                                            <div class="my-option" data="24px">24px</div>
+                                            <div class="my-option" data="25px">25px</div>
+                                            <div class="my-option" data="26px">26px</div>
+                                            <div class="my-option" data="27px">27px</div>
+                                            <div class="my-option" data="28px">28px</div>
+                                            <div class="my-option" data="29px">29px</div>
+                                            <div class="my-option" data="30px">30px</div>
+                                            <div class="my-option" data="31px">31px</div>
+                                            <div class="my-option" data="32px">32px</div>
+                                            <div class="my-option" data="33px">33px</div>
+                                            <div class="my-option" data="34px">34px</div>
+                                            <div class="my-option" data="35px">35px</div>
+                                            <div class="my-option" data="36px">36px</div>
+                                            <div class="my-option" data="37px">37px</div>
+                                            <div class="my-option" data="38px">38px</div>
+                                            <div class="my-option" data="39px">39px</div>
+                                            <div class="my-option" data="40px">40px</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="my-select">
+                                        <div class="Svalue" style=" width:180px;">
+                                            <input type="text" value="" class="Sinput iColorPicker" style="width:130px; margin-left:-20px; background:none;" id="fontcolor" name="fontcolor" readonly />
+                                        </div>    
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="btn" id="b" style="font-weight:bold;">B</span> <span class="btn" id="i"  style=" font-style:italic;">I</span> <span class="btn" id="u" style="text-decoration:underline;">U</span>
+                                </li>
+                                 <li>
+                                 	<span class="btn">居左</span> <span class="btn">居中</span> <span class="btn">居右</span>
+                                 </li>
+                                <li>横坐标: <input type="text" id="box-left"  style="border-bottom:1px solid #e1e1e1; width:60px;" />竖坐标: <input type="text" id="box-top"  style="border-bottom:1px solid #e1e1e1; width:60px;" /></li>
+                            </ul>
+                            <ul>
+                                <li class="li-btns">
+                                    <p class="p-hover">新增文本</p><p>新增图片</p>
+                                </li>
+                                <li class="li-areas">
+                                   位置： <input type="radio" name="area-txt" value="0" checked> 正面 <input type="radio" name="area-txt" value="1"> 反面 <br><br><br>
+                                    <textarea>新增文本</textarea><br><br><br><br><br>
+                                    
+                                    <input type="button" value="添加" id="add-txt">
+                                </li>
+                                <li class="li-areas" style="display:none;">
+                                    位置： <input type="radio" name="area-pic" value="0" checked> 正面 <input type="radio" name="area-txt" value="1"> 反面 <br><br><br>				
+                                    LOGO：<input type="button" value="上传LOGO"><br><br><br>	
+                                    
+                                    图片宽度：<input type="text" style="border-bottom:1px solid #e1e1e1; width:60px;"> 图片高度：<input type="text" style="border-bottom:1px solid #e1e1e1; width:60px;"><br><br><br><br><br>
+                                    
+                                    <input type="button" value="添加" id="add-pic">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="edit-save">
+                        <ul>
+                            <li class="save-hover" id="print">印刷图片</li>
+                            <li id="downLoad">下载</li>
+                            <li id="save">保存</li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- thumbContainter-->
+            <div id="thumbContainter">
+              <div id="thumbScroller">
+                <div class="container">
+                  <div class="content2">
+                    <div><img src="images/template/OS200908300957050000.png" data="100000001" class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS200909041135586718.png" data="100000002"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201109160410048756.png" data="100000003"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201109160956214531.png" data="100000004"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201109161000210625.png" data="100000005"  class="thumb" /></div>
+                  </div>
+                   <div class="content2">
+                    <div><img src="images/template/OS201110171004027073.png" data="100000006"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201110280940417343.png" data="100000007"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201205230929266714.png" data="100000008"  class="thumb" /></div>
+                  </div>
+                   <div class="content2">
+                    <div><img src="images/template/OS201110280943269843.png" data="100000009"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201205230929406491.png" data="100000010"  class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS200908300957358750.png" data="100000011"  class="thumb" /></div>
+                  </div>
+                   <div class="content2">
+                    <div><img src="images/template/OS200909041136340781.png" data="100000012" class="thumb" /></div>
+                  </div>
+                   <div class="content2">
+                    <div><img src="images/template/OS201109160410209866.png" data="100000013" class="thumb" /></div>
+                  </div>
+                  <div class="content2">
+                    <div><img src="images/template/OS201110171009321916.png" data="100000014" class="thumb" /></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+      </div>
+	</div>
+    <div class="footer-warpper">
+    	<div class="fth-warpper">
+        	<div class="fth">
+            	<img src="images/footer-1.png" />
+            </div>
+        </div>
+        <div class="ftb-warpper">
+        	<div class="ftb">
+            	<div class="li-menus">
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>新手入门</li></a>
+                        <a href="javascript" class="white"><li>新用户注册</li></a>
+                        <a href="javascript" class="white"><li>订购流程</li></a>
+                        <a href="javascript" class="white"><li>找回密码</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>支付及配送</li></a>
+                        <a href="javascript" class="white"><li>支付方式</li></a>
+                        <a href="javascript" class="white"><li>配送方式及费用</li></a>
+                        <a href="javascript" class="white"><li>配送进度查询</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>售后服务</li></a>
+                        <a href="javascript" class="white"><li>售后服务政策</li></a>
+                        <a href="javascript" class="white"><li>发票制度</li></a>
+                        <a href="javascript" class="white"><li>退款说明</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>帮助中心</li></a>
+                        <a href="javascript" class="white"><li>更多帮助信息</li></a>
+                        <a href="javascript" class="white"><li>常见问题</li></a>
+                        <a href="javascript" class="white"><li>给我们提建议</li></a>
+                        <a href="javascript" class="white"><li>新手设计指南</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>关注我们</li></a>
+                        <a href="javascript" class="white"><li>新浪微博</li></a>
+                        <a href="javascript" class="white"><li>腾讯微博</li></a>
+                    </ul>
+                    <ul>
+                        <li>&nbsp;</li>
+                        <a href="javascript" class="white Fb"><li>加改图网为微信好友</li></a>
+                    </ul>
+                </div>
+                <div class="li-bus"><img src="images/footer-2.png" /></div>
+                <div class="li-copyright">
+                <a href="javascript" class="white">关于我们</a> |
+                <a href="javascript" class="white">联系我们</a> |
+                <a href="javascript" class="white">媒体报道</a> |
+                <a href="javascript" class="white">商务合作</a> |
+                <a href="javascript" class="white">版权声明</a> |
+                <a href="javascript" class="white">隐私声明</a> |
+                <a href="javascript" class="white">网站地图</a> |
+                <a href="javascript" class="white">图图软件</a><br />
+
+				CopyRight©2005-2014 改图网 鄂ICP备05005325号 经营许可证编号:鄂B2-20110059
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

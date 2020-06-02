@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/hostSdk.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+
+
+    <style>
+
+        .el-radio__input.is-checked .el-radio__inner{border-color: #48a44a;background: #48a44a;}
+
+    </style>
+
+    <title>收货地址</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_order_address_page html
+|
+-->
+
+<div id="store_order_address_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+
+
+
+        <template v-for="(item,key) in deliveryList">
+            <div class="wb100 warpper-white">
+                <div class="pa15 ">
+                    <p>
+
+                        <span class="fl">{{item.recipients}}</span>
+                        <span class="fr Fnum">{{item.mobilePhone}}</span>
+                    </p>
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="pal15">
+                    <p class="F14  h30px bor-solid-1b bor-gray">{{item.address}}</p>
+
+                </div>
+
+                <div class="pa15">
+
+                    <div class="radio fl h30px lh30px" @click="myClick(item.addressID, key)">
+                        <el-radio  v-model="radio" :label="item.addressID" >设为默认地址</el-radio>
+                    </div>
+
+                    <div class="fr bor-solid-1a w60px h30px lh30px text-center radius5"  @click="exchange(item.addressID)">
+                        删除
+                    </div>
+
+                    <!--<a :href="'store_edit_order_address.html?addressID='+item.addressID+'&recipients='+item.recipients+'&mobilePhone='+item.mobilePhone+'&address='+item.address">-->
+                        <div class="fr bor-solid-1a w60px h30px lh30px text-center radius5 mar15 Fblack" @click="edit(item)">
+                            编辑
+                        </div>
+                    <!--</a>-->
+
+                </div>
+                <div class="clear1"></div>
+                <div class="clear1 warpper-gray-3"></div>
+            </div>
+
+        </template>
+
+        <div class="wb100" id="dialog" style="display: none">
+            <div class="dialogBg"></div>
+            <div class="wb100 fixed" style="bottom:50%;z-index: 99">
+                <div class=" warpper-white radius5 wb70 center ">
+                    <div class="wb100 h150px">
+                        <div class="text-center">
+                            <p class="lh100px h100px bor-solid-1b bor-gray">确定删除地址吗？</p>
+                            <!--<p class="F14 Fgray-3 bor-solid-1b bor-gray  h40px">需花费<span class="Fred Fnum"></span>金币</p>-->
+                            <p class="lh50px h50px">
+                                <span class="fl  wb50 bor-solid-1r bor-gray " style="height: 49px" @click="cancel">取消</span>
+                                <span class="fr  wb49 Fgreen" @click="remove">确定</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="pa15">
+            <div class="wb100 h45px lh45px Fgreen F16 text-center radius5 bor-solid-1a bor-green"  @click="submitOrder">新增收货地址</div>
+        </div>
+
+        <div class="pal15 par15">
+            <div class="wb100 h45px lh45px Fwhite F16 text-center radius5 warpper-green-4"  @click="pay">确定</div>
+        </div>
+
+
+        <div class="dialogBg" style="z-index: 99; background: rgba(0,0,0,.7);" v-show="showBuySuccess == true" @click="showBuySuccess = false"></div>
+        <div class="w270px h250px fixed Fwhite F16 text-center" v-show="showBuySuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 999;">
+            <img src="images/zt.png" class="w130px absolute" style="top: 0; left: 0; right: 0; margin: 0 auto; z-index: 9999; width: 134px;">
+            <img src="images/gx.png" class="w270px rotater absolute" style="top: -77px; left: -7px; z-index: 999;">
+            <div class="clear h130px"></div>
+            <div class="wb100">
+                <p class="F16 lh40px">恭喜您抽中</p>
+                <p class="lh20px Fyellow F20">{{Data.goodsname}}</p>
+                <div class="clear h20px"></div>
+                <div class="wb45 fl warpper-yellow pa1 radius4 h40px lh40px Fblack text-center" @click="showBuySuccess = false">
+                    返回
+                </div>
+                <a href="javascript:;" @click="redirect('store_order_detail.html?ordernum='+ordernum + '&bigtype='+bigtype)">
+                    <div class="wb45 fr  radius4 h40px lh40px text-center Fwhite warpper-red">
+                        查看详情
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_order_address_page",
+        data: {
+            fullscreenLoading: true,
+            Data:{},
+            radio: 0,
+            deliveryList: [],
+            page: 1,
+            pageSize: 20,
+            removeID: 0,
+            recipients:"",
+            favDisabled: false,
+            showBuySuccess: false,
+            rotateTimer: 0,
+            angle: 0,
+            ordernum:"",
+            bigtype:"",
+        },
+        methods: {
+
+
+            getData: function getData() {
+                var _this = this;
+
+                _this.goodsid = base.getParmar('goodsid');
+
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            edit: function edit(key) {
+                var _this = this;
+
+                _this.addressID = key.addressID;
+
+                _this.recipients = key.recipients;
+
+                _this.mobilePhone = key.mobilePhone;
+
+                _this.address = key.address;
+
+                window.location.href = 'store_edit_order_address.html?addressID='+_this.addressID+'&recipients='+_this.recipients+'&mobilePhone='+_this.mobilePhone+'&address='+_this.address+'&goodsid=' + _this.goodsid;
+
+            },
+
+            myClick: function myClick(key, i) {
+
+                var _this = this;
+
+                _this.radio = key;
+
+                _this.addressID = key;
+
+                _this.username = _this.deliveryList[i].recipients;
+
+                _this.telephone = _this.deliveryList[i].mobilePhone;
+
+                _this.location = _this.deliveryList[i].address;
+
+                baseAjax.defaultAddress(key, _this.uuid, _this.deviceID, _this.source, _this.deviceType, function (data) {
+                    if(data){
+                        console.log(data);
+                    }
+                });
+            },
+
+            getaddressList: function getaddressList() {
+
+                var _this = this;
+
+                baseAjax.addressList(_this.page, _this.pageSize,_this.uuid, _this.deviceID, _this.source, _this.deviceType, function (data) {
+
+                    var _tmp = data.returnJSON.indexData;
+
+                    console.log(data);
+
+                    for (var i = 0; i < _tmp.length; i++) {
+                        if (_tmp[i].isDefault == 1) {
+                            _this.radio = _tmp[i].addressID;
+                            _this.username = _tmp[i].recipients;
+                            _this.telephone = _tmp[i].mobilePhone;
+                            _this.location = _tmp[i].address;
+                            console.log(_tmp[i]);
+                            break;
+                        }
+                    }
+
+                    _this.deliveryList = _this.deliveryList.concat(_tmp);
+
+                });
+            },
+
+            exchange: function exchange(key) {
+
+
+                $("#dialog").show(0);
+                this.removeID = key;
+                console.log(key)
+            },
+
+            cancel: function cancel(key) {
+
+
+                $("#dialog").hide(0);
+                this.removeID = key;
+            },
+
+            remove: function remove() {
+
+                var _this = this;
+
+                baseAjax.delAddress(_this.removeID, _this.uuid, _this.deviceID, _this.source, _this.deviceType, function (data) {
+                    if (data) {
+                        _this.deliveryList = [];
+                        _this.getaddressList();
+                    }
+                });
+
+                $("#dialog").hide(0);
+
+            },
+
+            rotation: function rotation(){
+                var _this = this;
+                window.clearInterval(_this.rotateTimer);
+                _this.rotateTimer = setInterval(function(){
+                    _this.angle += 3;
+                    $(".rotater").rotate(_this.angle);
+                },50);
+
+
+            },
+
+
+            pay: function pay() {
+
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                if(_this.deliveryList.length == 0){
+                    _this.$message({
+                        type: 'error',
+                        message: '请添加收货地址',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+
+               if(_this.radio == 0){
+//                   _this.$message({
+//                       type: 'error',
+//                       message: '请设置默认地址'
+//                   });
+//                   return false;
+                   _this.username = _this.deliveryList[0].recipients;
+                   _this.telephone = _this.deliveryList[0].mobilePhone;
+                   _this.location = _this.deliveryList[0].address;
+               }
+
+
+                _this.addressID = _this.radio;
+
+                //productID, productName, productImgUrl, productType, productPrice, addressID,
+                baseAjax.createOrder(_this.goodsid, _this.username, _this.telephone, _this.location, _this.uuid, _this.deviceID, _this.source, _this.deviceType, function (data, errorMsg) {
+                    if (data) {
+
+                        console.log(data);
+
+                        _this.showBuySuccess = true;
+
+                        _this.ordernum = data.data.ordernum;
+
+                        _this.bigtype = data.data.bigtype;
+
+                        _this.Data = data.data;
+
+                        _this.rotation();
+
+
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+
+                        _this.favDisabled = true;
+
+                        setTimeout(function(){
+                            _this.favDisabled = false;
+                        },1500);
+
+                    }
+
+                    console.log(data);
+                });
+
+
+            },
+
+
+            submitOrder: function submitOrder() {
+
+                var _this = this;
+
+                window.location.replace('store_add_order_address.html?goodsid='+_this.goodsid);
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            initHostSdk(function (res) {
+
+                _this.isLoaded = true;
+
+                _this.uuid = res.uuid;
+
+                _this.deviceID = res.deviceID;
+
+                _this.source = res.source;
+
+                _this.deviceType = res.deviceType;
+
+                _this.getaddressList();
+            });
+
+            _this.getData();
+
+        }
+    });
+
+
+
+</script>
+
+</body>
+</html>

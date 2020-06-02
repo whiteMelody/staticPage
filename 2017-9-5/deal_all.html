@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>账户明细</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| deal_all_page
+| ------------------------------------------
+| Here are deal_all_page html
+|
+-->
+
+<div id="deal_all_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <!--<div class="wb100 h50px relative warpper-red" style="z-index: 99999;">-->
+
+        <!--&lt;!&ndash;<a href="user.html">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="w50px h50px fl">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--<p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">账户明细</p>-->
+    <!--</div>-->
+
+    <div class="wb100 lh45px text-center fixed bor-gray bor-solid-1b" style="top: 0; left: 0; background: rgba(255,255,255,.9); z-index: 99;">
+
+        <div class="wb33333 fl" v-for="(item,key) in navList" @click="navChange(key)">
+            <span class="tab-nav pal10 par10" :class="current == key ? 'tab-nav-active' : ''">{{item}}</span>
+        </div>
+
+    </div>
+
+    <div class="clear h45px"></div>
+
+    <div class="wb100">
+            <template v-for="item in dealList" v-if="empty==false">
+
+                <div class="pal15 warpper-white">
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                        <div class="par15 relative">
+                            <div class="wb50 fl lh25px">
+                                <p>{{item.businessDesc}}{{item.businessType}}</p>
+                                <p class="Fgray-2 fl Fnum F12">{{item.transactionTime}}</p>
+                            </div>
+                            <div class="wb50 fr text-right lh50px">
+                                <p class="Fnum Fblack" v-if="item.transMoney<0">{{item.transMoney}} 金币</p>
+                                <p class="Fnum Fred" v-if="item.transMoney>=0">+{{item.transMoney}} 金币</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+
+                <div class="pal15 warpper-white">
+                    <div class="clear bor-gray bor-solid-1b"></div>
+                </div>
+
+            </template>
+
+        <div class="clear1"></div>
+
+            <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+                <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+                <span class="fl mal10">{{loadtext}}</span>
+            </div>
+
+        <div class="wb100 text-center" v-if="empty==true">
+            <img src="images/zhmx_kb.png"  class="wb25 center mat50">
+            <div class="clear1"></div>
+            <p class="Fgray-2 F16 lh25px h25px">还没有明细记录哦~</p>
+            <div class="clear1"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#deal_all_page",
+        data: {
+            login: false,
+            fullscreenLoading: true,
+            loading: true,
+            user: {},
+            current: 0,
+            page: 1,
+            pageSize: 20,
+            navList: ['全部', '收入', '支出'],
+            dealList: [],
+            loadtext: '数据加载中...',
+            empty: false,
+            last: false
+        },
+        methods: {
+
+            getData: function getData() {
+                var _this = this;
+
+                baseAjax.userAccountFlow(_this.page, _this.pageSize, _this.current, function (data) {
+
+                    if (data) {
+
+                        if (data.returnJSON.indexData.length == 0 || data.returnJSON.indexData.length < _this.pageSize) {
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                                return false;
+                            }
+                        }
+
+                        console.log(data.returnJSON.indexData.length);
+
+                        _this.dealList = _this.dealList.concat(data.returnJSON.indexData);
+
+                        if (data.returnJSON.indexData.length == 0) {
+                            _this.empty = true;
+                        } else {
+                            _this.empty = false;
+                        }
+                    }
+                });
+            },
+            navChange: function navChange(key) {
+                this.current = key;
+                this.dealList = [];
+                this.page = 1;
+                this.loading = true;
+                this.last = false;
+                this.loadtext = '数据加载中...';
+                this.getData();
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            var _current = base.getParmar('nav');
+
+            if (base.isNull(_current)) {
+                _current = 0;
+            }
+
+            _this.current = _current;
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            _this.dealList = [];
+            _this.page = 1;
+            _this.loading = true;
+            _this.last = false;
+            _this.empty = false;
+            _this.loadtext = '数据加载中...';
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _current = base.getParmar('nav');
+
+                if (base.isNull(_current)) {
+                    _current = 0;
+                }
+
+                _this.current = _current;
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.dealList = [];
+                _this.page = 1;
+                _this.loading = true;
+                _this.last = false;
+                _this.loadtext = '数据加载中...';
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="/html/mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="/html/css/base.css">
+<link rel="stylesheet" href="/html/css/zbg.css">
+<script src="/html/js/jquery-1.8.3.min.js"></script>
+<script src="/html/mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="/html/js/base.js"></script>
+<script src="/html/js/jquery.Spinner.js"></script>
+<script src="/html/js/slick.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=bjqX5ex5mSepCvvIZTxdgozK"></script>
+
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	
+    <div class="loader">
+    	<img src="/html/images/load-1.gif">
+    </div>
+
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="h40px wauto lh40px absolute text-center" data-role="none" data-transition="slide" href="/html/area-change.html" style="left:5px; top:5px;text-shadow:none; font-weight:normal; color:#fff;">
+            <span class="fl">重庆</span><img src="/html/images/arrow-down-3.png" class="mat15 mal5 fr"></a>
+            <div class="wb50 pal5per center h40px lh40px warpper-white radius10 over-hidden">
+                <img src="/html/images/icon-search.png" class="h20px mat10 mar5 fl">
+                <input type="text" class="bor-none h33px lh33px Fgray-2 wb58 warpper-white text-left" style="text-shadow:none; font-weight:normal;" data-role="none" placeholder="地址/商家名称">
+            </div>
+        	<a class="my-icon-location h40px w40px absolute" href="/html/map.html" data-role="none" style="right:5px; top:5px;"></a>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="/html/js/source/index.js?v=1"></script>
+    	<script src="/html/js/source/comm.js?v=1"></script>
+
+        <a href="#index-menu" data-role="none"><img src="/html/images/bg-nav.png" style="position:fixed; top:45%; left:0; z-index:9; cursor:pointer; width:15px;"></a>
+    	
+        <div data-role="panel" id="index-menu" data-position="left" data-display="overlay" data-theme="a" style="width:200px;z-index:9;">
+			
+            <div style="position:absolute; right:5px; z-index:99;">
+            	<a href="#index-page" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">关闭</a>
+        	</div>
+			<div class="wb100 Fgray-3">
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="/html/images/icon-lock.png" class="middle" height="30" width="30"> 
+                    <span class="wb60 fr">快速登录</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="/html/images/icon-share-4.png" class="middle" height="30" width="30">
+                    <span class="wb60 fr">分享好友</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="/html/images/icon-menu-3.png" class="middle" height="30" width="30"> 
+                    <span class="wb60 fr">全部分类</span>
+                </p>
+                <div class="clear"></div>
+                
+                <!--
+                | ------------------------------------------
+                | index-left-nav
+                | ------------------------------------------
+                | Here are index-left-nav data
+                | 
+                -->
+                <div class="wb100 warpper-gray-1 index-left-nav">
+                </div>
+                
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="/html/images/icon-info.png" class="middle" height="30" width="30"> 
+                    <span class="wb60 fr">使用教程</span>
+                </p>
+               	<div class="clear"></div>
+                
+            </div>
+        </div>
+        
+    	<div class="wb100 img-area">
+            <div class="slider banner"> 
+                <div><div class="image"><img src="/html/images/banner-1.jpg"/></div></div> 
+                <div><div class="image"><img src="/html/images/banner-1.jpg"/></div></div> 
+                <div><div class="image"><img src="/html/images/banner-1.jpg"/></div></div> 
+            </div> 
+        </div>
+        <div class="clear"></div>
+        <div class="wb100 F90em">
+        	<div class="clear1"></div>
+            <!--
+            | ------------------------------------------
+            | index-nav
+            | ------------------------------------------
+            | Here are index-nav data
+            | 
+            -->
+            <div class="index-nav"></div>
+            <div class="clear1"></div>
+                
+        	<div class="clear1 warpper-gray-1"></div>
+            <div class="wb100">
+            	
+                <!--
+                | ------------------------------------------
+                | index-shop-product
+                | ------------------------------------------
+                | Here are index-shop-product data
+                | 
+                -->
+            	<div class="wb100 index-shop-product">
+                	<div class="wb95 pal5per h40px lh40px text-left F110em Fgray-3 bor-gray bor-solid-1b">
+                    	精选商家
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                    <div class="wb33333 fl ">
+                        <div class="wb90 pal5per par5per bor-gray bor-solid-1b bor-solid-1r pat15 lh20px text-center">
+                            <p class="Fgray-3"></p>
+                            <div class="clear h5px"></div>
+                            <div class="wb90 center h140px lh140px img-Warea">
+                                <img src="/html/images/img-default.png" class="middle">
+                            </div>
+                            <div class="clear h5px"></div>
+                        </div>
+                    </div>
+                	<div class="clear"></div>
+           		</div>
+            </div>
+            <div class="clear1 warpper-gray-1"></div>
+            
+            <div class="wb100">
+            	<div class="wb100">
+                	<div class="wb95 pal5per h40px lh40px text-left F110em Fgray-3 bor-gray bor-solid-1b">
+                    	<span class="fl">热门推荐</span>
+                        <a href="/html/list.html" data-transition="slide">
+                        	<img src="/html/images/arrow-right.png" class="fr mat15 mar5per">
+                        </a>
+                    </div>
+                    
+                    <!--
+                    | ------------------------------------------
+                    | index-recommend-product
+                    | ------------------------------------------
+                    | Here are index-recommend-product data
+                    | 
+                    -->
+                    <div class="wb100 index-recommend-product">
+                    	<div class="clear1"></div><div class="wb95 center"><a href="javascript:void(0)"><div class="wb43 fl h130px img-area relative"><img src="/Uploads/'+_this.goods_img+'">'+isOrder+'</div></a><div class="wb55 fr"><p class="wb100 fl text-left lh20px" data-sales-type="'+_this.sales_type+'" data-goods-id='+ _this.goods_id +'" data-transition="slide" data-role="none" class="to-detail">'+ base.cutStrForNum(_this.goods_name,35)+'</p><div class="clear h5px"></div><p class="Fgray-2 F80em lh20px">'+info+'</p><div class="clear1"></div><p class="wb100 Fgray-2 text-left lh25px"><span class="F150em Forange">'+ _this.goods_price +'</span> 元</p><p class="wb100 fl Fgray-2 text-left F80em lh25px">地址：'+_this.shop_address+'</p><div class="clear"></div><p class="wb45 fl Fgray-2 text-left F80em lh25px">'+_this.comment_num+'条评论</p><p class="wb45 fr Fgray-2 text-right F80em lh25px">已售'+_this.goods_sales+'</p></div></div><div class="clear1 bor-gray bor-solid-1b"></div>
+                    </div>
+                    <div class="clear1"></div>
+                    <a href="/html/list.html" data-role="button"><span class="Fgray-3">全部推荐</span></a>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="/html/images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="/html/list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="/html/images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="/html/issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="/html/images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="/html/images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+        <div id="commMap" class="hidden"></div>
+	</div>
+    
+</div>
+
+
+</body>
+</html>

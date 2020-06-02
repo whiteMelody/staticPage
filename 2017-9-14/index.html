@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+
+        .notice-area .el-carousel__button{ display: none;}
+        .notice-area .el-carousel__arrow--left{ display: none;}
+        .notice-area .el-carousel__arrow--right{ display: none;}
+
+        .warpper-black-2{background: rgba(255,255,255,.1)}
+        .bor-gray-6{border-color: #666666}
+
+        .myTransition{
+            transition-property:all;
+            -moz-transition-property: all; /* Firefox 4 */
+            -webkit-transition-property:all; /* Safari 和 Chrome */
+            -o-transition-property:all; /* Opera */
+            transition-timing-function: linear;
+            -moz-transition-timing-function: linear; /* Firefox 4 */
+            -webkit-transition-timing-function: linear; /* Safari 和 Chrome */
+            -o-transition-timing-function: linear; /* Opera */
+        }
+
+    </style>
+    <title>豹扑体育</title>
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| index_page
+| ------------------------------------------
+| Here are index_page html
+|
+-->
+
+<div id="index_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999">正在加载中...</p>
+        </div>
+    </div>
+
+    <!--引导弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showMsg == true" @click="showMsg = false; showMsg2 = true;"></div>
+    <div class="wb100 fixed Fwhite F16 text-center" @click="showMsg = false; showMsg2 = true;" v-show="showMsg == true" style="top: 420px; right: 0; left: 0; bottom: 0; margin: auto; width: 100%; height: 100%; z-index: 9999;">
+        <div class="pa15">
+
+            <img src="images/img-btn1.png" class="h50px">
+
+            <div class="clear h50px"></div>
+
+            <img src="images/info-msg1.png" class="wb100">
+        </div>
+    </div>
+
+    <!--引导弹窗2-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showMsg2 == true" @click="overInfoMsg"></div>
+    <div class="wb100 fixed Fwhite F16 text-center" @click="overInfoMsg" v-show="showMsg2 == true" style="top: 46%; right: 0; left: 0; bottom: 0; margin: auto; width: 100%; height: 100%; z-index: 9999;">
+        <div class="pa15">
+            <img src="images/info-msg2.png" class="wb55 fr" style="margin-right: 15%;">
+
+            <div class="clear h50px"></div>
+
+            <img src="images/img-btn2.png" class="h50px">
+
+        </div>
+    </div>
+
+    <!--领取红包弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showGetRedBag == true" @click="showGetRedBag = false"></div>
+    <div class="w270px h365px fixed Fwhite F16 text-center" v-show="showGetRedBag == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; height: 356px; z-index: 9999;">
+        <!--<template v-if="login == false">-->
+            <a href="javascript:;" @click="redirect('login.html?call=true&getRedBag=true')">
+                <img src="images/hb.png" class="w270px">
+                <p class="Fwhite absolute w200px h40px F18" style="bottom: 40px; left: 0; right: 0;  margin: 0 auto;">恭喜您获得<span class="Fyellow Fnum">1</span>个红包!</p>
+            </a>
+        <!--</template>-->
+        <!--<template v-else>-->
+            <!--<a href="javascript:;" @click="getRedBag">-->
+                <!--<img src="images/hb.png" class="w270px">-->
+                <!--<p class="Fwhite absolute w200px h40px F18" style="bottom: 40px; left: 0; right: 0;  margin: 0 auto;">恭喜您获得<span class="Fyellow Fnum">1</span>个红包!</p>-->
+            <!--</a>-->
+        <!--</template>-->
+    </div>
+
+    <!--领取红包成功弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showGetRedBagSuccess == true" @click="showGetRedBagSuccess = false"></div>
+    <div class="w270px h365px fixed Fwhite F16 text-center" v-show="showGetRedBagSuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; height: 359px; z-index: 9999;">
+        <img src="images/active-hb.png" class="w270px">
+        <p class="Fwhite absolute w200px h40px F18" style="top: 175px; left: 0; right: 0;  margin: 0 auto;">恭喜您获得<span class="Fyellow Fnum">2金币</span>红包</p>
+        <p class="Fwhite absolute w200px h40px F16" style="top: 205px; left: 0; right: 0;  margin: 0 auto;">快去参与竞猜吧~</p>
+        <p class="Fwhite absolute w200px h40px F14" style="top: 245px; left: 0; right: 0;  margin: 0 auto;">大家都在竞猜</p>
+
+        <div class="Fwhite absolute w200px h40px F14" style="top: 270px; left: 0; right: 0;  margin: 0 auto;">
+            <a href="javascript:;" @click="redirect('soccer_detail_bet.html?matchID='+ recommend.matchID)" v-if="noRecommend == false">
+                <div class=" h60px lh15px center pa10 warpper-white text-center Fblack radius5">
+                    <div class="w70px fl">
+                        <img :src="recommend.homeTeamLogo" class="w30px h30px mat5">
+                        <p class="mat10 wb100 h15px lh15px text-over-hidden1 F14">{{cutStrForNum(recommend.homeTeam,5)}}</p>
+                    </div>
+                    <div class="w30px fl">
+                        <img src="images/icon-vs2.png" class="h16px " style="margin-top: 13px">
+                    </div>
+                    <div class="w70px fl">
+                        <img :src="recommend.visitingTeamLogo" class="w30px h30px mat5">
+                        <p class="mat10 wb100 h15px lh15px text-over-hidden1 F14">{{cutStrForNum(recommend.visitingTeam,5)}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!--赛事筛选弹窗-->
+    <!--<div class="wb100 warpper-gray-3" v-show="showSearch == true" style="position: fixed; width: 100%; height: 100%; z-index: 99; margin: auto; left: 0; right: 0; top: 0; bottom: 0;">-->
+
+        <!--<div class="wb100">-->
+
+            <!--<div class="wb100 text-center warpper-white h35px lh35px pat5 pab5 warpper-white Fgray-2 F16">-->
+
+                <!--<div class="wb20 fl" v-for="(item,key) in searchList" @click="changeSearch(key, item.id)">-->
+                    <!--<span :class="searchKey == key ? 'bor-black bor-solid-3b h30px lh30px Fblack F18' : 'h35px lh35px'" class="display-inline">{{item.val}}</span>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="clear"></div>-->
+
+            <!--<div class="pa15 text-center">-->
+                <!--<el-row :gutter="15">-->
+                    <!--<el-col :span="6" v-for="(item,key) in matchList" class="wb100 mab15">-->
+                        <!--<div class="wb100 h35px lh35px radius5 bor-solid-1a warpper-white relative F14" :class="item.league == currentLeague.league ? 'bor-green' : 'bor-gray'" @click="selectMatch(item)">-->
+                            <!--<img src="images/icon-selected2.png" v-if="item.league == currentLeague.league" class="h20px absolute" style="right: 0; top: 0;">-->
+                            <!--{{item.league}}-->
+                        <!--</div>-->
+                    <!--</el-col>-->
+                <!--</el-row>-->
+
+                <!--<div class="clear"></div>-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--购买成功弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showBuySuccess == true" @click="showBuySuccess = false"></div>
+    <div class="w270px h250px fixed Fwhite F16 text-center" v-show="showBuySuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 9999;">
+        <img src="images/buy-success.png" class="w130px absolute" style="top: 0; left: 0; right: 0; margin: 0 auto; z-index: 99999; width: 134px;">
+        <img src="images/buy-success-shadow.png" class="w270px rotater absolute" style="top: -77px; left: -7px; z-index: 9999;">
+        <div class="clear h130px"></div>
+        <div class="wb100">
+            <p class="F20 lh40px">竞猜成功</p>
+            <p class="lh20px">预计收益<span class="Fgreen-2 Fnum">{{ getOdd()[1]}}</span>金币</p>
+
+            <div class="clear h20px"></div>
+
+            <a href="javascript:;" @click="redirect('soccer_result.html?orderID='+orderID+'&showBack=true')">
+                <div class="wb45 fl bor-green2 bor-solid-1a radius4 h40px lh40px text-center Fgreen-2">
+                    查看详情
+                </div>
+            </a>
+
+            <div class="wb45 fr warpper-green-1 pa1 radius4 h40px lh40px Fblack text-center" @click="showBuySuccess = false">
+                继续竞猜
+            </div>
+
+        </div>
+    </div>
+
+    <!--投注弹窗-->
+    <div class="dialogBg" style="z-index: 99; background: none;" v-show="payBottom == 0" @click="payBottom = -650"></div>
+    <div class="wb100 warpper-black-4 fixed h200px myTransition" :style=" payBottom == 0 ? 'transition-duration: .3s; -moz-transition-duration: .3s; -webkit-transition-duration: .3s; -o-transition-duration: .3s; bottom: '+ payBottom +'px; z-index:999;' : 'transition-duration: .6s; -moz-transition-duration: .6s; -webkit-transition-duration: .6s; -o-transition-duration: .6s; bottom: '+ payBottom +'px; z-index:999;' ">
+
+        <div class="clear1"></div>
+
+        <template v-if="showSelected">
+
+            <div class="wb100 warpper-black-3 Fgray-5 absolute bor-orange4 bor-solid-1b" :style="'top: -'+ (selectMatchs.length + 2) * 45  +'px;'" v-if="selectMatchs.length > 1">
+                <p class="pal15 par15 lh45px Fgray-6">
+                    <span class="fl">投注列表</span>
+                    <span class="fr" @click="clearSelectMatch">
+                        <img src="images/icon-clear-all.png" class="fl h25px mat10 mar5">
+                        清空
+                    </span>
+                </p>
+
+                <div class="clear bor-black3 bor-solid-1b"></div>
+
+                <div class="pal15 lh45px F14">
+                    <template v-for="item in selectMatchs">
+                        <p class="h45px lh45px text-over-hidden1 relative par50">
+                            {{item.homeTeam}} VS {{item.visitingTeam}}
+                            <span class="Fgray-6" v-if="item.selected == 1">主胜 <span class="Fnum">({{item.rateList[0].win}})</span></span>
+                            <span class="Fgray-6" v-if="item.selected == 2">平 <span class="Fnum">({{item.rateList[0].tie}})</span></span>
+                            <span class="Fgray-6" v-if="item.selected == 3">客胜 <span class="Fnum">({{item.rateList[0].lose}})</span></span>
+                            <span class="Fgray-6" v-if="item.selected == 4">主胜 <template v-if="item.letBall >0">+</template> {{item.letBall}} <span class="Fnum">({{item.rateList[item.rateList.length-1].win}})</span></span>
+                            <span class="Fgray-6" v-if="item.selected == 5">平 <span class="Fnum">({{item.rateList[item.rateList.length-1].tie}})</span></span>
+                            <span class="Fgray-6" v-if="item.selected == 6">客胜 <template v-if="item.letBall >0">+</template> {{item.letBall}} <span class="Fnum">({{item.rateList[item.rateList.length-1].lose}})</span></span>
+
+                            <span class="display-inline h45px w30px pal15 absolute" style="top: 0; right: 0;" @click="removeSelectMatch(item.matchID)">
+                                <img src="images/icon-close-btn.png" class="h15px">
+                            </span>
+
+                        </p>
+                        <div class="clear bor-black3 bor-solid-1b"></div>
+                    </template>
+                </div>
+
+                <p class="pal15 par15 h45px lh45px F14 Fgray-6">
+                    *总回报率(最大)＝
+                    <template v-for="(item,key) in selectMatchs">
+                        <template v-if="key < selectMatchs.length - 1">
+                            <span class="Fnum" v-if="item.selected == 1">{{item.rateList[0].win}} ×</span>
+                            <span class="Fnum" v-if="item.selected == 2">{{item.rateList[0].tie}} ×</span>
+                            <span class="Fnum" v-if="item.selected == 3">{{item.rateList[0].lose}} ×</span>
+                            <span class="Fnum" v-if="item.selected == 4">{{item.rateList[item.rateList.length-1].win}} ×</span>
+                            <span class="Fnum" v-if="item.selected == 5">{{item.rateList[item.rateList.length-1].tie}} ×</span>
+                            <span class="Fnum" v-if="item.selected == 6">{{item.rateList[item.rateList.length-1].lose}} ×</span>
+                        </template>
+                        <template v-else>
+                            <span class="Fnum" v-if="item.selected == 1">{{item.rateList[0].win}}</span>
+                            <span class="Fnum" v-if="item.selected == 2">{{item.rateList[0].tie}}</span>
+                            <span class="Fnum" v-if="item.selected == 3">{{item.rateList[0].lose}}</span>
+                            <span class="Fnum" v-if="item.selected == 4">{{item.rateList[item.rateList.length-1].win}}</span>
+                            <span class="Fnum" v-if="item.selected == 5">{{item.rateList[item.rateList.length-1].tie}}</span>
+                            <span class="Fnum" v-if="item.selected == 6">{{item.rateList[item.rateList.length-1].lose}}</span>
+                        </template>
+                    </template>
+                </p>
+
+            </div>
+
+        </template>
+
+        <p class="lh20px pal15 par15 F14 Fgray-5 relative">
+            <span class="fl par10 mar10 Forange-2 display-inline bor-black3 bor-solid-1r" v-if="selectNum == 1">单场</span>
+            <span class="fl par10 mar10 Forange-2 display-inline bor-black3 bor-solid-1r" v-else-if="selectNum > 1" @click="showSelected = !showSelected">
+                <img src="images/arrow-up-orange.png" class="w10px absolute" style="top: -6px; left: 25px;" v-if="showSelected == false">
+                <img src="images/arrow-down-orange.png" class="w10px absolute" style="top: -6px; left: 25px;" v-if="showSelected == true">
+                {{selectNum}}串1
+            </span>
+
+            <span class="fl">猜对可赢<span class="Fnum Fred">{{ twoDecimal(odds * money)}}</span>金币</span>
+            <span class="fr">余额：<span class="Fnum">{{user.coinsQty}}</span>金币</span>
+        </p>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 par15">
+            <!--<el-input v-model="money" type="tel" placeholder="请输入金额"></el-input>-->
+            <el-input-number v-model="money"  :min="1" :max="maxNum"></el-input-number>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15">
+            <div class="wb15 mar5per fl" v-for="(item,key) in moneys">
+                <div @click="money = item" class="wb100 h30px lh30px text-center F14 radius5 Fnum" :class="money == item ? 'warpper-orange-7 pa1 Fwhite' : 'bor-orange2 bor-solid-1a Forange-2'">
+                    {{item}}
+                </div>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 par15">
+            <div class="wb100 h40px lh40px warpper-orange-7 Fwhite text-center radius5" @click="submitOrder">
+                确认竞猜
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+    </div>
+
+    <!--更多菜单弹窗-->
+    <div class="dialogBg" v-show="showUserMeun == true" @click="showUserMeun = false"></div>
+    <div class="w150px absolute lh50px Fwhite F16 warpper-black-3" v-show="showUserMeun == true" style="top: 50px; right: 0; z-index: 999;">
+        <template v-if="login == true">
+            <!--<a href="javascript:;" @click="redirect('deal_all.html')">-->
+                <!--<p class="Fgray-2 pal15 par15 pat10 lh25px">我的金币</p>-->
+                <!--<p class="pal15 par15 Fnum F18 lh30px Fwhite">-->
+                    <!--<span class="fl w25px"><img src="images/icon-gold.png" class="fl h16px" style="margin-top: 7px;"></span>-->
+                    <!--{{user.coinsQty}}-->
+                <!--</p>-->
+            <!--</a>-->
+            <!--<div class="clear" style="border-bottom: 1px solid #5c5c5c;"></div>-->
+            <!--<a href="javascript:;" @click="redirect('recharge.html')">-->
+                <!--<p class="pal15 par15 Fwhite">-->
+                    <!--<span class="fl w25px"><img src="images/icon-menu1.png" class="fl h16px" style="margin-top: 17px;"></span>-->
+                    <!--我要充值-->
+                <!--</p>-->
+            <!--</a>-->
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('user_ticket_all.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu2.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的竞猜
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('user_fav.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu7.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的关注
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('user_red_bag.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu3.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的红包
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('deal_all.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu4.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    账户明细
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('store.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu5.png" class="fl" style="margin-top: 19px; height: 13px;"></span>
+                    金币商城
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=index.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-logout.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    切换账户
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+        </template>
+        <template v-if="login == false">
+
+            <!--<a href="login.html?call=true&callUrl=index.html">-->
+                <!--<p class="Fgray-2 pal15 par15 pat10 lh25px">我的金币</p>-->
+                <!--<p class="pal15 par15 Fnum F18 lh30px Fwhite">-->
+                    <!--<span class="fl w25px"><img src="images/icon-gold.png" class="fl h16px" style="margin-top: 7px;"></span>-->
+                    <!--{{user.coinsQty}}-->
+                <!--</p>-->
+            <!--</a>-->
+            <!--<div class="clear" style="border-bottom: 1px solid #5c5c5c;"></div>-->
+            <!--<a href="javascript:;" @click="redirect('recharge.html')">-->
+                <!--<p class="pal15 par15 Fwhite">-->
+                    <!--<span class="fl w25px"><img src="images/icon-menu1.png" class="fl h16px" style="margin-top: 17px;"></span>-->
+                    <!--我要充值-->
+                <!--</p>-->
+            <!--</a>-->
+            <div class="clear bor-black3 bor-solid-1b"></div>
+
+            <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=deal_all.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu2.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的竞猜
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=user_ticket_all.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu4.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的关注
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=user_red_bag.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu3.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    我的红包
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+
+            <a href="javascript:;" @click="redirect('deal_all.html')">
+
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu4.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    账户明细
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+            <a href="javascript:;" @click="redirect('store.html')">
+                <p class="pal15 par15 Fgray-5">
+                    <span class="fl w25px"><img src="images/icon-menu5.png" class="fl h16px" style="margin-top: 17px;"></span>
+                    金币商城
+                </p>
+            </a>
+            <div class="clear bor-black3 bor-solid-1b"></div>
+        </template>
+
+    </div>
+
+    <div class="wb100 ">
+
+        <div class="h50px lh50px pal15 relative warpper-black-3" style="">
+
+            <!--<div class="w50px h50px absolute text-center warpper-white" style="top: 0; left: 0; z-index: 8;">-->
+                <!--<img src="images/icon-notice.png" class="w20px h20px fl ma15">-->
+            <!--</div>-->
+
+            <a href="javascript:;" @click="redirect('recharge.html')">
+                <div class="w170px h30px radius15 warpper-black-2 absolute" style="top:10px">
+                    <!--<el-carousel height="50px" :interval="5000">-->
+                        <!--<el-carousel-item v-for="item in notice">-->
+                            <!--<p class="wb100 lh50px h50px warpper-white">-->
+                                <!--恭喜{{item.name}}中奖<span class="Fnum Fred">{{item.gold}}</span>金币-->
+                            <!--</p>-->
+                        <!--</el-carousel-item>-->
+                    <!--</el-carousel>-->
+                    <div class="pal10 fl" style="margin-top: -8px">
+                        <img src="images/jb_sy.png" class="w15px">
+                    </div>
+                    <p class="Fwhite h30px lh30px fl mal10 Fnum" style="margin-top: 1px">{{user.coinsQty}}</p>
+                    <div class="fr " style="margin-top: -7px;padding-right: 6px">
+                        <img src="images/cz_sy.png" class="w18px">
+                    </div>
+                </div>
+            </a>
+
+            <div class="w70px h50px absolute text-center warpper-black-3 bor-black3 bor-solid-1l" @click="showUserMeun = !showUserMeun" style="top: 0; right: 0; z-index: 20;">
+                <img :src="user.photoUrl ? user.photoUrl : 'images/icon-user4.png'" class="w20px fl mal15 mat15">
+                <img src="images/shape_down_gr2.png" class="h8px" v-show="showUserMeun == false">
+                <img src="images/shape_up_gr2.png" class="h8px" v-show="showUserMeun == true">
+            </div>
+
+        </div>
+
+
+        <div class="clear"></div>
+
+        <!--banner-->
+        <template v-if="bannerLength == 0">
+            <div></div>
+        </template>
+
+        <template v-else-if="bannerLength == 1">
+            <div class="wb100" v-for="item in banner">
+                <a :href="item.linkUrl" >
+                    <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                        <!--<img :src="item.imgUrl + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />-->
+                        <img :src="item.imgUrl" />
+                    </div>
+                </a>
+            </div>
+        </template>
+
+        <template v-else="bannerLength > 1">
+            <el-carousel :height="_height + 'px'" ref="carousel" :interval="5000">
+                <el-carousel-item v-for="item in banner" :key="item">
+                    <a :href="item.linkUrl" @touchstart="moveStart" @touchend="moveEnd">
+                        <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                            <!--<img :src="item.imgUrl + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />-->
+                            <img :src="item.imgUrl" />
+                        </div>
+                    </a>
+                </el-carousel-item>
+            </el-carousel>
+        </template>
+
+        <div class="clear"></div>
+
+        <!--小喇叭-->
+        <div class="wb100">
+
+            <div class="pal50 pat15 pab15 par15 h20px lh20px Fgray-5 relative warpper-black-3">
+                <img src="images/icon-notice.png" class="h20px absolute" style="top: 15px; left: 15px;">
+                <div class="wb100 over-hidden">
+                    <div :style="'margin-left: '+ marginLeft +'px; transition-duration: '+ marginTime +'s; -moz-transition-duration: '+ marginTime +'s; -webkit-transition-duration: '+ marginTime +'s; -o-transition-duration: '+ marginTime +'s; width:999999999px'" class="myTransition">
+                        {{noticeText}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clear1 warpper-black-4"></div>
+
+        <div class="wb100 warpper-black-3">
+
+            <div class="wb100 text-center lh25px F14">
+                <el-row>
+                    <el-col :span="6">
+                        <div class="wb100 pat15" style="border-top: 1px solid #743297;">
+                            <a href="javascript:;" @click="redirect('expert.html')">
+                               <div class="wb60 center img-area">
+                                   <img src="images/icon-nav-new1.png">
+                               </div>
+                                <p class="Fgray-5 lh20px mat10">达人推荐</p>
+                            </a>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div class="wb100 pat15" style="border-top: 1px solid #A34B00; border-left: 1px solid #26272F; ">
+                            <template v-if="login == false">
+                                <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=index.html')">
+                                    <div class="wb60 center img-area">
+                                        <img src="images/icon-nav-new2.png">
+                                    </div>
+                                    <p class="Fgray-5 lh20px mat10">我的竞猜</p>
+                                </a>
+                            </template>
+                            <template v-if="login == true">
+                                <a href="javascript:;" @click="redirect('user_ticket_all.html')">
+                                    <div class="wb60 center img-area">
+                                        <img src="images/icon-nav-new2.png">
+                                    </div>
+                                    <p class="Fgray-5 lh20px mat10">我的竞猜</p>
+                                </a>
+                            </template>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div class="wb100 pat15" style="border-top: 1px solid #0853B4; border-left: 1px solid #26272F; ">
+                            <a href="javascript:;" @click="redirect('store.html')">
+                                <div class="wb60 center img-area">
+                                    <img src="images/icon-nav-new3.png">
+                                </div>
+                                <p class="Fgray-5 lh20px mat10">金币商城</p>
+                            </a>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div class="wb100 pat15" style="border-top: 1px solid #A83415; border-left: 1px solid #26272F; ">
+                            <a href="javascript:;" @click="redirect('recharge.html')">
+                                <div class="wb60 center img-area">
+                                    <img src="images/icon-nav-new4.png">
+                                </div>
+                                <p class="Fgray-5 lh20px mat10">我要充值</p>
+                            </a>
+                        </div>
+                    </el-col>
+                </el-row>
+                <div class="clear1"></div>
+            </div>
+
+        </div>
+
+
+        <div class="clear1 warpper-black-4"></div>
+
+        <!--<div class="wb100">-->
+            <!--<div class="h50px lh50px par50 bor-gray bor-solid-1b relative">-->
+
+                <!--<div class="wb100">-->
+                    <!--<div class="over-scroll pat5 pab5 scroll-warp">-->
+                        <!--<div :style="'width:'+_width2+'px'">-->
+                            <!--<p class="F16 h40px lh40px text-over-hidden1 Fgray-2 text-center fl mal15" v-for="(item,key) in hotList" :style="'width:'+_height2+'px'" @click="selectMatch(item)">-->
+                                <!--<span :class="item.league == currentLeague.league ? 'bor-black bor-solid-3b h35px lh35px Fblack F18' : 'h40px lh40px'" class="display-inline">{{item.league}}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="w50px absolute" style="top: 0; right: 0;" @click="showSearch = true">-->
+                    <!--<img src="images/icon-search.png" class="h20px fr mat15 mar15">-->
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+        <div class="wb100">
+            <div class="pal15 par15 text-center">
+
+                <div class="wb50 fl" @click="changeHot(0)">
+                    <div class="wb100 h50px lh50px" :class="leagueCode == 0 ? 'warpper-orange-7 Fwhite pa1' : 'bor-orange4 bor-solid-1a Forange-2' ">
+                        热门赛事
+                    </div>
+                </div>
+                <div class="wb50 fr" @click="changeHot(1)" >
+                    <div class="wb100 h50px lh50px" :class="leagueCode == 1 ? 'warpper-orange-7 Fwhite pa1' : 'bor-orange4 bor-solid-1a Forange-2'">
+                        全部赛事
+                    </div>
+                </div>
+
+                <!--<div class="over-scroll pat5 pab5 scroll-warp">-->
+                    <!--<div :style="'width:'+_width2+'px'">-->
+                        <!--<p class="F16 h40px lh40px text-over-hidden1 Fgray-2 text-center fl mal15" v-for="(item,key) in hotList" :style="'width:'+_height2+'px'" @click="selectMatch(item)">-->
+                            <!--<span :class="item.league == currentLeague.league ? 'bor-black bor-solid-3b h35px lh35px Fblack F18' : 'h40px lh40px'" class="display-inline">{{item.league}}</span>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="w50px absolute" style="top: 0; right: 0;" @click="showSearch = true">-->
+                <!--<img src="images/icon-search.png" class="h20px fr mat15 mar15">-->
+            <!--</div>-->
+
+
+            </div>
+        </div>
+
+        <div class="clear1 warpper-black-4"></div>
+
+        <div class="wb100">
+            <template v-for="(item,key) in soccerList">
+                <div class="wb100">
+
+                    <div class="pa15 Fgray-5">
+
+                        <a href="javascript:;" @click="redirect('soccer_detail_bet.html?matchID='+ item.matchID)">
+                            <p class="h20px lh20px F12 relative Fgray-5">
+                                <span class="fl">
+                                    {{item.league}} <span class="Fnum">{{ dateFormat(item.matchTime,16)}}</span>
+                                </span>
+
+                                <span class="absolute wb20 text-center h20px lh20px Fgray-5" v-if="item.status == 3" style="left: 0; right: 0; margin: 0 auto;">已完赛</span>
+                                <span class="absolute wb20 text-center h20px lh20px Fgray-5" v-if="item.status == 1" style="left: 0; right: 0; margin: 0 auto;">取消</span>
+                                <span class="absolute wb20 text-center h20px lh20px Fgray-5" v-if="item.status == 4" style="left: 0; right: 0; margin: 0 auto;">暂定赛事</span>
+                                <span class="absolute w80px text-center h20px lh20px Fred F14 Fgray-5" v-if="item.status == 2" style="left: 0; right: 0; margin: 0 auto;">
+
+                                    <template v-if="item.matchMinute < 45">
+                                        进行中 {{item.matchMinute}}'
+                                    </template>
+                                    <template v-if="item.matchMinute == 45">
+                                        <template v-if="item.matchMinuteExtra == 0">
+                                            进行中 45'
+                                        </template>
+                                        <template v-if="item.matchMinuteExtra != 0">
+                                            进行中 45+'
+                                        </template>
+                                    </template>
+
+                                    <template v-if="item.matchMinute > 45 && item.matchMinute < 90">
+                                        进行中 {{item.matchMinute}}'
+                                    </template>
+
+                                    <template v-if="item.matchMinute == 90">
+                                        <template v-if="item.matchMinuteExtra == 0">
+                                            进行中 90'
+                                        </template>
+                                        <template v-if="item.matchMinuteExtra != 0">
+                                            进行中 90+'
+                                        </template>
+                                    </template>
+
+                                </span>
+
+                                <span class="absolute wb20 text-center h20px lh20px" v-if="item.status == 0 && item.frost" style="left: 0; right: 0; margin: 0 auto;">
+                                    封盘中
+                                </span>
+
+                                <!--暂时取消-->
+                                <span class="fr Fgray-2">
+                                   <!--<span class="Fnum Fgreen">{{item.viewCount}}</span> 人在竞猜-->
+                                     <img src="images/arrow-right.png" class="fr h14px mal5" style="margin-top: 3px;">
+                                </span>
+                            </p>
+
+                            <div class="clear1"></div>
+
+                            <div class="wb40 fl Fgray-5">
+                                <p class="lh30px F18 ">
+                                    <img :src="item.homeTeamLogo" class="h30px w30px fl">
+                                    <span class="F16 fl mal5 ">{{cutStrForNum(item.homeTeam,5)}}</span>
+                                </p>
+                            </div>
+
+                            <!--<div class="wb20 fl text-center" style="margin-top: 3px;">-->
+                                <!--<img src="images/icon-liked.png" v-if="item.isFaved" @click="favMatch(item,'cal')" class="h22px">-->
+                                <!--<img src="images/icon-like.png" v-else @click="favMatch(item,'fav')" class="h22px">-->
+                            <!--</div>-->
+                            <div class="wb20 fl text-center" v-if="item.status == 0">
+                               <img src="images/icon-vs2.png" class="h18px" style="margin-top: 6px;">
+                            </div>
+
+                            <div class="wb20 fl text-center lh30px Fnum F18 Fgray-5" v-if="item.status == 3">
+                                <p>{{item.hFullGoals}} : {{item.vFullGoals}}</p>
+                            </div>
+
+                            <div class="wb20 fl text-center Fred lh30px Fnum F18 Fgray-5" v-if="item.status == 2">
+                                <p>{{item.hFullGoals}} : {{item.vFullGoals}}</p>
+                            </div>
+
+                            <div class="wb40 fl text-center Fgray-5">
+                                <p class="lh30px F18 ">
+                                    <img :src="item.visitingTeamLogo" class="h30px w30px fr">
+                                    <span class="F16 fr mar5">{{cutStrForNum(item.visitingTeam,5)}}</span>
+                                </p>
+                            </div>
+                        </a>
+
+                        <template v-for="(item2,key2) in item.rateList" v-if="item.status == 0 && item.frost == false">
+
+                            <div class="clear1" v-if="key2 == 0"></div>
+
+                            <!--胜平负-->
+                            <div class="pal20 relative h60px text-center bor-black2 bor-solid-1l bor-solid-1r bor-solid-1t relative warpper-black-3" style="z-index: 99;" v-if="item2.isLetBall == false">
+
+                                <div class="h60px lh60px text-center warpper-gray-2 w20px absolute Fwhite Fnum" style="top: 0; left: 0;">
+                                    0
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(1, item2, item)">
+                                    <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 1">
+                                        <p>主胜</p>
+                                        <p class="Fnum">{{item2.win}}</p>
+                                    </div>
+                                    <div class="wb100 pat5 pab5 lh25px" v-else>
+                                        <p class="Fgray-5">主胜</p>
+                                        <p class="Fnum Fgray-6">{{item2.win}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(2, item2, item)">
+                                    <div class="wb100 bor-black2 bor-solid-1l bor-solid-1r">
+                                        <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 2">
+                                            <p>平</p>
+                                            <p class="Fnum">{{item2.tie}}</p>
+                                        </div>
+                                        <div class="wb100 pat5 pab5 lh25px" v-else>
+                                            <p class="Fgray-5">平</p>
+                                            <p class="Fnum Fgray-6">{{item2.tie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(3, item2, item)">
+                                    <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 3">
+                                        <p>客胜</p>
+                                        <p class="Fnum">{{item2.lose}}</p>
+                                    </div>
+                                    <div class="wb100 pat5 pab5 lh25px" v-else>
+                                        <p class="Fgray-5">客胜</p>
+                                        <p class="Fnum Fgray-6">{{item2.lose}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--让球胜平负-->
+                            <div class="pal20 relative h60px lh60px text-center bor-black2 bor-solid-1a relative warpper-black-3" style="z-index: 99;" v-if="item2.isLetBall == true">
+
+                                <div class="text-center warpper-red absolute Fwhite F14 Fnum" v-if="item2.letBall>0" style="top: -1px; height: 61px; line-height: 61px; left: 0px; width: 20px;">
+                                    +{{item2.letBall}}
+                                </div>
+                                <div class="text-center warpper-gray-2 absolute Fwhite Fnum" v-if="item2.letBall==0" style="top: -1px; height: 61px; line-height: 61px; left: 0px; width: 20px;">
+                                    {{item2.letBall}}
+                                </div>
+                                <div class="text-center warpper-blue absolute Fwhite Fnum" v-if="item2.letBall<0" style="top: -1px; height: 61px; line-height: 61px; left: 0px; width: 20px;">
+                                    {{item2.letBall}}
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(4, item2, item)">
+                                    <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 4">
+                                        <p>主胜</p>
+                                        <p class="Fnum">{{item2.win}}</p>
+                                    </div>
+                                    <div class="wb100 pat5 pab5 lh25px Fwhite" v-else>
+                                        <p class="Fgray-5">主胜</p>
+                                        <p class="Fnum Fgray-6">{{item2.win}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(5, item2, item)">
+                                    <div class="wb100 bor-black2 bor-solid-1l bor-solid-1r">
+                                        <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 5">
+                                            <p>平</p>
+                                            <p class="Fnum">{{item2.tie}}</p>
+                                        </div>
+                                        <div class="wb100 pat5 pab5 lh25px Fwhite" v-else>
+                                            <p class="Fgray-5">平</p>
+                                            <p class="Fnum Fgray-6">{{item2.tie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="wb33333 fl" @click="selectSoccer(6, item2, item)">
+                                    <div class="wb100 warpper-orange-7 pat5 pab5 lh25px Fwhite" v-if="item.selected == 6">
+                                        <p>客胜</p>
+                                        <p class="Fnum">{{item2.lose}}</p>
+                                    </div>
+                                    <div class="wb100 pat5 pab5 lh25px Fwhite" v-else>
+                                        <p class="Fgray-5">客胜</p>
+                                        <p class="Fnum Fgray-6">{{item2.lose}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </template>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+
+                <!--<div class="clear h10px warpper-gray-3" v-if="key < totleCount - 1"></div>-->
+                <div class="clear1"></div>
+
+            </template>
+
+            <div class="clear1"></div>
+
+            <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+                <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+                <span class="fl mal10">{{loadtext}}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <template v-if="payBottom == 0">
+        <div class="clear h200px"></div>
+    </template>
+
+</div>
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base_bak.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface_bak.js"></script>
+<script src="js/loading.js"></script>
+
+
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#index_page",
+        data: {
+            fullscreenLoading: true,
+            _width: 0,
+            _width2: 0,
+            _height: 0,
+            _height2: 0,
+            startX: 0,
+            endX: 0,
+            active: 1,
+            searchKey: 0,
+            selectNum: 0,
+            leagueType: 0,
+            leagueCode: 0,
+            rotateTimer: 0,
+            noticeTimer: 0,
+            marginTime: 0,
+            marginLeft: 0,
+            angle: 0,
+            odds: 0,
+            showUserMeun: false,
+            showSelected: false,
+            showGetRedBag: false,
+            showGetRedBagSuccess: false,
+            showBuySuccess: false,
+            showMsg: false,
+            showMsg2: false,
+            noRecommend: false,
+            login: false,
+            loading: true,
+            loadtext: '数据加载中...',
+            empty: false,
+            last: false,
+            showSearch: false,
+            payBottom: -650,
+            orderID: '',
+            page: 1,
+            pageSize: 20,
+            totleCount: 0,
+            money: 5,
+            redBagList: 0,
+            moneys: [2, 5, 10, 20, 50],
+            currentItem: {},
+            user: {
+                photoUrl: '',
+                coinsQty: 0
+            },
+            noticeText: '恭喜【王**】中奖100.56金币',
+            banner: [],
+            currentSelect: {},
+            recommend: {
+                homeTeam: '',
+                visitingTeam:''
+            },
+            soccerList: [],
+            selectMatchs: [],
+            hotList: [],
+            matchList: [],
+            favDisabled: false,
+            maxNum:100000,
+            bannerLength:'',
+        },
+        methods: {
+            moveStart: function moveStart(e) {
+                var _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd: function moveEnd(e) {
+                var _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                var _result = _this.startX - _this.endX;
+
+                if (_result >= 50) {
+                    this.$refs.carousel.next();
+                }
+                if (_result < -50) {
+                    this.$refs.carousel.prev();
+                }
+            },
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+            dateFormat: function timeFormat(date, index) {
+                return date.substring(5, index);
+            },
+
+            overInfoMsg: function overInfoMsg() {
+                this.showMsg = false;
+                this.showMsg2 = false;
+                base.setCookie('isInfoEd',true);
+            },
+
+//            getRedBag: function getRedBag() {
+//                this.showGetRedBag = false;
+//                this.showGetRedBagSuccess = true;
+//                base.setCookie('isNewUser',false);
+//            },
+
+            changeSearch: function changeSearch(key, id) {
+                var _this = this;
+
+                _this.searchKey = key;
+
+                _this.leagueCode = id;
+                //
+                //            _this.getLeagueList();
+            },
+
+            changeHot: function changeHot(key) {
+                this.soccerList = [];
+                this.leagueCode = key;
+                this.page = 1;
+                this.pageSize = 20;
+                this.last = false;
+                this.empty = false;
+                this.loadtext = '数据加载中...';
+                this.getData();
+            },
+
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
+
+            selectMatch: function selectMatch(item) {
+
+                var _this = this;
+
+                _this.currentLeague = item;
+
+                //热门
+                if (_this.searchKey == 0) {
+
+                    // 移动到指定位置
+
+                    var index = 0;
+
+                    for (var i = 0; i < _this.hotList.length; i++) {
+                        if (_this.hotList[i].league == item.league) {
+                            index = i;
+                            break;
+                        }
+                    }
+
+                    if (index > 3) {
+                        //移动到指定位置
+                        $('.scroll-warp').scrollLeft((_this._height2 + 15) * (index - 2));
+                    } else {
+                        $('.scroll-warp').scrollLeft(0);
+                    }
+                } else {
+                    //非热门
+
+                    //判断是否重复
+
+                    $('.scroll-warp').scrollLeft(0);
+                    _this.hotList.splice(1, 1, item);
+                }
+
+                _this.leagueType = item.leagueID;
+
+                _this.getMatchList();
+
+                _this.showSearch = false;
+            },
+
+            selectSoccer: function selectSoccer(val, item, match) {
+
+                var _this = this;
+                var odd = 0;
+                var _tmp = [];
+
+                if(match.selected == val){
+                    match.selected = 0;
+                }else{
+                    match.selected = val;
+                }
+
+                for (var i = 0; i < _this.soccerList.length; i++) {
+                    if(_this.soccerList[i].selected !=0){
+                        _tmp.push(_this.soccerList[i]);
+                    }
+                }
+
+                //判断购买弹窗显示
+
+                if(_tmp.length > 8){
+                    _this.$message({
+                        type: 'error',
+                        message: '串关最多选择8场',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    match.selected = 0;
+
+                    _tmp.pop();
+
+                }else{
+                    if(_tmp.length == 0){
+                        _this.payBottom = -650;
+                    }else{
+                        _this.payBottom = 0;
+                    }
+                }
+
+                //-
+
+                for(var i=0; i<_tmp.length; i++){
+                    var _item = _tmp[i];
+
+                    if(_item.selected == 1){
+                        odd += _item.rateList[0].win;
+                    }
+                    if(_item.selected == 2){
+                        odd += _item.rateList[0].tie;
+                    }
+                    if(_item.selected == 3){
+                        odd += _item.rateList[0].lose;
+                    }
+                    if(_item.selected == 4){
+                        odd += _item.rateList[_item.rateList.length - 1].win;
+                    }
+                    if(_item.selected == 5){
+                        odd += _item.rateList[_item.rateList.length - 1].tie;
+                    }
+                    if(_item.selected == 6){
+                        odd += _item.rateList[_item.rateList.length - 1].lose;
+                    }
+
+                }
+
+                _this.odds = odd;
+
+                _this.selectNum = _tmp.length;
+
+                _this.selectMatchs = _tmp;
+
+            },
+
+            getOdd: function getOdd() {
+
+                var _this = this;
+
+                var _num = 0;
+
+                var _item = {};
+
+                for(var i=0; i<_this.selectMatchs.length; i++){
+
+                    _item = _this.selectMatchs[i];
+
+                    var _tmp = 0;
+
+                    if(_item.selected == 1){
+                        _tmp = _item.rateList[0].win;
+                    }if(_item.selected == 2){
+                        _tmp = _item.rateList[0].tie;
+                    }if(_item.selected == 3){
+                        _tmp = _item.rateList[0].lose;
+                    }if(_item.selected == 4){
+                        _tmp = _item.rateList[_item.rateList.length-1].win;
+                    }if(_item.selected == 5){
+                        _tmp = _item.rateList[_item.rateList.length-1].tie;
+                    }if(_item.selected == 6){
+                        _tmp = _item.rateList[_item.rateList.length-1].lose;
+                    }
+
+                    if(_num == 0){
+                        _num = _tmp;
+                    }else{
+                        _num *= _tmp;
+                    }
+
+                }
+
+                return [_this.twoDecimal(_num), _this.twoDecimal(_num * _this.money)];
+            },
+
+            removeSelectMatch: function removeSelectMatch(matchID) {
+                var _this = this;
+
+                for (var i = 0; i < _this.soccerList.length; i++) {
+                    if(matchID == _this.soccerList[i].matchID){
+                        _this.soccerList[i].selected = 0;
+                        break;
+                    }
+                }
+
+                for(var j=0; j<_this.selectMatchs.length; j++){
+                    if(matchID == _this.selectMatchs[j].matchID){
+                        _this.selectMatchs.splice(j,1);
+                        break;
+                    }
+                }
+
+                _this.selectNum = _this.selectMatchs.length
+
+            },
+
+            clearSelectMatch: function clearSelectMatch() {
+                var _this = this;
+                for (var i = 0; i < _this.soccerList.length; i++) {
+                    _this.soccerList[i].selected = 0;
+                }
+                _this.selectMatchs = [];
+                _this.showSelected = false;
+                _this.payBottom = -650;
+            },
+
+            cutStrForNum: function cutStrForNum(str, num) {
+                if(str.length <= num){
+                    return str;
+                }else{
+                    return str.substring(0, num-1) + '...';
+                }
+            },
+
+            stringToDate: function stringToDate(dateString) {
+
+                if (dateString) {
+                    var arr1 = dateString.split(" ");
+                    var sdate = arr1[0].split('-');
+                    var sdate2 = arr1[1].split(':');
+                    var date = new Date(sdate[0], sdate[1]-1, sdate[2], sdate2[0], sdate2[1], sdate2[2]);
+                    return date;
+                }
+            },
+
+            favMatch: function favMatch(item, type) {
+
+                if (type == 'fav') {
+                    //关注
+                    baseAjax.foucsMatch(item.matchID, function (data) {
+                        if (data) {
+                            console.log(data);
+                            item.isFaved = true;
+                        }
+                    });
+                }
+                if (type == 'cal') {
+                    //取消关注
+                    baseAjax.cancelFoucsMatch(item.matchID, function (data) {
+                        if (data) {
+                            console.log(data);
+                            item.isFaved = false;
+                        }
+                    });
+                }
+            },
+
+            submitOrder: function submitOrder() {
+
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                //获取当前选择的比赛
+
+                var _matchList = [];
+
+                var _odd = 0;
+                var _item = {};
+
+                for(var i=0; i<_this.selectMatchs.length; i++){
+
+                    _item = _this.selectMatchs[i];
+
+                    if(_item.selected == 1){
+                        _odd = _item.rateList[0].win;
+                    }if(_item.selected == 2){
+                        _odd = _item.rateList[0].tie;
+                    }if(_item.selected == 3){
+                        _odd = _item.rateList[0].lose;
+                    }if(_item.selected == 4){
+                        _odd = _item.rateList[item.rateList.length-1].win;
+                    }if(_item.selected == 5){
+                        _odd = _item.rateList[item.rateList.length-1].tie;
+                    }if(_item.selected == 6){
+                        _odd = _item.rateList[item.rateList.length-1].lose;
+                    }
+
+                    _matchList.push({
+                        matchID: _item.matchID,
+                        matchName: _item.homeTeam + ' VS ' + _item.visitingTeam,
+                        odds: _odd,
+                        lotType: _item.selected <= 3 ? 0 : 1,
+                        anteValue: _item.selected <= 3 ? _item.selected : _item.selected - 3
+                    })
+                }
+
+                //判断金额
+                var _ttt = _this.money + '';
+
+                if(_ttt.indexOf('.')!=-1){
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额需为整数',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                //判断用户登录状态
+                var _user = base.getCookie('userInfo');
+
+                if (base.isNull(_user)) {
+                    //前去登录
+                    window.location.href = 'login.html?call=true&callUrl=pay.html&money='+_this.money;
+                    base.setCookie('unpaid',JSON.stringify(_matchList));
+                    return false;
+                }
+
+                //判断余额
+                if (_this.user.coinsQty < _this.money) {
+                    //跳转到支付页面
+                    window.location.href = "pay.html?money="+_this.money;
+                    base.setCookie('unpaid',JSON.stringify(_matchList));
+                    return false;
+                }
+
+                //判断可用红包
+                baseAjax.usableCouponList(_this.money, function (data2) {
+
+                    if(data2){
+                        if(data2.returnJSON.length > 0 ){
+                            window.location.href = "pay.html?money="+_this.money;
+                            base.setCookie('unpaid',JSON.stringify(_matchList));
+                            return false;
+                        }else{
+                            //matchID, lotType, anteValue, couponNumber, money,
+
+                            //- couponNumber money matchList
+
+                            baseAjax.payMatch('', _this.money, _matchList, function (data, errorMsg) {
+                                if (data) {
+
+                                    _this.showBuySuccess = true;
+
+                                    _this.orderID = data.returnJSON.orderID;
+
+                                    _this.rotation();
+
+                                    //更新用户
+                                    baseAjax.userInfo(function (user) {
+                                        _this.user = user.returnJSON;
+                                    });
+                                } else {
+                                    _this.$message({
+                                        type: 'error',
+                                        message: errorMsg,
+                                        duration: 1500
+                                    });
+
+                                    _this.favDisabled = true;
+
+                                    setTimeout(function(){
+                                        _this.favDisabled = false;
+                                    },1500);
+
+                                }
+
+                                _this.payBottom = -650;
+                            });
+                        }
+                    }else{
+                        //matchID, lotType, anteValue, couponNumber, money,
+                        baseAjax.payMatch('', _this.money, _matchList, function (data, errorMsg) {
+                            if (data) {
+
+                                _this.showBuySuccess = true;
+
+                                _this.orderID = data.returnJSON.orderID;
+
+                                _this.rotation();
+
+                                //更新用户
+                                baseAjax.userInfo(function (user) {
+                                    _this.user = user.returnJSON;
+                                });
+                            } else {
+                                _this.$message({
+                                    type: 'error',
+                                    message: errorMsg,
+                                    duration: 1500
+                                });
+
+                                _this.favDisabled = true;
+
+                                setTimeout(function(){
+                                    _this.favDisabled = false;
+                                },1500);
+
+                            }
+
+                            _this.payBottom = -650;
+                        });
+                    }
+                })
+
+            },
+
+            rotation: function rotation(){
+                var _this = this;
+                window.clearInterval(_this.rotateTimer);
+                _this.rotateTimer = setInterval(function(){
+                    _this.angle += 3;
+                    $(".rotater").rotate(_this.angle);
+                },50);
+
+            },
+
+            getData: function getData() {
+                var _this = this;
+
+                if(_this.last)
+                    return ;
+
+                baseAjax.matchListByHot(_this.page, _this.pageSize, _this.leagueCode, function (data) {
+
+                    if (data) {
+
+                        var _tmp = data.returnJSON.indexData;
+
+                        _this.totleCount = data.returnJSON.totalResult;
+
+                        for(var i=0; i<_tmp.length; i++){
+                            //判断比赛是否开始
+                            var _now = new Date().getTime();
+
+                            var _timer = Math.round((_this.stringToDate(_tmp[i].matchTime).getTime() - _now) / 1000) - 300;
+
+//                            console.log(_this.stringToDate(_tmp[i].matchTime).getTime());
+
+                            _tmp[i].selected = 0;
+
+                            if(_timer< 0){
+                                //封盘中
+                                _tmp[i].frost = true;
+                            }else{
+                                _tmp[i].frost = false;
+                            }
+                        }
+
+                        _this.soccerList = _this.soccerList.concat(_tmp);
+
+                        if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                                return false;
+                            }
+                        }
+
+
+                        if (data.returnJSON.indexData.length == 0) {
+                            _this.empty = true;
+                        } else {
+                            _this.empty = false;
+                        }
+                    }
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.showUserMeun = false;
+            _this.showBuySuccess = false;
+
+            _this.showSearch = false;
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._height = parseInt(_this._width * 0.32);
+
+            _this._height2 = Math.ceil(($(window).width() - 50) / 6);
+
+            _this._width2 = 0;
+
+            setTimeout(function () {
+
+                //计算长度
+
+                for(var j=0; j<100; j++){
+                    for(var i=0; i<10; i++){
+                        _this.noticeText += '  恭喜【王**】中奖100.56金币';
+                    }
+                }
+
+                _this.marginTime = Math.ceil(_this.noticeText.length * 3 / 15);
+
+                _this.marginLeft = _this.noticeText.length * -3;
+
+            },1000)
+
+            _this.payBottom = -650;
+            _this.orderID = '';
+            _this.money = 5;
+            _this.redBagList = 0;
+            _this.currentItem = {};
+
+            //判断是否有过新手指引
+            var isInfoEd = base.getCookie('isInfoEd');
+
+            if(base.isNull(isInfoEd)){
+                _this.showMsg = true;
+                base.setCookie('isInfoEd',true);
+            }
+
+            //- 判断登录
+            baseAjax.userInfo(function (data) {
+                var _user = data.returnJSON;
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                    _this.login = false;
+
+                    //判断是否领取过新手红包
+
+                    var _newUser = base.getCookie('isNewUser');
+
+                    if(base.isNull(_newUser)){
+                        _this.showGetRedBag = true;
+                    }else{
+                        _this.showGetRedBag = false;
+                    }
+
+                } else {
+                    _this.user = _user;
+                    _this.login = true;
+
+                    //判断是否领取过新手红包
+//                    alert(JSON.stringify(_user));
+
+                    var _newUser = base.getCookie('isNewUser');
+
+                    if(base.isNull(_newUser)){
+                        _this.showGetRedBag = true;
+                    }else{
+                        _this.showGetRedBag = false;
+                        if(_newUser == 'true' || _newUser == true){
+                            _this.showGetRedBag = false;
+                            _this.showGetRedBagSuccess = true;
+                            base.setCookie('isNewUser',false);
+                        }else if(_newUser == 'false' || _newUser == false){
+                            _this.showGetRedBagSuccess = false;
+                        }else{
+                            _this.showGetRedBagSuccess = false;
+                        }
+
+                    }
+
+                }
+            });
+
+            //获取banner
+
+            baseAjax.bannerList(function (data) {
+
+                _this.banner = data.returnJSON;
+
+                _this.bannerLength = data.returnJSON.length;
+
+            });
+
+            //获取推荐赛事
+            baseAjax.recommendMatchInfo(function (data) {
+//                console.log(data);
+                if(data){
+                    if(!base.isNull(data.returnJSON)){
+                        _this.recommend = data.returnJSON;
+                    }else{
+                        _this.noRecommend = true;
+                    }
+                }else{
+                    _this.noRecommend = true;
+                }
+            })
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            _this.changeHot(0);
+
+            //test code
+
+            var autoBuy = base.getParmar('buyTicket');
+
+            if(!base.isNull(autoBuy)){
+
+                var tempTicket = base.getCookie('tempTicket');
+
+                if(base.isNull(tempTicket)){
+                    return false;
+                }
+
+                tempTicket = JSON.parse(tempTicket);
+
+                _this.currentItem.odds = tempTicket.odds;
+                _this.currentItem.money = tempTicket.money;
+                _this.money = tempTicket.money;
+                _this.currentItem.lotType = tempTicket.lotType;
+                _this.currentItem.val = tempTicket.val;
+
+                //matchID, lotType, anteValue, couponNumber, money,
+                baseAjax.payMatch(tempTicket.matchID, tempTicket.lotType, tempTicket.val, '', tempTicket.money, function (data, errorMsg) {
+                    if (data) {
+
+                        _this.showBuySuccess = true;
+
+                        _this.orderID = data.returnJSON.orderID;
+
+                        _this.rotation();
+
+                        //更新用户
+                        baseAjax.userInfo(function (user) {
+                            _this.user = user.returnJSON;
+                        });
+
+                        base.setCookie('tempTicket',null);
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+
+                        base.setCookie('tempTicket',null);
+                    }
+
+                    _this.payBottom = -650;
+                });
+            }
+
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.showUserMeun = false;
+                _this.showBuySuccess = false;
+
+                _this.showSearch = false;
+                _this.width = $(window).width();
+                _this.height = $(window).height();
+                _this._width = parseInt($(window).width());
+                _this._height = parseInt(_this._width * 0.32);
+
+                _this._height2 = Math.ceil(($(window).width() - 50) / 6);
+
+                _this._width2 = 0;
+
+                _this.payBottom = -650;
+                _this.orderID = '';
+                _this.money = 5;
+                _this.redBagList = 0;
+                _this.currentItem = {};
+
+                //- 判断登录
+                baseAjax.userInfo(function (data) {
+                    var _user = data.returnJSON;
+
+                    if (base.isNull(_user)) {
+                        //- 未登录
+                        _this.login = false;
+                    } else {
+                        _this.user = _user;
+                        _this.login = true;
+                    }
+                });
+
+                //获取banner
+
+                baseAjax.bannerList(function (data) {
+                    _this.banner = data.returnJSON;
+                    _this.bannerLength = data.returnJSON.length;
+                });
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.changeHot(0);
+
+                var autoBuy = base.getParmar('buyTicket');
+
+                if(!base.isNull(autoBuy)){
+
+                    var tempTicket = base.getCookie('tempTicket');
+
+                    if(base.isNull(tempTicket)){
+                        return false;
+                    }
+
+                    tempTicket = JSON.parse(tempTicket);
+
+                    _this.currentItem.odds = tempTicket.odds;
+
+                    //matchID, lotType, anteValue, couponNumber, money,
+                    baseAjax.payMatch(tempTicket.matchID, tempTicket.lotType, tempTicket.val, '', tempTicket.money, function (data, errorMsg) {
+                        if (data) {
+
+                            _this.showBuySuccess = true;
+
+                            _this.orderID = data.returnJSON.orderID;
+
+                            _this.rotation();
+
+                            //更新用户
+                            baseAjax.userInfo(function (user) {
+                                _this.user = user.returnJSON;
+                            });
+
+                            base.setCookie('tempTicket',null);
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: errorMsg,
+                                duration: 1500
+                            });
+
+                            base.setCookie('tempTicket',null);
+                        }
+
+                        _this.payBottom = -650;
+                    });
+                }
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+</script>
+
+</body>
+</html>

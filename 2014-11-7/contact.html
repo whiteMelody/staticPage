@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<title>联系我们</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<link rel="stylesheet" href="/Public/css/jquery.mobile-1.4.3.min.css">
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/Public/js//jquery.mobile-1.4.3.min.js"></script>
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<!--联系方式-->
+<div data-role="page" id="lxfs_page" style="background-color: #FAFAFA !important;">
+    <div data-role="header" class="lxfs_header">
+        <h1>我们的联系方式</h1>
+    </div>
+    <div data-role="content" class="lxfs_cotent">
+        <div>酷屏团队：
+            <img src="images/qq.png"  align="absmiddle" height="18">
+            1140416120</div>
+        <div>商务合作：
+            <img src="images/qq.png"  align="absmiddle" height="18">
+            1140416120</div>
+        <div>酷屏客服：
+            <img src="images/qq.png"  align="absmiddle" height="18">
+            2274848039</div>
+        <div>固定电话：
+            <a href="tel:023-63104281">023-63104281</a>
+            转8057</div>
+        <div>电子邮箱： <span>wallba@yandui.com</span></div>
+    </div>
+</div>
+<script>
+$(document).on("pageinit","#downpage",function(){
+    $(window).bind("orientationchange resize pageshow",function(){
+        var btndiv_h=parseFloat($('.downpage_btn_div').height());
+        var window_h=parseFloat($('.bg_class_img').height());
+        $('.downpage_btn_div').css('margin-top',window_h-btndiv_h+3+'px');
+   });
+});
+$(function(){
+    $(document).on('click','.game_introduce',function(){
+       $('body').animate({scrollTop:parseFloat($('.bg_class_img').height())},100); 
+        })
+		
+		$("#sub_btn").click(function(){
+			
+			var message = $(".fk_cotent-textarea").val();
+			var contact = $(".fk_cotent-input").val();
+			if(message.replace(/[ ]/g,"").length<=0){
+				$(".msg").text("请输入内容");
+				$('#msg_dialog').popup('open');
+				
+				return false;
+			}
+			
+			$.post("http://apptest.game.zhaopian.com/wydlz_game/feedback.json",{message:message,contact:contact},function(data,status){
+				if(status == "success"){
+					$(".msg").text("我们已收到你的反馈，感谢你的帮助与支持");
+					$('#msg_dialog').popup('open');
+					$(".fk_cotent-textarea").val("");
+					$(".fk_cotent-input").val("");
+				}else{
+					$(".msg").text("反馈提交失败");
+					$('#msg_dialog').popup('open');
+					$(".fk_cotent-textarea").val("");
+					$(".fk_cotent-input").val("");
+				}
+			})
+			
+		})
+    })
+</script>
+</body>
+</html>

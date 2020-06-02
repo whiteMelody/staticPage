@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+<!--		
+| ------------------------------------------
+| open-shop-page
+| ------------------------------------------
+| Here are open-shop-page html
+| 
+-->
+<div data-role="page" id="open-shop-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em" style="text-shadow:none; font-weight:normal;">
+            	我要开店
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<script src="js/source/open-shop.js"></script>
+        
+        <div data-role="popup" id="checkMsg" data-overlay-theme="b" data-theme="b" style="max-width:400px; height:100%;">
+            <div role="main" class="ui-content">
+                <h3 class="ui-title check-msg"></h3>
+            </div>
+        </div>
+        
+    	<div class="wb90 pal5per par5per h40px lh40px warpper-yellow-6 Fbrown-1 F90em">
+        	请输入真实有效的信息，网站将对信息进行审核
+        </div>
+        <div class="clear h10px warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h40px lh40px Fgray-3 F125em bor-gray bor-solid-1b">
+        	基本资料
+        </div>
+        <div class="clear1"></div>
+        <div class="wb100">
+        	<div class="wb90 center Fgray-3">
+                <p class="wb25 fl lh30px text-left">店铺名称</p>
+                <input type="text" class="wb70 fl pal3per h30px lh30px bor-gray bor-solid-1a radius5 Fgray-2 F90em" name="shop-name" data-role="none" placeholder="最多输入12个字符" />
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">行业分类</p>
+                <div class="wb55 fl pa0 ma0">
+                    <select name="class-1" id="class-1" data-role="none" class="wb100 h30px lh30px"></select>
+                </div>
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">&nbsp;</p>
+                <div class="wb55 fl pa0 ma0">
+                    <select name="class-2" id="class-2" data-role="none" class="wb100 h30px lh30px"></select>
+                </div>
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">注册号</p>
+                <input type="text" class="wb70 fl pal3per h30px lh30px bor-gray bor-solid-1a radius5 Fgray-2 F90em" name="reg-num" data-role="none" placeholder="请填写营业执照12位或13位注册" />
+                <!-- shop img 
+                <div class="clear1"></div>
+                <div class="wb75 fr">
+                	<p>上传企业法人身份证（正反两面）</p>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                    	<img src="images/icon-upload.jpg" class="fl">
+                        <div class="wb60 fl h80px">
+       						<input type="button" class="wb90 mal5per fl lh30px h30px pointer F90em text-center warpper-blue-7 Fwhite radius5 bor-none" name="shop-img" value="上传图片" data-role="none" />
+                            <input type="file" class="hidden file-btn" data-role="none">
+                            <div class="clear1"></div>
+                            <p class="F80em lh20px pal5per wb95 Fgray-2">图片大小不超过2M，且支持JPG,PNG,GIF格式</p>
+                        </div>
+                    </div>
+                </div>
+                 end this -->
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">详细地址</p>
+                <input type="text" class="wb70 fl pal3per h30px lh30px bor-gray bor-solid-1a radius5 Fgray-2 F90em" data-role="none" name="shop-address" placeholder="请输入详细地址" />
+                
+                <!-- the address link -->
+                
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">申请人</p>
+                <input type="text" class="wb50 fl pal3per h30px lh30px bor-gray bor-solid-1a radius5 Fgray-2 F90em" name="shop-proposer" data-role="none" />
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">联系电话</p>
+                <input type="text" class="wb50 fl pal3per h30px lh30px bor-gray bor-solid-1a radius5 Fgray-2 F90em" name="shop-phone" data-role="none" />
+                <div class="clear1"></div>
+                <p class="wb25 fl lh30px text-left">&nbsp;</p>
+                <input type="button" class="wb50 fl lh35px h35px pointer text-center warpper-orange-2 Fwhite radius5 bor-none open-shop-btn" value="确认并提交" data-role="none" />
+                <div class="clear"></div>
+                
+            </div>
+        </div>
+        <div class="clear1"></div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/07.png" class="middle h25px">
+                      <p class="Fgray-3">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/013.png" class="middle h25px">
+                      <p class="Fblue">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| area-page
+| ------------------------------------------
+| Here are area-page html
+| 
+-->
+<div data-role="page" id="area-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center text-center h40px lh40px Fwhite">
+            	添加型号
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<script>
+			$(document).on("pageinit",function(e){
+				
+				$(".tip-area").each(function(i, e) {
+					var _thisTip = $(this).find(".my-tip");
+					
+					_thisTip.unbind("click").click(function(){
+						_thisTip.removeClass("my-tip-hover");
+						$(this).addClass("my-tip-hover");
+					})
+				});
+				
+			});
+		</script>
+    	<div class="wb90 center F80em pat15 pab15">
+        	<div class="wb100 tip-area">
+                <p class="F125em Fgray-3">颜色</p>
+                <div class="clear1"></div>
+                <p class="my-tip my-tip-hover">红色</p>
+                <p class="my-tip">蓝色</p>
+                <p class="my-tip">黑白条纹</p>
+                <p class="my-tip">格子</p>
+                <p class="my-tip">米白色</p>
+                <p class="my-tip">紫色</p>
+                <p class="my-tip">粉色</p>
+            </div>
+            <div class="clear1"></div>
+            <div class="clear1 warpper-gray-1"></div>
+            <div class="clear1"></div>
+            <div class="wb100 tip-area">
+                <p class="F125em Fgray-3">尺码</p>
+                <div class="clear1"></div>
+                <p class="my-tip my-tip-hover">M</p>
+                <p class="my-tip">S</p>
+                <p class="my-tip">X</p>
+                <p class="my-tip">XL</p>
+                <p class="my-tip">XXL</p>
+                <p class="my-tip">XXXL</p>
+            </div>
+            <div class="clear1"></div>
+            <input type="button" class="wb94 mal2per lh40px h40px F125em pointer text-center warpper-orange-2 Fwhite radius5 bor-none" value="确定添加" data-role="none" />
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>设置支付密码</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| set_pay_pwd_page
+| ------------------------------------------
+| Here are set_pay_pwd_page html
+|
+-->
+
+<div id="set_pay_pwd_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <template v-if="outputPassword == ''">
+
+            <div class="clear h30px"></div>
+
+            <div class="wb100">
+
+                <div class="pal15 par15 relative F14 warpper-white">
+                    <div style="padding-left: 80px;">
+                        <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                            设置密码
+                        </div>
+                        <input type="password" class="bor-none wb100 h45px lh45px" v-model="pwd1" placeholder="请输入密码">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="pal15 par15 relative F14 warpper-white">
+                    <div style="padding-left: 80px;">
+                        <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                            确认密码
+                        </div>
+                        <input type="password" class="bor-none wb100 h45px lh45px" v-model="pwd2" placeholder="请确认密码">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+                <div class="pa15">
+                    <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5 btn-login" :class="pwd1.length>0 && pwd2.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="submit">确定</div>
+                </div>
+
+            </div>
+        </template>
+
+        <template v-if="outputPassword != ''">
+
+            <div class="clear h30px"></div>
+
+            <div class="pal15 par15 warpper-white lh50px F14 Fgray-3">
+                <p>
+                    <span class="w70px fl">支付密码</span>
+                    <span class="fl">******</span>
+                    <span class="fr Fred">已绑定</span>
+                </p>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <a href="update_pay_pwd.html?call=true">
+                <div class="pa15">
+                    <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5">更改支付密码</div>
+                </div>
+            </a>
+
+        </template>
+
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#set_pay_pwd_page",
+        data: {
+            fullscreenLoading: true,
+            pwd1: '',
+            rpwd1: '',
+            pwd2: '',
+            rpwd2: '',
+            oldPwd: '',
+            newPwd1: '',
+            newPwd2: '',
+            outputPassword: '',
+            state: 1,
+            code: '',
+            mobile: "",
+            call: "",
+            codeText: "获取验证码",
+            timeID: 0,
+            timer: 60,
+            lock: false
+        },
+        methods: {
+            next: function next() {
+                this.state = 5;
+            },
+            editMobile: function editMobile() {
+                this.state = 2;
+            },
+            sendCode: function sendCode() {
+
+                var _this = this;
+
+                if (this.lock) {
+                    return false;
+                } else {
+                    this.lock = true;
+                    baseAjax.forgetPayPwdCode(_this.mobile, function (data) {
+                        if (data) {
+                            //                            _this.resultCode = data.returnJSON;
+                            //                            _this.code = data.returnJSON;
+                            _this.timeID = setInterval(_this.clock, 1000);
+                        }
+                    });
+                }
+            },
+            clock: function clock() {
+                this.timer--;
+                this.codeText = this.timer + "秒后重发";
+
+                if (this.timer <= 0) {
+                    clearInterval(this.timeID);
+                    this.lock = false;
+                    this.timer = 60;
+                    this.codeText = "重发验证码";
+                }
+            },
+            myBack: function myBack() {
+                window.history.go(-1);
+            },
+            btnCallback2: function btnCallback2(val) {
+                if (data.state == 'success') {
+                    this.state = 5;
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: data.msg
+                    });
+                }
+            },
+            resetPwd: function resetPwd() {
+                var _this = this;
+
+                if (_this.rpwd1 != _this.rpwd2) {
+                    this.$message({
+                        type: 'error',
+                        message: '两次密码不一致'
+                    });
+                } else {
+
+                    baseAjax.resetOutPwd(_this.code, _this.rpwd1, function (data) {
+                        if (data) {
+                            _this.$message({
+                                type: 'success',
+                                message: '设置成功'
+                            });
+                            _this.outputPassword = _this.rpwd1;
+                            _this.state = 1;
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: '设置失败'
+                            });
+                        }
+                    });
+                }
+            },
+            updatePwd: function updatePwd() {
+                var _this = this;
+
+                if (_this.newPwd1 != _this.newPwd1) {
+                    this.$message({
+                        type: 'error',
+                        message: '两次密码不一致'
+                    });
+                } else {
+
+                    baseAjax.outPwd(_this.oldPwd, _this.newPwd1, function (data) {
+                        if (data) {
+                            _this.$message({
+                                type: 'success',
+                                message: '设置成功'
+                            });
+                            _this.outputPassword = _this.pwd1;
+                            _this.state = 1;
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: '设置失败'
+                            });
+                        }
+                    });
+                }
+            },
+            submit: function submit() {
+
+                var _this = this;
+
+                if (_this.pwd1 != _this.pwd2) {
+                    this.$message({
+                        type: 'error',
+                        message: '两次密码不一致'
+                    });
+                } else {
+
+                    baseAjax.outPwd(_this.pwd1, _this.pwd2, function (data) {
+
+                        if (data) {
+                            _this.$message({
+                                type: 'success',
+                                message: '设置成功'
+                            });
+                            _this.outputPassword = _this.pwd1;
+                            _this.state = 1;
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: '设置失败'
+                            });
+                        }
+                    });
+                }
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            baseAjax.securityInfo(function (data) {
+
+                if (data) {
+
+                    var _tmp = data.returnJSON;
+
+                    if (base.isNull(_tmp.outputPassword)) _this.outputPassword = '';else _this.outputPassword = _tmp.outputPassword;
+                }
+
+                console.log(data);
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                baseAjax.securityInfo(function (data) {
+
+                    if (data) {
+
+                        var _tmp = data.returnJSON;
+
+                        if (base.isNull(_tmp.outputPassword)) _this.outputPassword = '';else _this.outputPassword = _tmp.outputPassword;
+                    }
+
+                    console.log(data);
+                });
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

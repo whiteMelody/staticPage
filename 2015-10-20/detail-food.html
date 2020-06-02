@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script src="js/slick.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-food-page
+| ------------------------------------------
+| Here are detail-food-page html
+| 
+-->
+<div data-role="page" id="detail-food-page" style="text-shadow:none;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per goods-name" data-role="none" style="text-shadow:none; font-weight:normal;"></div>
+        	<a class="my-icon-menu2 h40px w40px absolute pointer" data-role="none" href="#select-menu" data-transition="slide" style="right:5px; top:5px;"></a>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="/html/js/source/comm.js"></script>
+    	<script src="/html/js/source/detail-food.js"></script>
+        <div data-role="panel" id="select-menu" data-position="right" data-display="overlay" data-theme="b" style="width:200px;z-index:9;">
+            <div style="position:absolute; right:5px; z-index:99;">
+            	<a href="#user-page" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">关闭</a>
+        	</div>
+			<div class="wb100 Fwhite">
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-fav-3.png" class="middle w25px"> 
+                    <span class="wb70 fr">收藏</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-share-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">分享</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-search-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">搜索</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-link-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">桌面快键</span>
+                </p>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        <div class="wb100 text-center img-area">
+           <img src="/html/images/img-default.png" class="goods-banner">
+        </div>
+        <div class="clear1"></div>
+        <div class="wb90 center lh25px Fgray-3">
+        	<p class=" Forange F150em lh35px goods-price">￥609.0</p>
+            <p class="goods-name"></p>
+            <p class="Fgray-2 F80em lh20px">仅售88元，价值121元超值4人餐！肉质鲜嫩，口感鲜美，滋味十足，菜品丰富多样菜品丰富多样。</p>
+        </div>
+        <div class="clear1"></div>
+        <div class="wb90 center pal5per par5per h30px lh30px pat15 pab15 Fgray-3 bor-gray bor-solid-1t">
+        	<img src="images/icon-user-3.png" class="middle mar10">已售<span class="goods-sales-count"></span><img src="images/icon-health-3.png" class="mal30 mar10 middle">未消费，随便退
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left Fgray-3 F80em ">
+        	<div class="wb70 fl">
+            	<img src="images/star-3.png" class="mat20 goods-comm-img">
+                <span class="Fgray-2"><span class="Forange F150em goods-comm-count">3.5分</span>/5分</span>
+            </div>
+        	<div class="wb25 fr">92人评价 ></div>
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="clear1"></div>
+        
+        <div class="wb90 pal5per par5per pat10 h55px lh50px text-left bor-gray bor-solid-1t bor-solid-1b Fgray-3">
+        	<div class="h40px img-Harea fl wb15">
+            	<img src="images/icon-map.png">
+            </div>
+            <div class="fl mal5per wb70">
+            	<p class=" lh20px Fgray-3 wauto goods-address">观音桥步行街8号大融城7楼距您134m</p>
+            </div>
+        </div>
+        <div class="wb90 pal5per par5per bor-gray bor-solid-1b h45px">
+        	<p class="wb48 fl h35px lh35px text-center Fgray-2 pointer radius5 "><img src="images/icon-phone.png" class="middle mar10">电话</p>
+        	<p class="wb48 fr h35px lh35px text-center Fgray-2 pointer radius5 "><img src="images/icon-go.png" class="middle mar10">到这去</p>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1t bor-solid-1b Fgray-3 ">
+        	<img src="images/icon-book-4.png" class="fl mat15 mar10"> 本单详情
+        </div>
+        <div class="wb90 center pab15 pat15 Fgray-3 lh40px F90em">
+        	<div class="wb94 pal3per par3per warpper-gray-1 h40px F110em">
+            	<p class="wb33333 fl text-left">内容</p>
+            	<p class="wb33333 fl text-center">数量规格</p>
+            	<p class="wb33333 fl text-right">小计</p>
+            </div>
+            <p class="text-center bor-gray bor-solid-1b F110em">焖锅3选1</p>
+            <div class="wb100">
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+           	</div>
+            <p class="text-center bor-gray bor-solid-1b F110em">凉菜2选1</p>
+            <div class="wb100">
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+           	</div>
+            <p class="text-center bor-gray bor-solid-1b F110em">其他3选3</p>
+            <div class="wb100">
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+                <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                <p class="wb12 fl text-center">1份</p>
+                <p class="wb18 fl text-center">138元</p>
+                <div class="clear"></div>
+           	</div>
+        </div>
+        
+        <div class="wb100 bor-gray bor-solid-1t F90em">
+        	 <a href="javascript:void(0)" data-role="button" data-icon="carat-r" data-iconpos="right"><span class="Fblue-2 fl">查看图文详情</span></a>
+        </div>
+                                                
+        <div class="clear1 warpper-gray-1"></div>
+       	
+        <div class="wb90 pal5per par5per h40px lh40px text-left bor-gray bor-solid-1t bor-solid-1b Fgray-3 ">
+        	<img src="images/icon-book-4.png" class="fl mat10 mar10"> 购买须知
+        </div>
+        <div class="wb80 center Fgray-3 lh20px pat10 pab10">
+        	<p class="Forange ">使用范围：</p>
+            <p class=" F90em pal5per">除小吃、饮料外全场通用</p>
+            <div class="clear1"></div>
+        	<p class="Forange ">有效期：</p>
+            <p class=" F90em pal5per">2015.1.26至216.1.26（周末、法定节假日通用）</p>
+            <div class="clear1"></div>
+        	<p class="Forange ">使用规则：</p>
+            <ul class="my-ul F90em pal5per">
+            	<li>无需预约</li>
+            	<li>可叠加使用</li>
+            	<li>店内无包间</li>
+            	<li>堂食外带均可，如下大包，需到店内另付打包费1元/盒</li>
+            	<li>提供免费WIFI</li>
+            </ul>
+        </div>
+        
+       
+        <div class="clear warpper-gray-1"></div>
+        <div class="wb90 center h40px lh40px text-left Fgray-3 ">
+        	评价<span class="Fgray-2 mar15 mal5 F90em goods-comm-count">(161人评论)</span>
+            <img src="images/star-3-big.png" class="goods-comm-img">
+        </div>
+        <div class="goods-comm-list"></div>
+        
+        <div class="wb100 bor-gray bor-solid-1t F90em">
+        	 <a href="javascript:void(0)" data-role="button" data-icon="carat-r" data-iconpos="right"><span class="Fblue-2 fl goods-comm-count">查看全部23条评价</span></a>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <p class="Fgray-2  wb90 text-center pal5per par5per lh50px h50px text-left bor-gray bor-solid-1b">看了又看</p>
+        <div class="clear1"></div>
+        <div class="wb100">
+        	<div class="wb50 fl">
+            	<div class="wb90 center lh30px">
+                	<div class="wb100 h100px img-area">
+                    	<img src="images/product-14.jpg">
+                    </div>
+                    <p class="Fgray-3">黄记煌三汁焖锅</p>
+                    <p>
+                    	<span class="fl Forange-1 F125em">￥120.00</span>
+                    	<span class="fr Fgray-2">< 0.1km</span>
+                    </p>
+                </div>
+            </div>
+        	<div class="wb50 fl">
+            	<div class="wb90 center lh30px">
+                	<div class="wb100 h100px img-area">
+                    	<img src="images/product-14.jpg">
+                    </div>
+                    <p class="Fgray-3">黄记煌三汁焖锅</p>
+                    <p>
+                    	<span class="fl Forange-1 F125em">￥120.00</span>
+                    	<span class="fr Fgray-2">< 0.1km</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+    <div class="h80px"></div>
+    
+    <div data-role="footer" data-theme="a" class="bor-none" data-position="fixed" data-tap-toggle="false" data-disable-page-zoom="false" data-fullscreen="true">
+    	<div class="wb95 pal5per h80px warpper-gray" style="text-shadow:none;font-weight:normal;">
+       		<div class="wb60 fl h60px Fwhite pat10 pab10">
+            	<div class="wb50 fl lh30px text-center">
+                	<img src="images/icon-msg-9.png" class="middle">
+                    <p>客服</p>
+                </div>
+                <a href="food-store-detail.html" data-transition="slide" data-role="none">
+                    <div class="wb50 fl lh30px text-center Fwhite">
+                        <img src="images/icon-shop-2.png" class="middle">
+                        <p>进店</p>
+                    </div>
+                </a>
+            </div>
+            <a href="order-food.html" data-transition="slide" data-role="none">
+            	<div class="wb40 fr h80px warpper-orange-4 lh80px text-center F125em Fwhite">立即购买</div>
+            </a>
+        </div>       
+    </div>
+</div>
+
+</body>
+</html>

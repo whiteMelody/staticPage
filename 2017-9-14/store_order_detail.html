@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <title>订单详情</title>
+
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_order_detail_page html
+|
+-->
+
+<div id="store_order_detail_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+        <div class="wb100 pat15 pab15 " >
+
+            <div class="w100px center" v-if="data.status == 2">
+                <div class="w30px img-area fl  mat15" >
+                    <img src="images/clz.png">
+                </div>
+                <span class="fr h60px lh60px Forange-2 F18" >处理中</span>
+            </div>
+
+            <div class="w100px center" v-else>
+                <div class="w30px img-area fl  mat15" >
+                    <img src="images/wc.png">
+                </div>
+                <span class="fr h60px lh60px Fgreen-2 F18" >已完成</span>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="pa15 warpper-black-3 pat15 pab15 bor-solid-1b bor-black3" v-if="bigtype == 1">
+            <p class="h30px lh30px Fgray-6">卡号 <span class="Fnum Fgray-5 " style="margin-left: 6px">{{data.cardno}}</span></p>
+            <p class="h30px lh30px Fgray-6">卡密 <span class="Fnum Fgray-5" style="margin-left: 6px">{{data.cardpassword}}</span></p>
+        </div>
+
+
+
+        <div class="warpper-black-3 bor-solid-1b bor-black3" v-else>
+
+            <div class="pa15 Fgray-5">
+                <p>
+                    <span class="fl">{{data.username}}</span>
+                    <span class="fr Fnum">{{data.telephone}}</span>
+                </p>
+            </div>
+
+
+            <div class="pa15">
+                <p class="F14 Fgray-5">{{data.address}}</p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="clear1"></div>
+        <div class="wb100 warpper-black-3 bor-solid-1t bor-black3">
+            <div class="pa15 ">
+                    <p class="Fgray-6">商品名称：<span class="Fgray-7">{{data.name}}</span></p>
+            </div>
+        </div>
+        <div class="wb100" v-if="bigtype != 1">
+
+            <template v-if="data.status == 2">
+                <div class="pal15 warpper-black-3">
+                    <div class="wb100">
+                        <div class="clear bor-black3 bor-solid-1b"></div>
+                    </div>
+                </div>
+                <div class="pa15 warpper-black-3 pat15 pab15">
+                    <p class="Fgray-6">订单状态：<span class="Fgray-7">等待工作人员派奖</span></p>
+                </div>
+                <div class="pal15 warpper-black-3">
+                    <div class="wb100">
+                        <div class="clear bor-black3 bor-solid-1b"></div>
+                    </div>
+                </div>
+            </template>
+
+            <template v-else>
+                <div class="clear1 bor-solid-1a bor-black3"></div>
+                <div class="wb100">
+                    <div class="pa15 warpper-black-3 pat15 pab15">
+                        <p class="Fgray-6">快递公司：<span class="Fgray-7">{{data.express}}</span></p>
+                    </div>
+                    <div class="pal15 warpper-black-3">
+                        <div class="wb100">
+                            <div class="clear bor-black3 bor-solid-1b"></div>
+                        </div>
+                    </div>
+                    <div class="pa15 warpper-black-3 pat15 pab15">
+                        <p class="Fgray-6">运单号&emsp;：<span class="Fnum Fgray-7">{{data.expressno}}</span></p>
+                    </div>
+                </div>
+                <div class="clear1 bor-black3 bor-solid-1a"></div>
+            </template>
+
+        </div>
+
+        <template v-if="bigtype == 1">
+            <div class="clear1 bor-black3 bor-solid-1a"></div>
+        </template>
+
+        <div class="wb100">
+            <div class="pa15 warpper-black-3 pat15 pab15">
+                <p class="Fgray-6">创建时间：<span class="Fnum Fgray-7">{{data.createtime}}</span></p>
+            </div>
+            <div class="pal15 warpper-black-3">
+                <div class="wb100">
+                    <div class="clear bor-black3 bor-solid-1b"></div>
+                </div>
+            </div>
+            <div class="pa15 warpper-black-3 pat15 pab15 bor-black3 bor-solid-1b">
+                <p class="Fgray-6">订单编号：<span class="Fnum Fgray-7">{{data.ordernum}}</span></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/shopping_mall.js"></script>
+<script src="js/loading.js"></script>
+
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_order_detail_page",
+        data: {
+            fullscreenLoading: true,
+            data: {},
+        },
+        methods: {
+
+            getData: function getData() {
+                var _this = this;
+
+                _this.ordernum = base.getParmar('ordernum');
+
+                _this.bigtype = base.getParmar('bigtype');
+
+                baseAjax.showOrder(_this.bigtype, _this.ordernum, function (data) {
+
+                    if(data){
+
+                        console.log(data);
+
+                        _this.data = data.data;
+
+
+                        }
+
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

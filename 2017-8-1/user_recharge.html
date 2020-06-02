@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sign.js"></script>
+    <script src="js/loading.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>购买金币</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| user_recharge_page
+| ------------------------------------------
+| Here are user_recharge_page html
+|
+-->
+<div id="user_recharge_page">
+
+    <!--<layout-loader :show="showLoader"></layout-loader>-->
+
+    <!--<layout-loader-black :show="loading"></layout-loader-black>-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="user_recharge_page_content wb100 hidden">
+
+        <!--<en-header-new :back="true" :home="true" :white="true" :title="'充值'"></en-header-new>-->
+        <div class="wb100 h50px relative" style="z-index: 99999;">
+            <div  style="height: 24px; padding: 13px 15px;">
+
+
+                <a href="index.html" class="fr"><div style="height: 24px; width:24px;" class="img-area"><img src="images/icon-home1.png"></div></a>
+
+                <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fgray-4" style="top: 0; left: 0; right: 0; margin: 0 auto;">充值</p>
+            </div>
+
+        </div>
+
+        <div class="pa15">
+            <p class="h20px lh20px pat10 pab10 mab15 radius5" v-bind:class="current == key ? 'gold-buy-active' : 'gold-buy'" v-for="(item,key) in golds" @click="selectPrice(key)">
+                <span class="fl mal15">{{item.coinQty}}金币</span>
+                <span class="Fyellow2 fl" v-if="item.giftCoinQty>0">+{{item.giftCoinQty}}金币</span>
+                <span class="fr w80px text-center" style="border-left: 1px solid #e8e8e8; ">{{item.price}}元</span>
+            </p>
+            <div class="clear h30px"></div>
+            <a href="javascript:;" class="display-inline h50px lh50px text-center Fwhite warpper-blue wb100 F18 radius25" data-role="none" @click="pay">
+                <span class="Fwhite">充值</span>
+            </a>
+            <div class="clear h30px"></div>
+            <div class="wb100 Fgray-2 F14 lh20px">
+                <p class="Fgray-3 F16">温馨提示：</p>
+                <div class="clear1"></div>
+                <p class="mat5">1、充值金额只用作于7天英语中与老师的费用，不包含您的网络费用。</p>
+                <p class="mat5">2、充值金额没有时间使用期限，会一直在您的7天英语账户中，可以随时使用。</p>
+                <p class="mat5">3、充值金额不支持退换。</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+    <div class="isBuy"></div>
+
+</div>
+
+<script>
+
+    'use strict';
+
+    var vm = new Vue({
+        el: "#user_recharge_page",
+        data: {
+            showLoader: true,
+            loading: false,
+            current: 0,
+            call : "",
+            user: {},
+            golds: []
+        },
+        methods: {
+            selectPrice: function selectPrice(key) {
+                this.current = key;
+                this.pay();
+            },
+            pay: function pay() {
+                var _this = this;
+
+                _this.loading = true;
+                //                baseAjax.getWxPayNew(_this.golds[_this.current].productID,function (data) {
+                //                    _this.loading = false;
+                //                    WeixinJSBridge.invoke(
+                //                        'getBrandWCPayRequest',
+                //                        JSON.parse(data.returnJSON),
+                //                        function(res){
+                //                            if(res.err_msg == "get_brand_wcpay_request:ok") {
+                //                                layer.alert("支付成功");
+                //                            }else{
+                //                                layer.alert("支付失败");
+                //                            }
+                //                        }
+                //                    );
+                //                })
+                //                http://h5.7english.cn/newEs5_v2/new/user.html
+
+                baseAjax.getAlipayWap(_this.golds[_this.current].productID, ' http://h5.7english.cn/newEs5_v2/new/user.html', function (data) {
+                    _this.loading = false;
+
+                    var index1 = data.indexOf('"out_trade_no":"');
+
+                    var index2 = data.indexOf('",', index1);
+
+                    var _str = data.substring(index1 + 16, index2);
+
+                    base.setCookie('paymentNo', _str);
+                    _this.paymentNo = _str;
+
+                    data = data.replace('POST', 'GET');
+
+                    $(".isBuy").html(data);
+                });
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            var userInfo = JSON.parse(base.getCookie("userInfo"));
+
+            if (base.isNull(userInfo)) {
+                _this.user = {
+                    nickName: "未登录",
+                    signa: " "
+                };
+            }
+            //
+            //            baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+            //                _this.user = data.returnJSON;
+            //            })
+
+            baseAjax.getProductList(function (data) {
+                _this.golds = data.returnJSON;
+            });
+
+            _this.timerID = setInterval(function () {
+
+                _this.timer++;
+
+                var paymentNo = base.getCookie('paymentNo');
+
+                if (!base.isNull(paymentNo)) {
+
+                    console.log(paymentNo)
+
+                    baseAjax.alipayResult(paymentNo, function (data) {
+
+                        console.log(data);
+
+
+                        if (data) {
+
+                            console.log(data);
+
+                            clearInterval(_this.timerID);
+
+                            base.setCookie('paymentNo',null);
+
+                            //充值成功
+                            _this.showResult = true;
+                            _this.state = true;
+//                            _this.infoMsg = '充值成功';
+                            layer.alert("充值成功");
+
+                            if(!base.isNull(_this.call))
+                                window.history.go(-1);
+
+
+                            if (_this.isVip) {
+                                _this.buyVip('gold');
+                            } else {
+                                _this.goldPay();
+                            }
+                            _this.closeRecharge();
+
+                        }else{
+
+                            base.setCookie('paymentNo',null);
+
+                            //充值失败
+//                            _this.infoMsg = '充值失败';
+                            layer.alert("充值失败");
+                        }
+                    });
+
+                    if (_this.timer >= 60) {
+                        baseAjax.alipayResult(paymentNo, function (data) {
+                            if (data) {
+                                clearInterval(_this.timerID);
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值成功
+                                _this.showResult = true;
+                                _this.state = false;
+//                                _this.infoMsg = '充值成功';
+                                layer.alert("充值成功");
+
+                                if(!base.isNull(_this.call))
+                                    window.history.go(-1);
+
+                            } else {
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值失败
+                                _this.showResult = true;
+                                _this.state = false;
+//                                _this.infoMsg = '操作超时';
+                                layer.alert("操作超时");
+                            }
+                        });
+                    }
+                }
+            }, 1000);
+
+            _this.call  = base.getParmar('call');
+
+            setTimeout(function () {
+                _this.showLoader = false;
+                $(".user_recharge_page_content").removeClass("hidden");
+            }, ajaxConfig.lazy);
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var _this = vm;
+
+                var userInfo = JSON.parse(base.getCookie("userInfo"));
+
+                if (base.isNull(userInfo)) {
+                    _this.user = {
+                        nickName: "未登录",
+                        signa: " "
+                    };
+                }
+                //
+                //            baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+                //                _this.user = data.returnJSON;
+                //            })
+
+                baseAjax.getProductList(function (data) {
+                    _this.golds = data.returnJSON;
+                });
+
+                _this.timerID = setInterval(function () {
+
+                    _this.timer++;
+
+                    var paymentNo = base.getCookie('paymentNo');
+
+                    if (!base.isNull(paymentNo)) {
+
+                        console.log(paymentNo)
+
+                        baseAjax.alipayResult(paymentNo, function (data) {
+
+                            console.log(data);
+
+
+                            if (data) {
+
+                                console.log(data);
+
+                                clearInterval(_this.timerID);
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值成功
+                                _this.showResult = true;
+                                _this.state = true;
+//                            _this.infoMsg = '充值成功';
+                                layer.alert("充值成功");
+
+                                if (_this.isVip) {
+                                    _this.buyVip('gold');
+                                } else {
+                                    _this.goldPay();
+                                }
+                                _this.closeRecharge();
+
+                            }else{
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值失败
+//                            _this.infoMsg = '充值失败';
+                                layer.alert("充值失败");
+                            }
+                        });
+
+                        if (_this.timer >= 60) {
+                            baseAjax.alipayResult(paymentNo, function (data) {
+                                if (data) {
+                                    clearInterval(_this.timerID);
+
+                                    base.setCookie('paymentNo',null);
+
+                                    //充值成功
+                                    _this.showResult = true;
+                                    _this.state = false;
+//                                _this.infoMsg = '充值成功';
+                                    layer.alert("充值成功");
+
+                                } else {
+
+                                    base.setCookie('paymentNo',null);
+
+                                    //充值失败
+                                    _this.showResult = true;
+                                    _this.state = false;
+//                                _this.infoMsg = '操作超时';
+                                    layer.alert("操作超时");
+                                }
+                            });
+                        }
+                    }
+                }, 1000);
+
+                _this.call  = base.getParmar('call');
+
+
+                setTimeout(function () {
+                    _this.showLoader = false;
+                    $(".user_recharge_page_content").removeClass("hidden");
+                }, ajaxConfig.lazy);
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+
+</script>
+
+</body>
+</html>

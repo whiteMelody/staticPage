@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-food-page
+| ------------------------------------------
+| Here are detail-food-page html
+| 
+-->
+<div data-role="page" id="detail-food-page" style="text-shadow:none;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">提交订单</div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+		
+    	<div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb95 center pab15 pat15 Fgray-3 lh40px F90em warpper-white">
+        	<div class="wb95 pal5per h40px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb20 fl h40px lh40px text-left bor-gray bor-solid-1r">手机号</p>
+                <img src="images/icon-mobile.png" class="fl mal5">
+                <input type="text" placeholder="填写中国大陆手机号，其他用户不可见" class="Fgray-2 bor-none fl mal5per h30px lh30px F90em wb60" name="userName" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        	<div class="wb95 pal5per h40px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb20 fl h40px lh40px text-left bor-gray bor-solid-1r">验证码</p>
+                 <img src="images/icon-key.png" class="fl mal5">
+                <input type="text" placeholder="输入手机验证码" class="Fgray-2 bor-none fl mal5per h40px lh40px wb25 F90em" name="userCode" data-role="none" />
+                <input type="button" class="h40px lh40px text-center Fgray-3 warpper-gray-1 wb30 bor-none mal5per radius5 pointer btn-send-code" disabled value="发送验证码" data-role="none" />
+            </div>
+        </div>	
+        
+        <div class="clear1"></div>
+        <a href="cart.html" data-transition="slide" data-role="none">
+            <div class="wb90 center h60px lh60px text-center F125em Fwhite radius5 warpper-orange-5 pointer">
+                确认提交
+            </div>
+        </a>
+    	<div class="clear1 warpper-gray-1"></div>
+        
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+</body>
+</html>

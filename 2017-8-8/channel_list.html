@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>分类频道</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| channel_list_page
+| ------------------------------------------
+| Here are channel_list_page html
+|
+-->
+<div id="channel_list_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="wb100 channel_list_page_content hidden">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="title"></en-header-new>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <div class="wb100">
+            <layout-lesson-list :datas="list" :size="50"></layout-lesson-list>
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#channel_list_page",
+        data : {
+            showLoader : true,
+            list : [],
+            categoryID : "",
+            title : "",
+        },
+        methods : {
+
+        },
+        created(){
+            let _this = this;
+
+            _this.categoryID = base.getParmar("categoryID");
+            _this.title = decodeURI(base.getParmar("title"));
+
+            baseAjax.getAudioChannelsByCategoryIDV2(_this.categoryID, function(data){
+
+                _this.list = data.returnJSON;
+
+                setTimeout(function(){
+                    _this.showLoader = false;
+                    $(".channel_list_page_content").removeClass("hidden");
+                },ajaxConfig.lazy);
+
+            })
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

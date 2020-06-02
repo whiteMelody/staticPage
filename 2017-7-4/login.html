@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>登录</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| login_page
+| ------------------------------------------
+| Here are login_page html
+|
+-->
+
+<div id="login_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <ticket-header :title="'登录'" :back="true"></ticket-header>
+
+        <div class="clear h30px"></div>
+
+        <ticket-input-code :show="true" :input_name="'手机号'" :code_name="'验证码'" :btn_name="'登录'" :ajax_type="'login'" v-on:callback="btnCallback"></ticket-input-code>
+
+        <div class="pa15 Fgray-3">
+
+            <!--<div class="wb100 h10px bor-gray bor-solid-1b">-->
+            <!--<div class="w150px warpper-white center lh20px text-center Fgray-3 F14">-->
+            <!--使用第三方登录-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="clear h50px"></div>-->
+
+            <!--<a :href="'wx_login.html?call='+call">-->
+            <!--<div class="wb100 h45px lh45px warpper-green Fwhite F16 text-center radius20">微信登录</div>-->
+            <!--</a>-->
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#login_page",
+        data : {
+            fullscreenLoading : true,
+            call : '',
+        },
+        methods : {
+            btnCallback(data){
+
+                let _this = this;
+
+                if(data.state == 'success'){
+                    if(base.isNull(_this.call)){
+                        //默认跳转到个人中心
+                        window.location.href = 'user.html';
+                    }else{
+                        window.location.href = _this.call;
+                    }
+                }
+
+            }
+        },
+        created(){
+            let _this = this;
+
+            _this.call = base.getParmar('call');
+
+            setTimeout(function(){
+                _this.fullscreenLoading = false;
+                $("#login_page").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

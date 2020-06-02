@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="weui/lib/weui.min.css">
+<link rel="stylesheet" href="weui/css/jquery-weui.min.css">
+<link rel="stylesheet" href="source/css/base.css">
+<link rel="stylesheet" href="source/css/style.css">
+
+    <script src="source/js/jquery-2.1.4.js"></script>
+<script src="weui/js/jquery-weui.min.js"></script>
+<script src="weui/js/swiper.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="source/js/base.js"></script>
+
+<title>订阅-编辑</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+    <div data-role="header" data-theme="a" class="bor-none ui-header ui-bar-a" role="banner" style="background: #fff;">
+        <div class="wb100 h30px pat5 pab5 relative">
+            <a class="my-icon-back h30px w30px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center text-center h30px lh30px Fblack F18 Fb">
+                订阅
+            </div>
+            <a class="my-text h30px lh30px absolute pointer Fblue par10" data-role="none" data-transition="slide" style="right:5px; top:5px;">取消</a>
+        </div>
+    </div>
+
+    <div data-role="content" class="pa0">
+
+        <div class="wb100">
+            <div class="wb100">
+                <p class="pal15 h35px lh35px warpper-gray-1 Fgray-3 F16">已订阅的</p>
+            </div>
+            <div class="clear"></div>
+
+            <div class="weui_cells weui_cells_checkbox" style="margin-top:0; ">
+                <label class="weui_cell weui_check_label" for="s11">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="s11" data-role="none">
+                        <i class="weui_icon_checked" style="float: right; margin-top: 38px;"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <div class="wb100 h80px pat10 pab10">
+                            <div class="fl img-area h80px">
+                                <a href="javascript:;" data-ajax="false" data-rel="external" data-role="none">
+                                    <img src="source/images/item-1.png">
+                                </a>
+                            </div>
+                            <div class=" Fgray-3">
+                                <p class="h25px lh25px over-hidden F18 pal15 Fgray-3 Fb">
+                                    新英语900句
+                                </p>
+                                <p class="h30px lh30px over-hidden F16 pal15 mat10 Fgray-2">
+                                    <img src="source/images/icon-date.png" class="fl h20px mat5 mar5">
+                                    <span>2016-10-19</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label" for="s12">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="s12" data-role="none">
+                        <i class="weui_icon_checked" style="float: right; margin-top: 38px;"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <div class="wb100 h80px pat10 pab10">
+                            <div class="fl img-area h80px">
+                                <a href="javascript:;" data-ajax="false" data-rel="external" data-role="none">
+                                    <img src="source/images/item-2.png">
+                                </a>
+                            </div>
+                            <div class=" Fgray-3">
+                                <p class="h25px lh25px over-hidden F18 pal15 Fgray-3 Fb">
+                                    特蕾莎·梅就职演说
+                                </p>
+                                <p class="h30px lh30px over-hidden F16 pal15 mat10 Fgray-2">
+                                    <img src="source/images/icon-date.png" class="fl h20px mat5 mar5">
+                                    <span>2016-10-19</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label" for="s13">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="s13" data-role="none">
+                        <i class="weui_icon_checked" style="float: right; margin-top: 38px;"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <div class="wb100 h80px pat10 pab10">
+                            <div class="fl img-area h80px">
+                                <a href="javascript:;" data-ajax="false" data-rel="external" data-role="none">
+                                    <img src="source/images/item-3.png">
+                                </a>
+                            </div>
+                            <div class=" Fgray-3">
+                                <p class="h25px lh25px over-hidden F18 pal15 Fgray-3 Fb">
+                                    新英语900句
+                                </p>
+                                <p class="h30px lh30px over-hidden F16 pal15 mat10 Fgray-2">
+                                    <img src="source/images/icon-date.png" class="fl h20px mat5 mar5">
+                                    <span>2016-10-19</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <label class="weui_cell weui_check_label" for="s14">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="s14" data-role="none">
+                        <i class="weui_icon_checked" style="float: right; margin-top: 38px;"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <div class="wb100 h80px pat10 pab10">
+                            <div class="fl img-area h80px">
+                                <a href="javascript:;" data-ajax="false" data-rel="external" data-role="none">
+                                    <img src="source/images/item-4.png">
+                                </a>
+                            </div>
+                            <div class=" Fgray-3">
+                                <p class="h25px lh25px over-hidden F18 pal15 Fgray-3 Fb">
+                                    新英语900句
+                                </p>
+                                <p class="h30px lh30px over-hidden F16 pal15 mat10 Fgray-2">
+                                    <img src="source/images/icon-date.png" class="fl h20px mat5 mar5">
+                                    <span>2016-10-19</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+        
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <div class="wb100 h50px lh50px text-center Fred warpper-gray-1 pointer F16">删除</div>
+	</div>
+    
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>

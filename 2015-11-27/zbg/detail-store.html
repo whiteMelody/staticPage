@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-page
+| ------------------------------------------
+| Here are detail-page html
+| 
+-->
+<div data-role="page" id="detail-page" style="text-shadow:none; font-weight:normal;">
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">亦谷2014新款....</div>
+        	<a class="my-icon-fav h40px w40px absolute" data-role="none" style="right:5px; top:5px;"></a>
+            <a class="my-icon-share h40px w40px absolute" data-role="none" style="right:45px; top:5px;"></a>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    <script>
+    	$(document).on("pageinit",function(e){
+			$(".select-type").unbind("click").click(function(){
+				$(".select-type-area").slideToggle();
+				
+				if($(this).css("transform")!="none"){
+					$(this).removeAttr("style");	
+				}else{
+					$(this).css({
+						transform : "rotate(180deg)" 	
+					})	
+				}
+			})
+			
+			$(".product-info").unbind("click").click(function(){
+				$(".product-info-area").slideToggle();
+				
+				if($(this).css("transform")!="none"){
+					$(this).removeAttr("style");	
+				}else{
+					$(this).css({
+						transform : "rotate(180deg)" 	
+					})	
+				}
+			})
+			
+			$(".tip-area").each(function(i, e) {
+				var _thisTip = $(this).find(".my-tip");
+				
+				_thisTip.unbind("click").click(function(){
+					_thisTip.removeClass("my-tip-hover");
+					$(this).addClass("my-tip-hover");
+				})
+			});
+			
+			$(".msg-btn").unbind("click").click(function(){
+				
+				if($(".msg-area").css("right")!="0px"){				
+					$(".msg-area").animate({
+						right:"0"	
+					})
+				}else{
+					$(".msg-area").animate({
+						right:"-50%"	
+					})	
+				}
+			});
+		});
+    </script>
+        <div class="wb100 text-center">
+           <img src="images/product-12.jpg">
+        </div>
+        <div class="wb90 center lh25px Fgray-3 pat5 pab15">
+        	<p>价格 <span class="Forange F150em">￥609.0</span></p>
+            <p>亦谷2014冬装新款大气复古廓形羊毛中长款毛呢外套红色呢子大衣女</p>
+        </div>
+        <div class="wb90 pal5per par5per h60px lh30px F80em text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3">
+        	<p class="wb50 fl ">浙江杭州 至 重庆</p>
+        	<p class="wb50 fl ">运费：14.0</p>
+            <div class="clear"></div>
+        	<p class="wb50 fl ">销量：4</p>
+        	<p class="wb50 fl ">人气：4</p>
+        </div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left Fgray-3 F80em ">
+        	<p class="wb33 fl "><img src="images/safe-bag.png" class="middle"> 货到付款</p>
+        	<p class="wb33 fl "><img src="images/safe-seven.png" class="middle"> 七天退换</p>
+        	<p class="wb33 fl "><img src="images/safe-money.png" class="middle"> 担保交易</p>
+        </div>
+        <div class="clear1 warpper-white"></div>
+        <div class="wb100 warpper-gray-1 h25px">
+        	<div class="h10px my-warpper-wave2 wb100"></div>
+        </div>
+        <div class="clear1"></div>
+
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3 ">
+        	查看：尺码，大小颜色 <img src="images/arrow-down.png" class="fr mat20 pointer select-type">
+        </div>
+        <div class="wb90 center select-type-area hidden F80em pat15 pab15">
+        	<div class="wb100 tip-area">
+                <p class="F125em">颜色</p>
+                <p class="my-tip my-tip-hover">红色</p>
+                <p class="my-tip">蓝色</p>
+                <p class="my-tip">黑白条纹</p>
+                <p class="my-tip">格子</p>
+                <p class="my-tip">米白色</p>
+                <p class="my-tip">紫色</p>
+                <p class="my-tip">粉色</p>
+            </div>
+            <div class="clear"></div>
+            <div class="wb100 tip-area">
+                <p class="F125em">尺码</p>
+                <p class="my-tip my-tip-hover">M</p>
+                <p class="my-tip">S</p>
+                <p class="my-tip">X</p>
+                <p class="my-tip">XL</p>
+                <p class="my-tip">XXL</p>
+                <p class="my-tip">XXXL</p>
+            </div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1t Fgray-3 ">
+        	<img src="images/icon-img-2.png" class="fl mat15 mar15"> 图文详情 <a href="javascript:void(0)"><img src="images/arrow-right.png" class="fr mat20"></a>
+        </div>
+        <div class="clear warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3 ">
+        	<img src="images/icon-book-3.png" class="fl mat15 mar15"> 产品参数 <img src="images/arrow-down.png" class="fr mat20 pointer product-info">
+        </div>
+        <div class="wb100 warpper-gray-1 pat15 pab15 bor-gray bor-solid-1b product-info-area hidden">
+        	<div class="wb80 center Fgray-2 lh25px F90em">
+            	<p>是否商场同款: 否</p>
+            	<p>主图来源: 自主实拍图</p>
+            	<p>品牌: Yigue/亦谷</p>
+            	<p>货号: 2740371084</p>
+            	<p>服装版型: 直筒风格: 通勤</p>
+            	<p>通勤: 复古</p>
+            	<p>面料: 粗花呢面料</p>
+            	<p>材质: 羊毛面料</p>
+            	<p>主材质含量: 31%(含)-50%(含)</p>
+            	<p>适用年龄: 25-29周岁</p>
+            	<p>颜色分类: 黄色 粉橘 浅蓝 </p>
+            </div>
+        </div>
+        <div class="clear warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left Fgray-3 ">
+        	<img src="images/icon-msg-4.png" class="fl mat15 mar15"> 累计评价 <img src="images/arrow-right.png" class="fr mat20">
+        </div>
+        <div class="wb90 center h40px lh40px text-left Fgray-3 ">
+        	好评度<span class="Forange mar15 mal5">90%</span>161人评论
+        </div>
+        
+        <div class="wb100 bor-gray bor-solid-1t">
+        	<div class="wb90 center">
+            	<p class="wb70 fl  h50px lh50px text-left Fgray-2"><span class="fl">半夏小璃</span> <span class="fr">2014-03-10</span></p>
+                <img src="images/star-3.png" class="fr mat20">
+                <div class="clear"></div>
+                <p class=" lh25px Fgray-3 F90em">衣服是正品，大小刚好合适，颜色很正。手感也不错</p>
+                <div class="clear1"></div>
+            </div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1t Fgray-3">
+        	<img src="images/icon-shop.png" class="fl mat15 mar15"> ZARA官方旗舰店
+            <span class="fr">4.5分</span>
+            <img src="images/star-3.png" class="fr mat20 mal5 mar5">
+        </div>
+        <div class="wb90 pal5per par5per bor-gray bor-solid-1b h45px pat10 pab10">
+        	<a href="store-detail.html" data-transition="slide" data-role="none"><p class="wb48 fl bor-gray bor-solid-1a h35px lh35px text-center Fgray-2 pointer radius5 ">进店逛逛</p></a>
+        	<p class="wb48 fr bor-gray bor-solid-1a h35px lh35px text-center Fgray-2 pointer radius5 ">联系客服</p>
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        <p class="Fgray-2 wb90 text-center pal5per par5per lh50px h50px text-left bor-gray bor-solid-1b">看了本商品的客户还看了</p>
+        
+        <div class="clear1"></div>
+        <div class="wb90 center">
+            <a href="detail-store.html" data-transition="slide" data-role="none">
+           		<div class="wb30 fl h100px img-area relative"><img src="images/product-13.jpg"></div>
+            </a>
+            <div class="wb65 mar1per fr">
+                <p class=" text-left lh20px F90em Fgray-2">Vero Moda网纱印花棉弹螺纹合体长袖女短外套|315117027 022</p>
+                <div class="clear1"></div>
+                <p class=" Fgray-2 text-left lh30px"><span class="F150em Forange">120</span> 元</p>
+            </div>
+        </div>
+        <div class="clear1 bor-gray bor-solid-1b"></div>
+        <div class="clear1"></div>
+        <a href="javascript:void(0)" data-role="button" class="Fgray-2">更多商品</a>
+    </div>
+    <div data-role="footer" data-theme="a" class="bor-none" data-position="fixed" data-tap-toggle="false" data-disable-page-zoom="false" data-fullscreen="true">
+    	<div class="wb95 pal5per h50px warpper-gray-6" style="text-shadow:none;font-weight:normal;">
+       		<div class="wb40 fl warpper-orange-5 h30px lh30px text-center radius5 Fwhite pointer mat10">
+            	<img src="images/icon-rmb.png" class="middle"> 立即购买
+            </div>
+       		<div class="wb40 mal2per fl warpper-red-7 h30px lh30px text-center radius5 Fwhite pointer mat10">
+            	<img src="images/icon-cart-2.png" class="middle"> 加入购物车
+            </div>
+            <div class="wb15 fr h50px lh50px warpper-white text-center pointer msg-btn" style="border-radius:50% 0 0 50%">
+            	<img src="images/icon-msg-5.png" class="middle">
+            </div>
+        </div>
+        <div class="wb50 warpper-white msg-area" style="position:fixed; height:100%; bottom:50px; right:-50%;">
+        	
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

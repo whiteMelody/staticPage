@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>竞猜</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| soccer_detail_bet_page
+| ------------------------------------------
+| Here are soccer_detail_bet_page html
+|
+-->
+
+<div id="soccer_detail_bet_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+
+    <!--投注弹窗-->
+    <div class="dialogBg" style="background: none; z-index: 99;" v-show="payBottom == 0" @click="payBottom = -200"></div>
+    <div class="wb100 warpper-black fixed h200px" :style="'transition: all .3s; bottom: '+ payBottom +'px; z-index:999;'">
+
+        <div class="clear1"></div>
+
+        <p class="lh20px pal15 par15 F14 Fgray-2">
+            <span class="fl">余额：<span class="Fnum">{{user.coinsQty}}</span>金币</span>
+            <span class="fr">猜对可赢<span class="Fnum Fred">{{ twoDecimal(odds * money)}}</span>金币</span>
+        </p>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 par15">
+            <el-input v-model="money" type="tel" placeholder="请输入金额"></el-input>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15">
+            <div class="wb15 mar5per fl" v-for="(item,key) in moneys">
+                <div @click="money = item" class="wb100 h30px lh30px text-center F14 radius5 Fnum" :class="money == item ? 'warpper-green pa1 Fwhite' : 'bor-green bor-solid-1a Fgreen'">
+                    {{item}}
+                </div>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="pal15 par15">
+            <div class="wb100 h40px lh40px warpper-green Fwhite text-center radius5" @click="submitOrder">
+                确认竞猜
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+    </div>
+
+
+    <!--购买成功弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showBuySuccess == true" @click="showBuySuccess = false"></div>
+    <div class="w270px h250px fixed Fwhite F16 text-center" v-show="showBuySuccess == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 9999;">
+        <img src="images/buy-success.png" class="w130px absolute" style="top: 0; left: 0; right: 0; margin: 0 auto; z-index: 99999; width: 134px;">
+        <img src="images/buy-success-shadow.png" class="w270px rotater absolute" style="top: -77px; left: -7px; z-index: 9999;">
+        <div class="clear h130px"></div>
+        <div class="wb100">
+            <p class="F20 lh40px">竞猜成功</p>
+            <p class="lh20px">预计收益<span class="Fgreen Fnum">{{ twoDecimal(odds * money)}}</span>金币</p>
+
+            <div class="clear h20px"></div>
+
+            <a href="javascript:;" @click="redirect('soccer_result.html?orderID='+orderID)">
+                <div class="wb45 fl bor-green bor-solid-1a radius4 h40px lh40px text-center Fgreen">
+                    查看详情
+                </div>
+            </a>
+
+            <div class="wb45 fr warpper-green-1 pa1 radius4 h40px lh40px Fblack text-center" @click="showBuySuccess = false">
+                继续竞猜
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="wb100" style="background: url('images/bg-detail.png') no-repeat; background-size: 100% 100%;">
+
+        <div class="clear1"></div>
+
+        <div class="pa15 Fwhite text-center lh20px">
+            <div class="wb35 fl pat10">
+                <div class="w50px h50px center img-area">
+                    <img :src="match.homeTeamLogo">
+                </div>
+                <p class="lh30px">{{cutStrForNum(match.a_cn_abbr,5)}}</p>
+                <p class="F14 lh30px">
+                    <span class="w40px h20px lh20px display-inline warpper-red radius5 text-center">主队</span>
+                </p>
+            </div>
+            <div class="wb30 fl">
+                <template v-if="match.status != 3">
+                    <template v-if="frost == true && match.status == 0">
+                        <div class="wb80 center Fwhite">
+                            <p class="lh40px">{{match.l_cn_abbr}} <span class="Fnum">{{match.s_num}}</span></p>
+                            <!--{{match.matchNum}}-->
+                            <div class="w60px h50px center img-area">
+                                <img src="images/icon-vs.png">
+                            </div>
+                            <p class="F12 lh20px Fnum">封盘中</p>
+                        </div>
+                    </template>
+
+                    <template v-else>
+                        <div class="wb80 center Fwhite">
+                            <p class="lh40px">{{match.l_cn_abbr}} 周<span class="Fnum">{{match.s_num}}</span></p>
+                            <!--{{match.matchNum}}-->
+                            <div class="w60px h50px center img-area">
+                                <img src="images/icon-vs.png">
+                            </div>
+                            <p class="F12 lh20px Fnum">{{ dateFormat(match.matchTime, 16)}}</p>
+                        </div>
+                    </template>
+
+                </template>
+
+                <template v-if="match.status == 3">
+                    <div class="wb80 center Fwhite">
+                        <p class="lh40px">{{match.l_cn_abbr}} 周<span class="Fnum">{{match.s_num}}</span></p>
+                            <p>{{match.hFullGoals}} : {{match.vFullGoals}}</p>
+                        <!--<p class="F30 text-center lh45px">1 : 0</p>-->
+                        <p class="F14 lh30px">已完赛</p>
+                    </div>
+                </template>
+
+            </div>
+            <div class="wb35 fr pat10">
+                <div class="w50px h50px center img-area">
+                    <img :src="match.visitingTeamLogo">
+                </div>
+                <p class="lh30px">{{cutStrForNum(match.visitingTeam,5)}}</p>
+                <p class="F14 lh30px">
+                    <span class="w40px h20px lh20px display-inline warpper-blue radius5 text-center">客队</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="clear1"></div>
+
+        <p style="background: rgba(0,0,0,.5);" class="h40px lh40px Fwhite pal15 par15 F14">
+
+            <!--<img src="images/weather-qt.png" class="h30px fl mat5 mar5" v-if="match.weather == '天晴'">-->
+            <!--<img src="images/weather-xx.png" class="h30px fl mat5 mar5" v-if="match.weather == '下雪'">-->
+            <!--<img src="images/weather-dy.png" class="h30px fl mat5 mar5" v-if="match.weather == '多云'">-->
+            <!--<img src="images/weather-xy.png" class="h30px fl mat5 mar5" v-if="match.weather == '下雨'">-->
+            <!--<img src="images/weather-yt.png" class="h30px fl mat5 mar5" v-if="match.weather == '阴天'">-->
+
+            {{match.weatherCity}} {{match.weather}}
+        </p>
+
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="wb100 text-center warpper-white h35px lh35px pat5 pab5 warpper-white">
+        <div class="wb50 fl" @click="searchType = 0">
+            <span :class="searchType == 0 ? 'bor-black bor-solid-2b h38px lh38px F18' : 'h35px lh35px Fgray-2'" class="display-inline">竞猜</span>
+        </div>
+        <div class="wb50 fl" @click="searchType = 1">
+            <div class="wb100 bor-gray bor-solid-1l">
+                <span :class="searchType == 1 ? 'bor-black bor-solid-2b h38px lh38px F18' : 'h35px lh35px Fgray-2'" class="display-inline">达人推荐</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear1"></div>
+
+    <template v-if="searchType == 0">
+
+        <template v-if="1 == 1">
+        <!--<template v-if="frost == false && match.status == 0">-->
+
+            <div class="wb100 warpper-white">
+                <div class="pa15">
+                    <p>猜胜平负</p>
+                    <div class="clear1"></div>
+
+                    <div class="relative h40px lh40px text-center bor-gray bor-solid-1a" style="z-index: 99;">
+
+                        <div class="wb33333 fl" @click="selectSoccer(1, resultData.had.odds.a)">
+                            <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 1">
+                                <span>主胜</span> <span class="Fnum">{{resultData.had.odds.a}}</span>
+                            </div>
+                            <div class="wb100 " v-else>
+                                主胜 <span class="Fnum Fgreen">{{resultData.had.odds.a}}</span>
+                            </div>
+                        </div>
+
+                        <div class="wb33333 fl" @click="selectSoccer(2, resultData.had.odds.d)">
+                            <div class="wb100 bor-gray bor-solid-1l bor-solid-1r">
+                                <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 2">
+                                    <span>平</span> <span class="Fnum">{{resultData.had.odds.d}}</span>
+                                </div>
+                                <div class="wb100" v-else>
+                                    平 <span class="Fnum Fgreen">{{resultData.had.odds.d}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wb33333 fl" @click="selectSoccer(3, resultData.had.odds.d)">
+                            <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 3">
+                                <span>客胜</span> <span class="Fnum">{{resultData.had.odds.h}}</span>
+                            </div>
+                            <div class="wb100 " v-else>
+                                客胜 <span class="Fnum Fgreen">{{resultData.had.odds.h}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="clear h10px"></div>
+
+            <div class="wb100 warpper-white">
+                <div class="pa15">
+                    <p>猜让球胜平负</p>
+                    <div class="clear1"></div>
+
+                    <div class="pal20 relative h40px lh40px text-center bor-gray bor-solid-1a" style="z-index: 99;">
+
+                        <div class="text-center warpper-red absolute Fwhite F14 Fnum" v-if="resultData.hhad.odds.goalline>0" style="top: -1px; height: 42px; line-height: 42px; left: -1px; width: 21px;">
+                            +{{resultData.hhad.odds.goalline}}
+                        </div>
+                        <div class="text-center warpper-gray-2 absolute Fwhite Fnum" v-if="resultData.hhad.odds.goalline==0" style="top: -1px; height: 42px; line-height: 42px; left: -1px; width: 21px;">
+                            {{resultData.hhad.odds.goalline}}
+                        </div>
+                        <div class="text-center warpper-blue absolute Fwhite Fnum" v-if="resultData.hhad.odds.goalline<0" style="top: -1px; height: 42px; line-height: 42px; left: -1px; width: 21px;">
+                            {{resultData.hhad.odds.goalline}}
+                        </div>
+
+                        <div class="wb33333 fl" @click="selectSoccer(4, resultData.hhad.odds.a)">
+                            <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 4">
+                                <span>主胜</span> <span class="Fnum">{{resultData.hhad.odds.a}}</span>
+                            </div>
+                            <div class="wb100 " v-else>
+                                主胜 <span class="Fnum Fgreen">{{resultData.hhad.odds.a}}</span>
+                            </div>
+                        </div>
+
+                        <div class="wb33333 fl" @click="selectSoccer(5, resultData.hhad.odds.d)">
+                            <div class="wb100 bor-gray bor-solid-1l bor-solid-1r">
+                                <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 5">
+                                    <span>平</span> <span class="Fnum">{{resultData.hhad.odds.d}}</span>
+                                </div>
+                                <div class="wb100" v-else>
+                                    平 <span class="Fnum Fgreen">{{resultData.hhad.odds.d}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wb33333 fl" @click="selectSoccer(6, resultData.hhad.odds.h)">
+                            <div class="wb100 warpper-green h40px lh40px Fwhite" v-if="selected == 6">
+                                <span>客胜</span> <span class="Fnum">{{resultData.hhad.odds.h}}</span>
+                            </div>
+                            <div class="wb100 " v-else>
+                                客胜 <span class="Fnum Fgreen">{{resultData.hhad.odds.h}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="clear h10px"></div>
+
+            <div class="wb100 warpper-white" v-if="scoreData != null">
+                <div class="pa15">
+                    <p>猜全场比分</p>
+
+                    <div class="clear1"></div>
+                    <!--胜-->
+                    <div class="pal20 relative text-center bor-gray bor-solid-1t bor-solid-1l " style="z-index: 99;">
+
+                        <div class="text-center warpper-red w20px absolute Fwhite" style="top: 0; left: 0; height: 213px; line-height: 213px;">
+                            胜
+                        </div>
+
+                        <div class=" fl" :class="key == 12 ? 'wb60' : 'wb20' " @click="selectSoccer(item.id, item.score_money)" v-for="(item,key) in scoreData" v-if="key<13">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == key + 6">
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fnum F14">{{item.score_money}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fgreen Fnum F14">{{item.score_money}}</p>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear1"></div>
+                    <!--平-->
+                    <div class="pal20 relative text-center bor-gray bor-solid-1t bor-solid-1l " style="z-index: 99;">
+
+                        <div class="text-center warpper-orange-2 w20px absolute Fwhite" style="top: 0; left: 0; height: 70px; line-height: 70px;">
+                            平
+                        </div>
+
+                        <div class="wb20 fl" @click="selectSoccer(item.id, item.score_money)" v-for="(item,key) in scoreData" v-if="key>=13 && key<18">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == key + 6">
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fnum F14">{{item.score_money}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fgreen Fnum F14">{{item.score_money}}</p>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear1"></div>
+                    <!--负-->
+                    <div class="pal20 relative text-center bor-gray bor-solid-1t bor-solid-1l " style="z-index: 99;">
+
+                        <div class="text-center warpper-blue w20px absolute Fwhite" style="top: 0; left: 0; height: 213px; line-height: 213px;">
+                            负
+                        </div>
+
+                        <div class=" fl" :class="key == 30 ? 'wb60' : 'wb20' " @click="selectSoccer(item.id, item.score_money)" v-for="(item,key) in scoreData" v-if="key>=18">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == key + 6">
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fnum F14">{{item.score_money}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">{{item.score}}</p>
+                                <p class="Fgreen Fnum F14">{{item.score_money}}</p>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear h10px"></div>
+
+            <div class="wb100 warpper-white">
+                <div class="pa15">
+                    <p>猜总进球数</p>
+                    <div class="clear1"></div>
+                    <div class="wb100 text-center bor-gray bor-solid-1t bor-solid-1l relative" style="z-index: 99;">
+
+                        <!--0球-->
+                        <div class="wb25 fl" @click="selectSoccer(38, goalData.m_zero)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 38">
+                                <p class="F18 Fnum">0球</p>
+                                <p class="Fnum F14">{{goalData.m_zero}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">0球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_zero}}</p>
+                            </div>
+                        </div>
+
+                        <!--1球-->
+                        <div class="wb25 fl" @click="selectSoccer(39, goalData.m_one)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 39">
+                                <p class="F18 Fnum">1球</p>
+                                <p class="Fnum F14">{{goalData.m_one}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">1球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_one}}</p>
+                            </div>
+                        </div>
+
+                        <!--2球-->
+                        <div class="wb25 fl" @click="selectSoccer(40, goalData.m_two)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 40">
+                                <p class="F18 Fnum">2球</p>
+                                <p class="Fnum F14">{{goalData.m_two}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">2球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_two}}</p>
+                            </div>
+                        </div>
+
+                        <!--3球-->
+                        <div class="wb25 fl" @click="selectSoccer(41, goalData.m_three)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 41">
+                                <p class="F18 Fnum">3球</p>
+                                <p class="Fnum F14">{{goalData.m_three}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">3球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_three}}</p>
+                            </div>
+                        </div>
+
+                        <!--4球-->
+                        <div class="wb25 fl" @click="selectSoccer(42, goalData.m_four)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 42">
+                                <p class="F18 Fnum">4球</p>
+                                <p class="Fnum F14">{{goalData.m_four}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">4球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_four}}</p>
+                            </div>
+                        </div>
+
+                        <!--5球-->
+                        <div class="wb25 fl" @click="selectSoccer(43, goalData.m_five)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 43">
+                                <p class="F18 Fnum">5球</p>
+                                <p class="Fnum F14">{{goalData.m_five}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">5球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_five}}</p>
+                            </div>
+                        </div>
+
+                        <!--6球-->
+                        <div class="wb25 fl" @click="selectSoccer(44, goalData.m_six)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="selected == 44">
+                                <p class="F18 Fnum">6球</p>
+                                <p class="Fnum F14">{{goalData.m_six}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">6球</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_six}}</p>
+                            </div>
+                        </div>
+
+                        <!--7球-->
+                        <div class="wb25 fl" @click="selectSoccer(45, goalData.m_seven_more)">
+                            <div class="wb100 warpper-green Fwhite h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b" v-if="goalData.m_seven_more == 45">
+                                <p class="F18 Fnum">7球+</p>
+                                <p class="Fnum F14">{{goalData.m_seven_more}}</p>
+                            </div>
+                            <div class="h50px lh25px pat10 pab10 bor-gray bor-solid-1r bor-solid-1b wb100" v-else>
+                                <p class="F18 Fnum">7球+</p>
+                                <p class="Fgreen Fnum F14">{{goalData.m_seven_more}}</p>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="wb100 text-center Fgray-2 lh25px F14" style="margin-top: 75px;">
+                <p class="lh30px F18">本场竞猜已截止</p>
+                <p>去看看其他比赛吧~</p>
+                <div class="clear1"></div>
+                <p class="Fgray-2 F14">大家都在竞猜</p>
+
+                <div class="clear1"></div>
+                <a href="javascript:;" @click="redirect('soccer_detail_bet.html?matchID='+ recommend.matchID)">
+                    <div class="w200px h75px lh15px center pa15 warpper-white text-center Fblack">
+                        <div class="w80px fl">
+                            <img :src="recommend.homeTeamLogo" class="w50px h50px">
+                            <p class="mat15 wb100 h15px lh15px text-over-hidden1">{{recommend.homeTeam}}</p>
+                        </div>
+                        <div class="w40px fl">
+                            <img src="images/icon-vs2.png" class="h20px mat15">
+                        </div>
+                        <div class="w80px fl">
+                            <img :src="recommend.visitingTeamLogo" class="w50px h50px">
+                            <p class="mat15 wb100 h15px lh15px text-over-hidden1">{{recommend.visitingTeam}}</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </template>
+
+    </template>
+
+
+    <template v-if="searchType == 1">
+        <div class="wb100 warpper-white"  v-if="empty == false">
+            <template v-for="item in matchList">
+
+                <div class="clear1"></div>
+
+                <a href="javascript:;" @click="redirect('expert_recommend.html?newsID='+item.newsID)">
+                    <div class="pal15 relative Fgray-3" style="padding-left: 70px; padding-right: 70px;">
+                        <div class="w50px h50px absolute" style="top: 0; left: 15px;">
+                            <img :src="item.photoUrl ? item.photoUrl : 'images/head-img1.png'" class="w50px h50px radius50per">
+                        </div>
+                        <div class="wb100">
+                            <p class="lh30px">
+                                <span class="fl mar5">{{item.nickName}} 推荐</span>
+                                <span class="Fwhite warpper-blue F12 pal5 par5 h20px lh20px display-inline radius5 text-center fl mat5">{{item.lotTypeDesc}}</span>
+                            </p>
+                            <div class="clear"></div>
+                            <!--计算标签-->
+                            <p class="F12 text-center mat5 mab5">
+
+                                <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.tenDaysCount >= 6">近10中{{item.tenDaysCount}}</span>
+
+                                <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.successionCount >= 2">{{item.successionCount}}连红</span>
+
+                                <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.monthCount >= 1">月红{{item.monthCount}}单</span>
+
+                            </p>
+
+                            <div class="clear1"></div>
+                        </div>
+
+                        <div class="w65px absolute text-center Fred" style="top: 5px; right: 15px;">
+                            <p class="Fnum F26 lh25px">{{item.lossRatio * 100}}<span class="F12">%</span></p>
+                            <p class="F12 lh15px">预计回报率</p>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="pal15 par15 pat15 Fgray-3">
+                        <div class="warpper-gray-3 lh25px h50px pal15 par15 pat10 pab10 relative">
+                            <p class="Fgray-2 F14">中超 08-02 19:00</p>
+                            <p>{{item.title}}</p>
+
+                            <div class="w60px h35px lh35px absolute text-center bor-green bor-solid-1a Fgreen" style="right: 15px; bottom: 16px;">
+                                免费
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <p class="lh30px pal15 par15 F12 Fgray-2">
+                        <span class="fl">发布于 <span class="Fnum">08-02 19:00</span></span>
+
+                        <span class="fr"><img src="images/icon-view.png"> {{item.hits}}</span>
+                    </p>
+                </a>
+
+                <div class="pal15">
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+                </div>
+
+                <div class="clear1"></div>
+
+                <div class="clear"></div>
+
+                <div class="pal15">
+                    <div class="clear bor-gray bor-solid-1b"></div>
+                </div>
+
+            </template>
+
+        </div>
+
+        <div class="wb100 text-center" v-if="empty == true">
+            <img src="images/drtj_kb.png" class="w60px center" style="margin-top: 60px;">
+            <div class="clear1"></div>
+            <p class="Fgray-2 F16 lh25px h25px">本场比赛暂无推荐哦~</p>
+            <div class="clear1"></div>
+        </div>
+    </template>
+
+    <div class="clear h10px"></div>
+
+    <template v-if="payBottom == 0">
+        <div class="clear h200px"></div>
+    </template>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#soccer_detail_bet_page",
+        data: {
+            login: false,
+            searchType: 0,
+            fullscreenLoading: false,
+            showBuySuccess: false,
+            showGetRedBag: true,
+            empty: false,
+            page: 1,
+            pageSize: 20,
+            rotateTimer: 0,
+            angle: 0,
+            selected: 0,
+            match: {
+                matchTime: '',
+                a_cn_abbr: '',
+                visitingTeam: '',
+                rateObject: {}
+            },
+            odds: 0,
+            orderID: '',
+            currentItem: {},
+            recommend: {},
+            user: {
+                photoUrl: '',
+                coinsQty: 0
+            },
+            payBottom: -200,
+            money: 20,
+            moneys: [20, 50, 100, 200, 500],
+            frost: false,
+            scoreData: {},
+            resultData: {
+                had: {},
+                hhad: {}
+            },
+            goalData: {},
+            matchList: []
+        },
+        methods: {
+
+            selectSoccer: function selectSoccer(_t, odd) {
+                var _this = this;
+
+                var lotType = 0;
+                var anteValue = 0;
+
+                if(_this.match.rateObject.selected == 0){
+                    _this.payBottom = 0;
+                }else{
+                    if(_this.match.rateObject.selected == _t){
+                        //反选
+                        _this.payBottom = -200;
+                        _t = 0;
+                    }else{
+                        _this.payBottom = 0;
+                    }
+                }
+
+                _this.match.rateObject.selected = _t;
+
+                _this.odds = odd;
+
+                //1 - 6 胜平负
+
+                _this.currentItem = {
+                    title: _this.match.homeTeam + ' VS ' + _this.match.visitingTeam,
+                    matchID: _this.match.matchID,
+                    lotType: lotType,
+                    val: anteValue,
+                    odds: odd
+                };
+
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
+
+            dateFormat: function dateFormat(date, index) {
+                return date.substring(5, index);
+            },
+
+
+            rotation: function rotation(){
+                var _this = this;
+                window.clearInterval(_this.rotateTimer);
+                _this.rotateTimer = setInterval(function(){
+                    _this.angle += 3;
+                    $(".rotater").rotate(_this.angle);
+                },50);
+            },
+
+            submitOrder: function submitOrder() {
+
+            },
+
+            cutStrForNum: function cutStrForNum(str, num) {
+                if (str.length > num) {
+                    return str.substring(0, num) + '...';
+                } else {
+                    return str;
+                }
+            },
+
+            stringToDate: function stringToDate(dateString) {
+
+                if (dateString) {
+                    var arr1 = dateString.split(" ");
+                    var sdate = arr1[0].split('-');
+                    var date = new Date(sdate[0], sdate[1]-1, sdate[2]);
+                    return date;
+                }
+            },
+
+        },
+        created: function created() {
+            var _this = this;
+
+            _this.showBuySuccess = false;
+
+            var _matchID = base.getParmar('matchID');
+
+            if (base.isNull(_matchID)) {
+                _this.$message({
+                    type: 'error',
+                    message: '缺少比赛ID'
+                });
+                return false;
+            }
+
+            baseAjax.getEventInfo(_matchID, function (data) {
+                if(data){
+                    _this.match = data.data;
+                }
+                console.log(data.data);
+            })
+
+            baseAjax.getEventScore(_matchID, function (data) {
+                if(data){
+                    _this.scoreData = data.data;
+                }
+            })
+
+            baseAjax.getEventMoneyAward(_matchID, function (data) {
+                if(data){
+                    _this.resultData = data.data;
+                }
+            })
+
+            baseAjax.getEventGoalsFor(_matchID, function (data) {
+                if(data){
+                    _this.goalData = data.data;
+                }
+            })
+
+
+
+//            //- 判断登录
+//            baseAjax.userInfo(function (data) {
+//                var _user = data.returnJSON;
+//
+//                if (base.isNull(_user)) {
+//                    //- 未登录
+//                    _this.login = false;
+//                } else {
+//                    _this.user = _user;
+//                    _this.login = true;
+//                }
+//            });
+//
+//            //获取推荐赛事
+//            baseAjax.recommendMatchInfo(function (data) {
+////                console.log(data);
+//                if(data){
+//                    if(!base.isNull(data.returnJSON)){
+//                        _this.recommend = data.returnJSON;
+//                    }
+//                }
+//            })
+//
+//            //获取当前比赛信息和赔率
+//            baseAjax.matchInfo(_matchID, function (data) {
+//
+//                var _tmp = data.returnJSON;
+//
+////                var _temp = JSON.stringify(data.returnJSON.rateObject.returnJSON);
+////
+////                console.log(_temp);
+////
+////                _tmp.rateObject = JSON.parse(_temp);
+//
+//                _tmp.rateObject.selected = 0;
+//
+//                if(_tmp.weekOfDay == 0){
+//                    _tmp.weekOfDay = '日';
+//                }if(_tmp.weekOfDay == 1){
+//                    _tmp.weekOfDay = '一';
+//                }if(_tmp.weekOfDay == 2){
+//                    _tmp.weekOfDay = '二';
+//                }if(_tmp.weekOfDay == 3){
+//                    _tmp.weekOfDay = '三';
+//                }if(_tmp.weekOfDay == 4){
+//                    _tmp.weekOfDay = '四';
+//                }if(_tmp.weekOfDay == 5){
+//                    _tmp.weekOfDay = '五';
+//                }if(_tmp.weekOfDay == 6){
+//                    _tmp.weekOfDay = '六';
+//                }
+//
+//                var _now = new Date().getTime();
+//                var _timer = Math.round((_this.stringToDate(_tmp.matchTime).getTime() - _now - 300) / 1000);
+//
+//
+//                if(_timer< 0){
+//                    //封盘中
+//                    _this.frost = true;
+//                }else{
+//                    _this.frost = false;
+//                }
+//
+//                _this.match = _tmp;
+//
+////                console.log(_this.match);
+//            });
+//
+//            baseAjax.newsListByMatch(_this.page, _this.pageSize, _matchID, function (data) {
+//                _this.matchList = data.returnJSON.indexData;
+//
+//                if (_this.matchList.length == 0) {
+//                    _this.empty = true;
+//                } else {
+//                    _this.empty = false;
+//                }
+//
+////                console.log(_this.matchList);
+//            });
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

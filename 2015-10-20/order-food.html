@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-food-page
+| ------------------------------------------
+| Here are detail-food-page html
+| 
+-->
+<div data-role="page" id="detail-food-page" style="text-shadow:none;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">提交订单</div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<script>
+        	$(function(){
+				$(".Spinner").Spinner();
+			})
+        </script>
+    	<div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb90 center pat15 pab15">
+            <a href="detail-food.html" data-transition="slide" data-role="none">
+                <div class="wb35 fl h100px img-area relative">
+                	<img src="images/product-11.jpg">
+                </div>
+            </a>
+            <div class="wb60 mal3per fl">
+                <p class="text-left lh25px Fgray-3">黄记煌三汁焖锅黄记煌三汁焖锅黄记煌三汁焖锅</p>
+                <div class="clear1"></div>
+                <span class="F125em Forange fl lh30px">￥ 120</span>
+            </div>
+    		<div class="clear"></div>	
+        </div>
+    	<div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb90 center pab15 pat15 Fgray-3 lh40px F90em">
+        	<div class="wb94 pal3per par3per warpper-gray-1 h40px F110em">
+            	<p class="wb33333 fl text-left">内容</p>
+            	<p class="wb33333 fl text-center">数量规格</p>
+            	<p class="wb33333 fl text-right">小计</p>
+            </div>
+            <p class="text-center F110em">焖锅3选1</p>
+            <div class="wb100">
+            	<fieldset data-role="controlgroup">
+                    <input name="radia1" id="radia1a" value="on" checked="checked" type="radio">
+                    <label for="radia1a">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                    <input name="radia1" id="radia2a" value="off" type="radio">
+                    <label for="radia2a">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                    <input name="radia1" id="radia1c" value="other" type="radio">
+                    <label for="radia1c">
+                        <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                </fieldset>
+           	</div>
+            <p class="text-center F110em">凉菜2选1</p>
+            <div class="wb100">
+            	<fieldset data-role="controlgroup">
+                    <input name="radia2" id="radia2a" value="on" checked="checked" type="radio">
+                    <label for="radia2a">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                    <input name="radia2" id="radia2b" value="off" type="radio">
+                    <label for="radia2b">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                </fieldset>
+           	</div>
+            <p class="text-center F110em">其他3选3</p>
+            <div class="wb100">
+            	<fieldset data-role="controlgroup">
+                    <input name="radia3" id="radia3a" value="on" checked="checked" type="radio">
+                    <label for="radia3a">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                    <input name="radia3" id="radia3b" value="off" type="radio">
+                    <label for="radia3b">
+                    	<p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                    <input name="radia3" id="radia3c" value="other" type="radio">
+                    <label for="radia3c">
+                        <p class="wb70 fl">焖鮰鱼(酱汁咸鲜/酱汁香辣/麻辣汁)</p>
+                        <p class="wb12 fl text-center">1份</p>
+                        <p class="wb18 fl text-center">138元</p>
+                    </label>
+                </fieldset>
+           	</div>
+        </div>
+        
+    	<div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb90 center bor-gray bor-solid-1b h30px lh30px pat15 pab15">
+        	数量
+            <div class="Spinner fr"></div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="wb90 center">
+        	<span class="fl Fgray-3">小计</span>
+        	<span class="fr Forange">￥500.00</span>
+        </div>
+        
+        <div class="clear1"></div>
+        <a href="cart.html" data-transition="slide" data-role="none">
+            <div class="wb90 center h60px lh60px text-center F125em Fwhite radius5 warpper-orange-5 pointer">
+                确认添加
+            </div>
+        </a>
+    	<div class="clear1 warpper-gray-1"></div>
+        
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+</body>
+</html>

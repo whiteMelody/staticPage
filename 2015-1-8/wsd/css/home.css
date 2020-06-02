@@ -1,0 +1,109 @@
+
+.main-warpper{ width:100%; height:auto;}
+.main{ width:100%; height:auto;}
+        	
+.floor{ width:100%; height:auto;} 
+.floor1{ width:1200px; height:660px; margin:0 auto; overflow:hidden;}
+.floor1 .floor1-content{ width:300px; height:500px; float:left; padding-top:160px; margin-left:420px;}
+.floor1 .floor1-content .floor1-logo{ width:261px; height:259px; margin:0 auto;}
+.floor1 .floor1-content .floor1-logo2{ width:289px; height:24px; margin:0 auto; margin-top:20px;}
+.floor1 .floor1-btn{ width:20px; height:380px; float:left; padding-top:280px; margin-left:450px; margin-right:10px;}
+.floor1 .floor1-btn p{ background:url(../images/floor-btn01.png); width:18px; height:32px; background-position:0px 0px; cursor:pointer;}
+.floor1 .floor1-btn .p-hover{ background-position:-18px 0px;}
+.floor1 .floor1-hid{ width:410px; height:540px; float:left; display:none; padding-top:120px;}
+.floor1 .floor1-hid .floor1-txt{ width:355px; height:88px; margin:0 auto;}
+.floor1 .floor1-hid .floor1-pic{ width:316px; height:406px; margin:0 auto; margin-top:50px;}
+
+.floor2{ width:1200px; height:670px; margin:0 auto; padding-top:170px;}
+.floor2 .floor2-content{ width:1200px; height:380px; }
+.floor2 .floor2-content .floor2-txt{ width:550px; height:380px; float:left;}
+.floor2 .floor2-content .floor2-txt  .txt-title{ width:550px; height:100px; margin-top:30px;}
+.floor2 .floor2-content .floor2-txt  .txt-content{ width:550px; height:200px; margin-top:15px;}
+.floor2 .floor2-content .floor2-txt  .txt-content p{ font-size:16px; color:#fff; line-height:35px; text-align:left;}
+.floor2 .floor2-content .floor2-pic{ width:580px; height:380px; float:left;}
+.floor2 .floor2-bottom{ width:805px; height:135px; margin:0 auto; margin-top:155px;}
+
+.floor3{ width:1200px; height:700px; margin:0 auto; padding-top:120px;}
+.floor3 .floor3-title{ width:1200px; height:100px; }
+.floor3 .floor3-content{ width:1200px; height:500px;}
+.floor3 .floor3-content li{ width:270px; height:350px; float:left; margin:80px 20px;}
+.floor3 .floor3-content li .li-pic{ width:135px; height:135px; margin:35px auto;}
+.floor3 .floor3-content li .li-pic:hover{}
+.floor3 .floor3-content li .li-dec{ width:270px; height:50px; font-size:50px; color:#fff; text-align:center; line-height:50px; font-weight:500;}
+.floor3 .floor3-content li .li-btn{ width:31px; height:26px; float:right; margin-top:60px; margin-right:20px; background:url(../images/btn-hover.png); cursor:pointer;}
+.floor3 .floor3-content li .li-btn:hover{ background:url(../images/btn-1.png);}
+.floor3 .floor3-content li .li-btn-hover{ background:url(../images/btn-1.png);}
+
+.floor4{ width:1200px; height:700px; margin:0 auto; padding-top:80px;}
+.floor4 .floor4-title{ width:1200px; height:100px; }
+.floor4 .floor4-content{ width:1200px; height:400px;}
+.floor4 .floor4-content li{ width:270px; height:350px; float:left;}
+.floor4 .floor4-content li .li-pic{ width:123px; height:123px; margin:55px auto; cursor:pointer;}
+.floor4 .floor4-content li .li-pic:hover{ }
+.floor4 .floor4-content li .li-dec{ width:220px; height:50px; font-size:50px; color:#fff; text-align:center; line-height:50px; font-weight:500; margin-top:-20px;}
+.floor4 .floor4-content li .li-txt{ width:270px; height:220px; position:absolute; margin-top:-150px; display:none; }
+.floor4 .floor4-content li .li-txt .txt-pic{ width:37px; height:64px; margin:0 auto;}
+.floor4 .floor4-content li .li-txt .txt-title{ margin:10px auto; width:100px; height:40px; color:#fff; font-size:22px; line-height:40px; text-align:center;}
+.floor4 .floor4-content li .li-txt .txt-content{ width:220px; height:45px; margin:0 auto; }
+.floor4 .floor4-content li .li-txt .txt-content li{ height:20px; line-height:20px; text-align:left; float:left; width:40px;}
+.floor4 .floor4-content li .li-txt .txt-p{ margin:10px auto; width:100px; height:20px; color:#fff; font-size:16px; line-height:20px; text-align:center;}
+
+.floor5{ width:100%; height:600px; background:url(../images/map.jpg) no-repeat center;}
+
+.floor6{ width:1200px; height:490px; margin:0 auto; padding-top:150px;}
+.floor6 .floor6-title{ width:1200px; height:100px; }
+.floor6 .floor6-title .floor6-pic{ width:226px; height:68px; margin:0 auto;}
+.floor6 .floor6-title .floor6-txt{ width:289px; height:24px; margin:40px auto;}
+.floor6 .floor6-content{ width:1000px; height:100px; margin:80px auto;}
+.floor6 .floor6-content li{ width:96px; height:96px; margin:35px; float:left;}
+.floor6 .floor6-content li:hover:hover{ }
+
+.floor-service{ width:990px; height:210px; margin:230px auto;}
+.floor-service .service-title{ width:190px; height:210px;}
+.floor-service .service-title .title-pic{ width:162px; height:162px;}
+.floor-service .service-title .title-pic img{ width:162px; height:162px;}
+.floor-service .service-title .title-txt{ width:162px; height:45px; line-height:45px; color:#fff; font-size:40px; font-weight:800; text-align:center;}
+.floor-service .service-content{ width:700px; height:210px;}
+.floor-service .service-content li{ color:#fff; margin-top:40px; margin-left:70px; float:left; font-size:16px; text-align:left; line-height:20px; height:20px; width:140px; font-weight:800; }
+
+.floor-charity{ width:1200px; height:2000px; margin:0 auto; }
+.charity-banner{ width:1180px; height:360px; margin:0 auto; }
+.charity-charity{ width:1180px; height:430px; margin:0 auto; }
+.charity-activity{ width:1200px; height:440px; margin:0 auto; }
+
+.top{ width:1050px; height:100px; margin:120px auto;}
+.top .top-title{ width:350px; height:100px; float:left; font-size:50px; color:#fff; text-align:center; line-height:50px; font-weight:500;}
+.top .top-search{ width:484px; height:42px; background:url(../images/search.png) no-repeat center; float:right;}
+.top .top-search input[type=submit]{ width:50px; height:40px; float:left; border:none; background:none;}
+.top .top-search input[type=text]{ width:350px; height:40px; float:left; font-size:14px; color:#777; border:none; background:none;}
+
+.header-warpper{ width:100%; height:45px;}
+.header{ width:1200px; height:45px; margin:0 auto;}
+.header .logo{ width:200px; height:35px; float:left; padding-top:10px;}
+.header .nav{ width:500px; height:45px; float:right;}
+.header .nav li{ height:45px; text-align:center; width:100px; line-height:45px; color:#fff; font-size:14px; font-weight:600; float:left;}
+.header .nav li:hover{ background:#fff; color:#000;}
+.header .nav li-hover{ background:#fff; color:#000;}
+
+.slide-warpper{ width:50px; height:auto; position:fixed; margin-top:200px; margin-left:30px;}
+.slide{ width:30px; height:auto; margin:0 auto;}
+.slide li{ width:28px; height:28px; margin-top:20px; cursor:pointer; }
+
+.footer-warpper{ width:100%; height:250px; background:#414141; padding-top:50px;}
+.footer{ width:1200px; height:250px; margin:0 auto;}
+.footer .footer-left{ width:300px; height:250px; float:left;}
+.footer .footer-left .fl-pic{ width:183px; height:85px;}
+.footer .footer-left .fl-txt{ width:250px; height:50px; line-height:20px; color:#fff; margin-top:30px;}
+.footer .footer-mid{ width:550px; height:250px; float:left;}
+.footer .footer-mid ul{ width:120px; height:200px; float:left;}
+.footer .footer-mid li{ height:30px; line-height:30px; text-align:left; text-align:left;}
+.footer .footer-right{ width:350px; height:250px; float:left;}
+.footer .footer-right .fr-top{ width:350px; height:75px; line-height:35px; text-align:left;}
+.footer .footer-right .fr-mid{ width:350px; height:120px;}
+.footer .footer-right .fr-bottom{ width:350px; height:45px;}
+.footer-coryRight{ width:100%; height:40px; line-height:40px; text-align:center; color:#fff; font-size:13px; background:#202020; }
+
+.mall{ width:1190px; height:2000px; margin:0 auto;}
+.mall .mall-left{ width:235px; height:1200px; float:left;}
+.mall .mall-left .mall-nav{ width:235px; height:660px; background:#d53030;}
+.mall .mall-right{ width:920px; height:1800px; float:right;}

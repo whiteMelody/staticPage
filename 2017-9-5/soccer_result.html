@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>投注详情</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| soccer_result_page
+| ------------------------------------------
+| Here are soccer_result_page html
+|
+-->
+
+<div id="soccer_result_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100" style="background: url('images/bg-detail.png') no-repeat; background-size: 100% 100%;">
+
+        <div class="clear1"></div>
+
+        <div class="pa15 Fwhite text-center lh20px">
+            <div class="wb30 fl pat10">
+                <div class="w50px h50px center img-area">
+                    <img :src="match.homeTeamLogo">
+                </div>
+                <p class="lh30px text-over-hidden1 h30px">{{cutStrForNum(match.homeTeam,5)}}</p>
+                <p class="F14 lh30px">
+                    <span class="w40px h20px lh20px display-inline warpper-red radius5 text-center">主队</span>
+                </p>
+            </div>
+            <div class="wb40 fl">
+                <div class="wb80 center pat10">
+                    <template v-if="match.status == 0 || match.status == 1 || match.status == 4">
+                        <p class="Fgreen lh50px F18">等待开奖</p>
+                        <p class="Fwhite F12 lh30px">{{ dateFormat(match.matchTime, 16)}}</p>
+                    </template>
+                   <template v-if="match.status == 2">
+                        <p class="Fyellow lh20px">恭喜中奖</p>
+                       <div class="clear1"></div>
+                        <p class="Fnum Fyellow lh20px">+{{twoDecimal(match.bonus)}}</p>
+                       <div class="clear1"></div>
+                       <div class="wb120 img-area" style="margin-left: -10%;">
+                           <img src="images/win-gold.png">
+                       </div>
+                   </template>
+                   <template v-if="match.status == 3">
+                        <p class="Fgray-3 lh25px">未中奖</p>
+                        <p class="Fgray-3 lh25px">再接再厉吧</p>
+                       <div class="clear1"></div>
+                       <div class="wb120 img-area" style="margin-left: -10%;">
+                           <img src="images/lost-gold.png">
+                       </div>
+                   </template>
+                </div>
+            </div>
+            <div class="wb30 fr pat10">
+                <div class="w50px h50px center img-area">
+                    <img :src="match.awayTeamLogo">
+                </div>
+                <p class="lh30px">{{cutStrForNum(match.awayTeam,5)}}</p>
+                <p class="F14 lh30px">
+                    <span class="w40px h20px lh20px display-inline warpper-blue radius5 text-center">客队</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="clear1"></div>
+
+    </div>
+
+
+    <div class="clear"></div>
+
+    <div class="wb100 warpper-white">
+        <div class="pal15 lh45px Fgray-3">
+            <p>竞猜玩法：{{match.lotType}}</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜选项：<span class="Fred">{{match.anteValue}}</span></p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>比赛结果：
+                <span class="Fred" v-if="match.status == 2 || match.status == 3 || match.status == 4">{{match.raceResult}}</span>
+                <span v-else>— —</span>
+            </p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>投注金币：{{match.lotMoney}}</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜赔率：{{match.lossRatio}}</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜时间：{{match.payTime}}</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>方案编号：{{match.orderNo}}</p>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#soccer_result_page",
+        data: {
+            login: false,
+            fullscreenLoading: false,
+            match: {
+                matchTime: '',
+                homeTeam: '',
+                awayTeam: ''
+            }
+        },
+        methods: {
+            dateFormat: function timeFormat(date, index) {
+                return date.substring(5, index);
+            },
+            cutStrForNum: function cutStrForNum(str, num) {
+                if (str.length > num) {
+                    return str.substring(0, num) + '...';
+                } else {
+                    return str;
+                }
+            },
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            }
+
+        },
+        created: function created() {
+            var _this = this;
+
+            var orderID = base.getParmar('orderID');
+
+            if (base.isNull(orderID)) {
+                _this.$message({
+                    type: 'error',
+                    message: '缺少订单ID',
+                    duration: 1500
+                });
+                return false;
+            }
+
+            baseAjax.matchOrderByOrderID(orderID, function (data) {
+                if (data) {
+                    _this.match = data.returnJSON;
+                }
+                console.log(data);
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var orderID = base.getParmar('orderID');
+
+                if (base.isNull(orderID)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '缺少订单ID',
+                        duration: 1500
+                    });
+                    return false;
+                }
+
+                baseAjax.matchOrderByOrderID(orderID, function (data) {
+                    if (data) {
+                        _this.match = data.returnJSON;
+                    }
+                    console.log(data);
+                });
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

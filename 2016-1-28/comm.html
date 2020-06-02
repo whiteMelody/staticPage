@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/wwb.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+
+<script>
+	$(function(){
+		//手动调用弹窗
+		//$("#popDialog").popup('open');	
+		//$("#popDialog").popup('close');	
+	})
+</script>
+
+<title>微务宝</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| login-page
+| ------------------------------------------
+| Here are login-page html
+| 
+-->            
+<div data-role="page" id="index-page">
+	
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em" style="text-shadow:none; font-weight:normal;">
+            	公用UI
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	
+		<a href="#popDialog1" data-rel="popup" data-role="button" data-transition="pop">弹窗1</a>
+		<a href="#popDialog2" data-rel="popup" data-role="button" data-transition="pop">弹窗2</a>
+		<a href="#popDialog3" data-rel="popup" data-role="button" data-transition="pop">弹窗3</a>
+    
+    	<div data-role="popup" id="popDialog1" data-overlay-theme="b" data-theme="b" style="width:300px; height:100%;margin:0; padding:0; box-shadow:none; border:none;">
+            <div role="main" class="ui-content" style="margin:0; padding:0; box-shadow:none; border:none;">
+            	<div class="wb100 h120px lh120px text-center Fwhite warpper-blue-11">
+                	确定要赠送给好友吗？
+                </div>
+                <div class="wb100 h60px warpper-white">
+                	<a href="javascript:;" data-role="none" class="display-inline h60px lh60px warpper-white wb495 fl text-center">
+                    	<span class="Fblue-5">取消</span>
+                    </a>
+                	<a href="javascript:;" data-role="none" class="display-inline h60px lh60px warpper-white wb495 fl text-center bor-blue3 bor-solid-1l">
+                    	<span class="Fblue-5">确定</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="popup" id="popDialog2" data-overlay-theme="b" data-theme="b" style="width:300px; height:100%;margin:0; padding:0; box-shadow:none; border:none;">
+            <div role="main" class="ui-content" style="margin:0; padding:0; box-shadow:none; border:none;">
+            	<div class="wb100 h60px lh60px text-center Fgray-3 warpper-white">
+                	提示
+                </div>
+            	<div class="wb100 h60px lh60px text-center Fwhite warpper-blue-11">
+                	拨打电话：023-6800 8888
+                </div>
+                <div class="wb100 h60px warpper-white">
+                	<a href="javascript:;" data-role="none" class="display-inline h60px lh60px warpper-white wb100 text-center">
+                    	<span class="Fgray-3">取消</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="popup" id="popDialog3" data-overlay-theme="b" data-theme="b" style="width:300px; height:100%;margin:0; padding:0; box-shadow:none; border:none;">
+            <div role="main" class="ui-content" style="margin:0; padding:0; box-shadow:none; border:none; background:#fff;">
+            	<div class="wb100 h60px lh60px text-center Fgray-3 warpper-white">
+                	请选择优惠券使用应用
+                </div>
+            	<div class="wb90 pal5per par5per h60px lh60px warpper-white Fblue-5 bor-blue4 bor-solid-1t">
+                	微务宝有餐
+                    <div class="fr">
+                        <label for="check1a" style="border:none; background:#fff; color:#666; position:relative; z-index:99;">&nbsp;</label>
+                        <input type="radio" name="favcolor" id="check1a" value="2">
+                    </div>
+                </div>
+                <div class="clear"></div>
+            	<div class="wb90 pal5per par5per h60px lh60px warpper-white Fblue-5 bor-blue4 bor-solid-1t">
+                	微务宝商城
+                    <div class="fr">
+                        <label for="check2a" style="border:none; background:#fff; color:#666; position:relative; z-index:99;">&nbsp;</label>
+                        <input type="radio" name="favcolor" id="check2a" value="2">
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        <div data-role="panel" id="index-menu" data-position="left" data-display="overlay" data-theme="a" style="width:280px;z-index:9;">
+			
+            <div style="position:absolute; right:5px; z-index:99;">
+            	<a href="#index-page" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">关闭</a>
+        	</div>
+			<div class="wb100 Fgray-3">
+            	
+                <div class="wb90 pal5per par5per h100px pat15 pab15 warpper-blue-11">
+                	<div class="w100px h100px radius50per over-hidden img-area fl">
+                    	<img src="images/img-head-1.png">
+                    </div>
+                    <div class="Fwhite lh35px h70px mat15 fl mal10">
+                    	<p class="F125em">张学友</p>
+                    	<p>NO.123456789</p>
+                    </div>
+                </div>
+            
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-1.png" class="middle"> 
+                    <span class="wb85 fr">我的优惠券</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-2.png" class="middle">
+                    <span class="wb85 fr">活动积分</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-3.png" class="middle"> 
+                    <span class="wb85 fr">消费积分</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-4.png" class="middle"> 
+                    <span class="wb85 fr">商城余额</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-5.png" class="middle"> 
+                    <span class="wb85 fr">游戏金币</span>
+                </p>
+            	<p class="h60px lh60px bor-gray bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-6.png" class="middle"> 
+                    <span class="wb85 fr">微商城</span>
+                </p>
+                <div class="clear"></div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-menu h40px w40px absolute pointer" data-role="none" href="#index-menu" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em" style="text-shadow:none; font-weight:normal;"></div>
+        	<a class="my-icon-home h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="right:5px; top:5px;"></a>
+        </div>
+	</div>
+    
+    
+</div>
+
+
+</body>
+</html>

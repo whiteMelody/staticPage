@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>快手互粉</title>
+
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+</head>
+<body>
+	<div class="wb100">
+
+		<!--nav-->
+		<div class="wb100 warpper-none sticky">
+			<div class="w1000px center h50px">
+				<!--<div class="w50px h50px warpper-white fl"></div>-->
+
+				<div class="wb50 h50px lh50px Fwhite F24 fl">
+					<div class="w50px h50px fl">
+						<img src="img/logo.png" class="h50px">
+					</div>
+					<div class="wb60 fl mal15 F16 Fgreen lh25px">
+						<p>快手互粉</p>
+						<p class="F12">网红的小秘密</p>
+					</div>
+				</div>
+
+				<div class="wb20 fr h50px lh50px">
+					<div class="wb50 fl Fgreen">
+						<span class="bor-solid-2b bor-green h30px lh30px display-inline">首页</span>
+					</div>
+
+					<a href="user.html">
+						<div class="wb50 fl Fgray-3">
+							个人中心
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!--下载弹窗-->
+		<div class="dialogBg" style="z-index: 9999; display: none;"></div>
+
+		<div class="dialogDownload" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; margin: auto; width: 320px; height: 430px; z-index: 999999; display: none;">
+			<div class="warpper-white">
+
+				<p class="h45px Fgray-3 Fwhite bor-solid-1b bor-gray text-center lh45px">提示</p>
+				<p class="Fgreen h45px lh45px text-center">下载APP后可以使用互评功能</p>
+
+				<div class="pal50 par50 img-area">
+					<img src="img/download.png">
+				</div>
+
+				<p class="Fgray-3 h45px lh45px text-center">扫码二维码即可下载，仅支持安卓</p>
+
+				<div class="clear"></div>
+			</div>
+
+			<div class="clear1"></div>
+
+			<div class="wb100">
+				<div class="h45px lh45px text-center Fwhite">
+					<a href="http://www.31un.com/brush/kssf_v1.0_10_3_sign.apk">
+						<div class="wb48 fl warpper-green Fwhite">下载</div>
+					</a>
+					<div class="wb48 fr warpper-gray-1 Fgray-3 dialogClose">取消</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!--banner-->
+		<div class="wb100 img-area relative" style="position: relative;">
+			<img src="img/banner.jpg">
+
+			<!--download-->
+
+			<div class="absolute w200px h50px lh50px text-center Fwhite warpper-green radius5 downloadBtn" style="left: 16%; bottom: 20%;">安卓下载</div>
+
+		</div>
+
+		<div class="clear1"></div>
+
+		<div class="wb100">
+
+			<div class="clear1"></div>
+
+			<div class="w1000px center">
+				<div class="wb68 fl">
+					<div class="wb100">
+						<p class="bor-solid-5l bor-green pal10 h20px lh20px">免费功能</p>
+						<div class="clear1"></div>
+						<div class="wb100">
+							<div class="wb100">
+								<div class="wb33333 fl">
+									<a href="freePL.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-2.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">免费刷评论</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<div class="wb33333 fl">
+									<a href="freeLike.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-3.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">免费刷爱心</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<div class="wb33333 fl">
+									<a href="help.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-1.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">使用帮助</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+
+							</div>
+
+						</div>
+					</div>
+					<div class="clear1"></div>
+
+					<div class="wb100">
+						<p class="bor-solid-5l bor-green pal10 h20px lh20px">权限功能</p>
+						<div class="clear1"></div>
+						<div class="wb100">
+							<div class="wb100">
+								<div class="wb33333 fl relative brush-29">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="brushFans.html">-->
+									<div class="pa15 wow animated flipInX content" data-wow-delay="0.3s">
+										<div class="wb100 h145px bor-gray bor-solid-1a">
+											<div class="wb25 center img-area mat25 mab15">
+												<img src="img/icon-4.png">
+											</div>
+											<p class="text-center F16 Fgray-3 h30px lh30px">快手粉丝</p>
+										</div>
+									</div>
+									<!--</a>-->
+								</div>
+
+								<div class="wb33333 fl relative brush-31">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="brushClick.html">-->
+										<div class="pa15 wow animated flipInX content" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-5.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">快手双击数</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+
+								<div class="wb33333 fl relative brush-30">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="brushLike.html">-->
+										<div class="pa15 wow animated flipInX content" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-6.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">快手播放量</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="wb100">
+							<div class="wb100">
+
+								<div class="wb33333 fl relative brush-55">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="brushFans.html">-->
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-22.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">快手直播爱心</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+
+								<div class="wb33333 fl relative brush-53">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="brushClick.html">-->
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-23.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">快手活粉</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+
+								<div class="wb33333 fl relative brush-54">
+									<!--<a href="brushLike.html">-->
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb25 center img-area mat25 mab15">
+													<img src="img/icon-24.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">快手评论量</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="clear1"></div>
+
+					<div class="wb100">
+						<p class="bor-solid-5l bor-green pal10 h20px lh20px">其他服务</p>
+						<div class="clear1"></div>
+						<div class="wb100">
+							<div class="wb100">
+								<div class="wb25 fl relative">
+									<img src="img/icon-maintain.png" class="absolute" style="right: 14px; top: 15px; width: 50px;">
+									<!--<a href="freeDownload.html">-->
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb35 center img-area mat25 mab15">
+													<img src="img/icon-7.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">无水印下载</p>
+											</div>
+										</div>
+									<!--</a>-->
+								</div>
+								<div class="wb25 fl">
+									<a href="freeLink.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb35 center img-area mat25 mab15">
+													<img src="img/icon-8.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">互粉链接</p>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="wb25 fl">
+									<a href="login.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb35 center img-area mat25 mab15">
+													<img src="img/icon-10.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">切换账户</p>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="wb25 fl">
+									<a href="download.html">
+										<div class="pa15 wow animated flipInX" data-wow-delay="0.3s">
+											<div class="wb100 h145px bor-gray bor-solid-1a">
+												<div class="wb35 center img-area mat25 mab15">
+													<img src="img/icon-11.png">
+												</div>
+												<p class="text-center F16 Fgray-3 h30px lh30px">下载APP</p>
+											</div>
+										</div>
+									</a>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+
+				</div>
+
+				<div class="wb32 fr">
+
+					<div class="wb100">
+
+						<div class="pal15">
+
+							<div class="wb100 bor-gray bor-solid-1a">
+								<div class="pa15">
+									<p class="bor-solid-5l bor-green pal10 h20px lh20px">碎言碎语</p>
+									<div class="clear1"></div>
+									<div class="wb100 F14 lh30px Fgray-2 article-area1">
+
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+
+							<div class="clear1"></div>
+							<div class="clear1"></div>
+
+							<div class="wb100 bor-gray bor-solid-1a">
+								<div class="pa15">
+									<p class="bor-solid-5l bor-green pal10 h20px lh20px">匆匆那年</p>
+									<div class="clear1"></div>
+									<div class="wb100 F14 lh30px Fgray-2 article-area2">
+
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+
+							<div class="clear"></div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="clear1"></div>
+
+		<div class="wb100">
+			<div class="w1000px center">
+
+				<div class="wb100 h150px warpper-gray-3 img-area">
+					<img src="img/banner3.jpg">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="clear1"></div>
+		<div class="clear1"></div>
+
+		<div class="wb100">
+			<div class="w1000px center">
+				<div class="wb32 fl">
+					<div class="wb100 bor-gray bor-solid-1a">
+						<div class="pa15">
+							<p class="bor-solid-5l bor-green pal10 h20px lh20px">站内资讯</p>
+							<div class="clear1"></div>
+							<div class="wb100 F14 lh30px Fgray-2 article-area3">
+
+							</div>
+						</div>
+
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="wb32 mal2per mar2per fl">
+					<div class="wb100 bor-gray bor-solid-1a">
+						<div class="pa15">
+							<p class="bor-solid-5l bor-green pal10 h20px lh20px">常见问题</p>
+							<div class="clear1"></div>
+							<div class="wb100 F14 lh30px Fgray-2 article-area4">
+
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="wb32 fl">
+					<div class="wb100 bor-gray bor-solid-1a">
+						<div class="pa15">
+							<p class="bor-solid-5l bor-green pal10 h20px lh20px">最新更新</p>
+							<div class="clear1"></div>
+							<div class="wb100 F14 lh30px Fgray-2 article-area5">
+
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--footer-->
+		<div class="clear h50px"></div>
+
+		<div class="wb100 warpper-black">
+			<div class="w1000px center">
+
+				<div class="clear h30px"></div>
+
+				<div class="wb80 fl lh25px Fgray-3 F14">
+					<div class="wb20 fl">
+						<p class="Fwhite h40px lh40px">免费功能</p>
+						<a href="freePL.html"> <p class="Fgray-3">免费刷评论</p> </a>
+						<a href="freeLike.html"> <p class="Fgray-3">免费刷爱心</p> </a>
+						<a href="help.html"> <p class="Fgray-3">使用帮助</p> </a>
+					</div>
+					<div class="wb20 fl">
+						<p class="Fwhite h40px lh40px">权限功能</p>
+						<a href="brushFans.html"> <p class="Fgray-3">快手粉丝</p> </a>
+						<a href="brushClick.html"> <p class="Fgray-3">快手双击数</p> </a>
+						<a href="brushLike.html"> <p class="Fgray-3">快手直播爱心</p> </a>
+					</div>
+					<div class="wb20 fl">
+						<p class="Fwhite h40px lh40px">其他服务</p>
+						<a href="freeDownload.html"> <p class="Fgray-3">无水印下载</p> </a>
+						<a href="freeLink.html"> <p class="Fgray-3">互粉链接</p> </a>
+						<a href="login.html"> <p class="Fgray-3">切换账户</p> </a>
+						<a href="download.html"> <p class="Fgray-3">下载APP</p> </a>
+					</div>
+					<div class="wb40 fl">
+						<p class="Fwhite h40px lh40px">联系我们</p>
+
+						<p>客服电话/微信：<span class="Fgreen">13310227366</span></p>
+						<p>在线时间：9:00 - 18:00</p>
+
+						<div class="clear1"></div>
+
+						<div class="wb100">
+							<img src="img/icon1.png" class="fl mar10">
+							<img src="img/icon2.png" class="fl mar10">
+							<img src="img/icon3.png" class="fl mar10">
+							<img src="img/icon4.png" class="fl mar10">
+						</div>
+
+					</div>
+				</div>
+
+				<div class="wb20 fr">
+					<div class="wb100 Fwhite lh20px F14 text-center">
+						<div class="w100px center img-area">
+							<img src="img/download.png">
+						</div>
+						<div class="clear1"></div>
+						<p>扫码下载app，仅支持安卓</p>
+						<p>了解更多快手刷粉更多功能</p>
+					</div>
+				</div>
+
+				<div class="clear h30px"></div>
+
+			</div>
+
+			<div class="clear" style="border-bottom: 1px solid #222"></div>
+
+			<div class="wb100 text-center Fgray-3 F14 lh20px pat15 pab15">
+				<p>版权所有®重庆蜜枣科技有限公司</p>
+				<p class="F10">Copyright 20015-2018 CALENDAR Tech., All Rights Reserved.</p>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/md5_ch.js"></script>
+	<script src="js/interface.js"></script>
+
+	<script>
+
+		$(function () {
+
+            $(".downloadBtn").click(function () {
+                $(".dialogBg").show(0);
+                $(".dialogDownload").show(0);
+            })
+
+            $(".dialogClose, .dialogBg").click(function () {
+                $(".dialogBg").hide(0);
+                $(".dialogDownload").hide(0);
+            })
+
+
+			var d = [{"id":"29","name":"粉丝","hot":"0"},
+				{"id":"30","name":"播放量","hot":"3"},
+				{"id":"31","name":"双击数","hot":"3"},
+				{"id":"53","name":"活粉","hot":"3"},
+				{"id":"54","name":"评论","hot":"3","info":""},
+				{"id":"55","name":"直播爱心","hot":"3"}
+				];
+
+		    baseAjax.getType(function (data) {
+                //判断是否维护
+				for(var i=0; i<data.length; i++){
+				    for(var j=0; j<d.length; j++){
+                        if(data[i].id == d[j].id){
+                            if(data[i].id == '29' || data[i].id == 29){
+                                $(".brush-29 .absolute").hide(0);
+								$(".brush-29").click(function () {
+									window.location.href = 'brushFans.html';
+                                })
+							}else if(data[i].id == '30' || data[i].id == 30){
+                                $(".brush-30 .absolute").hide(0);
+								$(".brush-30").click(function () {
+									window.location.href = 'brushLike.html';
+                                })
+							}else if(data[i].id == '31' || data[i].id == 31){
+                                $(".brush-31 .absolute").hide(0);
+								$(".brush-31").click(function () {
+									window.location.href = 'brushClick.html';
+                                })
+							}else if(data[i].id == '55' || data[i].id == 55){
+                                $(".brush-55 .absolute").hide(0);
+								$(".brush-55").click(function () {
+									window.location.href = 'brushLove.html';
+                                })
+							}else if(data[i].id == '54' || data[i].id == 54){
+                                $(".brush-54 .absolute").hide(0);
+								$(".brush-54").click(function () {
+									window.location.href = 'brushComment.html';
+                                })
+							}else if(data[i].id == '53' || data[i].id == 53){
+                                $(".brush-53 .absolute").hide(0);
+								$(".brush-53").click(function () {
+									window.location.href = 'brushActiveFans.html';
+                                })
+							}
+						}
+				    }
+				}
+
+				//渲染维护内容
+
+
+
+            })
+
+
+			//碎言碎语
+			baseAjax.getArticleList(1, 11, 1, function (data) {
+				if(data){
+                    var _tmp = data.list;
+                    var _html = '';
+                    for(var i=0; i<_tmp.length; i++){
+                        _html += '<a href="article.html?aid='+_tmp[i].id+'"><p class="text-over-hidden1 h30px lh30px Fgray-2">'+ _tmp[i].title +'</p></a>';
+                    }
+                    $(".article-area1").append(_html);
+				}
+            })
+
+			baseAjax.getArticleList(2, 11, 1, function (data) {
+				if(data){
+                    var _tmp = data.list;
+                    var _html = '';
+                    for(var i=0; i<_tmp.length; i++){
+                        _html += '<a href="article.html?aid='+_tmp[i].id+'"><p class="text-over-hidden1 h30px lh30px Fgray-2">'+ _tmp[i].title +'</p></a>';
+                    }
+                    $(".article-area2").append(_html);
+				}
+            })
+
+			baseAjax.getArticleList(3, 8, 1, function (data) {
+				if(data){
+                    var _tmp = data.list;
+                    var _html = '';
+                    for(var i=0; i<_tmp.length; i++){
+                        _html += '<a href="article.html?aid='+_tmp[i].id+'"><p class="text-over-hidden1 h30px lh30px Fgray-2">'+ _tmp[i].title +'</p></a>';
+                    }
+                    $(".article-area3").append(_html);
+				}
+            })
+
+			baseAjax.getArticleList(4, 8, 1, function (data) {
+				if(data){
+                    var _tmp = data.list;
+                    var _html = '';
+                    for(var i=0; i<_tmp.length; i++){
+                        _html += '<a href="article.html?aid='+_tmp[i].id+'"><p class="text-over-hidden1 h30px lh30px Fgray-2">'+ _tmp[i].title +'</p></a>';
+                    }
+                    $(".article-area4").append(_html);
+				}
+            })
+
+			baseAjax.getArticleList(5, 8, 1, function (data) {
+				if(data){
+                    var _tmp = data.list;
+                    var _html = '';
+                    for(var i=0; i<_tmp.length; i++){
+                        _html += '<a href="article.html?aid='+_tmp[i].id+'"><p class="text-over-hidden1 h30px lh30px Fgray-2">'+ _tmp[i].title +'</p></a>';
+                    }
+                    $(".article-area5").append(_html);
+				}
+            })
+
+            new WOW().init();
+
+            $(".menu-btn").hover(function () {
+                $(this).find('img').css('transform','rotate(180deg)');
+            },function () {
+                $(this).find('img').css('transform','rotate(0deg)');
+            }).click(function () {
+                if($(".menu-panel").css('right') == 0 || $(".menu-panel").css('right') == '0px' || $(".menu-panel").css('right') == '0')
+                	$(".menu-panel").css('right','-200px');
+                else
+                    $(".menu-panel").css('right','0');
+            })
+
+			$(".close-btn").hover(function () {
+                $(this).find('img').css('transform','rotate(180deg)');
+            },function () {
+                $(this).find('img').css('transform','rotate(0deg)');
+            }).click(function () {
+                $(".menu-panel").css('right','-200px');
+            })
+
+
+			$(".uniqueness").hover(function () {
+				$(this).addClass('pulse');
+            },function () {
+                $(this).removeClass('pulse');
+            })
+
+			$(window).scroll(function(){
+				var sticky = $('.sticky'),
+					scroll = $(window).scrollTop();
+
+				if (scroll >= 100) sticky.addClass('fixed-nav');
+				else sticky.removeClass('fixed-nav');
+			});
+		})
+
+
+	</script>
+
+</body>
+</html>

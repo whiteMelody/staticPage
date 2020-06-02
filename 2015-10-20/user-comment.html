@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+<!--
+| ------------------------------------------
+| comment-page
+| ------------------------------------------
+| Here are comment-page html
+| 
+-->
+<div data-role="page" id="comment-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em" style="text-shadow:none; font-weight:normal;">
+            	待评价
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	
+        <style>
+			.gradecon{ padding-top:15px;}
+			.rev_pro li{line-height:10px;height:25px;}
+			.rev_pro li .revtit{text-align:right;display:block;float:left;margin-right:10px;width:70px;}
+			.revinp{float:left;display:inline;}
+			.level .level_solid,.level .level_hollow{float:left;display:inline-block;width:30px;height:31px;}
+			.level .level_solid{ background-image:url(images/xing02.png); background-repeat:no-repeat; cursor:pointer;}
+			.level .level_hollow{ background-image:url(images/xing01.png); background-repeat:no-repeat;}
+			.revgrade{margin-left:20px;}
+			</style>
+			
+			<script>
+				
+				$(function(){
+					
+					//点星星
+					
+					var degree = ['','1分','2分','3分','4分','5分','未评分'];
+					$(document).on('mouseover','i[cjmark]',function(){
+						var num = $(this).index();
+						var pmark = $(this).parents('.revinp');
+						var mark = pmark.prevAll('input');
+					
+						if(mark.prop('checked')) return false;
+						
+						var list = $(this).parent().find('i');
+						for(var i=0;i<=num;i++){
+							list.eq(i).attr('class','level_solid');
+						}
+						for(var i=num+1,len=list.length-1;i<=len;i++){
+							list.eq(i).attr('class','level_hollow');
+						}
+						
+						//$(this).parent().next().html(degree[num+1]);
+						
+						
+						$(this).parent().parent().parent().parent().parent().find("input").val(num+1);
+					})
+					//点击星星
+					$(document).on('click','i[cjmark]',function(){
+						var num = $(this).index();
+						var pmark = $(this).parents('.revinp');
+						var mark = pmark.prevAll('input');
+						
+						if(mark.prop('checked')){
+							mark.val('');
+							mark.prop('checked',false);mark.prop('disabled',true);	
+						}else{
+							mark.val(num);
+							mark.prop('checked',true);mark.prop('disabled',false);	
+						}
+						$(this).parent().parent().parent().parent().parent().find("input").val(num);
+					})
+					
+					$(".file-btn").unbind("click").click(function(){
+						$("input[name=file-img]").click();
+					})
+					
+				})
+			</script>
+    
+    	<div class="wb96 center pat10 pab10">
+            <a href="detail-store.html" data-transition="slide" data-role="none">
+           		<div class="wb30 fl h100px img-area relative"><img src="images/product-13.jpg"></div>
+            </a>
+            <div class="wb65 mar1per fr">
+                <p class="text-left lh20px F90em Fgray-3">Vero Moda网纱印花棉弹螺纹合体长袖女短外套|315117027 022</p> <div class="clear1 h10px"></div>
+                
+                <div class="wb100">
+                	<ul class="rev_pro clearfix">
+                      <li>
+                        <span class="revtit"></span>
+                        <div class="revinp">
+                          <span class="level">
+                            <i class="level_solid" cjmark=""></i>
+                            <i class="level_solid" cjmark=""></i>
+                            <i class="level_solid" cjmark=""></i>
+                            <i class="level_solid" cjmark=""></i>
+                            <i class="level_solid" cjmark=""></i>
+                          </span>
+                          <span class="revgrade"></span>
+                        </div>
+                      </li>
+                    </ul>
+                    <input type="hidden" name="evaluate" value="5" />
+                </div>
+            </div>
+            <div class="clear1"></div>
+            <textarea placeholder="买家评价" class="wb96 pal2per par2per pat5 pab5 Fgray-3 bor-gray bor-solid-1a h100 radius5" data-role="none"></textarea>
+            
+            <a href="javascript:void(0)" data-transition="slide" data-role="none" class="file-btn">
+                <div class="wb100 h50px lh50px text-left Fgray-2">
+                    <img src="images/icon-add.png" class="fl mat10"><span class="fl mal5per">添加图片</span>
+                </div>
+            </a>
+            
+            <input type="file" class="hidden" name="file-img" data-role="none">
+            
+           	<div data-role="fieldcontain">
+                <label for="switch" class=" Fgray-2 F80em">匿名提交：</label>
+                <select name="switch" id="switch" data-role="slider">
+                  <option value="on">On</option>
+                  <option value="off">Off</option>
+                </select>
+          	</div>
+            
+            <div class="clear1"></div>
+            <input type="submit" data-role="none" value="发表评论" class="wb100 warpper-orange-2 pointer h40px lh40px text-center bor-none Fwhite radius5" />
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/07.png" class="middle h25px">
+                      <p class="Fgray-3">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/013.png" class="middle h25px">
+                      <p class="Fblue">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+</body>
+</html>

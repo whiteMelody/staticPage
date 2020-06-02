@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <title>支付跳转中...</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| pay_result_page
+| ------------------------------------------
+| Here are pay_result_page html
+|
+-->
+
+<div id="pay_result_page" class="lh25px">
+    <!--<p style="word-wrap:break-word;" class="wb100"></p>-->
+    <!--<p style="word-wrap:break-word;" class="wb100"></p>-->
+    <!--<p style="word-wrap:break-word;" class="wb100"></p>-->
+    <!--<div class="t">-->
+
+    <!--</div>-->
+
+    <div class="pa15 hidden aaa" style="display: none">
+        <p><a target="_blank" href="youloft.419805549://ylweb?url=http://h5.pwabc.cn/wnl/pay_result.html?isBack=true">支付完成，回到万年历</a></p>
+    </div>
+
+</div>
+
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/interface.js"></script>
+
+<script>
+
+    $(function(){
+        var paymentNo = base.getCookie('paymentNo');
+
+        var payType = base.getCookie('payType');
+
+        var isBack = base.getParmar('isBack');
+
+        if(!base.isNull(isBack)){
+            window.location.href = 'protocol://exit';
+        }
+
+        if(base.isNull(paymentNo)){
+            paymentNo = base.getParmar('trade_no');
+            setTimeout(function(){
+                $(".aaa").show();
+            },500);
+            return false;
+        }
+
+        baseAjax.payResultQuery(paymentNo, payType, function (data,errorMsg) {
+            if (data) {
+                window.location.replace('pay_success.html');
+            }else{
+
+                if(payType == '0' || payType == 0){
+                    window.location.replace('pay_fail.html?msg='+errorMsg);
+                }
+                if(payType == '1' || payType == 1){
+                    window.history.go(-2);
+                }
+
+            }
+            baseAjax.userInfo(function () {});
+        });
+
+    })
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

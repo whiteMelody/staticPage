@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/hostSdk.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+
+
+    <title>抽奖记录</title>
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_draw_record_page html
+|
+-->
+
+<div id="store_draw_record_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+        <div class="wb100">
+            <div class="wb100 warpper-black-3">
+                <div class="wb100 " v-for="item in detailList" v-if="empty==false">
+                    <div class="clear1"></div>
+                    <div class="pal15">
+                        <a href="javascript:;" @click="redirect('store_order_detail.html?ordernum='+item.ordernum+'&bigtype='+item.bigtype)">
+                            <div class=" w80px h80px fl relative" >
+                                <div class="fl img-area absolute  " :class="item.bigtype == 1 ? 'w80px h80px': 'w80px h80px'" style="margin: auto; top: 0; left: 0; bottom: 0; right: 0;">
+                                <img :src="item.headerimg"/>
+                                </div>
+                            </div>
+                            <div class="Fgray-3">
+                                <p class="lh40px h40px text-over-hidden1 pal15 Fgray-5 F16">{{item.goodsname}}</p>
+                                <img src="images/arrow-right.png" class="w10px fr par15" style="margin-top: -10px">
+                                <span class="fr par5 Fgray-5 F16" style="margin-top: -13px" v-if="item.status == 1">已完成</span>
+                                <span class="fr par5 Forange-2 F16" style="margin-top: -13px" v-else>处理中</span>
+                                <p class="F12 lh40px h40px text-over-hidden1 pal15 Fgray-6">{{item.createtime}}</p>
+                            </div>
+                        </a>
+                        <div class="clear1 bor-black3 bor-solid-1b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wb100 text-center" v-if="empty==true">
+            <img src="images/cjjl_kb.png"  class="wb25 center " style="margin-top: 205px">
+            <div class="clear1"></div>
+            <p class="Fgray-6 F16 lh25px h25px">还没有抽奖记录哦~</p>
+            <div class="clear1"></div>
+        </div>
+
+
+
+        </div>
+
+    <div class="clear1"></div>
+
+    <div class="text-center Fgray-6 h20px lh20px center w120px F14 mab15" v-show="loading">
+        <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+        <span class="fl mal10">{{loadtext}}</span>
+    </div>
+
+    </div>
+
+</div>
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_draw_record_page",
+        data: {
+            fullscreenLoading: true,
+            detailList: [],
+            page: 1,
+            pageSize: 20,
+            empty: false,
+            loading: true,
+            last: false,
+            loadtext: '数据加载中...',
+
+
+
+        },
+        methods: {
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            getData: function getData() {
+                var _this = this;
+
+                baseAjax.orderList(_this.page, _this.pageSize,_this.uuid, _this.deviceID, _this.source, _this.deviceType, function (data) {
+
+                    if(data){
+
+                        var _tmp = data.data.pagelist;
+
+//                        alert(data.data.pagelist)
+
+                        _this.detailList = _this.detailList.concat(_tmp);
+
+                        if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多数据';
+                                return false;
+                            }
+                        }
+
+                        if (_tmp.length == 0) {
+                            _this.empty = true;
+                            return false;
+                        } else {
+                            _this.empty = false;
+                        }
+
+                    }
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            initHostSdk(function (res) {
+
+                _this.isLoaded = true;
+
+                _this.uuid = res.uuid;
+
+                _this.deviceID = res.deviceID;
+
+                _this.source = res.source;
+
+                _this.deviceType = res.deviceType;
+
+                _this.dealList = [];
+                _this.page = 1;
+                _this.loading = true;
+                _this.last = false;
+                _this.empty = false;
+                _this.loadtext = '数据加载中...';
+                _this.getData();
+
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+            });
+
+
+
+
+
+
+
+        }
+    });
+
+
+
+
+</script>
+
+</body>
+</html>

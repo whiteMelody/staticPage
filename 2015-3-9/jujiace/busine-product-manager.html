@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+<script>
+  $(function(){
+	$(".js-left-hover .js-ul-hover li a").click(function(){
+	  $(this).addClass("fc-orange01").parent().siblings().children().removeClass("fc-orange01");
+	  $(this).parent().parent().parent().siblings().find(".fc-orange01").removeClass("fc-orange01");
+	});
+	$(".ul-user-tab li").click(function(){
+		$(".ul-user-tab li").removeClass("li-hover");
+		$(this).addClass("li-hover");
+		$(".tab-area").addClass("hidden");
+		$(".tab-area").eq($(this).index()).removeClass("hidden");
+	})
+  });
+  
+  
+</script>
+<style>
+	.mytable td{ padding:10px; border-bottom:1px solid #e1e1e1; border-collapse:collapse;}
+	.ul-user-tab{ width:100%; height:40px; border-bottom:2px solid #e1e1e1;}
+	.ul-user-tab li{ height:40px; line-height:40px; text-align:center; padding:0 20px; float:left; color:#999; font-size:1.6em; cursor:pointer;}
+	.ul-user-tab .li-hover{ border-bottom:2px solid #f87c7c; background:#fff; color:#999; }
+	.lh265px{ line-height:265px;}
+</style>
+</head>
+
+<body>
+<!-- header -->
+
+<!-- body -->
+<div class="body">
+  <div class="w980px center">
+    <div class="mat10">
+      <!--<div class="fl wb20">
+        <div class="bor-solid-1a borc-gray-2 bor-top-none relative">
+          <div class="bg-img-26 h40px absolute pat10 text-center left-7" style="width:202px;">
+            <a class="F18 Fwhite" href="javascript:void(0)">我的居家策</a>
+            <span class="F10 Fwhite">USER CENTER</span>
+          </div>
+           <div class="left-hover" style="padding-top:43px;">
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-091.png"><span class="F14 Fb Fgray-3 middle mal15">交易管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的购物车</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的收藏</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的评价</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-092.png"><span class="F14 Fb Fgray-3 middle mal15">账户信息</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">个人资料</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">账户安全</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">收货地址管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的积分</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-093.png"><span class="F14 Fb Fgray-3 middle mal15">文章管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">立即发布文章</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我发布的文章</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-094.png"><span class="F14 Fb Fgray-3 middle mal15">客服服务</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">在线留言</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">客服咨询</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-red01 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-098.png"><span class="F14 Fb Fwhite middle mal15">我的店铺</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">商品管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">分类管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">品牌管理 </a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">咨询管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">店铺设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">主题设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">导航管理</a></li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>-->
+      <div class="fl wb20">左侧菜单</div>
+      
+      <div class="fr wb78 pab30">
+        <div class="">
+          <div class="h40px lh40px"><span class="F18 mal20">卖家中心</span></div>
+          <div class="bor-solid-3t borc-red-1"></div>
+        </div>
+        <div class="relative h50px">
+         	<div class="wb100">
+                <ul class="ul-user-tab">
+                    <li class="li-hover">商品列表</li>
+                    <li>新增商品</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-area">
+            <div class="pal20 pat15">
+             <form> 
+              <div class="fl mar10 lh25px">
+                <input type="checkbox">
+                <span class="Fgray-2 F125em">全选</span>
+              </div>
+              <div class="fl wb20 mar5">
+                <select class="F12 Fgray-3 bor-solid-1a borc-gray-2 h25px wb70">
+                  <option>所有订单</option>
+                  <option>待付款</option>
+                  <option>待发货</option>
+                  <option>待收货</option>
+                  <option>待评价</option>
+                </select>
+                <input type="button" value="操作" class="h25px text-center fr F125em wb25" />
+              </div>
+              <div class="fr wb60">
+              <span class="Fgray-3 F125em mar10 Fb">查找商品</span>
+              <select class="F12 Fgray-3 bor-solid-1a borc-gray-2 h25px wb15">
+                <option>类别</option>
+                </select>
+                <select class="F12 Fgray-3 bor-solid-1a borc-gray-2 h25px wb15">
+                  <option>状态</option>
+                </select>
+                <input type="text" class="F12 Fgray-3 bor-solid-1a borc-gray-2 lh25px pal5 mar5 wb25">
+                <a class="F14 Fwhite display-inline h25px lh25px warpper-red-5 wb20 text-center" href="javascript:void(0)">查 询</a>
+              </div>
+              <div class="clear"></div>
+             </form> 
+            </div>
+            <div class="bor-solid-1a borc-gray-2 bgc-gray-1 lh35px mat15">
+              <div class="fl wb34 text-center"><span class="F12 Fgray-3">商品信息</span></div>
+              <div class="fl wb11 text-center"><span class="F12 Fgray-3">属性</span></div>
+              <div class="fl wb11 text-center"><span class="F12 Fgray-3">单价（元）</span></div>
+              <div class="fl wb15 text-center"><span class="F12 Fgray-3">库存</span></div>
+              <div class="fl wb13 text-center"><span class="F12 Fgray-3">状态</span></div>
+              <div class="fl wb13 text-center"><span class="F12 Fgray-3">操作</span></div>
+              <div class="clear"></div>
+            </div>
+            
+            <div class="mat10">
+              <div class="mab10">
+                <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+                  <div class="fl">
+                    <input type="checkbox" class="middle mar10">
+                    <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                    <span class="F12 Fgray-3 mal20">订单号：</span>
+                    <span class="F12 Fblue">7848799998</span>
+                    <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+                  </div>
+                  <div class="fr pat7">
+                    <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <table width="100%" class="bor-solid-1a borc-gray-2">
+                    <tbody>
+                      <tr>
+                        <td class="wb34 bor-solid-1a borc-gray-2">
+                          <div class="pa20">
+                            <div class="fl wb32 h85px img-area">
+                              <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                            </div>
+                            <div class="fr wb63">
+                              <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                              <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                            </div>
+                            <div class="clear"></div>
+                          </div>
+                        </td>
+                        <td class="wb10 bor-solid-1a borc-gray-2 Fgray-3 F125em text-left lh20px" valign="middle" align="center">
+                            <p>颜色：红色,蓝色</p>
+                            <p>尺码：s,m,X,XL</p>
+                        </td>
+                        <td class="wb5 bor-solid-1a borc-gray-2 " valign="middle" align="center">
+                          
+                          <p class="Forange F125em">￥6689</p>
+                        </td>
+                        <td class="wb13 bor-solid-1a borc-gray-2 Fgray-2 F125em" valign="middle" align="center">
+                          1111
+                        </td>
+                        <td class="wb10 bor-solid-1a borc-gray-2 Fgray-3 F125em" valign="middle" align="center">
+                         已下架
+                        </td>
+                        <td class="wb12 bor-solid-1a borc-gray-2 F125em" valign="middle" align="center">
+                          <a href="javascript:void(0)" class="gray">上架</a>
+                          <div class="clear1"></div>
+                          <a href="javascript:void(0)" class="gray">删除</a>
+                          
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div> 
+              
+            </div>  
+            <div class="mat10">
+              <div class="fl pat5">
+                <input type="checkbox" class="middle"><span class="F12 Fgray-3 middle mal5">全选</span>
+              </div>
+              <div class="fr">
+                <div class="">
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">上一页</a>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">1</a>
+                  <span class="F12 Fwhite bor-solid-1a borc-red-1 warpper-red-2 display-inline h25px lh25px w25px text-center mar5">2</span>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">3</a>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">4</a>
+                  <span class="F12 Fgray-3 display-inline h25px lh25px mar5">...</span>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">10</a>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">下一页</a>
+                  <span class="F12 Fgray-3 display-inline">共10页 到第</span>
+                  <input type="text" class="h25px lh25px text-center bor-solid-1a borc-gray-2 w50px F12 Fgray-3">
+                  <span class="F12 Fgray-3 display-inline">页</span>
+                  <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mal10 bgc-gray-1" href="javascript:void(0)">确定</a>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+      	</div>
+        <div class="tab-area hidden wb100 bgc-gray-1">
+        	<div class="wb95 center F125em Fgray-3">
+            	
+                <div class="wb100 lh40px Fb F125em">
+                	<p class="wb45 fl">商铺分类</p>
+                	<p class="wb45 fr">上传商品图片</p>
+                </div>
+            	<div class="clear"></div>
+            	<div class="wb45 fl lh30px text-left">
+                	<p class="wb20 fl">商铺分类：</p>
+                    <select class="wb60 fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    	<option>根分类</option>
+                    </select>
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">平台分类：</p>
+                    <select class="wb60 fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    	<option>根分类</option>
+                    </select>
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">商品名称：</p>
+                    <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">品牌：</p>
+                    <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">价格：</p>
+                    <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">库存：</p>
+                    <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                	<p class="wb20 fl">运费：</p>
+                    <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                	
+                </div>
+                <div class="wb45 fr">
+                	<div class="wb100 warpper-gray-1 h265px lh265px text-center middle">
+                		<img src="images/upload-img.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb100">
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    	<div class="ma1per fl wb22 bor-gray bor-solid-1a h55px warpper-white"></div>
+                    </div>
+                    <div class="clear1"></div>
+                    <input type="button" class="warpper-blue Fwhite radius5 h35px w100px lh35px text-center bor-none" value="上传图片" />
+                    <p class="Fred lh30px text-left">*选择你要上传的商品大图，每张大小仅限于2M，限8张。</p>
+                </div>
+                <div class="clear1"></div>
+                
+                <div class="wb100 lh40px F125em">
+                	<p><span class="Fb">规格最多添加两种规格：</span><span class="Fred F80em">多个规格值请用","逗号隔开 例：红色,白色,紫色</span></p>
+                </div>
+            	<div class="clear1"></div>
+                
+                <div class="wb100 lh30px text-left">
+                	<div class="wb40 fl">
+                        <p class="wb30 fl">商品名称：</p>
+                        <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    </div>
+                	<div class="wb40 fl">
+                        <p class="wb30 fl">属性：</p>
+                        <input type="text" class="wb60 warpper-white fl h30px lh30px text-left bor-gray bor-solid-1a">
+                    </div>
+                	<div class="wb20 fl">
+                        <p class="wb100 fl">添加</p>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb40 fl">
+                        <p class="wb30 fl">上架：</p>
+                        <input type="radio"> 是
+                        <input type="radio"> 否
+                    </div>
+                    <div class="wb40 fl">
+                        <p class="wb30 fl">上架：</p>
+                        <input type="radio"> 是
+                        <input type="radio"> 否
+                    </div>
+                </div>
+                <div class="clear1"></div>
+                <div class="wb100 lh40px F125em Fb">
+                	<p>规格参数</p>
+                </div>
+                <img src="images/bg-edit.jpg">
+            	<div class="clear1"></div>
+                <div class="wb100 lh40px F125em Fb">
+                	<p>规格参数</p>
+                </div>
+                <img src="images/bg-edit.jpg">
+            	<div class="clear1"></div>
+                <div class="wb100 lh40px F125em Fb">
+                	<p>规格参数</p>
+                </div>
+                <img src="images/bg-edit.jpg">
+            	<div class="clear1"></div>
+                <input type="submit" class="F125em Fwhite h40px lh40px radius5 bor-none warpper-red-5 wb20 text-center" value="确认提交" />
+                <div class="clear"></div>
+            </div>
+        </div>    
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+
+</body>
+</html>

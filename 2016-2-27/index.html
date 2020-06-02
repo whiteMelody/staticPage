@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script src="js/slick.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=bjqX5ex5mSepCvvIZTxdgozK"></script>
+
+<title>邮政购票</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#f0efed;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#f0efed;">
+	
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb90 pal5per par5per h40px pat5 pab5 warpper-white relative">
+        	<a class="h40px wauto lh40px absolute text-center" data-role="none" data-transition="slide" href="area-change.html">
+            	<span class="fl Fgray-3">重庆</span><img src="images/arrow-down-2.png" class="mat20 mal5 fr">
+            </a>
+            <div class="wb30 pal5per center h40px lh40px warpper-gray-1 radius10 over-hidden fr">
+                <img src="images/icon-search.png" class="h20px mat10 mar5 fl">
+                <input type="text" class="bor-none h33px lh33px Fgray-2 wb58 warpper-gray-1 text-left" style="text-shadow:none; font-weight:normal;" data-role="none" placeholder="搜索">
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script>
+			$(function(){
+				$('.banner').slick({ 
+					accessibility : false,
+					arrows : false,
+					dots: false, 
+					infinite: true, 
+					speed: 100, 
+					fade: false, 
+					slide: 'div', 
+					cssEase: 'linear' 
+				}); 
+			})
+        </script>
+    	<div class="wb100 img-area">
+            <div class="slider banner"> 
+                <div><div class="image"><img src="images/banner-1.jpg"/></div></div> 
+                <div><div class="image"><img src="images/banner-2.jpg"/></div></div> 
+            </div> 
+        </div>
+        <div class="clear"></div>
+        <div class="wb90 pal5per par5per text-center h40px lh40px warpper-white">
+        	<a href="javascript:;"><div class="wb25 fl Fblack">儿童剧</div></a>
+        	<a href="javascript:;"><div class="wb25 fl Fblack">舞台剧</div></a>
+        	<a href="javascript:;"><div class="wb25 fl Fblack">演唱会</div></a>
+        	<a href="javascript:;"><div class="wb25 fl Fblack">音乐会</div></a>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="wb90 pal5per par5per warpper-gray-1">
+        	<div class="clear1"></div>
+        	<p>
+            	<span class="fl Fgray-2">儿童剧</span>
+                <a href="javascript:;"><span class="fr Fgray-2">更多>></span></a>
+            </p>
+            <div class="clear1"></div>
+            
+            <div class="pa20 bor-gray bor-solid-1a warpper-white">
+            	<div class="wb30 fl img-Warea">
+                	<img src="images/movie-1.jpg" class="fl">
+                </div>
+                <div class="wb66 fr lh30px Fgray-3">
+                	<p class="Fblack lh25px">[重庆]美丽的童话 儿童音乐剧 宫崎骏《龙猫》</p>
+                    <p>时间：2016年2月1日</p>
+                    <p>地点：重庆大剧院中剧场</p>
+                    <p>
+                    	￥<span class="Forange-2 F150em">100</span>起
+                    	<a href="javascript:;" class="display-inline w60px h30px  radius5 warpper-orange-2 text-center fr">
+                        	<span class="Fwhite lh30px">购票</span> 
+                        </a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear1"></div>
+            <div class="pa20 bor-gray bor-solid-1a warpper-white">
+            	<div class="wb30 fl img-Warea">
+                	<img src="images/movie-1.jpg" class="fl">
+                </div>
+                <div class="wb66 fr lh30px Fgray-3">
+                	<p class="Fblack lh25px">[重庆]美丽的童话 儿童音乐剧 宫崎骏《龙猫》</p>
+                    <p>时间：2016年2月1日</p>
+                    <p>地点：重庆大剧院中剧场</p>
+                    <p>
+                    	￥<span class="Forange-2 F150em">100</span>起
+                    	<a href="javascript:;" class="display-inline w60px h30px  radius5 warpper-orange-2 text-center fr">
+                        	<span class="Fwhite lh30px">购票</span> 
+                        </a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear1"></div>
+            
+        	<p>
+            	<span class="fl Fgray-2">儿童剧</span>
+                <a href="javascript:;"><span class="fr Fgray-2">更多>></span></a>
+            </p>
+            <div class="clear1"></div>
+            
+            <div class="pa20 bor-gray bor-solid-1a warpper-white">
+            	<div class="wb30 fl img-Warea">
+                	<img src="images/movie-1.jpg" class="fl">
+                </div>
+                <div class="wb66 fr lh30px Fgray-3">
+                	<p class="Fblack lh25px">[重庆]美丽的童话 儿童音乐剧 宫崎骏《龙猫》</p>
+                    <p>时间：2016年2月1日</p>
+                    <p>地点：重庆大剧院中剧场</p>
+                    <p>
+                    	￥<span class="Forange-2 F150em">100</span>起
+                    	<a href="javascript:;" class="display-inline w60px h30px  radius5 warpper-orange-2 text-center fr">
+                        	<span class="Fwhite lh30px">购票</span> 
+                        </a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear1"></div>
+            <div class="pa20 bor-gray bor-solid-1a warpper-white">
+            	<div class="wb30 fl img-Warea">
+                	<img src="images/movie-1.jpg" class="fl">
+                </div>
+                <div class="wb66 fr lh30px Fgray-3">
+                	<p class="Fblack lh25px">[重庆]美丽的童话 儿童音乐剧 宫崎骏《龙猫》</p>
+                    <p>时间：2016年2月1日</p>
+                    <p>地点：重庆大剧院中剧场</p>
+                    <p>
+                    	￥<span class="Forange-2 F150em">100</span>起
+                    	<a href="javascript:;" class="display-inline w60px h30px  radius5 warpper-orange-2 text-center fr">
+                        	<span class="Fwhite lh30px">购票</span> 
+                        </a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear1"></div>
+            
+        </div>
+        
+    </div>    
+        
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 warpper-white lh40px text-center pat5 pab5 F125em">
+        	<a href="javascript:;">
+                <div class="wb495 fl Forange-2">
+                    我要购票
+                </div>
+            </a>
+            <a href="javascript:;">
+                <div class="wb495 fr bor-gray bor-solid-1l Fgray-3">
+                    我的订单
+                </div>
+            </a>
+        	<div class="clear"></div>
+        </div>
+	</div>
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-page
+| ------------------------------------------
+| Here are detail-page html
+| 
+-->
+<div data-role="page" id="detail-page" style="text-shadow:none; font-weight:normal;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">加入购物车</div>
+        	<a class="my-icon-menu2 h40px w40px absolute" data-role="none" style="right:5px; top:5px;"></a>
+
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<script>
+			$(document).on("pageinit",function(e){
+				$(".tip-area").each(function(i, e) {
+					var _thisTip = $(this).find(".my-tip");
+					
+					_thisTip.unbind("click").click(function(){
+						_thisTip.removeClass("my-tip-hover");
+						$(this).addClass("my-tip-hover");
+					})
+				});
+				$(".Spinner").Spinner();
+			});
+		</script>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb90 pal5per par5per pat10 pab10 warpper-white h100px">
+            <a href="detail-store.html" data-transition="slide" data-role="none">
+           		<div class="wb30 fl h100px img-area relative"><img src="images/product-13.jpg"></div>
+            </a>
+            <div class="wb65 mar1per fr">
+                <p class="text-left lh20px F90em Fgray-3">Vero Moda网纱印花棉弹螺纹合体长袖女短外套|315117027 022</p> <div class="clear1 h10px"></div>
+                
+          	</div>
+            
+        </div>
+        <div class="clear1"></div>
+        <div class="wb90 center select-type-area F80em pat15 pab15 Fgray-3">
+        	<div class="wb100 tip-area">
+                <p class="F125em">颜色</p>
+                <p class="my-tip my-tip-hover">红色</p>
+                <p class="my-tip">蓝色</p>
+                <p class="my-tip">黑白条纹</p>
+                <p class="my-tip">格子</p>
+                <p class="my-tip">米白色</p>
+                <p class="my-tip">紫色</p>
+                <p class="my-tip">粉色</p>
+            </div>
+            <div class="clear"></div>
+            <div class="wb100 tip-area">
+                <p class="F125em">尺码</p>
+                <p class="my-tip my-tip-hover">M</p>
+                <p class="my-tip">S</p>
+                <p class="my-tip">X</p>
+                <p class="my-tip">XL</p>
+                <p class="my-tip">XXL</p>
+                <p class="my-tip">XXXL</p>
+            </div>
+            <p class="F125em">数量</p>
+            <div class="clear1"></div>
+            <div class="Spinner"></div>
+            <div class="clear1"></div>
+            <p class="F125em">库存：14件</p>
+            <div class="clear"></div>
+        </div>
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+        
+        <div class="wb90 pal5per par5per warpper-white h40px pat10 pab10">
+        	<input type="submit" data-role="none" value="确认添加" class="wb100 warpper-orange-2 pointer h40px lh40px text-center bor-none Fwhite radius5" />
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="/" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/06.png" class="middle h25px">
+                      <p class="Fblue">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/010.png" class="middle h25px">
+                      <p class="Fgray-3">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+</body>
+</html>

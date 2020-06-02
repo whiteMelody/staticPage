@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>快三</title>
+
+    <style>
+
+    </style>
+</head>
+<body style="height: 100%">
+
+<!--
+| ------------------------------------------
+| lottery_q3_rule_page
+| ------------------------------------------
+| Here are lottery_q3_rule_page html
+|
+-->
+
+<div id="lottery_q3_rule_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+        <p class="text-center Fwhite" @click="swicthType">{{playType[playIndex]}} <img src="images/arrow-down-white.png" class="h10px"> </p>
+        <a href="trend_synthesize.html">
+            <div class="w20px h20px img-area absolute" style="top:5px; right: 15px;">
+                <img src="images/icon-trend.png">
+            </div>
+        </a>
+    </div>
+
+
+    <!--<div class="pal15 Fgray-3 F14 lh40px warpper-white">-->
+
+        <!--<p>充值金额</p>-->
+
+        <!--<div class="par15">-->
+            <!--<el-input v-model="money" type="num" placeholder="请输入金额" ></el-input>-->
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+
+        <!--<div class="par15">-->
+            <!--<el-row :gutter="15">-->
+                <!--<el-col :span="6" v-for="(item,key) in moneys">-->
+                    <!--<div class="wb100 h30px lh30px text-center F14 radius5" :class="key == current ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a Fgray-3'">-->
+                        <!--{{item}}元-->
+                    <!--</div>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+    <!--</div>-->
+    <!--<ticket-rule :table_data="tableData" :lottery="1"></ticket-rule>-->
+
+    <!--<ticket-pay :show="true"></ticket-pay>-->
+
+    <ticket-dialog  :show="true" :type == 'recharge'></ticket-dialog>
+
+
+    <!--<ticket-agreement :show="true"></ticket-agreement>-->
+
+
+    <!--<ticket-conserve></ticket-conserve>-->
+
+
+    <!--<ticket-conserve :show="dialogConserve" v-on:callback="conserveCallback"></ticket-conserve>-->
+
+    <!--<ticket-rule :lottery="1"></ticket-rule>-->
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lottery_q3_rule_page",
+        data : {
+            money:"",
+            fullscreenLoading : true,
+            playType : ['和值','二不同号','三不同号','二同号','三同号','二同号复选','三同号单选','三连号连选'],
+            playIndex : 4,
+
+            current: 0,
+            radio: '1',
+            moneys: [50,100,200,500],
+            dialogConserve:false,
+        },
+
+        methods : {
+
+            swicthType(){
+                this.showType = !this.showType;
+
+            },
+
+            conserveCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    _this.dialogConserve = false;
+                }
+
+                if(val == 'success'){
+                        _this.dialogConserve = false;
+                        //保存成功
+                        _this.$message({
+                            type: 'success',
+                            message: '保存成功'
+                        });
+
+                }
+
+                if(val == 'fail'){
+                    _this.dialogConserve = false;
+                    //不保存
+                    _this.$message({
+                        type: 'info',
+                        message: '不保存'
+                    });
+                    _this.init();
+
+
+                }
+
+            },
+
+        },
+
+        created(){
+
+            setTimeout(() => {
+                $("#lottery_q3_rule_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, 1000);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

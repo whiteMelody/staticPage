@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/home.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+		$(".floor1-btn p").toggle(function(){
+			$(this).removeClass("p-hover");
+			$(".floor1 .floor1-content").animate({"marginLeft":"150px"},800,function(){
+				$(".floor1 .floor1-btn").animate({"marginLeft":"300px"},800,function(){
+					$(".floor1 .floor1-hid").animate({"marginLeft":"10px"},100,function(){
+						$(this).fadeIn(800);
+					});
+				});
+			});
+		},function(){
+			$(".floor1 .floor1-hid").animate({"marginLeft":"-5px"},500,function(){
+				$(this).fadeOut(800);
+				$(".floor1 .floor1-btn").animate({"marginLeft":"300px"},800,function(){
+					$(".floor1 .floor1-content").animate({"marginLeft":"420px"},500,function(){
+						$(".floor1 .floor1-btn").animate({"marginLeft":"450px"},800,function(){
+							$(".floor1-btn p").addClass("p-hover");
+						});
+					});
+				});
+		 	});
+		});
+		
+		var pics = $(".floor4 .li-pic");
+		var imgs = pics.find("img");
+		var dec = $(".floor4 .li-dec");
+		var txt = $(".floor4 .li-txt");
+		pics.click(function(){
+		
+			var _this  = $(this);
+			
+			pics.animate({"width":"123px","height":"123px","margin":"55px"},500);
+
+			dec.fadeIn(500);
+			txt.fadeOut(500);
+			
+			imgs.each(function(i){
+				$(this).attr("src","images/ico-"+ parseInt(i+5) +".png");
+				$(this).css("width","123px");
+				$(this).css("height","123px");
+			});
+			
+			_this.next().fadeOut(500,function(){
+				var img = _this.find("img");
+				img.css("width","123px");
+				img.css("height","123px");
+				img.attr("src","images/hover-bg.png");
+				img.animate({"width":"272px","height":"272px"},500);
+				_this.animate({"marginLeft":"0px"},500);
+				_this.animate({"marginTop":"0px"},500);
+				_this.next().next().fadeIn(500);
+			});
+		});
+		
+		var flrs = $(".floor");
+		var tmp = "<ul>";
+		flrs.each(function(i){
+			var tmp_y = $(this).offset().top;
+			if($(this).attr("class")=="floor warpper-blue"){
+				tmp+= "<li class='li-blue' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-red"){
+				tmp+= "<li class='li-red' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-green"){
+				tmp+= "<li class='li-green' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-yellow"){
+				tmp+= "<li class='li-yellow' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-orange"){
+				tmp+= "<li class='li-orange' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-paper"){
+				tmp+= "<li class='li-paper' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-none"){
+				tmp+= "<li class='li-none' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-black"){
+				tmp+= "<li class='li-black' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-grey"){
+				tmp+= "<li class='li-grey' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-white"){
+				tmp+= "<li class='li-white' data='"+ tmp_y +"'>";
+			}else
+				tmp+= "<li class='li-none' data='"+ tmp_y +"'>";
+			tmp+="</li>";
+		});
+		tmp += "</ul>";
+		var slide = $(".slide");
+		slide.html(tmp);
+		slide.find("li").click(function(){
+			$('body,html').animate({scrollTop:(parseFloat($(this).attr("data")))},1000);
+		});
+		
+	});
+</script>
+</head>
+
+<body>
+	
+
+	<div class="slide-warpper">
+    	<div class="slide">
+        	
+        </div>
+    </div>
+    <div class="main-warpper">
+    	<div class="main">
+            <div class="floor warpper-blue">
+                <div class="floor1">
+                	<div class="floor1-content">
+                    	<div class="floor1-logo"><img src="images/logo01.png" /></div>
+                        <div class="floor1-logo2"><img src="images/title-5.png" /></div>
+                    </div>
+                    <div class="floor1-btn">
+                    	<p class="p-hover"></p>
+                    </div>
+                    <div class="floor1-hid warpper-white">
+                    	<div class="floor1-txt"><img src="images/title-4.png"/></div>
+                        <div class="floor1-pic"><img src="images/code.png" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-warpper warpper-grey">
+            	<div class="header">
+                	<div class="logo"><img src="images/logo03.png" alt="万事得" /></div>
+                    <div class="nav">
+                    	<ul>
+                        	<li>公益</li>
+                        	<li>服务</li>
+                        	<li>商城</li>
+                        	<li>我的帐户</li>
+                        	<li>联系我们</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="floor warpper-green">
+                <div class="floor2">
+                	<div class="floor2-content">
+                        <div class="floor2-txt">
+                        	<div class="txt-title"><img src="images/title-1.png" /></div>
+                            <div class="txt-content">
+                            	<p>
+                                	&nbsp;&nbsp;&nbsp;&nbsp;万事得透明慈善推动者。网站为关爱行动重点项目，由重庆市文明办指导，网站秉持“明明白白做慈善”理念，致力于通过网络科技手段，增加慈善公益事业的透明度和便利度，成为慈善公益领域的“淘宝网”，为各公益基金会、公益机构、爱心企业或个人，搭建一个资源对接、整合推广、联合劝募的公共服务平台。
+                                </p>
+                            </div>
+                        </div>
+                    	<div class="floor2-pic">
+                        	<img src="images/photo01.png" />
+                        </div>
+                    </div>
+                    <div class="floor2-bottom">
+                    	<img src="images/photo02.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="floor warpper-yellow">
+                <div class="floor3">
+                	<div class="floor3-title"><img src="images/title-2.png" /></div>
+                    <div class="floor3-content">
+                    	<ul>
+                        	<li class="warpper-green" style="margin-left:0;">
+                            	<div class="li-pic"><img src="images/ico-2.png" /></div>
+                                <div class="li-dec">住宿</div>
+                                <div class="li-btn"></div>
+                            </li>
+                            
+                            <li class="warpper-blue">
+                            	<div class="li-pic"><img src="images/ico-3.png" /></div>
+                                <div class="li-dec">教育培训</div>
+                                <div class="li-btn"></div>
+                            </li>
+                            
+                            <li class="warpper-paper">
+                            	<div class="li-pic"><img src="images/ico-4.png" /></div>
+                                <div class="li-dec">兼职</div>
+                                <div class="li-btn"></div>
+                            </li>
+                            
+                            <li class="warpper-red" style="margin-right:0;">
+                            	<div class="li-pic"><img src="images/ico-1.png" /></div>
+                                <div class="li-dec">餐饮</div>
+                                <div class="li-btn"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="floor warpper-red">
+                <div class="floor4">
+                	<div class="floor4">
+                	<div class="floor4-title"><img src="images/title-3.png" /></div>
+                    <div class="floor4-content">
+                    	<ul>
+                        	<li>
+                            	<div class="li-pic"><img src="images/ico-5.png" /></div>
+                                <div class="li-dec">零食</div>
+                                <div class="li-txt">
+                                	<div class="txt-pic">
+                                    	<img src="images/ico-15.png" />
+                                    </div>
+                                    <div class="txt-title">
+                                    	化妆品
+                                    </div>
+                                    <div class="txt-content">
+                                    	<ul>
+                                        	<a href="javascript:void(0)" class="white"><li>面霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>化妆水</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>套装</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>面膜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>洗面奶</li></a>
+                                        </ul>
+                                        <ul>
+                                        	<a href="javascript:void(0)" class="white"><li>精华</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>眼霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>防晒</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>BB霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>卸妆</li></a>
+                                        </ul>
+                                    </div>
+                                   <div class="txt-p">
+                                   		<a href="javascript:void(0)" class="white Fb">进入 >></a>
+                                   </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/ico-6.png" /></div>
+                                <div class="li-dec">化妆品</div>
+                                <div class="li-txt">
+                                	<div class="txt-pic">
+                                    	<img src="images/ico-15.png" />
+                                    </div>
+                                    <div class="txt-title">
+                                    	化妆品
+                                    </div>
+                                    <div class="txt-content">
+                                    	<ul>
+                                        	<a href="javascript:void(0)" class="white"><li>面霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>化妆水</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>套装</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>面膜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>洗面奶</li></a>
+                                        </ul>
+                                        <ul>
+                                        	<a href="javascript:void(0)" class="white"><li>精华</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>眼霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>防晒</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>BB霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>卸妆</li></a>
+                                        </ul>
+                                    </div>
+                                   <div class="txt-p">
+                                   		<a href="javascript:void(0)" class="white Fb">进入 >></a>
+                                   </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/ico-7.png" /></div>
+                                <div class="li-dec">饮料</div>
+                                <div class="li-txt">
+                                	<div class="txt-pic">
+                                    	<img src="images/ico-15.png" />
+                                    </div>
+                                    <div class="txt-title">
+                                    	化妆品
+                                    </div>
+                                    <div class="txt-content">
+                                    	<ul>
+                                        	<a href="javascript:void(0)" class="white"><li>面霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>化妆水</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>套装</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>面膜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>洗面奶</li></a>
+                                        </ul>
+                                        <ul>
+                                        	<a href="javascript:void(0)" class="white"><li>精华</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>眼霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>防晒</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>BB霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>卸妆</li></a>
+                                        </ul>
+                                    </div>
+                                   <div class="txt-p">
+                                   		<a href="javascript:void(0)" class="white Fb">进入 >></a>
+                                   </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/ico-8.png" /></div>
+                                <div class="li-dec">生活用品</div>
+                                <div class="li-txt">
+                                	<div class="txt-pic">
+                                    	<img src="images/ico-15.png" />
+                                    </div>
+                                    <div class="txt-title">
+                                    	化妆品
+                                    </div>
+                                    <div class="txt-content">
+                                    	<ul>
+                                        	<a href="javascript:void(0)" class="white"><li>面霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>化妆水</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>套装</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>面膜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>洗面奶</li></a>
+                                        </ul>
+                                        <ul>
+                                        	<a href="javascript:void(0)" class="white"><li>精华</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>眼霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>防晒</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>BB霜</li></a>
+                                        	<a href="javascript:void(0)" class="white"><li>卸妆</li></a>
+                                        </ul>
+                                    </div>
+                                   <div class="txt-p">
+                                   		<a href="javascript:void(0)" class="white Fb">进入 >></a>
+                                   </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="floor warpper-white">
+                <div class="floor5"></div>
+            </div>
+            
+           <div class="floor warpper-blue">
+                <div class="floor6">
+                	
+                	<div class="floor6-title">
+                    	<div class="floor6-pic">
+                        	<img src="images/logo02.png" />
+                        </div>
+                        <div class="floor6-txt">
+                        	<img src="images/title-5.png" />
+                        </div>
+                    </div>
+                    <div class="floor6-content">
+                    	<ul>
+                        	<li><img src="images/ico-9.png" /></li>
+                        	<li><img src="images/ico-10.png" /></li>
+                        	<li><img src="images/ico-11.png" /></li>
+                        	<li><img src="images/ico-12.png" /></li>
+                        	<li><img src="images/ico-13.png" /></li>
+                        	<li><img src="images/ico-14.png" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+</body>
+</html>

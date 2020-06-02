@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+<script>
+  $(function(){
+	$(".js-left-hover .js-ul-hover li a").click(function(){
+	  $(this).addClass("fc-orange01").parent().siblings().children().removeClass("fc-orange01");
+	  $(this).parent().parent().parent().siblings().find(".fc-orange01").removeClass("fc-orange01");
+	});
+  });
+</script>
+</head>
+
+<body>
+<!-- header -->
+
+<!-- body -->
+<div class="body">
+  <div class="w980px center">
+    <div class="mat10">
+      <!--<div class="fl wb20">
+        <div class="bor-solid-1a borc-gray-2 bor-top-none relative">
+          <div class="bg-img-26 h40px absolute pat10 text-center left-7" style="width:202px;">
+            <a class="F18 Fwhite" href="javascript:void(0)">我的居家策</a>
+            <span class="F10 Fwhite">USER CENTER</span>
+          </div>
+           <div class="left-hover" style="padding-top:43px;">
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-091.png"><span class="F14 Fb Fgray-3 middle mal15">交易管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的购物车</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的收藏</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的评价</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-092.png"><span class="F14 Fb Fgray-3 middle mal15">账户信息</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">个人资料</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">账户安全</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">收货地址管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的积分</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-093.png"><span class="F14 Fb Fgray-3 middle mal15">文章管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">立即发布文章</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我发布的文章</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-094.png"><span class="F14 Fb Fgray-3 middle mal15">客服服务</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">在线留言</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">客服咨询</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-red01 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-098.png"><span class="F14 Fb Fwhite middle mal15">我的店铺</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">商品管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">分类管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">品牌管理 </a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">咨询管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">店铺设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">主题设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">导航管理</a></li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>-->
+      <div class="fl wb20">左侧菜单</div>
+      
+      <div class="fr wb78 pab30">
+        <div class="h40px lh40px"><span class="F18 mal20">品牌管理</span></div>
+        <div class="bor-solid-3t borc-red-1 bgc-gray-1">
+          <div class="bor-solid-1a borc-gray-2 bor-top-none pal10 par10 pat15 pab15">
+            <div class="text-right mab20">
+              <a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px bgc-red03 wb10 text-center radius5">添加品牌</a>
+            </div>
+            <form method="get">
+            <div class="">
+              <div class="fl wb30">
+                <input type="checkbox" class="middle mar5"><span class="F12 Fgray-3 middle">全选</span>
+                <a href="javascript:void(0)" class="F12 Fblue middle mal10">删除</a>
+              </div>
+              <div class="fr wb52">
+                <span class="F12 Fb Fgray-3">查找品牌</span>
+                <select class="h20px lh20px F12 Fgray-3 bor-solid-1a borc-gray-2 wb20 mal5">
+                  <option>类别</option>
+                </select>
+                <span class="display-inline bor-solid-1a borc-gray-2 wb44 h20px warpper-white pal5 par5">
+                <input type="text" class="F12 Fgray-3 wb100 bor-none h15px lh15px" placeholder="输入关键字" style="padding:2px 0px;">
+                </span>
+                <input type="submit" value="查 询" class="F12 Fwhite h20px bgc-red03 wb16 radius5 bor-none pointer">
+                
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="bor-solid-1a borc-gray-2 h35px lh35px bgc-gray-2 bgc-gray-2 mat10">
+              <div class="fl wb30">
+                <span class="F12 Fgray-3 pal30">品牌名称</span>
+              </div>
+              <div class="fl text-center wb30">
+                <span class="F12 Fgray-3">品牌图标</span>
+              </div>
+              <div class="fl text-center wb20">
+                <span class="F12 Fgray-3">类别</span>
+              </div>
+              <div class="fl text-center wb20">
+                <span class="F12 Fgray-3">操作</span>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="pat20">
+              <ul>
+                <li class="mab15 bor-solid-1b borc-gray-2 h45px lh45px pab15">
+                  <div class="fl wb5 pat15"><input type="checkbox"></div>
+                  <div class="fl wb25"><span class="F12 Fgray-3">飞利浦</span></div>
+                  <div class="fl wb30 text-center"><img src="images/tp-099.jpg"></div>
+                  <div class="fl wb20 text-center"><span class="F12 Fgray-3">家电</span></div>
+                  <div class="fl wb20 text-center">
+                    <a href="javascript:void(0)" class="F12 Fgray-3">编辑</a>
+                    <a href="javascript:void(0)" class="F12 Fgray-3 mal10">删除</a>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="mab15 bor-solid-1b borc-gray-2 h45px lh45px pab15">
+                  <div class="fl wb5 pat15"><input type="checkbox"></div>
+                  <div class="fl wb25"><span class="F12 Fgray-3">飞利浦</span></div>
+                  <div class="fl wb30 text-center"><img src="images/tp-099.jpg"></div>
+                  <div class="fl wb20 text-center"><span class="F12 Fgray-3">家电</span></div>
+                  <div class="fl wb20 text-center">
+                    <a href="javascript:void(0)" class="F12 Fgray-3">编辑</a>
+                    <a href="javascript:void(0)" class="F12 Fgray-3 mal10">删除</a>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="mab15 bor-solid-1b borc-gray-2 h45px lh45px pab15">
+                  <div class="fl wb5 pat15"><input type="checkbox"></div>
+                  <div class="fl wb25"><span class="F12 Fgray-3">飞利浦</span></div>
+                  <div class="fl wb30 text-center"><img src="images/tp-099.jpg"></div>
+                  <div class="fl wb20 text-center"><span class="F12 Fgray-3">家电</span></div>
+                  <div class="fl wb20 text-center">
+                    <a href="javascript:void(0)" class="F12 Fgray-3">编辑</a>
+                    <a href="javascript:void(0)" class="F12 Fgray-3 mal10">删除</a>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+              </ul>
+            </div>
+            <div class="">
+              <div class="fl wb30">
+                <input type="checkbox" class="middle mar5"><span class="F12 Fgray-3 middle">全选</span>
+                <a href="javascript:void(0)" class="F12 Fblue middle mal10">删除</a>
+              </div>
+              <div class="fr wb50">
+                <span class="F16">分页</span>
+              </div>
+              <div class="clear"></div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+
+</body>
+</html>

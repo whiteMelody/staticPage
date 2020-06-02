@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+    </style>
+    <title>首页</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| index_page
+| ------------------------------------------
+| Here are index_page html
+|
+-->
+
+<div id="index_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <el-carousel :height="_height + 'px'" ref="carousel">
+            <el-carousel-item v-for="item in banner" :key="item">
+                <a :href="'lesson_detail.html?channelID='+item.typeID" @touchstart="moveStart" @touchend="moveEnd">
+                    <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                        <img :src="item.imageURL + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />
+                    </div>
+                </a>
+            </el-carousel-item>
+        </el-carousel>
+
+        <div class="clear"></div>
+
+        <!--<div class="wb100 h35px lh35px Fgray-3">-->
+            <!--<p><img src="images/icon-notice.png" class="h15px ma10 fl">恭喜【王**】双色球中奖2000元！</p>-->
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+
+        <!--<div class="pa15">-->
+            <!--<el-row :gutter="15">-->
+                <!--<el-col :span="6">-->
+                    <!--<div class="wb100 h40px pat5 pab5 bor-blue bor-solid-1a lh20px text-center F14 Fblue radius5">-->
+                        <!--<p>江苏苏宁</p>-->
+                        <!--<p>2.95</p>-->
+                    <!--</div>-->
+                <!--</el-col>-->
+                <!--<el-col :span="6">-->
+                    <!--<div class="wb100 h40px pat5 pab5 bor-blue bor-solid-1a lh20px text-center F14 Fblue radius5">-->
+                        <!--<p>江苏苏宁</p>-->
+                        <!--<p>2.95</p>-->
+                    <!--</div>-->
+                <!--</el-col>-->
+                <!--<el-col :span="6">-->
+                    <!--<div class="wb100 h40px pat5 pab5 bor-blue bor-solid-1a lh20px text-center F14 Fblue radius5">-->
+                        <!--<p>江苏苏宁</p>-->
+                        <!--<p>2.95</p>-->
+                    <!--</div>-->
+                <!--</el-col>-->
+                <!--<el-col :span="6">-->
+                    <!--<div class="wb100 h40px pat5 pab5 warpper-red lh20px text-center F14 Fwhite radius5">-->
+                        <!--<p>投注</p>-->
+                        <!--<p>50.00元</p>-->
+                    <!--</div>-->
+                <!--</el-col>-->
+
+            <!--</el-row>-->
+        <!--</div>-->
+
+        <!--<div class="clear"></div>-->
+
+        <!--<div class="pal15 par15 F14" v-if="selectBet1 == false" :style="'height:'+(width_ball + 2) +'px; line-height: '+ (width_ball+2) + 'px;'">-->
+            <!--<span class="fl F16 Fgray-3">竞足赛事</span>-->
+            <!--<span class="fl Fgray-2 mal10">5/31 18:00截止</span>-->
+            <!--<a href="javascript:;" class="Fblue fr">更多赛事 > </a>-->
+        <!--</div>-->
+
+        <!--<div class="pal15 par15" v-if="selectBet1 == true">-->
+            <!--<el-row class="bor-red bor-solid-1a text-center F12 Fgray-2" :style="'height:'+(width_ball + 2) +'px; line-height: '+ (width_ball+2) + 'px;'">-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="4" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--10元-->
+                <!--</el-col>-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="4" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--50元-->
+                <!--</el-col>-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="4" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--200元-->
+                <!--</el-col>-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="4" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--500元-->
+                <!--</el-col>-->
+                <!--<el-col :span="8" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--预计奖金：100元-->
+                <!--</el-col>-->
+
+            <!--</el-row>-->
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+
+        <!--<div class="wb100">-->
+            <!--<div class="pal15 pat15 pab15">-->
+
+                <!--<template v-for="(item,key) in ball">-->
+                    <!--<div class="bor-solid-1a radius50per text-center fl mar15" v-bind:class="item.type == 'red' ? 'bor-red Fred' : 'bor-blue Fblue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                        <!--{{item.num}}-->
+                    <!--</div>-->
+                <!--</template>-->
+                <!--<div class="bor-solid-1a text-center fl bor-blue img-area img-area-small"  :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--<img src="images/icon-refresh.png">-->
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+
+
+        <!--<div class="pal15 par15 F14" v-if="selectBet2 == false" :style="'height:'+(width_ball + 2) +'px; line-height: '+ (width_ball+2) + 'px;'">-->
+            <!--<span class="fl F16 Fgray-3">双色球</span>-->
+            <!--<span class="fl Fgray-2 mal10">5/31 18:00截止</span>-->
+
+            <!--<div class="wb40 fr">-->
+                <!--<div class="wb30 fl radius5 bor-red bor-solid-1a Fred text-center" :style="' height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--1 注-->
+                <!--</div>-->
+                 <!--<div class="wb60 fr radius5 warpper-red Fwhite text-center" :style="' height:'+(width_ball+2) +'px; line-height: '+(width_ball+2)+'px;'">-->
+                    <!--投注2元-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="pa15" v-if="selectBet2 == true">-->
+            <!--<el-row class="bor-red bor-solid-1a text-center F12 Fgray-2" :style="'height:'+(width_ball + 2) +'px; line-height: '+ (width_ball+2) + 'px;'">-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="6" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--1注-->
+                <!--</el-col>-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="6" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--10注-->
+                <!--</el-col>-->
+                <!--<el-col class="bor-red bor-solid-1r" :span="6" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                   <!--20注-->
+                <!--</el-col>-->
+                <!--<el-col :span="6" :style="'height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                    <!--425注-->
+                <!--</el-col>-->
+
+            <!--</el-row>-->
+        <!--</div>-->
+
+
+        <div class="clear1"></div>
+
+        <div class="wb100">
+            <div class="pa15">
+                <el-row :gutter="15">
+                    <el-col :span="8" v-for="item in categorys">
+                        <a :href="item.url">
+                            <div class="wb100 text-center lh20px mab30">
+                                <div class="wb60 center img-area">
+                                    <img :src="item.img">
+                                </div>
+                                <p class="Fgray-3 F14">{{item.name}}</p>
+                                <p class="Fgray-2 F12">{{item.content}}</p>
+                            </div>
+                        </a>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <!--<div class="wb100">-->
+            <!--<p class="Fgray-2 text-center h40px lh40px F14">底部信息流...</p>-->
+        <!--</div>-->
+
+    </div>
+
+    <ticket-footer :active="1"></ticket-footer>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#index_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _width2 : 0,
+            _height : 0,
+            _height2 : 0,
+            startX : 0,
+            endX : 0,
+            selectBet1 : false,
+            selectBet2 : false,
+            banner : [
+                {
+                    "imageURL": "images/banner.jpg",
+                    "title": "鲨鱼口语",
+                    "type": 2,
+                    "typeID": "http://wx.shark-english.com/partner/qitian",
+                    "targetID": 36,
+                    "eventType": 4
+                }
+            ],
+            ball : [
+                { type : 'red', num : '9' },
+                { type : 'red', num : '8' },
+                { type : 'red', num : '7' },
+                { type : 'red', num : '6' },
+                { type : 'red', num : '5' },
+                { type : 'blue', num : '4' },
+                { type : 'blue', num : '3' },
+            ],
+            categorys : [
+                { name : '快3系列', img: 'images/category-1.png', url: 'lottery_q3.html', content : '快3系列', list : []},
+                { name : '11选5系列', img: 'images/category-2.png', url: 'lottery_d11.html', content : '11选5系列', list : []},
+                { name : '双色球', img: 'images/category-3.png', url: 'lottery_ssq.html', content : '双色球', list : []},
+                { name : '大乐透', img: 'images/category-4.png', url: 'lottery_dlt.html', content : '大乐透', list : []},
+            ]
+        },
+        methods : {
+            moveStart(e){
+                let _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd(e){
+                let _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                let _result = _this.startX - _this.endX;
+
+                if(_result>=50){
+                    this.$refs.carousel.next();
+                }
+                if(_result<-50){
+                    this.$refs.carousel.prev();
+                }
+            },
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._width2 = parseInt($(window).width());
+            _this._height = parseInt((_this._width + 30) * 160 / 375);
+
+            _this.width_ball = Math.floor((_this.width - 7 * 17 - 30) / 8);
+
+            console.log(_this.width_ball);
+
+
+
+//            http://192.168.8.150:9713/user/Login
+//                http://192.168.8.150:9713/user/Login
+
+//            $.ajax({
+//                type: "get",
+//                url: ajaxConfig.server_url+"/user/Login",
+//                data: { strUser : 'admin', strPwd : '123456'},
+//                dataType: "jsonp",
+//                success(data){
+//                    console.log(data);
+//                    $.ajax({
+//                        headers: {
+//                            Authorization:  data
+////                            Authorization:  'BasicAuth ' + data
+//                        },
+//                        type: "get",
+//                        url: ajaxConfig.server_url+"/user/GetDefault",
+//                        data: { id : data},
+//                        dataType: "json",
+//                        success(data2){
+//                            console.log(data2);
+//                        }
+//                    });
+//                }
+//            });
+//
+//
+//            $.ajax({
+//                type: "get",
+//                url: ajaxConfig.server_url+"user/GetDefault",
+//                data: { id : 1111},
+//                dataType: "json",
+//
+//                success(data2){
+//                    console.log(data2);
+//                },
+//                beforeSend: function(xhr) {
+//                    token = 1234;
+//                    xhr.setRequestHeader("Authorization", "Basic " + btoa(token + ":"));
+//                }
+//            });
+
+
+            setTimeout(() => {
+                $("#index_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>薄利园</title>
+<link href="css/comm.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/jscript" src="js/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/jscript" src="js/cloud-zoom.1.0.2.min.js"></script>
+<script language="javascript" type="text/jscript">
+
+	
+$(function(){
+	
+	$("#zoom-page li").click(function(){
+		
+		var img = $(this).find("img").attr("src");
+		
+		var type = "'inside'";
+		
+		var html = '<a href='+ img +' class="cloud-zoom" rel="position:'+type+',showTitle:false,adjustX:-4,adjustY:-4"><img src='+ img +' /></a>';
+		
+		$(".zoom-small-image").html(html);
+		
+		$('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+	});
+	
+	$(".product-detail-table-title p").hover(function(){
+		$(".product-detail-table-title p").removeClass("box-title-hover");
+		$(this).addClass("box-title-hover");
+		var index = $(this).index();
+		$(".product-detail-table-content ul").css("display","none");
+		$(".product-detail-table-content ul:eq("+ index +")").css("display","block");
+	},function(){
+		$(".product-detail-table-title p").removeClass("box-title-hover");
+		$(this).addClass("box-title-hover"); 
+		var index = $(this).index();
+		$(".product-detail-table-content ul").css("display","none");
+		$(".product-detail-table-content ul:eq("+ index +")").css("display","block");
+	});
+
+	$(".product-detail-table-content ul:eq("+ $(".box-title-hover").index() +")").css("display","block");;
+	
+});
+	
+</script>
+
+
+
+</head>
+
+<body>
+	
+    <div class="wrapper-header h120px">
+    	<div class="header w1020px h30px center lh30px text-left">
+        	<div class="left-welcome-desc wb16666 fl">
+            	<a href="javascript:void(0)" class="red">亲，请登录</a>
+                <a href="javascript:void(0)" class="black">免费注册</a>
+            </div>
+        	<div class="right-welcome-desc wb75 fr">
+            	<ul class="ul-menu-normal-right">
+                	<li>服务热线：400-888-999</li>
+                    <a href="javascript:void(0)" class="black"><li>帮助中心</li></a>
+                    <a href="javascript:void(0)" class="black"><li>收藏我们</li></a>
+                    <a href="javascript:void(0)" class="black"><li>商家入驻</li></a>
+                    <a href="javascript:void(0)" class="black"><li>我的订单</li></a>
+                    <a href="javascript:void(0)" class="black"><li>用户中心</li></a>
+                    <a href="javascript:void(0)" class="black"><li>您好！欢迎来到薄利园商城</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="menu w1020px h70px center padding-top-bottom20">
+        	<div class="wb20 fl">
+            	
+            </div>
+            <div class="wb50 fl">
+            	<div class="search h40px lh40px text-center">
+                    <div class="wb10 border3px fl" style="border-right:none;"><img src="images/ico-search.png" style="padding:5px; float:left;" /></div>
+                    <div class="wb66667 border3px fl" style="border-left:none;border-right:none;"><input type="text" class="h30px lh30px" /></div>
+                	<div class="wb16666 fl"><input type="submit" class="h30px lh30px" style="height:36px; line-height:36px;" value="搜索" /></div>
+                </div>
+                <div class="search-desc h20px lh20px">
+                	<ul class="ul-menu-normal-left">
+                        <li class="Fred01 mleftnone">热门搜索：</li>
+                        <a href="javascript:void(0)" class="black"><li>电视</li></a>
+                        <a href="javascript:void(0)" class="black"><li>冰箱</li></a>
+                        <a href="javascript:void(0)" class="black"><li>洗衣机</li></a>
+                        <a href="javascript:void(0)" class="black"><li>沙发</li></a>
+                	</ul>
+                </div>
+            </div>
+            <div class="wb30 fr">
+            	<div class="menu-user">
+                	<img src="images/ico-user.png" style="float:left; margin:10px" />
+                    <span class="fl">我的薄利园</span>
+                </div>
+                <div class="menu-cart">
+                	<img src="images/ico-cart.png" style="float:left; margin:10px" />
+                    <span class="fl">购物车去结算(<b>10</b>)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wrapper-nav h40px">
+    	<div class="nav w1020px center">
+        	<div class="nav-left-item wb21 fl h40px lh40px">
+            	<span>全部商品分类</span>
+                <img src="images/ico-down-arr.png" />
+            </div>
+            <div class="nav-center-item wb60 fl h40px lh40px">
+            	<ul class="ul-nav-red-left">
+                	<a href="javascript:void(0)"><li>首页</li></a>
+                    <a href="javascript:void(0)"><li>建材城</li></a>
+                    <a href="javascript:void(0)"><li>家具城</li></a>
+                    <a href="javascript:void(0)"><li>家饰城</li></a>
+                    <a href="javascript:void(0)"><li>精品套装</li></a>
+                    <a href="javascript:void(0)"><li>薄利街区</li></a>
+                </ul>
+            </div>
+            <div class="nav-right-item wb185 fr h40px lh40px">
+            	<ul class="ul-nav-red-right">
+                    <a href="javascript:void(0)"><li style="padding-right:0;">乐居秀</li></a>
+                    <a href="javascript:void(0)"><li>团购</li></a>
+                	<a href="javascript:void(0)"><li>体验馆</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+   
+    <div class="wrapper-content">
+    	<div class="wrapper-main">
+        	<div class="wrapper-floors">
+				<div class="floor-product-detail w1020px center">
+                    <div class="floor-product-detail-title h45px lh45px">
+                        <div class="floor-product-detail-title-floor-location wb75 fl">
+                           <div class="floor-location-title">
+                                <a href="javascript:void(0)" class="black">所有分类</a>
+                                >
+                                <a href="javascript:void(0)" class="black">家具家饰</a>
+                                >
+                                <a href="javascript:void(0)" class="black">沙发</a>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="floor-product-detail-content">
+                    	
+                        <div class="floor-product-detail wb100 h430px">
+                        	
+                            <div class="product-detail-zoom wb35 fl h425px margin-1wb">
+                            	<!--<div id="zoom-area">
+                                	<img src="images/14.jpg" data-width="1600" data-height="1200" />
+                                    <div id="retina"></div>
+                                </div>-->
+                              	
+                                
+                                <div class="zoom-section">
+                                    <div class="zoom-small-image">
+                                        <a href="images/14.jpg" class='cloud-zoom' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4"><img src="images/14.jpg" /></a>
+                                    </div>
+                                </div>
+                                
+                                <div id="zoom-page">
+                                	<ul class="ul-zoom-page-img">
+                                    	<li><img src="images/14.jpg" data-width="1600" data-height="1200" /></li>
+                                    	<li><img src="images/product-img-21.jpg" data-width="289" data-height="192" /></li>
+                                    	<li><img src="images/product-img-22.jpg" data-width="274" data-height="205" /></li>
+                                    	<li><img src="images/product-img-23.jpg" data-width="290" data-height="217" /></li>
+                                    </ul>
+                               	</div>
+                                
+                            </div>
+                            <div class="product-detail-desc wb37 fl h425px margin-1wb">
+                            	
+                                <div class="product-detail-desc-title text-left lh25px F16">
+                                    顾家kuka小户型家具真皮沙发组合 皮艺沙发头层牛皮 沙发KS.P0012 【敬请关注：11月1日-15日专享活动价 格，可用
+                                </div>
+                                <div class="product-detail-desc-price h50px F14 mat10">
+                                    <div class="wb60 fl h50px lh50px">
+                                        价格 <span class="Fred01">¥1866.00-9966.0</span>
+                                    </div> 
+                                    <div class="wb35 fl h50px text-right lh25px gray01">
+                                        <p>总销售</p><p>4313</p>
+                                    </div>
+                                </div>
+                                <div class="product-detail-desc-tips mat10">
+                                    <div class="wb20 fl F14 h30px lh30px text-left">
+                                        几人坐
+                                    </div>
+                                    <div class="wb75 fr">
+                                        <ul class="ul-product-detail-tips-data">
+                                            <li>双位+贵妃【原版】</li>
+                                            <li>双位+贵妃【原版】</li>
+                                            <li>双位+贵妃【原版】</li>
+                                            <li>双位+贵妃【原版】</li>
+                                            <li>双位+贵妃【原版】</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="product-detail-desc-num mat10">
+                                    <div class="wb20 fl F14 h30px lh30px text-left">
+                                        数量
+                                    </div>
+                                    <div class="wb75 fr">
+                                        
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="product-detail-desc-buttons mat10">
+                                    <div class="wb75 fr">
+                                        <p class="product-detail-button-red fl">立即购买</p>
+                                        <p class="product-detail-button-yellow fr">加入购物车</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="product-detail-tip wb20 fr margin-1wb">
+                            	<p class="product-detail-tip-title h35px lh35px text-left">商家信息</p>
+                                <ul class="ul-product-detail-tip">
+                                	<li>顾家kuka直营店</li>
+                                	<li>掌柜：顾家小丽</li>
+                                	<li>联系客服：<b class="product-detail-tip-button-msg"><img src="images/ico-msg-1.png" /> 联系客服</b></li>
+                                	<li class="h45px">
+                                    	<div class="wb33333 text-center F16 lh20px fl">
+                                        	<p>描述</p>
+                                            <p class="Fred01">5.0<img src="images/ico-top-arr.png" style="margin-left:3px;" /></p>
+                                        </div>
+                                    	<div class="wb33333 text-center F16 lh20px fl">
+                                        	<p>描述</p>
+                                            <p class="Fred01">5.0<img src="images/ico-top-arr.png" style="margin-left:3px;" /></p>
+                                        </div>
+                                    	<div class="wb33333 text-center F16 lh20px fl">
+                                        	<p>描述</p>
+                                            <p class="Fred01">5.0<img src="images/ico-top-arr.png" style="margin-left:3px;" /></p>
+                                        </div>
+                                    </li>
+                                	<li>公司名称：重庆顾家kuka有 限公司</li>
+                                	<li>所在地：重庆市 渝北区</li>
+                                	<li>联系电话：400-8888888</li>
+                                	<li><b class="product-detail-tip-button">进入店铺</b> <b class="product-detail-tip-button">收藏店铺</b></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="clear1"></div>
+                        
+                        <div class="floor-product-detail-desc-area">
+                        	<div class="product-datail-left-area wb21 fl">
+                            	
+                            	<p class="product-datail-left-area-title h30px lh30px">本月热卖</p>
+                            	<ul class="ul-product-list-left-data" style="border:1px solid #c9c9c9;">
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                              
+                                <div class="clear1"></div>
+                               
+                                <p class="product-datail-left-area-title h30px lh30px mat10">大家还浏览了</p>
+                                 <ul class="ul-product-list-left-data" style="border:1px solid #c9c9c9;">
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                	<li>
+                                    	<div class="product-img"><a href="javascript:void(0)"><img src="images/product-img-19.jpg" /></a></div>
+                                        <div class="product-title"><a href="javascript:void(0)" class="gray">古典太妃椅</a></div>
+                                        <div class="product-price">
+                                        	<span class="fl Fred01">￥1878.00</span>
+                                        	<span class="fr">已售：<em class="Fred01">385件</em></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                
+                            
+                            </div>
+                            <div class="product-datail-right-area wb74 fr">
+                            	
+                                <div class="product-detail-meal-area h215px">
+                                	<div class="product-detail-meal-title">
+                                    	<p class="product-datail-box-title box-title-hover h45px lh45px text-center">套餐优惠推荐</p>
+                                    </div>
+                                	<div class="product-detail-meal-list wb95 padding-top-bottom20 center h130px clear ">
+                                    	
+                                        <div class="wb75 fl">
+                                        	<ul class="ul-product-detail-meal-data h130px">
+                                            	<li>
+                                                	<div class="product-img"><img src="images/product-img-20.jpg" /></div>
+                                                	<div class="product-price">
+                                                    	<input type="checkbox" /> 价格 <span class="Fred">￥1234.00</span>
+                                                    </div>
+                                                </li>
+                                                <li class="add-ico">
+                                                	<img src="images/ico-add.png" />
+                                                </li>
+                                                <li>
+                                                	<div class="product-img"><img src="images/product-img-20.jpg" /></div>
+                                                	<div class="product-price">
+                                                    	<input type="checkbox" /> 价格 <span class="Fred">￥1234.00</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                	<div class="product-img"><img src="images/product-img-20.jpg" /></div>
+                                                	<div class="product-price">
+                                                    	<input type="checkbox" /> 价格 <span class="Fred">￥1234.00</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                	<div class="product-img"><img src="images/product-img-20.jpg" /></div>
+                                                	<div class="product-price">
+                                                    	<input type="checkbox" /> 价格 <span class="Fred">￥1234.00</span>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class="wb21 fr">
+                                        	<p class="mat10 F14">套餐价格：<span class="Fred">13324.00<span></p>
+                                            <p class="product-detail-button-black-small mat10">省3456.00</p>
+                                            <p class="product-detail-button-red-small mat10">立即购买</p>
+                                            <p class="product-detail-button-yellow-small mat10">加入购物车</p>
+                                        </div>
+                                    	
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="product-detail-table-area margin-top20 wb100 display-inline">
+                                    	
+                                    <div class="product-detail-table-title h45px lh45px">
+                                        <p class="product-datail-box-title box-title-hover h45px lh45px text-center">商品详情</p>
+                                        <p class="product-datail-box-title h45px lh45px text-center">规格参数</p>
+                                        <p class="product-datail-box-title h45px lh45px text-center">商品评价</p>
+                                        <p class="product-datail-box-title h45px lh45px text-center">购买记录</p>
+                                        <p class="product-datail-box-title h45px lh45px text-center">售后服务</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                    
+                                    <div class="product-detail-table-content">
+                                          <ul class="ul-product-detail-table-data">
+                                              <li>商品名称：顾家kuka小户型家具真皮沙发组合......  </li>
+                                              <li>商品编号：1075272294 上架时间：201</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                          </ul>
+                                          <ul class="ul-product-detail-table-data">
+                                              <li>商品名称：顾家kuka小户型家具真皮沙发组合......  </li>
+                                              <li>商品编号：1075272294 上架时间：201</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                          </ul>
+                                          <ul class="ul-product-detail-table-data">
+                                              <li>商品名称：顾家kuka小户型家具真皮沙发组合......  </li>
+                                              <li>商品编号：1075272294 上架时间：201</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                          </ul>
+                                          <ul class="ul-product-detail-table-data">
+                                              <li>商品名称：顾家kuka小户型家具真皮沙发组合......  </li>
+                                              <li>商品编号：1075272294 上架时间：201</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                          </ul>
+                                          <ul class="ul-product-detail-table-data">
+                                              <li>商品名称：顾家kuka小户型家具真皮沙发组合......  </li>
+                                              <li>商品编号：1075272294 上架时间：201</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                              <li>风格：现代简约</li>
+                                          </ul>
+                                          
+                                          
+                                    </div>
+                                    
+                                </div>
+                                
+                                <!-- 商品详情展示 -->
+                                <div class="product-detail-desc-area wb100">
+                                	<img src="images/product-detail-1.jpg" />
+                                </div>
+                               	<!--/ 商品详情展示 --> 
+                               
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+            	</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wrapper-footer">
+    	<div class="footer w1020px center h190px">
+        	<div class="footer-left wb20 h190px fl" style="border-right:1px solid #fff;">
+            	<p style="margin-top:50px; font-size:16px; font-weight:600;">全国24小时服务热线</p>
+                <p class="F24 Fb">400-88888888</p>
+            </div>
+            <div class="footer-center wb65 h190px fl">
+            	<ul class="ul-footer-link-left">
+                	<li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-right wb10 h190px fr"></div>
+        </div>
+    </div>
+    
+    <div class="wrapper-links">
+    	<div class="links w1020px center">
+        	<ul class="ul-links-link-left">
+            	<li class="Fb">友情链接:</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+
+            </ul>
+            <p>Copyright &copy; 2012-2014 <b class="Fb">薄利园电子商务有限公司</b> 版权所有</p>
+            <p>ICP备案证书号：鲁ICP备11111111号</p>
+        </div>
+    </div>
+    
+    <div class="float-floors">
+    	
+        <div>
+        	<a href="javascript:void(0)"><img src="images/kefu-bg.png" class="mat10" /></a>
+        </div>
+    </div>
+    
+</body>
+</html>

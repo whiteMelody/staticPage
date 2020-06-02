@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+    </style>
+    <title>达人推荐</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| expert_page
+| ------------------------------------------
+| Here are expert_page html
+|
+-->
+
+<div id="expert_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <el-carousel :height="_height + 'px'" ref="carousel">
+            <el-carousel-item v-for="item in banner" :key="item">
+                <a :href="'lesson_detail.html?channelID='+item.typeID" @touchstart="moveStart" @touchend="moveEnd">
+                    <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                        <img :src="item.imageURL + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />
+                    </div>
+                </a>
+            </el-carousel-item>
+        </el-carousel>
+
+        <div class="clear"></div>
+
+        <div class="wb100 warpper-white">
+            <div class="clear1"></div>
+            <template v-for="(item,key) in matchList">
+
+                <div class="wb100" v-if="key<3">
+
+                    <a href="javascript:;" @click="redirect('expert_detail.html?newsUserID='+item.uuid)">
+                        <div class="pal15 relative Fgray-3" style="padding-left: 70px; padding-right: 70px;">
+                            <div class="w50px h50px absolute" style="top: 0; left: 15px;">
+                                <img :src="item.photoUrl ? item.photoUrl : 'images/head-img1.png'" class="w50px h50px radius50per">
+                            </div>
+                            <div class="wb100 h50px">
+                                <p class="lh30px">
+                                    <span class="fl mar5">{{item.nickName}}</span>
+                                    <span class="Fwhite warpper-tip-red F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '胜平负'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-blue F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '让胜平负'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-green F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '进球数'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-orange-2 F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '比分'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                </p>
+                                <div class="clear"></div>
+                                <!--计算标签-->
+                                <p class="F12 text-center mat5 mab5">
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.tenDaysCount >= 6">近10中{{item.tenDaysCount}}</span>
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.successionCount >= 2">{{item.successionCount}}连红</span>
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.monthCount >= 1">月红{{item.monthCount}}单</span>
+
+                                </p>
+
+                                <div class="clear"></div>
+
+                            </div>
+
+                            <template v-if="item.result == 0">
+                                <div class="w65px absolute text-center Fred" style="top: 5px; right: 15px;">
+                                    <p class="Fnum F26 lh25px">{{parseInt(item.lossRatio * 100)}}<span class="F12">%</span></p>
+                                    <p class="F12 lh15px">预计回报率</p>
+                                </div>
+                            </template>
+
+                            <template v-if="item.result == 1">
+                                <div class="w65px absolute text-center Fred" style="top: 0; right: 15px;">
+                                    <img src="images/mz_wdgz.png" class="w50px">
+                                </div>
+                            </template>
+
+                            <template v-if="item.result == 2">
+                                <div class="w65px absolute text-center Fred" style="top: 0; right: 15px;">
+                                    <img src="images/wz_wdgz.png" class="w50px">
+                                </div>
+                            </template>
+
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+
+                    <a href="javascript:;" @click="redirect('expert_recommend.html?newsID='+item.newsID)">
+
+                        <div class="clear"></div>
+
+                        <div class="pal15 par15 pat15 Fgray-3">
+                            <div class="warpper-gray-3 lh25px h50px pal15 par15 pat10 pab10 relative" style="padding-right: 80px">
+                                <p class="Fgray-2 F14">{{item.league}} <span class="Fnum">{{item.matchTime}}</span></p>
+                                <p class="h25px lh25px text-over-hidden1 wb100">{{item.title}}</p>
+
+                                <div class="w60px h35px lh35px absolute text-center bor-green bor-solid-1a Fgreen radius4" style="right: 15px; bottom: 16px;">
+                                    免费
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <p class="lh30px pal15 par15 F12 Fgray-2">
+                            <span class="fl">发布于 <span class="Fnum">{{item.postedTime}}</span></span>
+
+                            <span class="fr Fnum"><img src="images/icon-view.png"> {{item.hits}}</span>
+                        </p>
+
+                        <div class="pal15">
+                            <div class="clear bor-gray bor-solid-1b"></div>
+                        </div>
+                    </a>
+
+                    <div class="clear1"></div>
+                </div>
+
+
+            </template>
+        </div>
+
+        <!--<div class="clear1"></div>-->
+
+        <!--<div class="wb100">-->
+
+            <!--<div class="pal15">-->
+                <!--<p class="bor-green bor-solid-4l h18px lh18px pal5">-->
+                    <!--达人榜-->
+                <!--</p>-->
+            <!--</div>-->
+
+            <!--<div class="pa15 over-scroll">-->
+                <!--<div :style="'width:'+_width2+'px'">-->
+                    <!--<div class="warpper-white box-shadow-gray3 radius5 fl mar15" v-for="item in expertList" :style="'width:'+_height2+'px'">-->
+
+                        <!--<a :href="'expert_detail.html?newsUserID='+item.uuid">-->
+                            <!--<div class="pa10 text-center Fgray-3">-->
+
+                            <!--<div class="wb50 center img-area radius50per over-hidden">-->
+                                <!--<img :src="item.photoUrl ? item.photoUrl : 'images/head-img1.png'">-->
+                            <!--</div>-->
+
+                            <!--<p class="text-over-hidden1">{{item.nickName}}</p>-->
+
+                            <!--&lt;!&ndash;计算标签&ndash;&gt;-->
+                            <!--<p class="F12 text-center mat5 mab5">-->
+
+                                <!--<span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.tenDaysCount >= 6">近10中{{item.tenDaysCount}}</span>-->
+
+                                <!--<span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.successionCount >= 2">{{item.successionCount}}连红</span>-->
+
+                                <!--<span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.monthCount >= 1">月红{{item.monthCount}}单</span>-->
+
+                            <!--</p>-->
+
+                            <!--<div class="clear1"></div>-->
+
+                            <!--<p class="lh15px Fgray-2 F12 text-left text-over-hidden2">{{item.customSigna ? item.customSigna : '暂无'}}</p>-->
+
+                            <!--<div class="clear h5px"></div>-->
+
+                            <!--&lt;!&ndash;<div class="wb60 center h25px lh25px F14 radius15 pointer" :class="item.isFav ? 'Fgreen bor-green bor-solid-1a' : 'warpper-green Fwhite pa1'">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span v-if="item.isFav">已关注</span>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span v-else>+关注</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                            <!--<div class="clear"></div>-->
+
+                        <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+        <!--<div class="clear1"></div>-->
+
+
+        <div class="wb100 warpper-white">
+            <!--<div class="clear1"></div>-->
+            <template v-for="(item,key) in matchList">
+
+                <div class="wb100" v-if="key>=3">
+
+                    <a href="javascript:;" @click="redirect('expert_detail.html?newsUserID='+item.uuid)">
+                        <div class="pal15 relative Fgray-3" style="padding-left: 70px; padding-right: 70px;">
+                            <div class="w50px h50px absolute" style="top: 0; left: 15px;">
+                                <img :src="item.photoUrl ? item.photoUrl : 'images/head-img1.png'" class="w50px h50px radius50per">
+                            </div>
+                            <div class="wb100 h50px">
+                                <p class="lh30px">
+                                    <span class="fl mar5">{{item.nickName}}</span>
+                                    <span class="Fwhite warpper-tip-red F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '胜平负'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-blue F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '让胜平负'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-green F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '进球数'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                    <span class="Fwhite warpper-tip-orange F12 pal5 par5 h16px lh16px display-inline radius5 text-center fl mal5" v-if="item.lotTypeDesc == '比分'" style="margin-top: 7px;">{{item.lotTypeDesc}}</span>
+                                </p>
+                                <div class="clear"></div>
+                                <!--计算标签-->
+                                <p class="F12 text-center mat5 mab5">
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.tenDaysCount >= 6">近10中{{item.tenDaysCount}}</span>
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.successionCount >= 2">{{item.successionCount}}连红</span>
+
+                                    <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="item.monthCount >= 1">月红{{item.monthCount}}单</span>
+
+                                </p>
+
+                                <div class="clear"></div>
+
+                            </div>
+
+                            <template v-if="item.result == 0">
+                                <div class="w65px absolute text-center Fred" style="top: 5px; right: 15px;">
+                                    <p class="Fnum F26 lh25px">{{parseInt(item.lossRatio * 100)}}<span class="F12">%</span></p>
+                                    <p class="F12 lh15px">预计回报率</p>
+                                </div>
+                            </template>
+
+                            <template v-if="item.result == 1">
+                                <div class="w65px absolute text-center Fred" style="top: 0; right: 15px;">
+                                    <img src="images/mz_wdgz.png" class="w50px">
+                                </div>
+                            </template>
+
+                            <template v-if="item.result == 2">
+                                <div class="w65px absolute text-center Fred" style="top: 0; right: 15px;">
+                                    <img src="images/wz_wdgz.png" class="w50px">
+                                </div>
+                            </template>
+
+                            <div class="clear"></div>
+                        </div>
+
+                    </a>
+
+                    <div class="clear"></div>
+
+                    <a href="javascript:;" @click="redirect('expert_recommend.html?newsID='+item.newsID)">
+                        <div class="pal15 par15 pat15 relative Fgray-3">
+                            <div class="warpper-gray-3 lh25px h50px pal15 par15 pat10 pab10 relative" style="padding-right: 80px">
+                                <p class="Fgray-2 F14">{{item.league}} <span class="Fnum">{{item.matchTime}}</span></p>
+                                <p class="h25px lh25px text-over-hidden1 wb100">{{item.title}}</p>
+
+                                <div class="w60px h35px lh35px absolute text-center bor-green bor-solid-1a Fgreen radius4" style="right: 15px; bottom: 16px;">
+                                    免费
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <p class="lh30px pal15 par15 F12 Fgray-2">
+                            <span class="fl">发布于 <span class="Fnum">{{item.postedTime}}</span></span>
+
+                            <span class="fr Fnum"><img src="images/icon-view.png"> {{item.hits}}</span>
+                        </p>
+
+                        <div class="pal15">
+                            <div class="clear bor-gray bor-solid-1b"></div>
+                        </div>
+
+                    </a>
+
+                    <div class="clear1"></div>
+                </div>
+
+
+            </template>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#expert_page",
+        data: {
+            fullscreenLoading: true,
+            _width: 0,
+            _width2: 0,
+            _height: 0,
+            _height2: 0,
+            startX: 0,
+            endX: 0,
+            active: 1,
+            page: 1,
+            pageSize: 20,
+            banner: [{
+                "imageURL": "images/banner2.png"
+            }],
+            expertList: [],
+            matchList: []
+        },
+        methods: {
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            },
+            moveStart: function moveStart(e) {
+                var _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd: function moveEnd(e) {
+                var _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                var _result = _this.startX - _this.endX;
+
+                if (_result >= 50) {
+                    this.$refs.carousel.next();
+                }
+                if (_result < -50) {
+                    this.$refs.carousel.prev();
+                }
+            },
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._height = parseInt(_this._width * 0.32);
+
+            _this._height2 = Math.ceil(($(window).width() - 50) / 2.5);
+
+            _this._width2 = 0;
+
+            baseAjax.newsList(_this.page, _this.pageSize, function (data) {
+                if (data) {
+                    _this.matchList = data.returnJSON.indexData;
+                    console.log(_this.matchList);
+                }
+            });
+
+            baseAjax.topNewsUser(function (data) {
+                if (data) {
+                    _this.expertList = data.returnJSON;
+                    _this._width2 = _this.expertList.length * (_this._height2 + 15);
+                }
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.width = $(window).width();
+                _this.height = $(window).height();
+                _this._width = parseInt($(window).width());
+                _this._height = parseInt(_this._width * 0.32);
+
+                _this._height2 = Math.ceil(($(window).width() - 50) / 2.5);
+
+                _this._width2 = 0;
+
+                baseAjax.newsList(_this.page, _this.pageSize, function (data) {
+                    if (data) {
+                        _this.matchList = data.returnJSON.indexData;
+                        console.log(_this.matchList);
+                    }
+                });
+
+                baseAjax.topNewsUser(function (data) {
+                    if (data) {
+                        _this.expertList = data.returnJSON;
+                        _this._width2 = _this.expertList.length * (_this._height2 + 15);
+                    }
+                });
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

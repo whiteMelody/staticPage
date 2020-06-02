@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>租车网</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/zc.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+
+var time = 0, rotate = 86400, index = 0;
+	$(function(){
+		timer();
+		time = window.setInterval(tree,1000);
+	})
+	
+	function tree(){
+		index ++;
+		if(index%10==1)
+			$(".tree").css({ left : "-1920px",transition: "all 10s linear" });
+		if(index%10==0)
+			$(".tree").css({ left : "1920px",transition : "none" });
+		if(index%2==0)
+			$(".btn-car").css({ transform: "scale(1.03)" });
+		else
+			$(".btn-car").css({ transform: "scale(.9)" });	
+	}
+	
+	function timer(){
+		$(".tyre-left").css({ transform: "rotate("+ (rotate * 180) +"deg)"});
+		$(".tyre-right").css({ transform: "rotate("+ (rotate * 180) +"deg)"});	
+		$(".warpper-index").css({ backgroundPosition : "-"+ (rotate * 1800) +"px"});
+	}
+	
+</script>
+<style>
+
+	.footer{ position:fixed; bottom:0;}
+</style>
+</head>
+
+<body class="warpper-blue-10">
+	
+    <div class="wb100 warpper-index relative over-hidden">
+       <div class="tree"></div>
+    	<div class="w1200px center h90px pat10">
+        	<div class="wb30 fl mat30">
+            	<img src="images/logo.png">
+            </div>
+            <div class="wb40 mal5per mar5per fl mat40 radius5 over-hidden">
+            	<div class="wb85 fl warpper-white h35px">
+                	<img src="images/icon-search.png" class="middle mal3per mar3per">
+                    <input type="text" class="bor-none h35px h35px F125em Fgray-3" placeholder="请输入搜索关键字" />
+                </div>
+                <div class="wb15 fr warpper-yellow h35px lh35px Fwhite F125em text-center pointer">
+                	搜索
+                </div>
+            </div>
+            <div class="wb7 fr lh20px text-center Fwhite F125em">
+            	<a href="javascript:void(0)" class="white fl">登录</a>
+                <span>|</span>
+            	<a href="javascript:void(0)" class="white fr">注册</a>
+            </div>
+        </div>
+        <div class="w1000px center h525px relative">
+        	<!--<div class="warpper-gas w1340px h525px"></div>-->
+            <div class="warpper-car w1000px h525px relative">
+                <div class="btn-car btn-left">
+                	
+                </div>
+                <div class="btn-car btn-right">
+                	
+                </div>
+                <div class="tyre-left"></div>
+                <div class="tyre-right"></div>
+            </div>
+        </div>
+        <div class="clear1 h80px"></div>
+        <div class="w1000px center lh30px F125em">
+        	<div class="wb10 Fwhite fl">
+                <a href="javascript:void(0)" class="white lh45px">热门城市搜索</a>
+            </div>
+            <div class="wb90 fr">
+            	<a href="javascript:void(0)" class="blue ma1per fl">进入重庆站 ></a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+                <a href="javascript:void(0)" class="white ma1per fl">北京</a>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        <div class="w1000px center lh30px F125em">
+        	<div class="wb10 Fwhite fl">
+                <a href="javascript:void(0)" class="white lh25px">按照省份选择</a>
+            </div>
+            <div class="wb90 fr">
+            	<select class="wb15 fl warpper-white pal5 lh25px h25px bor-gray bor-solid-1a">
+                	<option>请选择省份</option>
+                </select>
+            	<select class="wb15 fl warpper-white pal5 lh25px h25px bor-gray bor-solid-1a mal2per mar2per">
+                	<option>请选择城市</option>
+                </select>
+                <input type="submit" value="确定" class="warpper-blue-3 h25px bor-blue bor-solid-1a Fwhite pointer wb10 radius5 fl">
+            </div>
+            <div class="clear1"></div>
+        </div>
+       
+        
+    </div>
+    <div class="wb100 warpper-gray h40px lh40px footer">
+		<div class="w1000px center text-left lh40px F125em Fgray-1" >
+        	<p>©2006-2015 租车网　租车网络股份有限公司 皖ICP证编号 B2-20080008信息网络传播视听节目许可证 1009365号</p>
+
+            <div class="clear"></div>
+           <!-- <img src="images/bottom-logo.png">-->
+        </div>
+   </div>
+</body>
+</html>

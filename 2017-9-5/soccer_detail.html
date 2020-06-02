@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>竞猜详情</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| soccer_detail_page
+| ------------------------------------------
+| Here are soccer_detail_page html
+|
+-->
+
+<div id="soccer_detail_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 img-area relative">
+        <img src="images/bg-detail.png">
+
+        <div class="wb100 absolute Fwhite text-center lh20px" style="bottom: 35px;">
+            <div class="wb25 fl">
+                <div class="wb50 center img-area">
+                    <img src="images/soccer-logo1.png">
+                </div>
+                <p>AC米兰</p>
+            </div>
+            <div class="wb50 fl">
+                <div class="wb80 center Fyellow img-area">
+                    <p class="mab5 mat5">恭喜中奖</p>
+                    <p>+ <span class="Fnum">50.56</span> 金币</p>
+                    <img src="images/win-gold.png" style="margin-bottom: -60px;">
+                </div>
+            </div>
+            <div class="wb25 fr">
+                <div class="wb50 center img-area">
+                    <img src="images/soccer-logo2.png">
+                </div>
+                <p>尤文图斯</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="wb100 warpper-white">
+        <div class="pal15 lh45px Fgray-3">
+            <p>竞猜玩法：胜平负</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜选项：<span class="Fred">主胜</span></p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>比赛结果：<span class="Fred">3:1</span></p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>投注金币：100</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜赔率：2.36</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>竞猜时间：2017-07-28 10:00</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>方案编号：20170525JCZQ82274416</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+            <p>备注：</p>
+            <div class="clear bor-gray bor-solid-1b"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#soccer_detail_page",
+        data: {
+            login: false,
+            fullscreenLoading: false
+        },
+        methods: {},
+        created: function created() {
+            var _this = this;
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+</script>
+
+</body>
+</html>

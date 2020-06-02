@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>7天英语—视频播放</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| video_play_page
+| ------------------------------------------
+| Here are video_play_page html
+|
+-->
+<div id="video_play_page">
+
+    <en-header-new :back="true"></en-header-new>
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="video_play_page_content hidden wb100 warpper-gray-3">
+
+        <div class="wb100 h200px warpper-black" v-html="video">
+
+        </div>
+
+        <div class="pa15 lh40px">
+            <p>
+                <span class="fl Fblue F18 wb50 display-inline text-over-hidden1">{{current.lessonName}}</span>
+                <span class="fr Fgray-3 F14">免费试学3课时</span>
+            </p>
+            <div class="clear"></div>
+            <p>
+                <span class="fl Fgray-3 F14">经典内容受益终身</span>
+                <span class="fr Fgray-2 FLine F14 mal10">原价：1888</span>
+                <span class="fr Forange F24">￥588</span>
+            </p>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="wb100 text-center h45px lh45px bor-gray bor-solid-2b">
+            <div class="wb50 fl" @click="changeNav(0)">
+                <span v-bind:class="!isDetail ? 'tab-nav' : 'tab-nav-active'">详情</span>
+            </div>
+            <div class="wb50 fl" @click="changeNav(1)">
+                <span v-bind:class="isDetail ? 'tab-nav' : 'tab-nav-active'">目录</span>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="wb100 img-Warea" v-if="isDetail">
+            <img src="images/classify-bg1.png">
+        </div>
+
+        <div class="wb100" v-if="!isDetail">
+            <div class="pal15 par15 F14" style="height: 200px; overflow-y: scroll;">
+
+                <div class="warpper-white" v-for="(item,index) in playList" @click="changeLesson(index)" >
+                    <p v-if="index == playIndex" class="bor-gray bor-solid-1b h40px lh40px warpper-white">
+                        <span class="fl Fblue">{{item.lessonName,30}}</span>
+                        <span class="Fblue fr">正在播放</span>
+                    </p>
+                    <p v-else  class="bor-gray bor-solid-1b h40px lh40px warpper-white">
+                        <span class="fl Fblack">{{item.lessonName,30}}</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#video_play_page",
+        data : {
+            showLoader : true,
+            isDetail : true,
+            channelID : "",
+            playList : [],
+            info : {},
+            playIndex : 0,
+            current : {},
+            video : "",
+        },
+        methods : {
+            changeNav(type){
+                let _this = this;
+                if(type == 0)
+                    _this.isDetail = true;
+                else
+                    _this.isDetail = false;
+            },
+            changeLesson(i){
+
+                let _this = this;
+                _this.playIndex = i;
+                _this.current = _this.playList[_this.playIndex];
+                if(_this.current.videoURL.indexOf(".html")!=-1){
+                    //html格式
+                    _this.video = `<iframe src="${_this.current.videoURL}" style="width: 100%; height: 200px; border: none;"></iframe>`;
+                }else{
+                    //视频格式
+                }
+
+                setTimeout(function(){
+                    _this.showLoader = false;
+                    $(".video_play_page_content").removeClass("hidden");
+                },ajaxConfig.lazy);
+
+            }
+
+        },
+        created(){
+            let _this = this;
+
+            _this.channelID = base.getParmar("channelID");
+            baseAjax.getLessonsByChannelID(_this.channelID,function(data){
+                _this.playList = data.returnJSON;
+                _this.info = data.extendInfo;
+                _this.changeLesson(0);
+
+            })
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

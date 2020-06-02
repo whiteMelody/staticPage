@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>我的彩票</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| user_page
+| ------------------------------------------
+| Here are user_page html
+|
+-->
+
+<div id="user_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100 warpper-red">
+        <div class="h50px lh50px relative wb100" style="z-index: 99">
+            <!--<a href="javascript:;">-->
+                <!--<div class="w20px h20px img-area absolute" style="top:5px; left: 15px;">-->
+                    <!--<img src="images/icon-service.png">-->
+                <!--</div>-->
+            <!--</a>-->
+
+            <p class="text-center Fwhite" v-if="login">{{user.nickName}}</p>
+            <p class="text-center Fwhite" v-else>未登录</p>
+            <a href="user_info.html">
+                <div class="w20px h20px img-area absolute" style="top:5px; right: 15px;">
+                    <img src="images/icon-setting.png">
+                </div>
+            </a>
+        </div>
+        <div class="pa15 relative">
+
+            <div style="padding-left: 70px">
+
+                <template v-if="login">
+                    <img src="images/head-default.png" class="fl h70px w70px radius50per bor-white bor-solid-2a absolute" style="left: 15px; top:0;">
+
+                    <div class="wb100 F14 ">
+                        <div class="wb50 fl">
+                            <p class="text-over-hidden1 Fwhite   text-center">{{user.accountBalance}}元</p>
+                            <p class="text-over-hidden1 Fwhite text-center">账户余额（元）</p>
+                        </div>
+
+                        <!--<div class="fl bor-gray bor-solid-1l h30px " style="width: 1px"></div>-->
+
+                        <div class="wb50 fr ">
+                            <p class="text-over-hidden1 Fwhite   text-center ">{{user.outputBalance}}元</p>
+                            <p class="text-over-hidden1 Fwhite  text-center ">可提现金额（元）</p>
+                        </div>
+
+                        <!--<div class=" bor-gray1 bor-solid-1l h30px center " style=" width:1px;"></div>-->
+
+                    </div>
+
+                </template>
+
+                <template v-else>
+                    <img src="images/head-nologin.png" class="fl h70px w70px radius50per bor-white bor-solid-2a absolute" style="left: 15px; top:0;">
+
+                    <a href="login.html?call=user.html" class="fl mal15 h40px lh40px mat5 text-center w80px warpper-white radius5 Fred">
+                        请登录
+                    </a>
+
+                </template>
+
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="clear1 warpper-red"></div>
+
+    <div class="wb100 warpper-white Fgray-3">
+        <div class="h30px lh30px pat10 pab10">
+            <a href="recharge.html">
+                <div class="wb495 fl text-center Fgray-3">
+                    充值
+                </div>
+            </a>
+            <a href="cash.html">
+                <div class="wb495 fr text-center bor-gray bor-solid-1l Fgray-3">
+                    提现
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="wb100 warpper-white">
+        <!--<div class="h30px lh30px pat10 pab10 pal15 par15">-->
+            <!--<span class="fl F16 Fgray-3">我的购彩</span>-->
+            <!--<a href="user_ticket_all.html?nav=0" class="gray fr F12">查看全部订单></a>-->
+        <!--</div>-->
+        <div class="clear1"></div>
+        <div class="wb100 text-center F14 lh20px">
+            <a href="user_ticket_all.html?nav=-1">
+                <div class="wb33333 fl Fgray-3">
+                    <img src="images/icon-award1.png" class="h35px">
+                    <p>投注记录</p>
+                </div>
+            </a>
+            <a href="user_ticket_all.html?nav=0">
+                <div class="wb33333 fl Fgray-3">
+                    <img src="images/icon-award2.png" class="h35px">
+                    <p>待开奖</p>
+                </div>
+            </a>
+            <a href="user_ticket_all.html?nav=1">
+                <div class="wb33333 fl Fgray-3">
+                    <img src="images/icon-award3.png" class="h35px">
+                    <p>已中奖</p>
+                </div>
+            </a>
+        </div>
+        <div class="clear1"></div>
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="wb100 warpper-white Fgray-3">
+        <!--<div class="h50px lh50px pal15">-->
+            <!--<a href="javascript:;">-->
+                <!--<div class="wb100 bor-gray bor-solid-1b">-->
+                    <!--<img src="images/icon-nav1.png" class="fl h20px mat15 mar10">-->
+                    <!--<span class="fl Fgray-3">追号记录</span>-->
+                    <!--<img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">-->
+                    <!--<div class="clear"></div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="clear"></div>
+        <div class="h50px lh50px pal15">
+            <a href="deal_all.html">
+                <div class="wb100 bor-gray bor-solid-1b">
+                    <img src="images/icon-nav2.png" class="fl h20px mat15 mar10">
+                    <span class="fl Fgray-3">账户明细</span>
+                    <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                    <div class="clear"></div>
+                </div>
+            </a>
+        </div>
+        <div class="clear"></div>
+        <div class="h50px lh50px pal15">
+            <a href="safe_center.html">
+                <div class="wb100">
+                    <img src="images/icon-nav3.png" class="fl h20px mat15 mar10">
+                    <span class="fl Fgray-3">安全中心</span>
+                    <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                    <div class="clear"></div>
+                </div>
+            </a>
+        </div>
+        <div class="clear"></div>
+        <!--<div class="h50px lh50px pal15">-->
+            <!--<div class="wb100">-->
+                <!--<img src="images/icon-nav1.png" class="fl h20px mat15 mar10">-->
+                <!--<span class="fl">追号记录</span>-->
+                <!--<div class="w50px h50px fr mar15">-->
+                    <!--<img src="images/arrow-right.png" class="fr h20px mat15">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="clear"></div>-->
+    </div>
+
+    <div class="clear1"></div>
+
+    <ticket-footer :active="3"></ticket-footer>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#user_page",
+        data : {
+            login : false,
+            fullscreenLoading  : true,
+            user : {},
+        },
+        methods : {
+
+        },
+        created(){
+            let _this = this;
+
+            //判断登录
+            let _user = window.sessionStorage.getItem('userInfo');
+
+            console.log(_user);
+
+            if(base.isNull(_user)){
+                _this.login = false;
+            }else{
+                _this.login = true;
+                _this.user = JSON.parse(_user);
+            }
+
+            setTimeout(function(){
+                _this.fullscreenLoading = false;
+                $("#user_page").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

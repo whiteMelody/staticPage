@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>11选5</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| lottery_d11_page
+| ------------------------------------------
+| Here are lottery_d11_page html
+|
+-->
+
+<div id="lottery_d11_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+
+    <div class="wb100">
+
+        <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+
+            <div class="w50px h50px fl absolute" @click="myBack">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <!--标题-->
+
+            <template v-if="currentNav==0">
+            <p class="text-center Fwhite" @click="swicthDuplex">
+                {{playType[typeIndex]}}
+                <img src="images/arrow-down-white.png" class="h10px">
+            </p>
+            </template>
+
+            <template v-if="currentNav==1">
+                <p class="text-center Fwhite" >
+                    开奖
+                </p>
+            </template>
+
+            <template v-if="currentNav==2">
+                <p class="text-center Fwhite" >
+                    规则
+                </p>
+            </template>
+
+
+                <!--<div class="w20px h20px img-area absolute" style="top:5px; right: 15px;">-->
+                    <!--<a href="trend_synthesize.html"><img src="images/icon-trend.png"></a>-->
+                <!--</div>-->
+           <!---->
+        </div>
+
+        <!--玩法-->
+        <div class="dialogBg" @click="showDuplex = false" v-show="showDuplex == true"></div>
+        <div class="wb100 h280px text-center warpper-white " v-show="showDuplex == true" style="position: fixed; z-index: 99;">
+            <div class="clear1"></div>
+            <p class="h20px lh20px Fred">普通玩法</p>
+            <el-row :gutter="20" class="pa15">
+                <el-col :span="8" class="h40px lh40px mab15" v-for="(item,key) in playType">
+                    <div class="wb100 h40px radius5 bor-solid-1a bor-gray " @click="empty(key)">
+                        <div :class="key == typeIndex ? 'warpper-red Fwhite radius5 ' : 'Fgray-3 '">{{item}}</div>
+                    </div>
+                </el-col>
+                <div class="clear1"></div>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+
+        <!--头部导航-->
+        <div class="wb100 h40px lh40px text-center Fgray-3">
+            <el-row>
+                <el-col :span="8" v-for="(item,key) in nav">
+                    <div @click="changeNav(key)" class="h40px lh40px wb100">
+                        <span :class="key == currentNav ? 'bor-red bor-solid-2b Fblack pab8' : 'Fblack'">{{item}}</span>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <template v-if="currentNav == 0">
+
+            <!--开奖时间，号码-->
+            <div class="warpper-gray-1 wb100 h55px bor-solid-1t bor-solid-1b bor-gray" >
+                <div class="pal15 ">
+                    <div class="w110px fl text-center h25px lh25px">
+
+                        <p class="F14 Fgray-3">距{{current.number}}期投注截止</p>
+                        <p class="Fred F14">{{parseMins(timer)}}</p>
+
+                    </div>
+
+                    <div class="w20px fr " @click="switchHistory">
+                        <img src="images/arrow-down.png" class="w15px" v-show="showHistory == false" style="margin-top: 25px">
+                        <img src="images/arrow-up.png" class="w15px" v-show="showHistory == true" style="margin-top: 25px">
+                    </div>
+
+                    <div class="w130px fr text-center h25px lh25px">
+                        <p class="Fgray-3  F14">
+                            {{prev.number}}期正在开奖
+                        </p>
+                        <div class="center w130px" v-if="prev.ball">
+                            <div class="fl radius50per warpper-red F12 Fwhite h20px lh20px w20px mal5 mat2 " v-for="item in prev.balls">{{item}}</div>
+                        </div>
+                        <div class="center w130px" v-else>
+                            <div class="fl radius50per warpper-red F12 Fwhite h20px lh20px w20px mal5 mat2" v-for="item in [1,2,3,4,5]">?</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class=" bor-gray bor-solid-1l h40px center" style=" width:1px;margin-top: 10px"></div>
+
+            </div>
+
+            <!--往期开奖号码-->
+            <el-collapse-transition>
+                <div v-show="showHistory">
+                    <div class="pal15 par15 " style="padding-left: 23px;">
+                        <template v-for="item in history">
+                            <p class="lh30px F14">
+                                <span class="fl Fgray-3">
+                                    第{{item.number}}期
+                                </span>
+                                <span class="fr Fred">{{item.ball}}</span>
+                            </p>
+                            <div class="clear"></div>
+                        </template>
+                        <div class="clear1"></div>
+                    </div>
+                </div>
+            </el-collapse-transition>
+
+            <!--任选-->
+            <template>
+
+                <template >
+                    <div class="wb100 lh40px h40px Fgray-2 F14 pal15 par15">
+                    <p v-if="typeIndex == 0">
+                        请至少选择2个号码
+                    </p>
+                    <p v-else-if="typeIndex == 1">
+                        请至少选择3个号码
+                    </p>
+                    <p v-else-if="typeIndex == 2">
+                        请至少选择4个号码
+                    </p>
+                    <p v-else-if="typeIndex == 3">
+                        请至少选择5个号码
+                    </p>
+                    <p v-else-if="typeIndex == 4">
+                        请至少选择6个号码
+                    </p>
+                    <p v-else-if="typeIndex == 5">
+                        请至少选择7个号码
+                    </p>
+                    <p v-else-if="typeIndex == 6">
+                        请至少选择8个号码
+                    </p>
+                    <p v-else-if="typeIndex == 7">
+                        请至少选择1个号码
+                    </p>
+                    <p v-else-if="typeIndex == 8 || typeIndex == 10">
+                        每位至少选择1个号码
+                    </p>
+                    <p v-else-if="typeIndex == 9">
+                        请至少选择2个号码
+                    </p>
+                    <p v-else-if="typeIndex == 11">
+                        请至少选择3个号码
+                    </p>
+                    </div>
+                </template>
+
+
+
+                <template>
+                    <div class="fl pa15">
+                        <div class="warpper-red  text-center radius5 h20px lh20px w40px" style="margin-top:-6px">
+
+                            <template v-if="typeIndex == 8 || typeIndex == 10">
+                            <p class="F14 Fwhite">万位</p>
+                            </template>
+
+                            <template v-else>
+                                <p class="F14 Fwhite">选号</p>
+                            </template>
+
+                        </div>
+                        <div class="" style="margin-top: -20px">
+                            <img src="images/icon-triangle.png" style="height: 20px;margin-left:37px">
+                        </div>
+                        <div class="clear" style="height: 8px"></div>
+                        <!--<div class="warpper-gray-1 w40px text-center h20px lh20px radius5" style="/*margin-top: 10%;*/margin-left: -5px;">-->
+                            <!--<p class="F14 Fgray-2">遗漏</p>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="pal20" style="padding-left: 85px">
+                        <template v-for="(item,key) in elevenBall">
+                            <!--<div class="radius50per text-center fl mar5 mab25 F12" @click="selectBall(key,'red')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                                <!--{{item.num}}-->
+                            <!--</div>-->
+                            <div v-if="item.disable == true" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar5 mab25 F16">
+                                {{item.num}}
+                            </div>
+
+                            <div v-else class="radius50per text-center fl mar5 mab25 F16" @click="selectBall(key,'red')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                {{item.num}}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <!--前二直选-->
+                <template v-if="typeIndex == 8">
+                    <div class="fl pa15">
+                        <div class="warpper-red  text-center radius5 h20px lh20px w40px" style="margin-top:-6px">
+                            <p class="F14 Fwhite">千位</p>
+                        </div>
+                        <div class="" style="margin-top: -20px">
+                            <img src="images/icon-triangle.png" style="height: 20px;margin-left:37px">
+                        </div>
+                        <div class="clear" style="height: 8px"></div>
+                        <!--<div class="warpper-gray-1 w40px text-center h20px lh20px radius5" style="/*margin-top: 10%;*/margin-left: -5px;">-->
+                            <!--<p class="F14 Fgray-2">遗漏</p>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="pal20" style="padding-left: 85px">
+                        <template v-for="(item,key) in elevenBall2">
+                            <!--<div class="radius50per text-center fl mar5 mab25 F12" @click="selectBall(key,'red')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">-->
+                                <!--{{item.num}}-->
+                            <!--</div>-->
+
+                            <div v-if="item.disable == true" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar5 mab25 F16" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                {{item.num}}
+                            </div>
+
+                            <div v-else class="radius50per text-center fl mar5 mab25 F16" @click="selectBall(key,'red1')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                {{item.num}}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <!--前三直选-->
+                <template v-if="typeIndex == 10">
+                    <div class="fl pa15">
+                        <div class="warpper-red  text-center radius5 h20px lh20px w40px" style="margin-top:-6px">
+                            <p class="F14 Fwhite">千位</p>
+                        </div>
+                        <div class="" style="margin-top: -20px">
+                            <img src="images/icon-triangle.png" style="height: 20px;margin-left:37px">
+                        </div>
+                        <div class="clear" style="height: 8px"></div>
+                        <!--<div class="warpper-gray-1 w40px text-center h20px lh20px radius5" style="/*margin-top: 10%;*/margin-left: -5px;">-->
+                            <!--<p class="F14 Fgray-2">遗漏</p>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="pal20" style="padding-left: 85px">
+                        <template v-for="(item,key) in elevenBall3">
+                            <div v-if="item.disable == true" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar5 mab25 F16">
+                                {{item.num}}
+                            </div>
+                            <div v-else class="radius50per text-center fl mar5 mab25 F16" @click="selectBall(key,'red2')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                {{item.num}}
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="fl pa15">
+                        <div class="warpper-red  text-center radius5 h20px lh20px w40px" style="margin-top:-6px">
+                            <p class="F14 Fwhite">百位</p>
+                        </div>
+                        <div class="" style="margin-top: -20px">
+                            <img src="images/icon-triangle.png" style="height: 20px;margin-left:37px">
+                        </div>
+                        <div class="clear" style="height: 8px"></div>
+                        <!--<div class="warpper-gray-1 w40px text-center h20px lh20px radius5" style="/*margin-top: 10%;*/margin-left: -5px;">-->
+                            <!--<p class="F14 Fgray-2">遗漏</p>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="pal20" style="padding-left: 85px">
+                        <template v-for="(item,key) in elevenBall4">
+                            <div v-if="item.disable == true" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'" class="radius50per warpper-gray-2 pa1 Fwhite text-center fl mar5 mab25 F16">
+                                {{item.num}}
+                            </div>
+                            <div v-else class="radius50per text-center fl mar5 mab25 F16" @click="selectBall(key,'red3')" :class="item.value == true ? 'warpper-red Fwhite pa1' : 'bor-solid-1a bor-gray2 Fred'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                {{item.num}}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+
+            </template>
+
+
+            <div class="clear h65px"></div>
+
+
+            <!--底部-->
+
+            <div class="wb100 fixed warpper-white h60px" style="bottom: 0;">
+
+                <!--<div class="pa10  warpper-gray-3 F14">若中奖，奖金为<span class="Fred">8元</span>，盈利<span class="Fred">8元</span></div>-->
+
+                <div class="wb100 bor-gray bor-solid-1t  warpper-white relative" >
+
+                    <div class="pat10 pab10">
+                        <div class="w25px text-center absolute" @click="clearSelect" style="left: 15px; top: 10px;">
+                            <div class="h25px img-Harea center">
+                                <img src="images/icon-clear.png">
+                            </div>
+                            <div class=" bor-gray bor-solid-1l h50px absolute " style="margin-top: -30px;margin-left: 32px"></div>
+
+                            <p class="Fgray-2 F12 h25px lh25px text-center">清空</p>
+                        </div>
+
+                        <div class="w25px text-center absolute" style="left: 55px; top: 10px;" @click="randomSelect">
+                            <div class="h25px img-Harea center">
+                                <img src="images/random.png">
+                            </div>
+                            <p class="Fgray-2 F12 h25px lh25px text-center">机选</p>
+                        </div>
+
+                        <div class="w80px text-center radius5 h40px lh40px absolute" style="top: 10px; right: 15px;" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'"  @click="buyTicket">
+                            确定
+                        </div>
+
+                        <div class="w200px center">
+
+                            <p class="lh50px text-center">
+                                <span class="Fred">{{number}}</span>注
+                                <span class="Fred">{{number * 2}}</span>元
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </template>
+
+        <template v-if="currentNav==1">
+            <ticket-notice :lottery_type="'D11'"></ticket-notice>
+        </template>
+
+        <template v-if="currentNav==2">
+            <ticket-rule :lottery="2"></ticket-rule>
+        </template>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lottery_d11_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            nav : [ '投注', '开奖', '规则'],
+            currentNav : 0,
+            number : 0,
+            num:2,
+            ticketID: '',
+
+            timer : 300,
+            current : {
+                number : '',
+                endTime : ''
+            },
+            prev : {
+                number : '',
+                endTime : ''
+            },
+
+
+            lock : true,
+            playType : ['任选二','任选三','任选四','任选五','任选六','任选七','任选八','前一','前二直选','前二组选','前三直选','前三组选'],
+            typeIndex : 3,
+            showHistory : false,
+            showDuplex : false,
+            history : ['','','','','','','',''],
+
+            elevenBall:[],
+            elevenBall2:[],
+            elevenBall3:[],
+            elevenBall4:[],
+
+        },
+        methods : {
+
+            //选号
+            selectBall(key,type){
+
+                let _this = this;
+
+                if(type == 'red'){
+                    _this.elevenBall[key].value = !_this.elevenBall[key].value;
+                    _this.elevenBall2[key].disable = !_this.elevenBall2[key].disable;
+                    _this.elevenBall3[key].disable = !_this.elevenBall3[key].disable;
+                    _this.elevenBall4[key].disable = !_this.elevenBall4[key].disable;
+                }
+                if(type == 'red1'){
+                    _this.elevenBall2[key].value = !_this.elevenBall2[key].value;
+                    _this.elevenBall[key].disable = !_this.elevenBall[key].disable;
+                }
+                if(type == 'red2'){
+                    _this.elevenBall3[key].value = !_this.elevenBall3[key].value;
+                    _this.elevenBall[key].disable = !_this.elevenBall[key].disable;
+                    _this.elevenBall4[key].disable = !_this.elevenBall4[key].disable;
+                }
+                if(type == 'red3'){
+                    _this.elevenBall4[key].value = !_this.elevenBall4[key].value;
+                    _this.elevenBall[key].disable = !_this.elevenBall[key].disable;
+                    _this.elevenBall3[key].disable = !_this.elevenBall3[key].disable;
+                }
+
+                _this.calculate();
+
+                let _r5 = 0;
+
+                for(let i=0; i<_this.elevenBall.length; i++){
+                    let _ball = _this.elevenBall[i];
+                    if(_ball.value == true){
+                        _r5 ++;
+                    }
+                }
+
+
+            },
+
+
+
+           //购买计算
+            calculate(){
+
+                let _this = this;
+
+                let result = 0;
+
+                //任选五
+                if(_this.typeIndex == 3 ){
+
+                    let _r5 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r5 ++;
+                        }
+                    }
+
+                    if(_r5 > 4 ){
+                        result =  base.factorial(_r5) / ( base.factorial(5) * base.factorial(_r5 - 5 ));
+                    }
+
+                }
+
+                //任选二
+                if(_this.typeIndex == 0){
+
+                    let _r2 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r2 ++;
+                        }
+                    }
+
+                    if(_r2 > 1 ){
+                        result =  base.factorial(_r2) / ( base.factorial(2) * base.factorial(_r2 - 2 ));
+                    }
+                }
+
+                //任选三
+                if(_this.typeIndex == 1){
+
+                    let _r3 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r3 ++;
+                        }
+                    }
+
+                    if(_r3 > 2 ){
+                        result =  base.factorial(_r3) / ( base.factorial(3) * base.factorial(_r3 - 3 ));
+                    }
+
+                }
+
+                //任选四
+                if(_this.typeIndex == 2){
+
+                    let _r4 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r4 ++;
+                        }
+                    }
+
+                    if(_r4 > 3 ){
+                        result =  base.factorial(_r4) / ( base.factorial(4) * base.factorial(_r4 - 4 ));
+                    }
+
+                }
+
+                //任选六
+                if(_this.typeIndex == 4){
+
+                    let _r6 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r6 ++;
+                        }
+                    }
+
+                    if(_r6 > 5 ){
+                        result =  base.factorial(_r6) / ( base.factorial(6) * base.factorial(_r6 - 6 ));
+                    }
+
+                }
+
+                //任选七
+                if(_this.typeIndex == 5){
+
+                    let _r7 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r7 ++;
+                        }
+                    }
+
+                    if(_r7 > 6 ){
+                        result =  base.factorial(_r7) / ( base.factorial(7) * base.factorial(_r7 - 7 ));
+                    }
+
+                }
+
+                //任选八
+                if(_this.typeIndex == 6){
+
+                    let _r8 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r8 ++;
+                        }
+                    }
+
+                    if(_r8 > 7 ){
+                        result =  base.factorial(_r8) / ( base.factorial(8) * base.factorial(_r8 - 8 ));
+                    }
+
+                }
+
+                //前一
+                if(_this.typeIndex == 7){
+
+                    let _r1 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r1 ++;
+                        }
+                    }
+
+                    if(_r1 > 0 ){
+                        result =  base.factorial(_r1) / ( base.factorial(1) * base.factorial(_r1 - 1 ));
+                    }
+                }
+
+                //前二组选
+                if(_this.typeIndex == 9){
+
+                    let _r9 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r9 ++;
+                        }
+                    }
+
+                    if(_r9 > 1 ){
+                        result =  base.factorial(_r9) / ( base.factorial(2) * base.factorial(_r9 - 2 ));
+                    }
+                }
+
+                //前三组选
+                if(_this.typeIndex == 11){
+
+                    let _r10 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r10 ++;
+                        }
+                    }
+
+                    if(_r10 > 2 ){
+                        result =  base.factorial(_r10) / ( base.factorial(3) * base.factorial(_r10 - 3 ));
+                    }
+                }
+
+                //前二直选
+                if(_this.typeIndex == 8){
+
+
+                    let _r11 = 0;
+                    let _r12 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r11 ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.elevenBall2.length; i++){
+                        let _ball = _this.elevenBall2[i];
+                        if(_ball.value == true){
+                            _r12++;
+                        }
+                    }
+
+                    if(_r11 > 0 && _r12 > 0){
+                        result =  ( base.factorial(_r11) / ( base.factorial(1) * base.factorial(_r11 - 1 )) ) *  ( base.factorial(_r12) / ( base.factorial(1) * base.factorial(_r12 - 1 )));
+                    }
+                }
+
+                //前三直选
+                if(_this.typeIndex == 10){
+
+
+                    let _r13 = 0;
+                    let _r14 = 0;
+                    let _r15 = 0;
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r13 ++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.elevenBall3.length; i++){
+                        let _ball = _this.elevenBall3[i];
+                        if(_ball.value == true){
+                            _r14++;
+                        }
+                    }
+
+                    for(let i=0; i<_this.elevenBall4.length; i++){
+                        let _ball = _this.elevenBall4[i];
+                        if(_ball.value == true){
+                            _r15++;
+                        }
+                    }
+
+                    if(_r13 > 0 && _r14 > 0 && _r15 > 0){
+                        result =  ( base.factorial(_r13) / ( base.factorial(1) * base.factorial(_r13 - 1 )) ) * ( base.factorial(_r14) / ( base.factorial(1) * base.factorial(_r14 - 1 )))* ( base.factorial(_r15) / ( base.factorial(1) * base.factorial(_r15 - 1 )));
+                    }
+                }
+
+                _this.number = Math.ceil(result);
+
+                if(_this.number>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+
+                return _this.number;
+
+            },
+
+
+            //购买
+            buyTicket(){
+
+                let _this = this;
+
+                if(_this.lock)
+                    return false;
+
+                let _result = '';
+
+                let _r = [];
+                let _r1 = [];
+                let _r2 = [];
+                let _r3 = [];
+                let _r4 = [];
+                let _r5 = [];
+
+                let ticket = sessionStorage.getItem("d11_ticket");
+
+                if(_this.typeIndex == 8) {
+                    //前二直选
+
+                    for (let i = 0; i < _this.elevenBall.length; i++) {
+                        let _ball = _this.elevenBall[i];
+                        if (_ball.value == true) {
+                            _r1.push(_ball.num);
+                        }
+                    }
+
+                    for (let i = 0; i < _this.elevenBall2.length; i++) {
+                        let _ball = _this.elevenBall2[i];
+                        if (_ball.value == true) {
+                            _r2.push(_ball.num);
+                        }
+                    }
+
+                    _result = _r1.join(",") + ' | ' + _r2.join(",");
+
+
+//                //判断票的类型
+//
+
+                    //num               注数
+                    //numbers           数字
+                    //playType          玩法
+
+                    if (base.isNull(ticket)) {
+                        ticket = [];
+                    } else {
+                        ticket = JSON.parse(ticket);
+                    }
+
+                    if (base.isNull(_this.ticketID)) {
+                        //新增
+                        ticket.push({
+                            id: base.getUuid(),
+                            num: _this.number,
+                            numbers: _result,
+                            numbers2: _r1,
+                            numbers3: _r2,
+                            playType: _this.typeIndex,
+                        });
+                        sessionStorage.setItem('d11_ticket', JSON.stringify(ticket));
+                    } else {
+                        //编辑
+                        base.editTicketByID(_this.ticketID, 'd11', {
+                            num: _this.number,
+                            numbers: _result,
+                            numbers2: _r1,
+                            numbers3: _r2,
+                            playType: _this.typeIndex,
+                        })
+                    }
+                }
+
+                else if(_this.typeIndex == 10){
+                    //前三直选
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r3.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.elevenBall3.length; i++){
+                        let _ball = _this.elevenBall3[i];
+                        if(_ball.value == true){
+                            _r4.push(_ball.num);
+                        }
+                    }
+
+                    for(let i=0; i<_this.elevenBall4.length; i++){
+                        let _ball = _this.elevenBall4[i];
+                        if(_ball.value == true){
+                            _r5.push(_ball.num);
+                        }
+                    }
+
+                    _result = _r3.join(",")  + ' | ' + _r4.join(",") + ' | ' + _r5.join(",") ;
+
+//
+                    if (base.isNull(ticket)) {
+                        ticket = [];
+                    } else {
+                        ticket = JSON.parse(ticket);
+                    }
+
+                    if(base.isNull(_this.ticketID)){
+                        ticket.push({
+                            id: base.getUuid(),
+                            num : _this.number,
+                            numbers : _result,
+                            numbers2 : _r3,
+                            numbers3 : _r4,
+                            numbers4 : _r5,
+                            playType : _this.typeIndex,
+                        });
+                        sessionStorage.setItem('d11_ticket',JSON.stringify(ticket));
+                    }else{
+                        //编辑
+                        base.editTicketByID(_this.ticketID, 'd11', {
+                            num : _this.number,
+                            numbers : _result,
+                            numbers2 : _r3,
+                            numbers3 : _r4,
+                            numbers4 : _r5,
+                            playType : _this.typeIndex,
+                        });
+                    }
+
+                }
+
+                else{
+                    //普通
+
+                    for(let i=0; i<_this.elevenBall.length; i++){
+                        let _ball = _this.elevenBall[i];
+                        if(_ball.value == true){
+                            _r.push(_ball.num);
+                        }
+                    }
+
+                    _result = _r.join(",") ;
+
+//
+//                //判断票的类型
+//
+
+                    //num               注数
+                    //numbers           数字
+                    //playType          玩法
+
+                    if (base.isNull(ticket)) {
+                        ticket = [];
+                    } else {
+                        ticket = JSON.parse(ticket);
+                    }
+
+                    if(base.isNull(_this.ticketID)){
+                        ticket.push({
+                            id: base.getUuid(),
+                            num : _this.number,
+                            numbers : _result,
+                            playType : _this.typeIndex,
+                        });
+                        sessionStorage.setItem('d11_ticket',JSON.stringify(ticket));
+                    }else{
+                        base.editTicketByID(_this.ticketID, 'd11', {
+                            num : _this.number,
+                            numbers : _result,
+                            playType : _this.typeIndex,
+                        });
+                    }
+
+                }
+
+
+                window.location.href = 'lottery_d11_order.html?typeIndex='+_this.typeIndex;
+
+            },
+
+           //机选
+            randomSelect(){
+
+                let _this = this;
+
+                let _rball = [];
+
+                _rball.push(base.random_num(1,11));
+
+                let _length = 0;
+
+                if(_this.typeIndex == 0)
+                    _length = 1;
+
+                if(_this.typeIndex == 1)
+                    _length = 2;
+
+                if(_this.typeIndex == 2)
+                    _length = 3;
+
+                if(_this.typeIndex == 3)
+                    _length = 4;
+
+                if(_this.typeIndex == 4)
+                    _length = 5;
+
+                if(_this.typeIndex == 5)
+                    _length = 6;
+
+                if(_this.typeIndex == 6)
+                    _length = 7;
+
+                if(_this.typeIndex == 8)
+                    _length = 2;
+
+                if(_this.typeIndex == 9)
+                    _length = 1;
+
+                if(_this.typeIndex == 10)
+                    _length = 3;
+
+                if(_this.typeIndex == 11)
+                    _length = 2;
+
+                for(let i=0; i<_length; i++){
+                    let rd = base.random_num(1,11);
+                    let _flag = true;
+                    for(let i=0;i<_rball.length; i++){
+                        //去重
+                        if(rd == _rball[i]){
+                            _flag = false;
+                            break;
+                        }
+                    }
+                    if(_flag){
+                        _rball.push(rd);
+                    }else{
+                        i--;
+                    }
+                }
+
+
+                //渲染机选
+                _this.initBall();
+
+                if(_this.typeIndex == 8){
+                    //前二直选
+
+                        _this.elevenBall[_rball[0] - 1].value = true;
+                        _this.elevenBall2[_rball[0] - 1].disable = true;
+
+                        _this.elevenBall2[_rball[1] - 1].value = true;
+                        _this.elevenBall[_rball[1] - 1].disable = true;
+
+                    _this.calculate();
+
+                }else if(_this.typeIndex == 10){
+                    //前二直选
+
+                        _this.elevenBall[_rball[0] - 1].value = true;
+                        _this.elevenBall3[_rball[0] - 1].disable = true;
+                        _this.elevenBall4[_rball[0] - 1].disable = true;
+
+                        _this.elevenBall3[_rball[1] - 1].value = true;
+                        _this.elevenBall[_rball[1] - 1].disable = true;
+                        _this.elevenBall4[_rball[1] - 1].disable = true;
+
+                        _this.elevenBall4[_rball[2] - 1].value = true;
+                        _this.elevenBall[_rball[2] - 1].disable = true;
+                        _this.elevenBall3[_rball[2] - 1].disable = true;
+
+                    _this.calculate();
+
+                }
+                else {
+                    for (let i = 0; i < _rball.length; i++) {
+                        _this.elevenBall[_rball[i] - 1].value = true;
+                    }
+
+                    _this.calculate();
+
+                }
+            },
+
+            swicthDuplex(){
+                this.showDuplex = !this.showDuplex;
+            },
+
+            switchHistory(){
+                this.showHistory = !this.showHistory;
+            },
+
+            changeNav(key){
+                this.currentNav = key;
+            },
+
+            myBack(){
+                window.history.go(-1);
+            },
+
+            //转换分钟数 s：秒数
+            parseMins(s){
+                let m1 = Math.floor(s/60);
+                let m2 = s%60;
+                if(m1 <10){
+                    m1 = "0" + m1;
+                }
+                if(m2 <10){
+                    m2 = "0" + m2;
+                }
+                return m1 + ":" + m2;
+            },
+
+            //转换秒数 t:时间
+            parseSecond(t){
+                let t1 = parseInt(t.split(":")[0]);
+                let t2 = parseInt(t.split(":")[1]);
+                return t1 * 60 + t2;
+            },
+
+            getAwardPeriod(){
+                let _this = this;
+                baseAjax.awardPeriod(lotteryType.YDJ11X5,function(data){
+
+                    let _tmp = data.returnJSON;
+
+                    console.log(_tmp);
+
+                    for(let i=0; i<_tmp.length; i++){
+                        _tmp[i].number = _tmp[i].number.substring(_tmp[i].number.length-2);
+
+                        if(base.isNull(_tmp[i].bonusCode)){
+                            continue;
+                        }
+                        _tmp[i].ball = _tmp[i].bonusCode.split(',').join(' ');
+                    }
+
+                    _this.history = _tmp.reverse();
+
+                    let _timer = 0;
+
+                    let _now = new Date().getTime();
+
+                    _timer = Math.round((new Date(_tmp[0].stopTime).getTime() - _now)/1000);
+
+
+                    if(_timer > 600){
+                        //下一期
+                        _timer = Math.round((new Date(_tmp[1].stopTime).getTime() - _now)/1000);
+
+                        _this.current = _tmp[1];
+                        _this.prev = _tmp[2];
+
+                    }else{
+                        _this.current = _tmp[0];
+                        _this.prev = _tmp[1];
+                    }
+
+                    if(!base.isNull(_this.prev.ball)){
+                        _this.prev.balls = _this.prev.ball.split(' ');
+                    }
+
+                    _this.timerID = setInterval(function(){
+                        _this.timer -- ;
+                        if(_this.timer == 0){
+                            //开奖，并重新请求奖期
+                            clearInterval(_this.timerID);
+                            _this.getAwardPeriod();
+                        }
+                    },1000);
+
+                    _this.timer = _timer;
+
+                });
+
+            },
+
+            clearSelect(){
+                let _this = this;
+
+                if(base.isNull(_this.ticketID)){
+                    _this.initBall();
+                }else{
+//                    _this.$confirm('确认清空吗', '消息', {
+//                        callback: function(e) {
+//                            if(e == 'confirm'){
+                                //删除数据
+                                base.delTicketByID(_this.ticketID, 'd11');
+
+                                setTimeout(() => {
+                                    window.location.href = 'lottery_d11.html';
+                                }, 100);
+
+                                _this.initBall();
+//                            }
+//                        }
+//                    });
+                }
+
+            },
+
+            empty(key){
+                this.showDuplex = false;
+                this.typeIndex = key;
+                this.ticketID = '';
+                this.initBall();
+            },
+
+            //清空
+            initBall(){
+                let _this = this;
+
+                _this.elevenBall = [];
+                _this.elevenBall2 = [];
+                _this.elevenBall3 = [];
+                _this.elevenBall4 = [];
+                _this.number = 0;
+                _this.lock = true;
+                _this.currentNav = 0;
+
+                for(let i=1; i<12; i++){
+                    _this.elevenBall.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+                for(let i=1; i<12; i++){
+                    _this.elevenBall2.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+                for(let i=1; i<12; i++){
+                    _this.elevenBall3.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+                for(let i=1; i<12; i++){
+                    _this.elevenBall4.push({
+                        num : base.addZero(i),
+                        value : false,
+                    });
+                }
+            }
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            _this.getAwardPeriod();
+
+            let _ticketID = base.getParmar('ticketID');
+
+            if (base.isNull(_ticketID)) {
+                //初始化
+                let typeIndex = base.getParmar('typeIndex');
+
+                if(base.isNull(typeIndex)){
+                    typeIndex = 0;
+                }
+
+                _this.typeIndex = typeIndex;
+
+                _this.initBall();
+            }else {
+                //编辑
+                _this.ticketID = _ticketID;
+
+                let _ticket = base.getTicketByID(_ticketID, 'd11');
+
+                if (base.isNull(_ticket)) {
+                    //空数据
+                } else {
+                    let _data = _ticket;
+
+                    _this.typeIndex = _data.playType;
+
+                    _this.initBall();
+
+                    if(_data.playType == 8){
+                        //直选2
+//
+                        let _tmp1 =_data.numbers2;
+                        let _tmp2 =_data.numbers3;
+
+
+                        for(let i=0; i<_this.elevenBall.length; i++){
+                            for(let j=0; j<_tmp1.length; j++){
+                                if(_this.elevenBall[i].num == _tmp1[j]){
+                                    _this.elevenBall[i].value = true;
+                                    _this.elevenBall2[i].disable = true;
+                                }
+                            }
+                        }
+
+                        for(let i=0; i<_this.elevenBall2.length; i++){
+                            for(let j=0; j<_tmp2.length; j++){
+                                if(_this.elevenBall2[i].num == _tmp2[j]){
+                                    _this.elevenBall2[i].value = true;
+                                    _this.elevenBall[i].disable = true;
+                                }
+                            }
+                        }
+
+                    }
+                    else if(_data.playType == 10){
+                        //渲染11选5
+                        let _tmp1 =_data.numbers2;
+                        let _tmp2 =_data.numbers3;
+                        let _tmp3 =_data.numbers4;
+
+                        for(let i=0; i<_this.elevenBall.length; i++){
+                            for(let j=0; j<_tmp1.length; j++){
+                                if(_this.elevenBall[i].num == _tmp1[j]){
+                                    _this.elevenBall[i].value = true;
+                                    _this.elevenBall3[i].disable = true;
+                                    _this.elevenBall4[i].disable = true;
+                                }
+                            }
+                        }
+
+                        for(let i=0; i<_this.elevenBall3.length; i++){
+                            for(let j=0; j<_tmp2.length; j++){
+                                if(_this.elevenBall3[i].num == _tmp2[j]){
+                                    _this.elevenBall3[i].value = true;
+                                    _this.elevenBall[i].disable = true;
+                                    _this.elevenBall4[i].disable = true;
+                                }
+                            }
+                        }
+
+                        for(let i=0; i<_this.elevenBall4.length; i++){
+                            for(let j=0; j<_tmp3.length; j++){
+                                if(_this.elevenBall4[i].num == _tmp3[j]){
+                                    _this.elevenBall4[i].value = true;
+                                    _this.elevenBall[i].disable = true;
+                                    _this.elevenBall3[i].disable = true;
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        let _tmp = _data.numbers.split(',');
+
+                        for(let i=0; i<_this.elevenBall.length; i++){
+                            for(let j=0; j<_tmp.length; j++){
+                                if(_this.elevenBall[i].num == _tmp[j]){
+                                    _this.elevenBall[i].value = true;
+                                }
+                            }
+                        }
+                    }
+
+                    _this.calculate();
+                }
+            }
+
+            setTimeout(() => {
+                $("#lottery_d11_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script src="js/slick.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| detail-page
+| ------------------------------------------
+| Here are detail-page html
+| 
+-->
+<div data-role="page" id="detail-page" style="text-shadow:none; font-weight:normal;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per goods-name" data-role="none" style="text-shadow:none; font-weight:normal;"></div>
+        	<a class="my-icon-menu2 h40px w40px absolute pointer" data-role="none" href="#select-menu" style="right:5px; top:5px;"></a>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="/html/js/source/comm.js"></script>
+    	<script src="/html/js/source/detail-store.js"></script>
+
+    	
+        <div data-role="panel" id="select-menu" data-position="right" data-display="overlay" data-theme="b" style="width:200px;z-index:9;">
+            <div style="position:absolute; right:5px; z-index:99;">
+            	<a href="#user-page" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">关闭</a>
+        	</div>
+			<div class="wb100 Fwhite">
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-fav-3.png" class="middle w25px"> 
+                    <span class="wb70 fr">收藏</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-share-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">分享</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-search-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">搜索</span>
+                </p>
+            	<p class="h60px lh60px bor-gray4 bor-solid-1b wb90 pal5per par5per">
+                	<img src="images/icon-link-2.png" class="middle w25px"> 
+                    <span class="wb70 fr">桌面快键</span>
+                </p>
+                <div class="clear"></div>
+            </div>
+        </div>
+    
+        <div class="wb100 text-center img-Warea">
+           <img src="/html/images/img-default.png" class="middle goods-banner">
+        </div>
+        <div class="wb90 center lh25px Fgray-3 pat5 pab15">
+        	<p>价格 <span class="Forange F150em goods-price">￥</span></p>
+            <p class="goods-name"></p>
+        </div>
+        <div class="wb90 pal5per par5per h60px lh30px F80em text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3 warpper-gray-1">
+        	<!--  注释 2015年9月16日14:49:35 
+            
+        	<p class="wb50 fl ">浙江杭州 至 重庆</p>
+        	<p class="wb50 fl ">运费：14.0</p>
+            <div class="clear"></div>
+            
+            end this -->
+            
+        	<p class="wb50 fl ">销量：<span class="goods-sales-count">4</span></p>
+        	<p class="wb50 fl ">人气：<span class="goods-comm-count">4</p>
+        </div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left Fgray-3 F80em ">
+        	<p class="wb33 fl "><img src="images/safe-bag.png" class="middle"> 货到付款</p>
+        	<p class="wb33 fl "><img src="images/safe-seven.png" class="middle"> 七天退换</p>
+        	<p class="wb33 fl "><img src="images/safe-money.png" class="middle"> 担保交易</p>
+        </div>
+        <div class="clear1 warpper-white"></div>
+        <div class="wb100 warpper-gray-1 h25px">
+        	<div class="h10px my-warpper-wave2 wb100"></div>
+        </div>
+        <div class="clear1"></div>
+
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3 ">
+        	查看：尺码，大小颜色 <img src="images/arrow-down.png" class="fr mat20 pointer select-type">
+        </div>
+        <div class="wb90 center select-type-area hidden F80em pat15 pab15">
+        	<div class="wb100 tip-area goods-color-area">
+                
+            </div>
+            <div class="clear"></div>
+            <div class="wb100 tip-area size-color-area">
+                
+            </div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1t Fgray-3 ">
+        	<img src="images/icon-img-2.png" class="fl mat15 mar15"> 图文详情 <a href="javascript:void(0)"><img src="images/arrow-right.png" class="fr mat20"></a>
+        </div>
+        <div class="clear warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1b bor-solid-1t Fgray-3 ">
+        	<img src="images/icon-book-3.png" class="fl mat15 mar15"> 产品参数 <img src="images/arrow-down.png" class="fr mat20 pointer product-info">
+        </div>
+        <div class="wb100 warpper-gray-1 pat15 pab15 bor-gray bor-solid-1b product-info-area hidden">
+        	<div class="wb80 center Fgray-2 lh25px F90em">
+            	<p>是否商场同款: 否</p>
+            	<p>主图来源: 自主实拍图</p>
+            	<p>品牌: Yigue/亦谷</p>
+            	<p>货号: 2740371084</p>
+            	<p>服装版型: 直筒风格: 通勤</p>
+            	<p>通勤: 复古</p>
+            	<p>面料: 粗花呢面料</p>
+            	<p>材质: 羊毛面料</p>
+            	<p>主材质含量: 31%(含)-50%(含)</p>
+            	<p>适用年龄: 25-29周岁</p>
+            	<p>颜色分类: 黄色 粉橘 浅蓝 </p>
+            </div>
+        </div>
+        <div class="wb90 center h40px lh40px text-left Fgray-3 ">
+        	评价<span class="Fgray-2 mar15 mal5 F90em goods-comm-count">(161人评论)</span>
+            <img src="images/star-3-big.png" src="goods-comm-img">
+        </div>
+        
+        <div class="goods-comm-list">
+ 
+        
+        </div>
+        <div class="wb100 bor-gray bor-solid-1t F90em">
+        	 <a href="javascript:void(0)" data-role="button" data-icon="carat-r" data-iconpos="right"><span class="Fblue-2 fl goods-comm-count">查看全部23条评价</span></a>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per text-left bor-gray bor-solid-1t Fgray-3">
+        	
+       		<div class="clear1"></div>	
+            <div class="wb28 h80px fl img-area">
+            	<img src="html/images/img-default.png" class="shop-logo">
+            </div>
+        	<div class="wb60 mal5per fl pat10 pab10 h60px lh30px F80em">
+            	<p class="F125em shop-name"></p>
+               
+            </div>
+        </div>
+        <div class="clear1"></div>
+        <div class="clear1 bor-gray bor-solid-1b"></div>
+        <div class="wb90 pal5per par5per bor-gray bor-solid-1b h45px pat10 pab10">
+        	<a href="store-detail.html" data-transition="slide" data-role="none"><p class="wb495 fl h35px lh35px text-center Fgray-2 pointer bor-gray bor-solid-1r">进店逛逛</p></a>
+        	<p class="wb48 fr h35px lh35px text-center Fgray-2 pointer ">联系客服</p>
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        
+        <a href="javascript:void(0)" data-role="button"><span class="Fgray-2">点击查看更多商品详情</span></a>
+    </div>
+    
+    <div class="h80px"></div>
+    
+    <div data-role="footer" data-theme="a" class="bor-none" data-position="fixed" data-tap-toggle="false" data-disable-page-zoom="false" data-fullscreen="true">
+    	<div class="wb100 h80px warpper-gray" style="text-shadow:none;font-weight:normal;">
+       		<div class="wb40 fl h60px Fwhite pat10 pab10 F90em">
+            	<div class="wb33333 fl lh30px text-center">
+                	<img src="images/icon-msg-9.png" class="middle">
+                    <p>客服</p>
+                </div>
+            	<a href="store-detail.html" data-transition="slide" data-role="none">
+                    <div class="wb33333 fl lh30px text-center Fwhite">
+                        <img src="images/icon-shop-2.png" class="middle">
+                        <p>进店</p>
+                    </div>
+                </a>
+            	<a href="cart.html" data-transition="slide" data-role="none">
+                    <div class="wb33333 fl lh30px text-center Fwhite">
+                        <img src="images/icon-cart-3.png" class="middle">
+                        <p>购物车</p>
+                    </div>
+                </a>
+            </div>
+            <a href="order-submit.html" data-transition="slide" data-role="none">
+            	<div class="wb28 fr h80px warpper-red lh80px text-center Fwhite">立即购买</div>
+            </a>
+            <a href="cart.html" data-transition="slide" data-role="none">
+            	<div class="wb28 fr h80px warpper-orange-4 lh80px text-center Fwhite">加入购物车</div>
+            </a>
+        </div>       
+    </div>
+</div>
+
+</body>
+</html>

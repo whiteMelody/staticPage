@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+.menu{}
+.menu-user{ width:35%; height:38px; border:1px solid #ccc; float:left; background:#f7f7f7; line-height:38px; text-align:left;}
+.menu-cart{ width:55%; height:38px; border:1px solid #ccc; float:right; background:#f7f7f7; line-height:38px; text-align:left;}

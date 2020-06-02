@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+
+        .notice-area .el-carousel__button{ display: none;}
+        .notice-area .el-carousel__arrow--left{ display: none;}
+        .notice-area .el-carousel__arrow--right{ display: none;}
+
+        .dialogBg3{ background: rgba(0,0,0,.5);   }
+        .dialogBg4{ background:url(images/nothing.png) ; background-position:center; }
+        .warpper-gray-5{background:#d7d7d7; }
+        .z1{z-index: -1}
+        .z2{z-index: 9}
+        .bor-gray-8{ border-color:#4F5168;}
+    </style>
+
+    <title>金币商城</title>
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_page html
+|
+-->
+
+<div id="store_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100 warpper-black-3 ">
+
+        <div class="h50px lh50px wb100 relative ">
+
+            <template v-if="login == false">
+                <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=store.html')">
+                    <div class="grid-content wb50 fl bg-purple text-center pat10 pab10">
+                        <div class="wb100 h30px lh30px">
+                            <div class="w100px center">
+                                <div class="w20px img-area fl">
+                                    <img src="images/cjjl_sc.png" class=" " style="margin-top: 3px">
+                                </div>
+                                <span class="fl Fgray-5 mal5" style="">抽奖记录</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </template>
+
+            <template v-if="login == true">
+                <a href="javascript:;" @click="redirect('store_draw_record.html')">
+                    <div class="grid-content wb50 fl bg-purple text-center pat10 pab10">
+                        <div class="wb100 h30px lh30px">
+                            <div class="w100px center">
+                                <div class="w20px img-area fl">
+                                    <img src="images/cjjl_sc.png" class=" " style="margin-top: 3px">
+                                </div>
+                                <span class="fl Fgray-5 mal5" style="">抽奖记录</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </template>
+
+            <template v-if="login == false">
+                <a href="javascript:;" @click="redirect('login.html?call=true&callUrl=store.html')">
+                    <div class="grid-content wb50 fl bg-purple-light text-center pat10 pab10">
+                        <div class="wb100  h30px lh30px bor-solid-1l bor-gray-8 ">
+                            <div class="w100px center">
+                                <div class="w20px img-area fl">
+                                    <img src="images/dz_sc.png" class=" " style="margin-top: 3px">
+                                </div>
+                                <span class="fl Fgray-5 mal5" style="">收货地址</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </template>
+
+
+            <template v-if="login == true">
+                <div @click="addressGo">
+                    <div class="grid-content wb50 fl bg-purple-light text-center pat10 pab10">
+                        <div class="wb100  h30px lh30px bor-solid-1l bor-gray-8 ">
+                            <div class="w100px center">
+                                <div class="w20px img-area fl">
+                                    <img src="images/dz_sc.png" class=" " style="margin-top: 3px">
+                                </div>
+                                <span class="fl Fgray-5 mal5" style="">收货地址</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+
+
+    <div class="pa15 Fgray-3 ">
+        <el-row :gutter="15">
+            <el-col :span="12" v-for="item in prizeList" class="mab15">
+                <div class="wb100 warpper-black-3">
+                    <a href="javascript:;" @click="redirect('store_detail.html?id='+item.id)">
+                            <div class="wb100 img-area relative">
+
+                                <img src="images/nothing2.png" style="z-index: 9; position: absolute; " v-if="item.num == 0" >
+
+                                <img :src="item.headerimg"/>
+                            </div>
+                        <div class=" pa10">
+                            <p class="F16 h20px lh20px text-over-hidden1 Fgray-5 Fnum">{{item.name}}</p>
+                            <p class="F16 h20px lh20px text-over-hidden1 Forange-2 mat5"><span class="Fnum">{{item.virtualprice}}</span> <span class="Fred F12">金币</span></p>
+                        </div>
+                    </a>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="wb100 h40px ">
+        <div class="text-center Fgray-6 h40px lh40px center w120px F14" v-show="loading">
+            <img src="images/loading-2.gif" v-show="!last" class="h20px fl mat10">
+            <span class="fl mal10">{{loadtext}}</span>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/shopping_mall.js"></script>
+<script src="js/loading.js"></script>
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_page",
+        data: {
+            fullscreenLoading: true,
+            page: 1,
+            pageSize: 10,
+            login: false,
+            showType: false,
+            showMore: false,
+            prizeList: [],
+            showUserMeun: false,
+            loading: true,
+            last: false,
+            loadtext: '商品加载中...',
+            empty: false,
+            address:true,
+        },
+        methods: {
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            addressGo : function addressGo() {
+
+                var _this = this;
+//
+//                console.log(_this.address)
+//
+//                return;
+
+                if(_this.address == false){
+
+                    window.location.href = 'store_add_address.html';
+
+                }else{
+
+                    window.location.href = 'store_delivery_address.html';
+
+                }
+
+            },
+
+
+            getaddressList: function getaddressList() {
+
+                var _this = this;
+
+                baseAjax.addressList(_this.page, _this.pageSize, function (data) {
+
+                    var _tmp = data.returnJSON.indexData;
+
+                    console.log(data.returnJSON.indexData);
+
+                    if(_tmp.length == 0){
+
+                        _this.address = false;
+
+                    }
+
+                });
+            },
+
+            getData: function getData() {
+                var _this = this;
+
+                if(_this.last){
+                    return;
+                }
+
+                BaseAjax.goodsList(_this.page,_this.pageSize, _this.bigtype, _this.category_id, function (data) {
+
+                    if(data){
+
+                        var _tmp = data.data.pagelist;
+
+                        console.log(data.data.pagelist)
+
+                        _this.prizeList = _this.prizeList.concat(_tmp);
+
+                        if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多商品';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多商品';
+                                return false;
+                            }
+                        }
+
+                        if (_tmp.length == 0) {
+                            _this.empty = true;
+                        } else {
+                            _this.empty = false;
+                        }
+
+                    }
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.showType = false;
+            _this.showMore = false;
+
+            //- 判断登录
+            baseAjax.userInfo(function (data) {
+                var _user = data.returnJSON;
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                    _this.login = false;
+                } else {
+                    _this.user = _user;
+
+                    _this.login = true;
+                    console.log(_this.user);
+                }
+            });
+
+            _this.getaddressList();
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+
+
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.showType = false;
+                _this.showMore = false;
+
+                baseAjax.userInfo(function (data) {
+                    var _user = data.returnJSON;
+
+                    if (base.isNull(_user)) {
+                        //- 未登录
+                        _this.login = false;
+                    } else {
+                        _this.user = _user;
+
+                        _this.login = true;
+                        console.log(_this.user);
+                    }
+                });
+
+                _this.getaddressList();
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

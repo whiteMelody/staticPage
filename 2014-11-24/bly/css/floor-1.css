@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+.floor-1{ padding-top:20px; clear:both; }
+.floor-1 .floor-1-title{ width:100%; border-bottom:2px solid #db305e; padding:1% 0; }
+.floor-1 .floor-1-title .floor-1-title-floor-location{ }
+.floor-1 .floor-1-title .floor-1-title-floor-location .floor-location-bg { background:url(../images/ico-floor-location.png); width:25px; height:34px; float:left; margin:10px; text-align:center; color:#fff; line-height:34px; font-size:14px; font-weight:600;}
+.floor-1 .floor-1-title .floor-1-title-floor-location .floor-location-title { float:left; margin:10px; height:34px; line-height:34px; text-align:left; font-size:24px; font-weight:600; color:#333; }
+.floor-1 .floor-1-title .floor-1-title-floor-menu{ }
+.floor-1 .floor-1-content{ width:99.999%; border:2px solid #c9c9c9; margin-top:10px; background:#fff;}
+.floor-1 .floor-1-content .floor1-product{ margin:1% 0 0 1%;}
+.floor-1 .floor-1-content .floor1-product img{ width:100%; height:100%;}
+.floor-1 .floor-1-content .floor1-product .product-img{ width:100%; height:70%;}
+.floor-1 .floor-1-content .floor1-product .product-title{ width:100%; height:10%; margin-top:5%; text-align:center;}
+.floor-1 .floor-1-content .floor1-product .product-price{ width:100%; height:10%; margin-top:5%; text-align:center;}
+.floor-1 .floor-1-content .floor1-product .product-price i{ color:#ff4918; font-style:normal; font-size:11px;}
+.floor-1 .floor-1-content .floor1-product .product-price b{ background:#fff09e; border:1px solid #ff4918; color:#ff4918; font-style:normal; font-size:10px; padding:1px 3px; margin-left:5px;}
+.floor-1 .floor-1-content .floor1-address-area{ width:47%; margin:1%;}
+.floor-1 .floor-1-content .floor1-address-area img{ width:100%; height:100%;}
+.floor-1 .floor-1-content .floor1-address-area .address-area-img{ }
+.floor-1 .floor-1-content .floor1-address-area .address-area-desc{ }
+.floor-1 .floor-1-content .product-desc-font-style{ font-size:16px; text-align:left; color:#999; line-height:30px; font-weight:600;}
+.floor-list{ clear:both; }
+.floor-list .floor-list-title{ width:100%; border-bottom:2px solid #c8c7c6;  }
+.floor-list .floor-list-title .floor-list-title-floor-location{ }
+.floor-list .floor-list-title .floor-list-title-floor-location .floor-location-bg { background:url(../images/ico-floor-location.png); width:25px; height:34px; float:left; margin:10px; text-align:center; color:#fff; line-height:34px; font-size:14px; font-weight:600;}
+.floor-list .floor-list-title .floor-list-title-floor-location .floor-location-title { float:left; margin:10px; height:35px; line-height:35px; text-align:left; font-size:18px; font-weight:600; color:#333; }
+.floor-list .floor-list-title .floor-list-title-floor-menu{ font-size:14px; font-weight:600; }
+.floor-list .floor-list-content{ width:100%; margin-top:10px; }
+.floor-list .floor-list-content .clear-line{ clear:both; border-bottom:1px solid #e1e1e1; width:95%; margin:0 auto; padding:10px 0; }
+.floor-list .floor-list-content .brand-list-area{ background:#fff; border:2px solid #c9c9c9; display:inline-block; clear:both;}
+.floor-list .floor-list-content .search-list-area{ background:#fff; border:2px solid #c9c9c9; display:inline-block; clear:both;}
+.floor-list .floor-list-content .product-list-area{ padding-top:20px; display:inline-block; clear:both; background:#fff;}
+.floor-list .floor-list-content .product-list-area .product-list-left-area{ margin:0 1%; background:#fff; border:1px solid #c9c9c9;}
+.floor-list .floor-list-content .product-list-area .product-list-left-area .product-list-left-area-title{ background:#f3f3f3; font-size:15px; border-bottom:1px solid #c9c9c9; color:#666; }
+.floor-list .floor-list-content .product-list-area .product-list-right-area{ margin:0 1%; background:#fff;}
+.floor-list .floor-list-content .product-list-area .product-list-page{}
+.floor-product-detail{ clear:both; }
+.floor-product-detail .floor-product-detail-title{ width:100%; border-bottom:2px solid #c8c7c6;  }
+.floor-product-detail .floor-product-detail-title .floor-product-detail-title-floor-location{ }
+.floor-product-detail .floor-product-detail-title .floor-product-detail-title-floor-location .floor-location-bg { background:url(../images/ico-floor-location.png); width:25px; height:34px; float:left; margin:10px; text-align:center; color:#fff; line-height:34px; font-size:14px; font-weight:600;}
+.floor-product-detail .floor-product-detail-title .floor-product-detail-title-floor-location .floor-location-title { float:left; margin:10px; height:35px; line-height:35px; text-align:left; font-size:18px; font-weight:600; color:#333; }
+.floor-product-detail .floor-product-detail-content{ background:#fff; display:inline-block; width:98%; padding:1%;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail{}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-zoom{}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-zoom img{ width:100%; height:100%;}
+
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc{}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc .product-detail-desc-title{ width:100%; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc .product-detail-desc-price{ width:100%; background:#fffafb; margin:10 0px;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc .product-detail-desc-tips{ width:100%; margin:10 0px;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc .product-detail-desc-num{ width:100%; margin:10 0px;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-desc .product-detail-desc-buttons{ width:100%; margin:10 0px;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-tip{ border:1px solid #c8c7c6;}
+.floor-product-detail .floor-product-detail-content .floor-product-detail .product-detail-tip .product-detail-tip-title{ background:#f7f7f7; color:#d93f60; width:95%; padding-left:5%; font-size:15px; font-weight:600;}
+.floor-product-detail .floor-product-detail-content .product-detail-tip-button-msg{ background:#d4003c; color:#fff; padding:3px; font-size:14px; }
+.floor-product-detail .floor-product-detail-content .product-detail-tip-button{ background:#f7f7f7; padding:5px 10px; font-size:14px; margin:5px; float:left; border:1px solid #ccc; font-weight:normal; cursor:pointer; }
+.floor-product-detail .floor-product-detail-content .product-detail-button-red{ background:#d4003c; color:#fff; font-size:16px; font-weight:600; padding:10px 25px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius:7px;}
+.floor-product-detail .floor-product-detail-content .product-detail-button-yellow{ background:#ff834d; color:#fff; font-size:16px; font-weight:600; padding:10px 25px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius:7px;}
+.floor-product-detail .floor-product-detail-content .product-detail-button-black-small{ background:#000; color:#fff; font-size:12px;  padding:5px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius:3px; width:auto; display:inline-block;}
+.floor-product-detail .floor-product-detail-content .product-detail-button-red-small{ background:#d4003c; color:#fff; font-size:14px; font-weight:600; padding:5px 10px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius:3px; width:auto; display:inline-block;}
+.floor-product-detail .floor-product-detail-content .product-detail-button-yellow-small{ background:#ff834d; color:#fff; font-size:14px; font-weight:600; padding:5px 10px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius:3px;  width:auto; display:inline-block;}
+
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area{}
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-left-area{ margin:0 1%; background:#fff; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-left-area .product-datail-left-area-title{ background:#f3f3f3; font-size:15px; border:1px solid #c9c9c9; border-bottom:none; color:#666; text-align:left; width:98%; padding-left:2%; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area{ margin:0 1%; background:#fff; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-box-title{ color:#000; font-size:17px; background:#f7f7f7; font-weight:600;  width:auto; display:inline-block; padding:0 15px; float:left; cursor:pointer; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .box-title-hover{ color:#d4003c; border-top:1px solid #d4003c; background:#fff; }
+
+
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-meal-area{ border:1px solid #c9c9c9;  }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-meal-area .product-detail-meal-title{ background:#f7f7f7; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-meal-area .product-detail-meal-list{}
+
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-table-area{ border:1px solid #c9c9c9; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-table-area .product-detail-table-title{ background:#f7f7f7; }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-table-area .product-detail-table-content{ }
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-desc-area{}
+.floor-product-detail .floor-product-detail-content .floor-product-detail-desc-area .product-datail-right-area .product-detail-desc-area img{ width:100%; height:100%;}
+

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/sign.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>课程详情</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| lesson_detail_page
+| ------------------------------------------
+| Here are lesson_detail_page html
+|
+-->
+<div id="lesson_detail_page">
+
+    <layout-loader-black :show="loading"></layout-loader-black>
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <en-pay ref="enPay" :phone="channel.isUserTips" :gold="channel.salesPrice >= 0" :item="channel" v-on:callback="payCallback" v-on:callbackfail="payCallbackFail" v-on:payload="payIng"></en-pay>
+
+    <div class="lesson_detail_page_content hidden wb100">
+
+        <div class="dialogBg" @click="closeComment"></div>
+
+        <div class="commBg" style="width: 300px; display: none; z-index: 999999; height: 200px; background: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; margin: auto; padding: 15px; border: 1px solid #e1e1e1;">
+            <p class="h30px lh30px">添加评论</p>
+
+            <div class="clear1"></div>
+
+            <el-input
+                    type="textarea"
+                    :rows="4"
+                    placeholder="请输入内容"
+                    v-model="commentVal">
+            </el-input>
+
+            <div class="clear1"></div>
+
+            <div class="wb100 h40px lh40px warpper-blue Fwhite F16 text-center radius5" @click="submitComment">评论</div>
+
+        </div>
+
+        <div class="wb100" v-if="!isPlay">
+
+            <div class="wb100 h265px over-hidden relative">
+
+                <en-header-new :back="true" :home="true" :white="false"></en-header-new>
+
+                <img :src="channel.iconURL + '?x-oss-process=image/resize,m_fill,h_220,w_'+width" class="img-filter40" />
+
+                <div style="background: rgba(0,0,0,.2); top: 0; left: 0; z-index: 9;" class="wb100 h220px absolute"></div>
+
+                <div  class="absolute w280px text-center" style="left: 0; right: 0; top: 25px; margin: 0 auto; z-index: 999;">
+
+                    <div class="w120px h120px img-area center">
+                        <img :src="channel.iconURL + '?x-oss-process=image/resize,m_fixed,h_240,w_240'" />
+                    </div>
+
+                    <p class="lh30px h30px F20 mat10 center text-over-hidden1 Fgray-3 Fb">{{channel.channelName}}</p>
+                    <p class="lh20px F14 Fgray-3 center text-over-hidden2 mat5">{{channel.subtitle}}</p>
+                    <p class="lh20px F12 Fgray-2 center text-over-hidden2 mat10">{{channel.openCount}}个人在学</p>
+                </div>
+
+                <div class="wb120 h265px warpper-white absolute radius50per" style="z-index: 99; bottom: -110px; left: -10%;"></div>
+            </div>
+
+        </div>
+
+        <div class="wb100 video-area" v-else>
+
+            <div class="wb100 fixed warpper-black" :style="'height: '+ parseInt(Math.ceil(width*0.6) + 50) +'px; top:0;left:0; z-index:99;'">
+                <en-header-new :back="true" :home="true" :white="false" :title="playList[currentVideo].lessonName"></en-header-new>
+
+                <video v-if="isM3u8" :src="videoUrl" class="wb100" webkit-playsinline playsinline controls :style="'height: '+ Math.ceil(width*0.6) +'px;'">
+                </video>
+                <div class="wb100" v-else v-html="videoHtml" :style="'height: '+ Math.ceil(width*0.6) +'px;'"></div>
+            </div>
+
+            <div class="wb100" :style="'height: '+ parseInt(Math.ceil(width*0.6) + 50) +'px;'"></div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="wb100">
+            <div class="pal15 F14">
+                <template v-for="(item,index) in playList">
+                    <template v-if="buyed">
+                        <div class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b F14 wb100" :class="index == currentVideo ? 'Fblue' : 'Fgray-4'" @click="playLesson(item,index)">
+                            {{item.lessonName}}
+                            <img src="images/icon-vipTag.png" v-if="isVip" style="position: absolute; width: 19px; height: 19px; top: 13px; right: 13px; z-index: 9;">
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div v-if="index < channel.freeLessonNum" :class="index == currentVideo ? 'Fblue' : 'Fgray-4'" class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b F14" @click="playLesson(item,index)">
+                            {{item.lessonName}}
+                        </div>
+                        <div v-else class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b Fgray-5 F14" @click="buyLesson">
+                            {{item.lessonName}}
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div class="clear1 warpper-gray-1"></div>
+
+        <div class="pa15">
+            <p>
+                <span class="fl">评论</span>
+                <span class="fr Fblue" @click="openComment">我要评论 > </span>
+            </p>
+
+            <div class="clear1"></div>
+
+            <div class="wb100" v-for="(item,key) in comments">
+
+                <div class="wb100">
+
+                    <div class="w50px h100px fl">
+                        <div class="img-area w50px h50px relative">
+                            <img :src=" item.userIconURL ? item.userIconURL +'?x-oss-process=image/resize,m_fixed,h_100,w_100' : 'images/head-default.png'" class="radius50per" />
+                            <img src="images/img-vip.png" v-if="item.vip>0" style="position: absolute; width: 27px; height: 12px; margin: 0 auto; left: 0; right: 0; bottom:0; z-index: 9;">
+                        </div>
+                    </div>
+
+                    <div class="Fgray-3">
+                        <p class="lh30px h30px over-hidden pal15 F16 Fblack">
+                            <span class="fl Fred" v-if="item.vip>0">{{item.nickName}}</span>
+                            <span class="fl" v-else>{{item.nickName}}</span>
+                            <span class="fr Fgray-2 F14 mal5 mar15">({{item.praiseCount}})</span>
+                            <b class="img-area fr" style="width: 18px; height: 18px; margin-top: 2px;">
+                                <img src="images/icon-zaned.png" v-if="item.zaned">
+                                <img src="images/icon-zan.png" v-else @click="zan(item.commentID,key)" ref="refZan">
+                            </b>
+                        </p>
+                        <p class="lh30px h30px over-hidden pal15 F12 Fblack Fgray-2">{{item.commentTime}}</p>
+                        <p class="F14 lh20px h40px text-over-hidden2 pal15 par10">{{item.comment}}</p>
+                    </div>
+                </div>
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+                <div class="clear1"></div>
+
+            </div>
+
+
+            <div class="clear"></div>
+
+            <div class="wb100" v-if="comments.length>0">
+                <a :href="'comments.html?channelID='+channelID"><p class="h30px lh30px Fgray-3 text-center">更多评论></p></a>
+                <div class="clear1"></div>
+            </div>
+
+            <div class="wb100" v-else>
+                <p class="h30px lh30px Fgray-2 text-center">暂无评论</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <template  v-if="channel.isBuy && buyed == false">
+
+        <div class="wb100" style="position: fixed; bottom: 0; z-index: 99;">
+            <div class="pal15 par15 pat10 pab10 lh25px warpper-white box-shadow-gray3 over-hidden">
+
+                <div class="wb40 fl">
+                    <div class="wb100" v-if="channel.salesPrice > 0">
+                        <p class="Forange F20">¥{{ channel.salesPrice / 100 }}</p>
+                        <p class="Fgray-2 FLine F14">原价：{{channel.marketPrice}}</p>
+
+                    </div>
+                    <div class="wb100" v-else>
+                        <p class="Forange F20">{{channel.payGoldCoins}}金币</p>
+                        <p class="Fgray-2 FLine F14">原价：{{channel.goldCoins}}金币</p>
+                    </div>
+                </div>
+
+                <div class="wb60 fr mat5">
+                    <div class="wb45 fl h40px lh40px warpper-blue Fwhite F16 text-center radius5" @click="buyLesson">加入学习</div>
+                    <div class="wb45 fr h40px lh40px warpper-orange-2 Fwhite F16 text-center radius5" @click="buyLesson('vip')">成为VIP</div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="clear h70px"></div>
+
+    </template>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+
+    let vm = new Vue({
+        el : "#lesson_detail_page",
+        data : {
+            showLoader : true,
+            loading : false,
+            list : [],
+            comments : [],
+            channel : {},
+            isDetail : true,
+            isPlay : false,
+            isRecharge : false,
+            channelID : "",
+            videoUrl : "",
+            page : 1,
+            pageSize : 3,
+            width : 0,
+            buyed : false,
+            isVip : false,
+            isM3u8 : false,
+            videoHtml : "",
+            playList : [],
+            currentVideo : -1,
+            commentVal : "",
+        },
+        methods : {
+
+            openComment(){
+
+                let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+
+                if(base.isNull(userInfo)){
+                    if(base.versions.isWeiXin){
+                        layer.confirm('您还没有登录，前去登录吗？', {
+                            btn: ['好的','取消'] //按钮
+                        }, function(){
+                            //前去登录
+                            let call = window.location.href;
+                            window.location.href = 'wx_login.html?call='+call;
+                        }, function(){
+                            //取消登录
+                        });
+                    }else{
+                        layer.alert("请在微信里打开，使用评论功能");
+                    }
+                    return false;
+                }
+
+                $(".dialogBg").show(0);
+                $(".commBg").show(0);
+            },
+            submitComment(){
+                let _this = this;
+                if(base.isNull(_this.commentVal)){
+                    layer.alert("请输入评论");
+                    return false;
+                }
+                baseAjax.commentChannel(_this.channelID, '', _this.commentVal ,function(data){
+                    if(data){
+                        layer.alert("评论成功");
+                    }
+                    baseAjax.commentListByID(_this.page, _this.pageSize, _this.channelID, function (data) {
+                        _this.comments = data.returnJSON.indexData;
+                        for(let i=0; i<_this.comments.length; i++){
+                            if(window.localStorage.getItem(_this.channelID +"-" + _this.comments[i].commentID)){
+                                _this.comments[i].zaned = true;
+                            }
+                        }
+                        _this.closeComment();
+
+                    })
+
+                });
+
+            },
+            closeComment(){
+                $(".dialogBg").hide(0);
+                $(".commBg").hide(0);
+            },
+
+            changeNav(type){
+                let _this = this;
+                if(type == 0)
+                    _this.isDetail = true;
+                else
+                    _this.isDetail = false;
+            },
+
+            changeLesson(){
+
+            },
+
+            zan(commentID,index){
+
+                let _this = this;
+                //赞
+                baseAjax.commentPraise(commentID,function(data){
+                    if(data){
+                        _this.zaned = true;
+                        _this.comments[index].zaned = true;
+                        _this.comments[index].praiseCount++;
+
+                        Vue.set( _this.comments, index,  _this.comments[index]);
+                        window.localStorage.setItem(_this.channelID +"-" + commentID,true);
+                    }
+                })
+            },
+
+            myBack(){
+                window.history.go(-1);
+            },
+
+            payIng(){
+                this.loading = true;
+            },
+
+            payCallback(){
+                layer.alert('购买成功');
+                let _this = this;
+                _this.buyed = true;
+                //更新用户数据，查询是否为vip
+                let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+                baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+                    _this.user = data.returnJSON;
+                    if(_this.user.vip > 0){
+                        _this.isVip = true;
+                    }
+                })
+                _this.loading = false;
+                _this.$refs.enPay.closePay();
+            },
+
+            payCallbackFail(){
+                layer.alert('购买失败');
+                this.loading = false;
+                this.$refs.enPay.closePay();
+            },
+
+            buyLesson(vip){
+
+                if(vip == 'vip'){
+                    this.$refs.enPay.openPay(vip);
+                }else{
+                    this.$refs.enPay.openPay();
+                }
+
+            },
+
+            playLesson(item,index){
+
+                let _this = this;
+                let _flag = false;
+
+                if(_this.channel.channelType == 1){
+                    window.location.href = "lesson_play.html?lessonID="+item.lessonID;
+                }else{
+
+                    _this.currentVideo = index;
+
+                    if(!base.isNull(item.videoURL) || !base.isNull(item.videoURL1)){
+                        //如果一个值不为null
+                        if(!base.isNull(item.videoURL)){
+                            if(item.videoURL.indexOf(".m3u8")!=-1){
+                                let _vUrl = signs.getUrlSign(item.videoURL,'A');
+                                _this.videoUrl = _vUrl;
+                                _this.isM3u8 = true;
+                                _flag = true;
+                            }
+                        }
+                        if(!base.isNull(item.videoURL1)){
+                            if(item.videoURL1.indexOf(".m3u8")!=-1){
+                                let _vUrl = signs.getUrlSign(item.videoURL1,'A');
+                                _this.videoUrl = _vUrl;
+                                _this.isM3u8 = true;
+                                _flag = true;
+                            }
+                        }
+
+                    }else{
+                        _this.isM3u8 = false;
+                        _this.videoHtml = item.shareVideoURL;
+                    }
+
+                    if(_flag){
+                        //m3u8
+                    }else{
+                        _this.isM3u8 = false;
+                        _this.videoHtml = item.shareVideoURL;
+                    }
+
+                    _this.isPlay = true;
+                }
+
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.channelID = base.getParmar("channelID");
+
+            _this.width = $(window).width();
+
+            if(base.isNull(_this.channelID)){
+                layer.alert("缺少频道ID");
+                return false;
+            }
+            //判断是否为付费频道
+
+            baseAjax.getLessonsByChannelID(_this.channelID, function(data2){
+
+                _this.channel = data2.extendInfo;
+                _this.playList = data2.returnJSON;
+
+                if(_this.channel.isBuy == true){
+
+                    let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+
+                    if(base.isNull(userInfo)){
+                        //未登录
+
+                        setTimeout(function(){
+                            _this.showLoader = false;
+                            $(".lesson_detail_page_content").removeClass("hidden");
+                        },ajaxConfig.lazy);
+                    }else{
+                        //获取用户数据和用户购买记录
+                        baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+                            _this.user = data.returnJSON;
+
+                            if(_this.user.vip > 0){
+                                _this.buyed = true;
+                                _this.isVip = true;
+                            }
+
+                        })
+
+                        baseAjax.getBuyList(userInfo.userID,function(data){
+                            //判断是否付费
+
+                            let buyed = data.returnJSON;
+
+                            for(let i=0; i<buyed.length; i++){
+                                if(buyed[i].product == _this.channelID){
+                                    _this.buyed = true;
+                                }
+                            }
+
+                            setTimeout(function(){
+                                _this.showLoader = false;
+                                $(".lesson_detail_page_content").removeClass("hidden");
+                            },ajaxConfig.lazy);
+
+                        })
+                    }
+
+                }else{
+
+                    _this.buyed = true;
+
+                    setTimeout(function(){
+                        _this.showLoader = false;
+                        $(".lesson_detail_page_content").removeClass("hidden");
+                    },ajaxConfig.lazy);
+                }
+
+            })
+
+            //获取评论
+
+            baseAjax.commentListByID(_this.page, _this.pageSize, _this.channelID, function (data) {
+                _this.comments = data.returnJSON.indexData
+                for(let i=0; i<_this.comments.length; i++){
+                    if(window.localStorage.getItem(_this.channelID +"-" + _this.comments[i].commentID)){
+                        _this.comments[i].zaned = true;
+                    }
+                }
+
+            })
+
+            baseAjax.getTicket(function(data){
+                let now = Math.floor(new Date().getTime() / 1000);
+                let noncestr = base.getUuid();
+                let jsapi_ticket = 'jsapi_ticket='+ data.returnJSON + '&noncestr='+ noncestr + '&timestamp='+ now +'&url='+ encodeURI(location.href.split('#')[0]);
+                let signature = hex_sha1(jsapi_ticket);
+                wx.config({
+                    debug: false,
+                    appId: 'wx484ec69840157a5a',
+                    timestamp: now,
+                    nonceStr: noncestr,
+                    signature: signature,
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone'
+                    ]
+                });
+            })
+
+        }
+    })
+
+    wx.ready(function () {
+
+        wx.onMenuShareTimeline({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            desc: vm.channel.subtitle, // 分享描述
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            desc: vm.channel.subtitle, // 分享描述
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>

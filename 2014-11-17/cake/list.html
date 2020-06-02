@@ -1,0 +1,903 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+			//$(".cartBtn").show(0);
+			
+			/*	menu	*/
+			$(".menu .menu-li").each(function(index){
+			var width = parseInt($(this).css("width"));
+				$(this).hover(function(){
+					$(".menu-li-box").stop().animate({marginLeft:index * (width + 2 ) + "px"});	
+					$(".menu-li-box").parent().attr("href",$(this).find("a").attr("href"));
+				},function(){
+					$(".menu-li-box").stop().animate({marginLeft:index * (width + 2 ) + "px"});	
+					$(".menu-li-box").parent().attr("href",$(this).find("a").attr("href"));
+				});
+			});
+			
+			$(".menu-warpper").mouseleave(function(){
+				$(".menu-li-box").stop().animate({marginLeft:0});	
+				$(".menu-li-box").parent().attr("href",$(".menu .menu-li:eq(0)").find("a").attr("href"));
+			});
+		
+			/*	favBtns	*/
+			$(".fav-btn").toggle(function(){
+				$(this).addClass("fav-btn-hover");
+			},function(){
+				$(this).removeClass("fav-btn-hover");
+			});
+			
+			$(".fav-btn2").toggle(function(){
+				$(this).addClass("fav-btn2-hover");
+			},function(){
+				$(this).removeClass("fav-btn2-hover");	
+			});
+			
+			$(".cartBtn").mouseover(function(){
+				$(this).parent().next().show();
+			});
+			
+			$(".block").mouseleave(function(){
+				$(this).find(".block-buy").hide();
+			});
+			
+			/*	check num	*/
+			$("input.inp-num").click(function(){
+				$(this).css("width","50px");
+				$(this).css("borderBottom","1px solid #C0C0C0");
+				$(this).css("color","#777");
+				$(this).removeAttr("readonly");
+			}).keypress(function(){
+				if(isNaN($(this).val())){
+					var s = $(this).val().substring(0,$(this).val().length - 1);
+					$(this).val(s);
+				}
+				
+			}).keyup(function(){
+				if(isNaN($(this).val())){
+					var s = $(this).val().substring(0,$(this).val().length - 1);
+					$(this).val(s);
+				}
+			}).blur(function(){
+				$(this).val(parseInt(formatNum($(this).val())));
+				$(this).css("width","45px");
+				$(this).css("color","#fc4c01");
+				$(this).css("border","none");
+				$(this).attr("readonly","readonly");
+			});
+			
+			$(".btn-add").click(function(){
+				$(this).next().val(parseInt($(this).next().val())+1);
+			});
+			$(".btn-delete").click(function(){
+				if($(this).prev().val()<=1)
+					return false;
+				$(this).prev().val(parseInt($(this).prev().val())-1);
+				
+			});
+			
+			/*	my location */
+			
+			$(".top-location").click(function(e){
+		
+				if($(this).attr("css") != "top-location"){
+					$(this).addClass("top-location-hover");
+					
+					var obj = $(".top-location-warpper");
+					
+					obj.css("top",e.pageY - 10);
+					obj.css("left",e.pageX - 10); 
+					obj.show();
+				}else{
+					$(this).removeClass("top-location-hover");
+					$(".top-location-warpper").hide();
+				}
+			});
+			$(".top-location-warpper").mouseleave(function(){
+				$(".top-location").removeClass("top-location-hover");
+				$(this).hide();
+			})
+			
+			/*	why		*/
+			
+			$(".why-box-ul").hide();
+			$("div.why-icon .why-ul li").mouseover(function () {
+				var index = $(this).index();
+				$(".why-box-ul").stop(true, true).slideDown();
+				$(".why-box-ul li").eq(index).show().siblings().hide();
+			});
+			$("div.why-icon").on("mouseleave", function () {
+				$(".why-box-ul").stop(true, true).slideUp();
+			});
+			
+		});
+		
+	function formatNum(num,point,numMax,numMin){
+		if(isNaN(num) || num=="" || num==null || num==undefined)
+			num = 0;
+		if(isNaN(point) || point=="" || point==null || point==undefined)
+			point = 0;
+		num = parseFloat(num);
+		point = parseFloat(point);
+		if(point!=0)
+			num = num.toFixed(point);
+		return num;
+	};
+    </script>
+    <title></title>
+<title></title>
+</head>
+
+<body>
+
+<div class="top">
+    <div class="middle" id="zoneLogin">
+        <div class="top-l">
+        	 <a class="grey" href="javascript:void(0)">你好，欢迎来到微食店！</a>
+            <a class="orange" href="javascript:void(0)">[登录]</a>
+            <a class="green" href="javascript:void(0)">[免费注册]</a>
+        </div>
+        <div class="top-r">
+            <a class="grey" href="javascript:void(0)">我的微食</a><span class="top-line">|</span>
+            <a class="grey" href="javascript:void(0)">投诉建议</a><span class="top-line">|</span>
+            <a class="grey" href="javascript:void(0)">联系客服</a><span class="top-line">|</span>
+            <a class="grey" href="javascript:void(0)">帮助中心</a><span class="top-line">&nbsp;</span>
+        </div>
+        <div class="top-cart"><a class="white" style="margin-left:40px; font-size:14px;" href="javascript:void(0)">0</a>
+        </div>
+    </div>
+</div>
+	<!--导航栏-->
+<div class="main-warpper">
+<div class="middle">
+    <div class="mainnav">
+        <div class="mainnav-logo">
+            <a href="javascript:void(0)"><img class="img-logo" src="images/logo1.png" alt=""></a>
+        </div>
+        <div class="mainnav-right">
+        	<ul>
+                <li style="padding-top:10px;"><div style="background:url(images/search.png) no-repeat; width:305px; height:30px; border:none; float:right;"><input type="text" value="search..." style="padding:3px; height:20px; border:none;margin-top:2px; color:#C0C0C0;" /><input type="button" value=" " style=" padding:3px; width:70px; border:none; background:none; cursor:pointer;" /></div></li>
+            </ul>
+            <div class="loactiion" style="float:left; margin-top:63px;">
+            	<img src="images/loaction.png" />
+            </div>
+            <div class="top-location">&nbsp;</div>
+            
+            <div class="menu-warpper">
+                <ul class="menu">
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat 20px -20px;"></div></a>
+                    </li>
+                    <li class="menu-li-line">
+                    </li>
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat -80px -20px;"></a>
+                    </li>
+                    <li class="menu-li-line">
+                    </li>
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat -185px -20px;"></a>
+                    </li>
+                    <li class="menu-li-line">
+                    </li>
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat -285px -20px;"></a>
+                    </li>
+                    <li class="menu-li-line">
+                    </li>
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat -390px -20px;"></a>
+                    </li>
+                    <li class="menu-li-line">
+                    </li>
+                    <li class="menu-li"><a href="javascript:void(0)" class="yellow">
+                    	<div style="width:100px; height:20px; margin-top:15px; margin-left:5px; background:url(images/menu-font.png) no-repeat -505px -20px;"></a>
+                    </li>
+                    <a href="javascript:void(0)"><div class="menu-li-box">&nbsp;
+                    </div></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 八大理由 -->
+        
+  <div class="why">
+    <div class="why-icon">
+        <ul class="why-ul">
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+              <li class="why-li"><a href="">
+                  <img class="trans anim" src="images/ico-cake1.png"></a></li>
+      </ul>
+          <ul class="why-box-ul">
+              <li class="why-box-li box-1">
+                  <div class="why-box-div">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致的原料配比</h1>
+                      <p>
+                          我们严格选择全世界最棒的蛋糕食材，新西兰芝士或是比利时巧克力或是西班牙朗姆酒都是无可复制、独一无二的。 </p>
+                  </div>
+              </li>
+              <li class="why-box-li">
+                  <div class="why-box-div box-2">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致的性价比</h1>
+                      <p>
+                          极致的蛋糕是性价比最高的，我们采用最优质的原材料，经过精心的烘焙，准确安全的送达到您手上，但每款才58元。</p>
+                  </div>
+              </li>
+              <li class="why-box-li box-3">
+                  <div class="why-box-div">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致的星座</h1>
+                      <p>
+                          我们根据星座，每月推出一款欧式风格的新品。不管你是什么星座，都可以在极致找到那只量身定做的美味蛋糕。</p>
+                  </div>
+              </li>
+              <li class="why-box-li box-4">
+                  <div class="why-box-div">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致的云配送</h1>
+                      <p>
+                          我们实现了业内首创的云配送，能让顾客在第一时间感受到蛋糕的曼妙滋味。并且，我们的配送是免费的。 </p>
+                  </div>
+              </li>
+              <li class="why-box-li box-5">
+                  <div class="why-box-div">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致研发</h1>
+                      <p>
+                          我们有专业的研发团队，有我们自己的蛋糕实验室，极致的每一款蛋糕中都凝结了蛋糕师的用心与专注。</p>
+                  </div>
+              </li>
+              <li class="why-box-li box-6">
+                  <div class="why-box-div">
+                      <b class="why-box-arrow"></b>
+                      <h1>
+                          极致的团队</h1>
+                      <p>
+                          我们的团队由来自五湖四海的小伙伴们组成。每个人都是业界的精英，在极致的世界里，我们追求完美，打造极致的蛋糕。</p>
+                  </div>
+              </li>
+             
+          </ul>
+    </div>
+</div>
+
+
+<!-- 内容 -->
+
+<div class="content-warpper" style="height:1800px;">
+	<div class="title2">
+    	<ul class="ul-menu">
+        	<li>
+            	<div class="menu-txt">默认</div>
+                <div class="menu-order">
+                	<div class="menu-asc">&nbsp;</div>
+                    <div class="menu-desc">&nbsp;</div>
+                </div>
+			</li>
+        	<li>
+            	<div class="menu-txt">销量</div>
+                <div class="menu-order">
+                	<div class="menu-asc">&nbsp;</div>
+                    <div class="menu-desc">&nbsp;</div>
+                </div>
+			</li>
+            <li>
+            	<div class="menu-txt">价格</div>
+                <div class="menu-order">
+                	<div class="menu-asc">&nbsp;</div>
+                    <div class="menu-desc">&nbsp;</div>
+                </div>
+			</li>
+            <li>
+            	<div class="menu-txt">最新</div>
+                <div class="menu-order">
+                	<div class="menu-asc">&nbsp;</div>
+                    <div class="menu-desc">&nbsp;</div>
+                </div>
+			</li>
+        </ul>
+        <ul class="ul-page">
+        	<li><a href="javascript:void(0)" class="orange">1</a>/3</li>
+        	<li><</li>
+        	<li>></li>
+        </ul>
+        
+    </div>
+    <div class="content" style="height:1720px;">
+    	<!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- block -->
+    	<div class="block">
+        	<div class="block-pic">
+            	<img src="images/product_6.jpg" />
+            </div>
+            <div class="block-txt">
+             	<a href="javascript:void(0)" class="grey">Lipo白巧克力面包干 + 泰国力大狮豆奶</a>
+            </div>
+            <div class="block-btn">
+            	<div class="priceFav">
+                	<div class="price"><a href="javascript:void(0)" class="orange">￥10.00</a></div>
+                    <div class="fav">
+                    	<div class="fav-btn fl"></div><div class="fav-txt">喜欢</div>
+                        <div class="fav-btn2 fl"></div><div class="fav-txt">收藏</div>
+                    </div>
+                </div>
+                <div class="cartBtn">
+                	<img src="images/cart-btn.png" />
+                </div>
+            </div>
+            <div class="block-buy">
+            	<div class="btns">
+                
+                	<input type="button" value="+" class="btn-add" />
+                    <input type="text" value="1" class="inp-num" />
+                    <input type="button" value="-" class="btn-delete" />
+                </div>
+               	<div class="toBuy">
+                	<a href="javascript:void(0)" class="orange">加入购物车 >></a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+    <!--底部栏-->
+<div class="bottom" style="clear:both">
+    <div class="middle">
+        <div class="bottom-l">
+            <img style="margin-top:45px;" src="images/logo2.png">
+        </div>
+        <div class="bottom-m">
+            <p class="bottom-p">
+                <a class="grey" href="javascript:void(0)">关于我们</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)">隐私条例</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)">常见问题</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)">运输条例</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)">退换条例</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)" target="_blank">新浪微博</a><span class="bottom-line">/</span>
+            	<a class="grey" href="javascript:void(0)">蜡烛支付</a><span class="bottom-line">/</span>
+                <a class="grey" href="javascript:void(0)">运费支付</a>
+                <br>
+                
+客服电话：400-627-5757&nbsp;&nbsp;&nbsp;&nbsp;固定电
+话：021-64829587&nbsp;&nbsp;&nbsp;&nbsp;周一至周
+日：9：00-21：00&nbsp;&nbsp;&nbsp;&nbsp;<br />客服邮箱：<a class="grey" href="javascript:void(0)">kskkf@bestcake.com</a>
+
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备11046518号 
+            </p>
+        </div>
+        <div class="bottom-r">
+            <img style="margin-top:15px;" src="images/code.png">
+        </div>
+    </div>
+</div>
+<div class="top-location-warpper">
+    <div class="top-location2"></div>
+</div>
+</body>
+</html>

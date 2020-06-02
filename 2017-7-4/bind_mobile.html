@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+
+    <title>手机绑定</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| bind_mobile_page
+| ------------------------------------------
+| Here are bind_mobile_page html
+|
+-->
+
+<div id="bind_mobile_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <template v-if="state == 0">
+            <ticket-header :title="'手机绑定'" :back="true" :back_url="'safe_center.html'"></ticket-header>
+
+            <div class="clear1"></div>
+
+            <ticket-input-code :show="mobilePhone == ''" :input_name="'手机号码'" :code_name="'验证码'" :btn_name="'确定'" :ajax_type="'bind_mobile'" v-on:callback="btnCallback"></ticket-input-code>
+
+            <template v-if="mobilePhone != ''">
+                <div class="pal15 par15 warpper-white lh50px F14 Fgray-3">
+                    <p>
+                        <span class="w70px fl">手机号</span>
+                        <span class="fl">{{mobilePhone}}</span>
+                        <span class="fr Fred">已绑定</span>
+                    </p>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+
+                <div class="pa15">
+                    <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5" @click="state = 1">更换手机号码</div>
+                </div>
+            </template>
+
+        </template>
+
+        <template v-if="state == 1">
+            <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+                <div class="w50px h50px fl absolute"  @click="state = 0">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+                <p class="text-center Fwhite"> 更换手机</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <p class="pa15 F14 Fgray-3">请确认当前的手机号码{{mobilePhone}}能否接受短信。选择相应的方式修改</p>
+
+            <div class="h50px lh25px pat10 pab10 pal15 warpper-white F16 Fgray-3 relative" @click="state = 2">
+                <div class="wb100">
+                    <p>能接收短信</p>
+                    <p class="F12 Fgray-2">通过原手机号码接收验证码更改</p>
+                    <img src="images/arrow-right.png" class="h16px absolute" style="top: 27px; right: 15px;">
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="clear bor-gray bor-solid-1b"></div>
+
+            <div class="h50px lh25px pat10 pab10 pal15 warpper-white F16 Fgray-3 relative" @click="state = 3">
+                <div class="wb100">
+                    <p>无法接收短信</p>
+                    <p class="F12 Fgray-2">原手机号码丢失或停用，通过身份证修改</p>
+                    <img src="images/arrow-right.png" class="h16px absolute" style="top: 27px; right: 15px;">
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </template>
+
+        <template v-if="state == 2">
+            <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+                <div class="w50px h50px fl absolute"  @click="state = 1">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+                <p class="text-center Fwhite"> 更换手机</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <ticket-input-code :show="true" :input_name="'新手机号'" :code_name="'验证码'" :btn_name="'确定'" :ajax_type="'update_mobile'" v-on:callback="btnCallback2"></ticket-input-code>
+
+        </template>
+
+        <template v-if="state == 3">
+            <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+                <div class="w50px h50px fl absolute"  @click="state = 1">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+                <p class="text-center Fwhite"> 更换手机</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <div class="pal15 par15 relative F14 warpper-white">
+                <div style="padding-left: 80px;">
+                    <div class="w70px absolute" style="top: 0; left:15px ; height: 47px; line-height: 47px;">
+                        身份证号
+                    </div>
+                    <input type="text" class="bor-none wb100 h45px lh45px" v-model="cardNum" placeholder="请输入身份证号">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="pa15">
+                <div class="wb100 h45px lh45px warpper-red Fwhite F16 text-center radius5 btn-login" :class="cardNum.length>0 ? 'warpper-red Fwhite' : 'warpper-pink Fwhite'" @click="state = 4">下一步</div>
+            </div>
+
+        </template>
+
+        <template v-if="state == 4">
+            <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+                <div class="w50px h50px fl absolute"  @click="state = 1">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+                <p class="text-center Fwhite">更换手机</p>
+            </div>
+
+            <div class="clear1"></div>
+
+            <ticket-input-code :show="true" :input_name="'原手机号'" :code_name="'验证码'" :btn_name="'确定'" :ajax_type="'update_mobile'" v-on:callback="btnCallback2"></ticket-input-code>
+
+        </template>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#bind_mobile_page",
+        data : {
+            fullscreenLoading: true,
+            mobilePhone : '',
+            state : 2,
+            cardNum : '',
+        },
+        methods : {
+            btnCallback(data){
+
+                if(data.state == 'success'){
+                    this.$message({
+                        type: 'success',
+                        message: '绑定成功'
+                    });
+                    window.location.href = 'safe_center.html';
+                }else{
+                    this.$message({
+                        type: 'error',
+                        message: data.msg
+                    });
+                }
+            },
+
+            btnCallback2(data){
+                if(data.state == 'success'){
+                    this.$message({
+                        type: 'success',
+                        message: '修改绑定成功'
+                    });
+                    window.location.href = 'safe_center.html';
+                }else{
+                    this.$message({
+                        type: 'error',
+                        message: data.msg
+                    });
+                }
+            }
+
+        },
+        created(){
+            let _this = this;
+
+            baseAjax.securityInfo(function(data){
+                if(data){
+                    let _tmp = data.returnJSON;
+                    if(base.isNull(_tmp.mobilePhone))
+                        _this.mobilePhone = '';
+                    else
+                        _this.mobilePhone = _tmp.mobilePhone;
+                }
+            })
+
+            setTimeout(function(){
+                _this.fullscreenLoading = false;
+                $("#bind_mobile_page").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

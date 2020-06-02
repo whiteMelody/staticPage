@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/sign.js"></script>
+    <script src="js/loading.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        html,body,.lrc-area,.lrcs{ width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+        .audio-area{ position: fixed; bottom:0px; left: 0px; z-index: 999; }
+
+        .text-area p{ line-height: 30px; padding: 10px 0; color: #fff; font-size: 14px;}
+
+        .lrcs{ width: 100%; margin: 0; padding: 0; transform: translate3d(0px, 0px, 0px);}
+        .lrcs li{  padding: 10px; text-align: center; color: rgba(255,255,255,.6); font-family: 'Lato', 'Lucida Grande','Lucida Sans Unicode', Tahoma, Sans-Serif !important;}
+        .lrcs li.active{  color: rgba(255,255,255,1);}
+
+        .text-over-hidden{overflow:hidden; text-overflow:ellipsis;  -o-text-overflow:ellipsis;  -webkit-text-overflow:ellipsis;  -moz-text-overflow:ellipsis;  white-space:nowrap;}
+
+        #slider .active-time{  font-size: 12px; height: 30px; width: 30px; line-height: 30px; margin-top: -20px; color: #5696d2; text-align:center;}
+        #slider .all-time{  font-size: 12px;  height: 30px; width: 30px; line-height: 30px; margin-top: -20px; color: #fff; text-align:center; }
+        .lrc-bg{
+            filter:blur(25px);
+            -webkit-filter:blur(25px);
+            -moz-filter:blur(25px);
+            -ms-filter:blur(25px);
+            -o-filter:blur(25px);
+        }
+        .z-show {
+            opacity: 1;
+        }
+
+        .lrc-bg2{
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            background-size: auto 100%;
+            background-position: center center;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+            -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            transform: scale(1.5);
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+
+    </style>
+
+    <title>播放课文</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| lesson_play_page
+| ------------------------------------------
+| Here are lesson_play_page html
+|
+-->
+<div id="lesson_play_page">
+
+    <!--<en-header-new :back="true" :home="true" :white="false" :title="lessonName"></en-header-new>-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 h50px relative" style="z-index: 99999;">
+
+        <div style="height: 24px; padding: 13px 15px;">
+
+            <!--<div style="height: 24px; width:24px; float: left;" class="img-area"><img src="images/icon-back2.png" @click="myBack"></div>-->
+            <a href="index.html" class="fr"><div style="height: 24px; width:24px;" class="img-area"><img src="images/icon-home2.png"></div></a>
+
+            <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16" style="top: 0; left: 0; right: 0; margin: 0 auto; color: #fff;">{{lessonName}}</p>
+        </div>
+    </div>
+
+    <!--<layout-loader-black :show="loading"></layout-loader-black>-->
+
+    <!--<layout-loader :show="showLoader" :black="true"></layout-loader>-->
+
+    <div style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 1; " class="img-area">
+        <div style="position: fixed; z-index: 2; width: 100%; height: 100%; background: rgba(0,0,0,.5)"></div>
+        <div class="wb100 lrc-bg2 lrc-bg z-show" :style="'background: url('+bg+ '?x-oss-process=image/resize,m_fill,h_500,w_500)'">
+
+        </div>
+    </div>
+
+    <div class="pa0 lesson_play_page_content">
+
+        <!--<en-pay ref="enPay" :phone="channelData.isUserTips" :gold="channelData.salesPrice >= 0" :item="channelData" v-on:callback="payCallback" v-on:callbackfail="payCallbackFail" v-on:payload="payIng"></en-pay>-->
+        <div class="wb100">
+            <template v-if="recharge">
+                <div style="background: #fff; width: 100%; height: 100%; position: fixed; z-index: 999999999; display: none; top:0; left:0;">
+                    <div class="wb100 h50px relative" style="z-index: 99999;">
+                        <div style="height: 24px; width:24px; float: left; margin-top: 13px;" class="img-area mal15"><img src="images/icon-back1.png" @click="closeRecharge"></div>
+                        <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fgray-4" style="top: 0; left: 0; right: 0; margin: 0 auto;">充值</p>
+                    </div>
+                    <div class="pa15">
+                        <p class="h20px lh20px pat10 pab10 mab15 radius5" v-bind:class="current == key ? 'gold-buy-active' : 'gold-buy'" v-for="(channelData,key) in golds" @click="selectPrice(key)">
+
+                            <span class="fl mal15">{{channelData.coinQty}}金币</span>
+                            <span class="Fyellow2 fl" v-if="channelData.giftCoinQty>0">+{{channelData.giftCoinQty}}金币</span>
+                            <span class="fr w80px text-center" style="border-left: 1px solid #e8e8e8; ">{{channelData.price}}元</span>
+                        </p>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                <div class="cs-loader" v-show="showBg" style="background: rgba(0,0,0,.8); z-index: 9999999" @click="closePay"></div>
+                <div :style="payStyle">
+                    <div class="pa15">
+
+                        <template v-if="isVip == true">
+
+                            <div class="wb100">
+                                <div class="clear1"></div>
+
+                                <p style="color:#f6a623;" class="text-center">每天三角钱，英语轻松学</p>
+
+                                <div class="clear1"></div>
+
+                                <div class="wb100 pat15 pab15 lh25px text-center" style="color:#925421; background:#ffd7bf;">
+                                    <p>付费精品课程全场免费</p>
+                                    <p class="F12 lh20px">课程价值上万元，优质课程持续更新中</p>
+                                </div>
+
+                                <div class="clear1"></div>
+
+                                <div class="wb100 pat15 pab15 lh25px text-center" style="color:#a47e3f; background:#feebca;">
+                                    <p>直播课程无限畅学</p>
+                                </div>
+
+                                <div class="clear1"></div>
+
+                                <div class="wb100 pat15 pab15 lh25px text-center" style="color:#83a78b; background:#d3f1d9;">
+                                    <p>VIP高速下载通道</p>
+                                </div>
+
+                                <div class="clear1"></div>
+
+
+                                <div class="clear1"></div>
+
+                                <div class="wb100" v-if="vipData.currencyType == 0">
+
+                                    <p>超值特价：{{vipData.salesAmount}}金币/年，原价{{vipData.marketAmount}}金币/年
+
+                                    <p class="h30px lh30px text-over-hidden1">余额：{{ user.goldCoinsQty ? user.goldCoinsQty : 0}} 金币</p>
+
+                                    <div class="clear1"></div>
+
+                                    <a href="javascript:void(0)" v-if="user.goldCoinsQty && user.goldCoinsQty > vipData.salesAmount" @click="buyVip('gold')" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                                        <span class="Fwhite">确认支付</span>
+                                    </a>
+                                    <a href="javascript:void(0)" @click="openRecharge" v-else class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                                        <span class="Fwhite">余额不足，请充值</span>
+                                    </a>
+
+                                </div>
+
+                                <div class="wb100" v-else>
+
+                                    <p>超值特价：{{ twoDecimal(vipData.salesAmount)}}元/年，原价{{ twoDecimal(vipData.marketAmount)}}元/年
+
+                                    <div class="clear1"></div>
+
+                                    <a href="javascript:void(0)" @click="buyVip" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                                        <span class="Fwhite">确认支付</span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </template>
+
+                        <template v-else>
+
+                            <div class="wb100 Fgray-4" v-if="channelData.salesPrice >= 0">
+                                <p class="h30px lh30px text-over-hidden1">频道名：{{channelData.channelName}}</p>
+                                <p class="h30px lh30px text-over-hidden1">价格：<span class="Forange">{{channelData.payGoldCoins}}</span> 金币</p>
+                                <p class="h30px lh30px text-over-hidden1">余额：{{ user.goldCoinsQty ? user.goldCoinsQty : 0}} 金币</p>
+                                <div class="clear1"></div>
+                                <!--<template v-if="channelData.isUserTips">-->
+                                    <!--<el-input v-model="phoneNum" placeholder="请输入手机号"></el-input>-->
+                                    <!--<div class="clear1"></div>-->
+                                <!--</template>-->
+                                <a href="javascript:void(0)" v-if="user.goldCoinsQty && user.goldCoinsQty > channelData.payGoldCoins" @click="goldPay" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                                    <span class="Fwhite">确认支付</span>
+                                </a>
+                                <a href="javascript:void(0)" @click="openRecharge" v-else class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5">
+                                    <span class="Fwhite">余额不足，请充值</span>
+                                </a>
+                            </div>
+                            <div class="wb100" v-else>
+                                <p class="h30px lh30px text-over-hidden1">频道名：{{channelData.channelName}}</p>
+                                <p class="h30px lh30px text-over-hidden1">价格：¥<span class="Forange">{{channelData.salesPrice / 100}}</span> 元</p>
+                                <div class="clear1"></div>
+                                <!--<template v-if="channelData.isUserTips">-->
+                                    <!--<el-input v-model="name" placeholder="请输入姓名"></el-input>-->
+                                    <!--<div class="clear1"></div>-->
+                                    <!--<el-input v-model="phoneNum" placeholder="请输入手机号"></el-input>-->
+                                    <!--<div class="clear1"></div>-->
+                                <!--</template>-->
+                                <a href="javascript:void(0)" @click="wxPay" class="display-inline h45px lh45px text-center Fwhite warpper-blue wb100 F16 radius5" data-role="none">
+                                    <span class="Fwhite">确认支付</span>
+                                </a>
+                            </div>
+
+                        </template>
+
+                    </div>
+                </div>
+            </template>
+        </div>
+
+<!---->
+        <div class="dialogBg menuBg" @click="hideBg"></div>
+
+        <div class="menu-area" :style="menuStyle">
+            <div class="pal15 par15 F14" style="height: 200px; overflow-y: scroll;">
+
+                <div class="warpper-white" v-for="(item,index) in playList">
+
+                    <div class="wb100" v-if="channelData.isBuy">
+
+                        <template v-if="buyed">
+                            <div class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b F14" :class="index == playIndex ? 'Fblue' : 'Fgray-4'" @click="changeLesson(index)">
+                                {{item.lessonName}}
+                            </div>
+                        </template>
+
+                        <template v-else>
+                            <div v-if="index < channelData.freeLessonNum" :class="index == playIndex ? 'Fblue' : 'Fgray-4'" class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b F14" @click="changeLesson(index)">
+                                {{item.lessonName}}
+                            </div>
+                            <div v-else @click="buyLesson" class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b Fgray-5 F14">
+                                {{item.lessonName}}
+                            </div>
+                        </template>
+
+                    </div>
+
+                    <div class="wb100" v-else>
+                        <div class="h45px lh45px text-over-hidden1 bor-gray bor-solid-1b F14" :class="index == playIndex ? 'Fblue' : 'Fgray-4'" @click="changeLesson(index)">
+                            {{item.lessonName}}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <p class="text-center lh30px h30px" @click="hideMenu">关闭</p>
+        </div>
+
+        <div class="wb100 audio-area">
+            <div class="pal15 par15">
+                <div class="wb100 text-center" style="margin-top: -5px;">
+                    <div id="slider">
+                        <span class="active-time" style="font-family: 'Lato', 'Lucida Grande','Lucida Sans Unicode', Tahoma, Sans-Serif;">{{parseMins(activeTime)}}</span>
+                        <span class="Fwhite">/</span>
+                        <span class="all-time" style="font-family: 'Lato', 'Lucida Grande','Lucida Sans Unicode', Tahoma, Sans-Serif;">{{parseMins(durationTime)}}</span>
+                        <div class="wb100 radius10 over-hidden" style="width: 100%; background: #fff; height: 2px;">
+                            <div class=" slide-active" style="width: 0; background: #0079fc; height: 2px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <audio id="myAudio" :src="mp3URL" preload="auto" @play="onPlay" @timeupdate="timeupdate"></audio>
+            <div class="audio-controls">
+                <div class="clear"></div>
+                <div class="wb100">
+                    <div class="pal15 par15 pat5 pab5">
+
+                        <div style="width: 24px; height: 24px; margin-top: 13px;" class="img-area fl" @click="showMenu">
+                            <img src="images/music-menu.png"/>
+                        </div>
+
+                        <!--<div  class="fr mat10 w80px F12 h30px lh30px radius20 warpper-blue Fwhite text-center" style="font-family: 'Lato', 'Lucida Grande','Lucida Sans Unicode', Tahoma, Sans-Serif;" @click="download">-->
+                            <!--下载APP-->
+                        <!--</div>-->
+
+                        <div class="w150px center">
+
+                            <div style="width: 30px; height: 30px;" class="img-area fl mat10" @click="prevLesson">
+                                <img src="images/music-prev.png"/>
+                            </div>
+                            <div style="width: 50px; height: 50px;" class="img-area fl mal20 mar20" v-if="paused" @click="togglePlay">
+                                <img src="images/music-play.png"/>
+                            </div>
+                            <div style="width: 50px; height: 50px;" class="img-area fl mal20 mar20" v-else @click="togglePlay">
+                                <img src="images/music-pause.png"/>
+                            </div>
+                            <div style="width: 30px; height: 30px;" class="img-area fr mat10" @click="nextLesson">
+                                <img src="images/music-next.png"/>
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wb100" v-if="isTxt" :style="'position: relative; z-index: 99; bottom: 0; overflow-y: auto; height:'+_height +'px'">
+            <div class="pa15 text-area" v-html="lrcData"></div>
+        </div>
+
+        <div class="wb100 lrc-area F14 lh20px relative"  @touchstart="moveStart" @touchmove="moveMove" @touchend="moveEnd" v-else :style="'height: '+playHeight+'px; z-index: 99; bottom: 0;overflow: hidden;'">
+            <ul class="lrcs" :style="transform">
+                <li v-for="item in lrcData" :class="{active: item[0] == currentLrc}" :data-time="item[0]">{{item[1]}}</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+    <div class="isBuy"></div>
+
+</div>
+
+
+
+<script>
+
+    "use strict";
+
+    var _data2;
+
+    function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+    var vm = new Vue({
+        el: "#lesson_play_page",
+        data: (_data2 = {
+            channelID: "",
+            lessonID: "",
+            lessonName: "",
+            listenID: 0,
+            listened: false,
+            isScroll: false,
+            isMove: false,
+            lrcURL: "",
+            mp3URL: "",
+            txtURL: "",
+            user: {},
+            lrcData: [],
+            playList: [],
+            playIndex: 0,
+            channelData: {},
+            currentLesson: {},
+            menuStyle: {
+                position: 'fixed',
+                bottom: '-240px',
+                left: 0,
+                zIndex: 99999,
+                background: 'rgba(255,255,255,1)',
+                width: '100%',
+                height: '240px',
+                overflow: 'hidden',
+                transition: "all .3s"
+            },
+            activeTime: 0,
+            durationTime: "",
+            audio: {},
+            paused: true,
+            inited: false,
+            _height: "",
+            playHeight: 0,
+            _width: "",
+            width: 0,
+            height: 0,
+            allHeight: 0,
+            startY: 0,
+            endY: 0,
+            startT: 0,
+            endT: 0,
+            touchTimer1: 0,
+            touchTimer2: 0,
+            bg: "",
+            activeLrc: false,
+            showLoader: true,
+            loading: false,
+            buyed: false,
+            currentLrc: 0,
+            playTimer: 0,
+            currentPlay: 0,
+            playLoaded: false,
+            isTxt: false,
+            touch: 0,
+            transform: {
+                transform: "translate3d(0px, 0px, 0px)",
+                transition: "all 0s",
+                height: '0'
+            },
+
+            name: "",
+            phoneNum: ""
+        }, _defineProperty(_data2, "user", {}), _defineProperty(_data2, "current", 0), _defineProperty(_data2, "golds", []), _defineProperty(_data2, "recharge", false), _defineProperty(_data2, "showBg", false), _defineProperty(_data2, "isVip", false), _defineProperty(_data2, "vipData", {}), _defineProperty(_data2, "payStyle", {
+            position: 'fixed',
+            bottom: '-600px',
+            left: 0,
+            zIndex: 99999999,
+            background: 'rgba(255,255,255,1)',
+            width: '100%',
+            overflow: 'hidden',
+            transition: "all .5s"
+        }), _data2),
+
+        methods: {
+            closeRecharge: function closeRecharge() {
+                this.recharge = false;
+            },
+            openRecharge: function openRecharge() {
+                this.recharge = true;
+            },
+            selectPrice: function selectPrice(key) {
+                this.current = key;
+                this.pay();
+            },
+            twoDecimal: function twoDecimal(oNum) {
+                var num = parseFloat(oNum);
+                if (isNaN(length)) return false;
+
+                var num = Math.round(oNum * 100) / 100;
+                return num;
+            },
+            pay: function pay() {
+                var _this = this;
+
+                _this.loading = true;
+
+//                baseAjax.getWxPayNew(_this.golds[_this.current].productID, function (data) {
+//                    _this.loading = false;
+//                    WeixinJSBridge.invoke('getBrandWCPayRequest', JSON.parse(data.returnJSON), function (res) {
+//                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+//                            if (_this.isVip) {
+//                                _this.buyVip('gold');
+//                            } else {
+//                                _this.goldPay();
+//                            }
+//                            _this.closeRecharge();
+//                        } else {
+//                            layer.alert("支付失败");
+//                        }
+//                    });
+//                });
+
+                baseAjax.getAlipayWap(_this.golds[_this.current].productID, 'http://h5.7english.cn/newEs5_v2/new/lesson_detail.html?channelID='+_this.channelID, function (data) {
+                    _this.loading = false;
+
+                    var index1 = data.indexOf('"out_trade_no":"');
+
+                    var index2 = data.indexOf('",',index1);
+
+                    var _str = data.substring(index1+16,index2);
+
+                    base.setCookie('paymentNo', _str);
+                    _this.paymentNo = _str;
+
+                    data = data.replace('POST','GET');
+
+                    $(".isBuy").html(data);
+
+                });
+
+
+            },
+            closePay: function closePay() {
+                this.payStyle.bottom = '-600px';
+                this.showBg = false;
+                var bus = new Vue();
+                bus.$emit('payCallback', true);
+            },
+            openPay: function openPay(vip) {
+
+                var _this = this;
+
+                var userInfo = base.getCookie("userInfo");
+
+                if(!base.isNull(userInfo)){
+                    userInfo = JSON.parse(base.getCookie("userInfo"));
+                }
+
+                if (base.isNull(userInfo)) {
+                    if (base.versions.isWeiXin) {
+                        layer.confirm('您还没有登录，前去登录吗？', {
+                            btn: ['好的', '取消'] //按钮
+                        }, function () {
+                            //前去登录
+                            var call = window.location.href;
+                            window.location.href = 'wx_login.html?call=' + call;
+                        }, function () {
+                            //取消登录
+                        });
+                    } else {
+                        layer.confirm('您还没有登录，前去登录吗？', {
+                            btn: ['好的', '取消'] //按钮
+                        }, function () {
+                            //前去登录
+                            var call = window.location.href;
+                            window.location.href = 'login.html?call=' + call;
+                        })
+                    }
+                    return false;
+                }
+
+                if (vip == 'vip') {
+                    baseAjax.productVIP(function (data) {
+                        _this.isVip = true;
+                        _this.vipData = data.returnJSON[0];
+                        console.log(data);
+                    });
+                }
+
+                baseAjax.getProductList(function (data) {
+                        _this.golds = data.returnJSON;
+                    }
+
+                    //获取用户数据和用户购买记录
+                );baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+                    _this.user = data.returnJSON;
+                    _this.showBg = true;
+                    _this.payStyle.bottom = '0';
+                });
+            },
+            goldPay: function goldPay() {
+
+                var _this = this;
+                // //验证
+                // if(base.isNull(_this.name)){
+                //     layer.alert("名字不能为空");
+                //     return false;
+                // }
+
+                var _timestamp = Math.round(new Date().getTime() / 1000);
+
+                var _tmp = 'deviceID=' + baseAjax.getDeviceID() + '&timestemp=' + _timestamp + '&type=' + ajaxConfig.type + '&userID=' + baseAjax.getUserId() + '&key=' + signs.privateKey2;
+
+                var _sign = hex_md5(_tmp);
+
+                _sign = _sign.toUpperCase();
+
+                baseAjax.goldBuyChannel(_this.channelID, 1, _timestamp, _sign, baseAjax.getUserId(), function (data) {
+
+                    if (data) {
+                        _this.payCallback();
+                    } else {
+                        _this.payCallbackFail();
+                    }
+                });
+            },
+            buyVip: function buyVip(gold) {
+
+                var _this = this;
+
+                if (gold == 'gold') {
+                    //金币购买
+                    var _timestamp = Math.round(new Date().getTime() / 1000);
+
+                    var _tmp = 'deviceID=' + baseAjax.getDeviceID() + '&timestemp=' + _timestamp + '&type=' + ajaxConfig.type + '&userID=' + baseAjax.getUserId() + '&key=' + signs.privateKey2;
+
+                    var _sign = hex_md5(_tmp);
+
+                    _sign = _sign.toUpperCase();
+
+                    _this.$emit('payload');
+
+                    baseAjax.productCoinsBuy(_this.vipData.VIPNum, _timestamp, _sign, function (data) {
+
+                        if (data) {
+                            _this.payCallback();
+                        } else {
+                            _this.payCallbackFail();
+                        }
+                    });
+                } else {
+                    //人民币购买
+
+
+                    var _timestamp2 = Math.round(new Date().getTime() / 1000);
+
+                    var _tmp2 = 'deviceID=' + baseAjax.getDeviceID() + '&timestemp=' + _timestamp2 + '&type=' + ajaxConfig.type + '&userID=' + baseAjax.getUserId() + '&key=' + signs.privateKey2;
+
+                    var _sign2 = hex_md5(_tmp2);
+
+                    _sign2 = _sign2.toUpperCase();
+
+                    _this.$emit('payload');
+
+                    baseAjax.productRmbBuy(_this.vipData.VIPNum, _timestamp2, _sign2, function (data) {
+
+                        //获取订单号
+                        var _orderID = data.returnJSON.transNum;
+
+                        baseAjax.wxJSPayChannel(_orderID, ajaxConfig.channel, _this.channelData.channelName, _this.name, _this.phone, function (data2) {
+
+                            WeixinJSBridge.invoke('getBrandWCPayRequest', JSON.parse(data2.returnJSON), function (res) {
+                                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                    _this.payCallback();
+                                } else {
+                                    _this.payCallbackFail();
+                                }
+                            });
+                        });
+                    });
+                }
+            },
+            wxPay: function wxPay() {
+
+                var _this = this;
+
+                // //验证
+                // if(base.isNull(_this.name)){
+                //     layer.alert("名字不能为空");
+                //     return false;
+                // }
+//                if (base.isNull(_this.phone)) {
+//                    layer.alert("手机号不能为空");
+//                    return false;
+//                }
+
+                var _timestamp = Math.round(new Date().getTime() / 1000);
+
+                var _tmp = 'deviceID=' + baseAjax.getDeviceID() + '&timestemp=' + _timestamp + '&type=' + ajaxConfig.type + '&userID=' + baseAjax.getUserId() + '&key=' + signs.privateKey2;
+
+                var _sign = hex_md5(_tmp);
+
+                _sign = _sign.toUpperCase();
+
+                _this.$emit('payload');
+
+                baseAjax.getChannelOrder(_this.channelData.channelID, 1, _timestamp, _sign, baseAjax.getUserId(), function (data) {
+
+                    //获取订单号
+                    var _orderID = data.returnJSON.transNum;
+
+                    baseAjax.wxJSPayChannel(_orderID, ajaxConfig.channel, _this.channelData.channelName, _this.name, _this.phone, function (data2) {
+                        WeixinJSBridge.invoke('getBrandWCPayRequest', JSON.parse(data2.returnJSON), function (res) {
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                //设置付费内容
+                                _this.$emit('callback');
+                            } else {
+                                _this.$emit('callbackfail');
+                            }
+                        });
+                    });
+                });
+            },
+
+
+            myBack: function myBack(url) {
+                window.history.go(-1);
+            },
+
+            getLesson: function getLesson() {
+
+                var _this = this;
+
+                baseAjax.getLessonByID(_this.lessonID, function (data) {
+
+                    if (data.status == 1) {
+
+                        var _data = data.returnJSON;
+
+                        _this.channelID = _data.channelID;
+
+                        _this.lessonID = _data.lessonID;
+                        _this.lessonName = _data.lessonName;
+
+                        //                        alert(_data.lessonName);
+
+                        _this.lrcURL = base.isNull(_data.lrcURL) ? _data.txtURL : _data.lrcURL;
+                        _this.mp3URL = signs.getUrlSign(_data.mp3URL, 'A');
+                        _this.txtURL = _data.txtURL;
+
+                        _this.durationTime = _data.duration;
+
+                        _this.loadLrc(_this.lrcURL);
+
+                        var userInfo = base.getCookie("userInfo");
+
+
+                        if (base.isNull(userInfo)) {
+                            //未登录
+                        } else {
+                            //获取用户数据和用户购买记录
+                            userInfo = JSON.parse(base.getCookie("userInfo"));
+                            baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+
+                                console.log(data)
+
+                                _this.user = data.returnJSON;
+
+                                if (_this.user.vip > 0) {
+                                    _this.buyed = true;
+                                    _this.isVip = true;
+                                }
+                            });
+
+                            baseAjax.getBuyList(userInfo.userID, function (data) {
+                                //判断是否付费
+                                console.log(data)
+
+                                var buyList = data.returnJSON;
+
+                                for (var _i7 = 0; _i7 < buyList.length; _i7++) {
+
+//                                    console.log(buyList[_i7].product +'     '+ _data.channelID);
+
+                                    if (buyList[_i7].product == _data.channelID) {
+                                        _this.buyed = true;
+                                    }
+                                }
+
+                            });
+                        }
+
+                        baseAjax.getLessonsByChannelID(_data.channelID, function (data2) {
+
+                            if (data2.status == 1) {
+                                var channel = data2.extendInfo;
+                                _this.channelData = channel;
+                                _this.bg = channel.iconURL;
+                                var list = data2.returnJSON;
+                                for (var _i = 0; _i < list.length; _i++) {
+                                    if (_this.lessonID == list[_i].lessonID) {
+                                        _this.playIndex = _i;
+                                        _this.currentLesson = list[_i];
+                                        break;
+                                    }
+                                }
+                                _this.playList = list;
+                            } else {
+                                layer.alert("加载列表失败");
+                            }
+                        });
+                    }
+                });
+            },
+            loadLesson: function loadLesson() {
+
+                var _this = this;
+
+                baseAjax.getLessonsByChannelID(_this.channelID, function (data2) {
+
+                    console.log(data2);
+
+                    if (data2.status == 1) {
+                        var channel = data2.extendInfo;
+                        _this.channelData = channel;
+                        _this.bg = channel.iconURL;
+                        var list = data2.returnJSON;
+                        for (var _i2 = 0; _i2 < list.length; _i2++) {
+                            if (_this.lessonID == list[_i2].lessonID) {
+                                _this.playIndex = _i2;
+                                _this.currentLesson = list[_i2];
+                                break;
+                            }
+                        }
+                        _this.playList = list;
+
+                        //加载播放第一个课文
+                        var _data = list[0];
+
+                        _this.channelID = _data.channelID;
+
+                        _this.lessonID = _data.lessonID;
+                        _this.lessonName = _data.lessonName;
+                        _this.lrcURL = base.isNull(_data.lrcURL) ? _data.txtURL : _data.lrcURL;
+                        _this.mp3URL = signs.getUrlSign(_data.mp3URL, 'A');
+                        _this.durationTime = _data.duration;
+
+                        _this.txtURL = _data.txtURL;
+                        _this.loadLrc(_this.lrcURL);
+                    } else {
+                        layer.alert("加载列表失败");
+                    }
+                });
+            },
+            loadLrc: function loadLrc(url) {
+
+                var _this = this;
+
+                if (url.indexOf(".txt") != -1) {
+                    //txt文件
+                    $.ajax({
+                        type: "get",
+                        url: url,
+                        success: function success(lrc) {
+                            var _html = "<p>";
+                            _html += lrc.replace(/\n/g, "</p><p>");
+                            _html += "</p>";
+                            _this.lrcData = _html;
+                            _this.isTxt = true;
+                            _this.audio = document.getElementById("myAudio");
+                            _this.audio.play();
+
+                            if (!_this.inited) {
+                                _this.showLoader = false;
+                                $(".lesson_play_page_content").removeClass("hidden");
+                            }
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        type: "get",
+                        url: url,
+                        success: function success(lrc) {
+
+                            _this.lrcData = _this.parseLyric(lrc);
+
+                            _this.isTxt = false;
+
+                            if (_this.lrcData[_this.lrcData.length - 1][0] == 0) {
+                                _this.lrcData.pop();
+                            }
+
+                            _this.audio = document.getElementById("myAudio");
+                            _this.audio.play();
+
+                            setTimeout(function () {
+
+                                if (!_this.inited) {
+                                    _this.showLoader = false;
+                                    $(".lesson_play_page_content").removeClass("hidden");
+                                }
+
+                                var allHeight = 0;
+                                $(".lrcs li").each(function () {
+                                    allHeight += $(this).height();
+                                    allHeight += 20;
+                                });
+
+                                var _h = _this.playHeight / 2;
+                                _this.transform.transform = "translate3d(0px, " + _h + "px, 0px)";
+                                _this.touch = _h;
+                                _this.transform.height = allHeight + 'px';
+                            }, ajaxConfig.lazy);
+                        }
+                    });
+                }
+            },
+            parseLyric: function parseLyric(text) {
+                var lyric = text.split('\r\n'); //先按行分割
+                var _l = lyric.length; //获取歌词行数
+                var lrc = new Array(); //新建一个数组存放最后结果
+                for (var _i3 = 0; _i3 < _l; _i3++) {
+                    var d = lyric[_i3].match(/\[\d{2}:\d{2}((\.|\:)\d{2})\]/g); //正则匹配播放时间
+                    var t = lyric[_i3].split(d); //以时间为分割点分割每行歌词，数组最后一个为歌词正文
+                    if (d != null) {
+                        //过滤掉空行等非歌词正文部分
+                        //换算时间，保留两位小数
+                        var dt = String(d).split(':');
+                        var _t = Math.round(parseInt(dt[0].split('[')[1]) * 60 + parseFloat(dt[1].split(']')[0])) * 100 / 100;
+                        lrc.push([_t, t[1]]);
+                    }
+                }
+                return lrc;
+            },
+
+            //转换分钟数 s：秒数
+            parseMins: function parseMins(s) {
+                var m1 = Math.floor(s / 60);
+                var m2 = s % 60;
+                if (m1 < 10) {
+                    m1 = "0" + m1;
+                }
+                if (m2 < 10) {
+                    m2 = "0" + m2;
+                }
+                return m1 + ":" + m2;
+            },
+
+            //转换秒数 t:时间
+            parseSecond: function parseSecond(t) {
+                var t1 = parseInt(t.split(":")[0]);
+                var t2 = parseInt(t.split(":")[1]);
+                return t1 * 60 + t2;
+            },
+
+
+            //获取string的长度，可以传中文
+            getByteLen: function getByteLen(val) {
+                var len = 0;
+                for (var _i4 = 0; _i4 < val.length; _i4++) {
+                    if (val[_i4].match(/[^\x00-\xff]/ig) != null) //全角
+                        len += 2;else len += 1;
+                };
+                return len;
+            },
+
+            //截取string，可以传中文
+            cutStrForNum: function cutStrForNum(str, num) {
+                var len = 0;
+                var index = 0;
+                var newStr = "";
+                for (var _i5 = 0; _i5 < str.length; _i5++) {
+                    if (str[_i5].match(/[^\x00-\xff]/ig) != null) //全角
+                        len += 2;else len += 1;
+                    index++;
+                    if (len >= num) {
+                        break;
+                    }
+                }
+                if (len >= num) newStr = str.substring(0, index) + "...";else newStr = str;
+                return newStr;
+            },
+            timeupdate: function timeupdate(e) {
+
+                var _this = this;
+                this.transform.transition = "all .3s";
+
+                //                _this.durationTime = Math.floor(_this.audio.duration);
+                //
+                //                if(base.isNull(_this.durationTime)){
+                //                    _this.durationTime = Math.floor(_this.audio.duration);
+                //                }
+                //                if(isNaN(_this.durationTime)){
+                //                    _this.durationTime = Math.floor(_this.audio.duration);
+                //                }
+
+                if (!_this.playLoaded) {
+                    if (this.paused) {
+                        this.paused = false;
+                    }
+                    _this.playLoaded = true;
+                }
+
+                var _currentTime = Math.round(e.target.currentTime);
+
+                var _t = _currentTime / Math.floor(this.durationTime) * 100;
+
+                //改变slider-bar
+                $(".slide-active").css({
+                    "width": _t + "%"
+                });
+                this.activeTime = _currentTime;
+
+                //改变 lrs
+                for (var _i6 = 0; _i6 < this.lrcData.length; _i6++) {
+                    if (Math.round(this.lrcData[_i6][0]) == _currentTime) {
+                        this.currentLrc = this.lrcData[_i6][0];
+                        break;
+                    }
+                }
+
+                if (!this.activeLrc) {
+                    var allHeight = 0;
+                    $(".lrcs li").each(function () {
+                        allHeight += $(this).height();
+                        allHeight += 20;
+                    });
+
+                    var _h = $(".slide-active").width() / $(".ui-slider-track").width() * allHeight * -1 + _this.playHeight / 2;
+
+                    if (!_this.isScroll) {
+                        this.transform.transform = "translate3d(0px, " + _h + "px, 0px)";
+                        this.touch = _h;
+                        this.transform.height = allHeight + 'px';
+                    }
+
+                    this.activeLrc = true;
+                }
+
+                //改变lrc位置
+                //              //常规的歌词滚动
+                if ($("li.active").length > 0) {
+
+                    this.activeLrc = true;
+
+                    var prevAll = $("li.active").prevAll();
+
+                    var prevHeight = 0,
+                        _allHeight = 0;
+
+                    prevAll.each(function () {
+                        prevHeight += $(this).height();
+                        prevHeight += 20;
+                    });
+                    $(".lrcs li").each(function () {
+                        _allHeight += $(this).height();
+                        _allHeight += 20;
+                    });
+
+                    _this.allHeight = _allHeight;
+
+                    prevHeight += $(".lrcs li").eq(1).height();
+                    prevHeight += 20;
+
+                    var _h2 = prevHeight * -1 + _this.playHeight / 2;
+
+                    if (!_this.isScroll) {
+                        this.transform.transform = "translate3d(0px, " + _h2 + "px, 0px)";
+                        this.touch = _h2;
+                        this.transform.height = _allHeight + 'px';
+                    }
+                } else {
+                    //模拟滚动位置
+                    this.activeLrc = false;
+                }
+
+                //自动播放
+                //                if(_currentTime>= this.durationTime){
+                //                    this.playIndex ++;
+                //                    if(this.playIndex == this.playList.length){
+                //                        this.playIndex = 0;
+                //                    }
+                //                    this.changeLesson(this.playIndex);
+                //                }
+            },
+            prevLesson: function prevLesson() {
+                var _this = this;
+                if (_this.playIndex <= 0) {
+                    return false;
+                } else {
+                    if (_this.channelData.isBuy) {
+                        if (_this.buyed) {
+                            _this.changeLesson(--_this.playIndex);
+                        } else {
+                            if (_this.playIndex - 1 < _this.channelData.freeLessonNum) {
+                                _this.changeLesson(--_this.playIndex);
+                            } else {
+                                _this.buyLesson();
+                            }
+                        }
+                    } else {
+                        _this.changeLesson(--_this.playIndex);
+                    }
+                }
+                _this.inited = true;
+            },
+            nextLesson: function nextLesson() {
+                var _this = this;
+                if (_this.playIndex >= _this.playList.length - 1) {
+                    return false;
+                } else {
+
+                    //                    alert(_this.channelData.isBuy);
+
+                    if (_this.channelData.isBuy) {
+                        if (_this.buyed) {
+                            _this.changeLesson(++_this.playIndex);
+                        } else {
+                            if (_this.playIndex + 1 < _this.channelData.freeLessonNum) {
+                                _this.changeLesson(++_this.playIndex);
+                            } else {
+                                _this.buyLesson();
+                            }
+                        }
+                    } else {
+                        _this.changeLesson(++_this.playIndex);
+                    }
+                }
+                _this.inited = true;
+            },
+            moveStart: function moveStart(e) {
+                var _this = this;
+                _this.isScroll = true;
+                e.preventDefault();
+
+                if (_this.touchTimer1) {
+                    clearTimeout(_this.touchTimer1);
+                }
+
+                _this.startY = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
+            },
+            moveMove: function moveMove(e) {
+                var _this = this;
+
+                e.preventDefault();
+
+                if (_this.touchTimer1) {
+                    clearTimeout(_this.touchTimer1);
+                }
+
+                _this.isScroll = true;
+
+                _this.endY = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
+
+                var tr = $(".lrcs").css('transform');
+
+                var _val = tr.split('(')[1].split(')')[0].split(',')[5];
+
+                var _h = Math.floor(_this.endY - _this.startY) + Math.floor(_val);
+
+                if (_h >= _this.playHeight / 2) {
+                    return false;
+                }
+
+                if (_this.listened) {
+                    if (_h <= _this.playHeight / 2 - _this.allHeight) {
+                        return false;
+                    }
+                }
+
+                //                alert(_this.listened);
+
+                _this.transform.transform = "translate3d(0px, " + _h + "px, 0px)";
+            },
+            moveEnd: function moveEnd(e) {
+                var _this = this;
+                e.preventDefault();
+
+                _this.touchTimer1 = setTimeout(function () {
+                    _this.isScroll = false;
+                }, 1500);
+            },
+            onPlay: function onPlay() {},
+            togglePlay: function togglePlay() {
+
+                var _this = this;
+
+                if (_this.audio.paused) {
+                    _this.audio.play();
+                    if (!_this.listened) {
+                        //启动监听
+                        _this.showLoader = true;
+                        _this.listenID = setInterval(function () {
+                            if (_this.audio.currentTime > 0) {
+                                clearInterval(_this.listenID);
+                                _this.listened = true;
+                                _this.showLoader = false;
+                            }
+                        }, 100);
+                    }
+                } else {
+                    _this.audio.pause();
+                }
+                _this.paused = _this.audio.paused;
+
+                _this.inited = true;
+            },
+            download: function download(e) {
+                baseAjax.download();
+            },
+            hideBg: function hideBg() {
+                $(".menuBg").hide(0);
+                this.hideMenu();
+            },
+            hideMenu: function hideMenu(e) {
+                this.menuStyle.bottom = "-240px";
+                $(".menuBg").hide(0);
+            },
+            showMenu: function showMenu(e) {
+                if (this.menuStyle.bottom == "-5px") {
+                    this.menuStyle.bottom = "-240px";
+                } else {
+                    this.menuStyle.bottom = "-5px";
+                }
+                $(".menuBg").show(0);
+            },
+            payIng: function payIng() {
+                this.loading = true;
+            },
+            payCallback: function payCallback() {
+                layer.alert('购买成功');
+                this.buyed = true;
+                this.loading = false;
+                this.closePay();
+            },
+            payCallbackFail: function payCallbackFail() {
+                layer.alert('购买失败');
+                this.loading = false;
+                this.closePay();
+            },
+            buyLesson: function buyLesson() {
+                if (base.versions.isWeiXin) {
+                    this.openPay();
+                } else {
+                    this.openPay();
+                }
+            },
+            changeLesson: function changeLesson(index) {
+
+                var _this = this;
+
+                _this.lessonID = this.playList[index].lessonID;
+                _this.currentPlay = index;
+                _this.showLoader = true;
+                _this.listenID = 0;
+                _this.listened = false;
+                _this.lrcURL = "";
+                _this.mp3URL = "";
+                _this.txtURL = "";
+                _this.lrcData = [];
+                _this.activeTime = 0;
+                _this.durationTime = "";
+                _this.activeLrc = false;
+                _this.currentLrc = 0;
+                _this.playTimer = 0;
+                _this.isTxt = false;
+                _this.playLoaded = false;
+                _this.audio.currentTime = 0;
+                _this.getLesson();
+                if (!_this.listened) {
+                    //启动监听
+                    _this.showLoader = true;
+                    _this.listenID = setInterval(function () {
+                        if (_this.audio.currentTime > 0) {
+                            clearInterval(_this.listenID);
+                            _this.listened = true;
+                            _this.showLoader = false;
+                        }
+                    }, 100);
+                }
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            layer.closeAll();
+
+            _this.lessonID = base.getParmar("lessonID");
+            _this.channelID = base.getParmar("channelID");
+
+            _this._height = $(window).height() - 62 - 120;
+            _this._width = $(window).width();
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this.playHeight = _this.height - 140;
+
+            _this.transform.height = _this.playHeight;
+
+            if (base.isNull(_this.lessonID) && base.isNull(_this.channelID)) {
+                layer.alert("缺少课文ID或频道ID");
+                return false;
+            }
+
+
+            _this.timerID = setInterval(function () {
+
+                _this.timer++;
+
+                var paymentNo = base.getCookie('paymentNo');
+
+                if (!base.isNull(paymentNo)) {
+
+                    console.log(paymentNo)
+
+                    baseAjax.alipayResult(paymentNo, function (data) {
+
+                        console.log(data);
+
+
+                        if (data) {
+
+                            console.log(data);
+
+                            clearInterval(_this.timerID);
+
+                            base.setCookie('paymentNo',null);
+
+                            //充值成功
+                            _this.showResult = true;
+                            _this.state = true;
+//                            _this.infoMsg = '充值成功';
+                            layer.alert("充值成功");
+
+
+                            if (_this.isVip) {
+                                _this.buyVip('gold');
+                            } else {
+                                _this.goldPay();
+                            }
+                            _this.closeRecharge();
+
+                        }else{
+
+                            base.setCookie('paymentNo',null);
+
+                            //充值失败
+//                            _this.infoMsg = '充值失败';
+                            layer.alert("充值失败");
+
+                        }
+                    });
+
+                    if (_this.timer >= 600) {
+                        baseAjax.alipayResult(paymentNo, function (data) {
+                            if (data) {
+                                clearInterval(_this.timerID);
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值成功
+                                _this.showResult = true;
+                                _this.state = false;
+//                                _this.infoMsg = '充值成功';
+                                layer.alert("充值成功");
+
+                            } else {
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值失败
+                                _this.showResult = true;
+                                _this.state = false;
+//                                _this.infoMsg = '操作超时';
+                                layer.alert("操作超时");
+                            }
+                        });
+                    }
+                }
+            }, 1000);
+
+            if (base.isNull(_this.lessonID)) {
+                _this.loadLesson();
+
+                var userInfo = base.getCookie("userInfo");
+
+
+                if (base.isNull(userInfo)) {
+                    //未登录
+                } else {
+                    //获取用户数据和用户购买记录
+                    userInfo = JSON.parse(base.getCookie("userInfo"));
+                    baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+
+//                        console.log(data)
+
+                        _this.user = data.returnJSON;
+
+                        if (_this.user.vip > 0) {
+                            _this.buyed = true;
+                            _this.isVip = true;
+                        }
+                    });
+
+                    baseAjax.getBuyList(userInfo.userID, function (data) {
+//                        //判断是否付费
+//                        console.log(data)
+
+                        var buyList = data.returnJSON;
+
+                        for (var _i7 = 0; _i7 < buyList.length; _i7++) {
+
+//                            console.log(buyList[_i7].product +'     '+ _this.channelID);
+
+                            if (buyList[_i7].product == _this.channelID) {
+                                _this.buyed = true;
+                            }
+                        }
+
+
+                    });
+                }
+
+            } else {
+                _this.getLesson();
+
+            }
+
+//            var userInfo = JSON.parse(base.getCookie("userInfo"));
+
+
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var _this = vm;
+
+                layer.closeAll();
+
+                _this.lessonID = base.getParmar("lessonID");
+                _this.channelID = base.getParmar("channelID");
+
+                _this._height = $(window).height() - 62 - 120;
+                _this._width = $(window).width();
+                _this.width = $(window).width();
+                _this.height = $(window).height();
+                _this.playHeight = _this.height - 140;
+
+                _this.transform.height = _this.playHeight;
+
+                if (base.isNull(_this.lessonID) && base.isNull(_this.channelID)) {
+                    layer.alert("缺少课文ID或频道ID");
+                    return false;
+                }
+
+
+                _this.timerID = setInterval(function () {
+
+                    _this.timer++;
+
+                    var paymentNo = base.getCookie('paymentNo');
+
+                    if (!base.isNull(paymentNo)) {
+
+                        console.log(paymentNo)
+
+                        baseAjax.alipayResult(paymentNo, function (data) {
+
+                            console.log(data);
+
+
+                            if (data) {
+
+                                console.log(data);
+
+                                clearInterval(_this.timerID);
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值成功
+                                _this.showResult = true;
+                                _this.state = true;
+//                            _this.infoMsg = '充值成功';
+                                layer.alert("充值成功");
+
+
+                                if (_this.isVip) {
+                                    _this.buyVip('gold');
+                                } else {
+                                    _this.goldPay();
+                                }
+                                _this.closeRecharge();
+
+                            }else{
+
+                                base.setCookie('paymentNo',null);
+
+                                //充值失败
+//                            _this.infoMsg = '充值失败';
+                                layer.alert("充值失败");
+
+                            }
+                        });
+
+                        if (_this.timer >= 600) {
+                            baseAjax.alipayResult(paymentNo, function (data) {
+                                if (data) {
+                                    clearInterval(_this.timerID);
+
+                                    base.setCookie('paymentNo',null);
+
+                                    //充值成功
+                                    _this.showResult = true;
+                                    _this.state = false;
+//                                _this.infoMsg = '充值成功';
+                                    layer.alert("充值成功");
+
+                                } else {
+
+                                    base.setCookie('paymentNo',null);
+
+                                    //充值失败
+                                    _this.showResult = true;
+                                    _this.state = false;
+//                                _this.infoMsg = '操作超时';
+                                    layer.alert("操作超时");
+                                }
+                            });
+                        }
+                    }
+                }, 1000);
+
+                if (base.isNull(_this.lessonID)) {
+                    _this.loadLesson();
+
+                    var userInfo = base.getCookie("userInfo");
+
+
+                    if (base.isNull(userInfo)) {
+                        //未登录
+                    } else {
+                        //获取用户数据和用户购买记录
+                        userInfo = JSON.parse(base.getCookie("userInfo"));
+                        baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+
+//                        console.log(data)
+
+                            _this.user = data.returnJSON;
+
+                            if (_this.user.vip > 0) {
+                                _this.buyed = true;
+                                _this.isVip = true;
+                            }
+                        });
+
+                        baseAjax.getBuyList(userInfo.userID, function (data) {
+//                        //判断是否付费
+//                        console.log(data)
+
+                            var buyList = data.returnJSON;
+
+                            for (var _i7 = 0; _i7 < buyList.length; _i7++) {
+
+//                            console.log(buyList[_i7].product +'     '+ _this.channelID);
+
+                                if (buyList[_i7].product == _this.channelID) {
+                                    _this.buyed = true;
+                                }
+                            }
+
+
+                        });
+                    }
+
+                } else {
+                    _this.getLesson();
+
+                }
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>分类频道</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| channel_list_page
+| ------------------------------------------
+| Here are channel_list_page html
+|
+-->
+<div id="channel_list_page">
+
+    <!--<layout-loader :show="showLoader"></layout-loader>-->
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 channel_list_page_content hidden">
+
+        <!--<en-header-new :back="true" :home="true" :white="true" :title="title"></en-header-new>-->
+        <div class="wb100 h50px relative" style="z-index: 99999;">
+            <div style="height: 24px; padding: 13px 15px;">
+
+                <!--<div style="height: 24px; width:24px; float: left;" class="img-area"><img src="images/icon-back1.png" @click="myBack"></div>-->
+                <a href="index.html" class="fr"><div style="height: 24px; width:24px;" class="img-area"><img src="images/icon-home1.png"></div></a>
+
+                <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fgray-4" style="top: 0; left: 0; right: 0; margin: 0 auto;">{{title}}</p>
+            </div>
+
+        </div>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <div class="wb100">
+            <!--<layout-lesson-list :datas="list" :size="50"></layout-lesson-list>-->
+            <div class="wb100">
+                <div class="wb100" v-for="item in list">
+                    <div class="pal15">
+                        <a :href="'lesson_detail.html?channelID='+item.channelID">
+                            <div class="fl img-area" :style="'width: '+50+'px; height: '+50+'px;'">
+                                <img :src="item.iconURL +'?x-oss-process=image/resize,m_fixed,h_'+50 *2  +',w_'+50 *2 " class="radius5" />
+                            </div>
+                            <div class="Fgray-3">
+                                <p class="lh25px h25px text-over-hidden1 pal15 Fblack F14">{{item.channelName}}</p>
+                                <p class="F12 lh25px h25px text-over-hidden1 pal15 Fgray-3">{{item.subtitle}}</p>
+                            </div>
+                        </a>
+                        <div class="clear1 bor-gray bor-solid-1b"></div>
+
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wb100" v-show="nodata == false">
+            <!--<layout-lesson-list :datas="list" :size="50"></layout-lesson-list>-->
+        </div>
+        <div class="wb100" v-show="nodata == true">
+            <div class="clear h100px"></div>
+            <div class="wb30 center img-area">
+                <img src="images/empty.png">
+            </div>
+            <p class="Fgray-3 h40px lh40px F14 text-center">暂无数据~</p>
+            <div class="clear1"></div>
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#channel_list_page",
+        data: {
+            showLoader: true,
+            list: [],
+            categoryID: "",
+            title: "",
+            nodata: false,
+        },
+        methods: {
+            myBack: function myBack(url) {
+                window.history.go(-1);
+            }
+
+        },
+        created: function created() {
+            var _this = this;
+
+            _this.categoryID = base.getParmar("categoryID");
+            _this.title = decodeURI(base.getParmar("title"));
+
+            baseAjax.getAudioChannelsByCategoryIDV2(_this.categoryID, function (data) {
+
+                console.log(data)
+
+                _this.list = data.returnJSON;
+
+                if (_this.list == null) {
+                    _this.nodata = true;
+                }
+
+                setTimeout(function () {
+                    _this.showLoader = false;
+                    $(".channel_list_page_content").removeClass("hidden");
+                }, ajaxConfig.lazy);
+            });
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var _this = vm;
+
+                _this.categoryID = base.getParmar("categoryID");
+                _this.title = decodeURI(base.getParmar("title"));
+
+                baseAjax.getAudioChannelsByCategoryIDV2(_this.categoryID, function (data) {
+
+                    console.log(data)
+
+                    _this.list = data.returnJSON;
+
+                    if (_this.list == null) {
+                        _this.nodata = true;
+                    }
+
+                    setTimeout(function () {
+                        _this.showLoader = false;
+                        $(".channel_list_page_content").removeClass("hidden");
+                    }, ajaxConfig.lazy);
+                });
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+
+</script>
+
+</body>
+</html>

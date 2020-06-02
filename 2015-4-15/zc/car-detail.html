@@ -1,0 +1,360 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>租车网</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/zc.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/cloud-zoom.1.0.2.min.js"></script>
+<script>
+	$(function(){
+		
+		$(".ul-zoom-page-img li").click(function(){
+			var img = $(this).find("img").attr("src");
+			var type = "'inside'";
+			var html = '<a href='+ img +' class="cloud-zoom" rel="position:'+type+',showTitle:false,adjustX:-4,adjustY:-4"><img src='+ img +' /></a>';
+			$(".zoom-small-image").html(html);
+			$('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+		});
+			
+			
+	})
+</script>
+</head>
+
+<body>
+	
+    <div class="wb100 h40px warpper-blue">
+    	<div class="w1000px center F125em lh40px">
+        	<div class="wb30 fl">
+            	<span class="fl Fwhite par3per pointer">重庆 [切换城市]</span>
+                <a href="javascript:void(0)" class="white fl pal3per par3per">首页</a>
+                <a href="javascript:void(0)" class="white fl pal3per par3per">包车</a>
+                <a href="javascript:void(0)" class="white fl pal3per par3per">拼车</a>
+            </div>
+        	<div class="wb40 fr">
+                <a href="javascript:void(0)" class="white fr pal3per">网站导航</a>
+                <a href="javascript:void(0)" class="white fr pal3per par3per">帮助中心</a>
+                <a href="javascript:void(0)" class="white fr pal3per par3per">我的租车</a>
+                <a href="javascript:void(0)" class="white fr pal3per par3per">免费注册</a>
+                <a href="javascript:void(0)" class="white fr pal3per par3per">登录</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="wb100 h105px warpper-white-1">
+    	<div class="w1000px center h80px pat10">
+        	<div class="wb30 fl">
+            	<img src="images/logo.png">
+            </div>
+            <div class="wb40 mal5per mar5per fl mat10 radius5 over-hidden">
+            	<div class="wb85 fl warpper-white h35px">
+                	<img src="images/icon-search.png" class="middle mal3per mar3per">
+                    <input type="text" class="bor-none h35px h35px F125em Fgray-3" placeholder="请输入搜索关键字" />
+                </div>
+                <div class="wb15 fr warpper-yellow h35px lh35px Fwhite F125em text-center pointer">
+                	搜索
+                </div>
+            </div>
+            <div class="wb13 fr lh35px h35px text-center Fwhite warpper-orange-1 F150em mat10 radius5 pointer">
+            	免费发布信息
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="wb100 h15px warpper-wave"></div>
+    </div>
+    
+    <div class="clear"></div>
+   
+    <div class="wb100">
+    	<div class="w1000px h30px lh30px center Fgray-3 F125em">
+        	<img src="images/icon-home.png" class="middle">
+            <a href="javascript:void(0)" class="gray mal1per mar1per">首页</a>
+            >
+            <a href="javascript:void(0)" class="gray mal1per mar1per">拼车</a>
+        </div>
+    </div>
+    
+    <div class="clear12b"></div>
+    
+    <div class="wb100">
+    	<div class="w1000px center">
+        	<div class="wb100 display-inline radius5" style=" border:1px solid #e1e1e1; border-top:2px solid #6aa6e3;">
+            	<div class="wb96 h460px pab10 center">
+                	<p class="h50px lh50px wb98 pal1per par1per center Fgray-3 F225em bor-gray bor-solid-1b">
+                    	路虎揽胜 2010款 5.0 V8 NA HSE 汽油版 5座 东莞黄江永安进口车行
+                        <span class="Fgray-2 fr F60em">2015-4-13 14:35:32 发布</span>
+                    </p>
+                    <div class="clear1"></div>
+                    
+                    <div class="wb45 fl">
+                        <div class=" wb95 h300px img-area zoom-small-image over-hidden">
+                            <a href="images/product-img-1-big.jpg" class='cloud-zoom' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4"><img src="images/product-img-1.jpg" /></a>
+                        </div>
+                        <div class="clear1"></div>
+                        <ul class="ul-zoom-page-img">
+                            <li><img src="images/product-img-1.jpg" /></li>
+                        </ul>
+                        
+                    </div>
+                    <div class="wb53 fr F125em Fgray-3 lh30px">
+                    	<p class="wb15 fl">价格：</p>
+                    	<p class="wb80 fl"><span class="Forange F175em">500</span> 元</p>
+                        <div class="clear"></div>
+                    	<p class="wb15 fl">品牌车型：</p>
+                    	<p class="wb80 fl">路虎-揽胜 -2010款 5.0 V8 N...</p>
+                        <div class="clear"></div>
+                    	<p class="wb15 fl">行驶里程：</p>
+                    	<p class="wb80 fl">15万公里</p>
+                        <div class="clear"></div>
+                    	<p class="wb15 fl">上牌日期：</p>
+                    	<p class="wb80 fl">2010年5月 (5年车龄)</p>
+                        <div class="clear"></div>
+                    	<p class="wb15 fl">看车地点：</p>
+                    	<p class="wb80 fl">深圳-重庆</p>
+                        <div class="clear1"></div>
+                    	
+                        <div class="warpper-white-1 wb96 pal3per par3per pat15 pab15">
+                        	<div class="wb90 pal5per par5per h80px lh40px pat10 pab10 warpper-white text-left">
+                            	<p>在线咨询：<img src="images/icon-qq.jpg" class="middle mal5 mar5"><a href="javascript:void(0)" class="blue">在线联系</a></p>
+                                <div class="clear"></div>
+                                <p>联系电话：<img src="images/icon-phone.jpg" class="middle mal5 mar5"> <span class="Forange F175em">134 3366 3666</span> <span class="Fgray-3">(张先生)</span></p>
+                            </div>
+                        </div>
+                        <div class="clear1"></div>
+                        
+                        <div class="wb20 fr Fgray-3 lh20px">
+                        	<img src="images/icon-share.png" class="fl mar5"> <a href="javascript:void(0)" class="gray">分享</a>
+                        </div>
+                        <div class="wb20 fr Fgray-3 lh20px">
+                        	<img src="images/icon-fav.png" class="fl mar5"> <a href="javascript:void(0)" class="gray">收藏</a>
+                        </div>
+                        
+                   	</div>
+                    
+                    <div class="clear"></div>
+                </div>
+        	</div>
+        </div>
+        
+        <div class="clear1"></div>
+        
+        <div class="w1000px center">
+        	
+            <div class="wb80 fl bor-gray bor-solid-1a radius5">
+            	<div class="wb100">
+                	<ul class="ul-detail-nav">
+                    	<li class="li-hover">综合描述</li>
+                        <li>给我留言</li>
+                    </ul>
+                </div>
+                <div class="clear1"></div>
+                
+                <div class="wb96 center">
+                	<p class="F150em wb98 pal2per Fgray-3" style="border-left: solid 5px #6aa6e3;">基本信息</p>
+                    <div class="clear1"></div>
+                    <div class="warpper-gray-1 display-inline wb94 pal3per par3per lh30px F125em Fgray-3 pat10 pab10">
+                    	<p class="wb33333 fl">排 气 量：5L</p>
+                    	<p class="wb33333 fl">变速 箱：自动</p>
+                    	<p class="wb33333 fl">排放标准：欧Ⅳ</p>
+                    	<p class="wb33333 fl">车身颜色：黑色</p>
+                    	<p class="wb33333 fl">车身结构：SUV</p>
+                    	<p class="wb33333 fl">行驶里程：15万公里 3.1万公里/年</p>
+                    	<p class="wb33333 fl">上牌时间：2010年5月</p>
+                    	<p class="wb33333 fl">使用性质：非营运</p>
+                    	<p class="wb33333 fl">年检到期：2015-5</p>
+                    	<p class="wb33333 fl">交强险到期：2015-5</p>
+                    	<p class="wb33333 fl">事故情况：无事故</p>
+                    	<p class="wb33333 fl">保养方式：-</p>
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="F150em wb98 pal2per Fgray-3" style="border-left: solid 5px #6aa6e3;">详细信息</p>
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                    <div class="wb96 center F125em Fgray-3 lh25px">
+                    	<p>车辆说明：来电咨询，价格大有商量</p>
+                    	<p>黄江进口车/东莞二手车/轿车/跑车/越野SUV</p>
+                    	<p>11年路虎揽胜5.0T黑色米白笼行政版有无匙启动 原装电动踏板 头枕电视 倒车影像 车况好 配置高13433663633</p>
+                    	<p>东莞黄江永安进口二手车行注：长期经营美版，德版，中东，各种豪华车辆（世界限量版超跑）接受客户订购车辆务必到我地亲自看车，看车试车费用为零，不满意分文不取，买卖自由。</p>
+                    	<p>诚信交易，愉快合作，不诚勿扰。</p>
+                    	<p>送车方式： </p>
+                    	<p>1.自己开走，免费！</p>
+                    	<p>2.物流运输（路途远近，根据物流公司规定所收取）</p>
+                    	<p>3.司机代驾（路费+油费+司机回程机票+司机费用5000左右）</p>
+                    	<p>4.对保运输（费用是车身的10%，对保承担路上所有风险与费用）</p>
+                    	<p>电话：13433663633 18028744226胡生 </p>
+                    	<p>QQ：2478599116 微信：abc247899116</p>
+                    </div>
+                    
+                    
+                    <div class="clear1"></div>
+                    <p class="F150em wb98 pal2per Fgray-3" style="border-left: solid 5px #6aa6e3;">图片信息</p>
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                    
+                    <div class="wb90 center img-Warea text-center">
+                    	<img src="images/product-img-1-big.jpg">
+                        <div class="clear1"></div>
+                        <img src="images/product-img-1-big.jpg">
+                        <div class="clear1"></div>
+                        <img src="images/product-img-1-big.jpg">
+                        <div class="clear1"></div>
+                    </div>
+                </div>
+            </div>
+            
+			<div class="wb185 fr">
+            	<div class="wb100 h35px lh35px warpper-gray-1 Fgray-3 text-center F125em">
+                	商家推荐
+                </div>
+            	<div class="clear1"></div>
+            	<div class="wb100 bor-gray bor-solid-1a lh20px text-center F125em">
+                	<div class="wb99 h150px img-area">
+                    	<img src="images/brand-img-1.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="Fblue">重庆恒运汽车租凭</p>
+                    <p class="Fgray-3">电话：11111111111</p>
+                </div>
+                <div class="clear1"></div>
+            	<div class="wb100 bor-gray bor-solid-1a lh20px text-center F125em">
+                	<div class="wb99 h150px img-area">
+                    	<img src="images/brand-img-1.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="Fblue">重庆恒运汽车租凭</p>
+                    <p class="Fgray-3">电话：11111111111</p>
+                </div>
+                <div class="clear1"></div>
+            	<div class="wb100 bor-gray bor-solid-1a lh20px text-center F125em">
+                	<div class="wb99 h150px img-area">
+                    	<img src="images/brand-img-1.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <p class="Fblue">重庆恒运汽车租凭</p>
+                    <p class="Fgray-3">电话：11111111111</p>
+                </div>
+                <div class="clear1"></div>
+            </div>        
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1000px center">
+        	<div class="wb100 display-inline radius5" style=" border:1px solid #e1e1e1; border-top:2px solid #6aa6e3;">
+            	<div class="wb94 center bor-gray bor-solid-1b h40px lh40px pal1per Fgray-3 F150em">更多包车信息推荐</div>
+                <div class="clear1"></div>
+                <div class="wb25 fl lh20px F125em text-center">
+                    <div class="wb65 center h110px img-area">
+                    	<img src="images/product-img-2.jpg">
+                    </div>
+                    <p class="wb80 center Fblue">宝马5系 2014款 宝马528</p>
+                    <p class="wb80 center Forange">500元</p>
+                </div>
+                
+                <div class="wb25 fl lh20px F125em text-center">
+                    <div class="wb65 center h110px img-area">
+                    	<img src="images/product-img-2.jpg">
+                    </div>
+                    <p class="wb80 center Fblue">宝马5系 2014款 宝马528</p>
+                    <p class="wb80 center Forange">500元</p>
+                </div>
+                
+                <div class="wb25 fl lh20px F125em text-center">
+                    <div class="wb65 center h110px img-area">
+                    	<img src="images/product-img-2.jpg">
+                    </div>
+                    <p class="wb80 center Fblue">宝马5系 2014款 宝马528</p>
+                    <p class="wb80 center Forange">500元</p>
+                </div>
+                
+                <div class="wb25 fl lh20px F125em text-center">
+                    <div class="wb65 center h110px img-area">
+                    	<img src="images/product-img-2.jpg">
+                    </div>
+                    <p class="wb80 center Fblue">宝马5系 2014款 宝马528</p>
+                    <p class="wb80 center Forange">500元</p>
+                </div>
+                
+                
+                
+    		</div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    <div class="clear1 bor-blue bor-solid-2b"></div>
+    <div class="clear1"></div>
+    <div class="clear1"></div>
+    <div class="wb100">
+    	<div class="w1000px center text-center">
+        	<img src="images/bottom-img-1.png">
+            <div class="clear1"></div>
+            <div class="clear1 bor-gray bor-solid-1b"></div>
+            <div class="clear1"></div>
+            <div class="wb96 pal2per par2per Fgray-3 lh25px text-left F110em">
+            	<div class="wb20 fl">
+                	<p class="F175em">新手指南</p>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                </div>
+            	<div class="wb20 fl">
+                	<p class="F175em">新手指南</p>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                </div>
+            	<div class="wb20 fl">
+                	<p class="F175em">新手指南</p>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                </div>
+            	<div class="wb20 fl">
+                	<p class="F175em">新手指南</p>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                </div>
+            	<div class="wb20 fl">
+                	<p class="F175em">新手指南</p>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                    <a href="javascript:void(0)" class="gray wb100 fl">注册新用户</a>
+                </div>
+            </div>
+            <div class="clear1"></div>
+            <div class="clear1 bor-gray bor-solid-1b"></div>
+            <div class="clear1"></div>
+            <div class="wb70 fl Fgray-3 text-left lh25px F125em">
+            	<p>
+                	<a href="javascript:void(0)" class="gray fl">关于租车网</a>
+                    <span class="fl mal3per mar3per">|</span>
+                	<a href="javascript:void(0)" class="gray fl">招募英才</a>
+                    <span class="fl mal3per mar3per">|</span>
+                	<a href="javascript:void(0)" class="gray fl">帮助中心</a>
+                    <span class="fl mal3per mar3per">|</span>
+                	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                    <span class="fl mal3per mar3per">|</span>
+                	<a href="javascript:void(0)" class="gray fl">友情链接</a>
+                    <span class="fl mal3per mar3per">|</span>
+                	<a href="javascript:void(0)" class="gray fl">投诉通道：400-821-1608</a>
+                </p>
+                <div class="clear"></div>
+                <p>Copyright © 2007-2015 租车网信息技术服务有限公司 ICP证：沪B2-20140130</p>
+                
+            </div>
+            
+            <div class="wb25 fr"></div>
+            
+        </div>
+    </div>
+  
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.footer{ padding:35px 0;}
+
+.footer-left{}
+.footer-left p{ color:#d4003c; text-align:center; line-height:40px;}
+
+.footer-center{}
+.footer-right{}

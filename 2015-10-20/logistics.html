@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| user-page
+| ------------------------------------------
+| Here are user-page html
+| 
+-->
+<div data-role="page" id="user-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em">
+            	物流中心
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<div class="wb100 h200px lh200px F150em text-center Fwhite relative" style="background:url(images/banner-user-2.jpg); background-size:100% 100%;">
+        	<img src="images/icon-user-4.png" class="middle mar10"> 顺丰快递123
+        </div>
+        
+        <!--
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="wb90 pal5per par5per h50px lh50px text-left bor-gray bor-solid-1t Fgray-3 ">
+        	2015年4月22日 星期三 
+            <a href="javascript:void(0)" class="fr wb20 h30px lh30px mat10 warpper-green-1 Fwhite text-center radius5"><span class="Fwhite">签到</span></a>
+            
+            <a href="javascript:void(0)" class="fr wb20 h30px lh30px mat10 warpper-gray-2 Fwhite text-center radius5"><span class="Fwhite">已签到</span></a>
+            
+        </div>-->
+        <div class="clear1 warpper-gray-1"></div>
+        <a href="user-order-manager.html" data-transition="slide" class="gray">
+            <div class="wb90 pal5per par5per h60px lh60px text-left bor-gray bor-solid-1t Fgray-3 ">
+                <img src="images/icon-log-1.png" class="fl mat15 h35px">
+                <img src="images/arrow-right.png" class="fr mat25">
+                <p class="wb80 fr">今日订单</p>
+            </div>
+        </a>
+        <a href="user-order-manager.html" data-transition="slide" class="gray">
+            <div class="wb90 pal5per par5per h60px lh60px text-left bor-gray bor-solid-1t Fgray-3 ">
+                <img src="images/icon-log-2.png" class="fl mat15 h35px">
+                <img src="images/arrow-right.png" class="fr mat25">
+                <p class="wb80 fr">待处理</p>
+            </div>
+        </a>
+        <a href="user-order-manager.html" data-transition="slide" class="gray">
+            <div class="wb90 pal5per par5per h60px lh60px text-left bor-gray bor-solid-1t Fgray-3 ">
+                <img src="images/icon-log-3.png" class="fl mat15 h35px">
+                <img src="images/arrow-right.png" class="fr mat25">
+                <p class="wb80 fr">已处理</p>
+            </div>
+        </a>
+        <a href="user-order-manager.html" data-transition="slide" class="gray">
+            <div class="wb90 pal5per par5per h60px lh60px text-left bor-gray bor-solid-1t Fgray-3 ">
+                <img src="images/icon-log-4.png" class="fl mat15 h35px">
+                <img src="images/arrow-right.png" class="fr mat25">
+                <p class="wb80 fr">历史管理</p>
+            </div>
+        </a>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background:none; border:none;">
+		 <input type="button" data-role="none" value="退出登录" class="wb90 mal5per warpper-orange-2 pointer h40px lh40px text-center bor-none Fwhite radius5" />
+	</div>
+    
+</div>
+
+</body>
+</html>

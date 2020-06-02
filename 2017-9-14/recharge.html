@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <style>
+
+        .el-radio__input.is-checked .el-radio__inner{border-color: #ee542c;background: #ee542c;}
+        .el-radio__inner:hover{border-color: #ee542c;}
+        .el-radio__input.is-focus .el-radio__inner{border-color: #ee542c;}
+    </style>
+
+    <title>充值</title>
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| recharge_page
+| ------------------------------------------
+| Here are recharge_page html
+|
+-->
+
+<div id="recharge_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <!--支付完成弹窗-->
+    <div class="dialogBg" style="z-index: 9999; background: rgba(0,0,0,.7);" v-show="showResult == true" @click="calRecharge"></div>
+    <div class="w270px h150px fixed warpper-white Fgray-3 lh45px radius5 F16 text-center" v-show="showResult == true" style="top: 0; right: 0; left: 0; bottom: 0; margin: auto; z-index: 9999;">
+        <div class="wb100">
+            <p class="h60px lh60px Fblack">请确认充值是否已完成</p>
+            <p class="bor-gray bor-solid-1b bor-solid-1t Fred" @click="doneRecharge">已完成充值</p>
+            <p class="Fgray-2" @click="recharge">充值遇到问题，重新充值</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+
+            <div class="warpper-black-3">
+                <p class="Fgray-5 pal15 par15 h45px lh45px">
+                    请选择充值金额<span class="Fgray-5">（<span class="Fnum">1</span>元=<span class="Fnum">1</span>金币）</span>
+                </p>
+
+                <div class="pal15 Fgray-3 F14 lh40px">
+
+                    <div class="par15">
+                        <el-row :gutter="15">
+                            <el-col :span="8" v-for="(item,key) in moneys">
+                                <div @click="money = item" class="wb100 h40px lh40px text-center F16 radius5 mab15 Fnum" :class="money == item ? 'warpper-orange-7 pa1 Fwhite' : 'bor-orange2 bor-solid-1a Forange-2'">
+                                    {{item}}元
+                                </div>
+                            </el-col>
+                            <el-col :span="8">
+                                <div class="wb100 h40px lh40px text-center F14 radius5 mab15 Fnum bor-orange2 bor-solid-1a Forange-2">
+                                    <div class="relative pal5 par20">
+                                        <input type="tel" class="bor-none wb100 F16 warpper-none Fgray-6" placeholder="其他金额" v-model="money">
+                                        <span class="absolute" style="top: 0; right: 5px;">元</span>
+                                    </div>
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </div>
+                </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <template v-if="isWeiXin">
+            <div class="pa15">
+                <div class="wb100 warpper-green Fwhite h45px lh45px text-center radius5 F16" @click="recharge('wx')">
+                    微信支付
+                </div>
+            </div>
+        </template>
+
+        <template v-else>
+            <div class="pal15 Fgray-5 F16 lh40px warpper-black-3">
+                <p>选择支付方式</p>
+
+                <div class="clear bor-black2 bor-solid-1b"></div>
+                <div class="clear1"></div>
+                <div class="wb100">
+
+                    <p class="h30px lh30px wb100" @click="radio = 0">
+                        <span class="fl h30px lh30px"> <img src="images/alipay.png" class="h30px fl mar5">支付宝 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="0">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear1 bor-black2 bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                    <p class="h30px lh30px wb100" @click="radio = 1">
+                        <span class="fl h30px lh30px"> <img src="images/wxpay.png" class="h30px fl mar5">微信 </span>
+                        <el-radio class="radio fr mar15" v-model="radio" :label="1">&nbsp;</el-radio>
+                    </p>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+
+            <div class="clear1"></div>
+
+            <div class="pa15">
+                <div class="wb100 warpper-orange-7 Fwhite h45px lh45px text-center radius5 F16" @click="recharge">
+                    立即充值
+                </div>
+            </div>
+        </template>
+
+
+
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="text-center Fgray-6">
+        <p>联系我们</p>
+        <div class="clear h10px"></div>
+        <p>电话/微信：<a href="tel:13310227366"> <span class="Forange-2 Fnum">13310227366</span> </a></p>
+    </div>
+
+    <div class="wb100 payHtml hidden"></div>
+
+</div>
+
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface_bak.js"></script>
+<script src="js/loading.js"></script>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#recharge_page",
+        data: {
+            fullscreenLoading: true,
+            showResult: false,
+            login: false,
+            isLock: false,
+            isWeiXin: false,
+            money: 50,
+            paymentNo: '',
+            infoMsg: '',
+            call: '',
+            user: {},
+            timerID: 0,
+            timer: 0,
+            title: '充值',
+            state: '',
+            radio: 1,
+            moneys: [50, 100, 300, 500, 1000],
+            favDisabled: false,
+        },
+        methods: {
+
+            doneRecharge: function doneRecharge() {
+
+                var paymentNo = base.getCookie('paymentNo');
+
+                if(base.isNull(paymentNo))
+                    return false;
+
+                var payType = base.getCookie('payType');
+
+                if(base.isNull(payType))
+                    return false;
+
+                var _this = this;
+
+                _this.showResult = false;
+
+                baseAjax.payResultQuery(paymentNo, payType, function (data, errorMsg) {
+                    if (data) {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+                        window.location.replace('pay_success.html');
+//                        window.history.go(-1);
+                    } else {
+                        base.setCookie('paymentNo', null);
+                        base.setCookie('payIng', null);
+                        base.setCookie('payType', null);
+                        base.setCookie('payMoney', null);
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+                    }
+                });
+
+            },
+
+            calRecharge: function calRecharge() {
+                base.setCookie('paymentNo', null);
+                base.setCookie('payIng', null);
+                base.setCookie('payType', null);
+                base.setCookie('payMoney', null);
+                this.showResult = false;
+            },
+
+            recharge: function recharge(val) {
+                var _this = this;
+
+                if(_this.isLock == true)
+                    return false;
+
+                _this.isLock = true;
+
+                if(_this.favDisabled)
+                    return;
+
+                if(_this.login == false){
+                    window.location.href = 'login.html?call=true';
+                    return false;
+                }
+
+                //判断金额
+                if (base.isNull(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                if (isNaN(_this.money)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '投注金额不合法',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+//                if (_this.money < 1) {
+//                    _this.$message({
+//                        type: 'error',
+//                        message: '充值需大于1元'
+//                    });
+//                    return false;
+//                }
+
+                var _url = 'http://h5.pwabc.cn/wnl/pay_result.html';
+
+                if(val == 'wx'){
+                    //微信公众号支付
+
+                    baseAjax.wxJsPay(_this.money * 100, '', '', function (data) {
+
+                        WeixinJSBridge.invoke(
+                            'getBrandWCPayRequest',
+                            JSON.parse(data.returnJSON),
+                            function(res){
+                                if(res.err_msg == "get_brand_wcpay_request:ok") {
+
+                                    window.location.href = 'pay_success.html';
+
+                                }else if(res.err_msg== "get_brand_wcpay_request:cancel"){
+                                    _this.$message({
+                                        type: 'error',
+                                        message: '支付取消',
+                                        duration: 1500
+                                    });
+                                    _this.isLock = false;
+                                }else{
+                                    _this.$message({
+                                        type: 'error',
+                                        message: '支付失败',
+                                        duration: 1500
+                                    });
+                                    _this.isLock = false;
+                                }
+                            }
+                        );
+
+                    })
+
+                    return false;
+                }
+
+
+                //封装订单信息
+
+                if(_this.radio == 0){
+                    //支付宝
+                    baseAjax.alipayWap(_this.money * 100, _url, '', '', function (data) {
+                        data = data.replace('POST', 'GET');
+                        var index1 = data.indexOf('"out_trade_no":"');
+                        var index2 = data.indexOf('",', index1);
+                        var _str = data.substring(index1 + 16, index2);
+                        base.setCookie('paymentNo', _str);
+                        base.setCookie('payIng',true);
+                        base.setCookie('payType',0);
+                        base.setCookie('payMoney',_this.money);
+                        clearInterval(_this.timerID);
+                        $(".payHtml").html(data);
+                        //设置支付状态
+                        base.setCookie('calOrder',true);
+                    });
+                }else{
+                    //微信
+                    baseAjax.wxWebPay(_this.money * 100, '', '', function (data) {
+                        if(data){
+                            window.location.href = data.returnJSON.mweb_url + '&redirect_url=' + encodeURI(_url);
+//                            window.location.href = data.returnJSON.mweb_url;
+                            clearInterval(_this.timerID);
+                            base.setCookie('payIng',true);
+                            base.setCookie('paymentNo', data.returnJSON.orderNo);
+                            base.setCookie('payType',1);
+                            base.setCookie('payMoney',_this.money);
+                            //设置支付状态
+                            base.setCookie('calOrder',true);
+                        }
+                    });
+                }
+
+            }
+        },
+        created: function created() {
+
+            var _this = this;
+
+            if(base.versions.isWeiXin){
+                _this.isWeiXin = true;
+
+                //初始化支付环境
+
+            }else{
+                _this.isWeiXin = false;
+            }
+
+            _this.isLock = false;
+
+            _this.call = base.getParmar('call');
+
+            var _money = base.getParmar('money');
+
+            if (base.isNull(_money)) {
+                //上一个未支付订单
+                _money = base.getCookie('payMoney');
+                if (base.isNull(_money)) {
+                    _money = 50;
+                }
+            }
+
+            _this.money = _money;
+
+            baseAjax.userInfo(function (data) {
+                console.log(data);
+                if (data) {
+                    if (base.isNull(data.returnJSON)) {
+                        _this.login = false;
+                    } else {
+                        _this.login = true;
+                        _this.user = data.returnJSON;
+                    }
+                } else {
+                    _this.login = false;
+                }
+            });
+
+            //获取上一个失败或取消的订单
+            var calOrder = base.getCookie('calOrder');
+
+            if(!base.isNull(calOrder)){
+                _this.showResult = true;
+                base.setCookie('calOrder',null);
+                return false;
+            }
+
+            //判断是否存在未支付的订单
+            var paymentNo = base.getCookie('paymentNo');
+            if(base.isNull(paymentNo)){
+                return false;
+            }
+            var payIng = base.getCookie('payIng');
+            if(base.isNull(payIng)){
+                return false;
+            }
+            var payType = base.getCookie('payType');
+            if(base.isNull(payType)){
+                return false;
+            }else{
+                _this.radio = parseInt(payType);
+            }
+
+            pushHistory();
+
+            window.addEventListener("popstate", function(e) {
+
+                var paymentNo = base.getCookie('paymentNo');
+                if(base.isNull(paymentNo)){
+                    return false;
+                    window.history.back();
+                }else{
+                    _this.showResult = true;
+                }
+
+            }, false);
+
+        }
+    });
+
+    function pushHistory() {
+        var state = {
+            title: "title",
+            url: "#"
+        };
+        window.history.pushState(state, "title", "#");
+    }
+
+    $(function () {
+        var isPageHide = false;
+
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.isLock = false;
+
+                _this.call = base.getParmar('call');
+
+                var _money = base.getParmar('money');
+
+                if (base.isNull(_money)) {
+                    //上一个未支付订单
+                    _money = base.getCookie('payMoney');
+                    if (base.isNull(_money)) {
+                        _money = 50;
+                    }
+                }
+
+                _this.money = _money;
+
+                baseAjax.userInfo(function (data) {
+                    console.log(data);
+                    if (data) {
+                        if (base.isNull(data.returnJSON)) {
+                            _this.login = false;
+                        } else {
+                            _this.login = true;
+                            _this.user = data.returnJSON;
+                        }
+                    } else {
+                        _this.login = false;
+                    }
+                });
+
+                //获取上一个失败或取消的订单
+                var calOrder = base.getCookie('calOrder');
+
+                if(!base.isNull(calOrder)){
+                    _this.showResult = true;
+                    base.setCookie('calOrder',null);
+                    return false;
+                }
+
+                //判断是否存在未支付的订单
+                var paymentNo = base.getCookie('paymentNo');
+                if(base.isNull(paymentNo)){
+                    return false;
+                }
+                var payIng = base.getCookie('payIng');
+                if(base.isNull(payIng)){
+                    return false;
+                }
+                var payType = base.getCookie('payType');
+                if(base.isNull(payType)){
+                    return false;
+                }else{
+                    _this.radio = parseInt(payType);
+                }
+
+                pushHistory();
+
+                window.addEventListener("popstate", function(e) {
+                    var paymentNo = base.getCookie('paymentNo');
+                    if(base.isNull(paymentNo)){
+                        return false;
+                        window.history.back();
+                    }else{
+                        _this.showResult = true;
+                    }
+                }, false);
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+
+    });
+
+
+//
+//    //IOS客户端版本
+//    if(base.versions.isIosApp){
+//        hostsdk.getInfo({
+//            successCallback : function(res){
+//
+//                res = JSON.parse(res);
+//
+//                //测试支付
+//                baseAjax.alipayWapForApp(_this.money * 100, 'http://192.168.8.152:83/pay_success.html', '', '', res.uuid, res.deviceID, res.source, res.deviceType, function (data) {
+//
+//                    alert(data);
+//
+//                    data = data.replace('POST', 'GET');
+//
+//                    clearInterval(_this.timerID);
+//
+//                    var index1 = data.indexOf('"out_trade_no":"');
+//
+//                    var index2 = data.indexOf('",', index1);
+//
+//                    var _str = data.substring(index1 + 16, index2);
+//
+//                    base.setCookie('paymentNo', _str);
+//
+//                    $(".payHtml").html(data);
+//                });
+//
+//            },
+//            errorCallback : function(res){
+//                alert("调用失败" + res);
+//            }
+//        })
+//
+//        return false;
+//    }
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

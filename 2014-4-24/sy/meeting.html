@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>司仪</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/sy.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+		
+	
+	})
+
+</script>
+</head>
+
+<body class="bg-paper">
+	
+    <div class="wb100 h90px box-shadow-white2 bor-white2 bor-solid-1b warpper-nav">
+    	<div class="w1200px fixed-center h90px lh90px center text-center">
+        	<img src="images/logo.png" class="middle">
+            <a href="javascript:void(0)" class="brown fr F200em">在线预约</a>
+        </div>
+    </div>
+    
+   <div class="left-menu">
+        <div class="left-nav">
+        	<ul class="ul-left-nav">
+            	<li>
+                	<img src="images/icon-home.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-cafe.png">
+                    <p>旅游</p>
+                </li>
+            	<li class="li-hover">
+                	<img src="images/icon-guidepost.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-pc.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-car.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-hotal.png">
+                    <p>旅游</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wb100 h100 img-Warea relative">                                                                                                                                                                                                                         
+    	<div class="slider">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-3.jpg"></li>
+                <li class="slide"><img src="images/banner-3.jpg"></li>
+                <li class="slide"><img src="images/banner-3.jpg"></li>
+                <li class="slide"><img src="images/banner-3.jpg"></li>
+                <li class="slide"><img src="images/banner-3.jpg"></li>
+            </ul>
+        </div>
+        <div class="bg-title-2 nav-btn">
+        	<p class="wb18 center h40px lh40px text-center Fwhite warpper-red-8 F150em pointer">了解详情</p>
+        </div>
+    </div>
+	
+    <div class="clear h100px"></div>
+    
+    <div class="w1200px center img-Warea F200em Fgray-3 lh40px">
+    	<div class="wb35 fl">
+        	<p class="F175em">一切个性化需求</p>
+            <div class="clear h40px"></div>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用WED MC无需现金支付。到了目的地。你的费用自己从信用卡中扣除—无需小费，我们更会把你的乘车收据发到您的电子邮箱</p>
+        </div>
+        <div class="wb50 fr">
+        	<img src="images/slider-img-1.png">
+        </div>
+    	<div class="clear h280px"></div>
+    	<div class="wb35 fr">
+        	<p class="F175em">一切个性化需求</p>
+            <div class="clear h40px"></div>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用WED MC无需现金支付。到了目的地。你的费用自己从信用卡中扣除—无需小费，我们更会把你的乘车收据发到您的电子邮箱</p>
+        </div>
+        <div class="wb50 fl">
+        	<img src="images/slider-img-1.png">
+        </div>
+    	<div class="clear h280px"></div>
+    	<div class="wb35 fl">
+        	<p class="F175em">一切个性化需求</p>
+            <div class="clear h40px"></div>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用WED MC无需现金支付。到了目的地。你的费用自己从信用卡中扣除—无需小费，我们更会把你的乘车收据发到您的电子邮箱</p>
+        </div>
+        <div class="wb50 fr">
+        	<img src="images/slider-img-1.png">
+        </div>
+  		<div class="clear h100px"></div>
+    </div>
+    
+    
+    <div class="clear h100px"></div>
+    
+    <div class="wb100 h90px lh90px text-center warpper-white-1 F150em Fbrown-2">
+    	<span>版权所有 © 2014 重庆壹比壹有限公司</span>              <span class="mal30">Map | Tag WED CM唯一官网：http://www.XXXX.com/ 京ICP备12018289号</span>
+    </div>
+    
+</body>
+</html>

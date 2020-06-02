@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>快三</title>
+
+    <style>
+        .el-table th {
+            background-color: #fff !important;
+            text-align: center;
+        }
+        .el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
+            background-color: #fff !important;
+        }
+        .el-table .cell {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| lottery_q3_page
+| ------------------------------------------
+| Here are lottery_q3_page html
+|
+-->
+
+<div id="lottery_q3_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <div class="h50px lh50px warpper-red relative wb100" style="z-index: 99">
+            <a href="index.html">
+                <div class="w50px h50px fl absolute">
+                    <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 2px;" class="img-area"><img src="images/icon-back.png"></div>
+                </div>
+            </a>
+
+            <template v-if="currentNav==0">
+            <p class="text-center Fwhite" @click="swicthType">{{playType[playIndex]}} <img src="images/arrow-down-white.png" class="h10px"> </p>
+            </template>
+
+            <template v-if="currentNav==1">
+                <p class="text-center Fwhite" >
+                    开奖
+                </p>
+            </template>
+
+            <template v-if="currentNav==2">
+                <p class="text-center Fwhite" >
+                    规则
+                </p>
+            </template>
+
+
+            <!--<a href="trend_synthesize.html">-->
+                <!--<div class="w20px h20px img-area absolute" style="top:5px; right: 15px;">-->
+                    <!--<img src="images/icon-trend.png">-->
+                <!--</div>-->
+            <!--</a>-->
+        </div>
+
+        <div class="dialogBg" @click="showType = false" v-show="showType == true"></div>
+        <div class="wb100 text-center warpper-white" v-show="showType == true" style="position: fixed; z-index: 99;">
+            <div class="pal15 par15 pat15 F14">
+                <el-row :gutter="15">
+                    <el-col :span="8" v-for="(item,key) in playType" class="wb100 mab15">
+                        <div class="wb100 h35px lh35px radius5" @click="changeType(key)" :class="key == playIndex ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a Fgray-3'">
+                            {{item}}
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="wb100 h40px lh40px text-center Fgray-3">
+            <el-row>
+                <el-col :span="8" v-for="(item,key) in nav">
+                    <div @click="changeNav(key)" class="h40px lh40px wb100">
+                        <span :class="key == currentNav ? 'bor-red bor-solid-2b Fblack pab8' : 'Fblack'">{{item}}</span>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <template v-if="currentNav == 0">
+
+            <!--<div class="clear1"></div>-->
+
+            <div class="warpper-gray-3 wb100 h60px bor-solid-1t bor-solid-1b bor-gray">
+
+
+                <div class="pal15 par15 relative text-center F14 lh20px Fgray-3">
+
+                    <div class="w110px fl h30px lh30px">
+                        <p>距{{current.number}}期投注截止</p>
+                        <p class="Fred F14">{{parseMins(timer)}}</p>
+                    </div>
+
+
+
+                    <div class="w20px fr " @click="switchHistory">
+                        <img src="images/arrow-down.png" class="w15px" v-show="showHistory == false" style="margin-top: 25px">
+                        <img src="images/arrow-up.png" class="w15px" v-show="showHistory == true" style="margin-top: 25px">
+                    </div>
+                    <div class="fr h30px lh30px" style="width: 105px;">
+                        <p>{{prev.number}}期{{state}}</p>
+                        <p class="Fred F14">
+                            <template v-if="prev.imgs">
+                                <img v-for="item in prev.imgs" :src="item" class="w30px fl mar5">
+                            </template>
+                            <template v-else>
+                                <img v-for="item in [1,2,3]" src="images/sz_wh.png" class="w30px fl mar5">
+                            </template>
+                        </p>
+                    </div>
+                </div>
+
+                <div class=" bor-gray bor-solid-1l h40px center" style=" width:1px;margin-top: 10px"></div>
+
+
+            </div>
+
+            <!--<div class="clear1"></div>-->
+
+            <el-collapse-transition>
+                <div v-show="showHistory">
+                    <div class="wb100">
+
+                        <template>
+                            <el-table
+                                    :data="history"
+                                    stripe
+                                    style="width: 100%;z-index: -1">
+                                <el-table-column
+                                        prop="number"
+                                        label="期次"
+                                        width="50">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="bonusCode"
+                                        label="开奖号码">
+                                    <template scope="scope">
+                                        <p v-if="scope.row.sum">
+                                            <img v-for="item in scope.row.imgs" v-if="scope.row.imgs" :src="item" class="w30px fl mar5">
+                                            <span class="Fred fl h30px lh30px">{{scope.row.bonusCode}}</span>
+                                        </p>
+                                        <p v-else>暂无</p>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column
+                                        prop="bonusCode"
+                                        label="和值"
+                                        width="50">
+                                    <template scope="scope">
+                                        <p v-if="scope.row.sum">{{ scope.row.sum }}</p>
+                                        <p v-else>暂无</p>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column
+                                        prop="bonusCode"
+                                        label="大小"
+                                        width="50">
+                                    <template scope="scope">
+                                        <p v-if="scope.row.sum">{{ scope.row.sum > 9 ? '大' : '小' }}</p>
+                                        <p v-else>暂无</p>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column
+                                        prop="bonusCode"
+                                        label="单双"
+                                        width="50">
+                                    <template scope="scope">
+                                        <p v-if="scope.row.sum">{{ scope.row.sum %2 == 1 ? '单' : '双' }}</p>
+                                        <p v-else>暂无</p>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </template>
+
+                        <div class="clear1"></div>
+                    </div>
+                </div>
+            </el-collapse-transition>
+
+            <div class="clear1"></div>
+
+            <div class="wb100">
+                <p class=" Fgray-2 F14 pal15 par15">
+                    {{playTitle}}
+                </p>
+
+              
+
+                <div class="pa15">
+
+                    <template v-if="playIndex == 0 || playIndex == 4 || playIndex == 5">
+                        <el-row :gutter="15">
+                            <el-col :span="6" v-for="(item,key) in options" class="wb100 mab15">
+                                <div class="wb100 lh20px radius5 text-center" @click="selected(key)" :class="item.value == true ? 'warpper-red Fwhite pal1 par1 pat6 pab6' : 'bor-gray bor-solid-1a  pat5 pab5'">
+                                    <p class="F16" :class="item.value == true ? 'Fwhite' : 'Fred'">{{item.num}}</p>
+                                    <p class="F12" :class="item.value == true ? 'Fwhite' : 'Fgray-2'" v-if="item.money">奖金{{item.money}}元</p>
+                                </div>
+                            </el-col>
+                        </el-row>
+                        <template v-if="playIndex == 0">
+                            <div class="clear1"></div>
+                            <el-row :gutter="15" class="Fgray-3">
+                                <el-col :span="6" class="wb100 mab15">
+                                    <div class="wb100 h35px lh35px radius5 text-center" @click="quickSelected(1)" :class="quick.isBig == true ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a'">
+                                        大
+                                    </div>
+                                </el-col>
+                                <el-col :span="6" class="wb100 mab15">
+                                    <div class="wb100 h35px lh35px radius5 text-center" @click="quickSelected(2)" :class="quick.isSmall == true ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a'">
+                                        小
+                                    </div>
+                                </el-col>
+                                <el-col :span="6" class="wb100 mab15">
+                                    <div class="wb100 h35px lh35px radius5 text-center" @click="quickSelected(3)" :class="quick.isOdd == true ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a'">
+                                        单
+                                    </div>
+                                </el-col>
+                                <el-col :span="6" class="wb100 mab15">
+                                    <div class="wb100 h35px lh35px radius5 text-center" @click="quickSelected(4)" :class="quick.isEven == true ? 'warpper-red Fwhite pa1' : 'bor-gray bor-solid-1a'">
+                                        双
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </template>
+                    </template>
+
+                    <template v-if="playIndex == 1 || playIndex == 2 || playIndex == 3">
+                        <el-row :gutter="15">
+                            <el-col :span="4" v-for="(item,key) in options" class="wb100 mab15">
+                                <div v-if="item.disable == true" class="wb100 radius5 warpper-gray-2 Fwhite text-center fl lh20px pal1 par1 pat6 pab6">
+                                    {{item.num}}
+                                </div>
+                                <div class="wb100 lh20px radius5 text-center" v-else @click="selected(key,'options1')" :class="item.value == true ? 'warpper-red Fwhite pal1 par1 pat6 pab6' : 'bor-gray bor-solid-1a  pat5 pab5'">
+                                    <p class="F16" :class="item.value == true ? 'Fwhite' : 'Fred'">{{item.num}}</p>
+                                </div>
+                            </el-col>
+                        </el-row>
+
+                        <template v-if="playIndex == 2">
+                             <el-row :gutter="15">
+                                <el-col :span="6" v-for="(item,key) in options2" class="wb100 mab15">
+                                    <div v-if="item.disable == true" class="wb100 radius5 warpper-gray-2 Fwhite text-center fl lh20px pal1 par1 pat6 pab6">
+                                        {{item.num}}
+                                    </div>
+                                    <div class="wb100 lh20px radius5 text-center" v-else @click="selected(key,'options2')" :class="item.value == true ? 'warpper-red Fwhite pal1 par1 pat6 pab6' : 'bor-gray bor-solid-1a  pat5 pab5'">
+                                        <p class="F16" :class="item.value == true ? 'Fwhite' : 'Fred'">{{item.num}}</p>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </template>
+                        <template v-if="playIndex == 3">
+                             <el-row :gutter="15">
+                                <el-col :span="6" v-for="(item,key) in options2" class="wb100 mab15">
+                                    <div v-if="item.disable == true" class="wb100 radius5 warpper-gray-2 Fwhite text-center fl lh20px pal1 par1 pat6 pab6">
+                                        {{item.num}}
+                                    </div>
+                                    <div class="wb100 lh20px radius5 text-center" v-else @click="selected(key,'options2')" :class="item.value == true ? 'warpper-red Fwhite pal1 par1 pat6 pab6' : 'bor-gray bor-solid-1a  pat5 pab5'">
+                                        <p class="F16" :class="item.value == true ? 'Fwhite' : 'Fred'">{{item.num}}</p>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </template>
+
+                    </template>
+
+                    <template v-if="playIndex == 6 || playIndex == 7">
+                        <el-row :gutter="15">
+                            <el-col :span="24" v-for="(item,key) in options" class="wb100 mab15">
+                                <div v-if="item.disable == true" class="wb100 radius5 warpper-gray-2 Fwhite text-center fl lh30px pal1 par1 pat6 pab6">
+                                    {{item.num}}
+                                </div>
+                                <div class="wb100 lh30px radius5 text-center" v-else @click="selected(key,'options1')" :class="item.value == true ? 'warpper-red Fwhite pal1 par1 pat6 pab6' : 'bor-gray bor-solid-1a  pat5 pab5'">
+                                    <p class="F16" :class="item.value == true ? 'Fwhite' : 'Fred'">{{item.num}}</p>
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </template>
+
+                </div>
+
+            </div>
+
+            <div class="clear h65px"></div>
+
+            <div class="wb100 bor-gray bor-solid-1t fixed warpper-white relative h60px" style="bottom: 0;">
+                <div class="pat10 pab10">
+                    <div class="w25px text-center absolute" @click="clearSelect" style="left: 15px; top: 10px;">
+                        <div class="h25px img-Harea center">
+                            <img src="images/icon-clear.png">
+                        </div>
+
+                        <div class=" bor-gray bor-solid-1l h50px absolute " style="margin-top: -30px;margin-left: 32px"></div>
+
+                        <p class="Fgray-2 F12 h25px lh25px text-center">清空</p>
+                    </div>
+
+                    <div class="w25px text-center absolute" v-if="playIndex!=6 && playIndex!=7" style="left: 55px; top: 10px;" @click="randomSelect">
+                        <div class="h25px img-Harea center">
+                            <img src="images/random.png">
+                        </div>
+                        <p class="Fgray-2 F12 h25px lh25px text-center">机选</p>
+                    </div>
+
+                    <div class="w80px text-center radius5 h40px lh40px absolute" style="top: 10px; right: 15px;" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'"  @click="buyTicket">
+                        确定
+                    </div>
+
+                    <div class="w200px center">
+
+                        <p class="lh50px text-center">
+                            <span class="Fred">{{number}}</span>注
+                            <span class="Fred">{{number * 2}}</span>元
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </template>
+
+        <template v-if="currentNav==1">
+            <ticket-notice :lottery_type="'JXK3'"></ticket-notice>
+        </template>
+
+        <template v-if="currentNav==2">
+            <ticket-rule :lottery="1"></ticket-rule>
+        </template>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lottery_q3_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            nav : [ '投注', '开奖', '规则'],
+            currentNav : 0,
+            state : '开奖结果',
+            timer : 300,
+            ticketID : '',
+            timerID : 0,
+            current : {
+                number : '',
+                endTime : ''
+            },
+            prev : {
+                number : '',
+                endTime : ''
+            },
+            playTitle : '',
+            number : 0,
+            lock : true,
+            playType : ['和值','二不同号','三不同号','二同号','三同号','二同号复选','三同号通选','三连号通选'],
+            playIndex : 4,
+            showHistory : false,
+            showType : false,
+            history : [],
+            options : [],
+            options2 : [],
+            quick: {
+                isBig : false,
+                isSmall : false,
+                isOdd : false,
+                isEven : false,
+            },
+        },
+        methods : {
+            selected(i,type){
+
+                let _this = this;
+
+                if(_this.playIndex == 2){
+                    //三不同号
+                    if(type == 'options1'){
+                        _this.options[i].value = !_this.options[i].value;
+                    }if(type == 'options2'){
+                        _this.options2[i].value = !_this.options2[i].value;
+
+                        _this.calculate();
+                        return false;
+                    }
+                    //这里计算选中的值
+
+                    let _arr = [], _result = [], _result2 = [];
+
+                    for(let i=0; i<_this.options.length; i++){
+                        if(_this.options[i].value)
+                            _arr.push(_this.options[i].num);
+                    }
+
+                    if(_arr.length == 0){
+                        for(let j=0; j<_this.options2.length; j++){
+                            _this.options2[j].value = false;
+                        }
+                    }
+                    if(_arr.length == 1){
+                        for(let j=0; j<_this.options2.length; j++){
+                            let _flag = false;
+                            if(_this.options2[j].num.indexOf(_arr[0])!=-1){
+                                _flag = true;
+                            }
+                            if(_flag){
+                                _this.options2[j].value = true;
+                                _result.push(_this.options2[j].num);
+                            }
+                        }
+                    }
+                    if(_arr.length == 2){
+                        for(let j=0; j<_this.options2.length; j++){
+                            let _flag = false;
+                            if(_this.options2[j].num.indexOf(_arr[0])!=-1){
+                                _flag = true;
+                            }
+                            if(_flag){
+                                _result.push(_this.options2[j].num);
+                            }
+                        }
+                        for(let j=0; j<_result.length; j++){
+                            let _flag = false;
+                            if(_result[j].indexOf(_arr[1])!=-1){
+                                _flag = true;
+                            }
+                            if(_flag){
+                                _result2.push(_result[j]);
+                            }
+                        }
+                        for(let j=0; j<_this.options2.length; j++){
+                            let _flag = false;
+                            for(let i=0; i<_result2.length; i++){
+                                if(_this.options2[j].num == _result2[i]){
+                                    _flag = true;
+                                    break;
+                                }
+                            }
+                            if(_flag){
+                                _this.options2[j].value = true;
+                            }else{
+                                _this.options2[j].value = false;
+                            }
+                        }
+                    }
+
+                    if(_arr.length == 3){
+                        for(let j=0; j<_this.options2.length; j++){
+                            _this.options2[j].value = false;
+                            if(_this.options2[j].num == _arr.join('')){
+                                _this.options2[j].value = true;
+                            }
+                        }
+                    }
+
+                    if(_arr.length > 3){
+                        //组合
+                        let _tmp = base.group(_arr,3);
+
+                        for(let j=0; j<_this.options2.length; j++){
+                            let _flag = false;
+                            for(let i=0; i<_tmp.length; i++){
+                                if(_this.options2[j].num == _tmp[i].join('')){
+                                    _flag = true;
+                                    break;
+                                }
+                            }
+                            if(_flag){
+                                _this.options2[j].value = true;
+                            }else{
+                                _this.options2[j].value = false;
+                            }
+                        }
+
+                    }
+
+                }
+
+                else if(_this.playIndex == 3){
+                    //三不同号
+                    if(type == 'options1'){
+                        _this.options[i].value = !_this.options[i].value;
+                    }if(type == 'options2'){
+                        _this.options2[i].value = !_this.options2[i].value;
+                        _this.calculate();
+                        return false;
+                    }
+
+                    let _arr = [], _result = [], _start = 0, _end = 0;
+
+                    for(let i=0; i<_this.options.length; i++){
+                        if(_this.options[i].value)
+                            _arr.push(_this.options[i].num);
+                    }
+
+                    for(let j=0; j<_this.options2.length; j++){
+                        _this.options2[j].value = false;
+                    }
+
+                    for(let i=0; i<_arr.length; i++){
+                        if(_arr[i] == '11'){
+                            _start = 0;
+                            _end = 5;
+                        }if(_arr[i] == '22'){
+                            _start = 5;
+                            _end = 10;
+                        }if(_arr[i] == '33'){
+                            _start = 10;
+                            _end = 15;
+                        }if(_arr[i] == '44'){
+                            _start = 15;
+                            _end = 20;
+                        }if(_arr[i] == '55'){
+                            _start = 20;
+                            _end = 25;
+                        }if(_arr[i] == '66'){
+                            _start = 25;
+                            _end = 30;
+                        }
+                        for(let i=_start; i<_end; i++){
+                            _this.options2[i].value = true;
+                        }
+
+                    }
+
+                }
+
+                else{
+                    _this.options[i].value = !_this.options[i].value;
+                }
+
+                _this.calculate();
+
+            },
+
+            quickSelected(type){
+
+                let _this = this;
+                if(type == 1){
+                    if(_this.quick.isBig == true){
+                        _this.quick.isBig = false;
+                    }else{
+                        _this.quick.isBig = true;
+                        _this.quick.isSmall = false;
+                    }
+                }if(type == 2){
+                    if(_this.quick.isSmall == true){
+                        _this.quick.isSmall = false;
+                    }else{
+                        _this.quick.isSmall = true;
+                        _this.quick.isBig = false;
+                    }
+                }if(type == 3){
+                    if(_this.quick.isOdd == true){
+                        _this.quick.isOdd = false;
+                    }else{
+                        _this.quick.isOdd = true;
+                        _this.quick.isEven = false;
+                    }
+                }if(type == 4){
+                    if(_this.quick.isEven == true){
+                        _this.quick.isEven = false;
+                    }else{
+                        _this.quick.isEven = true;
+                        _this.quick.isOdd = false;
+                    }
+                }
+
+                let _tmp = [];
+
+                //和值
+                _tmp.push({
+                    num : 4,
+                    value : false,
+                    disable : false,
+                    money : 80
+                })
+                _tmp.push({
+                    num : 5,
+                    value : false,
+                    disable : false,
+                    money : 40
+                })
+                _tmp.push({
+                    num : 6,
+                    value : false,
+                    disable : false,
+                    money : 25
+                })
+                _tmp.push({
+                    num : 7,
+                    value : false,
+                    disable : false,
+                    money : 16
+                })
+                _tmp.push({
+                    num : 8,
+                    value : false,
+                    disable : false,
+                    money : 12
+                })
+                _tmp.push({
+                    num : 9,
+                    value : false,
+                    disable : false,
+                    money : 10
+                })
+                _tmp.push({
+                    num : 10,
+                    value : false,
+                    disable : false,
+                    money : 9
+                })
+                _tmp.push({
+                    num : 11,
+                    value : false,
+                    disable : false,
+                    money : 9
+                })
+                _tmp.push({
+                    num : 12,
+                    value : false,
+                    disable : false,
+                    money : 10
+                })
+                _tmp.push({
+                    num : 13,
+                    value : false,
+                    disable : false,
+                    money : 12
+                })
+                _tmp.push({
+                    num : 14,
+                    value : false,
+                    disable : false,
+                    money : 16
+                })
+                _tmp.push({
+                    num : 15,
+                    value : false,
+                    disable : false,
+                    money : 25
+                })
+                _tmp.push({
+                    num : 16,
+                    value : false,
+                    disable : false,
+                    money : 40
+                })
+                _tmp.push({
+                    num : 17,
+                    value : false,
+                    disable : false,
+                    money : 80
+                })
+
+                //大
+                if(_this.quick.isBig){
+                    for(let i=0; i<_tmp.length; i++){
+                        if(i>6){
+                            _tmp[i].value = true;
+                        }
+                    }
+                }
+                if(_this.quick.isSmall){
+                    for(let i=0; i<_tmp.length; i++){
+                        if(i<7){
+                            _tmp[i].value = true;
+                        }
+                    }
+                }
+                if(_this.quick.isOdd){
+
+                    if(!_this.quick.isBig && !_this.quick.isSmall){
+                        _tmp = [];
+                        _tmp.push({
+                            num : 4,
+                            value : true,
+                            disable : false,
+                            money : 80
+                        })
+                        _tmp.push({
+                            num : 5,
+                            value : true,
+                            disable : false,
+                            money : 40
+                        })
+                        _tmp.push({
+                            num : 6,
+                            value : true,
+                            disable : false,
+                            money : 25
+                        })
+                        _tmp.push({
+                            num : 7,
+                            value : true,
+                            disable : false,
+                            money : 16
+                        })
+                        _tmp.push({
+                            num : 8,
+                            value : true,
+                            disable : false,
+                            money : 12
+                        })
+                        _tmp.push({
+                            num : 9,
+                            value : true,
+                            disable : false,
+                            money : 10
+                        })
+                        _tmp.push({
+                            num : 10,
+                            value : true,
+                            disable : false,
+                            money : 9
+                        })
+                        _tmp.push({
+                            num : 11,
+                            value : true,
+                            disable : false,
+                            money : 9
+                        })
+                        _tmp.push({
+                            num : 12,
+                            value : true,
+                            disable : false,
+                            money : 10
+                        })
+                        _tmp.push({
+                            num : 13,
+                            value : true,
+                            disable : false,
+                            money : 12
+                        })
+                        _tmp.push({
+                            num : 14,
+                            value : true,
+                            disable : false,
+                            money : 16
+                        })
+                        _tmp.push({
+                            num : 15,
+                            value : true,
+                            disable : false,
+                            money : 25
+                        })
+                        _tmp.push({
+                            num : 16,
+                            value : true,
+                            disable : false,
+                            money : 40
+                        })
+                        _tmp.push({
+                            num : 17,
+                            value : true,
+                            disable : false,
+                            money : 80
+                        })
+
+                    }
+
+                    for(let i=0; i<_tmp.length; i++){
+                        if(i%2 == 0){
+                            _tmp[i].value = false;
+                        }
+                    }
+                }
+                if(_this.quick.isEven){
+
+                    if(!_this.quick.isBig && !_this.quick.isSmall){
+                        _tmp = [];
+                        _tmp.push({
+                            num : 4,
+                            value : true,
+                            disable : false,
+                            money : 80
+                        })
+                        _tmp.push({
+                            num : 5,
+                            value : true,
+                            disable : false,
+                            money : 40
+                        })
+                        _tmp.push({
+                            num : 6,
+                            value : true,
+                            disable : false,
+                            money : 25
+                        })
+                        _tmp.push({
+                            num : 7,
+                            value : true,
+                            disable : false,
+                            money : 16
+                        })
+                        _tmp.push({
+                            num : 8,
+                            value : true,
+                            disable : false,
+                            money : 12
+                        })
+                        _tmp.push({
+                            num : 9,
+                            value : true,
+                            disable : false,
+                            money : 10
+                        })
+                        _tmp.push({
+                            num : 10,
+                            value : true,
+                            disable : false,
+                            money : 9
+                        })
+                        _tmp.push({
+                            num : 11,
+                            value : true,
+                            disable : false,
+                            money : 9
+                        })
+                        _tmp.push({
+                            num : 12,
+                            value : true,
+                            disable : false,
+                            money : 10
+                        })
+                        _tmp.push({
+                            num : 13,
+                            value : true,
+                            disable : false,
+                            money : 12
+                        })
+                        _tmp.push({
+                            num : 14,
+                            value : true,
+                            disable : false,
+                            money : 16
+                        })
+                        _tmp.push({
+                            num : 15,
+                            value : true,
+                            disable : false,
+                            money : 25
+                        })
+                        _tmp.push({
+                            num : 16,
+                            value : true,
+                            disable : false,
+                            money : 40
+                        })
+                        _tmp.push({
+                            num : 17,
+                            value : true,
+                            disable : false,
+                            money : 80
+                        })
+
+                    }
+
+                    for(let i=0; i<_tmp.length; i++){
+                        if(i%2 == 1){
+                            _tmp[i].value = false;
+                        }
+                    }
+                }
+
+                _this.options = _tmp;
+                _this.calculate();
+
+            },
+
+            calculate(){
+
+                let _this = this;
+
+                let result = 0;
+
+                let _count1 = 0;
+                let _arr1 = [];
+                let _count2 = 0;
+                let _arr2 = [];
+
+                for(let i=0; i<_this.options.length; i++){
+                    if(_this.options[i].value){
+                        _count1 ++;
+                        _arr1.push(_this.options[i].num);
+                    }
+                }
+                for(let i=0; i<_this.options2.length; i++){
+                    if(_this.options2[i].value){
+                        _count2 ++;
+                        _arr2.push(_this.options2[i].num);
+                    }
+                }
+
+                if(_this.playIndex == 0){
+                    result = _count1;
+                } if(_this.playIndex == 1){
+                    //组合并计算注数
+                    if(_arr1.length>1){
+                        let _tmp = base.group(_arr1,2);
+                        result = _tmp.length;
+                    }
+                } if(_this.playIndex == 2){
+                    result = _count2;
+                } if(_this.playIndex == 3){
+                    result = _count2;
+                } if(_this.playIndex == 4){
+                    result = _count1;
+                } if(_this.playIndex == 5){
+                    result = _count1;
+                } if(_this.playIndex == 6){
+                    result = _count1;
+                } if(_this.playIndex == 7){
+                    result = _count1;
+                }
+
+                _this.number = Math.ceil(result);
+
+                if(_this.number>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+
+                return _this.number;
+
+            },
+
+            buyTicket(){
+
+                let _this = this;
+
+                if(_this.lock)
+                    return false;
+
+                let _result = '';
+
+                let _count1 = 0;
+                let _arr1 = [];
+                let _count2 = 0;
+                let _arr2 = [];
+
+                for(let i=0; i<_this.options.length; i++){
+                    if(_this.options[i].value){
+                        _count1 ++;
+                        _arr1.push(_this.options[i].num + '');
+                    }
+                }
+                for(let i=0; i<_this.options2.length; i++){
+                    if(_this.options2[i].value){
+                        _count2 ++;
+                        _arr2.push(_this.options2[i].num + '');
+                    }
+                }
+
+                let ticket = sessionStorage.getItem("q3_ticket");
+
+                let _tmp = {};
+
+                if(_this.playIndex == 2 || _this.playIndex == 3){
+                    _tmp = _arr2;
+                }else{
+                    _tmp = _arr1;
+                }
+
+                if(base.isNull(ticket)){
+                    ticket = [];
+                }else{
+                    ticket = JSON.parse(ticket);
+                }
+
+                if(base.isNull(_this.ticketID)){
+                    //新增
+                    ticket.push({
+                        id : base.getUuid(),
+                        num : _this.number,
+                        numbers : _tmp,
+                        playType : _this.playIndex,
+                    });
+                    sessionStorage.setItem('q3_ticket',JSON.stringify(ticket));
+                }else{
+                    //编辑
+                    base.editTicketByID(_this.ticketID, 'q3',{
+                        num : _this.number,
+                        numbers : _tmp,
+                        playType : _this.playIndex,
+                    })
+                }
+
+                window.location.href = 'lottery_q3_order.html?playIndex='+_this.playIndex;
+
+            },
+
+            randomSelect(){
+                let _this = this;
+
+                _this.init();
+                let rd = 0;
+                if(_this.playIndex == 0){
+                    rd = base.random_num(0,13);
+                    _this.options[rd].value = true;
+                }
+                else if(_this.playIndex == 1){
+                    let _tmp = [];
+                    _tmp.push(base.random_num(0,5));
+                    for(let i=0; i<1; i++){
+                        let rd = base.random_num(0,5);
+                        let _flag = true;
+                        for(let i=0;i<_tmp.length; i++){
+                            if(rd == _tmp[i]){
+                                _flag = false;
+                            }
+                        }
+                        if(_flag){
+                            _tmp.push(rd);
+                        }else{
+                            i--;
+                        }
+                    }
+                    _this.init();
+                    _this.options[_tmp[0]].value = true;
+                    _this.options[_tmp[1]].value = true;
+                }
+                else if(_this.playIndex == 2){
+                    rd = base.random_num(0,19);
+                    _this.options2[rd].value = true;
+                }
+                else if(_this.playIndex == 3){
+                    rd = base.random_num(0,29);
+                    _this.options2[rd].value = true;
+                }
+                else if(_this.playIndex == 4 || _this.playIndex == 5){
+                    rd = base.random_num(0,5);
+                    _this.options[rd].value = true;
+                }
+
+                _this.calculate();
+
+            },
+
+            swicthType(){
+                this.showType = !this.showType;
+            },
+
+            switchHistory(){
+                this.showHistory = !this.showHistory;
+            },
+
+            changeNav(key){
+                this.currentNav = key;
+            },
+
+            changeType(key){
+                this.playIndex = key;
+                this.showType = false;
+                this.init();
+            },
+
+            myBack(){
+                window.history.go(-1);
+            },
+
+            //转换分钟数 s：秒数
+            parseMins(s){
+                let m1 = Math.floor(s/60);
+                let m2 = s%60;
+                if(m1 <10){
+                    m1 = "0" + m1;
+                }
+                if(m2 <10){
+                    m2 = "0" + m2;
+                }
+                return m1 + ":" + m2;
+            },
+
+            //转换秒数 t:时间
+            parseSecond(t){
+                let t1 = parseInt(t.split(":")[0]);
+                let t2 = parseInt(t.split(":")[1]);
+                return t1 * 60 + t2;
+            },
+
+            clearSelect(){
+                let _this = this;
+//                _this.$confirm('确认清空吗', '消息', {
+//                    callback: function(e) {
+//                        if(e == 'confirm'){
+                            //删除数据
+                            _this.init();
+//                        }
+//                    }
+//                });
+            },
+
+            getAwardPeriod(){
+                let _this = this;
+                baseAjax.awardPeriod(lotteryType.JXK3,function(data){
+
+                    console.log(data);
+
+                    let _tmp = data.returnJSON;
+
+                    for(let i=0; i<_tmp.length; i++){
+                        let _t = _tmp[i].bonusCode.split(',');
+
+                        _tmp[i].number = _tmp[i].number.substring(_tmp[i].number.length-2);
+
+                        if(!base.isNull(_tmp[i].bonusCode)){
+                            let _sum = 0;
+                            for(let j=0; j<_t.length; j++){
+                                if(_tmp[i].imgs){
+                                    _tmp[i].imgs.push('images/sz_'+ _t[j] +'.png')
+                                }else{
+                                    _tmp[i].imgs = [];
+                                    _tmp[i].imgs.push('images/sz_'+ _t[j] +'.png')
+                                }
+                                _sum += parseInt(_t[j]);
+                            }
+                            _tmp[i].sum = _sum;
+                        }
+
+                    }
+
+                    _this.history = _tmp.reverse();
+
+                    let _timer = 0;
+
+                    let _now = new Date().getTime();
+
+                    _timer = Math.round((new Date(_tmp[0].stopTime).getTime() - _now)/1000);
+
+
+                    if(_timer > 600){
+                        //下一期
+                        _timer = Math.round((new Date(_tmp[1].stopTime).getTime() - _now)/1000);
+
+                        _this.current = _tmp[1];
+                        _this.prev = _tmp[2];
+
+                    }else{
+                        _this.current = _tmp[0];
+                        _this.prev = _tmp[1];
+                    }
+
+                    console.log(_this.prev);
+
+                    _this.timerID = setInterval(function(){
+                        _this.timer -- ;
+                        if(_this.timer == 0){
+                            //开奖，并重新请求奖期
+                            clearInterval(_this.timerID);
+                            _this.getAwardPeriod();
+                        }
+                    },1000);
+
+                    _this.timer = _timer;
+
+                });
+
+            },
+
+            init(){
+                let _this = this;
+
+                _this.currentNav = 0;
+                let _tmp = [];
+                let _tmp2 = [];
+                let _tmp3 = [];
+                if(_this.playIndex == 0){
+                    //和值
+                    _tmp.push({
+                        num : 4,
+                        value : false,
+                        disable : false,
+                        money : 80
+                    })
+                    _tmp.push({
+                        num : 5,
+                        value : false,
+                        disable : false,
+                        money : 40
+                    })
+                    _tmp.push({
+                        num : 6,
+                        value : false,
+                        disable : false,
+                        money : 25
+                    })
+                    _tmp.push({
+                        num : 7,
+                        value : false,
+                        disable : false,
+                        money : 16
+                    })
+                    _tmp.push({
+                        num : 8,
+                        value : false,
+                        disable : false,
+                        money : 12
+                    })
+                    _tmp.push({
+                        num : 9,
+                        value : false,
+                        disable : false,
+                        money : 10
+                    })
+                    _tmp.push({
+                        num : 10,
+                        value : false,
+                        disable : false,
+                        money : 9
+                    })
+                    _tmp.push({
+                        num : 11,
+                        value : false,
+                        disable : false,
+                        money : 9
+                    })
+                    _tmp.push({
+                        num : 12,
+                        value : false,
+                        disable : false,
+                        money : 10
+                    })
+                    _tmp.push({
+                        num : 13,
+                        value : false,
+                        disable : false,
+                        money : 12
+                    })
+                    _tmp.push({
+                        num : 14,
+                        value : false,
+                        disable : false,
+                        money : 16
+                    })
+                    _tmp.push({
+                        num : 15,
+                        value : false,
+                        disable : false,
+                        money : 25
+                    })
+                    _tmp.push({
+                        num : 16,
+                        value : false,
+                        disable : false,
+                        money : 40
+                    })
+                    _tmp.push({
+                        num : 17,
+                        value : false,
+                        disable : false,
+                        money : 80
+                    })
+
+
+                    _this.options = _tmp;
+
+                    _this.quick = {
+                        isBig : false,
+                        isSmall : false,
+                        isOdd : false,
+                        isEven : false,
+                    };
+
+                } if(_this.playIndex == 1){
+                    //二不同号
+                    for(let i=1; i<7; i++){
+                        _tmp.push({
+                            num : i,
+                            value : false,
+                            disable : false,
+                        })
+                    }
+                    _this.options = _tmp;
+                }
+                if(_this.playIndex == 2){
+                    //三不同号
+                    let _arr = [];
+                    let _options2 = [];
+                    for(let i=1; i<7; i++){
+                        _tmp.push({
+                            num : i,
+                            value : false,
+                            disable : false,
+                        })
+                        _arr.push(i);
+                    }
+                    _this.options = _tmp;
+
+                    _arr = base.group(_arr,3);
+
+                    //重组_arr
+                    for(let i=0; i<_arr.length; i++){
+                        _options2.push({
+                            num : _arr[i].join(''),
+                            value : false,
+                            disable : false,
+                        })
+                    }
+                    _this.options2 = _options2;
+
+                }
+
+                if(_this.playIndex == 3){
+                    //二同号
+                    let _arr = [];
+                    let _options2 = [];
+                    let _options3 = [];
+                    for(let i=1; i<7; i++){
+                        _tmp.push({
+                            num : i + i * 10,
+                            value : false,
+                            disable : false,
+                        })
+                        _arr.push({
+                            num : i,
+                            val : i + i * 10
+                        });
+                    }
+                    _this.options = _tmp;
+
+                    for(let i=0; i<_arr.length; i++){
+                        for(let j=1; j<7; j++){
+                            if(_arr[i].num != j)
+                                _options2.push( _arr[i].val + '' + j );
+                        }
+                    }
+
+                    //重组_arr
+                    for(let i=0; i<_options2.length; i++){
+
+                        _options3.push({
+                            num : _options2[i],
+                            value : false,
+                            disable : false,
+                        })
+                    }
+                    _this.options2 = _options3;
+                }
+                if(_this.playIndex == 4){
+                    //三同号
+                    for(let i=1; i<7; i++){
+                        _tmp.push({
+                            num : i + i * 10 + i*100,
+                            value : false,
+                            disable : false,
+                        })
+                    }
+                    _this.options = _tmp;
+                }
+                if(_this.playIndex == 5){
+                    //二同号复选
+                    for(let i=1; i<7; i++){
+                        _tmp.push({
+                            num : i + i*10 + '*',
+                            value : false,
+                            disable : false,
+                        })
+                    }
+                    _this.options = _tmp;
+
+                }
+                if(_this.playIndex == 6){
+                    //三同号通选
+                    _tmp.push({
+                        num : '三同号通选',
+                        value : false,
+                        disable : false,
+                    })
+                    _this.options = _tmp;
+                }
+                if(_this.playIndex == 7){
+                    //三同号连选
+                    _tmp.push({
+                        num : '三连号通选',
+                        value : false,
+                        disable : false,
+                    })
+                    _this.options = _tmp;
+                }
+
+                if(_this.playIndex == 0){
+                    _this.playTitle = '猜开奖号码相加的和';
+                } if(_this.playIndex == 1){
+                    _this.playTitle = '二不同号';
+                } if(_this.playIndex == 2){
+                    _this.playTitle = '三不同号';
+                } if(_this.playIndex == 3){
+                    _this.playTitle = '二同号';
+                } if(_this.playIndex == 4){
+                    _this.playTitle = '三同号';
+                } if(_this.playIndex == 5){
+                    _this.playTitle = '二同号复选';
+                } if(_this.playIndex == 6){
+                    _this.playTitle = '三同号通选';
+                } if(_this.playIndex == 7){
+                    _this.playTitle = '三连号通选';
+                }
+
+                _this.number = 0;
+                _this.lock = true;
+
+            }
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            _this.getAwardPeriod();
+
+            let _ticketID = base.getParmar('ticketID');
+
+            if (base.isNull(_ticketID)) {
+                //初始化
+                let _playIndex = base.getParmar('playIndex');
+
+                if(base.isNull(_playIndex)){
+                    _playIndex = 0;
+                }
+                _this.playIndex = _playIndex;
+
+                _this.init();
+            }else {
+                _this.ticketID = _ticketID;
+
+                let _ticket = base.getTicketByID(_ticketID, 'q3');
+
+                if (base.isNull(_ticket)) {
+                    //空数据
+                } else {
+                    let _data = _ticket;
+
+                    _this.playIndex = _data.playType;
+
+                    _this.init();
+
+                    if(_data.playType == 0 || _data.playType == 1 || _data.playType == 4 || _data.playType == 5){
+                        for(let i=0; i< _this.options.length; i++){
+                            for(let j=0; j<_data.numbers.length; j++){
+                                if(_this.options[i].num == _data.numbers[j]){
+                                    _this.options[i].value = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if( _data.playType == 2 || _data.playType == 3){
+                        for(let i=0; i< _this.options2.length; i++){
+                            for(let j=0; j<_data.numbers.length; j++){
+                                if(_this.options2[i].num == _data.numbers[j]){
+                                    _this.options2[i].value = true;
+                                }
+                            }
+                        }
+                    }
+                    if( _data.playType == 6 || _data.playType == 7){
+                        if(_data.numbers.length>0){
+                            _this.options[0].value = true;
+                        }
+                    }
+
+                    _this.calculate();
+                }
+            }
+
+
+//            //如果是编辑
+//            let _url = decodeURI(window.location.href);
+//            let _data = base.getParmar('ticket',_url);
+//
+//            if(base.isNull(_data)){
+//                //初始化
+//                let _playIndex = base.getParmar('playIndex');
+//
+//                if(base.isNull(_playIndex)){
+//                    _playIndex = 0;
+//                }
+//                _this.playIndex = _playIndex;
+//
+//                _this.init();
+//            }else{
+//                _data = JSON.parse(_data);
+//
+//                _this.playIndex = _data.playType;
+//
+//                _this.init();
+//
+//                if(_data.playType == 0 || _data.playType == 1 || _data.playType == 4 || _data.playType == 5){
+//                    for(let i=0; i< _this.options.length; i++){
+//                        for(let j=0; j<_data.numbers.length; j++){
+//                            if(_this.options[i].num == _data.numbers[j]){
+//                                _this.options[i].value = true;
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                if( _data.playType == 2 || _data.playType == 3){
+//                    for(let i=0; i< _this.options2.length; i++){
+//                        for(let j=0; j<_data.numbers.length; j++){
+//                            if(_this.options2[i].num == _data.numbers[j]){
+//                                _this.options2[i].value = true;
+//                            }
+//                        }
+//                    }
+//                }
+//                if( _data.playType == 6 || _data.playType == 7){
+//                    if(_data.numbers.length>0){
+//                        _this.options[0].value = true;
+//                    }
+//                }
+//
+//                _this.calculate();
+//            }
+
+
+            setTimeout(() => {
+                $("#lottery_q3_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

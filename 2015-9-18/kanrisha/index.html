@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kanrisha - A Premium HTML5 Responsive Admin Template</title>
+	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="Javascript/Flot/excanvas.js"></script>
+	<![endif]-->
+	<!-- The Fonts -->
+	
+	<!-- The Main CSS File -->
+	<link rel="stylesheet" href="CSS/style.css" />
+	<!-- jQuery -->
+	<script src="Javascript/jQuery/jquery-1.7.2.min.js"></script>
+	<!-- Flot -->
+	<script src="Javascript/Flot/jquery.flot.js"></script>
+	<script src="Javascript/Flot/jquery.flot.resize.js"></script>
+	<script src="Javascript/Flot/jquery.flot.pie.js"></script>
+	<!-- DataTables -->
+	<script src="Javascript/DataTables/jquery.dataTables.min.js"></script>
+	<!-- ColResizable -->
+	<script src="Javascript/ColResizable/colResizable-1.3.js"></script>
+	<!-- jQuryUI -->
+	<script src="Javascript/jQueryUI/jquery-ui-1.8.21.min.js"></script>
+	<!-- Uniform -->
+	<script src="Javascript/Uniform/jquery.uniform.js"></script>
+	<!-- Tipsy -->
+	<script src="Javascript/Tipsy/jquery.tipsy.js"></script>
+	<!-- Elastic -->
+	<script src="Javascript/Elastic/jquery.elastic.js"></script>
+	<!-- ColorPicker -->
+	<script src="Javascript/ColorPicker/colorpicker.js"></script>
+	<!-- SuperTextarea -->
+	<script src="Javascript/SuperTextarea/jquery.supertextarea.min.js"></script>
+	<!-- UISpinner -->
+	<script src="Javascript/UISpinner/ui.spinner.js"></script>
+	<!-- MaskedInput -->
+	<script src="Javascript/MaskedInput/jquery.maskedinput-1.3.js"></script>
+	<!-- ClEditor -->
+	<script src="Javascript/ClEditor/jquery.cleditor.js"></script>
+	<!-- Full Calendar -->
+	<script src="Javascript/FullCalendar/fullcalendar.js"></script>
+	<!-- Color Box -->
+	<script src="Javascript/ColorBox/jquery.colorbox.js"></script>
+	<!-- Kanrisha Script -->
+	<script src="Javascript/kanrisha.js"></script>
+    
+    <script>
+		
+		$(function(){
+			var sidebar = $(".sidebar li"),top_buttons = $(".top_buttons .the_button"),small_nav = $(".small_menu .menu_small_buttons"),tab_area = $(".tab_area ul");
+			sidebar.click(function(){
+				var _this = $(this),a = _this.find("a"),title = a.attr("title"),href= a.attr("href"),flag = true;
+				sidebar.removeClass("active_tab");
+				_this.addClass("active_tab");
+				
+				tab_area.find("li").each(function(index) {
+                    if(title == $(this).text()){
+						flag = false;
+						tab_area.find("li").removeClass("hover");
+						$(this).addClass("hover");
+					}
+                });
+				
+				if(flag){
+					tab_area.find("li").removeClass("hover");
+					var $item = "<li class='hover'><a href='"+href+"' target='main'><p>"+title+"</p></a><b></b></li>";
+					tab_area.append($item);	
+					bindTabEvent();
+				}
+				
+			});
+			small_nav.find("li").click(function(){
+				var _this = $(this),a = _this.find("a"),title = a.attr("title"),href= a.attr("href"),flag = true;
+				small_nav.find("li").removeClass("smActive");
+				_this.addClass("smActive");
+				tab_area.find("li").each(function(index) {
+                    if(title == $(this).text()){
+						flag = false;
+						tab_area.find("li").removeClass("hover");
+						$(this).addClass("hover");
+					}
+                });
+				
+				if(flag){
+					tab_area.find("li").removeClass("hover");
+					var $item = "<li class='hover'><a href='"+href+"' target='main'><p>"+title+"</p></a><b></b></li>";
+					tab_area.append($item);	
+					bindTabEvent();
+				}
+			});
+			
+			top_buttons.each(function(i){
+				
+				$(this).click(function(){
+					top_buttons.removeClass("the_button-hover");
+					$(this).addClass("the_button-hover");
+					$(".tab_nav").css("display","none");
+					$(".tab_nav").eq(top_buttons.length - i - 1).css("display","block");
+					$(".menu_small_buttons").css("display","none");
+					$(".menu_small_buttons").eq(top_buttons.length - i - 1).css("display","block");
+				});
+				
+			});
+			
+			$(".tab_left_icon").click(function(){
+				moveTab(true);
+			});
+			
+			$(".tab_right_icon").click(function(){
+				moveTab(false);
+			});
+			
+		});
+		
+		function bindTabEvent(){
+			var tab_area = $(".tab_area ul");
+			tab_area.find("li").unbind("click").click(function(){
+				tab_area.find("li").removeClass("hover");
+				$(this).addClass("hover");
+			});
+			tab_area.find("b").unbind("click").click(function(){
+				var prev = $(this).parent().prev().find("p");
+				if(prev.length!=0) prev.click();	
+				else{
+					$("#main").attr("src","welcome.html");
+					tab_area.find("li").removeClass("hover");
+				}
+				$(this).parent().remove();
+			});
+		}
+		function moveTab(flag){
+			var tab_area = $(".tab_area ul");
+				
+			if(flag){
+				
+				var cur = "<li class='hover'>" + tab_area.find("li.hover").html() + "</li>",temp = "<li>" + tab_area.find("li").eq(tab_area.find("li").length-1).html() + "</li>";
+				var remove_cur = tab_area.find("li.hover"),remove_temp = tab_area.find("li").eq(tab_area.find("li").length-1);
+				if(remove_cur.html() == remove_temp.html()){
+					tab_area.prepend(cur);	
+				}else{
+					tab_area.prepend(temp);
+					tab_area.prepend(cur);	
+				}
+				remove_cur.remove();
+				remove_temp.remove();
+				
+			}
+			else{
+				
+				var cur = "<li class='hover'>" + tab_area.find("li.hover").html() + "</li>",temp = "<li>" + tab_area.find("li").eq(0).html() + "</li>";
+				var remove_cur = tab_area.find("li.hover"),remove_temp = tab_area.find("li").eq(0);
+				if(remove_cur.html() == remove_temp.html()){
+					
+					cur = "<li class='hover'>" + tab_area.find("li.hover").html() + "</li>",temp = "<li>" + tab_area.find("li").eq(1).html() + "</li>";
+					remove_cur = tab_area.find("li.hover"),remove_temp = tab_area.find("li").eq(1);
+					
+					tab_area.append(temp);
+					tab_area.prepend(cur);	
+					
+				}else{
+					tab_area.append(temp);
+					tab_area.prepend(cur);	
+				}
+				remove_cur.remove();
+				remove_temp.remove();
+				
+			}
+		}
+	
+    </script>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+	<!-- Change Pattern -->
+	<div class="changePattern">
+		<span id="pattern1"></span>
+		<span id="pattern2"></span>
+		<span id="pattern3"></span>
+		<span id="pattern4"></span>
+		<span id="pattern5"></span>
+		<span id="pattern6"></span>
+	</div>
+	<!-- Top Panel -->
+	<div class="top_panel">
+		<div class="wrapper">
+			<div class="user">
+				<img src="Images/user_avatar.png" alt="user_avatar" class="user_avatar" />
+				<span class="label">admin</span>
+				<!-- Top Tooltip -->
+				<div class="top_tooltip">
+					<div>
+						<ul class="user_options">
+							<li class="i_16_profile"><a href="#" title="Profile"></a></li>
+							<li class="i_16_tasks"><a href="#" title="Tasks"></a></li>
+							<li class="i_16_notes"><a href="#" title="Notes"></a></li>
+							<li class="i_16_options"><a href="#" title="Options"></a></li>
+							<li class="i_16_logout"><a href="#" title="Log-Out"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="top_links">
+				<ul>
+					<li class="i_22_search search_icon">
+						<div class="top_tooltip right_direction">
+							<div>
+								<form class="top_search_form" />
+									<input type="text" class="top_search_input" />
+									<input type="submit" class="top_search_submit" value="" />
+								</form>
+							</div>
+						</div>
+					</li>
+					<li class="i_22_settings">
+						<a href="#" title="Settings">
+							<span class="label">系统设置</span>
+						</a>
+					</li>
+					<li class="i_22_upload">
+						<a href="#" title="Upload">
+							<span class="label">云存储</span>
+						</a>
+						<!-- Drop Menu -->
+						<ul class="drop_menu menu_with_icons right_direction">
+							<li>
+								<a class="i_16_add" href="#" title="New Flie">
+									<span class="label">新文件</span>
+								</a>									
+							</li>
+							<li>
+								<a class="i_16_progress" href="#" title="2 Files Left">
+									<span class="label">固态文件</span>
+									<span class="small_count">2</span>
+								</a>
+							</li>
+							<li>
+								<a class="i_16_files" href="#" title="Browse Files">
+									<span class="label">上传文件</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="i_22_inbox top_inbox">
+						<a href="#" title="Inbox">
+							<span class="label lasCount">收件箱</span>
+							<span class="small_count">3</span>
+						</a>
+					</li>
+					<li class="i_22_pages">
+						<a href="#" title="Pages">
+							<span class="label">便捷菜单</span>
+						</a>
+						<!-- Drop Menu -->
+						<ul class="drop_menu menu_without_icons">
+							<li>
+								<a title="403 Page" href="403.html">
+									<span class="label">403 页面</span>
+								</a>									
+							</li>
+							<li>
+								<a href="404.html" title="404 Page">
+									<span class="label">404 页面</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<header class="main_header">
+		<div class="wrapper">
+			<div class="logo">
+				<a href="#" title="Kanrisha Home">
+					<img src="Images/kanrisha_logo.png" alt="kanrisha_logo" />
+				</a>
+			</div>
+			<nav class="top_buttons">
+				<ul>
+                	<li class="big_button">
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Analytics" class="the_button">
+										<span class="i_32_folder"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+                    <li class="big_button">
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Analytics" class="the_button">
+										<span class="i_32_finance"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="big_button">
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Analytics" class="the_button">
+										<span class="i_32_user"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="big_button">
+						<!--<div class="big_count">
+							<span>7</span>
+						</div>-->
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Support" class="the_button">
+										<span class="i_32_option"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="big_button">
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Delivery" class="the_button">
+										<span class="i_32_finance"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="big_button">
+						<div class="out_border">
+							<div class="button_wrapper">
+								<div class="in_border">
+									<a href="#" title="Earning" class="the_button the_button-hover">
+										<span class="i_32_charts2"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div class="wrapper small_menu">
+		<ul class="menu_small_buttons" style="display:block;">
+        	<li><a title="操作面板" class="i_22_dashboard smActive" href="main.html" target="main"></a></li>
+        </ul>
+        <ul class="menu_small_buttons">
+			<li><a title="收件箱" class="i_22_inbox" href="inbox.html" target="main"></a></li>
+        </ul>
+        <ul class="menu_small_buttons">
+			<li><a title="用户界面" class="i_22_charts" href="charts.html" target="main"></a></li>
+        </ul>
+        <ul class="menu_small_buttons">
+			<li><a title="表单" class="i_22_ui" href="ui.html" target="main"></a></li>
+        </ul>
+        <ul class="menu_small_buttons">
+			<li><a title="报表" class="i_22_tables" href="tables.html" target="main"></a></li>
+        </ul>
+        <ul class="menu_small_buttons">
+			<li><a title="表格" class="i_22_forms" href="forms.html" target="main"></a></li>
+		</ul>
+	</div>
+
+	<div class="wrapper contents_wrapper">
+		<aside class="sidebar">
+			<ul class="tab_nav" style="display:block;">
+				<li class="active_tab i_32_dashboard">
+					<a href="main.html" title="操作面板" target="main">
+						<span class="tab_label">操作面板</span>
+						<span class="tab_info">常用功能</span>
+					</a>
+				</li>
+				
+			</ul>
+            
+            <ul class="tab_nav">
+				
+				<li class="i_32_inbox">
+					<a href="inbox.html" title="收件箱" target="main">
+						<span class="tab_label">收件箱</span>
+						<span class="tab_info">您的即时消息</span>
+					</a>
+				</li>
+			</ul>
+            
+            <ul class="tab_nav">
+				
+				<li class="i_32_ui">
+					<a href="ui.html" title="用户界面" target="main">
+						<span class="tab_label">用户界面</span>
+						<span class="tab_info">装备元素</span>
+					</a>
+				</li>
+			</ul>
+            
+            <ul class="tab_nav">
+				
+				<li class="i_32_forms">
+					<a href="forms.html" title="表单" target="main">
+						<span class="tab_label">表单</span>
+						<span class="tab_info">一些常用的表单</span>
+					</a>
+				</li>
+			</ul>
+            
+            <ul class="tab_nav">
+           		<li class="i_32_charts">
+					<a href="charts.html" title="报表" target="main">
+						<span class="tab_label">报表</span>
+						<span class="tab_info">可视化数据</span>
+					</a>
+				</li>
+            </ul>
+            
+            <ul class="tab_nav">
+            	<li class="i_32_tables">
+					<a href="tables.html" title="表格" target="main">
+						<span class="tab_label">表格</span>
+						<span class="tab_info">一些常用的数据</span>
+					</a>
+				</li>
+            </ul>
+		</aside>
+
+		<div class="contents">
+       		<div class="tab_contorl">
+            	<div class="tab_left_area"><div class="tab_left_icon"></div></div>
+                <div class="tab_area">
+                	<ul></ul>
+                </div>
+                <div class="tab_right_area"><div class="tab_right_icon"></div></div>
+            </div>
+        	<iframe frameborder="0" height="90%" width="100%" src="welcome.html" name="main" id="main" />
+        </div>
+
+	</div>
+
+	<footer>
+		<div class="wrapper">
+			<span class="copyright">
+				&copy; Copyright &copy; 2013.Company name All rights reserved.
+			</span>
+		</div>
+	</footer>
+
+</body>
+</html>

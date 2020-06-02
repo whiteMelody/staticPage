@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			autoplay:false,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+			arrows:false, //是否显示左右导航器
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});	
+		
+	})
+	
+	$(document).on("pageinit",function(e){
+  		$(window).resize();
+	});
+
+</script>
+<title>MEATBUN</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+    <div data-role="header" data-theme="b" class="bor-none">
+    	<a href="javascript:void(0)" data-role="button" data-icon="home" data-iconpos="notext">首页</a>
+  		<h1>MEATBUN</h1>
+    	<a href="javascript:void(0)" data-role="button" data-icon="search" data-iconpos="notext">搜索</a>
+    </div>
+    <div data-role="content" class="pa0">
+   		<div class="wb100 h315px img-Warea text-center">
+            <div class="slider">
+                <ul class="slides">
+                    <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        <div class="wb100 text-center">
+        	<div class="wb25 fl">
+            	<a href="javascript:void(0)" class="gray">
+                    <div class="wb60 center img-Warea">
+                        <img src="images/icon-bag.png">
+                    </div>
+                    <p class="Fgray-3">全部商品</p>
+                </a>
+            </div>
+        	<div class="wb25 fl">
+            	<a href="javascript:void(0)" class="gray">
+                    <div class="wb60 center img-Warea">
+                        <img src="images/icon-menu.png">
+                    </div>
+                    <p class="Fgray-3">商品分类</p>
+                </a>
+            </div>
+        	<div class="wb25 fl">
+            	<a href="javascript:void(0)" class="gray">
+                    <div class="wb60 center img-Warea">
+                        <img src="images/icon-cart.png">
+                    </div>
+                    <p class="Fgray-3">购物车</p>
+               	</a>
+            </div>
+        	<div class="wb25 fl">
+            	<a href="javascript:void(0)" class="gray">
+                    <div class="wb60 center img-Warea">
+                        <img src="images/icon-user.png">
+                    </div>
+                    <p class="Fgray-3">我的</p>
+                </a>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="wb100 h50px lh50px warpper-black">
+        	<div class="wb98 fr h50px lh50px warpper-gray-1">
+            	<div class="wb45 mal2per fl F150em">
+                	最新商品 <img src="images/text-new.png" class="middle">
+                </div>
+            	<div class="wb45 mar2per fr text-right F125em">
+                	更多 <img src="images/arrow-right.png" class="middle">
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="wb95 center">
+        	<div class="wb49 fl">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear h12px"></div>
+                </div>
+            </div>
+            <div class="wb49 fr">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="wb45 center img-Warea mat5 mab5">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015</p>
+                        <p>￥2500.00</p>
+                    </div>
+                </div>
+            	<div class="wb100 text-center bor-gray bor-solid-1a mat5">
+
+                    <div class="wb45 center img-Warea mat5 mab5">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015</p>
+                        <p>￥2500.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear h10px"></div>
+            
+            <div class="wb49 fl">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+            
+            <div class="wb49 fr">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clear1"></div>
+        
+        <div class="wb100 h50px lh50px warpper-black">
+        	<div class="wb98 fr h50px lh50px warpper-gray-1">
+            	<div class="wb45 mal2per fl F150em">
+                	热门商品 <img src="images/text-new.png" class="middle">
+                </div>
+            	<div class="wb45 mar2per fr text-right F125em">
+                	更多 <img src="images/arrow-right.png" class="middle">
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        <div class="wb95 center">
+            <div class="wb100 img-Warea">
+            	<img src="images/banner-img-2.jpg">
+            </div>
+            <div class="wb49 fl mab2per">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+            <div class="wb49 fr mab2per">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+            <div class="wb49 fl mab2per">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+            <div class="wb49 fr mab2per">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clear1"></div>
+        
+        <div class="wb100 h50px lh50px warpper-black">
+        	<div class="wb98 fr h50px lh50px warpper-gray-1">
+            	<div class="wb45 mal2per fl F150em">
+                	推荐商品 <img src="images/text-good.png" class="middle">
+                </div>
+            	<div class="wb45 mar2per fr text-right F125em">
+                	更多 <img src="images/arrow-right.png" class="middle">
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="wb95 center">
+        	<div class="wb49 fl">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear h12px"></div>
+                </div>
+            </div>
+            <div class="wb49 fr">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="wb45 center img-Warea mat5 mab5">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015</p>
+                        <p>￥2500.00</p>
+                    </div>
+                </div>
+            	<div class="wb100 text-center bor-gray bor-solid-1a mat5">
+
+                    <div class="wb45 center img-Warea mat5 mab5">
+                        <img src="images/product-img-1.png" class="middle">
+                    </div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015</p>
+                        <p>￥2500.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clear h10px"></div>
+            
+            <div class="wb49 fl">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+            
+            <div class="wb49 fr">
+            	<div class="wb100 text-center bor-gray bor-solid-1a">
+                    <div class="clear1"></div>
+                    <div class="wb90 center img-Warea">
+                        <img src="images/product-img-5.png" class="middle">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb90 center lh30px">
+                        <p class="lh20px">MEATBUN2015春夏新款女包</p>
+                        <p>￥2500.00</p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clear1"></div>
+        
+    </div>
+</div>
+
+
+</body>
+</html>

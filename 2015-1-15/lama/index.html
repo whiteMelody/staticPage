@@ -1,0 +1,1111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript">
+    var time_index = 0;
+		
+		function clock(){
+		  var day="";
+		  var month="";
+		  var ampm="";
+		  var ampmhour="";
+		  var myweekday="";
+		  var year="";
+		var myHours="";
+		var myMinutes="";
+		var mySeconds="";
+		  mydate=new Date();
+		  myweekday=mydate.getDay();
+		  mymonth=parseInt(mydate.getMonth()+1)<10?"0"+(mydate.getMonth()+1):mydate.getMonth()+1;
+		  myday= mydate.getDate();
+		  myyear= mydate.getYear();
+		myHours = mydate.getHours();
+		  myMinutes = mydate.getMinutes();
+		  mySeconds = parseInt(mydate.getSeconds())<10?"0"+mydate.getSeconds():mydate.getSeconds();
+		  year=(myyear > 200) ? myyear : 1900 + myyear;
+		  if(myweekday == 0)
+		  weekday=" 星期日 ";
+		  else if(myweekday == 1)
+		  weekday=" 星期一 ";
+		  else if(myweekday == 2)
+		  weekday=" 星期二 ";
+		  else if(myweekday == 3)
+		  weekday=" 星期三 ";
+		  else if(myweekday == 4)
+		  weekday=" 星期四 ";
+		  else if(myweekday == 5)
+		  weekday=" 星期五 ";
+		  else if(myweekday == 6)
+		  weekday=" 星期六 ";
+		  var time = year+"年"+mymonth+"月"+myday+"日 "+myHours+":"+myMinutes+":"+mySeconds+" "+weekday;
+		  return time;
+	  }
+	
+	 function displayTime() {
+	  var elt = document.getElementById("clock");
+	  var time = clock();
+	  elt.innerHTML = time;
+	  setTimeout(displayTime,1000);
+	  //setTimeout(autoSlide,5000);
+	 }
+    
+	$(function(){
+		displayTime();
+		
+		$(".floor-nav .nav-pic").hover(function(){
+			$(this).find(".abs-pic").animate({"marginTop":"-177px"},500);
+		},function(){
+			$(this).find(".abs-pic").animate({"marginTop":"0px"},500);
+		});
+		
+	});
+	//abs-pic
+	
+	function autoSlide(){
+		time_index++;
+		
+		//$(".faq ul").append($(".faq ul").html());
+			
+		$(".faq ul").animate({"marginTop": parseInt( -130 * time_index ) +"px"},4000);
+	}
+	
+	
+    </script>
+
+   </head>
+<body>
+	<div class="service"><img src="images/service.jpg" /></div>
+	<div class="top-warpper">
+    	<div class="top">
+        	<div class="top-left">
+            	<div class="logo1">
+                	<img src="images/logo.png" />
+                </div>
+                <div class="logo2">
+                	<img src="images/logo2.png" />
+                </div>
+            </div>
+            <div class="top-right">
+            	<div class="top-menu">
+                	<ul>
+                    	<li>欢迎来到海淘辣妈！</li>
+                    	<a href="javascript:void(0)" class="gray01"><li>登录</li></a>
+                        <li>|</li>
+                    	<a href="javascript:void(0)" class="gray01"><li>注册</li></a>
+                        <li>|</li>
+                    	<a href="javascript:void(0)" class="gray01"><li>物流查询</li></a>
+                    	<a href="javascript:void(0)" class="gray01"><li>购物篮 (0) </li></a>
+                    </ul>
+                </div>
+                <div class="top-serach">
+                	<div class="serach-txt">
+                    	<ul>
+                        	<a href="javascript:void(0)" class="gray03"><li>Nutrllon</li></a>
+                        	<a href="javascript:void(0)" class="gray03"><li>Friso</li></a>
+                        	<a href="javascript:void(0)" class="gray03"><li>Aptamil</li></a>
+                        	<a href="javascript:void(0)" class="gray03"><li>Gerber</li></a>
+                        </ul>
+                    </div>
+                    <div class="serach">
+                    	<input type="text" />
+                        <input type="button" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav-warpper">
+    	<div class="nav">
+        	<ul>
+            	<a href="javascript:void(0)" class="red"><li>首页 HOME</li></a>
+            	<a href="javascript:void(0)" class="red"><li>婴幼儿奶粉 Babymilk</li></a>
+            	<a href="javascript:void(0)" class="red"><li>婴幼儿辅食 BabyFoods</li></a>
+            	<a href="javascript:void(0)" class="red"><li>婴幼儿用品 BabyProduct</li></a>
+                <li class="li-bk">&nbsp;</li>
+            	<a href="javascript:void(0)" class="red"><li>为什么选择海淘辣妈？</li></a>
+                <li class="li-bk">&nbsp;</li>
+            	<a href="javascript:void(0)" class="red"><li>国际直邮说明（买家必看）</li></a>
+                <li class="li-bk">&nbsp;</li>
+            	<a href="javascript:void(0)" class="red"><li>国际物流查询</li></a>
+                <li class="li-bk">&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="banner-warpper">
+    	<div class="banner">
+        	<div class="banner-left">
+            	<img src="images/top-pic1.jpg" />
+            	<img src="images/top-pic1.jpg" />
+            	<img src="images/top-pic1.jpg" />
+            </div>
+            <div class="banner-right">
+            	<div class="notice">
+                	<div class="block">
+                    	<p>Oversea</p>
+                        <p>海外原产</p>
+                    </div>
+                    <div class="block">
+                    	<p>Oversea</p>
+                        <p>海外原产</p>
+                    </div>
+                    <div class="block">
+                    	<p>Oversea</p>
+                        <p>海外原产</p>
+                    </div>
+                    <div class="block">
+                    	<p>Oversea</p>
+                        <p>海外原产</p>
+                    </div>
+               		
+                    <div class="notice-block">
+                    	<div class="notice-content">
+                        	<div class="notice-title">
+                            	<font class="F16 Fblack">官方公告</font> <font class="F14 gray02">Official Announcement</font>
+                            </div>
+                            <div class="notice-txt">
+                            	<ul>
+                                	<li>海淘辣妈2014新品上架，限时抢购！</li>
+                                	<li>海淘辣妈2014新品上架，限时抢购！</li>
+                                	<li>海淘辣妈2014新品上架，限时抢购！</li>
+                                	<li>海淘辣妈2014新品上架，限时抢购！</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="timer">
+                	<p>Geneva 日内瓦时间</p>
+                	<p id="clock"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-warpper">
+    	<div class="content">
+        	<div class="hot">
+            	<div class="hot-title">
+                	<div class="title-txt"><font class="F20 Fb">限时促销</font> <font style="color:#d46767; font-size:18px;">HOT</font></div>
+                </div>
+                <div class="hot-content">
+                
+                	<div class="hot-box">
+                    	<div class="box-timer box-Thover">
+                        	距结束<font class="Fred F22">03</font>天<font class="Fred F22">25</font>时<font class="Fred F22">18</font>分<font class="Fred F22">30</font>秒
+                        </div>
+                        <div class="box-content">
+                        	<div class="box-pic">
+                            	<img src="images/product-1.jpg" />
+                            </div>
+                            <div class="box-dec">
+                            	<p>Nutrilon 海外本土 荷兰牛栏奶粉1段</p>
+                                <p>（满3罐满运费）</p>
+                            	<p>抢购价：<font class="F20 Fred">￥255.00</font></p>
+                            	<p><font class="FL">市场价：￥306.00</font> 立省：￥51.00</p>
+                            	<div class="btn-buy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hot-box">
+                    	<div class="box-timer">
+                        	距结束<font class="Fred F22">03</font>天<font class="Fred F22">25</font>时<font class="Fred F22">18</font>分<font class="Fred F22">30</font>秒
+                        </div>
+                        <div class="box-content">
+                        	<div class="box-pic">
+                            	<img src="images/product-1.jpg" />
+                            </div>
+                            <div class="box-dec">
+                            	<p>Nutrilon 海外本土 荷兰牛栏奶粉1段</p>
+                                <p>（满3罐满运费）</p>
+                            	<p>抢购价：<font class="F20 Fred">￥255.00</font></p>
+                            	<p><font class="FL">市场价：￥306.00</font> 立省：￥51.00</p>
+                            	<div class="btn-buy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hot-box">
+                    	<div class="box-timer">
+                        	距结束<font class="Fred F22">03</font>天<font class="Fred F22">25</font>时<font class="Fred F22">18</font>分<font class="Fred F22">30</font>秒
+                        </div>
+                        <div class="box-content">
+                        	<div class="box-pic">
+                            	<img src="images/product-1.jpg" />
+                            </div>
+                            <div class="box-dec">
+                            	<p>Nutrilon 海外本土 荷兰牛栏奶粉1段</p>
+                                <p>（满3罐满运费）</p>
+                            	<p>抢购价：<font class="F20 Fred">￥255.00</font></p>
+                            	<p><font class="FL">市场价：￥306.00</font> 立省：￥51.00</p>
+                            	<div class="btn-buy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hot-box">
+                    	<div class="box-timer">
+                        	距结束<font class="Fred F22">03</font>天<font class="Fred F22">25</font>时<font class="Fred F22">18</font>分<font class="Fred F22">30</font>秒
+                        </div>
+                        <div class="box-content">
+                        	<div class="box-pic">
+                            	<img src="images/product-1.jpg" />
+                            </div>
+                            <div class="box-dec">
+                            	<p>Nutrilon 海外本土 荷兰牛栏奶粉1段</p>
+                                <p>（满3罐满运费）</p>
+                            	<p>抢购价：<font class="F20 Fred">￥255.00</font></p>
+                            	<p><font class="FL">市场价：￥306.00</font> 立省：￥51.00</p>
+                            	<div class="btn-buy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <div class="hot-box">
+                    	<div class="box-timer">
+                        	距结束<font class="Fred F22">03</font>天<font class="Fred F22">25</font>时<font class="Fred F22">18</font>分<font class="Fred F22">30</font>秒
+                        </div>
+                        <div class="box-content">
+                        	<div class="box-pic">
+                            	<img src="images/product-1.jpg" />
+                            </div>
+                            <div class="box-dec">
+                            	<p>Nutrilon 海外本土 荷兰牛栏奶粉1段</p>
+                                <p>（满3罐满运费）</p>
+                            	<p>抢购价：<font class="F20 Fred">￥255.00</font></p>
+                            	<p><font class="FL">市场价：￥306.00</font> 立省：￥51.00</p>
+                            	<div class="btn-buy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="floor">
+            	<div class="floor-title">
+                	<div class="title-txt">
+                    	<font class="F20 Fb">1F 婴幼儿奶粉品牌推荐</font> <font class="gray03 F18">Baby Milk Brands</font>
+                    </div>
+                    <div class="title-more">
+                    	<a href="javascript:void(0)" class="gray01 F16"> more > </a>
+                    </div>
+                </div>
+                <div class="floor-nav">
+                	<ul>
+                    	<li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/product-2.jpg" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="floor-content">
+                	<div class="floor-page">
+                    	<div class="page-fl"></div>
+                        <div class="page-fm"></div>
+                        <div class="page-fr">
+                        	<ul>
+                            	<li>0-6个月</li>
+                                <li class="line">|</li>
+                            	<li class="li-hover">6-10个月</li>
+                                <li class="line">|</li>
+                            	<li>6-12个月</li>
+                                <li class="line">|</li>
+                            	<li>1岁以上</li>
+                                <li class="line">|</li>
+                            	<li>2岁以上</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-product">
+                    	<div class="product-brand">
+                        	<div class="brand-dec">
+                            	<p class="F18 Fblue02">荷兰本土超市直供奶粉</p>
+                            	<p class="F18 Fblue02">跟当地宝宝一个标准</p>
+                                <div class="btn-check1"></div>
+                                <p class="gray01">品质安全 纯正奶源</p>
+                                <p class="gray01">遵循欧洲食品安全体系</p>
+                            </div>
+                            <div class="brand-pic">
+                            	<img src="images/product-2.jpg" />
+                            </div>
+                            <div class="brand-other">
+                            	<div class="brand-title">
+                                	<div class="title-txt F14 Fblue02">
+                                    	热门品牌 Hot Brands
+                                    </div>
+                                </div>
+                                <div class="brands">
+                                	<ul>
+                                    	<li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                        	<div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floor">
+            	<div class="floor-title">
+                	<div class="title-txt" style="width:400px;">
+                    	<font class="F20 Fb" >2F 婴幼儿辅食品牌推荐</font> <font class="gray03 F18">Baby Foods Brands</font>
+                    </div>
+                    <div class="title-more">
+                    	<a href="javascript:void(0)" class="gray01 F16"> more > </a>
+                    </div>
+                </div>
+                <div class="floor-nav">
+                	<ul>
+                    	<li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="floor-content">
+                	<div class="floor-page">
+                    	<div class="page-fl"></div>
+                        <div class="page-fm"></div>
+                        <div class="page-fr">
+                        	<ul>
+                            	<li>0-6个月</li>
+                                <li class="line">|</li>
+                            	<li class="li-hover">6-10个月</li>
+                                <li class="line">|</li>
+                            	<li>6-12个月</li>
+                                <li class="line">|</li>
+                            	<li>1岁以上</li>
+                                <li class="line">|</li>
+                            	<li>2岁以上</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-product">
+                    	<div class="product-brand">
+                        	<div class="brand-dec">
+                            	<p class="F18 Fblue02">荷兰本土超市直供奶粉</p>
+                            	<p class="F18 Fblue02">跟当地宝宝一个标准</p>
+                                <div class="btn-check2"></div>
+                                <p class="gray01">品质安全 纯正奶源</p>
+                                <p class="gray01">遵循欧洲食品安全体系</p>
+                            </div>
+                            <div class="brand-pic">
+                            	<img src="images/product-2.jpg" />
+                            </div>
+                            <div class="brand-other">
+                            	<div class="brand-title">
+                                	<div class="title-txt F14 Fblue02">
+                                    	热门品牌 Hot Brands
+                                    </div>
+                                </div>
+                                <div class="brands">
+                                	<ul>
+                                    	<li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                        	<div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floor">
+            	<div class="floor-title">
+                	<div class="title-txt" style="width:420px;">
+                    	<font class="F20 Fb">3F 宝宝喂哺品牌推荐</font> <font class="gray03 F18">Baby Feeding Brands</font>
+                    </div>
+                    <div class="title-more">
+                    	<a href="javascript:void(0)" class="gray01 F16"> more > </a>
+                    </div>
+                </div>
+                <div class="floor-nav">
+                	<ul>
+                    	<li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="floor-content">
+                	<div class="floor-page">
+                    	<div class="page-fl"></div>
+                        <div class="page-fm"></div>
+                        <div class="page-fr">
+                        	<ul>
+                            	<li>0-6个月</li>
+                                <li class="line">|</li>
+                            	<li class="li-hover">6-10个月</li>
+                                <li class="line">|</li>
+                            	<li>6-12个月</li>
+                                <li class="line">|</li>
+                            	<li>1岁以上</li>
+                                <li class="line">|</li>
+                            	<li>2岁以上</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-product">
+                    	<div class="product-brand">
+                        	<div class="brand-dec">
+                            	<p class="F18 Fblue02">荷兰本土超市直供奶粉</p>
+                            	<p class="F18 Fblue02">跟当地宝宝一个标准</p>
+                                <div class="btn-check3"></div>
+                                <p class="gray01">品质安全 纯正奶源</p>
+                                <p class="gray01">遵循欧洲食品安全体系</p>
+                            </div>
+                            <div class="brand-pic">
+                            	<img src="images/product-2.jpg" />
+                            </div>
+                            <div class="brand-other">
+                            	<div class="brand-title">
+                                	<div class="title-txt F14 Fblue02">
+                                    	热门品牌 Hot Brands
+                                    </div>
+                                </div>
+                                <div class="brands">
+                                	<ul>
+                                    	<li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                        	<div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floor">
+            	<div class="floor-title">
+                	<div class="title-txt" style="width:420px;">
+                    	<font class="F20 Fb">4F 宝宝洗护品牌推荐</font> <font class="gray03 F18">Baby Cleaning Brands</font>
+                    </div>
+                    <div class="title-more">
+                    	<a href="javascript:void(0)" class="gray01 F16"> more > </a>
+                    </div>
+                </div>
+                <div class="floor-nav">
+                	<ul>
+                    	<li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="nav-pic">
+                            	<img src="images/brand-1.jpg" />
+                                <img src="images/white_line.png" class="abs-pic" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="floor-content">
+                	<div class="floor-page">
+                    	<div class="page-fl"></div>
+                        <div class="page-fm"></div>
+                        <div class="page-fr">
+                        	<ul>
+                            	<li>0-6个月</li>
+                                <li class="line">|</li>
+                            	<li class="li-hover">6-10个月</li>
+                                <li class="line">|</li>
+                            	<li>6-12个月</li>
+                                <li class="line">|</li>
+                            	<li>1岁以上</li>
+                                <li class="line">|</li>
+                            	<li>2岁以上</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-product">
+                    	<div class="product-brand">
+                        	<div class="brand-dec">
+                            	<p class="F18 Fblue02">荷兰本土超市直供奶粉</p>
+                            	<p class="F18 Fblue02">跟当地宝宝一个标准</p>
+                                <div class="btn-check4"></div>
+                                <p class="gray01">品质安全 纯正奶源</p>
+                                <p class="gray01">遵循欧洲食品安全体系</p>
+                            </div>
+                            <div class="brand-pic">
+                            	<img src="images/product-2.jpg" />
+                            </div>
+                            <div class="brand-other">
+                            	<div class="brand-title">
+                                	<div class="title-txt F14 Fblue02">
+                                    	热门品牌 Hot Brands
+                                    </div>
+                                </div>
+                                <div class="brands">
+                                	<ul>
+                                    	<li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                        <li>荷兰牛栏 <img src="images/ico-3.jpg" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                        	<div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+                            
+                            <div class="block">
+                            	<div class="block-pic">
+                                	<img src="images/product-3.jpg" />
+                                </div>
+                                <div class="block-dec">
+                                    <p><a href="javascript:void(0)" class="gray01">Nutrilon 海外本土 荷兰牛栏</a></p><p>奶粉1段（满3罐满运费）</p>
+                                    <p><font class="F16 Fred Fb">￥255.00</font> &nbsp;<font class="FL gray01">市场价：￥306.00</font></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="problemBrand">
+            	<div class="pb-title">
+                	<div class="faq-title">
+                    	<div class="title-txt"><font class="F20 Fb">常见问题专区</font> <font class="gray03 F16">PROBLEMS ANSWER</font></div>
+                    </div>
+                    <div class="brands-title">
+                    	<div class="title-txt"><font class="F20 Fb">品牌专区</font> <font class="gray03 F16">BRANDS</font></div>
+                    </div>
+                </div>
+                <div class="pb-content">
+                	<div class="faq">
+                    	
+                        <ul>
+                        	<li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                            <li>
+                            	<p>问：可以开发票么？</p>
+                    			<p>答：个人海外直邮商品暂不提供发票。</p>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="brands">
+                    	<div class="brand-title">
+                        	<span class="pinkbut" style="padding:0 10px;">1</span> 荷兰牛栏奶粉
+                        </div>
+                    	<div class="brand-content">
+                        	<div class="brand-pic">
+                            	<img src="images/ico-3.jpg" />
+                            </div>
+                            <div class="brand-txt">
+                            	<p>荷兰畜牧业发的。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    <div class="footer-warpper">
+    	<div class="footer1">
+        	<img src="images/footer-1.png" />
+        </div>
+        <div class="footer2">
+        	<ul>
+            	<li class="Fb F16">新用户指南</li>
+            	<li class="Fb F14">Newbie Guide</li>
+            	<li>&nbsp;</li>
+            	<a href="javascript:void(0)" class="red"><li>为什么选择海淘辣妈</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>新用户注册</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>购物流程</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>会员制度</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>积分说明</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>辣妈赚钱计划</li></a>
+            </ul>
+            
+            <ul>
+            	<li class="Fb F16">支付方式</li>
+            	<li class="Fb F14">Payment Method</li>
+            	<li>&nbsp;</li>
+            	<a href="javascript:void(0)" class="gray03"><li>支付宝在线</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>银行汇款</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>余额支付</li></a>
+            </ul>
+            
+            <ul>
+            	<li class="Fb F16">配送方式</li>
+            	<li class="Fb F14">Delivery Method</li>
+            	<li>&nbsp;</li>
+            	<a href="javascript:void(0)" class="gray03"><li>荷兰PostNL直邮</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>比利时Bpost直邮</li></a>
+            	<a href="javascript:void(0)" class="red"><li>快递单查询</li></a>
+            	<a href="javascript:void(0)" class="red"><li>海关与关税说明</li></a>
+            </ul>
+            
+            <ul>
+            	<li class="Fb F16">售后服务</li>
+            	<li class="Fb F14">After-sales Service</li>
+            	<li>&nbsp;</li>
+            	<a href="javascript:void(0)" class="gray03"><li>退换货须知</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>7天换货</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>正品保障</li></a>
+            </ul>
+            
+            <ul>
+            	<li class="Fb F16">服务保障</li>
+            	<li class="Fb F14">Service Assurance</li>
+            	<li>&nbsp;</li>
+            	<a href="javascript:void(0)" class="gray03"><li>交易条款</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>编码查询</li></a>
+            	<a href="javascript:void(0)" class="gray03"><li>隐私注册</li></a>
+            </ul>
+        </div>
+        <div class="footer3">
+        	<ul>
+            	<li><img src="images/footer-ico1.jpg" />中国服务热线 400-000-0000</li>
+            	<li><img src="images/footer-ico2.jpg" /> 电子邮件E-mail: kf@htlama.com </li>
+            	<li><img src="images/footer-ico3.jpg" /> 关注海淘辣妈 </li>
+                <li><img src="images/footer-ico4.jpg" /><img src="images/footer-ico5.jpg" /><img src="images/footer-ico6.jpg" /> </li>
+            </ul>
+        </div>
+        <div class="footer4">
+        	Copyright&copy;2013-2016htlama.com,All Right Reserved 渝ICP备14002364号 版权所有 海淘辣妈，并保留所有权利。
+        </div>
+        <div class="footer5">
+        	<img src="images/footer-ico7.jpg" />
+        	<img src="images/footer-ico8.jpg" />
+        	<img src="images/footer-ico9.jpg" />
+        	<img src="images/footer-ico10.jpg" />
+        	<img src="images/footer-ico11.jpg" />
+        	<img src="images/footer-ico12.jpg" />
+        </div>
+    </div>
+
+</body>
+</html>

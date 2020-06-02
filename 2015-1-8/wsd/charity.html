@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/home.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+
+		var flrs = $(".floor");
+		var tmp = "<ul>";
+		flrs.each(function(i){
+			var tmp_y = $(this).offset().top;
+			if($(this).attr("class")=="floor warpper-blue"){
+				tmp+= "<li class='li-blue' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-red"){
+				tmp+= "<li class='li-red' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-green"){
+				tmp+= "<li class='li-green' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-yellow"){
+				tmp+= "<li class='li-yellow' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-orange"){
+				tmp+= "<li class='li-orange' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-paper"){
+				tmp+= "<li class='li-paper' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-none"){
+				tmp+= "<li class='li-none' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-black"){
+				tmp+= "<li class='li-black' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-grey"){
+				tmp+= "<li class='li-grey' data='"+ tmp_y +"'>";
+			}else if($(this).attr("class")=="floor warpper-white"){
+				tmp+= "<li class='li-white' data='"+ tmp_y +"'>";
+			}else
+				tmp+= "<li class='li-none' data='"+ tmp_y +"'>";
+			tmp+="</li>";
+		});
+		tmp += "</ul>";
+		var slide = $(".slide");
+		slide.html(tmp);
+		slide.find("li").click(function(){
+			$('body,html').animate({scrollTop:(parseFloat($(this).attr("data")))},1000);
+		});
+		
+	});
+</script>
+</head>
+
+<body>
+	<div class="slide-warpper">
+    	<div class="slide">
+        	
+        </div>
+    </div>
+    <div class="main-warpper warpper-green01">
+    	<div class="main">
+           
+            <div class="header-warpper warpper-grey">
+            	<div class="header">
+                	<div class="logo"><img src="images/logo03.png" alt="万事得" /></div>
+                    <div class="nav">
+                    	<ul>
+                        	<li>公益</li>
+                        	<li>服务</li>
+                        	<li>商城</li>
+                        	<li>我的帐户</li>
+                        	<li>联系我们</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+           <div class="top">
+           		<div class="top-title">
+                	服务
+                </div>
+                <div class="top-search">
+                	<form>
+                    	<input type="submit" value=" " /> <input type="text" /> <input type="submit" value=" " style="width:80px;"/>
+                    </form>
+                </div>
+           </div>
+            <div class="floor-charity">
+                <div class="charity-banner">
+                	
+                </div>
+                <div class="charity-charity">
+                	
+                </div>
+                <div class="charity-activity">
+                	
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-warpper">
+    	<div class="footer">
+        	<div class="footer-left">
+            	<div class="fl-pic"><img src="images/logo04.png" /></div>
+                <div class="fl-txt">
+                	<p>邮箱：wshide@163.com</p>
+                	<p>QQ：12345678</p>
+                </div>
+            </div>
+            <div class="footer-mid">
+            	<ul>
+                	<li><a href="javascript:void(0)" class="white F16 Fb">关于</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">关于我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">服务项目</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">联系我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">客户列表</a></li>
+                </ul>
+                <ul>
+                	<li><a href="javascript:void(0)" class="white F16 Fb">关于</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">关于我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">服务项目</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">联系我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">客户列表</a></li>
+                </ul>
+                <ul>
+                	<li><a href="javascript:void(0)" class="white F16 Fb">关于</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">关于我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">服务项目</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">联系我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">客户列表</a></li>
+                </ul>
+                <ul>
+                	<li><a href="javascript:void(0)" class="white F16 Fb">关于</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">关于我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">服务项目</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">联系我们</a></li>
+                	<li><a href="javascript:void(0)" class="gray01">客户列表</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+            	<div class="fr-top">
+                	<p><a href="javascript:void(0)" class="white F16 Fb">联系我们</a></p>
+                    <p class="Fwhite F24 Fb">400-800-8888</p>
+                </div>
+                <div class="fr-mid">
+                	<img src="images/ico-code.png" />
+                </div>
+                <div class="fr-bottom">
+                	<img src="images/ico-21.png" />
+                	<img src="images/ico-22.png" />
+                	<img src="images/ico-23.png" />
+                	<img src="images/ico-24.png" />
+                	<img src="images/ico-25.png" />
+                	<img src="images/ico-26.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

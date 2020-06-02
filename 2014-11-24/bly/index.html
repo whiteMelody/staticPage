@@ -1,0 +1,1023 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>薄利园</title>
+<link href="css/comm.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/responsiveslides.js"></script>
+<script language="javascript" type="text/javascript">
+	// Slideshow 1
+$(function(){
+	// Slideshow 1
+	$("#slider1").responsiveSlides({
+		auto: true,
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks"
+	});
+	// Slideshow 2
+	$("#slider2").responsiveSlides({
+		auto: true,
+		speed: 500
+	});
+	// Slideshow 3
+	$("#slider3").responsiveSlides({
+		auto: true,
+		speed: 500
+	});
+	
+	var floors = $(".floor-1 .floor-location-title");
+	 
+	floors.each(function(i, e) {
+		
+		if(i == floors.length)
+			return false;
+				
+        var _this = $(this);
+		var li = "<li data-name='"+ _this.text() +"' data-top='"+ _this.offset().top +"'>"+ Math.ceil(i+1) +"F" +"</li>";
+		$(".ul-float-floor-index").append(li);
+
+    }); 
+
+	 
+	$(".ul-float-floor-index li:gt(0)").click(function(){
+		$('body,html').animate({scrollTop:(parseFloat($(this).attr("data-top")))},500);
+	}).hover(function(e) {
+		
+		var temp = $(this).text();
+		var data = $(this).attr("data-name");
+		$(this).attr("data-name",temp)
+		$(this).text(data);
+		
+		$(this).addClass("li-hover");
+		
+    },function(){
+		var temp = $(this).text();
+		var data = $(this).attr("data-name");
+		$(this).attr("data-name",temp)
+		$(this).text(data);
+		
+		$(this).removeClass("li-hover");
+	});
+	$(".ul-float-floor-index li:eq(0)").click(function(){
+		$('body,html').animate({scrollTop:0},500);
+	});
+});
+</script>
+
+</head>
+
+<body>
+	
+    <div class="wrapper-header h120px">
+    	<div class="header w1020px h30px center lh30px text-left">
+        	<div class="left-welcome-desc wb16666 fl">
+            	<a href="javascript:void(0)" class="red">亲，请登录</a>
+                <a href="javascript:void(0)" class="black">免费注册</a>
+            </div>
+        	<div class="right-welcome-desc wb75 fr">
+            	<ul class="ul-menu-normal-right">
+                	<li>服务热线：400-888-999</li>
+                    <a href="javascript:void(0)" class="black"><li>帮助中心</li></a>
+                    <a href="javascript:void(0)" class="black"><li>收藏我们</li></a>
+                    <a href="javascript:void(0)" class="black"><li>商家入驻</li></a>
+                    <a href="javascript:void(0)" class="black"><li>我的订单</li></a>
+                    <a href="javascript:void(0)" class="black"><li>用户中心</li></a>
+                    <a href="javascript:void(0)" class="black"><li>您好！欢迎来到薄利园商城</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="menu w1020px h70px center padding-top-bottom20">
+        	<div class="wb20 fl">
+            	
+            </div>
+            <div class="wb50 fl">
+            	<div class="search h40px lh40px text-center">
+                    <div class="wb10 border3px fl" style="border-right:none;"><img src="images/ico-search.png" style="padding:5px; float:left;" /></div>
+                    <div class="wb66667 border3px fl" style="border-left:none;border-right:none;"><input type="text" class="h30px lh30px" /></div>
+                	<div class="wb16666 fl"><input type="submit" class="h30px lh30px" style="height:36px; line-height:36px;" value="搜索" /></div>
+                </div>
+                <div class="search-desc h20px lh20px">
+                	<ul class="ul-menu-normal-left">
+                        <li class="Fred01 mleftnone">热门搜索：</li>
+                        <a href="javascript:void(0)" class="black"><li>电视</li></a>
+                        <a href="javascript:void(0)" class="black"><li>冰箱</li></a>
+                        <a href="javascript:void(0)" class="black"><li>洗衣机</li></a>
+                        <a href="javascript:void(0)" class="black"><li>沙发</li></a>
+                	</ul>
+                </div>
+            </div>
+            <div class="wb30 fr">
+            	<div class="menu-user">
+                	<img src="images/ico-user.png" style="float:left; margin:10px" />
+                    <span class="fl">我的薄利园</span>
+                </div>
+                <div class="menu-cart">
+                	<img src="images/ico-cart.png" style="float:left; margin:10px" />
+                    <span class="fl">购物车去结算(<b>10</b>)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wrapper-nav h40px">
+    	<div class="nav w1020px center">
+        	<div class="nav-left-item wb21 fl h40px lh40px">
+            	<span>全部商品分类</span>
+                <img src="images/ico-down-arr.png" />
+            </div>
+            <div class="nav-center-item wb60 fl h40px lh40px">
+            	<ul class="ul-nav-red-left">
+                	<a href="javascript:void(0)"><li>首页</li></a>
+                    <a href="javascript:void(0)"><li>建材城</li></a>
+                    <a href="javascript:void(0)"><li>家具城</li></a>
+                    <a href="javascript:void(0)"><li>家饰城</li></a>
+                    <a href="javascript:void(0)"><li>精品套装</li></a>
+                    <a href="javascript:void(0)"><li>薄利街区</li></a>
+                </ul>
+            </div>
+            <div class="nav-right-item wb185 fr h40px lh40px">
+            	<ul class="ul-nav-red-right">
+                    <a href="javascript:void(0)"><li style="padding-right:0;">乐居秀</li></a>
+                    <a href="javascript:void(0)"><li>团购</li></a>
+                	<a href="javascript:void(0)"><li>体验馆</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+    <div class="wrapper-banner h455px">
+    	<div class="banner w1020px center">
+        	<div class="banner-left-area wb21 fl h455px">
+            	<div class="banner-menu-item">
+                	<div class="banner-menu-title text-left">
+                    	<img src="images/ico-1.png" class="fl" style="margin:5px 20px;" />
+                        <a href="javascript:void(0)" class="black">建材商城</a>
+                        <img src="images/ico-right-arr.png" class="fr" style="margin:10px; cursor:pointer;" />
+                    </div>
+                    <div class="banner-menu-content">
+                    	<ul class="ul-banner-menu">
+                        	<a href="javascript:void(0)" class="black"><li>卫浴用品</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>厨房用品</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>门窗</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>灯具</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>瓷砖</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>地板</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>五金配件</li></a>
+                        </ul>
+                    </div>
+                   
+                   <div class="banner-menu-line"></div>
+                   
+                   <div class="banner-menu-title text-left">
+                    	<img src="images/ico-2.png" class="fl" style="margin:5px 20px;" />
+                        <a href="javascript:void(0)" class="black">家具商城</a>
+                        <img src="images/ico-right-arr.png" class="fr" style="margin:10px; cursor:pointer;" />
+                    </div>
+                    <div class="banner-menu-content">
+                    	<ul class="ul-banner-menu">
+                        	<a href="javascript:void(0)" class="black"><li>客厅</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>卧室</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>书房</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>儿童房</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>家具办公</li></a>
+                        </ul>
+                    </div>
+                   
+                   <div class="banner-menu-line"></div>
+                   
+                   <div class="banner-menu-title text-left">
+                    	<img src="images/ico-3.png" class="fl" style="margin:5px 20px;" />
+                        <a href="javascript:void(0)" class="black">家饰商城</a>
+                        <img src="images/ico-right-arr.png" class="fr" style="margin:10px; cursor:pointer;" />
+                    </div>
+                    <div class="banner-menu-content">
+                    	<ul class="ul-banner-menu">
+                        	<a href="javascript:void(0)" class="black"><li>床上用品</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>生活用品</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>精品挂件</li></a>
+                        	<a href="javascript:void(0)" class="black"><li>家居百货</li></a>
+                        </ul>
+                    </div>
+                   
+                   <div class="clear1"></div>
+                   
+                   <div class="banner-menu-content">
+                    	<ul class="ul-banner-menu-small">
+                        	<a href="javascript:void(0)" class="gray Fb"><li>浴室柜</li></a>
+                        	<a href="javascript:void(0)" class="gray Fb"><li>花酒</li></a>
+                        	<a href="javascript:void(0)" class="gray Fb"><li>坐便器</li></a>
+                        </ul>
+                        <ul class="ul-banner-menu-small">
+                        	<a href="javascript:void(0)" class="red Fb"><li>精品推荐</li></a>
+                        	<a href="javascript:void(0)" class="red Fb"><li>团购</li></a>
+                        	<a href="javascript:void(0)" class="red Fb"><li>热卖专区</li></a>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="banner-center-area wb60 fl h455px">
+            	<div class="banner-ul-area h275px ">
+                  <!-- Slideshow 1 -->
+                  <div class="callbacks_container h275px">
+                      <ul class="rslides h275px" id="slider1">
+                      		<li class="h275px"><a href="javascript:void(0)"><img src="images/product-img-1.jpg" alt=""></a></li>
+                      		<li class="h275px"><a href="javascript:void(0)"><img src="images/product-img-2.jpg" alt=""></a></li>
+                      		<li class="h275px"><a href="javascript:void(0)"><img src="images/product-img-3.jpg" alt=""></a></li>
+                      </ul>
+                  </div>
+           		</div>
+                    
+                    
+                <div class="banner-ad-area h160px">
+                	<div class="ad">
+                    	<div class="ad-desc">
+                        	<p class="gray01">显示器专场</p>
+                        	<p style="color:#e65859; font-size:15px; font-weight:600;">每满100减10元</p>
+                        </div>
+                        <div class="ad-img">
+                        	<img src="images/ad-product-img-1.jpg" />
+                        </div>
+                    </div>
+                    <div class="ad">
+                    	<div class="ad-desc">
+                        	<p class="gray01">显示器专场</p>
+                        	<p style="color:#e65859; font-size:15px; font-weight:600;">每满100减10元</p>
+                        </div>
+                        <div class="ad-img">
+                        	<img src="images/ad-product-img-1.jpg" />
+                        </div>
+                    </div>
+                    <div class="ad">
+                    	<div class="ad-desc">
+                        	<p class="gray01">显示器专场</p>
+                        	<p style="color:#e65859; font-size:15px; font-weight:600;">每满100减10元</p>
+                        </div>
+                        <div class="ad-img">
+                        	<img src="images/ad-product-img-1.jpg" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="banner-right-area wb185 fr h455px">
+            	<div class="banner-right-user h80px">
+                	<div class="user-info">
+                        <div class="user-head">
+                            <img src="images/user-default-head.png" />
+                        </div>
+                        <div class="user-welcome">
+                            <p class="Fb F16" >Hi</p>
+                            <p>您好，欢迎来到薄利园</p>
+                        </div>
+                    </div>
+                    <div class="user-button">
+                    	<a href="javascript:void(0)">登录</a>
+                    	<a href="javascript:void(0)">免费注册</a>
+                    </div>
+                </div>
+                
+                <div class="banner-right-tips h170px">
+                	<div class="banner-tips-title">活动小贴士</div>
+                    <div class="banner-tips-area">
+                        <ul class="ul-banner-tips">
+                            <li>薄利小园招商路上,你开店我帮忙</li>
+                            <li>薄利小园招商路上,你开店我帮忙</li>
+                            <li>薄利小园招商路上,你开店我帮忙</li>
+                            <li>薄利小园招商路上,你开店我帮忙</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="banner-ad-area h160px">
+                    <ul class="rslides" id="slider2">
+                           <li class="h160px"><a href="javascript:void(0)"><img src="images/ad-banner-1.jpg" alt=""></a></li>
+                           <li class="h160px"><a href="javascript:void(0)"><img src="images/ad-banner-1.jpg" alt=""></a></li>
+                           <li class="h160px"><a href="javascript:void(0)"><img src="images/ad-banner-1.jpg" alt=""></a></li>
+                    </ul>     
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wrapper-content">
+    	<div class="wrapper-main">
+        	<div class="wrapper-floors">
+            	<!-- floor-1 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	1F
+                            </div>
+                            <div class="floor-location-title">
+                            	限时抢购
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h625px">
+                    	<div class="floor1-product wb45 h295px fl">
+                        	<img src="images/product-img-1.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-2.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-3.jpg" />
+                        </div>
+                        <div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-4.jpg" />
+                        </div>
+                        <div class="floor1-product wb45 h295px fl">
+                        	<img src="images/product-img-5.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-6.jpg" />
+                        </div>
+                    </div>
+                </div>
+                 <!--/ floor-1 -->
+                 
+                 <!-- floor-2 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	2F
+                            </div>
+                            <div class="floor-location-title">
+                            	新品特卖
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h625px">
+                    	<div class="floor1-product wb45 h295px fl">
+                        	<img src="images/product-img-1.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-2.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-3.jpg" />
+                        </div>
+                        <div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-4.jpg" />
+                        </div>
+                        <div class="floor1-product wb45 h295px fl">
+                        	<img src="images/product-img-5.jpg" />
+                        </div>
+                    	<div class="floor1-product wb255 h295px fl">
+                        	<img src="images/product-img-6.jpg" />
+                        </div>
+                    </div>
+                </div>
+                 <!--/ floor-2 -->
+                 
+                 <!-- floor-3 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	3F
+                            </div>
+                            <div class="floor-location-title">
+                            	建材市场
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h415px">
+                    	<div class="wb31 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h300px fl" style="margin:0">
+                            	<img src="images/product-img-7.jpg" />
+                            </div>
+                        	<div class="floor1-product wb100 h100px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-ico-left">
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="wb66667 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h200px fl" style="margin:0">
+                            	<div class="floor1-product wb66667 h200px fl" style="margin:0 1% 0 1%;">
+                            		<img src="images/product-img-8.jpg" />
+                           	 	</div>
+                                <div class="floor1-product wb30 h200px fl" style="margin:0">
+                            		<img src="images/product-img-3.jpg" />
+                           	 	</div>
+                                
+                            </div>
+                        	<div class="floor1-product wb100 h190px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-1">
+                                	<li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                 <!--/ floor-3 -->
+                 
+                <!-- floor-4 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	4F
+                            </div>
+                            <div class="floor-location-title">
+                            	家具城
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h415px">
+                    	<div class="wb31 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h300px fl" style="margin:0">
+                            	<img src="images/product-img-7.jpg" />
+                            </div>
+                        	<div class="floor1-product wb100 h100px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-ico-left">
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="wb66667 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h200px fl" style="margin:0">
+                            	<div class="floor1-product wb66667 h200px fl" style="margin:0 1% 0 1%;">
+                            		<img src="images/product-img-8.jpg" />
+                           	 	</div>
+                                <div class="floor1-product wb30 h200px fl" style="margin:0">
+                            		<img src="images/product-img-3.jpg" />
+                           	 	</div>
+                                
+                            </div>
+                        	<div class="floor1-product wb100 h190px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-1">
+                                	<li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                 <!--/ floor-4 -->
+                 
+                 <!-- floor-5 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	5F
+                            </div>
+                            <div class="floor-location-title">
+                            	家居家饰城
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h415px">
+                    	<div class="wb31 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h300px fl" style="margin:0">
+                            	<img src="images/product-img-7.jpg" />
+                            </div>
+                        	<div class="floor1-product wb100 h100px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-ico-left">
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                	<li><img src="images/ico-brand-1.jpg" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="wb66667 h400px fl" style="margin:1% 0 0 1%;">
+                        	<div class="floor1-product wb100 h200px fl" style="margin:0">
+                            	<div class="floor1-product wb66667 h200px fl" style="margin:0 1% 0 1%;">
+                            		<img src="images/product-img-8.jpg" />
+                           	 	</div>
+                                <div class="floor1-product wb30 h200px fl" style="margin:0">
+                            		<img src="images/product-img-3.jpg" />
+                           	 	</div>
+                                
+                            </div>
+                        	<div class="floor1-product wb100 h190px fl" style="margin:1% 0 0 0;">
+                            	<ul class="ul-floor-1-product-1">
+                                	<li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                    <li>
+                                    	<div class="product-img">
+                                        	<img src="images/product-img-17.jpg" />
+                                        </div>
+                                    	<div class="product-title">各式风格门锁</div>
+                                    	<div class="product-price"><i>￥29</i> <b>嘉年华</b></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                 <!--/ floor-5 -->
+                 
+                 <!-- floor-6 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-bg">
+                            	6F
+                            </div>
+                            <div class="floor-location-title">
+                            	品牌街区
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                            	
+                                <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                                <a href="javascript:void(0)" class="gray"><li>沙发</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>电视柜</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>书桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>餐桌</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>美国进口床垫</li></a>
+                                <li class="gray02">|</li>
+                                <a href="javascript:void(0)" class="gray"><li>床</li></a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h210px">
+                    	<ul class="ul-floor-1-brand-ico-left">
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                            <li><img src="images/ico-brand-2.jpg" /></li>
+                        </ul>
+                    </div>
+                </div>
+                 <!--/ floor-6 -->
+                 
+                  <!-- floor-7 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-title">
+                            	今日体验
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                               <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h255px">
+                    	<ul class="ul-floor-1-product-2">
+                        	<li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-18.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	<a href="javascript:void(0)" class="gray">Haier/海尔 BC-50EN 50升家用型单门电冰箱</a>
+                                </div>
+                                <div class="product-price">￥299</div>
+                            </li>
+                            <li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-18.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	<a href="javascript:void(0)" class="gray">Haier/海尔 BC-50EN 50升家用型单门电冰箱</a>
+                                </div>
+                                <div class="product-price">￥299</div>
+                            </li>
+                            <li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-18.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	<a href="javascript:void(0)" class="gray">Haier/海尔 BC-50EN 50升家用型单门电冰箱</a>
+                                </div>
+                                <div class="product-price">￥299</div>
+                            </li>
+                            <li style="border-right:none;">
+                            	<div class="product-img">
+                                	<img src="images/product-img-18.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	<a href="javascript:void(0)" class="gray">Haier/海尔 BC-50EN 50升家用型单门电冰箱</a>
+                                </div>
+                                <div class="product-price">￥299</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                 <!--/ floor-7 -->
+                 
+                <!-- floor-8 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-title">
+                            	线下体验馆
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                               <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h255px ">
+                    	<div class="floor1-address-area h235px fl" style="border-right:1px solid #e9e9e9;">
+                        	<div class="address-area-img wb60 h235px fl">
+                            	<img src="images/product-img-9.jpg" />
+                            </div>
+                            <div class="address-area-desc wb35 h235px fr">
+                            	<ul class="ul-address-area-desc">
+                                	<li>营业时间：9:00-17:30</li>
+                                	<li>服务电话：400-166-5158</li>
+                                	<li>展区地址：重庆市渝北区金开大道115号</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="floor1-address-area h235px fr">
+                        	<div class="address-area-img wb60 h235px fl">
+                            	<img src="images/product-img-9.jpg" />
+                            </div>
+                            <div class="address-area-desc wb35 h235px fr">
+                            	<ul class="ul-address-area-desc">
+                                	<li>营业时间：9:00-17:30</li>
+                                	<li>服务电话：400-166-5158</li>
+                                	<li>展区地址：重庆市渝北区金开大道115号</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                 <!--/ floor-8 -->
+                 
+                 <!-- floor-9 -->
+            	<div class="floor-1 w1020px center">
+                	<div class="floor-1-title h45px lh45px">
+                    	<div class="floor-1-title-floor-location wb21 fl">
+                        	<div class="floor-location-title">
+                            	乐居秀
+                            </div>
+                        </div>
+                        <div class="floor-1-title-floor-menu wb75 fr">
+                        	<ul class="ul-floor-1-menu-right">
+                               <a href="javascript:void(0)" class="gray"><li>更多 ></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="floor-1-content h590px ">
+                    	<div class="floor1-product wb50 h280px fl">
+                            <ul class="rslides" id="slider3">
+                                   <li class="h280px"><a href="javascript:void(0)"><img src="images/product-img-11.jpg" alt=""></a></li>
+                                   <li class="h280px"><a href="javascript:void(0)"><img src="images/product-img-12.jpg" alt=""></a></li>
+                                   <li class="h280px"><a href="javascript:void(0)"><img src="images/product-img-13.jpg" alt=""></a></li>
+                            </ul>     
+                            
+                        </div>
+                        <div class="floor1-product wb30 h280px fl">
+                        	<img src="images/product-img-12.jpg" />
+                        </div>
+                        
+                        <div class="floor1-product wb16 h280px fl product-desc-font-style">
+                        	写在正文之前，白 妞儿消失了个把月 终于重出江湖了， 还带回了大家都想 要的宝藏——清单 ！还有相应的链接 哦！~~~想要滴，留爪爪！~~
+                        </div>
+                        
+                        <ul class="ul-floor-1-product-3">
+                        	<li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-16.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	【82m²韩式风】4w搞定！~就  是爱小清新(准毕业照附基装预
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-16.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	【82m²韩式风】4w搞定！~就  是爱小清新(准毕业照附基装预
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-16.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	【82m²韩式风】4w搞定！~就  是爱小清新(准毕业照附基装预
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="product-img">
+                                	<img src="images/product-img-16.jpg" />
+                                </div>
+                                <div class="product-title">
+                                	【82m²韩式风】4w搞定！~就  是爱小清新(准毕业照附基装预
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                 <!--/ floor-9 -->
+                 
+                 
+                 <!-- floor-10 -->
+            	<div class="floor-1 w1020px h200px center text-center">
+                	<img src="images/ad-footer-bg-1.png" />
+                </div>
+                 <!--/ floor-10 -->
+                 
+            </div>
+            
+            <div class="clear1"></div>
+            
+        </div>
+    </div>
+    
+    <div class="wrapper-footer">
+    	<div class="footer w1020px center h190px">
+        	<div class="footer-left wb20 h190px fl" style="border-right:1px solid #fff;">
+            	<p style="margin-top:50px; font-size:16px; font-weight:600;">全国24小时服务热线</p>
+                <p class="F24 Fb">400-88888888</p>
+            </div>
+            <div class="footer-center wb65 h190px fl">
+            	<ul class="ul-footer-link-left">
+                	<li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                    <li>
+                    	<p class="link-title">新手指南</p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                        <p><a href="javascript:void(0)" class="gray">注册新用户</a></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-right wb10 h190px fr"></div>
+        </div>
+    </div>
+    
+    <div class="wrapper-links">
+    	<div class="links w1020px center">
+        	<ul class="ul-links-link-left">
+            	<li class="Fb">友情链接:</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+                <li>|</li>
+            	<a href="javascript:void(0)" class="gray"><li>家居装饰</li></a>
+
+            </ul>
+            <p>Copyright &copy; 2012-2014 <b class="Fb">薄利园电子商务有限公司</b> 版权所有</p>
+            <p>ICP备案证书号：鲁ICP备11111111号</p>
+        </div>
+    </div>
+    
+    <div class="float-floors">
+    	<ul class="ul-float-floor-index">
+        	<li><img src="images/ico-go-top.png" style="margin-top:20px;" /></li>
+        	</ul>
+        <div>
+        	<a href="javascript:void(0)"><img src="images/kefu-bg.png" class="mat10" /></a>
+        </div>
+    </div>
+    
+</body>
+</html>

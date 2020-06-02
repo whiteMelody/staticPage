@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/home.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" id="fusion-style-css" href="css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" language="javascript">
+	
+	$(function(){
+	    var $head = $(".header");
+		var $menu = "<div class='menu'><span style='float:left; margin-top:0px; font-size:12px; font-weight:600; cursor:pointer;'>产品</span><img src='images/menu.png' class='Fl' style='cursor:pointer;' /></div>";
+		
+		var ofs = $head.offset().top;
+		var iHeight = $head.outerHeight();
+		$(window).scroll(function () {
+			var sTop = $(document).scrollTop();
+			if (sTop >= (ofs + iHeight)) {
+				
+				if($head.find(".menu").attr("class")!="menu"){
+					$head.append($menu);
+					$(".menu img").click(function(){
+						
+						var slide = $(".slide-warpper");
+						var main = $(".main-warpper");
+						var head = $(".header-warpper .header");
+						if(parseInt(slide.css("marginRight"))!=0){
+							slide.animate({"marginRight":"0px"},300);
+							main.animate({"marginLeft":"-270px"},300);
+							head.animate({"marginLeft":"-270px"},300);
+						}else{
+							main.animate({"marginLeft":"0px"},300);
+							slide.animate({"marginRight":"-270px"},300);
+							head.animate({"marginLeft":"0px"},300);
+						}
+			
+					});
+				}
+				$head.parent().addClass("header-fixed");
+			} else {
+				$head.find(".menu").remove();
+				$head.parent().removeClass("header-fixed");
+			}
+		})
+		
+		$(".pro-txt").hover(function(){
+			$(this).animate({"marginTop":"-70px"},500);
+			//$(".pro-txt");
+		},function(){
+			$(this).animate({"marginTop":"0px"},500);
+		});
+		
+		$("#login").click(function(){
+			$(".dialog").slideDown(500);
+			$(".user_login").slideDown(500);	
+		});
+		
+		$(".user_login_close").click(function(){
+			$(".user_login").slideUp(500);
+			$(".dialog").slideUp(500);
+		});
+		
+		$(".top-menu img").click(function(){
+			
+			var slide = $(".slide-warpper");
+			var main = $(".main-warpper");
+			var head = $(".header-warpper .header");
+			if(parseInt(slide.css("marginRight"))!=0){
+				slide.animate({"marginRight":"0px"},300);
+				main.animate({"marginLeft":"-270px"},300);
+				head.animate({"marginLeft":"-270px"},300);
+			}else{
+				main.animate({"marginLeft":"0px"},300);
+				slide.animate({"marginRight":"-270px"},300);
+				head.animate({"marginLeft":"0px"},300);
+			}
+
+		});
+		
+	});
+
+</script>
+</head>
+
+<body>
+	
+  <div class="dialog"></div>
+    <div class="user_login">
+        <div class="user_login_close"></div>
+        <div class="user_login_box">
+            <h2>登录账户</h2>
+            <form action="">
+                <div><input name="" type="text" class="user" /></div>
+                <div><input name="" type="password"  class="password" /></div>
+                <p><span class="fr"><a href="#" target="_blank">忘记密码？</a></span><input name="" type="checkbox" value="" class="check_btn" />两周内自动登录 </p>
+                <div><input name="" type="submit"  value="立即登录" class="login_btn" /></div>
+            </form>
+        </div>
+        <div class="other_login">
+            <p>其他登陆方式：
+                <span class="fr blue"><a href="#" target="_blank">免费注册&gt;</a></span>
+                <a href="#" target="_blank" title="qq快捷登陆"><img src="images/ico_qq.jpg" /></a>
+                <a href="#" target="_blank" title="新浪快捷登陆"><img src="images/ico_sina.jpg" /></a>		
+            </p>
+        </div>
+    </div>
+    
+    <div class="slide-warpper">
+    	
+    </div>
+    
+	<div class="main-warpper">
+    	<div class="main">
+            
+            <div class="logo-menu">
+            	<div class="top-logo">
+                	<img src="images/logo3.png" />
+                </div>
+                <div class="top-menu">
+                	<div class='menu'><span style='float:left; margin-top:0px; font-size:12px; font-weight:600; cursor:pointer;'>产品</span><img src='images/menu.png' class='Fl' style='cursor:pointer;' /></div>
+                </div>
+            </div>
+            
+            <div id="et-slider-wrapper" class=" et_slider_auto et_slider_speed_7000">
+                <div id="et-slides">
+                    <!-- et-slide -->
+                    <div class="et-slide" style="background-image:url(images/banner.png);">
+                        <div class="container clearfix">
+                            <div class="description">
+                                <div class="img1"><img src="images/logo1.png" /></div>
+                                <div class="img2"><img src="images/logo2.png" /></div>
+                                <p class="subtitle">便携式无线Wi-Fi随身宝 随时随地,畅享网络</p>
+                                <p class="more">立即预约</p>
+                                <p>前10台，免费送</p>
+                                <p>前10台，免费送</p>
+                                <p>前10台，免费送</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- et-slide -->
+                    <div class="et-slide" style="background-image:url(images/banner2.png);">
+                        <div class="container clearfix">
+                            <div class="description">
+                                <div class="img1"><img src="images/logo1.png" /></div>
+                                <div class="img2"><img src="images/logo2.png" /></div>
+                                <p class="subtitle">便携式无线Wi-Fi随身宝 随时随地,畅享网络</p>
+                                <p class="more">
+                                立即预约</p>
+                                <p>前10台，免费送</p>
+                                <p>前10台，免费送</p>
+                                <p>前10台，免费送</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end et-slide -->
+                    
+                </div>
+            </div>
+            
+
+            <div class="menu-warpper">
+            	<div class="menu">
+                	<div class="menu-left">
+                    	<ul>
+                        	<a href="javascript:void(0)" class="gray02"><li>德赛科技</li></a>
+                        	<a href="javascript:void(0)" class="gray02"><li>电子</li></a>
+                        	<a href="javascript:void(0)" class="gray02"><li>视听</li></a>
+                        	<a href="javascript:void(0)" class="gray02"><li>天猫</li></a>
+                        </ul>
+                    </div>
+                	<div class="menu-right">
+                    	<ul>
+                        	<a href="javascript:void(0)" class="gray02"><li id="login">登录</li></a>
+                        	<a href="javascript:void(0)" class="gray02"><li>注册</li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-warpper">
+            	<div class="header">
+                	<div class="timer">
+                    	<div class="timer-left"></div>
+                        <div class="timer-right">
+                        	<p style="font-size:13px; float:right; margin-top:5px;"> 距5.20新品发布会</p>
+                            <p style="margin-top:2px; font-size:25px; font-weight:600; float:right; width:105px;">还有<font class="Fblue01">9</font>天</p>
+                        </div>
+                    </div>
+                    <div class="nav">
+                    	<ul>
+                        	<li>首页</li>
+                         	<li>随身Wi-Fi</li>
+                        	<li>快充</li>
+                        	<li>音乐盒</li>
+                        	<li>电子书</li>
+                        </ul>
+                    </div>
+                    <div class="search">
+                    	<input type="text" value="搜索"  />
+                        <input type="button" value=" " />
+                    </div>
+                     <div class="cart">
+						<img src="images/cart.png" class="fl" /><span class="fr gray03">(1)</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="content-warpper">
+            	<div class="content">
+                	<div class="product1">
+                    	<div class="product-title">德赛明星单品</div>
+                        <div class="product-content">
+                        	<div class="product-floor1">
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	<img src="images/product1.png" />
+                                    </div>
+                                    <div class="pro-txt"><span class="fl">具体存储功能和充电的Wi-fi随身宝</span>  <span class="fr">》</span></div>
+                                </div>
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	<img src="images/product2.png" />
+                                    </div>
+                                    <div class="pro-txt"><span class="fl">快速充电 30分钟即可充满</span>  <span class="fr">》</span></div>
+                                </div>
+                            	<div class="login">
+                                	<ul>
+                                    	<li class="F20 Fb Fwhite">注册我们的网站，成为会员！</li>
+                                    	<li>您将获得德赛最新产品发布信息和最低</li>
+                                    	<li>优惠通知</li>
+                                    	<li><input type="text" value="您的email或手机号码" /><input type="button" value="注册" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-floor2">
+                            	<div class="pro1">
+                                	<div class="pro-pic">
+                                    	<img src="images/product3.jpg" />
+                                    </div>
+                                    <div class="pro-txt"><span class="fl">快速充电 30分钟即可充满</span>  <span class="fr">》</span></div>
+                                </div>
+                                <div class="pro2">
+                                	<div class="pro-pic">
+                                    	<img src="images/product4.jpg" />
+                                    </div>
+                                    <div class="pro-txt"><span class="fl">快速充电 30分钟即可充满</span>  <span class="fr">》</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product1" style="height:700px;">
+                    	<div class="product-title">新品上架</div>
+                        <div class="product-content">
+                        	<div class="product-floor1">
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                                <div class="pro">
+                                	<div class="pro-pic">
+                                    	
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                            </div>
+                            <div class="product-floor1">
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    	
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                            	<div class="pro">
+                                	<div class="pro-pic">
+                                    </div>
+                                    <div class="pro-txt"><span class="fl"></span>  <span class="fr"></span></div>
+                                </div>
+                            	<div class="login" style="width:613px; margin-left:1px;">
+                                	
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product2">
+                    	<div class="product-title">我们精选的配件</div>
+                        <div class="product-content">
+                        	<div class="product-floor1">
+                            	<div class="pro-left">
+                                	
+                                </div>
+                            	<div class="pro-right">
+                                	
+                                </div>
+                            </div>
+                            <div class="product-floor2">
+                            	<div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                                <div class="pro"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="footer-warpper">
+
+                	<div class="footer1-warpper">
+                		<div class="footer1">
+                        	<div class="footer1-txt">
+                            	<ul>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                	<div class="footer2">
+                    	<div class="footer2-left">
+                        	<ul>
+                                <li class="F18 Fb" style="margin-bottom:10px;">顾客帮助</li>
+                                <a href="javascript:void(0)" class="gray02"><li>购物指南</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>支付方式</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>配送方式</li></a>
+                            </ul>
+                            <ul>
+                             	<li class="F18 Fb" style="margin-bottom:10px;">关于德赛科技</li>
+                                <a href="javascript:void(0)" class="gray02"><li>了解德赛科技</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>加入德赛科技</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>联系我们</li></a>
+                            </ul>
+                            <ul>
+                                <li class="F18 Fb" style="margin-bottom:10px;">关注我们</li>
+                              	<a href="javascript:void(0)" class="gray02"><li>新浪微博</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>官方微信</li></a>
+                            </ul>
+                        </div>
+                        <div class="footer2-right">
+                            <p class="F22 Fb">400-000-000</p>
+                            <p class="gray02">周一至周日 8:00-18:00</p>
+                            <p class="gray02">(仅收市话费)</p>
+                            <p class="bluebut" style=" margin-left:112px;">24小时在线客服</p>
+                        </div>
+                        
+                    </div>
+                	<div class="footer3">
+                    	<p>德赛友情链接：<a href="javascript:void(0)" class="gray03">德赛集团</a> <a href="javascript:void(0)" class="gray03">德赛电子</a> <a href="javascript:void(0)" class="gray03">德赛视听</a></p>
+                        <p>
+                        	德赛网络科技 ICP证
+                        </p>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

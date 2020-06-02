@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+
+        .lrc-bg2{
+            background-size: auto 100%;
+            background-position: center center;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+            -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            transform: scale(1.5);
+            -webkit-transform-origin: center top;
+            -ms-transform-origin: center top;
+            transform-origin: center top;
+        }
+    </style>
+
+    <title>每日一句</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| every_day_page
+| ------------------------------------------
+| Here are every_day_page html
+|
+-->
+<div id="every_day_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+    <!--<layout-loader :show="showLoader"></layout-loader>-->
+
+    <div class="wb100 hidden every_day_page_content">
+
+        <!--<en-header-new :back="true" :home="true" :white="false" :title="day.date"></en-header-new>-->
+        <div class="wb100 h50px relative" style="z-index: 99999;">
+
+            <div  style="height: 24px; padding: 13px 15px;">
+
+                <!--<div style="height: 24px; width:24px; float: left;" class="img-area"><img src="images/icon-back2.png"  @click="myBack"></div>-->
+                <a href="index.html"  class="fr"><div style="height: 24px; width:24px;" class="img-area"><img src="images/icon-home2.png"></div></a>
+
+                <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16" style="top: 0; left: 0; right: 0; margin: 0 auto; color: #fff;">{{day.date}}</p>
+            </div>
+        </div>
+
+        <div class="clear1"></div>
+
+        <div style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: -1; ">
+            <div style="position: fixed; z-index: 2; width: 100%; height: 100%; background: rgba(0,0,0,.5)"></div>
+            <img :src="day.imageURL + '?x-oss-process=image/resize,m_fill,h_500,w_500'" class="img-filter5 lrc-bg2">
+        </div>
+
+        <template>
+            <div :style="'width:'+ myWidth +';margin-left:'+myLeft" @touchstart="moveStart" @touchend="moveEnd">
+                <el-carousel @change="carChange" :interval="4000" type="card" :autoplay="false" :height="myHeight + 'px'" :indicator-position="'none'" ref="carousel">
+                    <el-carousel-item class="img-area" v-for="(item,index) in days">
+                        <img :src="item.imageURL+ '?x-oss-process=image/resize,m_fill,h_500,w_500'">
+                        <audio :src="item.audioURL" :id="'myAudio-'+index"></audio>
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+        </template>
+
+        <div class="pa15 Fwhite lh20px F14">
+            <div class="clear1"></div>
+            <img :src="'images/'+ playAnimes[timeIndex]" class="h30px" @click="playAudio">
+            <div class="clear1"></div>
+            <p>{{day.languageCN}}</p>
+            <div class="clear1"></div>
+            <p>{{day.languageEN}}</p>
+            <div class="clear1"></div>
+
+        </div>
+
+    </div>
+
+    <!--<en-statistics></en-statistics>-->
+
+</div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?02656d3a262742fe6567cff6f33b6aa7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script>
+
+    'use strict';
+
+    var vm = new Vue({
+        el: "#every_day_page",
+        data: {
+            showLoader: true,
+            days: [],
+            day: {},
+            myWidth: 0,
+            myHeight: 0,
+            myLeft: 0,
+            current: 0,
+            myAudio: {},
+            timerId: 0,
+            timeIndex: 0,
+            startX: 0,
+            endX: 0,
+            playAnimes: ['icon-play3.png', 'icon-play2.png', 'icon-play1.png']
+
+        },
+        methods: {
+            myBack: function myBack(url) {
+                    window.history.go(-1);
+            },
+            playAudio: function playAudio() {
+                var _this = this;
+                clearInterval(_this.timerId);
+                //                document.getElementsByTagName('audio').pause();
+                var _audios = document.getElementsByTagName('audio');
+                for (var i = 0; i < _audios.length; i++) {
+                    _audios[i].pause();
+                    _audios[i].currentTime = 0;
+                }
+
+                _audios[_this.current].play();
+
+                _this.playAnime();
+                _this.timerId = setInterval(_this.playAnime, 800);
+            },
+            playAnime: function playAnime() {
+                var _this = this;
+                _this.timeIndex++;
+                if (document.getElementById("myAudio-" + _this.current).ended) {
+                    _this.timeIndex = 0;
+                    clearInterval(_this.timerId);
+                }
+                if (_this.timeIndex >= 2) {
+                    _this.timeIndex = 0;
+                }
+            },
+            carChange: function carChange(index) {
+                var _this = this;
+                _this.day = _this.days[index];
+                _this.current = index;
+            },
+            moveStart: function moveStart(e) {
+                var _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd: function moveEnd(e) {
+                var _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                var _result = _this.startX - _this.endX;
+
+                if (_result >= 50) {
+                    this.$refs.carousel.next();
+                }
+                if (_result < -50) {
+                    this.$refs.carousel.prev();
+                }
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            var date = base.getParmar("date");
+            var _date = "";
+
+            var mydate = new Date();
+            //未传递参数
+
+            if (base.isNull(date)) {
+                _date = mydate.getFullYear() + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate();
+            } else {
+                _date = date;
+            }
+
+            _this.myWidth = $(window).width() * 1.5 + "px";
+            _this.myLeft = $(window).width() / 4 * -1 + "px";
+            _this.myHeight = $(window).width() * 1.5 / 2;
+
+            baseAjax.getEveryDayEnglishByDate(_date, function (data) {
+
+                for (var i = 0; i < data.returnJSON.length; i++) {
+                    data.returnJSON[i].date = base.toLocalTime(data.returnJSON[i].belongsTimestamp)[2];
+                }
+
+                var _tmp = data.returnJSON.reverse();
+
+                _tmp.unshift(_tmp.pop());
+
+                _this.days = _tmp;
+
+                setTimeout(function () {
+                    _this.showLoader = false;
+                    $(".every_day_page_content").removeClass("hidden");
+                }, ajaxConfig.lazy);
+            });
+
+        }
+    });
+
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var _this = vm;
+
+                var date = base.getParmar("date");
+                var _date = "";
+
+                var mydate = new Date();
+                //未传递参数
+
+                if (base.isNull(date)) {
+                    _date = mydate.getFullYear() + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate();
+                } else {
+                    _date = date;
+                }
+
+                _this.myWidth = $(window).width() * 1.5 + "px";
+                _this.myLeft = $(window).width() / 4 * -1 + "px";
+                _this.myHeight = $(window).width() * 1.5 / 2;
+
+                baseAjax.getEveryDayEnglishByDate(_date, function (data) {
+
+                    for (var i = 0; i < data.returnJSON.length; i++) {
+                        data.returnJSON[i].date = base.toLocalTime(data.returnJSON[i].belongsTimestamp)[2];
+                    }
+
+                    var _tmp = data.returnJSON.reverse();
+
+                    _tmp.unshift(_tmp.pop());
+
+                    _this.days = _tmp;
+
+                    setTimeout(function () {
+                        _this.showLoader = false;
+                        $(".every_day_page_content").removeClass("hidden");
+                    }, ajaxConfig.lazy);
+                });
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+
+</script>
+
+</body>
+</html>

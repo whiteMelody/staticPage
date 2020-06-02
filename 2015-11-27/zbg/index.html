@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider2').glide({
+			
+			autoplay:false,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+			arrows:false, //是否显示左右导航器
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});	
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+			arrows:false, //是否显示左右导航器
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:null,//主导航器外部div类名
+			navItemClass:null, //本例中小方块的样式
+			navCurrentItemClass:null //被选中后的样式
+		});		
+	})
+	
+	$(document).on("pageinit",function(e){
+  		$(window).resize();
+	});
+
+</script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="h40px wauto lh40px absolute text-center" data-role="none" data-transition="slide" href="area-change.html" style="left:5px; top:5px;text-shadow:none; font-weight:normal; color:#fff;">
+            <span class="fl">重庆</span><img src="images/arrow-down-3.png" class="mat15 mal5 fr"></a>
+            <div class="wb60 center h35px" style=" margin-top:2px;">
+            	<div class="wb185 h35px fl my-bg-search" style="background-position:left center;"></div>
+                <input type="text" class="bor-none h33px lh33px Fgray-2 wb58 fl warpper-white text-left" style="text-shadow:none; font-weight:normal;" data-role="none" placeholder="地址/商家名称">
+                <div class="wb185 h35px fl my-bg-search" style="background-position:right center;"></div>
+            </div>
+        	<a class="my-icon-location h40px w40px absolute" data-role="none" style="right:5px; top:5px;"></a>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<div class="wb100 h150px img-area">
+            <div class="slider slider1">
+                <ul class="slides">
+                    <li class="slide"><img src="images/banner-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-1.jpg"></li>
+                    <li class="slide"><img src="images/banner-1.jpg"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        <div class="wb100">
+            <div class="slider slider2 F80em lh25px">
+                <ul class="slides">
+                    <li class="slide">
+                    	 <div class="wb100 Fgray-3"> 
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                   <a href="list.html" data-transition="slide" data-role="none"> <img src="images/icon-cake.png"></a>
+                                </div>
+                                <p>餐饮美食</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                     <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-movie.png"></a>
+                                </div>
+                                <p>休闲娱乐</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                    <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-hotal.png"></a>
+                                </div>
+                                <p>酒店</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                    <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-book-2.png"></a>
+                                </div>
+                                <p>教育培训</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                    <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-health.png"></a>
+                                </div>
+                                <p>生活服务</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                    <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-service.png"></a>
+                                </div>
+                                <p>家政服务</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                     <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-plane.png"></a>
+                                </div>
+                                <p>旅游</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                    <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-brush.png"></a>
+                                </div>
+                                <p>装修建材</p>
+                            </div>
+                        </div>
+                        <div class="clear1"></div>
+                    </li>
+                    <li class="slide">
+                    	 <div class="wb100 Fgray-3">
+                         	<div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                   <a href="list.html" data-transition="slide" data-role="none"> <img src="images/icon-cake.png"></a>
+                                </div>
+                                <p>餐饮美食</p>
+                            </div>
+                            <div class="ma2per wb21 relative text-center fl">
+                                <div class="wb80 center img-Warea">
+                                     <a href="list.html" data-transition="slide" data-role="none"><img src="images/icon-movie.png"></a>
+                                </div>
+                                <p>休闲娱乐</p>
+                            </div>
+                        </div>
+                        <div class="clear1"></div>
+                    </li>
+                </ul>
+            </div>
+        	<div class="clear1 warpper-gray-1"></div>
+            <div class="wb100">
+            	<div class="wb100">
+                	<div class="wb95 pal5per h40px lh40px text-left F110em Fgray-3 bor-gray bor-solid-1b">
+                    	商家精选
+                    </div>
+                    <div class="clear"></div>
+                    <div class="wb27 ma3per text-center lh25px fl">
+                        <a href="store-detail.html" data-transition="slide" data-role="none">
+                            <div class="wb100 center img-Warea text-center h70px lh70px">
+                                <img src="images/brand-1.png" class="middle">
+                            </div>
+                        </a>
+                        <p class=" Fgray-3">德香苑烤鸭</p>
+                        <p class=" Fgray-2"><span class="Forange F125em">120</span> 元</p>
+                    </div>
+                    <div class="wb27 ma3per text-center lh25px fl">
+                    	<a href="store-detail.html" data-transition="slide" data-role="none">
+                            <div class="wb100 center img-Warea text-center h70px lh70px">
+                                <img src="images/brand-1.png" class="middle">
+                            </div>
+                        </a>
+                        <p class=" Fgray-3">德香苑烤鸭</p>
+                        <p class=" Fgray-2"><span class="Forange F125em">120</span> 元</p>
+                    </div>
+                    <div class="wb27 ma3per text-center lh25px fl">
+                    	<a href="store-detail.html" data-transition="slide" data-role="none">
+                            <div class="wb100 center img-Warea text-center h70px lh70px">
+                                <img src="images/brand-1.png" class="middle">
+                            </div>
+                        </a>
+                        <p class=" Fgray-3">德香苑烤鸭</p>
+                        <p class=" Fgray-2"><span class="Forange F125em">120</span> 元</p>
+                    </div>
+             	</div>
+            </div>
+        	<div class="clear1 warpper-gray-1"></div>
+            
+            <div class="wb100 F75em text-center Fgray-3">
+            	<div class="wb495 fl bor-gray bor-solid-1b bor-solid-1r warpper-white fl pat20">
+                	<p class="F125em ">春天流行这些鞋</p>
+                    <p class="Fgray-2 ">买新鞋，有优惠！</p>
+                    <div class="clear1"></div>
+                    <a href="detail-store.html" data-transition="slide" data-role="none">
+                        <div class="wb90 center img-Harea text-center h100px">
+                            <img src="images/product-1.jpg">
+                        </div>
+                    </a>
+                </div>
+            	<div class="wb495 fl bor-gray bor-solid-1b warpper-white fl pat20">
+                	<p class="F125em ">春天流行这些鞋</p>
+                    <p class="Fgray-2 ">买新鞋，有优惠！</p>
+                    <div class="clear1"></div>
+                    
+                    <a href="detail-store.html" data-transition="slide" data-role="none">
+                        <div class="wb90 center img-Harea text-center h100px">
+                            <img src="images/product-2.jpg">
+                        </div>
+                    </a>
+                </div>
+            	<div class="wb495 fl bor-gray bor-solid-1r warpper-white fl pat20">
+                	<p class="F125em ">春天流行这些鞋</p>
+                    <p class="Fgray-2 ">买新鞋，有优惠！</p>
+                    <div class="clear1"></div>
+                    
+                    <a href="detail-store.html" data-transition="slide" data-role="none">
+                        <div class="wb90 center img-Harea text-center h100px">
+                            <img src="images/product-3.jpg">
+                        </div>
+                    </a>
+                </div>
+            	<div class="wb495 fl warpper-white fl pat20">
+                	<p class="F125em ">春天流行这些鞋</p>
+                    <p class="Fgray-2 ">买新鞋，有优惠！</p>
+                    <div class="clear1"></div>
+                    
+                    <a href="detail-store.html" data-transition="slide" data-role="none">
+                        <div class="wb90 center img-Harea text-center h100px">
+                            <img src="images/product-4.jpg">
+                        </div>
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear1 warpper-gray-1"></div>
+            
+            <div class="wb100">
+            	<div class="wb100">
+                	<div class="wb95 pal5per h40px lh40px text-left F110em Fgray-3 bor-gray bor-solid-1b">
+                    	<span class="fl">热门推荐</span>
+                        <a href="list.html" data-transition="slide">
+                        	<img src="images/arrow-right.png" class="fr mat15 mar5per">
+                        </a>
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb95 center">
+                    	<a href="#detail-page" data-transition="slide" data-role="none">
+                            <div class="wb50 fl h130px img-area relative"><img src="images/product-11.jpg">
+                                <div class="my-tip-no-order"></div>
+                            </div>
+                        </a>
+                        <div class="wb43 mal3per fl">
+                            <p class="wb80 fl  text-left lh40px">黄记煌三汁焖锅</p>
+                            <p class="wb15 fr  Fgray-2 text-right lh40px">0.1km</p>
+                            <div class="clear"></div>
+                            <p class=" Fgray-2 F80em lh20px">[观音桥] 双人套餐2选1，免费WIFI，免预约</p>
+                            <div class="clear1"></div>
+                            <p class="wb45 fl  Fgray-2 text-left lh25px"><span class="F150em Forange">120</span> 元</p>
+                            <p class="wb50 fr  Fgray-2 text-right F80em lh25px">已售8585</p>
+                        </div>
+                    </div>
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                    <a href="javascript:void(0)" data-role="button" class="Fgray-2">全部推荐</a>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

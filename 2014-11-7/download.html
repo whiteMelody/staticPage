@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<title>全民擂台</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<link rel="stylesheet" href="/Public/css/jquery.mobile-1.4.3.min.css">
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/Public/js//jquery.mobile-1.4.3.min.js"></script>
+<link rel="stylesheet" href="css/common.css?v=1.00">
+</head>
+<body>
+<div data-role="page" id="downpage" style="overflow:auto !important;background-color:#E14A46 !important;color:#fff !important;">
+    <div data-role="content"  style="padding:0 !important;text-align:center !important;">
+        <div class="bannerdiv">
+        </div>
+        <img src="images/bg.png" width="100%" class="bg_class_img">
+        <div class="downpage_btn_div">
+            <a href="http://www.pgyer.com/cmltcs" style="color:#fff; text-decoration:none;">
+            <button class="tc_btn down_hidden" id="Android">
+            <img src="images/adroid.png" align="absmiddle" height="25" style="margin-top:-0.2em;margin-right:0.5em">
+            Android下载</button>
+            </a>
+            <a href="http://www.pgyer.com/qmlt" style="color:#fff; text-decoration:none;">
+            <button class="tc_btn down_hidden" id="IOS">
+            <img src="images/apple.png" align="absmiddle" height="25" style="margin-top:-0.3em;margin-right:0.5em">
+            ios下载</button>
+            </a>
+        </div>
+        <div style="padding:1em 0 !important">
+            <a class="down_page_a" href="feedback.html" data-role="none" data-ajax="false">意见反馈</a>
+            |
+            <a class="down_page_a" href="contact.html">联系我们</a>
+            <div style="color:#ccc;font-size:0.7em;margin-top:.5em">渝ICP备13006951号-4</div>
+        </div>
+    </div>
+</div>
+<script>
+var minute = 1000 * 60;
+var hour = minute * 60;
+var day = hour * 24;
+var halfamonth = day * 15;
+var month = day * 30;
+function getDateDiff(dateTimeStamp){
+var now = new Date().getTime();
+var diffValue = now - dateTimeStamp;
+if(diffValue < 0){
+ //若日期不符则弹出窗口告之
+ //alert("结束日期不能小于开始日期！");
+ }
+var monthC =diffValue/month;
+var weekC =diffValue/(7*day);
+var dayC =diffValue/day;
+var hourC =diffValue/hour;
+var minC =diffValue/minute;
+if(monthC>=1){
+ result= parseInt(monthC) + "个月前";
+ }
+ else if(weekC>=1){
+ result= parseInt(weekC) + "周前";
+ }
+ else if(dayC>=1){
+ result= parseInt(dayC) +"天前";
+ }
+ else if(hourC>=1){
+ result= parseInt(hourC) +"小时前";
+ }
+ else if(minC>=1){
+ result= parseInt(minC) +"分钟前";
+ }else
+ result="刚刚";
+return result;
+}
+
+var browser={
+		versions:function(){
+			var u = navigator.userAgent, app = navigator.appVersion;
+			return {         //移动终端浏览器版本信息
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+				iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+				iPad: u.indexOf('iPad') > -1, //是否iPad
+				webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+				weixin: (u.match(/MicroMessenger/i) == 'MicroMessenger' || u.match(/MicroMessenger/i) == 'micromessenger')	//微信浏览器
+			};
+		}(),
+		language:(navigator.browserLanguage || navigator.language).toLowerCase()
+	};
+
+	$(function(){	
+		if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios){
+			$("#IOS").removeClass('down_hidden');
+			$("#Android").addClass('down_hidden');
+		}else if (browser.versions.android){
+
+			$("#Android").removeClass('down_hidden');
+			$("#IOS").addClass('down_hidden');
+		}else{
+	
+			$("#Android").removeClass('down_hidden');
+			$("#IOS").removeClass('down_hidden');
+		}
+			
+		$("#sub_btn").click(function(){
+			
+			var message = $(".fk_cotent-textarea").val();
+			var contact = $(".fk_cotent-input").val();
+			if(message.replace(/[ ]/g,"").length<=0){
+				$(".msg").text("请输入内容");
+				$('#msg_dialog').popup('open');
+				
+				return false;
+			}
+			
+			$.post("http://apptest.game.zhaopian.com/wydlz_game/feedback.json",{message:message,contact:contact},function(data,status){
+				if(status == "success"){
+					$(".msg").text("我们已收到你的反馈，感谢你的帮助与支持");
+					$('#msg_dialog').popup('open');
+					$(".fk_cotent-textarea").val("");
+					$(".fk_cotent-input").val("");
+				}else{
+					$(".msg").text("反馈提交失败");
+					$('#msg_dialog').popup('open');
+					$(".fk_cotent-textarea").val("");
+					$(".fk_cotent-input").val("");
+				}
+			})
+			
+		})
+    })
+</script>
+<script>
+$(document).on("pageinit","#downpage",function(){
+	
+	$.ajax({
+		type: "get",
+		url: "http://apptest.game.zhaopian.com/wydlz_game/activity/tel/results.json?pagesize=10&page=1",
+		dataType: "json",
+		success: function(data) {
+			
+			var datas = data.response.drawrecords;
+			
+			var $item,head,name,desc,time;
+		
+			for(var i = 0 ; i < datas.length ; i ++){
+				if(datas[i].avatar == "" || datas[i].avatar == undefined || datas[i].avatar == null)
+					head = "images/default-avatar@2x.png";
+				else
+					head = datas[i].avatar;
+				name = datas[i].nick;
+				desc = datas[i].txt;
+				time = getDateDiff(datas[i].create_time * 1000);
+				if(i == 0)
+					$item = '<div class="banner_content" style="top:0px"><img src="images/lb.png"  align="absmiddle"><span style="margin-left:10px;">'+ name + desc +'</span><span>'+ time +'</span></div>';
+				else
+					$item = '<div class="hidden banner_content" style="top:30px"><img src="images/lb.png"  align="absmiddle"><span style="margin-left:10px;">'+ name + desc +'</span><span>'+ time +'</span></div>';
+				$(".bannerdiv").append($item);
+			}
+			setposition();
+    		setInterval(banner,5000);
+		}
+	});
+	
+	
+    $(window).bind("orientationchange resize pageshow",function(){
+        setposition();
+   });
+});
+function setposition(){
+    var btndiv_h=parseFloat($('.downpage_btn_div').height());
+    var window_h=parseFloat($('.bg_class_img').height());
+    if($('.downpage_btn_div button').hasClass('down_hidden')){
+     $('.downpage_btn_div').css('margin-top',-btndiv_h*2-15+'px');
+    }else{   
+     $('.downpage_btn_div').css('margin-top',-btndiv_h-15+'px');
+    }
+    var window_w=parseFloat(window.innerWidth);
+    $('.bannerdiv .banner_content >span:last-child').css('margin-left',window_w-58+"px");
+}
+var index=1;
+
+function banner(){
+    if(index==$('.bannerdiv .banner_content').length){
+           $('.bannerdiv div:nth-child(1)').css('top','30px');
+    }
+    $('.bannerdiv div:nth-child('+index+')').animate({top:'-30px'});
+        index++;
+    if(index>$('.bannerdiv .banner_content').length){
+        index=1;
+    }
+    $('.bannerdiv .banner_content:nth-child('+index+')').animate({top:'0'},function(){
+        $(this).prevAll().addClass('hidden');
+        $(this).prevAll().css('top','-30px');
+        $(this).nextAll().addClass('hidden');
+        $(this).nextAll().css('top','30px');
+    });
+    $('.bannerdiv .banner_content:nth-child('+index+')').removeClass('hidden');
+}
+</script>
+</body>
+</html>

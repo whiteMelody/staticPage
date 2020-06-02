@@ -1,0 +1,571 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>逛出趣</title>
+
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/tyj.css" rel="stylesheet" type="text/css">
+<link href="css/wqw.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<script src="js/jQuery-shopping.js"></script>
+<script>
+	$(function(){
+		
+		$(".ul-goods li").hover(function(){
+			$(".ul-goods li").removeClass("li-hover");
+			$(this).addClass("li-hover");
+		})
+	
+		$(".ul-nav-second li").hover(function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			_this.addClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+		},function(){
+			var _this = $(this);
+			$(".ul-nav-second li").removeClass("li-hover");
+			var temp = _this.find("img").attr("src");
+			_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+		});
+		
+		$(".nav-btn,.nav-area").hover(function(){
+			$(".nav-area").show(0);
+		},function(){
+			$(".nav-area").hide(0);
+		})
+		
+	})
+	
+</script>
+</head>
+
+<body>
+	<div class="wb100 bor-gray bor-solid-1t bor-solid-1b warpper-white-1 h35px">
+    	<div class="w1200px h35px center">
+        	<div class="wb30 fl h35px lh35px text-left Fgray-3 F125em">
+            	您好，欢迎光临本店！<a href="javascript:void(0)" class="red mal5 mar5">[登录]</a><a href="javascript:void(0)" class="red mal5 mar5">[免费注册]</a>
+            </div>                                 
+            <div class="wb50 fr F125em h35px lh35px text-left middle Fgray">
+            	<a href="javascript:void(0)" class="gray fr">服务热线 <span class="Fred">400-8888-8888</span></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">收藏我们</a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">客服中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">用户中心<img src="images/ico-arrow-down.png" class="middle mal5"></a>
+                <span class="fl mal2per mar2per fr">|</span>
+            	<a href="javascript:void(0)" class="gray fr">我的订单<img src="images/ico-arrow-down.png" class="middle mal5"></a>                    
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-white h150px">
+    	<div class="w1200px pat25 center h115px">
+        	<div class="wb17 h115px img-area fl mar3per">
+            	<img src="images/logo.png">
+            </div>
+           <div class="wb60 fr">
+                <ul class="ul-order-step">
+                    <li>
+                        <p>确认收货</p>
+                        <div class="li-line"></div>
+                        <div class="li-num">4</div>
+                        <div class="li-line"></div>
+                    </li>
+                    <li>
+                        <p>支付订单</p>
+                        <div class="li-line"></div>
+                        <div class="li-num">3</div>
+                        <div class="li-line"></div>
+                    </li>
+                    <li>
+                        <p>确认订单信息</p>
+                        <div class="li-line"></div>
+                        <div class="li-num">2</div>
+                        <div class="li-line"></div>
+                    </li>
+                    <li class="li-hover">
+                        <p>查看购物车</p>
+                        <div class="li-line"></div>
+                        <div class="li-num">1</div>
+                        <div class="li-line"></div>
+                    </li>
+                </ul>
+            </div> 
+       </div>       
+    </div>
+
+<!-- body -->
+<script src="js/jquery.Spinner.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".js-address-btn,.js-alter-address").click(function(){
+			$(".js-address-box").removeClass("hidden");
+		});
+		$(".js-save-btn,.js-closr-address,.js-save-btn").click(function(){
+			$(".js-address-box").addClass("hidden");
+		});
+		
+		
+	});
+</script>
+<div class="body warpper-white">
+  <div class="w1080px center pab50">
+    <div class="">
+      <div class="F18 fc-gray01 bor-solid-3b borc-red01 pab10 pal10">填写收货地址并确认订单信息</div>
+      
+      <div class="mat15">
+      <form>
+        <div class="h20px lh20px bgc-yellow02 pal10 par10 over-hidden mab10">
+          <div class="fl"><input type="radio" name="address" id="address01" class="middle" checked><label for="address01" class="mal10 F12 fc-gray02 middle pointer">重庆 江北观音桥 浩博天庭12-5 1234567912</label></div>
+          <div class="fr">
+            <span class="F12 Fblue mar10">默认</span>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10 js-alter-address">修改地址</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">删除</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="h20px lh20px bgc-yellow02 pal10 par10 over-hidden mab10">
+          <div class="fl"><input type="radio" name="address" id="address02" class="middle"><label for="address02" class="mal10 F12 fc-gray02 middle pointer">重庆 江北观音桥 浩博天庭12-5 1234567912</label></div>
+          <div class="fr">
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10">设为默认</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10 js-alter-address">修改地址</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">删除</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="h20px lh20px bgc-yellow02 pal10 par10 over-hidden mab10">
+          <div class="fl"><input type="radio" name="address" id="address03" class="middle"><label for="address03" class="mal10 F12 fc-gray02 middle pointer">重庆 江北观音桥 浩博天庭12-5 1234567912</label></div>
+          <div class="fr">
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10">设为默认</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10 js-alter-address">修改地址</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">删除</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="h20px lh20px bgc-yellow02 pal10 par10 over-hidden mab10">
+          <div class="fl"><input type="radio" name="address" id="address04" class="middle"><label for="address04" class="mal10 F12 fc-gray02 middle pointer">重庆 江北观音桥 浩博天庭12-5 1234567912</label></div>
+          <div class="fr">
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10">设为默认</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red mar10 js-alter-address">修改地址</a>
+            <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">删除</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </form>
+      <div class="">
+          <div class="h20px lh20px bgc-yellow02 pal10 par10 over-hidden mab10"><a class="mal20 F12 fc-gray02 hover-red js-address-btn" href="javascript:void(0)">使用新地址</a></div>
+          <div class="mat10 js-address-box hidden">
+            <div class="text-right par20"><a href="javascript:void(0)" class="js-closr-address"><img src="images/ico-close.png"></a></div>
+            <form>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><span class="F14 Fred middle">* </span><label class="F12 fc-gray01 middle">收货人：</label></div>
+              <div class="fl wb80"><input type="text" class="bor-solid-1a borc-gray01 pa5 F12 fc-gray01 wb20"></div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><span class="F14 Fred middle">* </span><label class="F12 fc-gray01 middle">所在地区：</label></div>
+              <div class="fl wb80">
+                <select class="F12 fc-gray01 wb15">
+                  <option class="pat2 pab2">省/直辖市</option>
+                </select>
+                <select class="F12 fc-gray01 wb15">
+                  <option class="pat2 pab2">市/县</option>
+                </select>
+                <select class="F12 fc-gray01 wb15">
+                  <option class="pat2 pab2">区/县</option>
+                </select>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><span class="F14 Fred middle">* </span><label class="F12 fc-gray01 middle">详细地址：</label></div>
+              <div class="fl wb80"><input type="text" class="bor-solid-1a borc-gray01 pa5 F12 fc-gray01 wb40"></div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><span class="F14 Fred middle">* </span><label class="F12 fc-gray01 middle">手机号码：</label></div>
+              <div class="fl wb80"><input type="text" class="bor-solid-1a borc-gray01 pa5 F12 fc-gray01 wb20" ></div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><label class="F12 fc-gray01 middle">固定电话：</label></div>
+              <div class="fl wb80"><input type="text" class="bor-solid-1a borc-gray01 pa5 F12 fc-gray01 wb20" ></div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb15 text-right"><label class="F12 fc-gray01 middle">邮箱：</label></div>
+              <div class="fl wb80"><input type="text" class="bor-solid-1a borc-gray01 pa5 F12 fc-gray01 wb20" ></div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10 text-center wb46">
+              <input class="F16 Fwhite bgc-yellow01 radius5 bor-none wb30 h40px pointer Fb js-save-btn" value="保存信息" type="button">
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="h45px lh45px F12 fc-gray01 over-hidden pal25 par25 bgc-gray01 mat15">
+        <span class="display-inline wb40 text-center">商品信息</span>
+        <span class="display-inline wb15 text-center">单价（元）</span>
+        <span class="display-inline wb14 text-center">数量</span>
+        <span class="display-inline wb15 text-center">金额（元）</span>
+        <span class="display-inline wb12">库存</span>
+      </div>
+    </div>
+    <div class="">
+      <ul>
+        <li class="bor-solid-1a borc-gray01 warpper-white pa25 mat20"> 
+          <div class="fl wb40">
+            <div class="fl"><img src="images/co-tp01.jpg" width="85" height="85" class="bor-solid-1a borc-gray01"></div>
+            <div class="fl mal15 wb60">
+              <div class="h40px lh20px over-hidden">
+                <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a>
+              </div>
+              <div class="mat15">
+                <span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <div class="F14 fc-gray02 mat5 yh">¥2808</div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F16 fc-gray02">2</span>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F14 fc-red01 yh">¥2808</span>
+          </div>
+          <div class="fl wb15 mat25">
+            <span class="F12 fc-gray01 pal15">有货</span>
+          </div>
+          
+          <div class="clear"></div>
+        </li>
+        <li class="bor-solid-1a borc-gray01 warpper-white pa25 mat20"> 
+          <div class="fl wb40">
+            <div class="fl"><img src="images/co-tp01.jpg" width="85" height="85" class="bor-solid-1a borc-gray01"></div>
+            <div class="fl mal15 wb60">
+              <div class="h40px lh20px over-hidden">
+                <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a>
+              </div>
+              <div class="mat15">
+                <span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <div class="F14 fc-gray02 mat5 yh">¥2808</div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F16 fc-gray02">2</span>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F14 fc-red01 yh">¥2808</span>
+          </div>
+          <div class="fl wb15 mat25">
+            <span class="F12 fc-gray01 pal15">有货</span>
+          </div>
+          
+          <div class="clear"></div>
+        </li>
+        <li class="bor-solid-1a borc-gray01 warpper-white pa25 mat20"> 
+          <div class="fl wb40">
+            <div class="fl"><img src="images/co-tp01.jpg" width="85" height="85" class="bor-solid-1a borc-gray01"></div>
+            <div class="fl mal15 wb60">
+              <div class="h40px lh20px over-hidden">
+                <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a>
+              </div>
+              <div class="mat15">
+                <span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <div class="F14 fc-gray02 mat5 yh">¥2808</div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F16 fc-gray02">2</span>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F14 fc-red01 yh">¥2808</span>
+          </div>
+          <div class="fl wb15 mat25">
+            <span class="F12 fc-gray01 pal15">有货</span>
+          </div>
+          
+          <div class="clear"></div>
+        </li>
+        <li class="bor-solid-1a borc-gray01 warpper-white pa25 mat20"> 
+          <div class="fl wb40">
+            <div class="fl"><img src="images/co-tp01.jpg" width="85" height="85" class="bor-solid-1a borc-gray01"></div>
+            <div class="fl mal15 wb60">
+              <div class="h40px lh20px over-hidden">
+                <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a>
+              </div>
+              <div class="mat15">
+                <span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <div class="F14 fc-gray02 mat5 yh">¥2808</div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F16 fc-gray02">2</span>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F14 fc-red01 yh">¥2808</span>
+          </div>
+          <div class="fl wb15 mat25">
+            <span class="F12 fc-gray01 pal15">有货</span>
+          </div>
+          
+          <div class="clear"></div>
+        </li>
+        <li class="bor-solid-1a borc-gray01 warpper-white pa25 mat20"> 
+          <div class="fl wb40">
+            <div class="fl"><img src="images/co-tp01.jpg" width="85" height="85" class="bor-solid-1a borc-gray01"></div>
+            <div class="fl mal15 wb60">
+              <div class="h40px lh20px over-hidden">
+                <a href="javascript:void(0)" class="F12 fc-gray02 hover-red">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a>
+              </div>
+              <div class="mat15">
+                <span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <div class="F14 fc-gray02 mat5 yh">¥2808</div>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F16 fc-gray02">2</span>
+          </div>
+          <div class="fl text-center wb15 mat25">
+            <span class="F14 fc-red01 yh">¥2808</span>
+          </div>
+          <div class="fl wb15 mat25">
+            <span class="F12 fc-gray01 pal15">有货</span>
+          </div>
+          
+          <div class="clear"></div>
+        </li>
+        
+      </ul>
+    </div>
+    <form>
+    <div class="text-right mat30 par20 F12 fc-gray01">
+      已选商品 <span class="F16 Fred yh">0</span> 件<b class="mal15"></b>商品总价（不含运费）：<span class="F16 Fred yh"> ￥18656.00   </span>   
+    </div>
+    <div class="mat10 par20 text-right">
+      <input type="submit" value="去支付" class="F12 Fwhite bgc-red02 h25px w80px radius5 bor-none pointer">
+    </div>
+    </form>
+  </div> 
+</div>
+
+<!-- footer -->
+<div class="wb100 bor-gray bor-solid-2t warpper-gray-1">
+    	
+        <div class="w1200px center h200px">
+        	
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (37).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (38).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (39).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (40).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (41).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wb16 fl h190px bor-solid-1r bor-gray pat35">
+                <div class="wb75 center">
+                    <div class="wb10 fl h30px">
+                        <img src="images/gqw (42).png">
+                    </div>
+                    <div class="wb75 fr text-left lh25px F125em">
+                        <p class="Fb Fgray-3 F125em">新手指引</p>
+                        <div class="clear1"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0)" class="gray">获得账号</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear1"></div>
+        
+        <div class="w1200px center text-center F125em lh20px">
+        	<div class="wb14 fl mal1per">
+            	<img src="images/gqw (43).png">
+                <p class="Fb">100%</p>
+                <p>正品保障</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (44).png">
+                <p class="Fb">7天</p>
+                <p>无理由退货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (45).png">
+                <p class="Fb">每日</p>
+                <p>新品上新</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (46).png">
+                <p class="Fb">100%</p>
+                <p>质检流程</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (47).png">
+                <p class="Fb">全部商品</p>
+                <p>实物拍摄</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (48).png">
+                <p class="Fb">用心服务</p>
+                <p>闪电发货</p>
+            </div>
+        	<div class="wb14 fl">
+            	<img src="images/gqw (49).png">
+                <p class="Fb">400-888-888</p>
+                <p>客服热线</p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+         
+        <div class="w1200px center">
+        	<div class="wb80 center Fgray F125em text-center">
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <span class="fl mal2per mar2per">|</span>
+            	<a href="javascript:void(0)" class="gray fl">联系我们</a>
+                <div class="clear1"></div>
+                <p class="Fgray-3">鲁ICP备140046号-2 © 2006-2015 guangqu.com All Rights Reserved. 逛出趣电商有限公司，禁止非法复制   </p>
+            </div>
+        </div>
+        
+        <div class="clear h50px"></div>
+    </div>
+</body>
+</html>

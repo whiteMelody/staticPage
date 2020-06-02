@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+    </style>
+    <title>达人推荐</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| expert_recommend_page
+| ------------------------------------------
+| Here are expert_recommend_page html
+|
+-->
+
+<div id="expert_recommend_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <div class="pa15">
+            <p class="F20">{{newData.title}}</p>
+
+            <div class="clear1"></div>
+
+            <div class=" relative" style="padding-left: 75px; padding-right: 80px;">
+                <div class="w50px h50px absolute" style="top: 0; left: 0;">
+                    <img :src="newData.photoUrl ? newData.photoUrl : 'images/head-img1.png'" class="w60px h60px radius50per">
+                </div>
+                <div class="wb100 h50px">
+                    <p class="lh30px">
+                        <span class="fl mar5">{{newData.nickName}} 推荐</span>
+                        <!--<span class="Fwhite warpper-blue F12 pal5 par5 h20px lh20px display-inline radius5 text-center fl mat5">让球胜平负</span>-->
+                    </p>
+                    <div class="clear"></div>
+
+                    <!--计算标签-->
+                    <p class="F12 text-center mat5 mab5">
+
+                        <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="newData.tenDaysCount >= 6">近10中{{newData.tenDaysCount}}</span>
+
+                        <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="newData.successionCount >= 2">{{newData.successionCount}}连红</span>
+
+                        <span class="bor-red bor-solid-1a h18px lh18px pal5 par5 Fred fl mar5 radius5" v-if="newData.monthCount >= 1">月红{{newData.monthCount}}单</span>
+
+                    </p>
+
+                </div>
+
+                <div class="w60px text-center absolute h35px lh35px F14 radius20 pointer" @click="favUser" :class="isFav ? 'Fgreen bor-green bor-solid-1a' : 'warpper-green Fwhite pa1'" style="right: 0; top: 9px;">
+                    <span v-if="isFav">已关注</span>
+                    <span v-else>+关注</span>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <div class="pa15 warpper-gray-3">
+                <div class="wb100">
+                    <div class="wb50 fl Fgray-2 F12 lh20px">
+                        发布于 <span class="Fnum">{{newData.postedTime}}</span>
+                    </div>
+
+                    <!--倒计时-->
+                    <div class="wb50 fr Fgray-3 F12 text-right" v-if="timeOut == false">
+                        <span class="Fgray-2">距截止：</span> <span class="warpper-gray-2 Fgray-3 display-inline h20px lh20px w20px text-center">{{addZero(date.h)}}</span> :
+                        <span class="warpper-gray-2 Fgray-3 display-inline h20px lh20px w20px text-center">{{addZero(date.m)}}</span> :
+                        <span class="warpper-gray-2 Fgray-3 display-inline h20px lh20px w20px text-center">{{addZero(date.s)}}</span>
+                    </div>
+
+                    <div class="wb50 Fgray-3 F12 fr text-right lh20px" v-else>
+                        竞猜已结束
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="pat15 pab15 Fgray-3 text-center lh20px">
+                    <div class="wb35 fl">
+                        <div class="w60px h60px center img-area">
+                            <img :src="newData.matchInfo.homeTeamLogo">
+                        </div>
+                        <p class="lh30px">{{cutStrForNum(newData.matchInfo.homeTeam,5)}}</p>
+                    </div>
+
+                    <div class="wb30 fl">
+                        <div class="wb80 center Fgray-3" v-if="matchEmpty != true">
+                            <p class="lh20px">{{matchData.leagueType}} 周<span class="Fnum">{{matchData.weekOfDay}} {{matchData.matchNum}}</span></p>
+                            <div class="wb45 center F24 lh40px">
+                                <template v-if="timeOut == false">VS</template>
+                                <template v-else>{{matchData.matchResult}}</template>
+                            </div>
+
+                            <p class="F12 lh30px Fnum">{{ dateFormat(matchData.matchTime,16)}}</p>
+                        </div>
+
+                        <div class="wb100" v-if="matchEmpty == true">
+                            <p class="h80px lh80px text-center">暂无</p>
+                        </div>
+                    </div>
+
+                    <div class="wb35 fr">
+                        <div class="w60px h60px center img-area">
+                            <img :src="newData.matchInfo.visitingTeamLogo">
+                        </div>
+                        <p class="lh30px">{{cutStrForNum(newData.matchInfo.visitingTeam,5)}}</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="wb100 h45px lh45px text-center Fgray-3 warpper-gray-2" v-if="matchEmpty!= true">
+                    推荐 <span class="Fred">{{newData.matchInfo.lotTypeDesc}}-{{newData.matchInfo.anteValueDesc}}
+                        <template v-if="newData.matchInfo.anteValue == 0">({{matchData.lotTypeRate.win}})</template>
+                        <template v-if="newData.matchInfo.anteValue == 1">({{matchData.lotTypeRate.tie}})</template>
+                        <template v-if="newData.matchInfo.anteValue == 2">({{matchData.lotTypeRate.lose}})</template>
+                    </span>
+                </div>
+
+                <div class="clear1"></div>
+
+                <a href="javascript:;" @click="redirect('soccer_detail_bet.html?matchID='+ newData.matchInfo.matchID)" v-if="timeOut == false">
+                    <div class="wb100 h45px lh45px text-center radius5 Fwhite warpper-green">
+                        立即竞猜
+                    </div>
+                </a>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <div class="wb100 lh20px F14">
+                <div class="wb100 img-area" v-html="newData.body">
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#expert_recommend_page",
+        data: {
+            fullscreenLoading: true,
+            isFav: false,
+            timerID: 0,
+            timer: 0,
+            timeOut: false,
+            matchEmpty: false,
+            date: {
+                h: 0,
+                m: 0,
+                s: 0
+            },
+            newData: {
+                matchInfo: {
+                    visitingTeam: '',
+                    homeTeam: ''
+                },
+                matchDay: '',
+                matchTime: '',
+                body: ''
+            },
+            matchData: {
+                lotTypeRate: {
+                    win: 0,
+                    tie: 0,
+                    lose: 0
+                },
+                matchDay: '',
+                matchTime: '',
+                leagueType: ''
+            }
+        },
+        methods: {
+            favUser: function favUser() {
+
+                var _this = this;
+
+                if (_this.isFav == true) {
+                    //取消关注
+
+                    baseAjax.cancelFocusUser(_this.newData.uuid, function (data, errorMsg) {
+                        if (data) {
+                            _this.$message({
+                                type: 'success',
+                                message: '取消关注成功'
+                            });
+
+                            _this.isFav = !_this.isFav;
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: errorMsg
+                            });
+                        }
+
+                        console.log(_this.newData.uuid)
+
+                    });
+                } else {
+                    //关注
+                    baseAjax.focusUser(_this.newData.uuid, function (data, errorMsg) {
+                        if (data) {
+                            _this.$message({
+                                type: 'success',
+                                message: '关注成功'
+                            });
+
+                            _this.isFav = !_this.isFav;
+                        } else {
+                            _this.$message({
+                                type: 'error',
+                                message: errorMsg
+                            });
+                        }
+                    });
+                }
+            },
+            /**
+             * 小于9补0函数
+             * @param num		原始数值
+             * @returns {*}	新数值
+             */
+            addZero: function addZero(num) {
+                var str = num.toString();
+                if (str.length == 1) return "0" + num;else return num;
+            },
+
+            dateFormat: function dateFormat(date, index) {
+                return date.substring(5, index);
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            stringToDate: function stringToDate(dateString) {
+
+                if (dateString) {
+                    var arr1 = dateString.split(" ");
+                    var sdate = arr1[0].split('-');
+                    var date = new Date(sdate[0], sdate[1]-1, sdate[2]);
+                    return date;
+                }
+            },
+
+            cutStrForNum: function cutStrForNum(str, num) {
+                if (str.length > num) {
+                    return str.substring(0, num) + '...';
+                } else {
+                    return str;
+                }
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            var _newsID = base.getParmar('newsID');
+
+            if (base.isNull(_newsID)) {
+                _this.$message({
+                    type: 'error',
+                    message: '缺少文章ID'
+                });
+                return false;
+            }
+
+            //- 判断登录
+            baseAjax.userInfo(function (data) {
+                var _user = data.returnJSON;
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                    _this.login = false;
+                } else {
+                    _this.user = _user;
+                    _this.login = true;
+                }
+
+                baseAjax.newsInfo(_newsID, function (data) {
+                    if (data) {
+                        _this.newData = data.returnJSON;
+
+                        var fav = data.extendInfo;
+
+                        if (base.isNull(fav)) {
+                            _this.isFav = false;
+                        } else {
+
+                            if(fav.uuid == 0){
+                                _this.isFav = false;
+                            }else{
+                                if(fav.uuid == _user.uuid){
+                                    _this.isFav = false;
+                                }else{
+                                    _this.isFav = true;
+                                }
+                            }
+
+                        }
+
+                        console.log(_this.newData);
+                    }
+                });
+
+            });
+
+
+
+            baseAjax.newsMatchInfo(_newsID, function (data) {
+
+                if (data) {
+
+                    _this.matchData = data.returnJSON;
+
+                    if (base.isNull(_this.matchData)) {
+                        //已完赛或者其他状态
+                        _this.matchEmpty = true;
+                        return false;
+                    }
+
+                    console.log(data);
+
+                    var _now = new Date().getTime();
+
+//                    var _timer = Math.round((new Date(_this.matchData.matchTime).getTime() - _now) / 1000);
+
+                    var _timer = Math.round((_this.stringToDate(_this.matchData.matchTime).getTime() - _now) / 1000) - 300;
+
+                    //未开始
+                    if (_timer > 0) {
+
+                        _this.timeOut = false;
+
+                        _this.timer = _timer;
+
+                        _this.timerID = setInterval(function () {
+
+                            _timer--;
+
+                            //                     var d = Math.floor(_timer / 86400) ;
+                            //                     var h = Math.floor((_timer - (86400 * d)) / 3600);
+                            //                     var m = Math.floor((_timer - (86400 * d) - (h * 3600)) / 60);
+                            //                     var s = (_timer - (86400 * d) - (h * 3600) - (m * 60));
+
+                            //                     console.log(d +':'+h +':' + m + ':' + s);
+
+                            var h = Math.floor(_timer / 3600);
+                            var m = Math.floor((_timer - 3600 * h) / 60);
+                            var s = _timer - 3600 * h - m * 60;
+
+                            //                     console.log(h +':' + m + ':' + s);
+
+                            _this.date = {
+                                h: h,
+                                m: m,
+                                s: s
+                            };
+                        }, 1000);
+                    } else {
+                        //已开始
+                        _this.timeOut = true;
+                    }
+                }
+
+                //结束状态？status
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _newsID = base.getParmar('newsID');
+
+                if (base.isNull(_newsID)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '缺少文章ID'
+                    });
+                    return false;
+                }
+
+                //- 判断登录
+                baseAjax.userInfo(function (data) {
+                    var _user = data.returnJSON;
+
+                    if (base.isNull(_user)) {
+                        //- 未登录
+                        _this.login = false;
+                    } else {
+                        _this.user = _user;
+                        _this.login = true;
+                    }
+
+                    baseAjax.newsInfo(_newsID, function (data) {
+                        if (data) {
+                            _this.newData = data.returnJSON;
+
+                            var fav = data.extendInfo;
+
+                            if (base.isNull(fav)) {
+                                _this.isFav = false;
+                            } else {
+
+                                if(fav.uuid == 0){
+                                    _this.isFav = false;
+                                }else{
+                                    if(fav.uuid == _user.uuid){
+                                        _this.isFav = false;
+                                    }else{
+                                        _this.isFav = true;
+                                    }
+                                }
+
+                            }
+
+                            console.log(_this.newData);
+                        }
+                    });
+
+                });
+
+                baseAjax.newsMatchInfo(_newsID, function (data) {
+
+                    if (data) {
+
+                        _this.matchData = data.returnJSON;
+
+                        if (base.isNull(_this.matchData)) {
+                            //已完赛或者其他状态
+                            _this.matchEmpty = true;
+                            return false;
+                        }
+
+                        console.log(data);
+
+                        var _now = new Date().getTime();
+
+//                    var _timer = Math.round((new Date(_this.matchData.matchTime).getTime() - _now) / 1000);
+
+                        var _timer = Math.round((_this.stringToDate(_this.matchData.matchTime).getTime() - _now) / 1000) - 300;
+
+                        //未开始
+                        if (_timer > 0) {
+
+                            _this.timeOut = false;
+
+                            _this.timer = _timer;
+
+                            _this.timerID = setInterval(function () {
+
+                                _timer--;
+
+                                //                     var d = Math.floor(_timer / 86400) ;
+                                //                     var h = Math.floor((_timer - (86400 * d)) / 3600);
+                                //                     var m = Math.floor((_timer - (86400 * d) - (h * 3600)) / 60);
+                                //                     var s = (_timer - (86400 * d) - (h * 3600) - (m * 60));
+
+                                //                     console.log(d +':'+h +':' + m + ':' + s);
+
+                                var h = Math.floor(_timer / 3600);
+                                var m = Math.floor((_timer - 3600 * h) / 60);
+                                var s = _timer - 3600 * h - m * 60;
+
+                                //                     console.log(h +':' + m + ':' + s);
+
+                                _this.date = {
+                                    h: h,
+                                    m: m,
+                                    s: s
+                                };
+                            }, 1000);
+                        } else {
+                            //已开始
+                            _this.timeOut = true;
+                        }
+                    }
+
+                    //结束状态？status
+                });
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

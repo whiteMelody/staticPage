@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+
+<!--
+| ------------------------------------------
+| list-page
+| ------------------------------------------
+| Here are list-page html
+| 
+-->
+<div data-role="page" id="list-page" style="text-shadow:none; font-weight:normal;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none" style="z-index:99999;">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h35px lh35px F125em Fwhite text-center search-text" data-role="none" style="text-shadow:none; font-weight:normal;">服务</div>
+            <div class="wb60 center h35px hidden search-area">
+            	<div class="wb185 h35px fl my-bg-search" style="background-position:left center;"></div>
+                <input type="text" class="bor-none h33px lh33px Fgray-2 wb58 fl warpper-white text-left" style="text-shadow:none; font-weight:normal;" data-role="none" placeholder="地址/商家名称">
+                <div class="wb185 h35px fl my-bg-search" style="background-position:right center;"></div>
+            </div>
+            
+        	<a class="my-icon-search h40px w40px absolute search-btn pointer" data-role="none" style="right:5px; top:5px;"></a>
+           
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<script>
+        	$(document).on("pageinit",function(e){
+				$(".search-btn").unbind("click").click(function(){
+					if($(".search-area").hasClass("hidden")){
+						$(".search-area").removeClass("hidden");
+						$(".search-text").addClass("hidden");
+					}else{
+						$(".search-area").addClass("hidden");
+						$(".search-text").removeClass("hidden");	
+					}
+				})
+			});
+        </script>
+    
+		<div class="wb100">
+            <div class="wb100 center h50px lh50px text-center Fgray-3 text-shadow-white1 F90em relative warpper-white" style="z-index:99999;">
+                <div class="wb25 fl pointer my-nav-btn">
+                    全部分类
+                    <img src="images/arrow-down.png">
+                </div>
+                <div class="wb25 fl pointer my-nav-btn">
+                    附近
+                    <img src="images/arrow-down.png">
+                </div>
+                <div class="wb25 fl pointer my-nav-btn">
+                    薪资
+                    <img src="images/arrow-down.png">
+                </div>
+                <div class="wb25 fl pointer my-nav-btn">
+                    福利
+                    <img src="images/arrow-down.png">
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <div class="wb96 pal2per par2per pat10 pab15 Fgray-3 lh25px bor-gray bor-solid-1t F90em">
+                <div class="wb35 fl h110px lh110px text-center bor-gray bor-solid-1a img-area-small">
+                	<img src="images/icon-service-1.png" class="middle">
+                </div>
+                <div class="wb45 mal2per mar2per fl h110px bor-gray bor-solid-1r">
+                    <p class="F125em">重庆家政找重庆蓝轩家政...</p>
+                    <p class="Fgray-2">[观音桥] 蓝轩家政</p>
+                    <p class="Fgray-2">1人预约</p>
+                </div>
+                
+                <div class="wb15 fr h110px lh110px text-center">
+                	<img src="images/icon-phone-4.png" class="middle">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="wb96 pal2per par2per pat10 pab15 Fgray-3 lh25px bor-gray bor-solid-1t F90em">
+                <div class="wb35 fl h110px lh110px text-center bor-gray bor-solid-1a img-area-small">
+                	<img src="images/icon-service-1.png" class="middle">
+                </div>
+                <div class="wb45 mal2per mar2per fl h110px bor-gray bor-solid-1r">
+                    <p class="F125em">重庆家政找重庆蓝轩家政...</p>
+                    <p class="Fgray-2">[观音桥] 蓝轩家政</p>
+                    <p class="Fgray-2">1人预约</p>
+                </div>
+                
+                <div class="wb15 fr h110px lh110px text-center">
+                	<img src="images/icon-phone-4.png" class="middle">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="wb96 pal2per par2per pat10 pab15 Fgray-3 lh25px bor-gray bor-solid-1t F90em">
+                <div class="wb35 fl h110px lh110px text-center bor-gray bor-solid-1a img-area-small">
+                	<img src="images/icon-service-1.png" class="middle">
+                </div>
+                <div class="wb45 mal2per mar2per fl h110px bor-gray bor-solid-1r">
+                    <p class="F125em">重庆家政找重庆蓝轩家政...</p>
+                    <p class="Fgray-2">[观音桥] 蓝轩家政</p>
+                    <p class="Fgray-2">1人预约</p>
+                </div>
+                
+                <div class="wb15 fr h110px lh110px text-center">
+                	<img src="images/icon-phone-4.png" class="middle">
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+		</div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="index.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/07.png" class="middle h25px">
+                      <p class="Fgray-3">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/011.png" class="middle h25px">
+                      <p class="Fblue">发布</p>
+                  </div>
+              </a>
+              <a href="user.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+    
+</div>
+
+</body>
+</html>

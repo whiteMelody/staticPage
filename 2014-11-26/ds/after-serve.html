@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/comm.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	
+	$(function(){
+	    var $head = $(".header");
+		var $menu = "<div class='menu'><span style='float:left; margin-top:0px; font-size:12px; font-weight:600; cursor:pointer;'>产品</span><img src='images/menu.png' class='Fl' style='cursor:pointer;' /></div>";
+		
+		var ofs = $head.offset().top;
+		var iHeight = $head.outerHeight();
+		$(window).scroll(function () {
+			var sTop = $(document).scrollTop();
+			if (sTop >= (ofs + iHeight)) {
+				
+				if($head.find(".menu").attr("class")!="menu"){
+					$head.append($menu);
+				}
+				$head.parent().addClass("header-fixed");
+			} else {
+				$head.find(".menu").remove();
+				$head.parent().removeClass("header-fixed");
+			}
+		});
+		
+		$(".users-left li").each(function(i){
+			
+			$(this).mouseover(function(){
+				$(".li-block").animate({"marginTop": parseInt(i * 40) +"px"},80);
+			});
+		});
+		
+		
+		$(".service-content .sc-title input").click(function(){
+			$(".service-content .scc").css("display","none");
+			$(".service-content .scc").eq($(this).index()).css("display","block");
+		});
+		
+	});
+
+</script>
+</head>
+
+<body>
+
+    
+	<div class="main-warpper">
+    	<div class="main">
+            <div class="header-warpper">
+                <div class="menu-warpper">
+                    <div class="menu">
+                        <div class="menu-left">
+                            <ul>
+                                <a href="javascript:void(0)" class="gray02"><li>德赛科技</li></a>
+                                <li class="li-line">|</li>
+                                <a href="javascript:void(0)" class="gray02"><li>电子</li></a>
+                                <li class="li-line">|</li>
+                                <a href="javascript:void(0)" class="gray02"><li>视听</li></a>
+                                <li class="li-line">|</li>
+                                <a href="javascript:void(0)" class="gray02"><li>天猫</li></a>
+                            </ul>
+                        </div>
+                        <div class="menu-right">
+                            <ul>
+                                <a href="javascript:void(0)" class="gray02"><li id="login">登录</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>注册</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+            	<div class="header">
+                	<div class="timer">
+                    	<div class="timer-left"></div>
+                        <div class="timer-right">
+                        	<p style="font-size:13px; float:right; margin-top:5px;"> 距5.20新品发布会</p>
+                            <p style="margin-top:2px; font-size:25px; font-weight:600; float:right; width:105px;">还有<font class="Fblue01">9</font>天</p>
+                        </div>
+                    </div>
+                    <div class="nav">
+                    	<ul>
+                        	<li>首页</li>
+                         	<li>随身Wi-Fi</li>
+                        	<li>快充</li>
+                        	<li>音乐盒</li>
+                        	<li>电子书</li>
+                        </ul>
+                    </div>
+                    <div class="search">
+                    	<input type="text" value="搜索"  />
+                        <input type="button" value=" " />
+                    </div>
+                     <div class="cart">
+						<img src="images/cart.png" class="fl" /><span class="fr gray03">(1)</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="content-warpper">
+            	<div class="content" style="height:1800px;">
+                	
+                    <div class="users-title">
+                    	<a href="javascript:void(0)" class="gray02">首页</a><font style="margin:0 3px 0 6px;">/</font>
+                    	<a href="javascript:void(0)" class="gray02">个人中心</a>
+                    </div>
+                    <div class="users">
+                    	<div class="users-left">
+                       		<div class="li-block"></div>
+                        	<ul>
+                            	<li class="li-title">个人中心</li>
+                            	<a href="javascript:void(0)"><li>我的个人中心</li></a>
+                            	<a href="javascript:void(0)"><li>我的订单</li></a>
+                            	<a href="javascript:void(0)"><li>我的现金帐户</li></a>
+                            	<a href="javascript:void(0)"><li>商品评价</li></a>
+                            	<a href="javascript:void(0)"><li>我的收藏</li></a>
+                            	<a href="javascript:void(0)"><li>我的优惠券</li></a>
+                            </ul>
+                            <ul>
+                            	<li class="li-title">售后服务</li>
+                            	<a href="javascript:void(0)"><li>换货单</li></a>
+                            	<a href="javascript:void(0)"><li>退货单</li></a>
+                            	<a href="javascript:void(0)"><li>维修单</li></a>
+                            </ul>
+                        </div>
+                        <div class="users-right">
+                            <div class="users-service">
+                            	<div class="service-title">
+                                	填写售后服务单
+                                </div>
+                                <div class="service-content">
+                                	<div class="sc-title">
+                                    	*请选择售后服务类型<br />
+                                        <font style="font-weight:400; color:#999;"><input type="radio" name="sale-type" value="0" />退货
+                                        <input type="radio" name="sale-type" value="1" />换货
+                                        <input type="radio" name="sale-type" value="2" />维修</font>
+                                    </div>
+                                    <div class="sc-content">
+                                    	<div class="scc">
+                                        	<div class="title">
+                                            	*请选择售后服务商品11111
+                                            </div>
+                                            <div class="product">
+                                            	<table cellpadding="0" cellspacing="0" width="960">
+                                                	<thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td>商品信息</td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td class="img"><img src="images/product2.png" class="fl" />
+                                                            <span class="fl">DG1 wifi路由器 （单号：111108349748）</span>
+                                                            </td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="title">
+                                            	温馨提示
+                                            </div>
+                                            <div class="area">
+                                            	<p>1.退货成功后，我们尽快将您的货款退回到您购买时所使用的支付宝或网银账号中去。</p>
+                                                <p>2.因质量问题发生的退货情况，由德赛公司承担物</p>
+                                                <p><a href="javascript:void(0)" class="red">快递报销流程</a></p>
+                                            </div>
+                                            <div class="title">
+                                            	填写售后服务原因 ：
+                                            </div>
+                                            <div class="conl">
+                                            	<span>*请填写问题描述：</span>
+                                                <textarea></textarea>
+                                                <p>注意  ：最多可填写300个汉字最少3个汉字！</p>
+                                                <p>&nbsp;</p>
+                                                <p>请您<font style="color:#F00">等待客服电话确认后</font>，再邮寄至德赛，邮寄到以下地址：</p>
+                                                <p>地址：深圳市南山科技园德赛科技大厦2504</p>
+                                                <p>客服电话：4000-</p>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="scc">
+                                        	<div class="title">
+                                            	*请选择售后服务商品2222222
+                                            </div>
+                                            <div class="product">
+                                            	<table cellpadding="0" cellspacing="0" width="960">
+                                                	<thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td>商品信息</td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td class="img"><img src="images/product2.png" class="fl" />
+                                                            <span class="fl">DG1 wifi路由器 （单号：111108349748）</span>
+                                                            </td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="title">
+                                            	温馨提示
+                                            </div>
+                                            <div class="area">
+                                            	<p>1.退货成功后，我们尽快将您的货款退回到您购买时所使用的支付宝或网银账号中去。</p>
+                                                <p>2.因质量问题发生的退货情况，由德赛公司承担物</p>
+                                                <p><a href="javascript:void(0)" class="red">快递报销流程</a></p>
+                                            </div>
+                                            <div class="title">
+                                            	填写售后服务原因 ：
+                                            </div>
+                                            <div class="conl">
+                                            	<span>*请填写问题描述：</span>
+                                                <textarea></textarea>
+                                                <p>注意  ：最多可填写300个汉字最少3个汉字！</p>
+                                                <p>&nbsp;</p>
+                                                <p>请您<font style="color:#F00">等待客服电话确认后</font>，再邮寄至德赛，邮寄到以下地址：</p>
+                                                <p>地址：深圳市南山科技园德赛科技大厦2504</p>
+                                                <p>客服电话：4000-</p>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="scc">
+                                        	<div class="title">
+                                            	*请选择售后服务商品3333
+                                            </div>
+                                            <div class="product">
+                                            	<table cellpadding="0" cellspacing="0" width="960">
+                                                	<thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td>商品信息</td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <thead>
+                                                    	<tr>
+                                                        	<td><input type="checkbox" /></td>
+                                                            <td class="img"><img src="images/product2.png" class="fl" />
+                                                            <span class="fl">DG1 wifi路由器 （单号：111108349748）</span>
+                                                            </td>
+                                                            <td>备注</td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="title">
+                                            	温馨提示
+                                            </div>
+                                            <div class="area">
+                                            	<p>1.退货成功后，我们尽快将您的货款退回到您购买时所使用的支付宝或网银账号中去。</p>
+                                                <p>2.因质量问题发生的退货情况，由德赛公司承担物</p>
+                                                <p><a href="javascript:void(0)" class="red">快递报销流程</a></p>
+                                            </div>
+                                            <div class="title">
+                                            	填写售后服务原因 ：
+                                            </div>
+                                            <div class="conl">
+                                            	<span>*请填写问题描述：</span>
+                                                <textarea></textarea>
+                                                <p>注意  ：最多可填写300个汉字最少3个汉字！</p>
+                                                <p>&nbsp;</p>
+                                                <p>请您<font style="color:#F00">等待客服电话确认后</font>，再邮寄至德赛，邮寄到以下地址：</p>
+                                                <p>地址：深圳市南山科技园德赛科技大厦2504</p>
+                                                <p>客服电话：4000-</p>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="sc-bottom">
+                                    	<div class="scbt">
+                                        	退换货承诺
+                                        </div>
+                                        <div class="scbc">
+                                        	<p>
+德赛网络科技商城承诺符合以下情况，由产品售出之日（以实际收货日期为准）起7日内可以退货，15日内可以换货：<br /><br />
+1.国家三包所规定的功能性故障；<br /><br />
+2.经由德赛商城售后服务中心检测确认并办理；<br /><br />
+3.到货物流损或缺件情况；物流损指在运输过程中造成的损坏、漏液、破碎、性能故障，经售后服务中心确认情况属实（期间可能需要快递人员证明或要求您提供实物照片等，以便我们快速做出判断及时处理），无条件办理退换货事宜。<br /><br />
+以下情况不予办理退换货：<br /><br />
+1.任何非本网站（www.desay.net.cn）出售的商品（序列号不符）；<br /><br />
+2.对于过保商品（超过三包保修期的商品）；<br /><br />
+3.未经授权的维修、误用、碰撞、疏忽、滥用、进液、事故、改动、不正确的安装所造成的商品质量问题，或撕毁、涂改标贴、机器序号、防伪标记；<br /><br />
+4.商品的外包装、附件、赠品、说明书不完整，发票缺失或涂改；<br /><br />
+5.因不可抗力造成的损坏；<br /><br />
+6.产品已使用（质量问题除外）。<br /><br />
+退换货步骤：<br /><br />
+1.您可以通过客服热线或登录德赛商城网订单管理，申请退换货，申请时请您填写退换货原因；<br />
+2.德赛商城看到您的申请，会安排人员与您进行退换货质量确认并办理相关事宜；<br />
+3.请您在确认办理退换货后，一周内将货品寄到我公司指定地点，我方收到货品验证无误，可办理后续手续；<br />
+4.因质量问题发生的退换货情况，由小米公司承担退换货物流费用，需要您先进行垫付，小米公司凭您的付费发票进行报销，报销金额最高上限15 元/单；<br />
+5.办理退货的用户，我们在收到您的货品验收无误后一周内为您办理退款，线上支付的用户会将费用退回您的支付帐号，货到付款的用户会将费用打入您在退货申请表中填写的退款帐号中。<br />
+											</p>
+
+                                        </div>
+                                        <div class="scbb">
+                                        	<p>提交服务单</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+          
+            <div class="footer-warpper">
+
+                	<div class="footer1-warpper">
+                		<div class="footer1">
+                        	<div class="footer1-txt">
+                            	<ul>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                	<li>
+                                    	<p class="F14 Fb">7天无理由退货</p>
+                                    	<p>收到商品7天内无理由退货服务</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                	<div class="footer2">
+                    	<div class="footer2-left">
+                        	<ul>
+                                <li class="F18 Fb" style="margin-bottom:10px;">顾客帮助</li>
+                                <a href="javascript:void(0)" class="gray02"><li>购物指南</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>支付方式</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>配送方式</li></a>
+                            </ul>
+                            <ul>
+                             	<li class="F18 Fb" style="margin-bottom:10px;">关于德赛科技</li>
+                                <a href="javascript:void(0)" class="gray02"><li>了解德赛科技</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>加入德赛科技</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>联系我们</li></a>
+                            </ul>
+                            <ul>
+                                <li class="F18 Fb" style="margin-bottom:10px;">关注我们</li>
+                              	<a href="javascript:void(0)" class="gray02"><li>新浪微博</li></a>
+                                <a href="javascript:void(0)" class="gray02"><li>官方微信</li></a>
+                            </ul>
+                        </div>
+                        <div class="footer2-right">
+                            <p class="F22 Fb">400-000-000</p>
+                            <p class="gray02">周一至周日 8:00-18:00</p>
+                            <p class="gray02">(仅收市话费)</p>
+                            <p class="bluebut" style=" margin-left:112px;">24小时在线客服</p>
+                        </div>
+                        
+                    </div>
+                	<div class="footer3">
+                    	<p>德赛友情链接：<a href="javascript:void(0)" class="gray03">德赛集团</a> <a href="javascript:void(0)" class="gray03">德赛电子</a> <a href="javascript:void(0)" class="gray03">德赛视听</a></p>
+                        <p>
+                        	德赛网络科技 ICP证
+                        </p>
+                    </div>
+
+            </div>
+      </div>
+    </div>
+</body>
+</html>

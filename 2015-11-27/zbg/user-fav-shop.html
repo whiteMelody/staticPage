@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+<!--
+| ------------------------------------------
+| order-all-page
+| ------------------------------------------
+| Here are order-all-page html
+| 
+-->
+<div data-role="page" id="order-all-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center Fwhite text-center h40px lh40px F125em" style="text-shadow:none; font-weight:normal;">
+            	全部订单
+            </div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script>
+			$(document).on("pageinit",function(e){
+				$(".slide-btn").unbind("click").click(function(){
+					$(this).next().slideToggle();
+					
+					if($(this).find(".slide-arrow").css("transform")!="none"){
+						$(this).find(".slide-arrow").removeAttr("style");	
+					}else{
+						$(this).find(".slide-arrow").css({
+							transform : "rotate(180deg)" 	
+						})	
+					}
+				})
+			})
+        </script>
+    	<div class="wb70 center pat10 pab10 Fgray-2 F110em">
+        	<div class="wb49 fl text-center bor-gray bor-solid-1r">
+            	收藏商品
+            </div>
+        	<div class="wb49 fr text-center">
+            	收藏店铺
+            </div>
+            <div class="clear"></div>
+        </div>
+    	<div class="clear1 warpper-gray-1"></div>
+       	
+        <div class="slide-areas">
+        	
+            <div class="wb90 pal5per par5per h60px lh60px pat10 pab10 text-left bor-gray bor-solid-1b Fgray-3 slide-btn pointer ">
+               	<div class="wb20 fl h60px img-area">
+                	<img src="images/brand-2.jpg">
+                </div>
+               	<p class="wb40 fl mal5per mar5per">百丽官方旗舰店</p>
+               	<p class="wb20 fl Fgray-2 F90em">上新(7)</p>
+                <img src="images/arrow-down.png" class="fr mat25 slide-arrow">
+            </div>
+            <div class="wb100 warpper-gray-1 bor-gray bor-solid-1b silde-area hidden">
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        <div class="slide-areas">
+        	
+            <div class="wb90 pal5per par5per h60px lh60px pat10 pab10 text-left bor-gray bor-solid-1b Fgray-3 slide-btn pointer ">
+               	<div class="wb20 fl h60px img-area">
+                	<img src="images/brand-2.jpg">
+                </div>
+               	<p class="wb40 fl mal5per mar5per">百丽官方旗舰店</p>
+               	<p class="wb20 fl Fgray-2 F90em">上新(7)</p>
+                <img src="images/arrow-down.png" class="fr mat25 slide-arrow">
+            </div>
+            <div class="wb100 warpper-gray-1 bor-gray bor-solid-1b silde-area hidden">
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        <div class="slide-areas">
+        	
+            <div class="wb90 pal5per par5per h60px lh60px pat10 pab10 text-left bor-gray bor-solid-1b Fgray-3 slide-btn pointer ">
+               	<div class="wb20 fl h60px img-area">
+                	<img src="images/brand-2.jpg">
+                </div>
+               	<p class="wb40 fl mal5per mar5per">百丽官方旗舰店</p>
+               	<p class="wb20 fl Fgray-2 F90em">上新(7)</p>
+                <img src="images/arrow-down.png" class="fr mat25 slide-arrow">
+            </div>
+            <div class="wb100 warpper-gray-1 bor-gray bor-solid-1b silde-area hidden">
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <a href="detail-store.html" data-transition="slide" data-role="none">
+                    <div class="wb29 ma2per fl h90px img-area relative">
+                        <img src="images/product-13.jpg">
+                        <div class="my-gray-50per Fwhite text-center h30px lh30px">
+                            ￥111.00
+                        </div>    
+                    </div>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+</body>
+</html>

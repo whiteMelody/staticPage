@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>司仪</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/sy.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+		var glide = $('.slider2').glide({
+			
+			autoplay:false,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:true, //是否显示左右导航器
+			arrowsWrapperClass: "",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow2",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right2",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left2",//滑块左箭头类名
+			arrowRightText:" ",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:" ",
+
+			nav:false, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+		
+		$(".my-prev-btn").click(function(){
+			$(".slider-arrow--left2").click();	
+		})
+		$(".my-next-btn").click(function(){
+			$(".slider-arrow--right2").click();	
+		})
+		
+	})
+
+</script>
+</head>
+
+<body class="bg-paper">
+	
+    <div class="wb100 h90px box-shadow-white2 bor-white2 bor-solid-1b warpper-nav">
+    	<div class="w1200px fixed-center h90px lh90px center text-center">
+        	<img src="images/logo.png" class="middle">
+            <a href="javascript:void(0)" class="brown fr F200em">在线预约</a>
+        </div>
+    </div>
+    
+   <div class="left-menu">
+        <div class="left-nav">
+        	<ul class="ul-left-nav">
+            	<li>
+                	<img src="images/icon-home.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-cafe.png">
+                    <p>旅游</p>
+                </li>
+            	<li class="li-hover">
+                	<img src="images/icon-guidepost.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-pc.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-car.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-hotal.png">
+                    <p>旅游</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wb100 h100 img-Warea relative">
+    	<div class="slider slider1">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-4.jpg"></li>
+                <li class="slide"><img src="images/banner-4.jpg"></li>
+                <li class="slide"><img src="images/banner-4.jpg"></li>
+                <li class="slide"><img src="images/banner-4.jpg"></li>
+                <li class="slide"><img src="images/banner-4.jpg"></li>
+            </ul>
+        </div>
+        <div class="bg-title-2 nav-btn">
+        	<p class="wb18 center h40px lh40px text-center Fwhite warpper-red-8 F150em pointer">了解详情</p>
+        </div>
+    </div>
+	
+  	<div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center relative">
+            
+           <img src="images/arrow-left.png" class="my-prev-btn" style="position:absolute; left:50px; top:173px; z-index:999; cursor:pointer;">
+           <img src="images/arrow-right.png" class="my-next-btn" style="position:absolute; right:50px; top:173px; z-index:999; cursor:pointer;">
+            
+           <div class="w680px center pat100 pab100">
+            	
+                <div class="slider slider2 text-center">
+                	
+                    <ul class="slides">
+                        <li class="slide">
+                        	<div class="w200px h200px img-area fl">
+                                <img src="images/product-img-1.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl mal40 mar40">
+                                <img src="images/product-img-2.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl">
+                                <img src="images/product-img-3.jpg" class="radius50per">
+                            </div>
+                        </li>
+                        <li class="slide">
+                        	<div class="w200px h200px img-area fl">
+                                <img src="images/product-img-1.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl mal40 mar40">
+                                <img src="images/product-img-2.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl">
+                                <img src="images/product-img-3.jpg" class="radius50per">
+                            </div>
+                        </li>
+                        <li class="slide">
+                        	<div class="w200px h200px img-area fl">
+                                <img src="images/product-img-1.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl mal40 mar40">
+                                <img src="images/product-img-2.jpg" class="radius50per">
+                            </div>
+                            <div class="w200px h200px img-area fl">
+                                <img src="images/product-img-3.jpg" class="radius50per">
+                            </div>
+                        </li>
+                    </ul>
+              
+            	</div>
+                <div class="clear"></div>
+   			</div>	
+            
+        </div>
+    </div>
+    
+    <div class="wb100 warpper-white pat50 pab50">
+    	<div class="w1200px center F150em relative z99 text-left Fgray-2 lh20px">
+        	<div class="bg-title center Fgray-3 F200em text-center">特色服务</div>
+            <div class="clear1"></div>
+            
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            <div class="wb31 ma1per fl">
+            	<div class="wb100 img-Warea"><img src="images/product-img-1.jpg"></div>
+                <div class="clear1"></div>
+                <p class="text-center F125em">餐后咖啡厅</p>
+                <div class="clear1"></div>
+                <p>优越性的单人房间，房间温馨，出游居住首选优越性的单人房,居住首选，出游居住首优选择优越性的单人房间，出游居住首选</p>
+                <div class="clear1"></div>
+                <div class="wb100 text-center">
+                	<img src="images/icon-fan.png" class="ma5">
+                	<img src="images/icon-wifi.png" class="ma5">
+                	<img src="images/icon-tv.png" class="ma5">
+                	<img src="images/icon-drier.png" class="ma5">
+                	<img src="images/icon-tea.png" class="ma5">
+                </div>
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="w1200px center text-center F200em lh50px">
+    	<div class="clear1"></div>
+    	<p class="Fred-3 F175em">人文关怀  <span class="mal30">个性体现</span></p>
+        <div class="clear1"></div>  
+        <p class="Fgray-3 F125em">我们只提供最好的酒店服务</p>
+    	<div class="clear1"></div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100 h90px lh90px text-center warpper-white-1 F150em Fbrown-2">
+    	<span>版权所有 © 2014 重庆壹比壹有限公司</span>              <span class="mal30">Map | Tag WED CM唯一官网：http://www.XXXX.com/ 京ICP备12018289号</span>
+    </div>
+    
+</body>
+</html>

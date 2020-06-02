@@ -1,0 +1,2585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+		var lis = $(".floor-tm li");
+		
+		lis.mousemove(function(){
+			
+			var _this = $(this);
+			var parent = _this.parent();
+			var siblings = _this.siblings();
+			var index = _this.index();
+			var slides = parent.parent().parent().parent().parent().find(".floor-content");
+			siblings.removeClass("current");
+			_this.addClass("current");
+			slides.hide(0);
+			slides.eq(index).show();
+			
+		});
+		
+		$(".b-prev").click(function(){
+		});
+		$(".b-next").click(function(){
+		});
+
+	});
+</script>
+</head>
+
+<body>
+	
+    <div class="meta-warpper">
+    	<div class="meta">
+        	<div class="meta-welcome">欢迎来到改图网！</div>
+            <div class="meta-nav">
+            	<a href="javascript:void()" class="gray01">[登录]</a>
+            	<a href="javascript:void()" class="gray01">[免费注册]</a>
+            	<span>|</span>
+            	<a href="javascript:void()" class="gray01">设计师入口</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">个人中心</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">购物车0件</a>
+                <span>|</span>
+            	<a href="javascript:void()" class="gray01">帮助</a>
+            </div>
+        </div>
+    </div>
+	<div class="top-warpper">
+        <div class="top">
+           <div class="top-ls">
+           		<div class="logo">
+              		<a href="javascript:void(0)"><img src="images/logo.png" /></a>
+                </div>
+                <div class="logo2">
+              		<a href="javascript:void(0)"><img src="images/logo2.png" /></a>
+                </div>
+                <div class="service">
+                	<a href="javascript:void(0)"><img src="images/kf.png" /></a>
+                </div>
+                <div class="serach">
+                	<input type="text" value="serach..." />
+                    <input type="button" value=" " />
+                </div>
+           </div>
+           <div class="top-nav">
+           		<div class="nav-all">
+                	全部商品分类
+                </div>
+                <div class="nav-other">
+                	<ul>
+                    	<li>首页</li>
+                    	<li>优惠活动</li>
+                    	<li>套餐</li>
+                    </ul>
+                </div>
+           </div>
+        </div>
+    </div>
+    <div class="banner-warpper">
+    	<div class="main-mbr">
+        	<div class="menu-nav">
+        		<ul>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> LOGO</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 名片</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 宣传单</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 折页</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 画册</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 优惠券</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 会员卡</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 不干胶贴</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 手提袋</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 封套</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 台历</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 挂历</li></a>
+                	<a href="javascript:void(0)" class="gray02"><li><img src="images/ico-1.png" /> 更多产品</li></a>
+                </ul>
+            </div>
+            <div class="banner">
+                <div class="banner-h"></div>
+                <div class="banner-b">
+                	<div class="b-prev"></div>
+                    <div class="b-con">
+                        <ul>
+                            <li><img src="images/card-18.jpg" /></li>
+                            <li><img src="images/card-18.jpg" /></li>
+                            <li><img src="images/card-18.jpg" /></li>
+                            <li><img src="images/card-18.jpg" /></li>
+                            <li><img src="images/card-18.jpg" /></li>
+                            <li><img src="images/card-18.jpg" /></li>
+                        </ul>
+                    </div>
+                    <div class="b-next"></div>
+                </div>
+            </div>
+            <div class="remon">
+                <div class="remon-h">
+                	<div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                	<div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                	<div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                    <div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                    <div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                    <div class="box">
+                    	<div class="box-pic">
+                        	<img src="images/ico-3.png" />
+                        </div>
+                    	<div class="box-txt">
+                        	我要印刷
+                        </div>
+                    </div>
+                </div>
+                <div class="remon-b">
+                	<div class="remon-title">
+                    	<p>已位用户选择在进行设计及印刷</p>
+                        <ul>
+                        	<li>1</li>
+                        	<li>6</li>
+                        	<li>2</li>
+                        	<li>9</li>
+                        	<li>1</li>
+                        	<li>9</li>
+                        	<li>9</li>
+                        </ul>
+                    </div>
+                    <div class="remon-title2">
+                    	已购买
+                    </div>
+                    <div class="remon-content">
+                    	<p>GT140*** 印刷了宣传单 <a href="javascript:void" class="orange">去看看...</a></p>
+                    	<p>GT140*** 印刷了宣传单 <a href="javascript:void" class="orange">去看看...</a></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-warpper">
+        <div class="content">
+        	<!-- floor1 -->
+            <div class="floor1">
+              <div class="floor-left">
+                  <div class="floor-title">
+                      <div class="floor-tl">
+                          <div class="floor-btn">1</div><div class="fl">LOGO</div> 
+                      </div>
+                      <div class="floor-tm">
+                          <ul>
+                              <li class="current">设计案例</li>
+                              <li>原创设计</li>
+                          </ul>
+                      </div>
+                      <div class="floor-tr">
+                          <a href="javascript:void(0)" class="orange">我要设计>></a>
+                      </div>
+                  </div>
+				
+                  <div class="floor-content">
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-3.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-2.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br />
+                                  <a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                 
+                 <div class="floor-content">
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br /><a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="box-circle">
+                          <div class="box-pic">
+                              <img src="images/card-1.jpg" />
+                          </div>
+                          <div class="box-txt">
+                              <div class="txt-head">
+                                  <img src="images/headPic-1.jpg" />
+                              </div>
+                              <div class="txt-name">
+                                  <a href="javascript:void(0)" class="gray">WitLindsay</a>
+                                  <br />
+                                  <a href="javascript:void(0)" class="gray02">Desigenr</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>
+       
+             <div class="floor-right">
+             	<div class="right-pic">
+                	<img src="images/card-2.jpg" />
+                </div>
+                <div class="right-btn">
+                	<p>最低只需要 <a href="javascript:void(0)" style="color:#edcd7f">288</a> 元</p>
+                    <p>拥有专属的LOGO</p>
+                    <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; padding-left:15px; margin-top:15px; line-height:34px;" > <a href="javascript:void(0)" class="orange">开始设计 >> </a></p>
+                </div>
+                <div class="right-der">
+                	已完成LOGO设计稿数量：<a href="javascript" class="blue">23315</a><font class="red">↑</font>
+                </div>
+             </div>
+            </div>
+            
+            <!-- floor2 -->
+            <div class="floor2">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">2</div><div class="fl">名片</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="box-oblong"><img src="images/card-4.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                    	<div class="box-oblong"><img src="images/card-4.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="box-oblong"><img src="images/card-6.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                    	<div class="box-oblong"><img src="images/card-6.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="box-oblong"><img src="images/card-4.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                    	<div class="box-oblong"><img src="images/card-4.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-5.jpg" /></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="box-oblong"><img src="images/card-6.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                    	<div class="box-oblong"><img src="images/card-6.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                        <div class="box-circle"><img src="images/card-7.jpg" /></div>
+                    </div>
+                </div>
+                <div class="floor-right">
+                	<div class="right-btn">
+                    	<img src="images/card-8.png" />
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:154px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">上传文件开始印刷 >> </a></p>
+                    </div>
+                    <div class="right-der">
+                    	印刷数量：<a href="javascript" class="blue">121019</a><font class="red">↑</font>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor3 -->
+            <div class="floor3">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">3</div><div class="fl">宣传单</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right">
+                	<div class="right-btn">
+                    	<img src="images/card-9.jpg" />
+                        <p>最低只需要 <a href="javascript:void(0)" class="orange">288</a> 元</p>
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选套餐 >> </a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor4 -->
+            <div class="floor3">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">4</div><div class="fl">画册</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right" style="background:#b5da9c;">
+                	<div class="right-btn">
+                    	<img src="images/card-9.jpg" />
+                        <p>最低只需要 <a href="javascript:void(0)" class="orange">288</a> 元</p>
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选套餐 >> </a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor5 -->
+            <div class="floor5">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">5</div><div class="fl">会员卡</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right">
+                	<div class="right-btn">
+                    	<img src="images/card-14.png" />
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选模版 >> </a></p>
+                    </div>
+                    <div class="right-der">
+                    	优惠券模版数：<a href="javascript" class="blue">3315</a><font class="red">↑</font>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor6 -->
+            <div class="floor5">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">6</div><div class="fl">优惠券</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-12.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="con1">
+                        	<div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                            	<div class="box-pic">
+                                	<img src="images/card-13.jpg" />
+                                </div>
+                                <div class="box-txt">
+                                	<a href="javascript:void(0)" class="gray02 Fb">柒牌男装储值卡</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="con2">
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>IT电脑</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>机械制造</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>交通运输</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>建筑装潢</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>家居装饰</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>水利环保</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>批发零售</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>医疗卫生</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>美容装饰</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>教育科研</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>电信科技</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>金融保险</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>房产物业</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>农林化工</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>文化体育</li></a>
+                            </ul>
+                        	<ul>
+                            	<a href="javascript:void(0)" class="gray02"><li>花卉礼品</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>餐饮旅游</li></a>
+                            	<a href="javascript:void(0)" class="gray02"><li>服务事业</li></a>
+                            </ul>
+                        	
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right">
+                	<div class="right-btn">
+                    	<img src="images/card-14.png" />
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选模版 >> </a></p>
+                    </div>
+                    <div class="right-der">
+                    	优惠券模版数：<a href="javascript" class="blue">3315</a><font class="red">↑</font>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor7 -->
+            <div class="floor3">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">7</div><div class="fl">不干胶贴</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right" style="background:#b5da9c;">
+                	<div class="right-btn">
+                    	<img src="images/card-9.jpg" />
+                        <p>最低只需要 <a href="javascript:void(0)" class="orange">288</a> 元</p>
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选套餐 >> </a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor8 -->
+            
+            <div class="floor3">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">8</div><div class="fl">手提袋</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">免费设计</li>
+                                <li>仿制设计</li>
+                                <li>原创设计</li>
+                                <li>在线印刷</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-10.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-11.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<a href="javascrpit:void(0)" class="gray" >查看套餐</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floor-right" style="background:#f8ecab;">
+                	<div class="right-btn">
+                    	<img src="images/card-9.jpg" />
+                        <p>最低只需要 <a href="javascript:void(0)" class="orange">288</a> 元</p>
+                        <p style="float:right; border:1px solid #E3E3E3; background:#F3F3F3; width:94px; height:34px; font-size:14px; line-height:34px; padding-left:15px; margin-top:15px;" > <a href="javascript:void(0)" class="orange">挑选套餐 >> </a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor9 -->
+            <div class="floor9">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tl">
+                            <div class="floor-btn">9</div><div class="fl">其他产品</div> 
+                        </div>
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">封套</li>
+                                <li>台历</li>
+                                <li>挂历</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                   </div>
+                   
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                   </div>
+                   
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-15.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                         <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-16.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p><a href="javascrpit:void(0)" class="gray" >时尚清雅艺术名片</a></p>
+                            	<p><a href="javascrpit:void(0)" class="gray02" >莫卡西</a>
+                                &nbsp;&nbsp;&nbsp;<a href="javascrpit:void(0)" class="gray02" >设计</a>
+                                </p>
+                            </div>
+                        </div>
+                   </div>
+
+                </div>
+            </div>
+            
+            <!-- floor10 -->
+            
+            <div class="floor10">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">实时交易</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        <div class="block">
+                        	<div class="block-pic">
+                            	<img src="images/card-17.jpg" />
+                            </div>
+                            <div class="block-txt">
+                            	<p>顶级思凯**** 11-27 12：00</p>
+                            	<p>购买了优雅闪光款套餐</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="floor-right" style="background:#f3f3f3;">
+               	  	<div class="right-der">
+                        <span style="margin-left:10px; font-size:16px; font-weight:600; color:#333; float:left;">设计需求</span><span  style="margin-right:10px; font-size:12px; font-weight:600; color:#333; float:right;"><a href="javascript:void(0)" class="gray01">更多</a></span>
+                    </div>
+                	<div class="right-btn">
+                        <p>买家“立地不顶...”发布需求：</p>
+                        <p><a href="javascript:void(0)" class="blue">名片排版</a></p>
+                        <p><span class="fl"><a href="javascript:void(0)" class="orange">￥50</a></span>  <span class="fr"><a href="javascript:void(0)" class="gray01">1个威客正在参与</a></span></p>
+                    </div>
+                    <div class="right-btn">
+                        <p>买家“立地不顶...”发布需求：</p>
+                        <p><a href="javascript:void(0)" class="blue">名片排版</a></p>
+                        <p><span class="fl"><a href="javascript:void(0)" class="orange">￥50</a></span>  <span class="fr"><a href="javascript:void(0)" class="gray01">1个威客正在参与</a></span></p>
+                    </div>
+                    <div class="right-btn">
+                        <p>买家“立地不顶...”发布需求：</p>
+                        <p><a href="javascript:void(0)" class="blue">名片排版</a></p>
+                        <p><span class="fl"><a href="javascript:void(0)" class="orange">￥50</a></span>  <span class="fr"><a href="javascript:void(0)" class="gray01">1个威客正在参与</a></span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- floor9 -->
+            <div class="floor11">
+            	<div class="floor-left">
+                	<div class="floor-title">
+                        <div class="floor-tm">
+                            <ul>
+                                <li class="current">合作企业</li>
+                                <li>客户认证</li>
+                            </ul>
+                        </div>
+                        <div class="floor-tr"></div>
+                    </div>
+                    <div class="floor-content">
+                    	<div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                   </div>
+                   
+                   <div class="floor-content">
+                    	<div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                        <div class="block">
+                            <img src="images/ico-2.jpg" />
+                        </div> 
+                   </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="footer-warpper">
+    	<div class="fth-warpper">
+        	<div class="fth">
+            	<img src="images/footer-1.png" />
+            </div>
+        </div>
+        <div class="ftb-warpper">
+        	<div class="ftb">
+            	<div class="li-menus">
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>新手入门</li></a>
+                        <a href="javascript" class="white"><li>新用户注册</li></a>
+                        <a href="javascript" class="white"><li>订购流程</li></a>
+                        <a href="javascript" class="white"><li>找回密码</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>支付及配送</li></a>
+                        <a href="javascript" class="white"><li>支付方式</li></a>
+                        <a href="javascript" class="white"><li>配送方式及费用</li></a>
+                        <a href="javascript" class="white"><li>配送进度查询</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>售后服务</li></a>
+                        <a href="javascript" class="white"><li>售后服务政策</li></a>
+                        <a href="javascript" class="white"><li>发票制度</li></a>
+                        <a href="javascript" class="white"><li>退款说明</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>帮助中心</li></a>
+                        <a href="javascript" class="white"><li>更多帮助信息</li></a>
+                        <a href="javascript" class="white"><li>常见问题</li></a>
+                        <a href="javascript" class="white"><li>给我们提建议</li></a>
+                        <a href="javascript" class="white"><li>新手设计指南</li></a>
+                    </ul>
+                    <ul>
+                        <a href="javascript" class="white Fb"><li>关注我们</li></a>
+                        <a href="javascript" class="white"><li>新浪微博</li></a>
+                        <a href="javascript" class="white"><li>腾讯微博</li></a>
+                    </ul>
+                    <ul>
+                        <li>&nbsp;</li>
+                        <a href="javascript" class="white Fb"><li>加改图网为微信好友</li></a>
+                    </ul>
+                </div>
+                <div class="li-bus"><img src="images/footer-2.png" /></div>
+                <div class="li-copyright">
+                <a href="javascript" class="white">关于我们</a> |
+                <a href="javascript" class="white">联系我们</a> |
+                <a href="javascript" class="white">媒体报道</a> |
+                <a href="javascript" class="white">商务合作</a> |
+                <a href="javascript" class="white">版权声明</a> |
+                <a href="javascript" class="white">隐私声明</a> |
+                <a href="javascript" class="white">网站地图</a> |
+                <a href="javascript" class="white">图图软件</a><br />
+
+				CopyRight©2005-2014 改图网 鄂ICP备05005325号 经营许可证编号:鄂B2-20110059
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

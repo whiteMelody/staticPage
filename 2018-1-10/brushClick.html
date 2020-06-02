@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>云端刷量——刷双击数</title>
+
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<style>
+		.gears-type{ border:1px solid #e1e1e1; color: #999;}
+		.gears-type-active{ border:1px solid #5ABF84; color: #5ABF84;}
+
+		.production{ border:3px solid #e1e1e1; color: #999;}
+		.production-active{ border:3px solid #5ABF84; color: #5ABF84;}
+
+	</style>
+</head>
+<body>
+
+<div class="wb100">
+
+	<div class="wb100 warpper-none sticky" style="background-color: #fff; padding: 5px 0; border-bottom: 1px solid #e1e1e1;">
+		<div class="w1000px center h50px">
+			<!--<div class="w50px h50px warpper-white fl"></div>-->
+
+			<a href="index.html">
+				<div class="wb50 h50px lh50px Fwhite F24 fl">
+					<div class="w50px h50px fl">
+						<img src="img/logo.png" class="h50px">
+					</div>
+					<div class="wb60 fl mal15 F16 Fgreen lh25px">
+						<p>快手互粉</p>
+						<p class="F12">网红的小秘密</p>
+					</div>
+				</div>
+			</a>
+
+			<div class="wb20 fr h50px lh50px">
+				<a href="index.html">
+					<div class="wb50 fl Fgray-3">
+						首页
+					</div>
+				</a>
+				<a href="user.html">
+					<div class="wb50 fl Fgray-3">
+						个人中心
+					</div>
+				</a>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="clear h50px"></div>
+
+	<!--支付弹窗-->
+	<div class="dialogBg" style="display: none; z-index: 99999;"></div>
+
+	<div class="dialogPay" style="width: 300px; height: 480px; position: fixed; left: 0; top: 0; right: 0; bottom: 0; margin: auto; z-index: 999999; display: none">
+
+		<p class="h45px lh45px warpper-white text-center Fgray-3">扫码支付</p>
+
+		<div class="clear1"></div>
+
+		<img src="" style="width: 300px; height: 300px;" class="pay-code" >
+
+		<div class="clear1"></div>
+
+		<p class="h45px lh45px warpper-green text-center radius5 Fwhite dialogClose">已完成支付</p>
+
+		<div class="clear1"></div>
+
+		<p class="h45px lh45px warpper-gray text-center radius5 Fwhite dialogClose">取消支付</p>
+
+		<div class="clear1"></div>
+
+	</div>
+
+	<div class="wb100">
+
+		<div class="clear h50px"></div>
+
+		<div class="w1000px center">
+
+			<div class="wb100">
+
+				<div class="wb35 fl">
+
+					<p class="bor-solid-5l bor-green pal10 h20px lh20px">选择档位</p>
+
+					<div class="clear1"></div>
+					<div class="clear1"></div>
+
+					<div class="pal15">
+						<div class="w200px fl h40px lh40px">
+							我的积分：<span class="user-point"></span>
+						</div>
+
+						<a href="recharge.html">
+							<p class="w100px fr mar15 warpper-green Fwhite radius5 h40px lh40px text-center">充值积分</p>
+						</a>
+
+					</div>
+
+					<p class="Fgray-3"></p>
+
+					<div class="clear1"></div>
+					<div class="clear1"></div>
+
+					<div class="wb100 gears-area">
+
+					</div>
+
+					<div class="clear h50px"></div>
+
+					<div class="pa15">
+						<div class="wb100 warpper-green radius5 h45px lh45px Fwhite text-center pointer pay-btn">
+							立即购买
+						</div>
+					</div>
+
+					<div class="clear"></div>
+
+				</div>
+
+				<div class="wb65 fr">
+					<div class="pal15">
+						<p class="bor-solid-5l bor-green pal10 h20px lh20px">选择作品</p>
+
+						<div class="clear1"></div>
+						<div class="clear1"></div>
+
+						<div class="wb100 select-area2">
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="wb100" style="min-height: 500px;"></div>
+
+
+	<!--footer-->
+	<div class="clear h50px"></div>
+
+	<div class="wb100 warpper-black">
+		<div class="w1000px center">
+
+			<div class="clear h30px"></div>
+
+			<div class="wb80 fl lh25px Fgray-3 F14">
+				<div class="wb20 fl">
+					<p class="Fwhite h40px lh40px">免费功能</p>
+					<a href="freePL.html"> <p class="Fgray-3">免费刷评论</p> </a>
+					<a href="freeLike.html"> <p class="Fgray-3">免费刷爱心</p> </a>
+					<a href="help.html"> <p class="Fgray-3">使用帮助</p> </a>
+				</div>
+				<div class="wb20 fl">
+					<p class="Fwhite h40px lh40px">权限功能</p>
+					<a href="brushFans.html"> <p class="Fgray-3">快手粉丝</p> </a>
+					<a href="brushClick.html"> <p class="Fgray-3">快手双击数</p> </a>
+					<a href="brushLike.html"> <p class="Fgray-3">快手直播爱心</p> </a>
+				</div>
+				<div class="wb20 fl">
+					<p class="Fwhite h40px lh40px">其他服务</p>
+					<a href="freeDownload.html"> <p class="Fgray-3">无水印下载</p> </a>
+					<a href="freeLink.html"> <p class="Fgray-3">互粉链接</p> </a>
+					<a href="login.html"> <p class="Fgray-3">切换账户</p> </a>
+					<a href="download.html"> <p class="Fgray-3">下载APP</p> </a>
+				</div>
+				<div class="wb40 fl">
+					<p class="Fwhite h40px lh40px">联系我们</p>
+
+					<p>客服电话/微信：<span class="Fgreen">13310227366</span></p>
+					<p>在线时间：9:00 - 18:00</p>
+
+					<div class="clear1"></div>
+
+					<div class="wb100">
+						<img src="img/icon1.png" class="fl mar10">
+						<img src="img/icon2.png" class="fl mar10">
+						<img src="img/icon3.png" class="fl mar10">
+						<img src="img/icon4.png" class="fl mar10">
+					</div>
+
+				</div>
+			</div>
+
+			<div class="wb20 fr">
+				<div class="wb100 Fwhite lh20px F14 text-center">
+					<div class="w100px center img-area">
+						<img src="img/download.png">
+					</div>
+					<div class="clear1"></div>
+					<p>扫码下载app，仅支持安卓</p>
+					<p>了解更多快手刷粉更多功能</p>
+				</div>
+			</div>
+
+			<div class="clear h30px"></div>
+
+		</div>
+
+		<div class="clear" style="border-bottom: 1px solid #222"></div>
+
+		<div class="wb100 text-center Fgray-3 F14 lh20px pat15 pab15">
+			<p>版权所有®重庆蜜枣科技有限公司</p>
+			<p class="F10">Copyright 20015-2018 CALENDAR Tech., All Rights Reserved.</p>
+		</div>
+
+	</div>
+
+</div>
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/interface.js"></script>
+
+<script>
+    $(function () {
+
+        var id = baseAjax.getUserId();
+
+        if(base.isNull(id)){
+            $(".user-point").text(0);
+            window.location.replace('login.html');
+            return;
+        }else{
+            baseAjax.getInfo(function (data) {
+                $(".user-point").text(data.total_score);
+            })
+
+            baseAjax.getUserVideo(function (data) {
+
+                var _tmp = data;
+
+                var _html = '';
+
+                for(var i=0; i<_tmp.length; i++){
+                    _html+= '<div class="wb25 fl">'
+                        + '<div class="pa10">'
+                        + '<div class="wb100 production" data-id="' + _tmp[i].photo_id + '">'
+                        + '<div class="wb100 warpper-gray-3 img-area" style="height: 185px"><img src="'+ _tmp[i].cover_thumbnail_urls +'" ></div>'
+                        + '<div class="clear bor-gray bor-solid-1b"></div>'
+                        + '<div class="wb100 lh40px h40px Fgray-2 text-center F14 over-hidden">'+ _tmp[i].time +'</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>';
+                }
+
+                $(".select-area2").append(_html);
+
+				$(".select-area2 .production").eq(0).addClass('production-active');
+
+				$(".select-area2 .production").click(function () {
+					$(".select-area2 .production").removeClass('production-active');
+					$(this).addClass('production-active');
+				})
+
+            })
+
+        }
+
+        baseAjax.numScore( 31, function (data) {
+            var _html = '';
+
+            if(data){
+
+                var _tmp = data;
+
+                for(var i=0; i<_tmp.length; i++){
+
+                    if(base.isNull(_tmp[i].extra)){
+                        _html+= '<div class="wb100 mab15">'
+                            + '<div class="pal15 par15">'
+                            + '<div class="wb100 h45px radius5 gears-type" data-id="'+ _tmp[i].num_id +'">'
+                            + '<div class="wb50 fl h45px lh45px Fnum text-left">'
+                            + '<span class="pal15">'+ _tmp[i].number +'赞</span>'
+                            + '</div>'
+                            + '<div class="wb50 fr">'
+                            + '<div class="wb100 F20 h35px lh35px pat5 pab5 text-right">'
+                            + '<span class="F14 Fnum par15"> '+ _tmp[i].score +' 积分</span>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>';
+                    }
+
+                }
+
+                $(".gears-area").append(_html);
+
+                $(".gears-area .gears-type").eq(0).addClass('gears-type-active');
+
+                $(".gears-area .gears-type").click(function () {
+                    $(".gears-area .gears-type").removeClass('gears-type-active');
+                    $(this).addClass('gears-type-active');
+                })
+
+            }
+        })
+
+        $(".pay-btn").click(function () {
+            //check login
+
+            var id = baseAjax.getUserId();
+
+            if(base.isNull(id)){
+                alert('您还没有登录');
+                window.location.href = 'login.html';
+            }
+
+            var id = $(".gears-type-active").data('id');
+            var pid = $(".production-active").data('id');
+
+            baseAjax.cloudAddTask( id, pid, 31, function (data, msg) {
+                if(data){
+                    $(".dialogBg").show(0);
+                    $(".dialogPay").show(0);
+                    $(".pay-code img").attr("src", "");
+                }else{
+                    alert(msg);
+				}
+            });
+
+        })
+
+        $(".dialogBg, .dialogClose").click(function () {
+            $(".dialogBg").hide(0);
+            $(".dialogPay").hide(0);
+        })
+
+    })
+
+</script>
+
+</body>
+</html>

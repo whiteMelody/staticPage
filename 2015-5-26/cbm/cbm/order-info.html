@@ -1,0 +1,595 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        财宝猫
+    </title>
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+        </script>
+    <![endif]-->
+    <link href="css/base.css" type="text/css" rel="stylesheet">
+    <link href="css/cbm.css" type="text/css" rel="stylesheet">
+    <!--<link href="css/iocn.css" type="text/css" rel="stylesheet">
+    <link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jQuery-jcSlider.js" type="text/javascript"></script>
+    <script>
+		$(function(){
+		 	 $(".jcSlider").jcSlider({
+				speed:"easeInOutExpo",
+				loadPath:'img/loading.gif',
+				Default : 1,
+				setMode:'x',
+				autoPlay:true,
+				autoTime:2000, 
+				arrow : true, 
+				arrowOffsetX : 90, 
+				subtle: {
+					prev : 90,
+					next : -90
+				},
+				numBtn:false,
+				scaling:false      
+			});
+			
+			$(".new-address,.update-address").click(function(){
+				$(".dialog-area").fadeIn();
+				$(".dialog").fadeIn();
+			})
+			
+			$(".dialog-area,.dialog-close").click(function(){
+				$(".dialog-area").fadeOut();
+				$(".dialog").fadeOut();	
+			})
+		})
+    </script>
+    <style>
+    	.imgPrev,.imgNext{top:-52px;}
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="h35px lh35px wb100 warpper-gray-2 over-hidden">
+            <div class="w1000px center">
+                <div class="fl">
+                    <span class="F12 Fgray-2">
+                        您好，欢迎光临财宝猫！
+                    </span>
+                    <span class="F12 Fgray-2">
+                        [
+                        <a class="Fred-1" href="javascript:void(0)">
+                            登录
+                        </a>
+                        ]
+                    </span>
+                    <span class="F12 Fgray-2">
+                        [
+                        <a class="Fred-1" href="javascript:void(0)">
+                            免费注册
+                        </a>
+                        ]
+                    </span>
+                </div>
+                <div class="fr">
+                    <a class="F12 Fgray-2" href="javascript:void(0)">
+                        我的订单
+                        <img class="mal5" src="images/tb-01.png" />
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Fgray-2" href="javascript:void(0)">
+                        <img class="mar5" src="images/car-top.png" />
+                        我的购物车
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Fgray-2" href="javascript:void(0)">
+                        用户中心
+                        <img class="mal5" src="images/tb-01.png" />
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Forange-1" href="javascript:void(0)">
+                        充值
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Fblue-4" href="javascript:void(0)">
+                        提现
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Fgray-2" href="javascript:void(0)">
+                        客服中心
+                        <img class="mal5" src="images/tb-01.png" />
+                    </a>
+                    <span class="F12 Fgray-2 pal10 par10">
+                        |
+                    </span>
+                    <a class="F12 Fgray-2" href="javascript:void(0)">
+                        收藏我们
+                    </a>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+       
+       <div class="clear1"></div>
+       
+       <div class="w1000px center h100px">
+       		<div class="wb30 fl">
+            	<img src="images/logo.jpg">
+            </div>
+            <div class="wb60 fr">
+            	<ul class="ul-order-step">
+                	<li>
+                    	<p>提交订单</p>
+                    	<div class="li-line"></div>
+                    	<div class="li-num">3</div>
+                    	<div class="li-line"></div>
+                    </li>
+                	<li>
+                    	<p>确认订单</p>
+                    	<div class="li-line"></div>
+                    	<div class="li-num">2</div>
+                    	<div class="li-line"></div>
+                    </li>
+                	<li class="li-hover">
+                    	<p>支付订单</p>
+                    	<div class="li-line"></div>
+                    	<div class="li-num">1</div>
+                    	<div class="li-line"></div>
+                    </li>
+                </ul>
+            </div>
+       </div>
+       
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div style="background:rgba(0,0,0,.5); width:100%; height:100%; z-index:99999999; top:0; position:fixed; display:none;" class="dialog-area"></div>
+    <div class="dialog" style="width:800px; height:500px; background:#fff; z-index:999999999; position:fixed; bottom:0; top:0; left:0; right:0; left:0; margin:auto; -moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px; border:2px solid #e1e1e1; display:none;">
+    	<div style="float:right; margin:5px; cursor:pointer;" class="dialog-close"><img src="/Public/cbm-style/images/ico-close.png"></div>
+        <div style="width:90%; height:50px; margin:0 auto; padding:20px 0; color:#333; line-height:25px;" class="dialog-content">
+       		<div class="wb20 fl Fgray-3 F150em">
+            	收货人:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+       		<div class="wb20 fl Fgray-3 F150em">
+            	所在地区:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+       		<div class="wb20 fl Fgray-3 F150em">
+            	详细地址:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+       		<div class="wb20 fl Fgray-3 F150em">
+            	手机号码:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+       		<div class="wb20 fl Fgray-3 F150em">
+            	电话号码:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+       		<div class="wb20 fl Fgray-3 F150em">
+            	邮编号码:
+            </div>
+            <div class="wb75 fl">
+            	<input type="text" class="h30px lh30px text-left wb60 bor-gray bor-solid-1a pal3per radius5">
+            </div>
+            <div class="clear1"></div>
+            <div class="wb80 Fgray-3 F150em fr">
+            	<input type="checkbox" class="mar10"> 设为常用地址
+            </div>
+            <div class="clear1 bor-gray bor-dashed-1b"></div>
+            <div class="clear1"></div>
+            <div class="wb80 fr">
+            	<p class="pointer wb25 lh35px lh35px text-center F150em radius5 mat5 Fwhite warpper-red-3 new-address">保存</p>
+            </div>
+            
+            <div class="clear1"></div>
+
+        </div>
+        
+    </div>
+    
+     
+    <div class="body">
+    	
+        <div class="wb100">
+        	<div class="w1000px center">
+            	
+                <div class="wb98 pal2per h40px lh40px text-left Fgray-3 F150em bor-gray bor-solid-3b">
+                	<span class="fl">订单配送信息</span>
+                    <span class="fr pointer pal10 par10 lh30px radius5 mat5 Fwhite warpper-red-3 new-address">添加新地址</span>
+                </div> 
+                <div class="clear1"></div>
+                
+                <div class="wb100 h40px bor-gray bor-solid-1b">
+                    <div class="wb5 fl h30px lh30px text-left">
+                        <input type="radio" style="margin-top:8px; float:left;">
+                    </div>
+                    <div class="wb80 fl h30px lh30px F125em Fgray-3 text-left">
+                        收货地收货地址收货地址收货地址收货地址收货地址收货地址址
+                    </div>
+                    <div class="wb5 fl h30px lh30px F125em text-left">
+                        <a href="javascript:void(0)" class="blue update-address">修改地址</a>
+                    </div>
+                </div>
+                <div class="clear1"></div>  
+                <div class="wb100 h40px bor-gray bor-solid-1b">
+                    <div class="wb5 fl h30px lh30px text-left">
+                        <input type="radio" style="margin-top:8px; float:left;">
+                    </div>
+                    <div class="wb80 fl h30px lh30px F125em Fgray-3 text-left">
+                        收货地收货地址收货地址收货地址收货地址收货地址收货地址址
+                    </div>
+                    <div class="wb5 fl h30px lh30px F125em text-left">
+                        <a href="javascript:void(0)" class="blue update-address">修改地址</a>
+                    </div>
+                </div>
+                <div class="clear1"></div>  
+                <div class="wb100 h40px bor-gray bor-solid-1b">
+                    <div class="wb5 fl h30px lh30px text-left">
+                        <input type="radio" style="margin-top:8px; float:left;">
+                    </div>
+                    <div class="wb80 fl h30px lh30px F125em Fgray-3 text-left">
+                        收货地收货地址收货地址收货地址收货地址收货地址收货地址址
+                    </div>
+                    <div class="wb5 fl h30px lh30px F125em text-left">
+                        <a href="javascript:void(0)" class="blue update-address">修改地址</a>
+                    </div>
+                </div>
+                <div class="clear1"></div>  
+                
+                <div class="wb98 pal2per h40px lh40px text-left Fgray-3 F150em bor-gray bor-solid-3b">
+                	<span class="fl">订单商品信息</span>
+                    <span class="fr pointer pal10 par10 lh30px radius5 mat5 Fwhite warpper-blue">返回购物车</span>
+                </div> 
+                <div class="clear1"></div>
+                <div class="wb100">
+                	<table cellpadding="0" cellspacing="0" class="table-cart">
+                        <thead>
+                            <td>商品信息</td>
+                            <td>单价（金币）</td>
+                            <td>数量</td>
+                            <td>金额（金币）</td>
+                            <td>库存状态</td>
+                        </thead>
+                        <tbody>
+                            <td class="wb40">
+                                <div class="wb30 h70px img-area bor-gray bor-solid-1a ma5per fl">
+                                    <img src="images/product-img-2.jpg">
+                                </div>
+                                <div class="wb50 fl h70px lh20px Fgray-3 mat5per">
+                                    <p>Friso荷兰美素佳儿原装进口婴儿奶粉2段900g6-12个月*3罐  </p>
+                                </div>
+                            </td>
+                            <td><span class="Fred">24199</span> 金币</td>
+                            <td>
+                                1
+                            </td>
+                            <td><span class="Fred">24199</span> 金币</td>
+                            <td>
+                                有货
+                            </td>
+                        </tbody>
+                     </table> 
+                     
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+                    <div class="clear1"></div>
+                    <span class="F150em Fgray-3 fr">1 件商品，总商品金额：<b class="Fred-1">200 金币</b></span>
+                    <div class="clear1"></div>
+                    <span class="F150em Fgray-3 fr">运费：<b class="Fred-1">500 金币</b></span>
+                    <div class="clear1"></div>
+                    <span class="F150em Fgray-3 fr">应付总额：<b class="F150em Fred-1">24199 金币</b></span>
+                    <div class="clear1"></div>
+                    <input type="submit" value="去结算" class="warpper-red wb12 h35px Fwhite pointer bor-none F150em Fb fr">
+                    <div class="clear1"></div>
+                    <a href="javascript:void(0)" class="blue fr F125em"> 返回购物车 >></a>
+                    
+                </div> 
+                                                                        
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="clear1"></div>
+    <div class="footer mab20">
+        <div class="wb100 warpper-white-1 h100px">
+            <div class="w1000px center pat30">
+                <div class="fl wb20">
+                    <div class="wb75">
+                        <div class="fl">
+                            <img src="images/f-01.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F16 Fgray-2">
+                                    签到领金币
+                                </span>
+                            </p>
+                            <p class="mat10">
+                                <span class="F12 Fgray-1">
+                                    每日签到领金币
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+                <div class="fl wb20">
+                    <div class="wb75">
+                        <div class="fl">
+                            <img src="images/f-02.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F16 Fgray-2">
+                                    任务赚金币
+                                </span>
+                            </p>
+                            <p class="mat10">
+                                <span class="F12 Fgray-1">
+                                    做任务赢取金币
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+                <div class="fl wb20">
+                    <div class="wb75">
+                        <div class="fl">
+                            <img src="images/f-03.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F16 Fgray-2">
+                                    充值提现
+                                </span>
+                            </p>
+                            <p class="mat10">
+                                <span class="F12 Fgray-1">
+                                    金币可充值提现
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+                <div class="fl wb20">
+                    <div class="wb75">
+                        <div class="fl">
+                            <img src="images/f-04.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F16 Fgray-2">
+                                    正品保障
+                                </span>
+                            </p>
+                            <p class="mat10">
+                                <span class="F12 Fgray-1">
+                                    100%正品行货
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+                <div class="fl wb20">
+                    <div class="wb75">
+                        <div class="fl">
+                            <img src="images/f-05.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F16 Fgray-2">
+                                    无忧消费
+                                </span>
+                            </p>
+                            <p class="mat10">
+                                <span class="F12 Fgray-1">
+                                    安全保障 无忧售后
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <div class="wb100 h235px bg-gray01">
+            <div class="w1000px center h170px pat25">
+                <div class="fl wb73">
+                    <div class="fl wb25">
+                        <div class="pal40 h170px bor-dotted-1r bor-gray">
+                            <p class="pat20 pab20">
+                                <span class="F14 fc-gray01 Fb">
+                                    新手指引
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    会员注册登录
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    如何赚取金币
+                                </span>
+
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    购买流程
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fl wb25">
+                        <div class="pal40 h170px bor-dotted-1r bor-gray">
+                            <p class="pat20 pab20">
+                                <span class="F14 fc-gray01 Fb">
+                                    常见问题
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    如何找回密码
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    注册信息修改
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fl wb25">
+                        <div class="pal40 h170px bor-dotted-1r bor-gray">
+                            <p class="pat20 pab20">
+                                <span class="F14 fc-gray01 Fb">
+                                    关于我们
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <span class="F12 fc-gray01">
+                                    财宝猫简介
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fl wb25">
+                        <div class="pal40 h170px bor-dotted-1r bor-gray">
+                            <p class="pat20 pab20">
+                                <span class="F14 fc-gray01 Fb">
+                                    关注我们
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <img src="images/f-06.png">
+                                <span class="F12 fc-gray01 pal10">
+                                    官方微信
+                                </span>
+                            </p>
+                            <p class="pab10">
+                                <img src="images/ewm.png">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fr wb25">
+                    <div class="pat20 pab20">
+                        <div class="fl">
+                            <img src="images/f-07.png">
+                        </div>
+                        <div class="fr">
+                            <p>
+                                <span class="F24 Fb fc-gray02">
+                                    4000-888-999
+                                </span>
+                            </p>
+                            <p class="mat15">
+                                <span class="F12 fc-gray03">
+                                    周一至周日08:30-17:30
+                                </span>
+                            </p>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="bg-img06 h40px lh40px text-center">
+                            <span class="F20 Fwhite">
+                                QQ 交 谈
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <div class="mat15">
+            <div class="w1000px center text-center">
+                <div class="F12 fc-gray04">
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        财宝猫简介
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        合作商家
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        联系我们
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        意见反馈
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        网站地图
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                    <a class="fc-gray04" href="javascript:void(0)">
+                        帮助中心
+                    </a>
+                    <span class="pal10 par10">
+                        |
+                    </span>
+                </div>
+                <div class="F12 fc-gray04 mat10">
+                    © 2012-2015 渝ICP备489532354号 渝ICP证B1-201307346
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>\

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>开奖公告</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| notice_page
+| ------------------------------------------
+| Here are notice_page html
+|
+-->
+
+<div id="notice_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <ticket-header :title="title" :back="true"></ticket-header>
+
+        <div class="clear"></div>
+
+        <ticket-notice :lottery_type="lotteryType"></ticket-notice>
+
+        <div class="clear h80px"></div>
+
+        <div class="wb100 fixed warpper-white" style="bottom: 0;">
+            <div class="pa15">
+                <div class="wb100 warpper-red Fwhite h45px lh45px text-center radius5 F16" @click="toLottery">
+                    立即投注
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#notice_page",
+        data : {
+            fullscreenLoading : true,
+            width : 0,
+            _width : 0,
+            _width2 : 0,
+            height : 0,
+            _height : 0,
+            width_ball : 0,
+            page : 1,
+            pageSize : 20,
+            title : '',
+            lotteryType : '',
+            notices : [],
+        },
+        methods : {
+            toLottery(){
+
+                if(base.isNull(this.lotteryType)){
+                    this.lotteryType = 'ssq';
+                }
+                if(this.lotteryType == 'ssq'){
+                    window.location.href = 'lottery_ssq.html';
+                }
+                if(this.lotteryType == 'JXK3'){
+                    window.location.href = 'lottery_q3.html';
+                }
+                if(this.lotteryType == 'dlt'){
+                    window.location.href = 'lottery_dlt.html';
+                }
+                if(this.lotteryType == 'D11'){
+                    window.location.href = 'lottery_dqq.html';
+                }
+
+            }
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._width2 = parseInt($(window).width());
+            _this._height = parseInt((_this._width + 30) * 160 / 375);
+
+            _this.width_ball = Math.floor((_this.width - 7 * 12 - 30) / 8);
+
+            let _lotteryType = base.getParmar('lotteryType');
+
+            if(base.isNull(_lotteryType)){
+                _lotteryType = 'ssq';
+            }
+
+            if(_lotteryType == 'ssq'){
+                _this.title = '双色球开奖号码';
+            }
+            if(_lotteryType == 'JXK3'){
+                _this.title = '江西快三';
+            }
+            if(_lotteryType == 'dlc'){
+                _this.title = '江西11选5';
+            }
+            if(_lotteryType == 'dlt'){
+                _this.title = '大乐透';
+            }
+            if(_lotteryType == 'D11'){
+                _this.title = '山东11选5';
+            }
+
+            _this.lotteryType = _lotteryType;
+
+            setTimeout(() => {
+                $("#notice_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

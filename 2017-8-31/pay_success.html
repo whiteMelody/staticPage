@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>支付成功</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| pay_success_page
+| ------------------------------------------
+| Here are pay_success_page html
+|
+-->
+
+<div id="pay_success_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 text-center lh25px">
+        <img src="images/true.png" class="w80px" style="margin-top: 80px">
+        <p class="F18 Fblack mat20">支付成功</p>
+        <p class="Fgray-3 F14">快去竞猜赢金币吧</p>
+
+        <div class="clear h100px"></div>
+
+        <a href="javascript:;" @click="myReplace('index.html')">
+            <div class="pa15">
+                <div class="wb100 warpper-green Fwhite h45px lh45px text-center radius5 F16">
+                    返回首页
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#pay_success_page",
+        data: {
+            fullscreenLoading: true
+        },
+        methods: {
+
+            myReplace : function myReplace(url) {
+                window.location.replace(url) ;
+            }
+
+        },
+        created: function created() {
+            var paymentNo = base.getCookie('paymentNo');
+
+            if(base.isNull(paymentNo)){
+                paymentNo = base.getParmar('trade_no');
+            }
+
+            if(base.isNull(paymentNo)){
+                return false;
+            }
+
+            baseAjax.payResultQuery(paymentNo, 0, function (data) {
+                if (data) {
+                    base.setCookie('paymentNo', null);
+                    base.setCookie('payIng', null);
+                    baseAjax.userInfo(function () {});
+                }else{
+                    base.setCookie('paymentNo', null);
+                    base.setCookie('payIng', null);
+                    baseAjax.userInfo(function () {});
+                }
+            });
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var paymentNo = base.getCookie('paymentNo');
+
+                if(base.isNull(paymentNo)){
+                    paymentNo = base.getParmar('trade_no');
+                }
+
+                if(base.isNull(paymentNo)){
+
+                    return false;
+                }
+
+                baseAjax.payResultQuery(paymentNo, 0, function (data) {
+                    if (data) {
+                        base.setCookie('paymentNo', null);
+                        baseAjax.userInfo(function () {});
+                    }else{
+                        base.setCookie('paymentNo', null);
+                        baseAjax.userInfo(function () {});
+                    }
+                });
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

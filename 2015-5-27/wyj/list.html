@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微依家</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/wyj.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+	})
+
+</script>
+</head>
+
+<body class="warpper-gray-1">
+	
+    <div class="wb100 warpper-white">
+    	<div class="w1200px pat10 pab10 center">
+        	<img src="images/logo.png">
+            <div class="fr F150em">
+            	
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">网站导航</a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">我的微依家 <img src="images/arrow-gray-down.png"></a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="Fbrown fr mal10 mar10">注册</a>
+            	<span class="Fbrown fr mal10 mar10">|</span>
+                <a href="javascript:void(0)" class="Fbrown fr mal10 mar10">登录</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-green-1 h40px">
+    	<div class="w1200px center F150em">
+            <ul class="ul-nav">
+                <li class="li-hover">全部分类 <img src="images/arrow-white-down.png" class="mal10 middle"></li>
+                <li>首页</li>
+                <li>品牌故事</li>
+                <li>在线商城</li>
+                <li>微依家社区</li>
+                <li>优惠活动</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 h25px pat10 pab10 box-shadow-white2 bor-white2 bor-solid-1b hidden">
+    	<div class="w1200px center">
+        	<div class="wb15 lh25px h25px text-center F150em Fgreen bor-green bor-solid-1r fl">
+            	<img src="images/icon-code.png" class="middle mal10 mar10"> 全部分类 <img src="images/arrow-green-down.png" class="middle mal10 mar10">
+            </div>
+            <div class="wb50 F150em fl lh25px h25px mal3per">
+            	<a href="javascript:void(0)" class="green mal15 mar15">米</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">面</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">粮</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">粥</a>
+            	<a href="javascript:void(0)" class="green mal15 mar15">菌</a>
+            </div>
+            <div class="wb25 fr">
+            	<div class="wb90 bor-green bor-solid-1a h25px bor-green bor-solid-1a radius5">
+                	<input type="text" class="bor-none fl h25px mal1per" >
+                	<img src="images/icon-search.png" class="fr mar2per middle" style="margin-top:2px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wb100 bor-green bor-solid-1b hidden">
+    	<div class="w1200px center">
+            <div class="display-inline wb100">
+                <div class="clear h20px"></div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="wb16666 fl lh40px F150em Fgray-3">
+                    <p class="wb60 fr Fgreen F125em">面</p>
+                    <p class="wb60 fr">小米</p>
+                    <p class="wb60 fr">东北米</p>
+                    <p class="wb60 fr">泰国米</p>
+                    <p class="wb60 fr">黑米</p>
+                </div>
+                <div class="clear h40px"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center F125em Fgray-3">
+        	<p><a href="javascript:void(0)" class="gray mar10">首页</a> > <a href="javascript:void(0)" class="gray mal10">花茶</a></p> 
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center">
+        	<div class="wb19 fl warpper-white">
+            	<div class="clear1"></div>
+                <div class="wb100">
+                	<ul class="ul-left-nav">
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    	<li><img src="images/petal.png" class="middle mar10"> 全部花茶</li>
+                    </ul>
+                </div>
+                <div class="clear1"></div>
+            </div>
+            
+            <div class="wb79 fr">
+            	<div class="wb31 fl warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <div class="wb31 fl mal3per mar3per warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <div class="wb31 fl warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+                
+            	<div class="wb31 fl warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <div class="wb31 fl mal3per mar3per warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <div class="wb31 fl warpper-white">
+                	<div class="wb90 h260px center img-area">
+                    	<img src="images/product-4.png">
+                    </div>
+                    <div class="clear1"></div>
+                    <div class="wb80 center lh30px F150em">
+                        <p class="Fgray-3">儿童营养黑米 宝宝辅食 非转基因 </p>
+                        <p><span class="F150em Forange">￥34.00</span><span class="FLine Fgray-2 mal20">原价￥54.00</span></p>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                
+                <div class="clear1"></div>
+                <div class="clear1"></div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    <div class="wb100 warpper-white">
+        <div class="wb100 bor-green bor-solid-2t warpper-footer">
+            <div class="clear1"></div>
+            <div class="w1200px center bor-gray bor-solid-1b">
+                <div class="wb100 display-inline lh30px F125em Fgray-3">
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wb16666 fl">
+                        <p class="wb70 fr F125em Fb"><img src="images/icon-question.png"> 新手指南</p>
+                        <p class="wb60 fr">用户注册</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">购物指南</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">网站导航</p>
+                        <div class="clear"></div>
+                        <p class="wb60 fr">帮助中心</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear h50px"></div>
+                </div>
+                
+            </div>
+            
+            <div class="clear1"></div>
+            
+            <div class="w1200px text-center center lh30px F125em Fgray-3">
+                <p class="Fgray-2">
+                    <a href="javascript:void(0)" class="gray mal10 mar10">首页</a>|
+                    <a href="javascript:void(0)" class="gray mal10 mar10">品牌故事</a>|
+                    <a href="javascript:void(0)" class="gray mal10 mar10">加入我们</a>|
+                    <a href="javascript:void(0)" class="gray mal10 mar10">优惠活动</a>|
+                    <a href="javascript:void(0)" class="gray mal10 mar10">联系我们</a>|
+                    <a href="javascript:void(0)" class="gray mal10 mar10">友情链接</a>
+                </p>
+                <p>鲁ICP备140046号-2 © 2006-2015 guangqu.com All Rights Reserved. 微依家有限公司，禁止非法复制   </p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

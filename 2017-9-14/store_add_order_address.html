@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <title>新增收货地址</title>
+</head>
+<body class="warpper-black-4">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_add_order_address_page html
+|
+-->
+
+<div id="store_add_order_address_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <div class="Fgray-3 wb100">
+
+            <div class="pal15  relative F14 warpper-black-3">
+                <div >
+                    <input type="text" class="bor-none wb100 h45px lh45px F16 warpper-black-3 Fgray-5" v-model="name" placeholder="输入收货人姓名">
+                </div>
+                <div class="clear"></div>
+                <div class="clear bor-black3 bor-solid-1b"></div>
+            </div>
+
+            <div class="pal15  relative F14 warpper-black-3">
+                <div >
+
+                    <input type="tel" class="bor-none wb100 h45px lh45px F16 warpper-black-3 Fgray-5" v-model="mobile" placeholder="手机号码">
+
+                </div>
+                <div class="clear"></div>
+                <div class="clear bor-black3 bor-solid-1b"></div>
+            </div>
+
+            <div class="pal15  relative F14 warpper-black-3">
+                <div >
+                    <input type="text" class="bor-none wb100 h45px lh45px F16 warpper-black-3 Fgray-5" v-model="address" placeholder="详细地址">
+                </div>
+                <div class="clear"></div>
+                <div class="clear bor-black3 bor-solid-1b"></div>
+            </div>
+
+
+            <!--<div class="pal15  relative F14 warpper-white">-->
+            <!--<div >-->
+
+            <!--<input type="tel" class="bor-none wb100 h45px lh45px" v-model="code" placeholder="邮政编码">-->
+            <!--</div>-->
+            <!--<div class="clear"></div>-->
+            <!--<div class="clear bor-gray bor-solid-1b"></div>-->
+            <!--</div>-->
+
+        </div>
+
+
+        <div class="clear1"></div>
+
+        <div class="pa15">
+            <div class="wb100 h45px lh45px Fwhite F16 text-center radius5" :class="mobile.length>0 && code.length>0 ? 'warpper-orange-7 Fwhite' : 'warpper-orange-7 Fwhite'" @click="storage">保存</div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/shopping_mall.js"></script>
+<script src="js/loading.js"></script>
+
+
+<script>
+
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_add_order_address_page",
+        data: {
+            fullscreenLoading: true,
+            name: "",
+            mobile: "",
+            address: "",
+            code: "",
+            favDisabled: false,
+
+        },
+        methods: {
+
+
+            getData: function getData() {
+                var _this = this;
+
+
+                _this.goodsid = base.getParmar('goodsid');
+
+
+            },
+
+            storage: function storage() {
+
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                if (base.isNull(_this.name)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '姓名不能为空',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                if (base.isNull(_this.mobile)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '手机号不能为空',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+                if (base.isNull(_this.address)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '地址不能为空',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+
+                baseAjax.addAddress(_this.name, _this.mobile, _this.address, function (data, errorMsg) {
+
+                    console.log(data);
+
+                    window.location.replace('store_order_address.html?goodsid=' + _this.goodsid);
+
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            var _user = base.getCookie('userInfo');
+
+            if (base.isNull(_user)) {
+                //- 未登录
+            } else {
+                _this.user = JSON.parse(_user);
+
+                console.log(_this.user);
+            }
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _user = base.getCookie('userInfo');
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                } else {
+                    _this.user = JSON.parse(_user);
+
+                    console.log(_this.user);
+                }
+                _this.getData();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

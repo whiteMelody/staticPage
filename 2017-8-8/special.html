@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css?v=23">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js?v=23"></script>
+    <script src="js/base.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/interface.js?v=23"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .myGray{ background: #f3f3f3;}
+    </style>
+
+    <title>7天英语</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| special_page
+| ------------------------------------------
+| Here are special_page html
+|
+-->
+
+<div id="special_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="wb100 hidden special_page_content">
+
+        <el-carousel :height="_height + 'px'" ref="carousel">
+            <el-carousel-item v-for="item in banner" :key="item">
+                <a :href="'lesson_detail.html?channelID='+item.typeID" @touchstart="moveStart" @touchend="moveEnd">
+                    <div class="wb100 img-area" :style="'width:'+_width+'px; height:'+_height+'px;'">
+                        <img :src="item.imageURL + '?x-oss-process=image/resize,m_fixed,h_'+_height * 2 +',w_'+_width * 2" />
+                    </div>
+                </a>
+            </el-carousel-item>
+        </el-carousel>
+
+        <div class="clear1"></div>
+
+        <p class="text-center Fgray-3 h30px lh30px">— <span class="F24 Fgray-3 display-inline" style="color: #232323;">零基础口语</span> —</p>
+        <p class="text-center Fgray-3 h30px lh30px" style="color: #535353;">把握机会，从零开始</p>
+
+        <div class="clear1"></div>
+
+        <div class="pa15 Fgray-3">
+            <el-row :gutter="15">
+                <el-col :span="12" v-for="item in videoList" class="mab15">
+                    <div class="wb100">
+                        <a :href="'lesson_detail.html?channelID='+item.ID">
+                            <div class="wb100 img-area relative" :style="'height:'+height3+'px'">
+                                <img :src="item.iconURL + '?x-oss-process=image/resize,m_fill,h_'+height3 * 2 +',w_'+height4 * 2" class="radius5" />
+                            </div>
+                            <p class="F14 h20px lh20px text-over-hidden1 Fgray-3 pat5">{{item.channelName}}</p>
+                            <p class="F12 h20px lh20px text-over-hidden1 Fgray-2">{{item.subtitle}}</p>
+                        </a>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <p class="Fblue h20px lh20px text-center F14">查看更多>></p>
+
+        <div class="clear1"></div>
+
+        <div class="clear1 myGray"></div>
+
+        <div class="clear1"></div>
+
+        <p class="text-center Fgray-3 h30px lh30px">— <span class="F24 Fgray-3 display-inline" style="color: #232323;">旅行口语</span> —</p>
+        <p class="text-center Fgray-3 h30px lh30px" style="color: #535353;">带着英语去旅行</p>
+
+        <div class="clear1"></div>
+
+        <div class="pa15 Fgray-3">
+            <el-row :gutter="15">
+                <el-col :span="12" v-for="item in videoList" class="mab15">
+                    <div class="wb100">
+                        <a :href="'lesson_detail.html?channelID='+item.ID">
+                            <div class="wb100 img-area relative" :style="'height:'+height3+'px'">
+                                <img :src="item.iconURL + '?x-oss-process=image/resize,m_fill,h_'+height3 * 2 +',w_'+height4 * 2" class="radius5" />
+                            </div>
+                            <p class="F14 h20px lh20px text-over-hidden1 Fgray-3 pat5">{{item.channelName}}</p>
+                            <p class="F12 h20px lh20px text-over-hidden1 Fgray-2">{{item.subtitle}}</p>
+                        </a>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <p class="Fblue h20px lh20px text-center F14">查看更多>></p>
+
+        <div class="clear1"></div>
+
+        <div class="clear1 myGray"></div>
+
+        <div class="clear1"></div>
+
+        <p class="text-center Fgray-3 h30px lh30px">— <span class="F24 Fgray-3 display-inline" style="color: #232323;">商务英语</span> —</p>
+        <p class="text-center Fgray-3 h30px lh30px" style="color: #535353;">学了就能用的职场英语</p>
+
+        <div class="clear1"></div>
+
+        <div class="pa15 Fgray-3">
+            <el-row :gutter="15">
+                <el-col :span="12" v-for="item in videoList" class="mab15">
+                    <div class="wb100">
+                        <a :href="'lesson_detail.html?channelID='+item.ID">
+                            <div class="wb100 img-area relative" :style="'height:'+height3+'px'">
+                                <img :src="item.iconURL + '?x-oss-process=image/resize,m_fill,h_'+height3 * 2 +',w_'+height4 * 2" class="radius5" />
+                            </div>
+                            <p class="F14 h20px lh20px text-over-hidden1 Fgray-3 pat5">{{item.channelName}}</p>
+                            <p class="F12 h20px lh20px text-over-hidden1 Fgray-2">{{item.subtitle}}</p>
+                        </a>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear1 bor-gray bor-solid-1t"></div>
+
+        <p class="Fblue h20px lh20px text-center F14">查看更多>></p>
+
+        <div class="clear1"></div>
+
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#index_page",
+        data : {
+            showLoader : true,
+            videoList : [{
+                "channelName": "英语入门词汇",
+                "ID": "A47EFCD2-4AA9-43D5-A558-C4E0878EE4D7",
+                "iconURL": "http://mzimage.7english.cn/1705041446430286.png",
+                "createOn": 1493868244,
+                "channelType": 2,
+                "subtitle": "比别人提前掌握基础词汇",
+                "openCount": 25536
+                },
+                {
+                    "channelName": "老外教音标",
+                    "ID": "C719E084-E7AE-4605-9EFC-3787F9F35781",
+                    "iconURL": "http://mzimage.7english.cn/1704281814365390.png",
+                    "createOn": 1493374453,
+                    "channelType": 2,
+                    "subtitle": "最纯正的音标发音方法",
+                    "openCount": 29412
+                },
+                {
+                    "channelName": "美国儿童英语",
+                    "ID": "E8DEF928-3846-4A07-A086-7E8A1AC0C568",
+                    "iconURL": "http://mzimage.7english.cn/1702031747941973.png",
+                    "createOn": 1481168085,
+                    "channelType": 2,
+                    "subtitle": "美国儿童英语",
+                    "openCount": 39235
+                },
+                {
+                    "channelName": "TED演讲",
+                    "ID": "36B2AAA9-6FED-4916-AB3C-352A5E627134",
+                    "iconURL": "http://mzimage.7english.cn/1612061131566516.jpg",
+                    "createOn": 1477893433,
+                    "channelType": 2,
+                    "subtitle": "TED演讲",
+                    "openCount": 45714
+                }],
+            audioList : [{
+                "channelName": "口语主题100个",
+                "ID": "a100qj",
+                "iconURL": "http://mzimage.7english.cn/1705111018569409.png",
+                "createOn": 1476413924,
+                "channelType": 1,
+                "subtitle": "100个最实用的日常会话，你想要的都在这儿",
+                "openCount": 228988
+                },
+                {
+                    "channelName": "英语口语绝招",
+                    "ID": "m-crazy-kyjz",
+                    "iconURL": "http://mzimage.7english.cn/1705171046314227.png",
+                    "createOn": 1476413924,
+                    "channelType": 1,
+                    "subtitle": "英语口语绝招",
+                    "openCount": 38741
+                },
+                {
+                    "channelName": "轻松美语会话-第3辑",
+                    "ID": "v-easytalk-4",
+                    "iconURL": "http://mzimage.7english.cn/1705171347607145.png",
+                    "createOn": 1476413924,
+                    "channelType": 1,
+                    "subtitle": "轻松美语会话-第3辑",
+                    "openCount": 15048
+                },
+                {
+                    "channelName": "商务英语",
+                    "ID": "awyky7",
+                    "iconURL": "http://mzimage.7english.cn/1701051051840289.png",
+                    "createOn": 1476413924,
+                    "channelType": 1,
+                    "subtitle": "商务英语",
+                    "openCount": 149777
+                }],
+            banner: [{
+                "imageURL": "http://mzimage.7english.cn/1705031458915151.png",
+                "title": "口语8000句",
+                "type": 0,
+                "typeID": "a8000",
+                "targetID": 25,
+                "eventType": 1
+                },
+                {
+                    "imageURL": "http://mzimage.7english.cn/1705111114066060.png",
+                    "title": "红宝书之随身应急英语会话",
+                    "type": 0,
+                    "typeID": "d-hbs-yjky",
+                    "targetID": 2,
+                    "eventType": 1
+                },
+                {
+                    "imageURL": "http://mzimage.7english.cn/1705091023752937.png",
+                    "title": "Bessy&Jesse 侃英语",
+                    "type": 0,
+                    "typeID": "72161703-A539-477A-BAAD-099B71ACA70C",
+                    "targetID": 27,
+                    "eventType": 1
+                },
+                {
+                    "imageURL": "http://mzimage.7english.cn/1705101133203229.png",
+                    "title": "旅游必备口语",
+                    "type": 0,
+                    "typeID": "2F3CA1AF-15FB-4B3C-BA91-BD459FB3F60C",
+                    "targetID": 30,
+                    "eventType": 1
+                },
+                {
+                    "imageURL": "http://mzimage.7english.cn/1702271013319962.png",
+                    "title": "常用口语999句",
+                    "type": 0,
+                    "typeID": "a-999",
+                    "targetID": 8,
+                    "eventType": 1
+                }],
+            width : 0,
+            width2 : 0,
+            _width2 : 0,
+            _width : 0,
+            height : 0,
+            _height2 : 0,
+            height2 : 0,
+            height3 : 0,
+            height4 : 0,
+            _height : 0,
+            startX : 0,
+            endX : 0,
+        },
+        methods : {
+            moveStart(e){
+                let _this = this;
+                _this.startX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+            },
+            moveEnd(e){
+                let _this = this;
+                _this.endX = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
+                let _result = _this.startX - _this.endX;
+
+                if(_result>=50){
+                    this.$refs.carousel.next();
+                }
+                if(_result<-50){
+                    this.$refs.carousel.prev();
+                }
+            },
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._width2 = parseInt($(window).width());
+            _this._height = parseInt((_this._width + 30) * 160 / 375);
+
+            _this.height2 = Math.ceil(($(window).width() - 60) / 3);
+            _this.height4 = Math.ceil(($(window).width() - 45) / 2);
+            _this.width2 = (_this.height2 +15) * _this.audioList.length + 30;
+
+            _this.height3 = Math.ceil(($(window).width() - 45) * 0.315);
+
+            setTimeout(function(){
+                _this.showLoader = false;
+                $(".index_page_content").removeClass("hidden");
+            },ajaxConfig.lazy);
+
+        }
+
+    })
+
+
+</script>
+
+</body>
+</html>

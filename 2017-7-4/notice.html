@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>开奖公告</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| notice_page
+| ------------------------------------------
+| Here are notice_page html
+|
+-->
+
+<div id="notice_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+        <div class="wb100">
+
+            <ticket-header :title="'开奖公告'" :back="true"></ticket-header>
+
+            <div class="clear"></div>
+
+            <div class="pal15">
+
+                <template v-for="item in notices">
+
+                    <div class="clear1"></div>
+                    <p class="h30px lh30px Fgray-3">{{item.lotteryTitle}}</p>
+                    <p class="h20px lh20px Fgray-2 F14">第{{item.number}}期 | 开奖时间：{{item.officialStopTime}}</p>
+                    <div class="clear1"></div>
+
+                    <a :href="'notice_more.html?lotteryType='+item.lotteryType">
+
+                        <div class="wb100" v-if="item.lotteryType=='ssq' || item.lotteryType=='dlt'">
+
+
+                            <template v-for="(item2,key2) in item.balls">
+                                <div class="Fwhite radius50per text-center fl mar10" v-if="item.lotteryType=='ssq'" :class="item2.type == 'red' ? 'warpper-red' : 'warpper-blue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                    {{item2.num}}
+                                </div>
+                                <div class="Fwhite radius50per text-center fl mar10" v-if="item.lotteryType=='dlt'" :class="item2.type == 'red' ? 'warpper-red' : 'warpper-blue'" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                    {{item2.num}}
+                                </div>
+                            </template>
+                            <div class="fr" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                <img src="images/arrow-right.png" class="fr mar15" :style="'height:'+ (width_ball/2) +'px; margin-top: '+ (width_ball/4) +'px;'">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="wb100" v-if="item.lotteryType=='dlc' || item.lotteryType=='D11'">
+                            <template v-for="(item2,key2) in item.balls">
+                                <div class="Fwhite radius50per text-center fl mar10 warpper-red" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                    {{item2}}
+                                </div>
+                            </template>
+                            <div class="fr" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                <img src="images/arrow-right.png" class="fr mar15" :style="'height:'+ (width_ball/2) +'px; margin-top: '+ (width_ball/4) +'px;'">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
+                        <div class="wb100" v-if="item.lotteryType=='JXK3'">
+                            <div class="warpper-green fl pal20 radius20 par10">
+                                <template v-for="(item2,key2) in item.balls">
+                                    <div class="fl mar10 mat5" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                        <img :src="'images/sz_'+item2+'.png'" :style="'width:'+ (width_ball-5) +'px; height:'+(width_ball-5)+'px;'">
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="fr" :style="'width:'+width_ball+'px; height:'+width_ball+'px; line-height: '+width_ball+'px;'">
+                                <img src="images/arrow-right.png" class="fr mar15" :style="'height:'+ (width_ball/2) +'px; margin-top: '+ (width_ball/4) +'px;'">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </a>
+
+                    <div class="clear1 bor-gray bor-solid-1b"></div>
+
+                </template>
+
+            </div>
+
+            <div class="clear1"></div>
+
+
+        </div>
+
+
+        <ticket-footer :active="2"></ticket-footer>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#notice_page",
+        data : {
+            fullscreenLoading : true,
+            width : 0,
+            _width : 0,
+            _width2 : 0,
+            height : 0,
+            _height : 0,
+            width_ball : 0,
+            ball : [
+                { type : 'red', num : '9' },
+                { type : 'red', num : '8' },
+                { type : 'red', num : '7' },
+                { type : 'red', num : '6' },
+                { type : 'red', num : '5' },
+                { type : 'blue', num : '4' },
+                { type : 'blue', num : '3' },
+            ],
+            notices : [],
+        },
+        methods : {
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+            _this._width = parseInt($(window).width());
+            _this._width2 = parseInt($(window).width());
+            _this._height = parseInt((_this._width + 30) * 160 / 375);
+
+            _this.width_ball = Math.floor((_this.width - 7 * 12 - 35) / 7);
+
+            baseAjax.openAwardList(function(data){
+
+                console.log(data);
+
+                if(data){
+
+                    let _tmp = data.returnJSON;
+
+                    for(let i=0; i<_tmp.length; i++){
+
+                        if(_tmp[i].lotteryType == 'ssq'){
+                            //双色球
+                            let _bonus = _tmp[i].bonusCode;
+                            let reds = _bonus.split('#')[0].split(',');
+                            let blue = _bonus.split('#')[1];
+
+                            let _balls = [];
+
+                            for(let i=0; i<reds.length; i++){
+                                _balls.push({
+                                    type : 'red',
+                                    num : reds[i]
+                                })
+                            }
+                            _balls.push({
+                                type : 'blue',
+                                num : blue
+                            })
+
+                            _tmp[i].balls = _balls;
+
+                        }else if(_tmp[i].lotteryType == 'dlt'){
+                            //大乐透
+                            let _bonus = _tmp[i].bonusCode;
+
+                            let reds = _bonus.split('#')[0].split(',');
+                            let blue = _bonus.split('#')[1].split(',');;
+
+                            let _balls = [];
+
+                            for(let i=0; i<reds.length; i++){
+                                _balls.push({
+                                    type : 'red',
+                                    num : reds[i]
+                                })
+                            }
+                            _balls.push({
+                                type : 'blue',
+                                num : blue[0]
+                            })
+                            _balls.push({
+                                type : 'blue',
+                                num : blue[1]
+                            })
+
+                            _tmp[i].balls = _balls;
+
+                        }
+                        else{
+                            let _balls = _tmp[i].bonusCode.split(',');
+                            _tmp[i].balls = _balls;
+                        }
+                    }
+
+                    _this.notices = data.returnJSON;
+
+                }
+
+            })
+
+            setTimeout(() => {
+                $("#notice_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

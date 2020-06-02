@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>抽奖活动</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="css/more.css?v=2.00">
+<link rel="stylesheet" href="css/lottery.css?v=3.00">
+<link rel="stylesheet" href="/Public/css/jquery.mobile-1.4.3.min.css">
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/Public/js//jquery.mobile-1.4.3.min.js"></script>
+<script type="text/javascript" src="js/ovgap.js"></script>
+<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+<script src="js/lottery.js?v=2.00"></script>
+</head>
+<body>
+<div data-role="page" id="more_page" style="background:#F7F7F7 !important;" data-dom-cache="true">
+    <div data-role="header" data-position="fixed">
+        <h1>更多</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview"  data-inset="true" id="toLottery">
+            <li style="text-align:right">
+                <img src="images/adver.png" width="100%">
+                <div>新用户注册成功即可参与“抽话费”活动，单次最高可获赠50元手机话费，累计最多可中千元话费；100%中奖</div>
+                <button style="border-radius:.5em !important;">立即参加</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div data-role="page" id="lottery_page" data-dom-cache="false" style="background:url(images/cj_bg.png);background-size:100% 100%;">
+    <div data-role="header" class="ui_lottery_header">
+        <!--      <a href="http://apptest.game.zhaopian.com/mobile/more.html" data-transition="slide" data-role="none" style="color:#fff;  data-direction="reverse"; text-decoration:none;">
+        <p style="width:50px;">返回</p>
+        </a>
+        <h1>全民擂台</h1>-->
+        <div class="right_zz_div" align="right">
+            <img src="images/jl_d.png" width="16">
+            <span id="my_ld" style="float:left;"></span>
+            <img src="images/default-avatar@2x.png" width="22" height="22" id="my_head">
+        </div>
+        <a data-role="none" href="http://apptest.game.zhaopian.com/mobile/more.html" data-transition="slide"  style="color:#fff;" data-direction="reverse">
+        <div  class="left_zz_div">
+            <img src="images/arrow_back.png" width="20">
+        </div>
+        </a>
+    </div>
+    <div data-role="content" style="padding:0 !important;text-align:center">
+        <div class="zp_div">
+            <img src="images/quan_1.png" width="282" class="zp_bg_img">
+            <img src="images/quan_2.png" width="257" class='zp_jp_img' id="imgs">
+            <img src="images/quan_3.png" width="101" class="zp_btn_yh_img">
+            <div class="lot-btn first"><span class="lot_active">
+                <button style="width:100%; height:100%; background:none; border:none;"></button>
+                </span></div>
+        </div>
+        <img src="images/title.png" width="250"  style="margin-top:.5em">
+        <div style="width:100%;">
+            <a href="#gz_page" data-transition="slidedown" class="gz_btn" data-role="none" data-direction="reverse">活动规则 ></a>
+        </div>
+        <a href="#myRecord" data-transition="slidedown" class="ui-btn myRecord" data-direction="reverse">我的中奖纪录</a>
+        <div  class="lottery_btn_div">
+            <div>获奖名单</div>
+            <div>
+                <div id="lottery_data"></div>
+            </div>
+        </div>
+        <!-- 提示框 -->
+        <div data-role="popup" id="msg_dialog"  data-dismissible="false" class="ts_popup_style">
+            <div role="main" class="ui-content" style="padding:0 !important">
+                <div class="popup_ts_content">
+                    <h3 class="msg_title">提示</h3>
+                    <p class="msg"></p>
+                    <p class="msg_code" style="display:none;"></p>
+                </div>
+                <div class="popup_btn_div">
+                    <button id="msg_btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="gz_page" style="background-color:#333333 !important;" data-fullscreen="false" data-dom-cache="true">
+    <div data-role="header" class="gz_header" data-position="fixed">
+        
+        <!--<a data-role="button" class="ui-btn-left" data-rel="back" data-transition="slideup" data-direction="reverse" data-icon="arrow-r">返回</a>-->
+        
+        <h1>活动规则</h1>
+        <a class="ui-btn" data-rel="back" data-transition="slideup" data-direction="reverse">
+        <img src="images/close.png">
+        </a>
+    </div>
+    <div data-role="content" style="text-shadow: none !important;color:#fff;padding:0 !important;background-color:#333333 !important;">
+        <div style="padding:.8em;padding-top:0">
+            <div class="gz_hang">
+                <p>活动时间</p>
+                <div>2014年11月6日——2014年11月15日</div>
+            </div>
+            <div class="gz_hang">
+                <p>参与条件</p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gz_font_table">
+                    <tr>
+                        <td align="left" valign="top"><span>1</span></td>
+                        <td style="line-height:25px">所有新浪微博登录用户、腾讯微博登录用户及新注册登录用户</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top"><span>2</span></td>
+                        <td style="line-height:25px">账户余额不少于800擂豆</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="gz_hang">
+                <p>活动方式</p>
+                <div>点击“抽奖”即可抽奖，所有奖品都是随机获得。</div>
+            </div>
+            <div class="gz_hang">
+                <p>抽奖次数</p>
+                <div>每抽一次需消耗800擂豆，不限抽奖次数。</div>
+            </div>
+            <div class="gz_hang">
+                <p>本期产品</p>
+                <div style="margin-top:1em">话费充值卡</div>
+                <div style="margin-top:.5em">
+                    <img src="images/cz_1.png" width="43">
+                    <img src="images/cz_5.png" width="43">
+                    <img src="images/cz_10.png" width="43">
+                    <img src="images/cz_20.png" width="43">
+                    <img src="images/cz_50.png" width="43">
+                </div>
+                <div style="margin-top:1em">擂豆</div>
+                <div style="margin-top:.5em">
+                    <img src="images/gz_dou.png" width="48">
+                </div>
+            </div>
+            <div class="gz_hang">
+                <p>奖品发放</p>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gz_font_table">
+                    <tr>
+                        <td align="left" valign="top"><span style="margin:2px">1</span></td>
+                        <td style="line-height:1.8em">用户可以随时在大赛抽奖页面的“我的中奖记录”中查看领奖状态。</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top"><span style="margin:1px">2</span></td>
+                        <td style="line-height:21px">话费类奖品，将在中奖后的2个工作日内由工作人员为您充值，充值成功后，您将收到短信提醒；本活动话费只限联通、移动、电信充值.</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top"><span style="margin:1px">3</span></td>
+                        <td style="line-height:21px">请保证您提供的领奖信息清晰准确，如果因领奖信息有误、不完整或不清晰而导致奖品未能及时收到或在活动结束15天内联系不到而导致
+                            
+                            奖品不能正常发放的情况，视为放弃奖品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top"><span style="margin:2px">4</span></td>
+                        <td style="line-height:21px">关于虚拟奖品，全民擂台将在你中奖分享成功后由系统自动发放到你对应的全民擂台账户中。</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="md_page" style="background-color:#333333 !important;" data-fullscreen="false" data-dom-cache="true">
+    <div data-role="header" class="gz_header" data-position="fixed">
+        <h1>中奖名单</h1>
+        <a class="ui-btn" data-rel="back" data-transition="slideup" data-direction="reverse">
+        <img src="images/close.png" >
+        </a>
+    </div>
+    <div data-role="content" style="padding:0 !important;background-color:#333333 !important;">
+        <table class="tzp_table" width="100%" border="0" data-role='none' cellpadding="0" cellspacing="0" >
+        </table >
+        
+        <!--正在加载-->
+        <button id="load_btn" class="loadmore_div">
+        <img src="images/ajax-loader.gif" width="20" align="absmiddle" style="display:none;">
+        <span id="load_desc">点击加载</span>
+        </button>
+    </div>
+</div>
+<div data-role="page" id="myRecord" style="background-color:#363636" data-fullscreen="false">
+    <div data-role="header" class="gz_header" data-position="fixed">
+        <h1>我的中奖纪录</h1>
+        <a class="ui-btn" data-rel="back" data-transition="slideup" data-direction="reverse">
+        <img src="images/close.png" >
+        </a>
+    </div>
+    <div data-role="content" style="background-color:#363636;padding:0">
+        <div class="nomessage" style="display:none;">
+            <img src="images/nomessage.png" width="97">
+            <div style="color:#999">你还没有中奖纪录</div>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="record_table">
+            <thead>
+                <tr>
+                    <th>奖品</th>
+                    <th>时间</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        
+        <!--正在加载-->
+        <button id="load_btn2" class="loadmore_div">
+        <img src="images/ajax-loader.gif" width="20" align="absmiddle" style="display:none;">
+        <span id="load_desc2">点击加载</span>
+        </button>
+    </div>
+</div>
+
+<!----领取话费----->
+<div data-role="page" id="lingqu_hf_page" style="background-color:#FBF7F8 !important" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" class="gz_header lingqu_header">
+        <a href="javascript:void(0)" onClick="$('#back_dialog').popup('open');" data-transition="slide" class="ui-btn" style="color:#fff;" data-direction="reverse">
+        <img src="images/arrow_back.png" width="20">
+        </a>
+        <h1>领取话费</h1>
+    </div>
+    <div data-role="content" style="padding:0 !important;text-align:center;padding-top:1em !important">
+        <img src="" width="177" id="hf_img">
+        <div class="lq_jl_ts_div" id="hf_desc"></div>
+        <ul class="jd_ul">
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>抽奖</div>
+            </li>
+            <li>
+                <div class="border_active"></div>
+                <div class="jd_yq background_active"></div>
+                <div class="font_active ">填写信息</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>分享</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>完成</div>
+            </li>
+        </ul>
+        <p  class="jl_hs_p">请准确填写手机号，以便话费及时到账</p>
+        <div class="lq_phone_div">
+            <p  class="phone_text">手机号</p>
+            <input type="text" placeholder="请输入您的手机号码" data-inset="false" id="mobile"  data-role="none">
+        </div>
+        <div class="button_div">
+            <button class="lq_next_button" id="hf_toget" disabled>下一步</button>
+        </div>
+    </div>
+    
+    <!-- 提示框 -->
+    <div data-role="popup" id="back_dialog"  data-dismissible="false" class="ts_popup_style">
+        <div role="main" class="ui-content" style="padding:0 !important">
+            <div class="popup_ts_content">
+                <h3 class="back_title">提示</h3>
+                <p class="back">您确定退出领奖吗？</p>
+            </div>
+            <div class="popup_btn_div2">
+                <a data-role="button" href="javascript:void(0)" style="border-radius:0 0  0 0.5em!important;" data-icon="delete" onClick="$('#back_dialog').popup('close');">取消</a>
+                <a href="#lottery_page" data-role="button"  style="border-radius:0 0 0.5em 0 !important; " data-icon="check" data-transition="slide" data-direction="reverse">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!----擂豆----->
+<div data-role="page" id="lingqu_page" style="background-color:#FBF7F8 !important" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" class="gz_header lingqu_header">
+        <a href="javascript:void(0)" onClick="$('#back_dialog2').popup('open');" data-transition="slide" class="ui-btn" style="color:#fff;" data-direction="reverse">
+        <img src="images/arrow_back.png" width="20">
+        </a>
+        <h1>领取擂豆</h1>
+    </div>
+    <div data-role="content" style="padding:0 !important;text-align:center;padding-top:1em !important">
+        <img src="images/doudou.png" width="177" id="ld_img">
+        <div class="lq_jl_ts_div" id="ld_desc">获得<span></span>擂豆</div>
+        <ul class="jd_ul">
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>抽奖</div>
+            </li>
+            <li>
+                <div class="border_active"></div>
+                <div class="jd_yq background_active"></div>
+                <div class="font_active ">核对信息</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>分享</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>完成</div>
+            </li>
+        </ul>
+        <div class="lq_leidou_div">
+            <span>获奖人：<span id="my_name"></span></span>
+            <span>奖品：<span id="my_get_ld"></span></span>
+        </div>
+        <div class="button_div">
+            <button class="lq_next_button" id="ld_toget">下一步</button>
+        </div>
+    </div>
+    
+    <!-- 提示框 -->
+    <div data-role="popup" id="back_dialog2"  data-dismissible="false" class="ts_popup_style">
+        <div role="main" class="ui-content" style="padding:0 !important">
+            <div class="popup_ts_content">
+                <h3 class="back_title">提示</h3>
+                <p class="back">您确定退出领奖吗？</p>
+            </div>
+            <div class="popup_btn_div2">
+                <a href="javascript:void(0)" data-role="button" data-icon="delete" style="border-radius:0 0  0 0.5em!important" onClick="$('#back_dialog2').popup('close');">取消</a>
+                <a href="#lottery_page" data-role="button" data-icon="check" data-transition="slide" data-direction="reverse" style="border-radius:0 0  0.5em 0 !important;">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!----擂豆----->
+<div data-role="page" id="lingqu_share" style="background-color:#FBF7F8 !important" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" class="gz_header lingqu_header">
+        <a href="" data-rel="back" data-transition="slide" class="ui-btn" style="color:#fff;" data-direction="reverse">
+        <img src="images/arrow_back.png" width="20">
+        </a>
+        <h1>分享</h1>
+    </div>
+    <div data-role="content" style="text-align:center;padding-top:1em">
+        <img src="" width="177" id="get_img">
+        <div class="lq_jl_ts_div" id="get_desc">获得<span>50元</span>话费</div>
+        <ul class="jd_ul" style="margin:1em 0 !important ">
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>抽奖</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>填写信息</div>
+            </li>
+            <li>
+                <div class="border_active"></div>
+                <div class="jd_yq background_active"></div>
+                <div class="font_active">分享</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>完成</div>
+            </li>
+        </ul>
+        <div class="share_phone_number" id="get_mobile"> 手机号：<span id="my_mobile"></span>
+            <!--把好消息和小伙伴们一起分享吧！-->
+        </div>
+        <div class="button_div" style="padding:0 !important">
+            <button id="share_btn">分享</button>
+        </div>
+    </div>
+</div>
+<!----抽奖成功----->
+<div data-role="page" id="lq_success_page" style="background-color:#FBF7F8 !important" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" class="gz_header lingqu_header">
+        <h1 id="lottery_title">抽奖成功</h1>
+    </div>
+    <div data-role="content" style="text-align:center;padding-top:1em !important">
+        <img src="" width="177" id="result_img">
+        <ul class="jd_ul" style="margin:1em 0 !important ">
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>抽奖</div>
+            </li>
+            <li>
+                <div></div>
+                <div class="jd_yq"></div>
+                <div>填写信息</div>
+            </li>
+            <li>
+                <div ></div>
+                <div class="jd_yq"></div>
+                <div >分享</div>
+            </li>
+            <li>
+                <div class="border_active"></div>
+                <div class="jd_yq background_active"></div>
+                <div class="font_active">完成</div>
+            </li>
+        </ul>
+        <p style="text-align:left !important;line-height:2em" id="lottery_desc">恭喜你完成抽奖，可以在【我的中奖纪录】里面查看领奖状态</p>
+        <a href="#lottery_page" data-transition="slide" data-role="none" style="color:#fff;" data-direction="reverse">
+        <div class="button_div" style="padding:0 !important">
+            <button>继续抽奖</button>
+        </div>
+        </a>
+    </div>
+</div>
+<script>
+	var windowWdith=parseFloat(window.innerWidth);
+		var windowHeight=parseFloat(window.innerHeight-48);
+		var zpdivWdith=parseFloat($('.zp_div').innerWidth());
+		$('.zp_div').css('margin-left',(windowWdith-zpdivWdith)/2+"px");
+		$('.zp_div').css('top',windowHeight*0.28+"px");
+		$('.lottery_btn_div >div:last-child').width(windowWdith-86);
+		var scrollwidth=0;var scrollIndex=0;
+	
+	$(document).bind("mobileinit", function(){
+		$.mobile.defaultPageTransition = 'none';
+		$.mobile.defaultDialogTransition = 'none';
+		$.extend(  $.mobile , {
+		   defaultPageTransition:'none'
+		  });
+		
+	}); 
+
+	$(document).on("pageshow","#myRecord",function(){
+		Lottery_param.page2 = 1;
+		$(".record_table tbody").html("");
+		Lottery.getMyList();
+	});
+	$(document).on("pageshow","#md_page",function(){
+		Lottery_param.page = 1;
+		$(".tzp_table").html("");
+		Lottery.getList();
+	});
+	
+	$(document).on("pageshow","#lingqu_hf_page",function(){
+		$("#hf_img").attr("src","images/"+ Lottery_param.reward +".png");	
+		$("#hf_desc").html("获得<span>"+ Lottery_param.reward +"元</span>话费");
+	});
+	
+	$(document).on("pageshow","#lingqu_page",function(){
+		$("#ld_desc").html("获得<span>"+ Lottery_param.reward +"</span>擂豆");
+	});
+
+	$(document).on("pageshow","#lottery_page",function(){
+		
+		var windowWdith=parseFloat(window.innerWidth);
+		var windowHeight=parseFloat(window.innerHeight-48);
+		var zpdivWdith=parseFloat($('.zp_div').innerWidth());
+		$('.zp_div').css('margin-left',(windowWdith-zpdivWdith)/2+"px");
+		$('.zp_div').css('top',windowHeight*0.28+"px");
+		$('.lottery_btn_div >div:last-child').width(windowWdith-86);
+		var scrollwidth=0;var scrollIndex=0;
+		
+		Lottery.getList();
+		
+		Lottery.loadUserInfo();
+		
+	}); 	
+$(function(){
+	$.mobile.transitionFallbacks.slideout = "none";
+    var width=parseFloat($('.ui-listview li').innerWidth());
+    $('.ui-listview li button').css('margin-left',(width-parseFloat($('.ui-listview li button').innerWidth()))-16);
+	$(".lot-btn button").click(function() {
+		$(this).attr("disabled","disabled");
+		Lottery.getLottery();
+		$('.zp_bg_img').attr('src','images/quan_1_change.png');
+		$(".tzp_table").html("");
+	})
+	
+	$("#msg_btn").click(function() {
+		
+		if($("#msg_dialog .msg_code").text() != 200){
+			if($("#msg_dialog .msg_code").text()==100013)
+				Lottery.getUserinfo();
+			else
+				$('#msg_dialog').popup('close');	
+		}	
+		else{
+			//$('#msg_dialog').popup('close');
+			if(Lottery_param.type == "擂豆")
+				$.mobile.changePage( "#lingqu_page", {transition:"slide", changeHash:true});	
+			else
+				$.mobile.changePage( "#lingqu_hf_page", {transition:"slide", changeHash:true});	
+		}
+	})
+	
+	$("#load_btn").click(function(){
+		Lottery_param.page ++ ;
+		$(this).attr("disabled","disabled");
+		$(this).find("img").show();
+		$("#load_btn").text("正在加载");
+		Lottery.getList();
+		$("#load_btn").css("padding",".7em 1em");
+	});
+	
+	$("#load_btn2").click(function(){
+		Lottery_param.page2 ++ ;
+		$(this).attr("disabled","disabled");
+		$(this).find("img").show();
+		$("#load_btn2").text("正在加载");
+		Lottery.getMyList();
+		$("#load_btn2").css("padding",".7em 1em");
+	});
+	
+	$("#mobile").change(function(){
+		if(checkMobile($(this).val())) $("#hf_toget").removeAttr("disabled");	
+		else $("#hf_toget").attr("disabled","disabled");			
+	})
+	
+	$("#hf_toget").click(function(){
+		Lottery_param.mobile = $("#mobile").val();
+		$("#my_mobile").text(Lottery_param.mobile);
+		$("#get_desc").html("获得<span>"+ Lottery_param.reward +"元</span>话费");
+		$("#get_img").attr("src","images/"+Lottery_param.reward +".png");
+		$("#get_mobile").html("手机号：<span>"+ Lottery_param.mobile +"</span>");
+		$.mobile.changePage( "#lingqu_share", {transition:"slide", changeHash:true});	
+	});
+	
+	$("#ld_toget").click(function(){
+		$("#get_desc").html("获得<span>"+ Lottery_param.reward +"</span>擂豆");
+		$("#get_img").attr("src","images/doudou.png");
+		$("#get_mobile").html("把好消息和小伙伴们一起分享吧");
+		$.mobile.changePage( "#lingqu_share", {transition:"slide", changeHash:true});	
+	});
+	
+	
+	$("#share_btn").click(function(){
+		
+		var share_content = "";
+			
+		if(Lottery_param.type == "擂豆"){
+			share_content = "我在全民擂台抽奖赢得"+ Lottery_param.reward +"擂豆，参与抽奖中话费，100%中奖。";
+		}else
+			share_content = "我在全民擂台抽中"+ Lottery_param.reward +"元话费，错过了不要怪我没有告诉你。";
+		
+		if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios){
+			var success_n = function (callbackId, params_arr) {
+				setTimeout(myShare,1000);
+			};
+			var fail_n = function (callbackId, params_arr) {};
+			var shareParams = {title:"全民擂台", url:"http://apptest.game.zhaopian.com/mobile/download.html", content:share_content, icon:"http://apptest.game.zhaopian.com/mobile/active/images/share_img.png"};
+			window.ov_gap.invoke("testShare", shareParams, success_n,fail_n);
+			
+		}else if (browser.versions.android){
+			var shareParams = "{'title': '全民擂台','url':'http://apptest.game.zhaopian.com/mobile/download.html','content':'"+ share_content +"','icon':'http://apptest.game.zhaopian.com/mobile/active/images/share_img.png'}";
+			window.kuping_android.shareFunction(shareParams);
+			
+		}else {
+			setTimeout(myShare,1000);
+		}	
+		
+	});
+	
+	$("#toLottery").click(function(){
+		Lottery.getUserinfo();
+	});
+    
+	
+});
+</script>
+</body>
+</html>

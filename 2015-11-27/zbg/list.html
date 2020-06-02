@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+
+
+<!--
+| ------------------------------------------
+| list-page
+| ------------------------------------------
+| Here are list-page html
+| 
+-->
+<div data-role="page" id="list-page" style="text-shadow:none; font-weight:normal;">
+    <div data-role="header" data-theme="a" class="bor-none" style="z-index:99999;">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h35px lh35px F125em Fwhite text-center search-text" data-role="none" style="text-shadow:none; font-weight:normal;">附近</div>
+            <div class="wb60 center h35px hidden search-area">
+            	<div class="wb185 h35px fl my-bg-search" style="background-position:left center;"></div>
+                <input type="text" class="bor-none h33px lh33px Fgray-2 wb58 fl warpper-white text-left" style="text-shadow:none; font-weight:normal;" data-role="none" placeholder="地址/商家名称">
+                <div class="wb185 h35px fl my-bg-search" style="background-position:right center;"></div>
+            </div>
+            
+        	<a class="my-icon-search h40px w40px absolute search-btn pointer" data-role="none" style="right:5px; top:5px;"></a>
+            <div class="h10px my-warpper-wave wb100"></div>
+        </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script>
+        	$(document).on("pageinit",function(e){
+				$(".ul-nav-second li").unbind("hover").hover(function(){
+					var _this = $(this);
+					$(".ul-nav-second li").removeClass("li-hover");
+					_this.addClass("li-hover");
+					var temp = _this.find("img").attr("src");
+					_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);
+				},function(){
+					var _this = $(this);
+					$(".ul-nav-second li").removeClass("li-hover");
+					var temp = _this.find("img").attr("src");
+					_this.find("img").attr("src",_this.find("img").attr("data-value")).attr("data-value",temp);	
+				});
+				
+				$(".li-ext").each(function(i, e) {
+					if(i>=0){
+						$(this).css({
+							top : -( i * 51) + "px"
+						})	
+					}
+				});
+				
+				$(".my-warpper-dialog").unbind("click").click(function(){
+					$(".my-warpper-dialog").fadeOut();
+					$(".my-nav-area").fadeOut();
+				})
+				
+				$(".my-nav-btn").each(function(i, e) {
+					$(this).unbind("click").click(function(){
+						$(".my-warpper-dialog").fadeIn();
+						$(".my-nav-area").fadeOut(0);
+						$(".my-nav-area").eq(i).fadeIn();
+					})
+				});
+				
+				$(".otherProduct").unbind("click").click(function(){
+					
+					var data = {
+						url : $(this).attr("data-url"),
+						title : $(this).attr("data-title")	
+					}
+					
+					$.mobile.changePage("#iframe-page","slide",data);
+				})
+				
+				$(".search-btn").unbind("click").click(function(){
+					if($(".search-area").hasClass("hidden")){
+						$(".search-area").removeClass("hidden");
+						$(".search-text").addClass("hidden");
+					}else{
+						$(".search-area").addClass("hidden");
+						$(".search-text").removeClass("hidden");	
+					}
+				})
+			});
+        </script>
+    
+        <div class="wb100">
+            <div class="wb100">
+                <div class="wb100 center h50px lh50px text-center Fgray-3 text-shadow-white1 F90em relative warpper-white" style="z-index:99999;">
+                	<div class="wb25 fl pointer my-nav-btn">
+                    	全部分类
+                        <img src="images/arrow-down.png">
+                    </div>
+                	<div class="wb25 fl pointer my-nav-btn">
+                    	附近
+                        <img src="images/arrow-down.png">
+                    </div>
+                	<div class="wb25 fl pointer my-nav-btn">
+                    	排序
+                        <img src="images/arrow-down.png">
+                    </div>
+                	<div class="wb25 fl pointer my-nav-btn">
+                    	筛选
+                        <img src="images/arrow-down.png">
+                    </div>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="wb90 pal5per par5per warpper-gray-1 h50px lh50px Fgray-3 bor-gray bor-solid-1b bor-solid-1t">
+                	当前：江北建新南路-建新东路
+                    <img src="images/icon-refresh.png" class="fr mat15 pointer">
+                </div>
+                
+               	<div class="my-warpper-dialog"></div>
+                <div class="my-list-nav bor-gray bor-solid-1t my-nav-area F80em">
+                	<ul class="ul-nav-second">
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-like.png" class="fl mat10" data-value="images/icon-like.png">
+                                今日新单
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-movie-2.png" class="fl mat10" data-value="images/icon-like.png">
+                                电影
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                       
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-food.png" class="fl mat15" data-value="images/icon-like.png">
+                                美食
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-hotal-2.png" class="fl mat10" data-value="images/icon-like.png">
+                                酒店
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-ktv.png" class="fl mat10" data-value="images/icon-like.png">
+                                休闲娱乐
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-health-2.png" class="fl mat10" data-value="images/icon-like.png">
+                                生活服务
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="li-pro">
+                                <img src="images/icon-shoe.png" class="fl mat10" data-value="images/icon-like.png">
+                                丽人
+                                <span class="fr warpper-gray-6 lh20px mat10 radius5 pa5 Fwhite">12</span>
+                            </div>
+                            <div class="li-ext">
+                                <div class="wb100">
+                                    <div class="wb90 pal5per par5per">
+                                        
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                        <p class="wb90 pal5per par5per  lh50px h50px bor-gray2 bor-solid-1b Fgray-3">
+                                        	<span class="fl">全部</span>
+                                            <span class="fr">11111</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="my-list-nav bor-gray bor-solid-1t my-nav-area F80em">
+                	<ul class="ul-nav-list">
+                    	<li>500m</li>
+                    	<li>1km</li>
+                    	<li>2km</li>
+                    	<li>5km</li>
+                    	<li>不限</li>
+                    </ul>
+                </div>
+                
+                <div class="my-list-nav bor-gray bor-solid-1t my-nav-area F80em">
+                	<ul class="ul-nav-list">
+                    	<li>销量最高</li>
+                    	<li>最新发布</li>
+                    	<li>离我最近</li>
+                    	<li>价格最低</li>
+                    	<li>不限</li>
+                    </ul>
+                </div>
+                
+                <div class="my-list-nav bor-gray bor-solid-1t my-nav-area F80em">
+                	<p class="  F125em lh35px h35px text-left warpper-white Fgray-3 pal2per">价格</p>
+                	<ul class="ul-nav-list">
+                    	<li>100以下</li>
+                    	<li>100-500</li>
+                    	<li>1000-1500</li>
+                    	<li>1500-2000</li>
+                    	<li>2000以上</li>
+                    </ul>
+                </div>
+                
+                <div class="clear1"></div>
+               	
+                <div class="wb95 center">
+                    <a href="detail-store.html" data-transition="slide" data-role="none">
+                        <div class="wb50 fl h130px img-area relative"><img src="images/product-11.jpg">
+                            <div class="my-tip-no-order"></div>
+                        </div>
+                    </a>
+                    <div class="wb43 mal3per fl">
+                        <p class="wb80 fl  text-left lh40px">亦谷2014新款....</p>
+                        <p class="wb15 fr  Fgray-2 text-right lh40px">0.1km</p>
+                        <div class="clear"></div>
+                        <p class=" Fgray-2 F80em lh20px">[观音桥] 双人套餐2选1，免费WIFI，免预约</p>
+                        <div class="clear1"></div>
+                        <p class="wb45 fl  Fgray-2 text-left lh25px"><span class="F150em Forange">120</span> 元</p>
+                        <p class="wb50 fr  Fgray-2 text-right F80em lh25px">已售8585</p>
+                    </div>
+                </div>
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+                <div class="clear1"></div>
+                <div class="wb95 center">
+                    <a href="detail-food.html" data-transition="slide" data-role="none">
+                        <div class="wb50 fl h130px img-area relative"><img src="images/product-11.jpg">
+                            <div class="my-tip-no-order"></div>
+                        </div>
+                    </a>
+                    <div class="wb43 mal3per fl">
+                        <p class="wb80 fl  text-left lh40px">午餐 1-2人套餐....</p>
+                        <p class="wb15 fr  Fgray-2 text-right lh40px">0.1km</p>
+                        <div class="clear"></div>
+                        <p class=" Fgray-2 F80em lh20px">[观音桥] 双人套餐2选1，免费WIFI，免预约</p>
+                        <div class="clear1"></div>
+                        <p class="wb45 fl  Fgray-2 text-left lh25px"><span class="F150em Forange">120</span> 元</p>
+                        <p class="wb50 fr  Fgray-2 text-right F80em lh25px">已售8585</p>
+                    </div>
+                </div>
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+                <div class="clear1"></div>
+                <div class="wb95 center">
+                  
+                    <div class="wb50 fl h130px img-area relative otherProduct pointer" data-url="http://map.baidu.com/?s=inf%26uid%3Ddc0f0adce3e48038f92213f6%26c%3D132&i=0&sr=1" data-title="芭菲盛宴环球美食"><img src="images/product-11.jpg">
+                        <div class="my-tip-no-order"></div>
+                    </div>
+                    <div class="wb43 mal3per fl">
+                        <p class="wb80 fl  text-left lh40px">芭菲盛宴环球美食</p>
+                        <p class="wb15 fr  Fgray-2 text-right lh40px">0.1km</p>
+                        <div class="clear"></div>
+                        <p class=" Fgray-2 F80em lh20px">[观音桥] 双人套餐2选1，免费WIFI，免预约</p>
+                        <div class="clear1"></div>
+                        <p class="wb45 fl  Fgray-2 text-left lh25px"><span class="F150em Forange">120</span> 元</p>
+                        <p class="wb50 fr  Fgray-2 text-right F80em lh25px">已售8585</p>
+                    </div>
+                </div>
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+                <div class="clear1"></div>
+                
+                <a href="javascript:void(0)" data-role="button" class="Fgray-2">加载更多</a>
+                 
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

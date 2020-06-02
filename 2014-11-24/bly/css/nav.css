@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+
+.nav{}
+.nav-left-item{ background:#000; text-align:center; color:#fff; font-size:18px; font-weight:600;}
+.nav-center-item{}
+.nav-right-item{}
+

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js?v=1"></script>
+
+    <title>登录</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| login_page
+| ------------------------------------------
+| Here are login_page html
+|
+-->
+<div id="login_page">
+
+    <layout-loader :show="showLoader"></layout-loader>
+
+    <div class="wb100 login_page_content hidden">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="'登录'"></en-header-new>
+
+        <div class="pa15">
+
+            <div class="wb100 h50px lh50px" style="border-bottom: 1px solid #f3f3f3;">
+                <div class="wb14 fl h30px lh30px mat10 mar5per" style="border-right: 1px solid #f3f3f3;">+86</div>
+                <input type="tel" class="bor-none wb80 h45px lh45px phone-num" v-model="mobile" placeholder="输入手机号" @change="phone" data-role="none">
+            </div>
+
+            <div class="wb100 h50px lh50px" style="border-bottom: 1px solid #f3f3f3;">
+                <input type="text" class="bor-none wb65 h45px lh45px fl code-num" v-model="code" placeholder="输入验证码" data-role="none">
+                <input type="button" data-role="none" class="warpper-none bor-none h45px lh45px wb30 fr code-btn" v-bind:class="lock ? 'Fgray-2' : 'Fblue'" :disabled="lock" @click="sendCode" :value="codeText">
+            </div>
+
+            <div class="clear h50px"></div>
+
+            <div class="wb100 h45px lh45px warpper-blue Fwhite F16 text-center radius20 btn-login" @click="login">登录</div>
+
+            <div class="clear h50px"></div>
+
+            <!--<div class="wb100 h10px bor-gray bor-solid-1b">-->
+                <!--<div class="w150px warpper-white center lh20px text-center Fgray-3 F14">-->
+                    <!--使用第三方登录-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+            <!--<div class="clear h50px"></div>-->
+
+            <!--<a :href="'wx_login.html?call='+call">-->
+                <!--<div class="wb100 h45px lh45px warpper-green Fwhite F16 text-center radius20">微信登录</div>-->
+            <!--</a>-->
+
+        </div>
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el: '#login_page',
+        data : {
+            mobile : "",
+            code : "",
+            resultCode : "",
+            call : "",
+            codeText : "获取验证码",
+            timeID : 0,
+            timer : 60,
+            lock : true,
+            showLoader : true,
+        },
+        methods : {
+            sendCode(){
+
+                let _this = this;
+
+                if(this.lock){
+                    return false;
+                }else{
+                    this.lock = true;
+                    baseAjax.sendCode(_this.mobile, 0, function (data) {
+                        if(data){
+                            _this.resultCode = data.returnJSON;
+                            _this.timeID = setInterval(_this.clock,1000);
+                        }
+                    })
+
+                }
+            },
+            phone(e){
+
+                if(e.target.value.length == 11)
+                    this.lock = false;
+                else
+                    this.lock = true;
+
+            },
+            clock(){
+                this.timer -- ;
+                this.codeText = this.timer+"秒后重发";
+
+                if(this.timer <= 0){
+                    clearInterval(this.timeID);
+                    this.timer = 60;
+                    this.codeText = "重发验证码";
+                }
+            },
+            login(){
+
+                let _this = this;
+
+                if(_this.resultCode != _this.code){
+                    layer.alert("验证码错误");
+                    return false;
+                }
+
+                baseAjax.phoneLoginIn(_this.mobile, _this.code, function(data){
+                    if(data){
+                        _this.call = base.getParmar("call");
+                        window.location.href = _this.call;
+                    }
+                })
+            }
+        },
+        created(){
+            let _this = this;
+
+            setTimeout(function(){
+                _this.showLoader = false;
+                $(".login_page_content").removeClass("hidden");
+            },ajaxConfig.lazy);
+        }
+    })
+
+</script>
+
+</body>
+</html>

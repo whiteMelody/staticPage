@@ -1,0 +1,999 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+<script>
+  $(function(){
+    $(".js-last").find("span:last").css("display","none");
+	  
+	$(".js-last-foot").find(".js-num-foot:last").css("margin-right","0px");	
+	  
+	$(".nav-menu a").click(function(){
+	  $(this).addClass("warpper-red-3").siblings().removeClass("warpper-red-3");
+	});
+     
+	$(".js-left-hover .js-ul-hover li a").click(function(){
+	  $(this).addClass("fc-orange01").parent().siblings().children().removeClass("fc-orange01");
+	  $(this).parent().parent().parent().siblings().find(".fc-orange01").removeClass("fc-orange01");
+	});
+	
+	$(".js-sec").find(".js-ord-select:first").addClass("borc-red-1")
+	$(".js-sec").find(".js-ord-select:first a").addClass("Fc-red02");
+	$(".js-ord-select a").click(function(){
+	  $(this).addClass("Fc-red02").parent().siblings().children().removeClass("Fc-red02");
+	  $(this).parent().addClass("borc-red-1").siblings().removeClass("borc-red-1");
+	});
+	
+  });
+</script>
+</head>
+
+<body>
+<!-- header -->
+<div class="header wb100">
+  <div class="top h30px lh30px F12 Fgray-3 bgc-gray-1 bor-solid-1b borc-gray-1">
+    <div class="w980px center">
+      <div class="fl">
+        <span>您好，欢迎光临本店！</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">登录</a>]</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">免费注册</a>]</span>
+      </div>
+      <div class="fr wb55">
+        <ul>
+          <li class="fl">
+            <a class="Fgray-3" href="javascript:void(0)">我的订单<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">用户中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">帮助中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">商家入住</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">收藏我们</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <p class="Fgray-3">服务热线：<span class="Fred-2 Fb">400-8000-800</span></p>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="w980px center pat20 pab20">
+      <div class="fl wb28">
+        <div class="fl wb60">
+          <a href="javascript:void(0)"><img src="images/logo.jpg"></a>
+        </div>
+        <div class="fl wb26 mal30">
+          <div class="mat10"><img class="middle mar5" src="images/bq-02.jpg"><span class="F14 Fb Fgray-3">重庆市</span></div>
+          <div class="mat10 bor-solid-1a bor-gray1 h25px lh25px text-center">
+            <a href="javascript:void(0)" class="F14 Fgray-2">切换城市</a>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="fl wb55 pat10">
+        <div class="wb80 center">
+          <div class="bor-solid-1a bor-red h35px lh35px">
+            <div class="wb15 fl text-center warpper-gray-1 h35px lh35px">
+              <a class="F12 Fgray-3 display-inline h35px lh35px wb100" href="javascript:void(0)">商品<img class="middle mal5" src="images/bq-01.jpg" />
+              </a>
+            </div>
+            <div class="fl wb65 h35px bor-gray-solid-1a lh35px F125em" >
+              <img class="middle pal10" src="images/bq-04.jpg" />
+              <input class="wb85 h25px lh25px Fgray-3 bor-none" type="text" placeholder="请输入关键字" />
+            </div>
+            <div class="fr wb20 text-center warpper-red-1" >
+              <a class="F18 Fwhite display-inline h35px lh35px wb100" href="javascript:void(0)">搜 索</a>
+            </div> 
+            <div class="clear"></div>
+          </div>
+          <div class="mat10">
+            <span class="F12 Fgray-2">热门搜索：</span>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">衣柜</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">卫浴</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱电</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">窗帘</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱柜定制</a>
+          </div>
+        </div>
+      </div>
+      <div class="fr wb17 pat10">
+        <div class="bor-solid-1a bor-gray1 h30px lh30px text-center warpper-gray-1 wb100">
+          <a class="F14 Fgray-3" href="javascript:void(0)"><img class="middle mar15" src="images/bq-03.jpg">去购物车结算<img class="middle mal10" src="images/bq-019.jpg" /></a>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="nav wb100 h40px warpper-red-2">
+    <div class="w980px center h40px lh40px">
+      <div class="fl wb18 relative">
+        <div class="wb100 absolute h46px lh50px text-center top6 warpper-red-5">
+          <img class="absolute left5" src="images/ml.jpg">
+          <span class="F16 Fb Fwhite">全部商品分类</span>
+          <img class="absolute right5" src="images/mr.jpg">
+        </div>
+      </div>
+      <div class="fr wb18 warpper-red-3">
+        <div class="wb100 text-center h40px">
+          <img src="images/bq-05.jpg">
+          <a class="F15 Fb Fwhite mal10" href="javascript:void(0)">居家秀</a>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fr wb64 nav-menu">       
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px warpper-red-3" href="javascript:void(0)">首页</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">限时购</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">积分兑换</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">品牌体验馆</a>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- body -->
+<div class="body">
+  <div class="w980px center">
+    <div class="wb100 h80px img-area mat10"><a href="javascript:void(0)"><img src="images/tp-084.jpg"></a></div>
+    <div class="mat10">
+      <div class="fl wb20">
+        <div class="bor-solid-1a borc-gray-2 bor-top-none relative">
+          <div class="bg-img-26 h40px absolute pat10 text-center left-7" style="width:202px;">
+            <a class="F18 Fwhite" href="javascript:void(0)">我的居家策</a>
+            <span class="F10 Fwhite">USER CENTER</span>
+          </div>
+          <div class="left-hover" style="padding-top:43px;">
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-091.png"><span class="F14 Fb Fgray-3 middle mal15">交易管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的购物车</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的收藏</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的评价</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-092.png"><span class="F14 Fb Fgray-3 middle mal15">账户信息</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">个人资料</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">账户安全</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">收货地址管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的积分</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-093.png"><span class="F14 Fb Fgray-3 middle mal15">文章管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">立即发布文章</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我发布的文章</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-094.png"><span class="F14 Fb Fgray-3 middle mal15">客服服务</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">在线留言</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">客服咨询</a></li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>
+      <div class="fr wb78 pab30">
+        <div class="">
+          <div class="h40px lh40px"><span class="F18 mal20">订单管理</span></div>
+          <div class="bor-solid-3t borc-red-1"></div>
+        </div>
+        <div class="bor-solid-2b borc-gray-2 relative h50px">
+          <div class="absolute wb100 js-sec">
+            <div class="fl pal20 par20 pat25 bor-solid-2b borc-gray-2 h25px js-ord-select">
+              <a class="F14 Fb Fgray-3" href="javascript:void(0)">所有订单</a>
+            </div>
+            <div class="fl pat25">
+              <span class="F14 Fgray-3">|</span>
+            </div>
+            <div class="fl pal20 par20 pat25 bor-solid-2b borc-gray-2 h25px js-ord-select">
+              <a class="F14 Fb Fgray-3" href="javascript:void(0)">待付款</a><span class="F14 Fb Fred-1 mal5">0</span>
+            </div>
+            <div class="fl pat25">
+              <span class="F14 Fgray-3">|</span>
+            </div>
+            <div class="fl pal20 par20 pat25 bor-solid-2b borc-gray-2 h25px js-ord-select">
+              <a class="F14 Fb Fgray-3" href="javascript:void(0)">待发货</a><span class="F14 Fb Fred-1 mal5">0</span>
+            </div>
+            <div class="fl pat25">
+              <span class="F14 Fgray-3">|</span>
+            </div>
+            <div class="fl pal20 par20 pat25 bor-solid-2b borc-gray-2 h25px js-ord-select">
+              <a class="F14 Fb Fgray-3" href="javascript:void(0)">待收货</a><span class="F14 Fb Fred-1 mal5">0</span>
+            </div>
+            <div class="fl pat25">
+              <span class="F14 Fgray-3">|</span>
+            </div>
+            <div class="fl pal20 par20 pat25 bor-solid-2b borc-gray-2 h25px js-ord-select">
+              <a class="F14 Fb Fgray-3" href="javascript:void(0)">待评价</a><span class="F14 Fb Fred-1 mal5">0</span>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="pal20 pat15">
+         <form> 
+          <div class="fl mar10 lh25px"><span class="F14 Fb Fc-red02">查找订单</span></div>
+          <div class="fl wb20 mar5">
+            <select class="F12 Fgray-3 bor-solid-1a borc-gray-2 h25px wb100">
+              <option>所有订单</option>
+              <option>待付款</option>
+              <option>待发货</option>
+              <option>待收货</option>
+              <option>待评价</option>
+            </select>
+          </div>
+          <div class="fl wb40">
+            <input type="text" class="F12 Fgray-3 bor-solid-1a borc-gray-2 lh25px pal5 mar5 wb70">
+            <a class="F14 Fwhite display-inline h25px lh25px warpper-red-5 wb20 text-center" href="javascript:void(0)">查 询</a>
+          </div>
+          <div class="clear"></div>
+         </form> 
+        </div>
+        <div class="bor-solid-1a borc-gray-2 bgc-gray-1 lh35px mat15">
+          <div class="fl wb41 text-center"><span class="F12 Fgray-3">商品信息</span></div>
+          <div class="fl wb11 text-center"><span class="F12 Fgray-3">单价（元）</span></div>
+          <div class="fl wb6 text-center"><span class="F12 Fgray-3">数量</span></div>
+          <div class="fl wb15 text-center"><span class="F12 Fgray-3">实付款</span></div>
+          <div class="fl wb13 text-center"><span class="F12 Fgray-3">交易状态</span></div>
+          <div class="fl wb13 text-center"><span class="F12 Fgray-3">操作</span></div>
+          <div class="clear"></div>
+        </div>
+        <div class="pal15 par15 mat10">
+          <div class="fl pat5">
+            <input type="checkbox" class="middle"><span class="F12 Fgray-3 middle mal5">全选</span>
+          </div>
+          <div class="fr">
+            <a class="display-inline w50px lh20px bor-solid-1a borc-gray-2 text-center F12 Fgray-3" href="javascript:void(0)">上一页</a>
+            <a class="display-inline w50px lh20px bor-solid-1a borc-gray-2 text-center F12 Fgray-3" href="javascript:void(0)">下一页</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+        <div class="mat10">
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-3">交易成功</span></p>
+                  <p class="mat10"><span class="F12 Fgray-3">已评价</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fblue">查看详情</a></p>
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fgray-2 display-inline h25px lh25px bor-solid-1a borc-gray-2 pal10 par10"><img class="middle" src="images/tp-096.jpg"><span class="middle mal5">还要买</span></a></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-3">交易成功</span></p>
+                  <p class="mat10"><span class="F12 Fgray-3">已评价</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fblue">查看详情</a></p>
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fgray-2 display-inline h25px lh25px bor-solid-1a borc-gray-2 pal10 par10"><img class="middle" src="images/tp-096.jpg"><span class="middle mal5">还要买</span></a></p>
+                </td>
+              </tr>
+            </table>
+          </div> 
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-3">交易成功</span></p>
+                  <p class="mat10"><span class="F12 Forange-1">未评价</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fblue">查看详情</a></p>
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fgray-2 display-inline h25px lh25px bor-solid-1a borc-gray-2 pal10 par10"><img class="middle" src="images/tp-096.jpg"><span class="middle mal5">还要买</span></a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">等待买家付款</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-orange-1 pal10 par10 radius5">立即付款</a></p>
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fblue">取消订单</a></p>
+                </td>
+                
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待发货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-red pal10 par10 radius5">联系卖家</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mab10">
+            <div class="pal20 par20 h30px lh30px bor-solid-1a borc-gray-2 bgc-yellow01 bor-bottom-none">
+              <div class="fl">
+                <input type="checkbox" class="middle mar10">
+                <span class="F12 Fb Fgray-3 middle">2014-12-25</span>
+                <span class="F12 Fgray-3 mal20">订单号：</span>
+                <span class="F12 Fblue">7848799998</span>
+                <span class="F12 Fb Fgray-3 mal50 pal20">极美家居</span>
+              </div>
+              <div class="fr pat7">
+                <a href="javascript:void(0)"><img src="images/tp-097.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <table width="100%" class="bor-solid-1a borc-gray-2">
+              <tr>
+                <td class="wb34  bor-solid-1a borc-gray-2">
+                  <div class="pa20">
+                    <div class="fl wb32 h85px img-area">
+                      <a href="javascript:void(0)"><img src="images/tp-082.jpg"></a>
+                    </div>
+                    <div class="fr wb63">
+                      <p class="h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">当天送 重庆特价热卖 双人布艺沙发床/榻榻米折叠沙发床</a></p>
+                      <p class="mat10 lh15px"><span class="F12 Fgray-2">颜色分类: 一米定制五天包装长度: 1.5米以下</span></p>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Fgray-2 FLine">￥6689</span></p>
+                  <p class="mat10"><span class="F14 Fgray-3">￥4689</span></p>
+                </td>
+                <td class="wb5 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <span class="F12 Fgray-3">1</span>
+                </td>
+                <td class="wb13 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F14 Fgray-3">￥4709</span></p>
+                  <p class="mat10"><span class="F12 Fgray-2">（含运费：<span class="Forange-1">22</span>元）</span></p>
+                </td>
+                <td class="wb10 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p><span class="F12 Forange-1">待收货</span></p>
+                </td>
+                <td class="wb12 bor-solid-1a borc-gray-2" valign="middle" align="center">
+                  <p class="mat10"><a href="javascript:void(0)" class="F12 Fwhite display-inline h25px lh25px warpper-blue pal10 par10 radius5">确认收货</a></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mat10">
+          <div class="fl pat5">
+            <input type="checkbox" class="middle"><span class="F12 Fgray-3 middle mal5">全选</span>
+          </div>
+          <div class="fr">
+            <div class="">
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">上一页</a>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">1</a>
+              <span class="F12 Fwhite bor-solid-1a borc-red-1 warpper-red-2 display-inline h25px lh25px w25px text-center mar5">2</span>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">3</a>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">4</a>
+              <span class="F12 Fgray-3 display-inline h25px lh25px mar5">...</span>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">10</a>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">下一页</a>
+              <span class="F12 Fgray-3 display-inline">共10页 到第</span>
+              <input type="text" class="h25px lh25px text-center bor-solid-1a borc-gray-2 w50px F12 Fgray-3">
+              <span class="F12 Fgray-3 display-inline">页</span>
+              <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mal10 bgc-gray-1" href="javascript:void(0)">确定</a>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="footer mat25"> 
+  <div class="wb100 warpper-red-4">
+    <div class="js-last-foot w980px center h92px">
+      <div class="js-num-foot fl mar50 pat25">
+        <div class="wb100">
+          <div class="fl">
+            <img src="images/ft-01.png">
+          </div>
+          <div class="fr mal10">
+            <p class="h20px lh20px"><span class="F14 Fwhite">正规渠道 正品行货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">购物有保障</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="js-num-foot fl mar50 pat25">
+        <div class="wb100">
+          <div class="fl">
+            <img src="images/ft-02.png">
+          </div>
+          <div class="fr mal10">
+            <p class="h20px lh20px"><span class="F14 Fwhite">网站 门店多渠道购物</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">货到付款</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="js-num-foot fl mar50 pat25">
+        <div class="wb100">
+          <div class="fl">
+            <img src="images/ft-03.png">
+          </div>
+          <div class="fr mal10">
+            <p class="h20px lh20px"><span class="F14 Fwhite">48小时价格保护</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">降价可退差额</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="js-num-foot fl mar50 pat25">
+        <div class="wb100">
+          <div class="fl">
+            <img src="images/ft-04.png">
+          </div>
+          <div class="fr mal10">
+            <p class="h20px lh20px"><span class="F14 Fwhite">先行赔付</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">一站式售后服务</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="js-num-foot fl mar50 pat25">
+        <div class="wb100">
+          <div class="fl">
+            <img src="images/ft-05.png">
+          </div>
+          <div class="fr mal10">
+            <p class="h20px lh20px"><span class="F14 Fwhite">七天无理由退货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">15天换货</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="w980px center">
+    <div class="mat30">
+      <div class="fl wb80">
+        <ul>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-2 pal25">关于我们</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">居家介绍</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网站快讯</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-3 pal25">新手指南</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">会员注册</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">购物流程</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">买家指南</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">找回密码</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-4 pal25">支付/配送</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">商品验货与签收</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">配送时间与范围</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">支付常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网上支付</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-5 pal25">售后服务</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">7天低价保证政策</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">退换货政策</a></p>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="fr wb20">
+        <div class="text-center">
+          <p><span class="F16 Fgray-3">居家策官方微信</span></p>  
+          <p class="mat25"> <img src="images/erweima.jpg" /> </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="bor-solid-1b bor-gray2 mat50 mab20"></div>
+    <div class="text-center h20px lh20px js-last">
+      <a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">广告服务</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">新闻公告</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">意见反馈</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">诚聘英才</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+    </div>
+    <div class="text-center mat10">
+      <p class="F12 Fgray-2 mab10">经营许可证：B2-20100288 备案许可证：苏 出版经营许可证：苏</p>
+      <p class="F12 Fgray-2">居家策 JUJIACE.COM 版权所有</p>
+    </div>
+    <div class="mat20 text-center mab50">
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-07.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-08.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-09.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-010.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-011.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-012.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-013.jpg" /></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

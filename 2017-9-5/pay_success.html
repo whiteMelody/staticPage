@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/hostSdk.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>支付成功</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| pay_success_page
+| ------------------------------------------
+| Here are pay_success_page html
+|
+-->
+
+<div id="pay_success_page">
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100 text-center lh25px">
+        <img src="images/true.png" class="w80px" style="margin-top: 80px">
+        <p class="F18 Fblack mat20">支付成功</p>
+        <p class="Fgray-3 F14">快去竞猜赢金币吧</p>
+
+        <div class="clear h10px"></div>
+
+        <a href="javascript:;" @click="myReplace">
+            <div class="pa15 ">
+                <div class="wb100 bor-green bor-solid-1a Fgreen h45px lh45px text-center radius5 F16 center" style="width: 200px">
+                    返回首页
+                </div>
+            </div>
+        </a>
+
+
+        <div class="wb100 text-center Fgray-2 lh25px F14" style="margin-top: 40px;">
+            <p class="Fgray-2 F14">大家都在竞猜</p>
+            <div class="clear h5px"></div>
+            <a href="javascript:;" @click="redirect">
+                <div class=" h60px lh15px center pa15 warpper-white text-center Fblack" style="width: 240px">
+                    <div class="w100px fl">
+                        <img :src="recommend.homeTeamLogo" class="w30px h30px mat5">
+                        <p class="mat10 wb100 h15px lh15px text-over-hidden1 F14">{{cutStrForNum(recommend.homeTeam,5)}}</p>
+                    </div>
+                    <div class="w40px fl">
+                        <img src="images/icon-vs2.png" class="h16px " style="margin-top: 13px">
+                    </div>
+                    <div class="w100px fl">
+                        <img :src="recommend.visitingTeamLogo" class="w30px h30px mat5">
+                        <p class="mat10 wb100 h15px lh15px text-over-hidden1 F14">{{cutStrForNum(recommend.visitingTeam,5)}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#pay_success_page",
+        data: {
+            fullscreenLoading: true,
+            recommend: {
+                homeTeam: '',
+                visitingTeam:''
+            },
+            matchID:""
+        },
+        methods: {
+            //回首页
+            myReplace : function myReplace() {
+                if(base.versions.isIosApp || base.versions.isAndroidApp){
+                    hostsdk.openUrl({
+                        type:"push",
+                        url:"PushHostGuess",
+                        errorCallback : function(res){}
+                    });
+                    return false;
+                }
+            },
+
+            cutStrForNum: function cutStrForNum(str, num) {
+                if (str.length > num) {
+                    return str.substring(0, num) + '...';
+                } else {
+                    return str;
+                }
+            },
+
+            //回竞猜
+            redirect : function redirect() {
+                var _this = this;
+                if(base.versions.isIosApp || base.versions.isAndroidApp){
+                    hostsdk.openUrl({
+                        type:"push",
+                        url:"PushGuess",
+                        params:{"matchID":_this.matchID},
+                        errorCallback : function(res){}
+                    });
+                    return false;
+                }
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            base.setCookie('paymentNo', null);
+            base.setCookie('payIng', null);
+            base.setCookie('payType', null);
+            base.setCookie('payMoney', null);
+
+            //获取推荐赛事
+            baseAjax.recommendMatchInfo(function (data) {
+                if(data){
+                    if(!base.isNull(data.returnJSON)){
+                        _this.recommend = data.returnJSON;
+                        _this.matchID = data.returnJSON.matchID;
+                    }
+                }
+            });
+
+            initHostSdk(function (res) {
+                console.info(res);
+//                _this.isLoaded = true;
+//
+//                _this.uuid = res.uuid;
+//
+//                _this.deviceID = res.deviceID;
+//
+//                _this.source = res.source;
+//
+//                _this.deviceType = res.deviceType;
+            });
+        }
+    });
+
+</script>
+
+</body>
+</html>

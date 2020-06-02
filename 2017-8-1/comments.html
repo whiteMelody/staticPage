@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/sign.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>更多评论</title>
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| comments_page
+| ------------------------------------------
+| Here are comments_page html
+|
+-->
+<div id="comments_page">
+
+
+    <div class="comments_page_content hidden wb100">
+
+        <en-header-new :back="true" :home="true" :white="true" :title="'更多评论'"></en-header-new>
+
+        <div class="dialogBg" @click="closeComment"></div>
+
+        <div class="commBg" style="width: 300px; display: none; z-index: 999999; height: 200px; background: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; margin: auto; padding: 15px; border: 1px solid #e1e1e1;">
+            <p class="h30px lh30px">添加评论</p>
+
+            <div class="clear1"></div>
+
+            <el-input
+                    type="textarea"
+                    :rows="4"
+                    placeholder="请输入内容"
+                    v-model="commentVal">
+            </el-input>
+
+            <div class="clear1"></div>
+
+            <div class="wb100 h40px lh40px warpper-blue Fwhite F16 text-center radius5" @click="submitComment">评论</div>
+
+        </div>
+
+        <div class="pa15">
+
+            <p class="lh30px">
+                <span class="fl">评论</span>
+                <span class="fr Fblue" @click="openComment">我要评论 > </span>
+            </p>
+
+            <div class="clear1"></div>
+
+            <div class="wb100" v-for="(item,key) in comments">
+
+                <div class="wb100">
+
+                    <div class="w50px h100px fl">
+                        <div class="img-area w50px h50px relative">
+                            <img :src=" item.userIconURL ? item.userIconURL +'?x-oss-process=image/resize,m_fixed,h_100,w_100' : 'images/head-default.png'" class="radius50per" />
+                            <img src="images/img-vip.png" v-if="item.vip>0" style="position: absolute; width: 27px; height: 12px; margin: 0 auto; left: 0; right: 0; bottom:0; z-index: 9;">
+                        </div>
+                    </div>
+
+                    <div class="Fgray-3">
+                        <p class="lh30px h30px over-hidden pal15 F16 Fblack">
+                            <span class="fl">{{item.nickName}}</span>
+                            <span class="fr Fgray-2 F14 mal5 mar15">({{item.praiseCount}})</span>
+                            <b class="img-area fr" style="width: 18px; height: 18px; margin-top: 2px;">
+                                <img src="images/icon-zaned.png" v-if="item.zaned">
+                                <img src="images/icon-zan.png" v-else @click="zan(item.commentID,key)" ref="refZan">
+                            </b>
+                        </p>
+                        <p class="lh30px h30px over-hidden pal15 F12 Fblack Fgray-2">{{item.commentTime}}</p>
+                        <p class="F14 lh20px h40px text-over-hidden2 pal15 par10">{{item.comment}}</p>
+                    </div>
+                </div>
+                <div class="clear1 bor-gray bor-solid-1b"></div>
+                <div class="clear1"></div>
+
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+                <img src="images/loading-2.gif" v-show="nodata" class="h20px fl">
+                <span class="fl mal10">{{loadtext}}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <en-statistics></en-statistics>
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el : "#comments_page",
+        data : {
+            showLoader : true,
+            comments : [],
+            channelID : "",
+            page : 0,
+            pageSize : 20,
+            loading : true,
+            loadtext : '数据加载中',
+            nodata : false,
+            commentVal : "",
+        },
+        methods : {
+            openComment(){
+
+                let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+
+                if(base.isNull(userInfo)){
+                    if(base.versions.isWeiXin){
+                        layer.confirm('您还没有登录，前去登录吗？', {
+                            btn: ['好的','取消'] //按钮
+                        }, function(){
+                            //前去登录
+                            let call = window.location.href;
+                            window.location.href = 'wx_login.html?call='+call;
+                        }, function(){
+                            //取消登录
+                        });
+                    }else{
+                        layer.alert("请在微信里打开，使用评论功能");
+                    }
+                    return false;
+                }
+
+                $(".dialogBg").show(0);
+                $(".commBg").show(0);
+            },
+            submitComment(){
+                let _this = this;
+                if(base.isNull(_this.commentVal)){
+                    layer.alert("请输入评论");
+                    return false;
+                }
+                baseAjax.commentChannel(_this.channelID, '', _this.commentVal ,function(data){
+                    if(data){
+                        layer.alert("评论成功");
+                    }
+                    _this.closeComment();
+                    _this.comments = [];
+                    _this.page = 0;
+                    _this.getData();
+                });
+
+            },
+            closeComment(){
+                $(".dialogBg").hide(0);
+                $(".commBg").hide(0);
+            },
+
+            getData(){
+                let _this = this;
+                _this.page ++;
+                _this.loading = true;
+
+                baseAjax.commentListByID(_this.page, _this.pageSize, _this.channelID, function (data) {
+
+                    if(data.returnJSON.indexData.length == 0){
+                        _this.loading = true;
+                        _this.loadtext = '暂无更多数据';
+                        return false;
+                    }
+                    _this.comments = _this.comments.concat(data.returnJSON.indexData);
+                    _this.loading = false;
+                    for(let i=0; i<_this.comments.length; i++){
+                        if(window.localStorage.getItem(_this.channelID +"-" + _this.comments[i].commentID)){
+                            _this.comments[i].zaned = true;
+                        }
+                    }
+
+                })
+            },
+
+            zan(commentID,index){
+
+                let _this = this;
+                //赞
+                baseAjax.commentPraise(commentID,function(data){
+                    if(data){
+                        _this.zaned = true;
+                        _this.comments[index].zaned = true;
+                        Vue.set( _this.comments, index,  _this.comments[index]);
+                        window.localStorage.setItem(_this.channelID +"-" + commentID,true);
+                    }
+                })
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.channelID = base.getParmar("channelID");
+
+            if(base.isNull(_this.channelID)){
+                layer.alert("缺少频道ID");
+                return false;
+            }
+
+            //获取评论
+
+            _this.getData();
+            $(window).scroll(function(){
+                if(_this.nodata)
+                    return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if(scrollTop + windowHeight == scrollHeight){
+                    _this.getData();
+                }
+            });
+
+            setTimeout(function(){
+                _this.showLoader = false;
+                $(".comments_page_content").removeClass("hidden");
+            },ajaxConfig.lazy);
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

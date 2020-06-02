@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>司仪</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/sy.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider1').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+		
+		
+		var glide = $('.slider2').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav2",//主导航器外部div类名
+			navItemClass:"slider-nav__item2", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current2" //被选中后的样式
+		});
+		
+	})
+
+</script>
+</head>
+
+<body class="bg-paper">
+	
+    <div class="wb100 h90px box-shadow-white2 bor-white2 bor-solid-1b warpper-nav">
+    	<div class="w1200px fixed-center h90px lh90px center text-center">
+        	<img src="images/logo.png" class="middle">
+            <a href="javascript:void(0)" class="brown fr F200em">在线预约</a>
+        </div>
+    </div>
+    
+   <div class="left-menu">
+        <div class="left-nav">
+        	<ul class="ul-left-nav">
+            	<li>
+                	<img src="images/icon-home.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-cafe.png">
+                    <p>旅游</p>
+                </li>
+            	<li class="li-hover">
+                	<img src="images/icon-guidepost.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-pc.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-car.png">
+                    <p>旅游</p>
+                </li>
+            	<li>
+                	<img src="images/icon-hotal.png">
+                    <p>旅游</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wb100 h100 img-Harea relative">
+    	<div class="slider slider1">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-1.png"></li>
+                <li class="slide"><img src="images/banner-1.png"></li>
+                <li class="slide"><img src="images/banner-1.png"></li>
+                <li class="slide"><img src="images/banner-1.png"></li>
+            </ul>
+        </div>
+        <div class="bg-title-2 nav-btn">
+        	<p class="wb18 center h40px lh40px text-center Fwhite warpper-red-8 F150em pointer">了解详情</p>
+        </div>
+    </div>
+	
+    <div class="wb100 pat100 pab100">
+    	<div class="clear"></div>
+        <div class="w1200px center">
+        	<div class="wb100 img-Harea text-center">
+            	<img src="images/car-img-1.png">
+            </div>
+            <div class="clear1"></div>
+            <p class="text-center Fgray-2 F150em lh40px">您即时的专属司机。几分钟内就有一辆豪华轿车出现在您的上车地点。</p>
+            <div class="clear1"></div>
+            <div class="relative z99">
+                <ul class="ul-car-nav img-Harea">
+                    <li><img src="images/car-img-2.png" class="middle"></li>
+                    <li><img src="images/car-img-3.png" class="middle"></li>
+                    <li><img src="images/car-img-4.png" class="middle"></li>
+                    <li><img src="images/car-img-2.png" class="middle"></li>
+                    <li><img src="images/car-img-3.png" class="middle"></li>
+                    <li><img src="images/car-img-4.png" class="middle"></li>
+                    <li><img src="images/car-img-2.png" class="middle"></li>
+                </ul>
+                <ul class="ul-car-nav" style="position:absolute;">
+                    <li class="li-hover"></li>
+                    <li class="warpper-black-tran2"></li>
+                    <li class="warpper-black-tran2"></li>
+                    <li class="warpper-black-tran2"></li>
+                    <li class="warpper-black-tran2"></li>
+                    <li class="warpper-black-tran2"></li>
+                    <li class="warpper-black-tran2"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>        
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 h100 img-Harea relative">
+    	<div class="w1200px absolute pat100 text-center z99 fixed-center lh35px Fwhite F200em">
+            <div class="wb100">
+                <img src="images/icon-camera.png">
+                <div class="clear h50px"></div>
+                <p>你是否需要简单的页面,引人注目的画廊、专业博客,或一个在线商店,都是包含在你的</p>
+                <p>wed网站。最重要的是一切都是</p>
+                <p>惯于使用手机从一开始就与你wed网站</p>                
+            </div>
+    	</div>
+    	<div class="slider slider2">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-7.jpg"></li>
+                <li class="slide"><img src="images/banner-7.jpg"></li>
+                <li class="slide"><img src="images/banner-7.jpg"></li>
+                <li class="slide"><img src="images/banner-7.jpg"></li>
+            </ul>
+        </div>
+        
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 pat100 pab100">
+    	<div class="w1200px center F175em text-center Fgray-2 lh30px">
+        	<p class="Fgray-3 F200em">WED MC 应用程序</p>
+            <div class="clear1"></div>
+            <p>我们相信在各种不同的人员带来创造性的技能,思想,和想法。装酷,我们很棒,与我们今天,真的</p>
+            <p>好吗?</p>
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="wb25 mal4per mar4per fl img-Warea">
+            	<img src="images/service-img-1.jpg">
+                <div class="clear1"></div>
+                <p class="Fgray-3 F125em">安全放心</p>
+                <p class="Fgray-2 F80em">等您来定>></p>
+            </div>
+            <div class="wb25 mal4per mar4per fl img-Warea">
+            	<img src="images/service-img-1.jpg">
+                <div class="clear1"></div>
+                <p class="Fgray-3 F125em">安全放心</p>
+                <p class="Fgray-2 F80em">等您来定>></p>
+            </div>
+            <div class="wb25 mal4per mar4per fl img-Warea">
+            	<img src="images/service-img-1.jpg">
+                <div class="clear1"></div>
+                <p class="Fgray-3 F125em">安全放心</p>
+                <p class="Fgray-2 F80em">等您来定>></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    
+    <div class="wb100 h90px lh90px text-center warpper-white-1 F150em Fbrown-2">
+    	<span>版权所有 © 2014 重庆壹比壹有限公司</span>              <span class="mal30">Map | Tag WED CM唯一官网：http://www.XXXX.com/ 京ICP备12018289号</span>
+    </div>
+    
+</body>
+</html>

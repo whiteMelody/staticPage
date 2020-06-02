@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jujiace.js" type="text/javascript"></script>
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+<script>
+  $(function(){
+	$(".js-left-hover .js-ul-hover li a").click(function(){
+	  $(this).addClass("fc-orange01").parent().siblings().children().removeClass("fc-orange01");
+	  $(this).parent().parent().parent().siblings().find(".fc-orange01").removeClass("fc-orange01");
+	});
+  });
+</script>
+</head>
+
+<body>
+<!-- header -->
+
+<!-- body -->
+<div class="body">
+  <div class="w980px center">
+    <div class="mat10">
+      <!--<div class="fl wb20">
+        <div class="bor-solid-1a borc-gray-2 bor-top-none relative">
+          <div class="bg-img-26 h40px absolute pat10 text-center left-7" style="width:202px;">
+            <a class="F18 Fwhite" href="javascript:void(0)">我的居家策</a>
+            <span class="F10 Fwhite">USER CENTER</span>
+          </div>
+           <div class="left-hover" style="padding-top:43px;">
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-091.png"><span class="F14 Fb Fgray-3 middle mal15">交易管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的购物车</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的收藏</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的评价</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-092.png"><span class="F14 Fb Fgray-3 middle mal15">账户信息</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">个人资料</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">账户安全</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">收货地址管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我的积分</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-093.png"><span class="F14 Fb Fgray-3 middle mal15">文章管理</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">立即发布文章</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">我发布的文章</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-gray-3 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-094.png"><span class="F14 Fb Fgray-3 middle mal15">客服服务</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">在线留言</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">客服咨询</a></li>
+              </ul>
+            </div>
+            <div class="js-left-hover">
+              <div class="lh40px bgc-red01 bor-solid-1b bor-solid-1t borc-gray-2">
+                <img class="middle mal25" src="images/tp-098.png"><span class="F14 Fb Fwhite middle mal15">我的店铺</span>
+              </div>
+              <ul class="pal50 pab20 bgc-gray-1 js-ul-hover left-hover">
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">商品管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">分类管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">品牌管理 </a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">咨询管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">订单管理</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">店铺设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">主题设置</a></li>
+                <li class="pat15 pal10"><a class="F12 Fgray-3" href="javascript:void(0)">导航管理</a></li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>-->
+      <div class="fl wb20">左侧菜单</div>
+      
+      <div class="fr wb78 pab30">
+        <div class="h40px lh40px"><span class="F18 mal20">我的居家策</span></div>
+        <div class="bor-solid-3t borc-red-1 bgc-gray-1">
+          <div class="bor-solid-1a borc-gray-2 bor-top-none pal10 par10 pat15 pab15">
+            <div class="fl wb68">
+              <div class="fl wb23 h110px img-area">
+                <img class="bor-solid-1a borc-gray-1" src="images/tp-085.jpg">
+              </div>
+              <div class="fr wb76">
+                <div class="mat10 pal10">
+                  <span class="F16 Fgray-3">serena1988</span>
+                </div>
+                <div class="mat15 pal10">
+                  <span class="F12 Fgray-3">店铺名称：</span>
+                  <a href="javascript:void(0)" class="F12 Fblue">极美家居</a>
+                  <a class="F12 Fblue mal50" href="javascript:void(0)">管理店铺</a>
+                </div>
+                <div class="mat15 pal10">
+                  <span class="F12 Fgray-3">帐户余额：</span>
+                  <span class="F12 Fred">30.00</span>
+                </div>
+                <div class="mat15 pal10">
+                  <span class="F12 Fgray-3">账号安全评分：</span>
+                  <span class="F12 Fgray-3">您的账号安全评分为 <font class="Fred">60</font> 分 ，请点此<a class="F12 Fblue" href="javascript:void(0)">提升分数</a>。</span>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="fr bor-dotted-1l borc-gray-2 wb31 h110px">
+              <div class="pal50 F12 Fgray-3 pat5">
+                <p class="mab15"><span class="mar10 Fb">店铺动态评分</span>与同行业相比</p>
+                <p class="mab10">描述相符：暂无评分</p>
+                <p class="mab10">服务质量：暂无评分</p>
+                <p class="mab10">发货速度：暂无评分</p>
+              </div>
+            </div>
+            <div class="clear"></div>
+            
+          </div>
+        </div>
+        <!-- 店铺提醒 -->
+        <div class="bor-solid-1a borc-gray-2 mat10">
+          <div class="h30px lh30px bor-solid-1b borc-gray-2 bgc-gray-3 pal20">
+            <span class="F14 Fgray-3 Fb">店铺提醒</span> 
+          </div>
+          <div class="pa25 bgc-gray-1">
+            <div class="fl F12 Fgray-3">
+              <p class="mab10">宝贝管理：出售中的宝贝（<span class="Fred">10</span>）</p>
+              <p class="mab10">你有<span class="Fred">0</span>个待处理订单，请尽快到“已提交订单”中处理！</p>
+              <p>你有<span class="Fred">0</span>个待发货订单，请尽快到“待发货订单”中处理！</p>
+            </div>
+            <div class="fl wb15 mal50">
+              <div class="radius5 bor-solid-1a borc-gray-2 bgc-gray-2 lh30px h30px text-center">
+                <a href="javascript:void(0)" class="F12 Fgray-3">查看我的店铺</a>
+              </div>
+              <div class="radius5 bor-solid-1a borc-gray-2 bgc-gray-2 lh30px h30px text-center mat10">
+                <a href="javascript:void(0)" class="F12 Fgray-3">查看我的订单</a>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <!-- 您近期的服务情况 -->
+        <div class="bor-solid-1a borc-gray-2 mat10">
+          <div class="h30px lh30px bor-solid-1b borc-gray-2 bgc-gray-3 pal20">
+            <span class="F14 Fgray-3 Fb">您近期的服务情况</span> 
+          </div>
+          <div class="pa25 bgc-gray-1">
+            <div class="">
+              
+            </div>
+            <div class="F12 Fgray-3">
+              <table width="100%" class="">
+                <tr>
+                  <td align="center" valign="middle" class="wb15 h30px">&nbsp;</td>
+                  <td align="center" valign="middle" class="wb19 h30px">成交笔数</td>
+                  <td align="center" valign="middle" class="wb22 h30px">成交金额</td>
+                  <td align="center" valign="middle" class="wb22 h30px">成交用户数</td>
+                  <td align="center" valign="middle" class="wb22 h30px">退款订单量</td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb15 h30px">昨日</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb19 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0.00</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                </tr>
+                 <tr>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb15 h30px">前日</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb19 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0.00</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                </tr>
+                 <tr>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb15 h30px">上周同期</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb19 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0.00</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                  <td align="center" valign="middle" class="bor-solid-1a borc-gray-2 wb22 h30px">0</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- 已购商品 -->
+        <div class="bor-solid-1a borc-gray-2 mat10">
+          <div class="h30px bor-solid-1b borc-gray-2 bgc-gray-3">
+            <div class="fl wb20 bor-solid-3t borc-red-1">
+              <div class="bor-solid-1r borc-gray-2 lh28px warpper-white text-center">
+                <span class="F14 Fgray-3 Fb">已购商品</span>                
+              </div>
+            </div>
+            <div class="fr lh30px par15">
+              <a class="F12 Fgray-3" href="javascript:void(0)">点击查看更多>></a>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="pat50 pab50 text-center">
+            <p><img src="images/tp-088.jpg"></p>
+            <p class="mat15"><span class="F16 Fgray-1">您还没有购买商品哦，快去逛逛吧~~</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+
+</body>
+</html>

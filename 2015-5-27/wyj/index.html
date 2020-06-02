@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微依家</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/wyj.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.glide.min.js"></script>
+<script>
+
+	$(function(){
+		var glide = $('.slider').glide({
+			
+			//autoplay:true,//是否自动播放 默认值 true如果不需要就设置此值
+			animationTime:500, //动画过度效果，只有当浏览器支持CSS3的时候生效
+
+			arrows:false, //是否显示左右导航器
+			arrowsWrapperClass: "arrowsWrapper",//滑块箭头导航器外部DIV类名
+			arrowMainClass: "slider-arrow",//滑块箭头公共类名
+			arrowRightClass:"slider-arrow--right",//滑块右箭头类名
+			arrowLeftClass:"slider-arrow--left",//滑块左箭头类名
+			arrowRightText:">",//定义左右导航器文字或者符号也可以是类
+			arrowLeftText:"<",
+
+			nav:true, //主导航器也就是本例中显示的小方块
+			navCenter:true, //主导航器位置是否居中
+			navClass:"slider-nav",//主导航器外部div类名
+			navItemClass:"slider-nav__item", //本例中小方块的样式
+			navCurrentItemClass:"slider-nav__item--current" //被选中后的样式
+		});
+	})
+
+</script>
+<style>
+@media screen and (min-width:1900px){
+	.w1200px{ width:1680px;} *{ transition:all .5s;}
+}
+
+@media screen and (min-width: 1680px) and (max-width: 1480px) {
+	.w1200px{ width:1450px;} *{ transition:all .5s;}
+}
+@media screen and (min-width: 1479px) and (max-width: 1280px) {
+	.w1200px{ width:1200px;} *{ transition:all .5s;}
+}
+@media only screen and (min-width: 1279px) and (max-width: 1024px){
+	.w1200px{ width:1000px;} *{ transition:all .5s;}
+}
+@media only screen and (max-width: 1023px) {
+	.w1200px{ width:980px;} *{ transition:all .5s;}
+}
+
+</style>
+</head>
+
+<body>
+	
+    <div class="wb100">
+    	<div class="w1200px pat10 pab10 center">
+        	<img src="images/logo.png">
+            <div class="fr F150em">
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">网站导航</a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="gray fr mal10 mar10">我的微依家 <img src="images/arrow-gray-down.png"></a>
+            	<span class="Fgray-1 fr mal10 mar10">|</span>
+            	<a href="javascript:void(0)" class="Fbrown fr mal10 mar10">注册</a>
+            	<span class="Fbrown fr mal10 mar10">|</span>
+                <a href="javascript:void(0)" class="Fbrown fr mal10 mar10">登录</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 warpper-green-1 h40px">
+    	<div class="w1200px center F150em">
+            <ul class="ul-nav">
+                <li class="li-hover">全部分类 <img src="images/arrow-white-down.png" class="mal10 middle"></li>
+                <li>首页</li>
+                <li>品牌故事</li>
+                <li>在线商城</li>
+                <li>微依家社区</li>
+                <li>优惠活动</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="wb100 img-Harea text-center">
+    	<div class="slider">
+            <ul class="slides">
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+                <li class="slide"><img src="images/banner-img-1.jpg"></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear1"></div>
+    <div class="wb100 F150em text-right Fgray-3 lh20px">
+    	<div class="wb2425 fl h190px warpper-green-new">
+        	<div class="wb30 fl ma5per">
+            	<div class="h45px w45px lh45px text-center Fwhite F200em warpper-brown-1 radius50per fr mar5per">面</div>
+                <div class="clear"></div>
+                <p>系</p>
+                <p>列</p>
+            </div>
+            <div class="wb30 fr mar5per h190px lh190px img-Warea">
+            	<img src="images/product-1.png" class="middle">
+            </div>
+        </div>
+    	<div class="wb2425 fl mal1per h190px warpper-gray-new">
+        	<div class="wb30 fl ma5per">
+            	<div class="h45px w45px lh45px text-center Fwhite F200em warpper-brown-1 radius50per fr mar5per">粮</div>
+                <div class="clear"></div>
+                <p>系</p>
+                <p>列</p>
+            </div>
+            <div class="wb30 fr mar5per h190px lh190px img-Warea">
+            	<img src="images/product-2.png" class="middle">
+            </div>
+        </div>
+    	<div class="wb2425 fl mal1per h190px warpper-green-new">
+        	<div class="wb30 fl ma5per">
+            	<div class="h45px w45px lh45px text-center Fwhite F200em warpper-brown-1 radius50per fr mar5per">糊</div>
+                <div class="clear"></div>
+                <p>系</p>
+                <p>列</p>
+            </div>
+            <div class="wb30 fr mar5per h190px lh190px img-Warea">
+            	<img src="images/product-3.png" class="middle">
+            </div>
+        </div>
+    	<div class="wb2425 fr h190px warpper-gray-new">
+        	<div class="wb30 fl ma5per">
+            	<div class="h45px w45px lh45px text-center Fwhite F200em warpper-brown-1 radius50per fr mar5per">粥</div>
+                <div class="clear"></div>
+                <p>系</p>
+                <p>列</p>
+            </div>
+            <div class="wb30 fr mar5per h190px lh190px img-Warea">
+            	<img src="images/product-4.png" class="middle">
+            </div>
+        </div>
+    </div>
+    <div class="clear1"></div>
+    
+    <div class="wb100">
+    	<div class="w1200px center F150em lh30px Fgray-2">
+        	<p class="wb60 fl">
+                <a href="javascript:void(0)" class="gray mar10">关于微依家</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">联系我们</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">加入我们</a>|
+                <a href="javascript:void(0)" class="gray mal10 mar10">隐私政策</a>
+            </p>
+            <p class="wb20 fr">
+            	<img src="images/icon-weixin.png" class="middle mar10">官方微信号
+                <span class="fr">
+            	<img src="images/icon-sina.png" class="middle mar10">新浪微博
+                </span>
+            </p>
+        	<div class="clear"></div>
+        	<p>友情链接：	海康威视 乐视网 天安网 安防网 千家网 网易济南房产 南京二手房 中国建材网 淘知道 杭州19楼 </p>
+        </div>
+    </div>
+                                                                                                                            
+
+    
+</body>
+</html>

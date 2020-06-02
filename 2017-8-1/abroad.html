@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>出国</title>
+
+</head>
+
+<style type="text/css" media="screen">
+    .course {
+        width: 200px;
+        font-size: 16px;
+        color: black;
+        margin: 0 auto;
+        position: relative;
+        text-align: center
+    }
+
+    .course :before {
+        content: "";
+        border-top: 1px solid black;
+        display: block;
+        position: absolute;
+        width: 10%;
+        top: 12px;
+        left: 25%;
+    }
+
+    .course :after {
+        content: "";
+        border-top: 1px solid black;
+        display: block;
+        position: absolute;
+        width: 10%;
+        top: 12px;
+        right: 25%;
+    }
+</style>
+
+<body>
+
+<div id="abroad_page">
+
+    <!--<layout-loader :show="showLoader"></layout-loader>-->
+
+    <div class="wb100 img-area">
+        <img src="images/abroad.png">
+    </div>
+
+    <div class="clear" style="height: 20px"></div>
+
+    <div class="course">
+        <div class="F18">留学</div>
+    </div>
+
+    <div class="pa15 Fgray-3">
+        <el-row :gutter="15">
+            <el-col :span="12" v-for="item in abroadList" class="mab15">
+                <div class="wb100 warpper-white box-shadow-gray3 radius5">
+                    <a :href="'lesson_detail.html?channelID='+item.ID">
+                        <div class="wb100 img-area relative">
+                            <img :src="item.imgUrl" class="radius5t"/>
+                        </div>
+                        <p class="F16 h25px lh25px text-over-hidden1 Fblack pal5 par5">{{item.title}}</p>
+                        <p class="F12 h25px lh25px text-over-hidden1 Fgray pal5 par5">{{item.subtitle}}</p>
+                    </a>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="lh45px F14">
+        <div class="wb100 bor-gray bor-solid-1b" style="height: 1px;"></div>
+    </div>
+
+    <a href="audio_list.html">
+        <div class="lh40px text-center">
+            <span class="Fblue text-center lh20px F16">查看更多</span>
+            <img src="images/icon-arrow-right.png" class=" text-center h16px  mal5" style="vertical-align: middle;margin-top: -3px">
+        </div>
+    </a>
+
+    <div class="clear h10px " style="background: #f3f3f3;"></div>
+
+    <div class="clear" style="height: 20px"></div>
+
+    <div class="course">
+        <div class="F18">出差</div>
+    </div>
+
+    <div class="pa15 Fgray-3">
+        <el-row :gutter="15">
+            <el-col :span="12" v-for="item in abroadList1" class="mab15">
+                <div class="wb100 warpper-white box-shadow-gray3 radius5">
+                    <a :href="'lesson_detail.html?channelID='+item.ID">
+                        <div class="wb100 img-area relative">
+                            <img :src="item.imgUrl" class="radius5t"/>
+                        </div>
+                        <p class="F16 h25px lh25px text-over-hidden1 Fblack pal5 par5">{{item.title}}</p>
+                        <p class="F12 h25px lh25px text-over-hidden1 Fgray pal5 par5">{{item.subtitle}}</p>
+                    </a>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="lh45px F14">
+        <div class="wb100 bor-gray bor-solid-1b" style="height: 1px;"></div>
+    </div>
+
+    <a href="audio_list.html">
+        <div class="lh40px text-center">
+            <span class="Fblue text-center lh20px F16">查看更多</span>
+            <img src="images/icon-arrow-right.png" class=" text-center h16px  mal5" style="vertical-align: middle;margin-top: -3px">
+        </div>
+    </a>
+
+    <div class="clear h10px " style="background: #f3f3f3;"></div>
+
+    <div class="clear" style="height: 20px"></div>
+
+
+    <div class="course">
+        <div class="F18">购物</div>
+    </div>
+
+    <div class="pa15 Fgray-3">
+        <el-row :gutter="15">
+            <el-col :span="12" v-for="item in abroadList2" class="mab15">
+                <div class="wb100 warpper-white box-shadow-gray3 radius5">
+                    <a :href="'lesson_detail.html?channelID='+item.ID">
+                        <div class="wb100 img-area relative">
+                            <img :src="item.imgUrl" class="radius5t"/>
+                        </div>
+                        <p class="F16 h25px lh25px text-over-hidden1 Fblack pal5 par5">{{item.title}}</p>
+                        <p class="F12 h25px lh25px text-over-hidden1 Fgray pal5 par5">{{item.subtitle}}</p>
+                    </a>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="lh45px F14">
+        <div class="wb100 bor-gray bor-solid-1b" style="height: 1px;"></div>
+    </div>
+
+    <a href="audio_list.html">
+        <div class="lh40px text-center">
+            <span class="Fblue text-center lh20px F16">查看更多</span>
+            <img src="images/icon-arrow-right.png" class="text-center h16px mal5" style="vertical-align:middle;margin-top:-3px">
+        </div>
+    </a>
+
+
+</div>
+
+<script>
+
+    let vm = new Vue({
+        el: "#abroad_page",
+        data: {
+            showLoader: true,
+            abroadList: [{
+                "ID": "m10000-3",
+                "imgUrl": "http://mzimage.7english.cn/1705171349479113.png",
+                "title": "轻松美语会话-第4辑",
+                "subtitle": "轻松美语会话"
+            }, {
+                "ID": "m-crazy-kyxc",
+                "imgUrl": "http://mzimage.7english.cn/1705171045852856.png",
+                "title": "口语训练现场",
+                "subtitle": "流利口语脱口而出"
+            }, {
+                "ID": "m10000-1",
+                "imgUrl": "http://mzimage.7english.cn/1611241438762161.jpg?x-oss-process=image/resize,m_fixed,h_153,w_240",
+                "title": "美式常用口俚语",
+                "subtitle": "地道美式英语发音技巧"
+            }, {
+                "ID": "d-hbs-yjky",
+                "imgUrl": "http://mzimage.7english.cn/1705051811452816.png",
+                "title": "红宝书之随身应急英语会话",
+                "subtitle": "解决尴尬，应急英语快速学！"
+            }],
+            abroadList1: [{
+                "ID": "awyky14",
+                "imgUrl": "http://mzimage.7english.cn/1705171658648776.jpg",
+                "title": "金融英语",
+                "subtitle": "金融英语"
+            }, {
+                "ID": "awyky7",
+                "imgUrl": "http://mzimage.7english.cn/1705171607593678.jpg",
+                "title": "商务英语",
+                "subtitle": "商务英语"
+            }, {
+                "ID": "m-crazy-kyjz",
+                "imgUrl": "http://mzimage.7english.cn/1705171046841752.png",
+                "title": "英语口语绝招",
+                "subtitle": "英语口语绝招"
+            }, {
+                "ID": "d-hbs-syky",
+                "imgUrl": "http://mzimage.7english.cn/1705051811869868.png",
+                "title": "红宝书之实用口语",
+                "subtitle": "最实用的日常对话"
+            }],
+            abroadList2: [{
+                "ID": "a100qj",
+                "imgUrl": "http://mzimage.7english.cn/1705121402498092.jpg",
+                "title": "口语主题100个",
+                "subtitle": "100个最实用的日常会话，你想要的都在这儿"
+            }, {
+                "ID": "72161703-A539-477A-BAAD-099B71ACA70C",
+                "imgUrl": "http://mzimage.7english.cn/1705081911146172.png",
+                "title": "Bessy&Jesse 侃英语 第一季",
+                "subtitle": "萝莉大叔爆笑英语"
+            }, {
+                "ID": "9A4F219B-5B3C-4E7D-A8FD-2F1D6CE813C8",
+                "imgUrl": "http://mzimage.7english.cn/1705081433708376.png",
+                "title": "口语大全-交际口语篇 第一季",
+                "subtitle": "最基础必备口语对话"
+            }, {
+                "ID": "awyky6",
+                "imgUrl": "http://mzimage.7english.cn/1705121358839650.jpg",
+                "title": "两周开窍生活英语",
+                "subtitle": "告别“英语小白”"
+            }],
+
+        },
+        created: function () {
+
+        }
+    })
+
+</script>
+
+
+</body>
+</html>

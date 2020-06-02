@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>登录</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| login_page
+| ------------------------------------------
+| Here are login_page html
+|
+-->
+
+<div id="login_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100">
+
+        <div class="clear h30px"></div>
+
+        <div class="Fgray-3 wb100">
+
+            <div class="pal15 par15 pat5 pab5 relative F14 warpper-white">
+                <div style="padding-left: 60px; padding-right: 80px;">
+                    <div class="w50px absolute" style="top: 5px; left:15px ; height: 47px; line-height: 47px;">
+                        手机号
+                    </div>
+                    <input type="tel" class="bor-none wb100 h45px lh45px" v-model="mobile" placeholder="请输入手机号">
+                    <input type="button" data-role="none" class="bor-none h35px lh35px w80px warpper-gray-3" style="position: absolute; top: 10px; right: 10px;" :class="mobile.length!=11 || lock ? 'Fgray-2' : 'Fblue'" :disabled="mobile.length!=11 || lock" @click="sendCode" :value="codeText">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="pal15">
+                <div class="clear bor-gray bor-solid-1b"></div>
+            </div>
+
+            <div class="pal15 par15 pat5 pab5 relative F14 warpper-white">
+                <div style="padding-left: 60px;">
+                    <div class="w50px absolute" style="top: 5px; left:15px ; height: 47px; line-height: 47px;">
+                        验证码
+                    </div>
+                    <input type="tel" class="bor-none wb100 h45px lh45px fl" v-model="code" placeholder="请输入验证码">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="pa15">
+                <div class="wb100 h45px lh45px Fwhite F16 text-center radius5" :class="mobile.length>0 && code.length>0 ? 'warpper-green Fwhite' : 'warpper-green-5 Fwhite'" @click="login">确定</div>
+            </div>
+
+            <div class="clear1"></div>
+
+        </div>
+        <div class="pa15 Fgray-3">
+
+            <!--<div class="wb100 h10px bor-gray bor-solid-1b">-->
+            <!--<div class="w150px warpper-white center lh20px text-center Fgray-3 F14">-->
+            <!--使用第三方登录-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="clear h50px"></div>-->
+
+            <!--<a :href="'wx_login.html?call='+call">-->
+            <!--<div class="wb100 h45px lh45px warpper-green Fwhite F16 text-center radius20">微信登录</div>-->
+            <!--</a>-->
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    "use strict";
+
+    var vm = new Vue({
+        el: "#login_page",
+        data: {
+            fullscreenLoading: true,
+            mobile: "",
+            code: "",
+            call: "",
+            codeText: "获取验证码",
+            timeID: 0,
+            timer: 60,
+            lock: false
+        },
+        methods: {
+            sendCode: function sendCode() {
+
+                var _this = this;
+
+                if (this.lock) {
+                    return false;
+                } else {
+                    this.lock = true;
+                    baseAjax.loginCode(_this.mobile, function (data) {
+                        if (data) {
+                            //                            _this.resultCode = data.returnJSON;
+                            //                            _this.code = data.returnJSON;
+                            _this.timeID = setInterval(_this.clock, 1000);
+                        }
+                    });
+                }
+            },
+            clock: function clock() {
+                this.timer--;
+                this.codeText = this.timer + "秒后重发";
+
+                if (this.timer <= 0) {
+                    clearInterval(this.timeID);
+                    this.lock = false;
+                    this.timer = 60;
+                    this.codeText = "重发验证码";
+                }
+            },
+            login: function login() {
+
+                var _this = this;
+
+                if (base.isNull(_this.mobile)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '手机号不能为空'
+                    });
+                    return false;
+                }
+                if (base.isNull(_this.code)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '验证码不能为空'
+                    });
+                    return false;
+                }
+
+                baseAjax.loginInPhone(_this.mobile, _this.code, '', function (data, errorMsg) {
+
+                    if (data) {
+                        var _user = data.returnJSON;
+
+                        base.setCookie('userInfo', JSON.stringify(_user));
+
+
+//                                                console.log(data);
+//
+//                                                return false;
+
+                        if (base.isNull(_this.call)) {
+                            window.location.replace('index.html');
+                        } else {
+                            var _url = base.getParmar('callUrl');
+
+                            if (base.isNull(_url)) {
+
+                                window.history.go(-1);
+
+                            } else {
+
+                                var local = window.location.href;
+
+                                var _i = local.indexOf('callUrl');
+
+                                //获取传递的订单金额
+
+                                _url = local.substring(_i + 8);
+
+                                var _money = base.getParmar('money', _url);
+
+                                if(_user.coinsQty > _money){
+                                    //直接购买
+
+                                    var myTicket = {
+                                        money : _money,
+                                        odds : base.getParmar('odds', _url),
+                                        lotType : base.getParmar('lotType', _url),
+                                        val : base.getParmar('val', _url),
+                                        matchID : base.getParmar('matchID', _url),
+                                    }
+
+                                    base.setCookie('tempTicket',JSON.stringify(myTicket));
+
+                                    window.location.replace('index.html?buyTicket=true');
+                                }else{
+                                    //前去购买
+                                    window.location.replace(_url);
+                                }
+
+                            }
+                        }
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg
+                        });
+                    }
+                });
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            _this.call = base.getParmar('call');
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.call = base.getParmar('call');
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>

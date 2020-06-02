@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<link rel="stylesheet" href="mobile/jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/zbg.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/jquery.Spinner.js"></script>
+
+<title>周边购</title>
+</head>
+<body style="text-shadow:none; font-weight:normal; background:#fff;">
+
+<!--
+| ------------------------------------------
+| index-page
+| ------------------------------------------
+| Here are index-page html
+| 
+-->
+<div data-role="page" id="index-page" style="text-shadow:none; font-weight:normal; background:#fff;">
+	<div class="loader">
+    	加载中...
+    </div>
+    <div data-role="header" data-theme="a" class="bor-none">
+    	<div data-role="header" data-theme="a" class="bor-none">
+    	<div class="wb100 h40px pat5 pab5 warpper-blue-10 relative">
+        	<a class="my-icon-back h40px w40px absolute pointer" data-role="none" data-rel="back" data-transition="slide" style="left:5px; top:5px;"></a>
+            <div class="wb60 center h40px lh40px F125em Fwhite text-center par5per " data-role="none" style="text-shadow:none; font-weight:normal;">发布</div>
+        	<a class="h40px lh40px w60px absolute pointer" data-role="none" data-transition="slide" style="right:5px; top:5px;">
+            <span class="Fwhite F90em">我发布的</span></a>
+        </div>
+    </div>
+    </div>
+    <div data-role="content" class="pa0">
+    	<script src="js/source/comm.js"></script>
+    	<p class="h35px lh35px text-center Fgray-3">
+        	每天个人可发布<span class="Forange">3</span>条信息，上架可发布<span class="Forange">5</span>条信息
+        </p>
+        
+        <div class="warpper-gray-1 wb100 pat15 pab15">
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px lh80px bor-gray bor-solid-1a center warpper-blue-10 text-center">
+                	<img src="images/icon-add-3.png" class="middle">
+                </div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+        	<div class="wb20 fl">
+            	<div class="wb90 h80px bor-gray1 bor-solid-1a center"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <div class="wb96 center">
+        	<div class="wb90 pal5per par5per h50px pat5 pab5">
+            	<p class="wb25 fl h60px lh60px text-left bor-gray bor-solid-1r">供 需</p>
+                <div class="wb65 fl mal5per">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input name="radio1" id="radio1a" value="on" checked="checked" type="radio">
+                        <label for="radio1a">促销</label>
+                        <input name="radio1" id="radio1b" value="off" type="radio">
+                        <label for="radio1b">求购</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        <div class="clear1"></div>
+    	<div class="wb96 center">
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">标 题</p>
+                <input type="text" placeholder="6-30字，建议填写商品品牌" class="Fgray-2 bor-none fl mal5per h30px lh30px F90em wb65" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">售 价</p>
+                <input type="text" placeholder="数字填写，不能是负数" class="Fgray-2 bor-none fl mal5per h30px lh30px F90em wb65" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">描 述</p>
+                <input type="text" placeholder="10-800字，介绍一下具体情况" class="Fgray-2 bor-none fl mal5per h30px lh30px wb65 F90em" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        </div>
+        
+        <div class="clear1 warpper-gray-1"></div>
+        
+    	<div class="wb96 center">
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">联系人</p>
+                <input type="text" placeholder="2-4字，只能填汉字或字母" class="Fgray-2 bor-none fl mal5per h30px lh30px F90em wb65" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">联系电话</p>
+                <input type="text" placeholder="只能填写手机和固定电话" class="Fgray-2 bor-none fl mal5per h30px lh30px F90em wb65" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        	<div class="wb90 pal5per par5per h30px pat5 pab5 bor-gray bor-solid-1a radius5">
+            	<p class="wb25 fl h30px lh30px text-left bor-gray bor-solid-1r">营业区域</p>
+                <input type="text" placeholder="请选择" class="Fgray-2 bor-none fl mal5per h30px lh30px wb65 F90em" data-role="none" />
+            </div>
+            <div class="clear1"></div>
+        </div>
+        <div class="clear1 warpper-gray-1"></div>
+        
+        <div class="wb96 center">
+        	<div class="wb90 pal5per par5per h50px pat5 pab5">
+            	<p class="wb25 fl h60px lh60px text-left bor-gray bor-solid-1r">供 需</p>
+                <div class="wb65 fl mal5per">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input name="radio2" id="radio2a" value="on" checked="checked" type="radio">
+                        <label for="radio2a">促销</label>
+                        <input name="radio2" id="radio2b" value="off" type="radio">
+                        <label for="radio2b">求购</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="clear h30px warpper-gray-1"></div>
+        
+        <div class="wb100 h40px pat15 pab15 pointer">
+            <div class="wb40 center h40px lh40px text-center center F125em Fwhite radius5 warpper-orange-3 pointer">
+                下一步
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div class="wb100 h60px pat5 pab5 warpper-white">
+              <a href="index.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/07.png" class="middle h25px">
+                      <p class="Fgray-3">首页</p>
+                  </div>
+              </a>
+              <a href="list.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/08.png" class="middle h25px">
+                      <p class="Fgray-3">附近</p>
+                  </div>
+              </a>
+              <a href="issue.html" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/011.png" class="middle h25px">
+                      <p class="Fblue">发布</p>
+                  </div>
+              </a>
+              <a href="javascript:void(0)" class="btn-user-center" data-transition="slide">
+                  <div class="wb25 fl text-center lh30px">
+                      <img src="images/012.png" class="middle h25px">
+                      <p class="Fgray-3">我的</p>
+                  </div>
+              </a>
+        </div>
+	</div>
+   
+</div>
+
+
+</body>
+</html>

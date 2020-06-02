@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尊享VIP</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no"/>
+    <link href="css/base.css" rel="stylesheet" media="screen">
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-mycomponent.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/sha1.js"></script>
+    <script src="js/sign.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <style>
+        .section img{display:block;width: 100%}
+    </style>
+
+</head>
+<body>
+
+<div id="vip_page">
+
+
+
+    <en-pay ref="enPay" :phone="channel.isUserTips" :gold="channel.salesPrice >= 0" :item="channel" v-on:callback="payCallback" v-on:callbackfail="payCallbackFail" v-on:payload="payIng"></en-pay>
+
+    <div class="section">
+    <div class="">
+        <img src="images/vip_1.jpg">
+        <img src="images/vip_2.jpg">
+        <img src="images/vip_3.jpg">
+        <img src="images/vip_4.jpg">
+        <img src="images/vip_5.jpg">
+        <img src="images/vip_6.jpg" @click="buyLesson('vip')">
+        <img src="images/vip_7.jpg">
+    </div>
+</div>
+
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+
+    let vm = new Vue({
+        el : "#vip_page",
+        data : {
+            showLoader : true,
+            loading : false,
+            list : [],
+            comments : [],
+            channel : {},
+            isDetail : true,
+            isPlay : false,
+            isRecharge : false,
+            channelID : "",
+            videoUrl : "",
+            page : 1,
+            pageSize : 3,
+            width : 0,
+            buyed : false,
+            isVip : false,
+            isM3u8 : false,
+            videoHtml : "",
+            playList : [],
+            currentVideo : -1,
+            commentVal : "",
+        },
+        methods : {
+
+            openComment(){
+
+                let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+
+                if(base.isNull(userInfo)){
+                    if(base.versions.isWeiXin){
+                        layer.confirm('您还没有登录，前去登录吗？', {
+                            btn: ['好的','取消'] //按钮
+                        }, function(){
+                            //前去登录
+                            let call = window.location.href;
+                            window.location.href = 'wx_login.html?call='+call;
+                        }, function(){
+                            //取消登录
+                        });
+                    }else{
+                        layer.alert("请在微信里打开，使用评论功能");
+                    }
+                    return false;
+                }
+
+                $(".dialogBg").show(0);
+                $(".commBg").show(0);
+            },
+            submitComment(){
+                let _this = this;
+                if(base.isNull(_this.commentVal)){
+                    layer.alert("请输入评论");
+                    return false;
+                }
+                baseAjax.commentChannel(_this.channelID, '', _this.commentVal ,function(data){
+                    if(data){
+                        layer.alert("评论成功");
+                    }
+                    baseAjax.commentListByID(_this.page, _this.pageSize, _this.channelID, function (data) {
+                        _this.comments = data.returnJSON.indexData;
+                        for(let i=0; i<_this.comments.length; i++){
+                            if(window.localStorage.getItem(_this.channelID +"-" + _this.comments[i].commentID)){
+                                _this.comments[i].zaned = true;
+                            }
+                        }
+                        _this.closeComment();
+
+                    })
+
+                });
+
+            },
+            closeComment(){
+                $(".dialogBg").hide(0);
+                $(".commBg").hide(0);
+            },
+
+            changeNav(type){
+                let _this = this;
+                if(type == 0)
+                    _this.isDetail = true;
+                else
+                    _this.isDetail = false;
+            },
+
+            changeLesson(){
+
+            },
+
+
+            myBack(){
+                window.history.go(-1);
+            },
+
+            payIng(){
+                this.loading = true;
+            },
+
+            payCallback(){
+                layer.alert('购买成功，赶快学习吧！');
+                window.location.replace("index.html");
+                let _this = this;
+                _this.buyed = true;
+                //更新用户数据，查询是否为vip
+                let userInfo = JSON.parse(window.sessionStorage.getItem("userInfo"));
+                baseAjax.getUserInfoByID(userInfo.userID, function (data) {
+                    _this.user = data.returnJSON;
+                    if(_this.user.vip > 0){
+                        _this.isVip = true;
+                    }
+                })
+                _this.loading = false;
+                _this.$refs.enPay.closePay();
+            },
+
+            payCallbackFail(){
+                layer.alert('购买失败');
+                this.loading = false;
+                this.$refs.enPay.closePay();
+            },
+
+            buyLesson(vip){
+
+                if(vip == 'vip'){
+                    this.$refs.enPay.openPay(vip);
+                }else{
+                    this.$refs.enPay.openPay();
+                }
+
+            },
+
+            playLesson(item,index){
+
+                let _this = this;
+                let _flag = false;
+
+                if(_this.channel.channelType == 1){
+                    window.location.href = "lesson_play.html?lessonID="+item.lessonID;
+                }else{
+
+                    _this.currentVideo = index;
+
+                    if(!base.isNull(item.videoURL) || !base.isNull(item.videoURL1)){
+                        //如果一个值不为null
+                        if(!base.isNull(item.videoURL)){
+                            if(item.videoURL.indexOf(".m3u8")!=-1){
+                                let _vUrl = signs.getUrlSign(item.videoURL,'A');
+                                _this.videoUrl = _vUrl;
+                                _this.isM3u8 = true;
+                                _flag = true;
+                            }
+                        }
+                        if(!base.isNull(item.videoURL1)){
+                            if(item.videoURL1.indexOf(".m3u8")!=-1){
+                                let _vUrl = signs.getUrlSign(item.videoURL1,'A');
+                                _this.videoUrl = _vUrl;
+                                _this.isM3u8 = true;
+                                _flag = true;
+                            }
+                        }
+
+                    }else{
+                        _this.isM3u8 = false;
+                        _this.videoHtml = item.shareVideoURL;
+                    }
+
+                    if(_flag){
+                        //m3u8
+                    }else{
+                        _this.isM3u8 = false;
+                        _this.videoHtml = item.shareVideoURL;
+                    }
+
+                    _this.isPlay = true;
+                }
+
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.channelID = base.getParmar("channelID");
+
+            _this.width = $(window).width();
+
+            baseAjax.getTicket(function(data){
+                let now = Math.floor(new Date().getTime() / 1000);
+                let noncestr = base.getUuid();
+                let jsapi_ticket = 'jsapi_ticket='+ data.returnJSON + '&noncestr='+ noncestr + '&timestamp='+ now +'&url='+ encodeURI(location.href.split('#')[0]);
+                let signature = hex_sha1(jsapi_ticket);
+                wx.config({
+                    debug: false,
+                    appId: 'wx484ec69840157a5a',
+                    timestamp: now,
+                    nonceStr: noncestr,
+                    signature: signature,
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone'
+                    ]
+                });
+            })
+
+        }
+    })
+
+    wx.ready(function () {
+
+        wx.onMenuShareTimeline({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            desc: vm.channel.subtitle, // 分享描述
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: '【7天英语】'+ vm.channel.channelName, // 分享标题
+            desc: vm.channel.subtitle, // 分享描述
+            link: '',
+            imgUrl: vm.channel.iconURL +'?x-oss-process=image/resize,m_fill,h_300,w_300', // 分享图标
+            success: function () {
+            },
+            cancel: function () {
+            }
+        });
+
+    });
+
+
+</script>
+
+
+</body>
+</html>

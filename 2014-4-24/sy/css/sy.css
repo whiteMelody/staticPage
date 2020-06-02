@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.warpper-nav{ background:rgba(255,255,255,.8); position:fixed; z-index:9999;}
+.brown:link{color:#635353;text-decoration:none}.brown:visited{color:#635353;text-decoration:none}.brown:hover{color:#333;text-decoration:none}.blue:actived{color:#635353;text-decoration:none}
+.bg-title{ background:url(../images/title-line.png) center center no-repeat; width:433px; height:45px; line-height:45px;}
+.bg-title-2{ background:url(../images/title-line-2.png) center center no-repeat; width:842px; height:45px; line-height:45px;}
+.nav-btn{ position:absolute; bottom:10%; left:0; right:0; margin:0 auto; z-index:9999;}
+.warpper-black-tran{ background:rgba(0,0,0,.3); position:absolute; width:100%; height:100%; z-index:9999; top:0; left:0;}
+.ul-menu-btn{ width:1130px; position:absolute; height:200px; top:0; right:0; left:0; bottom:0; margin:auto; z-index:99999; }
+.ul-menu-btn li{ float:left; margin-left:25px; margin-right:25px; }
+.bg-paper{ background:url(../images/bg-main.png);}
+.left-menu{ width:1400px; height:500px; background:none; z-index:1; position:fixed; left:0; right:0; margin:0 auto; top:25%; }
+.left-nav{ width:70px; height:500px; background:#fff; padding:20px 0;}
+.ul-car-nav{ width:100%;}
+.ul-car-nav li{ float:left; height:80px; width:13%; float:left; text-align:center; padding:5px .6%; cursor:pointer;  }
+.ul-car-nav .li-hover{ background:none; border-bottom:2px solid #3cc0e7; height:78px; }
+.warpper-black-tran2{ background:rgba(0,0,0,.3); border:none;}
+.ul-left-nav{ width:100%;}
+.ul-left-nav li{ text-align:center; font-size:1.8em; line-height:30px; padding:5px 0; margin:25px 0;}
+.ul-left-nav li p{ display:none;}
+.ul-left-nav .li-hover{ border-bottom:2px solid #eb6877; color:#eb6877;}
+.ul-left-nav .li-hover p{ display:block;}
+
+/*
+| ------------------------------------------
+| Glide styles
+| ------------------------------------------
+| Here are slider styles
+| 
+*/
+.slider{position:relative;width:100%;height:100%;overflow:hidden}.slides{height:100%;overflow:hidden;-webkit-backface-visibility:hidden;-webkit-transform-style:preserve-3d;-webkit-transition:all 500ms cubic-bezier(0.165,0.840,0.440,1.000);-moz-transition:all 500ms cubic-bezier(0.165,0.840,0.440,1.000);-ms-transition:all 500ms cubic-bezier(0.165,0.840,0.440,1.000);-o-transition:all 500ms cubic-bezier(0.165,0.840,0.440,1.000);transition:all 500ms cubic-bezier(0.165,0.840,0.440,1.000); padding:0; margin:0;}.slide{height:100%;float:left;clear:none}.slider-arrow{position:absolute;display:block;margin-bottom:-20px;width:60px;height:60px;line-height:60px;text-decoration:none;text-align:center;color:#fff;font-size:2em;background-color:#333;background-color:rgba(50,50,50,.3);border-radius:50%}.slider-arrow--right{bottom:50%;right:30px}.slider-arrow--left{bottom:50%;left:30px}.slider-nav{position:absolute;bottom:50px; z-index:99;}.slider-nav__item{width:12px;height:12px;float:left;clear:none;display:block;margin:0 25px;background:#cccccc;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}.slider-nav__item:hover{background:#1fbad6}.slider-nav__item--current{background:#1fbad6}
+.slider-arrow2{position:absolute;display:block;margin-bottom:-20px;width:31px;height:53px;line-height:53px;text-decoration:none;text-align:center;color:#fff;font-size:2em; z-index:999;border-radius:50%}.slider-arrow--right2{bottom:50%;right:30px; }.slider-arrow--left2{bottom:50%;left:30px;}
+.slider-nav2{position:absolute;bottom:100px; z-index:99;}.slider-nav__item2{width:18px;height:18px;float:left;clear:none;display:block;margin:0 15px;background:#cccccc;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%}.slider-nav__item2:hover{background:#fff}.slider-nav__item--current2{background:#fff}
+
+/*
+| ------------------------------------------
+| Spinner styles
+| ------------------------------------------
+| Here are Spinner styles
+| 
+*/
+.Spinner{display:block;overflow:hidden;width:100px;}
+.Spinner .Amount{width:36px;height:17px;padding:4px 5px;line-height:17px;border-width:1px 0;border-style:solid;border-color:#d9d9d9;float:left;text-align:center;color:#565656;outline:0; font-size:14px;}
+.Spinner a{display:inline-block;width:25px;height:25px;border:1px solid #d9d9d9;background-color:#f7f7f7;float:left;cursor:pointer;outline:0;}
+.Spinner a i{font-style:normal;background:url(../images/BuynBtn.png) no-repeat;display:block;width:9px;height:9px;margin:8px;text-indent:999999%;overflow:hidden;}
+.Spinner .Decrease i{background-position:-9px -9px;}
+.Spinner .Increase i{background-position:-9px -0px;}
+.Spinner .DisDe i{background-position:-0px -9px;}
+.Spinner .DisIn i{background-position:-0px -0px;}
+

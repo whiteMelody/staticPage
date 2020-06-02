@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/md5_ch.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/hostSdk.js"></script>
+    <script src="js/shopping_mall.js"></script>
+    <script src="js/loading.js"></script>
+
+
+    <style>
+        .el-carousel__button{ width: 6px; height: 6px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50% }
+        .el-carousel__arrow--left{ display: none;}
+        .el-carousel__arrow--right{ display: none;}
+
+        .notice-area .el-carousel__button{ display: none;}
+        .notice-area .el-carousel__arrow--left{ display: none;}
+        .notice-area .el-carousel__arrow--right{ display: none;}
+
+        /*.dialogBg3{ background: rgba(0,0,0,.5);   }*/
+        .dialogBg3{ background:url(images/nothing.png) ; background-position:center;}
+        .warpper-gray-5{background:#d7d7d7; }
+        .z1{z-index: -1}
+        .z2{z-index: 1}
+    </style>
+
+    <title>金币商城</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| store_page
+| ------------------------------------------
+| Here are store_page html
+|
+-->
+
+<div id="store_page">
+
+    <!--loader-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 warpper-white">
+
+        <div class="h50px lh50px pal50 par50 relative ">
+
+            <div class="w50px h50px lh55px absolute text-center warpper-white " style="top: 0; left: 0; z-index: 8;">
+                <img src="images/icon-notice.png" class="w20px h20px">
+            </div>
+
+            <div class="wb100 notice-area">
+                <el-carousel height="50px" :interval="5000">
+                    <el-carousel-item v-for="item in notice">
+                        <p class="wb100 lh50px h50px warpper-white">
+                            恭喜{{item.name}}中奖<span class="Fnum Fred">{{item.gold}}</span>金币
+                        </p>
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+
+        </div>
+
+
+        <div class="dialogBg" style="background: none;" v-show="showMore == true" @click="showMore = false"></div>
+        <div class="h50px w50px absolute warpper-white" style="top:0; right: 0;" v-show="showType == false">
+            <img src="images/menu.png" class="fr h6px" style="margin-top: 22px; margin-right: 15px;" v-show="showMore == false" @click="showMore = true">
+            <img src="images/menu2.png" class="fr w6px" style="margin-top: 11px; margin-right: 26px;" v-show="showMore == true" @click="showMore = false">
+        </div>
+
+
+        <div class="w90px h80px pat10 lh40px text-center fr absolute F14" v-show="showMore == true" style="background: url('images/bg-more.png'); background-size: 100% 100%; top:50px; right: 10px; z-index: 99;">
+
+
+            <template v-if="login == false">
+                <a href="login.html?call=true&callUrl=store.html">
+                    <p class="bor-gray4 bor-solid-1b Fwhite">抽奖记录</p>
+                </a>
+            </template>
+            <template v-if="login == true">
+                <a href="javascript:;" @click="redirect('store_draw_record.html')">
+                    <p class="bor-gray4 bor-solid-1b Fwhite">抽奖记录</p>
+                </a>
+            </template>
+
+            <template v-if="login == false">
+                <a href="login.html?call=true&callUrl=store.html">
+                    <p class="Fwhite">收货地址</p>
+                </a>
+            </template>
+            <template v-if="login == true">
+                <a href="javascript:;" @click="redirect('store_delivery_address.html')">
+                    <p class="Fwhite">收货地址</p>
+                </a>
+            </template>
+
+
+        </div>
+    </div>
+
+    <div class="pa15 Fgray-3">
+        <el-row :gutter="15">
+            <el-col :span="12" v-for="item in prizeList" class="mab15">
+                <div class="wb100">
+                    <a href="javascript:;" @click="redirect('store_detail.html?id='+item.id)">
+                        <div class="wb100"  style="height: 160px ;" :class="item.num == 0 ? 'dialogBg3' : 'warpper-gray-5'">
+                            <div class="wb60 img-area relative center " style=" top: 50%;transform: translateY(-50%);" :class="item.num == 0 ? 'z1' : 'z2'">
+                                <img :src="item.headerimg" />
+                            </div>
+                        </div>
+                        <div class="warpper-white pa10">
+                            <p class="F14 h20px lh20px text-over-hidden1 Fblack Fnum">{{item.name}}</p>
+                            <p class="F16 h20px lh20px text-over-hidden1 Fred mat5"><span class="Fnum">{{item.virtualprice}}</span> <span class="Fred F12">金币</span></p>
+                        </div>
+                    </a>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="clear1"></div>
+
+    <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+        <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+        <span class="fl mal10">{{loadtext}}</span>
+    </div>
+
+
+</div>
+
+<script>
+
+    "use strict";
+
+    var vm = new Vue({
+        el: "#store_page",
+        data: {
+            fullscreenLoading: true,
+            page: 1,
+            pageSize: 10,
+            login: false,
+            notice: [{
+                name: '张二狗',
+                gold: 200,
+                isNull: true
+            }, {
+                name: '张三狗',
+                gold: 200
+            }, {
+                name: '张四狗',
+                gold: 200
+            }, {
+                name: '张五狗',
+                gold: 200
+            }],
+            showType: false,
+            showMore: false,
+            prizeList: [],
+            showUserMeun: false,
+            loading: true,
+            last: false,
+            loadtext: '商品加载中...',
+            empty: false,
+
+        },
+        methods: {
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            getData: function getData() {
+                var _this = this;
+
+                if(_this.last){
+                    return;
+                }
+
+                BaseAjax.goodsList(_this.page,_this.pageSize, _this.bigtype, _this.category_id, function (data) {
+
+                    if(data){
+
+                        var _tmp = data.data.pagelist;
+
+                        console.log(data.data.pagelist)
+
+                        _this.prizeList = _this.prizeList.concat(_tmp);
+
+                        if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+                            if (_this.page == 1) {
+                                _this.loading = false;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多商品';
+                            } else {
+                                _this.loading = true;
+                                _this.last = true;
+                                _this.loadtext = '暂无更多商品';
+                                return false;
+                            }
+                        }
+
+                        if (_tmp.length == 0) {
+                            _this.empty = true;
+                        } else {
+                            _this.empty = false;
+                        }
+
+                    }
+
+                });
+            }
+
+        },
+        created: function created() {
+
+            var _this = this;
+
+            _this.showType = false;
+            _this.showMore = false;
+
+            //- 判断登录
+            baseAjax.userInfo(function (data) {
+                var _user = data.returnJSON;
+
+                if (base.isNull(_user)) {
+                    //- 未登录
+                    _this.login = false;
+                } else {
+                    _this.user = _user;
+
+                    _this.login = true;
+                    console.log(_this.user);
+                }
+            });
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+
+
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.showType = false;
+                _this.showMore = false;
+
+                baseAjax.userInfo(function (data) {
+                    var _user = data.returnJSON;
+
+                    if (base.isNull(_user)) {
+                        //- 未登录
+                        _this.login = false;
+                    } else {
+                        _this.user = _user;
+
+                        _this.login = true;
+                        console.log(_this.user);
+                    }
+                });
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.getData();
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

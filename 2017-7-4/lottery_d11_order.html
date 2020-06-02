@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>11选5投注单</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| lottery_d11_order_page
+| ------------------------------------------
+| Here are lottery_d11_order_page html
+|
+-->
+
+<div id="lottery_d11_order_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <div class="wb100 h50px relative warpper-red" style="z-index: 99999;">
+            <div class="w50px h50px fl"  @click="add">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">11选5 投注单</p>
+        </div>
+
+        <!--<ticket-header :title="'11选5 投注单'" :back="true" :back_url="'lottery_d11.html?typeIndex='+typeIndex"></ticket-header>-->
+
+        <ticket-login :show="dialogLogin" v-on:callback="loginCallback"></ticket-login>
+
+        <ticket-pay :show="dialogPay" v-on:callback="payCallback"></ticket-pay>
+
+        <ticket-conserve :show="dialogConserve" v-on:callback="conserveCallback"></ticket-conserve>
+
+        <el-dialog
+                :visible.sync="dialogBuySuccess"
+                :show-close="false"
+                size="large">
+
+            <p class="text-center F24">购买成功</p>
+
+            <div class="clear1"></div>
+
+            <p class="Fgray-3 text-center F16">购买成功，请关注出票状态，祝您中奖</p>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <div class="wb100">
+                <div class="wb40 text-center radius5 Fred h38px lh38px bor-red bor-solid-1a F16 fl" @click="back">
+                    返回
+                </div>
+
+                <div class="wb40 text-center radius5 h38px lh38px pa1 fr warpper-red Fwhite F16" @click="toDetail">
+                    查看详情
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </el-dialog>
+
+        <ticket-agreement :show="dialogAgreement" v-on:closecall="closeCallback"></ticket-agreement>
+
+        <div class="clear1"></div>
+        <div class="pal15 par15 text-center Fgray-3 F14">
+            <el-row :gutter="10">
+                <el-col :span="8">
+                    <!--<a :href="'lottery_d11.html?typeIndex='+typeIndex">-->
+                        <div class="wb100 h40px lh40px bor-gray bor-solid-1a Fgray-3 warpper-white" @click="add">
+                            + 手动添加
+                        </div>
+                    <!--</a>-->
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="randomSelect">
+                        + 机选1注
+                    </div>
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="emptyall">
+                        <img src="images/icon-clear.png" class="h20px middle"> 清空全部
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="pa15">
+            <template v-for="(item,key) in ticket">
+
+
+                    <div class="pat15 pab15 par30 pal50 lh25px bor-gray bor-solid-1a F14 relative warpper-white">
+
+                        <div class="h50px w25px absolute" @click="removeTicket(item.original.id)" style="left: 15px; top: 15px;">
+                            <img src="images/icon-remove.png" style="float: left; margin-top: 15px; width: 20px;">
+                        </div>
+
+                        <a :href="'lottery_d11.html?ticketID='+item.original.id">
+                        <div class="">
+                        <p>
+                            <span class="Fred">{{item.numbers}}</span>
+                        </p>
+                        <p class="Fgray-2 F12">{{item.title}} {{item.num}}注 {{item.num * 2}}元</p>
+                            <div class="h50px w25px absolute" style="right: 0; top: 15px;">
+                                <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                            </div>
+                        </div>
+                        </a>
+
+
+                    </div>
+
+                <div class="clear1"></div>
+
+            </template>
+        </div>
+
+        <div class="center over-hidden F14 Fgray-3" style="width: 233px" v-if="ticket.length>0">
+
+            <div class="fl" @click="cancel"><el-checkbox v-model="checked" style="z-index: -1"></el-checkbox></div>
+            <div class="fl mal5" @click="dialogAgreement = true">我已阅读并同意《<span class="Fblue">用户购彩协议</span>》</div>
+
+        </div>
+
+        <div class="text-center F16" style="color: #999999" v-else>亲，你还没投注哦~</div>
+
+
+        <div class="clear h80px"></div>
+
+        <!--<div class="wb100 fixed warpper-white" style="bottom: 100px;">-->
+        <!--<div class="pa15 F14 Fgray-3 lh30px">-->
+        <!--<span class="fl">-->
+        <!--连续追-->
+        <!--</span>-->
+        <!--<div class="fl mal10 mar10">-->
+        <!--<el-input-number size="small" v-model="periods" @change="periodsChange" :min="1" :max="999" />-->
+        <!--</div>-->
+        <!--<span class="fl">-->
+        <!--期（最多可追999期）-->
+        <!--</span>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="wb100 bor-gray bor-solid-1t fixed warpper-white" style="bottom: 0;">
+
+            <div class="pal15 par15 h30px lh30px pat5 pab5 warpper-gray-1 bor-gray bor-solid-1t bor-solid-1b">
+                <span class="fl Fgray-3 F14">余额：<span class="Fred">￥{{user.accountBalance}}</span></span>
+
+                <div class="w150px fr Fgray-3 F14">
+                    <div class="fl">
+                        <el-input-number class="fl" size="small" v-model="multiple" @change="multipleChange" :min="1" :max="999" />
+                    </div>
+                    <span class="fr w20px text-right">倍</span>
+                </div>
+
+            </div>
+
+            <div class="pat10 pab10 relative h40px">
+                <!--<div class="w80px text-center radius5 Fred h38px lh38px bor-red bor-solid-1a absolute F14" @click="openTrace" style="left: 15px; top: 10px;">-->
+                    <!--追号投注-->
+                <!--</div>-->
+
+                <div class="w80px text-center radius5 h38px lh38px pa1 absolute F14" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'" @click="submitOrder" style="right: 15px; top: 10px;">
+                    立即支付
+                </div>
+
+                <div class="  lh20px h20px F14 Fgray-3 fl pa10">
+
+
+                    <p>{{sumNum}}注 {{multiple}}倍 {{periods}}期 共<span class="Fred">{{sumPrice}}</span>元</p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script>
+    let vm = new Vue({
+        el: "#lottery_d11_order_page",
+        data: {
+            fullscreenLoading: true,
+            _width: 0,
+            _height: 0,
+            multiple: 1,
+            periods: 1,
+            sumNum: 0,
+            sumPrice: 0,
+            playType: 0,
+            ticketID : '',
+            user : {
+                accountBalance : 0,
+                nickName : '',
+            },
+            lock: true,
+            dialogBuySuccess: false,
+            dialogAgreement: false,
+            dialogLogin: false,
+            dialogPay: false,
+            dialogConserve:false,
+            duplex: true,
+            ticket: [],
+            checked: true,
+
+        },
+        methods: {
+
+            init(){
+
+                let _this = this;
+
+                baseAjax.userBaseInfo(function(data){
+                    if(data){
+                        if(base.isNull(data.returnJSON)){
+                            //未登录
+                        }else{
+                            //已登录
+                            _this.user = data.returnJSON;
+                            window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                        }
+                    }else{
+                        //获取失败
+                    }
+                })
+
+                let ticket = sessionStorage.getItem("d11_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                _this.ticket = [];
+
+                if(base.isNull(ticket) || ticket.length == 0){
+                    _this.calculate();
+                    return false;
+                }
+
+                //重组票
+
+//                console.log(ticket);
+
+                for(let i=0; i<ticket.length; i++){
+                    let original = ticket[i];
+//                    let _item = ticket[i].numbers;
+//                    let _num = ticket[i].num;
+//                    let _type = ticket[i].playType;
+
+                    let _title = '';
+
+                    if(ticket[i].playType == 0){
+                        _title = '任选二';
+                    } if(ticket[i].playType == 1){
+                        _title = '任选三';
+                    } if(ticket[i].playType == 2){
+                        _title = '任选四';
+                    } if(ticket[i].playType == 3){
+                        _title = '任选五';
+                    } if(ticket[i].playType == 4){
+                        _title = '任选六';
+                    } if(ticket[i].playType == 5){
+                        _title = '任选七';
+                    } if(ticket[i].playType == 6){
+                        _title = '任选八';
+                    } if(ticket[i].playType == 7){
+                        _title = '前一';
+                    } if(ticket[i].playType == 8){
+                        _title = '前二直选';
+                    } if(ticket[i].playType == 9){
+                        _title = '前二组选';
+                    } if(ticket[i].playType == 10){
+                        _title = '前三直选';
+                    } if(ticket[i].playType == 11){
+                        _title = '前三组选';
+                    }
+
+                    if(ticket[i].playType == 8){
+                        //前二直选
+                        _this.ticket.push({
+                            title : _title,
+                            num : ticket[i].num,
+                            numbers : ticket[i].numbers.split(',').join(' '),
+                            original : original,
+                        })
+
+                    }else if(ticket[i].playType == 10){
+                        //前三直选
+                        _this.ticket.push({
+                            title : _title,
+                            num : ticket[i].num,
+                            numbers : ticket[i].numbers.split(',').join(' '),
+                            original : original,
+                        })
+                    }
+
+                    else {
+                        _this.ticket.push({
+                            title : _title,
+                            num : ticket[i].num,
+                            numbers : ticket[i].numbers.split(',').join(' '),
+                            original : original,
+                        })
+
+                    }
+                    _this.calculate();
+
+                }
+
+                if(_this.ticket.length>0){
+                    _this.ticket = _this.ticket.reverse();
+                    _this.lock = false;
+                    _this.calculate();
+                }
+
+                _this.calculate();
+
+            },
+
+            cancel(){
+
+                this.checked = !this.checked;
+
+            },
+
+            closeCallback(val){
+
+                console.log(val);
+
+                if(val == 'close'){
+                    this.dialogAgreement = false;
+                }
+            },
+            openTrace(){
+
+            },
+
+            loginCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    this.dialogLogin = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消登录'
+                    });
+                }
+
+                if(val == 'success'){
+                    this.dialogLogin = false;
+                    //登录成功
+                    this.$message({
+                        type: 'success',
+                        message: '登录成功'
+                    });
+
+                    baseAjax.userBaseInfo(function(data){
+
+                        if(data){
+                            if(base.isNull(data.returnJSON)){
+                                //未登录
+                            }else{
+                                //已登录
+                                _this.user = data.returnJSON;
+                                window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                            }
+                        }else{
+                            //获取失败
+                        }
+
+                    })
+                }
+
+            },
+
+            payCallback(val){
+
+                if(val == 'cancel'){
+                    this.dialogPay = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消充值'
+                    });
+                }
+
+                if(val == 'success'){
+                    this.dialogPay = false;
+                    //充值成功
+                    this.$message({
+                        type: 'success',
+                        message: '充值成功'
+                    });
+                }
+            },
+
+            conserveCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    _this.dialogConserve = false;
+                }
+                if(val == 'success'){
+                    _this.dialogConserve = false;
+                    //保存成功
+                    window.location.href = 'lottery_d11.html?typeIndex='+_this.typeIndex;
+                }
+                if(val == 'fail'){
+                    _this.dialogConserve = false;
+                    //不保存
+                    _this.emptyall()
+                    window.location.href = 'lottery_d11.html?typeIndex='+_this.typeIndex;
+                }
+            },
+
+
+            add(){
+
+                let _this = this;
+                if(_this.ticket.length>0){
+                    _this.dialogConserve = true;
+                }else{
+                    _this.dialogConserve = false;
+                    window.location.href = 'lottery_d11.html?typeIndex='+_this.typeIndex;
+                }
+
+            },
+
+            toDetail(){
+
+                if(base.isNull(this.ticketID)){
+                    //投注失败
+                }else{
+                    window.location.href = 'ticket_detail.html?ticketID='+this.ticketID;
+                }
+
+                this.dialogBuySuccess = false;
+            },
+
+            back(){
+                this.dialogBuySuccess = false;
+            },
+
+            calculate(){
+                let _this = this;
+
+                let ticket = sessionStorage.getItem("d11_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                if(base.isNull(ticket)){
+                    _this.sumNum = 0;
+                    _this.sumPrice = 0;
+                    _this.multiple = 1;
+                    _this.periods = 1;
+                    _this.lock = true;
+                    return false;
+                }
+
+                let _sumNum = 0;
+                let _sumMultiple = 0;
+
+                for(let i=0; i<ticket.length; i++){
+                    _sumNum += ticket[i].num;
+                }
+
+                _sumMultiple = _this.multiple;
+
+                _this.sumNum = _sumNum;
+
+                _this.sumPrice = _sumNum * 2 * _sumMultiple * _this.periods;
+
+//                console.log(_sumNum)
+
+                if(_sumNum>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+
+            },
+
+            multipleChange(val){
+                this.multiple = val;
+                this.calculate();
+            },
+
+            periodsChange(val){
+                this.periods = val;
+                this.calculate();
+            },
+
+            removeTicket(id){
+                base.delTicketByID(id,'d11');
+                this.init();
+            },
+
+            //清空全部
+            emptyall(){
+                let _this = this;
+//                _this.$confirm('确认清空数据吗', '消息', {
+//                    callback: function(e) {
+//                        if(e == 'confirm'){
+                            //清空数据
+                            sessionStorage.setItem('d11_ticket',JSON.stringify([]));
+                            _this.init();
+                            _this.calculate();
+//                        }
+//                    }
+//                });
+            },
+
+            //机选
+            randomSelect(){
+
+                let _this = this;
+
+                let _rball = [];
+
+                _rball.push(base.addZero(base.random_num(1,11)));
+
+                let _length = 0;
+
+                if(_this.typeIndex == 0)
+                    _length = 1;
+
+                if(_this.typeIndex == 1)
+                    _length = 2;
+
+                if(_this.typeIndex == 2)
+                    _length = 3;
+
+                if(_this.typeIndex == 3)
+                    _length = 4;
+
+                if(_this.typeIndex == 4)
+                    _length = 5;
+
+                if(_this.typeIndex == 5)
+                    _length = 6;
+
+                if(_this.typeIndex == 6)
+                    _length = 7;
+
+                if(_this.typeIndex == 8)
+                    _length = 1;
+
+                if(_this.typeIndex == 9)
+                    _length = 1;
+
+                if(_this.typeIndex == 10)
+                    _length = 2;
+
+                if(_this.typeIndex == 11)
+                    _length = 2;
+
+                for(let i=0; i<_length; i++){
+                    let rd = base.addZero(base.random_num(1,11));
+                    let _flag = true;
+                    for(let i=0;i<_rball.length; i++){
+                        //去重
+                        if(rd == _rball[i]){
+                            _flag = false;
+                            break;
+                        }
+                    }
+                    if(_flag){
+                        _rball.push(rd);
+                    }else{
+                        i--;
+                    }
+                }
+
+
+                if(_this.typeIndex == 8){
+                    //前二直选
+
+                    let _result = _rball.join(" | ");
+                    let _result2 = _rball.slice(0,1);
+                    let _result3 = _rball.slice(1,2);
+
+//                    console.log(_rball)
+
+                    let ticket = sessionStorage.getItem('d11_ticket');
+
+                    if(base.isNull(ticket))
+                        ticket = [];
+                    else
+                        ticket = JSON.parse(ticket);
+
+                    ticket.push({
+                        id : base.getUuid(),
+                        num : 1,
+                        numbers : _result,
+                        numbers2 : _result2,
+                        numbers3 : _result3,
+                        playType : _this.typeIndex,
+                    });
+                    sessionStorage.setItem('d11_ticket',JSON.stringify(ticket));
+
+                    _this.init();
+
+                    _this.calculate();
+
+                }else if(_this.typeIndex == 10){
+                    //前三直选
+
+                    let _result = _rball.join(" | ") ;
+                    let _result2 = _rball.slice(0,1);
+                    let _result3 = _rball.slice(1,2);
+                    let _result4 = _rball.slice(2,3);
+
+
+                    let ticket = sessionStorage.getItem('d11_ticket');
+
+                    if(base.isNull(ticket))
+                        ticket = [];
+                    else
+                        ticket = JSON.parse(ticket);
+
+                    ticket.push({
+                        id : base.getUuid(),
+                        num : 1,
+                        numbers : _result,
+                        numbers2 : _result2,
+                        numbers3 : _result3,
+                        numbers4 : _result4,
+                        playType : _this.typeIndex,
+                    });
+                    sessionStorage.setItem('d11_ticket',JSON.stringify(ticket));
+
+                    _this.init();
+
+
+
+                }
+
+                else{
+                //普通
+                let _result = _rball.join(",") ;
+
+                let ticket = sessionStorage.getItem('d11_ticket');
+
+                if(base.isNull(ticket))
+                    ticket = [];
+                else
+                    ticket = JSON.parse(ticket);
+
+                ticket.push({
+                    id : base.getUuid(),
+                    num : 1,
+                    numbers : _result,
+                    playType : _this.typeIndex,
+                });
+                sessionStorage.setItem('d11_ticket',JSON.stringify(ticket));
+
+
+                _this.init();
+                }
+            },
+
+            submitOrder(){
+
+                let _this = this;
+
+                if(_this.lock == true){
+                    return false;
+                }
+
+                //判断用户登录，这里弹出登录
+                let _userID = baseAjax.getUserId();
+
+                if(_userID == 0){
+                    _this.dialogLogin = true;
+                    return false;
+                }
+
+                //判断余额,余额不足弹出充值界面
+                if(baseAjax.getBalance() < _this.sumPrice){
+                    _this.dialogPay = true;
+                    return false;
+                }
+
+                //重组票
+
+                let _anteCodeList = [];
+
+                let ticket = sessionStorage.getItem("d11_ticket");
+
+                ticket = JSON.parse(ticket);
+
+//                console.log(ticket);
+//
+//                return false;
+
+                let _playType = 0;
+                let _numbers = 0;
+
+                let _ticketList = [];
+
+                for(let i=0; i<ticket.length; i++){
+
+
+//                    num == 1
+//                    let _this = ticket[i];
+//                console.log(ticket[i])
+
+
+                    if(ticket[i].playType == 8){
+                        _playType = 9;
+                        _numbers = ticket[i].numbers.split(' | ').join('|');
+                    } else if(ticket[i].playType == 10){
+                        _playType = 10;
+                        _numbers = ticket[i].numbers.split(' | ').join('|')
+                    }else if(ticket[i].playType == 0) {
+                        _playType = 2;
+                        _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 1){
+                            _playType = 3;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 2){
+                            _playType = 4;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 3){
+                        _playType = 5;
+                        _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 4){
+                        _playType = 6;
+                        _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 5){
+                            _playType = 7;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 6){
+                            _playType = 8;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 7){
+                            _playType = 1;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 9){
+                            _playType = 11;
+                            _numbers = ticket[i].numbers
+                    }else if(ticket[i].playType == 11){
+                            _playType = 12;
+                            _numbers = ticket[i].numbers
+                    }
+
+//                    _anteCodeList.push({
+//                        ticketType : ticket[i].num == 1 ? 0 : 1,
+//                        anteCode : _numbers,
+//                    })
+
+                    _ticketList.push({
+                        playType : _playType,
+                        anteCodeList : [{
+                            ticketType : ticket[i].num == 1 ? 0 : 1,
+                            anteCode : _numbers,
+                        }],
+                    })
+
+                }
+
+                console.log(_ticketList);
+
+//                return false;
+
+//                [{"playType":6,"anteCodeList":[{"ticketType":"0","anteCode":"03,10,07,01,08,04"}]}]
+//                    [{"playType": 1, "anteCodeList": [{"ticketType": 0, "anteCode": "string"}]}],
+
+                //判断奖期
+
+                baseAjax.awardPeriod(lotteryType.YDJ11X5,function(data){
+
+                    let _tmp = data.returnJSON.pop();
+
+                    if(_tmp){
+                        baseAjax.d11Ticket(_ticketList, lotteryType.YDJ11X5, _tmp.number,_this.multiple,function (data, errorMsg) {
+
+                            if(data){
+                                _this.dialogBuySuccess = true;
+
+                                //- 2017年6月14日16:55:51
+                                //下单成功，清空所有临时票
+                                let ticket = sessionStorage.getItem("d11_ticket");
+                                
+                                ticket = [];
+
+//                                ticket = JSON.parse(ticket);
+                                sessionStorage.setItem("d11_ticket", JSON.stringify(ticket));
+
+                                _this.ticketID = data.returnJSON;
+
+                                _this.init();
+
+                                console.log(data);
+//                                alert('购买成功')
+
+
+                            }else{
+                                _this.$message({
+                                    type: 'error',
+                                    message: errorMsg
+                                });
+                            }
+                        })
+                    }
+
+                });
+
+
+
+            },
+
+        },
+
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            let typeIndex = base.getParmar('typeIndex');
+
+            if(base.isNull(typeIndex)){
+                typeIndex = 0;
+            }
+            _this.typeIndex = typeIndex;
+
+            _this.init();
+
+            setTimeout(() => {
+                $("#lottery_d11_order_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

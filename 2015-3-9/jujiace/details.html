@@ -1,0 +1,1037 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>居家策</title>
+
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<!-- iocn.css 图标样式 -->
+<!--<link href="css/iocn.css" type="text/css" rel="stylesheet">-->
+<!-- triangle.css 三角样式 -->
+<!--<link href="css/triangle.css" type="text/css" rel="stylesheet">-->
+
+<!-- jujiace.css 新添加样式 放在base.css之后才能生效 -->
+<link href="css/jujiace.css" type="text/css" rel="stylesheet">
+<link href="css/flickerplate.css" type="text/css" rel="stylesheet">
+
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.jqzoom.js"></script>
+<script type="text/javascript" src="js/jqzoom.js"></script>
+<script type="text/javascript" src="js/jquery.Spinner.js"></script>
+<script>
+    $(function(){
+	<!-- header js -->
+	  $(".js-last").find("span:last").css("display","none");
+	  	
+	  $(".nav-menu a").click(function(){
+	      $(this).addClass("warpper-red-3").siblings().removeClass("warpper-red-3");
+		});
+	<!-- //- header js -->	
+    
+	  $(".js-select-menu .js-select").click(function(){
+	    $(this).addClass("borc-red-1").siblings().removeClass("borc-red-1");
+	    $(this).find(".js-show").removeClass("hidden").parent().siblings().children(".js-show").addClass("hidden");
+	  });
+	  
+	  //数量加减
+	  $('.spinnerExample').spinner({});
+	  
+	  
+	  //获取div为js-center-height层的高度 $(".js-center-height").height()
+	  $(".js-right-height").css({height:$(".js-center-height").height()+"px"});
+	  
+	  $(".js-last1").find("div.js-last-num:last").css("margin-right","0px");
+	  
+	  $(".js-tab .js-tab-til").click(function(){
+		$(this).addClass("warpper-red-2").siblings().removeClass("warpper-red-2");
+		$(this).find("span").css("color","#FFF").parent().parent(".js-tab-til").siblings().find("span").css("color","#666");
+		
+		var num = $(this).index();
+		
+		$(".js-tab-con").hide();
+		$(".js-tab-con:eq("+num+")").show();
+	  });
+	  
+	  $(".js-sel2 a").click(function(){
+	    $(this).addClass("Fc-red01").siblings().removeClass("Fc-red01");
+	  });
+	  
+	  var _height =  $(".js-tab").offset().top;//获取浏览器到层的高度
+	  
+	  $(window).bind("scroll",function() {
+		// 然后判断窗口的滚动条是否接近页面底部，这里的20可以自定义
+		if ($(document).scrollTop() > _height) {
+			$(".js-tab").addClass("fixed");
+		} else{
+			$(".js-tab").removeClass("fixed");
+		}
+	  });
+	
+	  $(".js-tab-til").click(function(){
+	    $('body,html').animate({scrollTop:_height},100);
+	  });
+    });
+</script>
+</head>
+
+<body>
+<!-- header -->
+<div class="header wb100">
+  <div class="top h30px lh30px F12 Fgray-3 bgc-gray-1 bor-solid-1b borc-gray-1">
+    <div class="w1200px center">
+      <div class="fl">
+        <span>您好，欢迎光临本店！</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">登录</a>]</span>
+        <span>[<a class="Fred-1" href="javascript:void(0)">免费注册</a>]</span>
+      </div>
+      <div class="fr wb47">
+        <ul>
+          <li class="fl">
+            <a class="Fgray-3" href="javascript:void(0)">我的订单<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">用户中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">帮助中心<img class="middle mal5" src="images/bq-01.jpg"></a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">商家入住</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <a class="Fgray-3" href="javascript:void(0)">收藏我们</a>
+          </li>
+          <li class="fl mal10 mar10">|</li>
+          <li class="fl">
+             <p class="Fgray-3">服务热线：<span class="Fred-2 Fb">400-8000-800</span></p>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="w1200px center pat20 pab20">
+      <div class="fl wb25">
+        <div class="fl wb55">
+          <a href="javascript:void(0)"><img src="images/logo.jpg"></a>
+        </div>
+        <div class="fl wb25 mal10">
+          <div class="mat10"><img class="middle mar5" src="images/bq-02.jpg"><span class="F14 Fb Fgray-3">重庆市</span></div>
+          <div class="mat10 bor-solid-1a bor-gray1 h25px lh25px text-center">
+            <a href="javascript:void(0)" class="F14 Fgray-2">切换城市</a>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="fl wb60 pat10">
+        <div class="wb66 center">
+          <div class="bor-solid-1a bor-red h35px lh35px">
+            <div class="wb15 fl text-center warpper-gray-1 h35px lh35px">
+              <a class="F12 Fgray-3 display-inline h35px lh35px wb100" href="javascript:void(0)">商品<img class="middle mal5" src="images/bq-01.jpg" />
+              </a>
+            </div>
+            <div class="fl wb70 h35px bor-gray-solid-1a lh35px F125em" >
+              <img class="middle pal10" src="images/bq-04.jpg" />
+              <input class="wb85 h25px lh25px Fgray-3 bor-none" type="text" placeholder="请输入关键字" />
+            </div>
+            <div class="fl wb15 text-center warpper-red-1" >
+              <a class="F12 Fwhite display-inline h35px lh35px wb100" href="javascript:void(0)">搜索</a>
+            </div> 
+            <div class="clear"></div>
+          </div>
+          <div class="mat10">
+            <span class="F12 Fgray-2">热门搜索：</span>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">衣柜</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">卫浴</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱电</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">窗帘</a>
+            <a class="F12 Fgray-2 par10" href="javascript:void(0)">橱柜定制</a>
+          </div>
+        </div>
+      </div>
+      <div class="fr wb15 pat10">
+        <div class="bor-solid-1a bor-gray1 h30px lh30px text-center warpper-gray-1 wb90 mal15">
+          <a class="F14 Fgray-3" href="javascript:void(0)"><img class="middle mar15" src="images/bq-03.jpg">去购物车结算<img class="middle mal10" src="images/bq-019.jpg" /></a>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="nav wb100 h40px warpper-red-2">
+    <div class="w1200px center h40px lh40px">
+      <div class="fl wb18 relative">
+        <div class="wb100 absolute h46px lh50px text-center top6 warpper-red-5">
+          <img class="absolute left5" src="images/ml.jpg">
+          <span class="F16 Fb Fwhite">全部商品分类</span>
+          <img class="absolute right5" src="images/mr.jpg">
+        </div>
+      </div>
+      <div class="fr wb18 warpper-red-3">
+        <div class="wb100 text-center h40px">
+          <img src="images/bq-05.jpg">
+          <a class="F15 Fb Fwhite mal10" href="javascript:void(0)">居家秀</a>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fr wb64 nav-menu">       
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px warpper-red-3" href="javascript:void(0)">首页</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">限时购</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">积分兑换</a>
+        <a class="F15 Fb Fwhite pal30 par30 display-inline fl h40px" href="javascript:void(0)">品牌体验馆</a>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- body -->
+<div class="body">
+  <div class="w1200px center">
+    <div class="pat10 js-last">
+      <span><img src="images/tp-027.jpg"></span>
+      <a class="F12 Fgray-2" href="javascript:void(0)">首页</a><span class="F16 Fgray-2 pal10 par10">&gt;</span>
+      <a class="F12 Fgray-2" href="javascript:void(0)">家具</a><span class="F16 Fgray-2 pal10 par10">&gt;</span>
+      <a class="F12 Fgray-2" href="javascript:void(0)">卧室</a><span class="F16 Fgray-2 pal10 par10">&gt;</span>
+    </div>
+    <div class="mat10 bor-solid-1a borc-gray-2">
+      <div class="fl wb33 mal20 mat20 mab20">
+        <div id="preview" class="spec-preview h365px img-area">
+          <span class="jqzoom"><img jqimg="images/tp-033.jpg" src="images/tp-033.jpg" /></span>
+        </div>
+        <div class="spec-scroll"><a class="prev">&lt;</a> <a class="next">&gt;</a>
+          <div class="items">
+            <ul>
+              <li><img alt="" bimg="images/tp-033.jpg" src="images/tp-033.jpg" onmousemove="preview(this);"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="fl mal35 wb42 js-center-height">
+        <div class="pat20 par20">
+          <div class="h50px lh25px over-hidden">
+            <span class="F16 Fgray-3">[凯撒豪庭] 欧式田园 畅销经典款 高档水牛头层真皮床 轻奢浪漫 1.8米精致水晶拉扣双人床</span>
+          </div>
+          <div class="pat10 bor-solid-1b bor-solid-1t borc-gray-2 mat15">
+            <div class="mab15">
+              <span class="F12 Fgray-3 mar20">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</span><span class="F14 Fc-red01">￥</span><span class="F18 Fc-red01">235.00</span>
+            </div>
+            <div class="mab15">
+              <span class="F12 Fgray-3 mar20">销&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</span><span class="F12 Fgray-3">1100 件</span>
+            </div>
+            <div class="mab15">
+              <span class="F12 Fgray-3 mar20">用户评分</span>
+              <span class="mar5"><img src="images/tp-037.png" /></span>
+              <span class="mar5"><img src="images/tp-037.png" /></span>
+              <span class="mar5"><img src="images/tp-037.png" /></span>
+              <span class="mar5"><img src="images/tp-037.png" /></span>
+              <span class="mar5"><img src="images/tp-037.png" /></span>
+              <span class="F12 Fgray-3">（共有 <span class="Fc-red01">135</span> 条评论）</span>
+            </div>
+            <div class="mab15">
+              <span class="F12 Fgray-3 mar20">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</span><span class="F12 Fgray-3">10 件</span>
+            </div>
+          </div>
+          <div class="mat20">
+            <div class="">
+              <div class="fl wb14"><span class="F12 Fgray-3">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</span></div>
+              <div class="fr wb86 js-select-menu">
+                <div class="js-select bor-solid-1a borc-gray-2 mar10 mab10 h25px lh25px pal10 par10 fl relative pointer">
+                  <span class="F12 Fgray-3">真皮床头1.8米床</span>
+                  <span class="absolute hidden js-show right0 bottom0"><img src="images/tp-038.png"></span>
+                </div>
+                <div class="js-select bor-solid-1a borc-gray-2 mar10 mab10 h25px lh25px pal10 par10 fl relative pointer">
+                  <span class="F12 Fgray-3">真皮床头1.8米床</span>
+                  <span class="absolute hidden js-show right0 bottom0"><img src="images/tp-038.png"></span>
+                </div>
+                <div class="js-select bor-solid-1a borc-gray-2 mar10 mab10 h25px lh25px pal10 par10 fl relative pointer">
+                  <span class="F12 Fgray-3">真皮床头1.8米床</span>
+                  <span class="absolute hidden js-show right0 bottom0"><img src="images/tp-038.png"></span>
+                </div>
+                <div class="js-select bor-solid-1a borc-gray-2 mar10 mab10 h25px lh25px pal10 par10 fl relative pointer">
+                  <span class="F12 Fgray-3">真皮床头1.8米床</span>
+                  <span class="absolute hidden js-show right0 bottom0"><img src="images/tp-038.png"></span>
+                </div>
+                <div class="js-select bor-solid-1a borc-gray-2 mar10 mab10 h25px lh25px pal10 par10 fl relative pointer">
+                  <span class="F12 Fgray-3">真皮床头1.8米床</span>
+                  <span class="absolute hidden js-show right0 bottom0"><img src="images/tp-038.png"></span>
+                </div>
+                
+                <div class="clear"></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat10">
+              <div class="fl wb14"><span class="F12 Fgray-3">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</span></div>
+              <div class="fr wb86">
+                <span class="F12 Fgray-3">内径：1815*2020mm ；外径：长2090*高1560mm</span>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat20">
+              <div class="fl wb14 lh25px"><span class="F12 Fgray-3">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</span></div>
+              <div class="fr wb86">
+                <input type="text" class="spinnerExample"/>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="mat20 mab20">
+            <div class="">
+              <button class="h40px lh40px bor-solid-1a bor-orange2 warpper-orange-1 F18 Fwhite pointer wb30 radius5">加入购物车</button>
+              <button class="h40px lh40px bor-solid-1a borc-red-1 warpper-red-5 F18 Fwhite pointer wb30 radius5 mal35">立即购买</button>
+            </div>
+            <div class="mat30">
+              <div class="fl">
+                <img src="images/tb-010.jpg"><a href="javascript:void(0)" class="F12 Fgray-3 mal5">收藏商品</a>
+              </div>
+              <div class="fr">
+                <span class="F12 Fgray-3">分享到：</span>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar5" title="新浪微博"><img alt="新浪微博" src="images/tb-011.jpg"></a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar5" title="腾讯微博"><img alt="腾讯微博" src="images/tb-012.jpg"></a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar5" title="人人网"><img alt="人人网" src="images/tb-013.jpg"></a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar5" title="开心网"><img alt="开心网" src="images/tb-014.jpg"></a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar5" title="豆瓣网"><img alt="豆瓣网" src="images/tb-015.jpg"></a>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="fr wb18">
+        <div class="relative bor-solid-1l borc-gray-2 js-right-height">
+          <div class="absolute bg-img-16 h50px w231px left-9 lh50px text-center"><span class="F14 Fwhite">商家信息</span></div>
+          <div class="pat50">
+            <div class="pa10">
+              <p class="mab15"><span class="F12 Fgray-3 mar5">卖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家：</span><a class="F12 Fblue" href="javascript:void(0)">梦美斯宣官方旗舰店</a></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">商品质量：</span><span class="F12 Fgray-3 Fb">5.00分</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">商品描述：</span><span class="F12 Fgray-3 Fb">5.00分</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">服务态度：</span><span class="F12 Fgray-3 Fb">5.00分</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">发货速度：</span><span class="F12 Fgray-3 Fb">5.00分</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">联系客服：</span><a href="javascript:void(0)"><img src="images/tp-035.jpg" class="display-table middle"></a></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">公司名称：</span><span class="F12 Fgray-3 lh20px">佛山市顺德区梦美斯宣家具有限公司</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">所&nbsp;&nbsp;在&nbsp;地：</span><span class="F12 Fgray-3 ">广东 佛山市</span></p>
+              <p class="mab15"><span class="F12 Fgray-3 mar5">联系电话：</span><span class="F12 Fgray-3">4008008888</span></p>
+              <p>
+                <a href="javascript:void(0)" class="F12 Fblue display-inline h35px lh35px bor-solid-1a borc-gray-2 wb40 text-center">进入店铺</a>
+                <a href="javascript:void(0)" class="F12 Fblue display-inline h35px lh35px bor-solid-1a borc-gray-2 wb40 text-center mal15">收藏店铺</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    
+    <div class="mat10">
+      <div class="fl wb20">
+        <div class="bor-solid-1a borc-gray-2">
+          <div class="h40px lh40px bgc-gray-2 text-center bor-solid-1b borc-gray-2">
+            <span class="F14 Fgray-3 Fb">店铺宝贝推荐</span>
+          </div>
+          <div class="pal25 par25">
+            <div class="mat30 pab30 bor-dotted-1b borc-gray-2">
+              <div class="wb100 h120px img-area"><a href="javascript:void(0)"><img src="images/tp-031.jpg"></a></div>
+              <div class="h40px lh20px over-hidden mat15">
+                <a href="javascript:void(0)" class="F12 Fgray-3">【赛朵】方形吸顶灯（出厂不带光源）</a>
+              </div>
+              <div class="mat10">
+                <div class="fl">
+                  <span class="F12 Fc-red01">¥172.00</span>
+                </div>
+                <div class="fr">
+                  <span class="F12 Fgray-3">已售：<span class="F12 Fc-red01">2383</span>件</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="mat30 pab30 bor-dotted-1b borc-gray-2">
+              <div class="wb100 h120px img-area"><a href="javascript:void(0)"><img src="images/tp-031.jpg"></a></div>
+              <div class="h40px lh20px over-hidden mat15">
+                <a href="javascript:void(0)" class="F12 Fgray-3">【赛朵】方形吸顶灯（出厂不带光源）</a>
+              </div>
+              <div class="mat10">
+                <div class="fl">
+                  <span class="F12 Fc-red01">¥172.00</span>
+                </div>
+                <div class="fr">
+                  <span class="F12 Fgray-3">已售：<span class="F12 Fc-red01">2383</span>件</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="mat30 pab30 bor-dotted-1b borc-gray-2">
+              <div class="wb100 h120px img-area"><a href="javascript:void(0)"><img src="images/tp-031.jpg"></a></div>
+              <div class="h40px lh20px over-hidden mat15">
+                <a href="javascript:void(0)" class="F12 Fgray-3">【赛朵】方形吸顶灯（出厂不带光源）</a>
+              </div>
+              <div class="mat10">
+                <div class="fl">
+                  <span class="F12 Fc-red01">¥172.00</span>
+                </div>
+                <div class="fr">
+                  <span class="F12 Fgray-3">已售：<span class="F12 Fc-red01">2383</span>件</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="mat30 pab30 bor-dotted-1b borc-gray-2">
+              <div class="wb100 h120px img-area"><a href="javascript:void(0)"><img src="images/tp-031.jpg"></a></div>
+              <div class="h40px lh20px over-hidden mat15">
+                <a href="javascript:void(0)" class="F12 Fgray-3">【赛朵】方形吸顶灯（出厂不带光源）</a>
+              </div>
+              <div class="mat10">
+                <div class="fl">
+                  <span class="F12 Fc-red01">¥172.00</span>
+                </div>
+                <div class="fr">
+                  <span class="F12 Fgray-3">已售：<span class="F12 Fc-red01">2383</span>件</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mat10 bor-solid-1a borc-gray-2">
+          <div class="h35px lh35px text-center bgc-gray-2 bor-solid-1b borc-gray-2">
+            <span class="F14 Fb Fgray-3">我浏览过的</span>
+          </div>
+          <div class="pa10 js-new-last">
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="mat15 js-div-num">
+              <div class="fl wb45 pab15 bor-dotted-1b borc-gray-2 h65px img-area">
+                <a href="javascript:void(0)"><img src="images/tp-030.jpg"></a>
+              </div>
+              <div class="fr wb50">
+                <p class="mat5 h30px lh15px over-hidden"><a class="F12 Fgray-3" href="javascript:void(0)">法式宫廷沙发精美雕花</a></p>
+                <p class="mat10"><span class="F14 Fc-red01 Fb">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fr wb79">
+        <div class="bor-solid-1a borc-gray-2" style="border-top:2px solid #ff7d7d;">
+          <div class="h30px lh30px pal30"><span class="F14 Fgray-3 Fb">套餐优惠推荐</span></div>
+          <div class="mat10 pal15 mab20">
+            <div class="fl wb81 js-last1">
+              <div class="fl wb23 mar20 js-last-num">
+                <p class="wb100 h130px img-area"><a href="javascript:void(0)"><img src="images/tp-039.jpg"></a></p>
+                <p class="mat10 h35px lh18px over-hidden"><a href="javascript:void(0)" class="F12 Fgray-3">[卓美欧]SUS304不锈钢双面拉丝水槽套装75*40CM</a></p>
+                <p class="mat10"><input type="checkbox" class="middle"/><span class="F14 Fc-red01 middle mal5">￥ 3800</span></p>
+              </div>
+              <div class="fl wb23 mar20 js-last-num">
+                <p class="wb100 h130px img-area"><a href="javascript:void(0)"><img src="images/tp-039.jpg"></a></p>
+                <p class="mat10 h35px lh18px over-hidden"><a href="javascript:void(0)" class="F12 Fgray-3">[卓美欧]SUS304不锈钢双面拉丝水槽套装75*40CM</a></p>
+                <p class="mat10"><input type="checkbox" class="middle"/><span class="F14 Fc-red01 middle mal5">￥ 3800</span></p>
+              </div>
+              <div class="fl wb23 mar20 js-last-num">
+                <p class="wb100 h130px img-area"><a href="javascript:void(0)"><img src="images/tp-039.jpg"></a></p>
+                <p class="mat10 h35px lh18px over-hidden"><a href="javascript:void(0)" class="F12 Fgray-3">[卓美欧]SUS304不锈钢双面拉丝水槽套装75*40CM</a></p>
+                <p class="mat10"><input type="checkbox" class="middle"/><span class="F14 Fc-red01 middle mal5">￥ 3800</span></p>
+              </div>
+              <div class="fl wb23 mar20 js-last-num">
+                <p class="wb100 h130px img-area"><a href="javascript:void(0)"><img src="images/tp-039.jpg"></a></p>
+                <p class="mat10 h35px lh18px over-hidden"><a href="javascript:void(0)" class="F12 Fgray-3">[卓美欧]SUS304不锈钢双面拉丝水槽套装75*40CM</a></p>
+                <p class="mat10"><input type="checkbox" class="middle"/><span class="F14 Fc-red01 middle mal5">￥ 3800</span></p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="fr wb17">
+              <div class="">
+                <div class="mab10">
+                  <span class="F12 Fgray-3">套餐价格：</span>
+                  <span class="F14 Fc-red01 mal5">¥12808</span>
+                </div>
+                <div class="mab20">
+                  <span class="F12 Fgray-3">获得优惠：</span>
+                  <span class="F14 Fgray-3 FLine mal5">¥4808</span>
+                </div>
+                <div class="">
+                  <button class="h30px lh25px bor-solid-1a borc-red-1 warpper-red-5 F12 Fwhite pointer wb70 radius5 Fb">立即购买</button>
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        
+        <div class="h40px lh40px bor-solid-1a borc-gray-2 mat10 js-tab bgc-gray-1">
+          <div class="js-tab-til fl wb12 text-center bor-solid-1r borc-gray-2 warpper-red-2">
+            <a class="display-inline h40px wb100" href="javascript:void(0)"><span class="F14 Fwhite">商品介绍</span></a>
+          </div>
+          <div class="js-tab-til fl wb12 text-center bor-solid-1r borc-gray-2">
+            <a class="display-inline h40px wb100" href="javascript:void(0)"><span class="F14 Fgray-3">评价</span><span class="F14 Fred mal5">186</span></a>
+          </div>
+          <div class="js-tab-til fl wb12 text-center bor-solid-1r borc-gray-2">
+            <a class="display-inline h40px wb100" href="javascript:void(0)"><span class="F14 Fgray-3">规格及包装</span></a>
+          </div>
+          <div class="js-tab-til fl wb12 text-center bor-solid-1r borc-gray-2">
+            <a class="display-inline h40px wb100" href="javascript:void(0)"><span class="F14 Fgray-3">售后服务</span></a>
+          </div>
+          <div class="js-tab-til fl wb12 text-center bor-solid-1r borc-gray-2">
+            <a class="display-inline h40px wb100" href="javascript:void(0)"><span class="F14 Fgray-3">商品咨询</span></a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!-- 商品介绍 -->
+        <div class="js-tab-con bor-solid-1a borc-gray-2 mat10 pab20">
+          <div class="bor-solid-1b borc-gray-2 bgc-gray-1 pal30 pat15 pab15">
+            <div class=""><span class="F14 Fgray-3">规格参数</span></div>
+            <div class="">
+              <span class="display-inline wb32 F12 Fgray-3 mat15">灯身材质：玻璃</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">家装风格：简约现代</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">适用空间：客厅</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">光源类型：LED</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">是否带光源：带光源</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">灯身材质：玻璃</span>
+              <span class="display-inline wb32 F12 Fgray-3 mat15">灯身材质：玻璃</span>
+            </div>
+          </div>
+          
+          <div class="text-center mat20">
+            <img src="images/tp-040.jpg">
+          </div>
+          <div class="mat40">
+            <div class="h40px lh40px bgc-gray-1 pal20 wb90 center">
+              <span class="F18 Fred-1">产品功能</span><i class="F12 Fgray-2 mal5">Product Function</i>
+            </div>
+            <div class="mat30 text-center">
+              <img src="images/tp-041.jpg"> 
+              <img src="images/tp-042.jpg">
+              <img src="images/tp-043.jpg">
+              <img src="images/tp-044.jpg">
+              <img src="images/tp-045.jpg">
+              <img src="images/tp-046.jpg">
+              <img src="images/tp-047.jpg">
+              <img src="images/tp-048.jpg">
+              <img src="images/tp-049.jpg">
+              <img src="images/tp-050.jpg">          
+            </div>
+          </div>
+        </div>
+        <!-- 评价 -->
+        <div class="js-tab-con wb100 hidden mat10">
+            <div class="bor-solid-1a borc-gray-2">
+              <div class="h30px lh30px bgc-gray-2 pal20 bor-solid-1b borc-gray-2">
+                <span class="F14 Fgray-3">用户评价</span>
+              </div>
+              <div class="pat20 pab20">
+                <div class="fl wb49 bor-solid-1r borc-gray-2 text-center h100px lh100px">
+                  <span class="F30 Fred-1">93.5%</span><span class="F14 Fgray-3 mal10">用户满意</span>
+                </div>
+                <div class="fr wb50 pat25">
+                  <div class="center wb70">
+                    <div class="mab10">
+                      <div class="fl wb17 text-right"><span class="F12 Fgray-3 mar10">满意</span></div>
+                      <div class="fl h10px wb65 bgc-gray-2">
+                        <div class="h10px wb93 warpper-red-2"></div>
+                      </div>
+                      <div class="fl wb15"><span class="F12 Fgray-3 mal10">93.5%</span></div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb17 text-right"><span class="F12 Fgray-3 mar10">一般</span></div>
+                      <div class="fl h10px wb65 bgc-gray-2">
+                        <div class="h10px wb7 warpper-red-2"></div>
+                      </div>
+                      <div class="fl wb15"><span class="F12 Fgray-3 mal10">6.5%</span></div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="mab10">
+                      <div class="fl wb17 text-right"><span class="F12 Fgray-3 mar10">不满意</span></div>
+                      <div class="fl h10px wb65 bgc-gray-2">
+                        <div class="h10px wb1 warpper-red-2"></div>
+                      </div>
+                      <div class="fl wb15"><span class="F12 Fgray-3 mal10">0%</span></div>
+                      <div class="clear"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="h30px lh30px bgc-gray-2 pal30 bor-solid-1t borc-gray-2 js-sel2">
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar20 Fc-red01">全部评价 （97）</a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar20">满意 （91）</a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar20">一般 （6）</a>
+                <a href="javascript:void(0)" class="F12 Fgray-3 mar20">不满意 （0）</a>
+              </div>
+            </div>
+            <div class="mat30">
+              <ul>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fblue">上善若水</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fgray-3">上善若水（匿名）</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fgray-3">上善若水（匿名）</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fblue">上善若水</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fblue">上善若水</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fblue">上善若水</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fgray-3">上善若水（匿名）</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+                <li class="pab15 pat20 bor-solid-1b borc-gray-2">
+                  <div class="fl wb11 text-center">
+                    <p class="wb40 h40px center img-area"><img src="images/tp-051.jpg" height="40"></p>
+                    <p class="mat5"><span class="F12 Fgray-3">上善若水（匿名）</span></p>
+                    <p class="mat5"><img src="images/tp-053.jpg"></p>
+                  </div>
+                  <div class="fr wb86">
+                    <p class="F14 Fgray-3 mat10">好，很好，非常好！</p>
+                    <p class="F12 Fgray-2 mat15"><span>2015年01月12日 12:30:12</span><span class="mal10">颜色分类：450遥控LED灯泡</span></p>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+              </ul>
+              
+              <div class="mat20 text-right pat10 pab20">
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">上一页</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">1</a>
+                <span class="F12 Fwhite bor-solid-1a borc-red-1 warpper-red-2 display-inline h25px lh25px w25px text-center mar5">2</span>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">3</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">4</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">下一页</a>
+              </div>
+            </div>
+          </div>
+        <!-- 规格及包装 -->
+        <div class="js-tab-con wb100 hidden mat10">
+          <div class="bor-solid-1a borc-gray-2">
+            <div class="h30px lh30px bgc-gray-1 bor-solid-1b borc-gray-2 pal20"><span class="F14 Fgray-3">规格参数</span></div>
+            <div class="">
+              <div class="h30px lh30px bor-solid-1b borc-gray-2">
+                <div class="fl wb20 text-right">
+                  <span class="F12 Fgray-3">灯身材质：</span>
+                </div>
+                <div class="fr wb79">
+                  <span class="F12 Fgray-3">玻璃</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="h30px lh30px bor-solid-1b borc-gray-2">
+                <div class="fl wb20 text-right">
+                  <span class="F12 Fgray-3">灯身材质：</span>
+                </div>
+                <div class="fr wb79">
+                  <span class="F12 Fgray-3">玻璃</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="h30px lh30px bor-solid-1b borc-gray-2">
+                <div class="fl wb20 text-right">
+                  <span class="F12 Fgray-3">灯身材质：</span>
+                </div>
+                <div class="fr wb79">
+                  <span class="F12 Fgray-3">玻璃</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bor-solid-1a borc-gray-2 mat10">
+            <div class="h30px lh30px bgc-gray-1 bor-solid-1b borc-gray-2 pal20"><span class="F14 Fgray-3">贴心包装</span></div>
+            <div class="wb100 img-area">
+              <img src="images/tp-053.png">
+            </div>
+          </div>
+        </div>
+        <!-- 售后服务 -->
+        <div class="js-tab-con wb100 hidden mat10">
+          <div class="bor-solid-1a borc-gray-2 bgc-gray-1 pa20">
+            <div class="">
+              <p class="F14 Fgray-3">服务承诺</p>
+              <p class="F12 Fgray-3 lh18px mat10">网站所售产品均为厂商正品，如有任何问题可与我们客服人员联系，我们会在第一时间跟您沟通处理。我们将争取以最低的价格、最优的服务来满足您最大的需求。开箱验货：签收时在付款后与配送人员当面核对：商品及配件、应付金额、商品数量及发货清单、发票（如有）、赠品（如有）等；如存在包装破损、商品错误、商品短缺、商品存在质量问题等影响签收的因素，请您可以拒收全部或部分商品，相关的赠品，配件或捆绑商品应一起当场拒收；为了保护您的权益，建议您尽量不要委托他人代为签收；如由他人代为签收商品而没有在配送人员在场的情况下验货，则视为您所订购商品的包装无任何问题。</p>
+            </div>
+            <div class="mat20">
+              <p class="F14 Fgray-3">温馨提示</p>
+              <p class="F12 Fgray-3 lh18px mat10">由于部分商品包装更换较为频繁，因此您收到的货品有可能与图片不完全一致，请您以收到的商品实物为准，同时我们会尽量做到及时更新，由此给您带来不便多多谅解，谢谢！</p>
+            </div>
+          </div>
+        </div>
+        <!-- 商品咨询 -->
+        <div class="js-tab-con wb100 hidden mat10">
+          <div class="">
+            <div class="bor-solid-1a borc-gray-2">
+              <div class="h30px lh30px bgc-gray-1 bor-solid-1b borc-gray-2 pal20">
+                <span class="F14 Fgray-3">我要咨询</span>
+              </div>
+              <div class="pat20 pab20">
+                 <div class="wb80 center">
+                  <div class="fl wb10"><span class="F12 Fgray-3">咨询内容：</span></div>
+                  <div class="fr wb90">
+                    <form>
+                      <div class="">
+                        <textarea class="wb100 h100px F14 Fgray-3 pa5 bor-solid-1a borc-gray-2"></textarea>
+                      </div>
+                      <div class="text-center mat10">
+                        <button class="h40px lh40px bor-solid-1a borc-gray-2 bgc-gray-1 F18 Fgray-3 pointer wb20 radius5">提 交</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="clear"></div>
+                 </div>
+              </div>
+              <div class="pa20 bor-solid-1t borc-gray-2">
+                <ul>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                  <li class="mab20 pab20 bor-dotted-1b borc-gray-2">
+                    <div class=""><img class="middle" src="images/tp-051.jpg" width="30" height="30"><span class="F12 Fgray-3 Fb middle mal15">上善若水</span></div>
+                    <div class="mal50 mat15 F12 Fgray-3">
+                      <span class="mar10 Fred-1">咨询：</span><span>请问茅台飞天的酒918的，NFC能查伪吗？</span>
+                    </div>
+                    <div class="mal50 mat15 F12 Fgray-3 lh20px">
+                      <span class="mar10 Fblue">答复：</span><span> 您好，2013年6月份以后出厂的新飞天是带有RFID的，要手机带有NFC功能的才能识别。但目前有些区域还在测试，RFID可能暂时识别不了。感谢您支持1号店，祝您购物愉快！</span>
+                    </div>
+                  </li>
+                </ul>
+                <div class="mat20 text-right pat10 pab20">
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">上一页</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">1</a>
+                <span class="F12 Fwhite bor-solid-1a borc-red-1 warpper-red-2 display-inline h25px lh25px w25px text-center mar5">2</span>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">3</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px w25px text-center mar5" href="javascript:void(0)">4</a>
+                <a class="F12 Fgray-3 bor-solid-1a borc-gray-2 display-inline h25px lh25px pal10 par10 mar5" href="javascript:void(0)">下一页</a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="footer mat25"> 
+  <div class="wb100 warpper-red-4">
+    <div class="w1200px center h92px">
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-01.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">正规渠道 正品行货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">购物有保障</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-02.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">网站 门店多渠道购物</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">货到付款</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-03.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">48小时价格保护</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">降价可退差额</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-04.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">先行赔付</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">一站式售后服务</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="fl wb20 pat25">
+        <div class="wb75 center">
+          <div class="fl wb23">
+            <img src="images/ft-05.png">
+          </div>
+          <div class="fr wb74">
+            <p class="h20px lh20px"><span class="F14 Fwhite">七天无理由退货</span></p>
+            <p class="h20px lh20px"><span class="F12 Fwhite">15天换货</span></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="w1200px center">
+    <div class="mat30">
+      <div class="fl wb80">
+        <ul>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-2 pal25">关于我们</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">居家介绍</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网站快讯</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-3 pal25">新手指南</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">会员注册</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">购物流程</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">买家指南</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">找回密码</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-4 pal25">支付/配送</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">商品验货与签收</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">配送时间与范围</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">支付常见问题</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">网上支付</a></p>
+            </div>
+          </li>
+          <li class="wb25 fl">
+            <div class="bor-solid-1b bor-gray2 wb70 pab10">
+             <span class="F16 Fgray-3 display-inline h20px lh20px bg-img-5 pal25">售后服务</span>
+            </div>
+            <div class="mat15">
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">7天低价保证政策</a></p>
+              <p class="mab10"><a class="F12 Fgray-3" href="javascript:void(0)">退换货政策</a></p>
+            </div>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="fr wb20">
+        <div class="text-center">
+          <p><span class="F16 Fgray-3">居家策官方微信</span></p>  
+          <p class="mat25"> <img src="images/erweima.jpg" /> </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="bor-solid-1b bor-gray2 mat50 mab20"></div>
+    <div class="text-center h20px lh20px js-last">
+      <a class="F12 Fgray-3" href="javascript:void(0)">关于我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">联系我们</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">广告服务</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">新闻公告</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">意见反馈</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">诚聘英才</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+      <a class="F12 Fgray-3" href="javascript:void(0)">友情链接</a>
+      <span class="F12 Fgray-2 pal10 par10">|</span>
+    </div>
+    <div class="text-center mat10">
+      <p class="F12 Fgray-2 mab10">经营许可证：B2-20100288 备案许可证：苏 出版经营许可证：苏</p>
+      <p class="F12 Fgray-2">居家策 JUJIACE.COM 版权所有</p>
+    </div>
+    <div class="mat20 text-center mab50">
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-07.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-08.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-09.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-010.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-011.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-012.jpg" /></a>
+      <a class="mar5" href="javascript:void(0)"><img src="images/foot-013.jpg" /></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/checkLogin.js"></script>
+    <script src="js/loading.js"></script>
+
+    <title>我的竞猜</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| user_ticket_all_page
+| ------------------------------------------
+| Here are user_ticket_all_page html
+|
+-->
+
+<div id="user_ticket_all_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <!--<div class="wb100 h50px relative warpper-red" style="z-index: 99999;">-->
+        <!--<a href="user.html">-->
+            <!--<div class="w50px h50px fl">-->
+                <!--<div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">投注记录</p>-->
+    <!--</div>-->
+
+    <div class="wb100 lh45px text-center fixed bor-gray bor-solid-1b" style="top: 0; left: 0; background: rgba(255,255,255,.9); z-index: 99;">
+        <div class="wb33333 fl" v-for="(item,key) in navList" @click="navChange(key)">
+            <span class="tab-nav pal10 par10" :class="current == (key) ? 'tab-nav-active' : ''">{{item}}</span>
+        </div>
+    </div>
+
+    <div class="clear h45px"></div>
+
+    <div class="wb100 Fgray-3">
+        <template v-for="item in recordList" v-if="empty==false">
+
+            <div class="clear1 warpper-gray-3"></div>
+
+            <a href="javascript:;" @click="redirect('soccer_result.html?orderID='+item.orderID)">
+                <div class="pal15 par15 relative warpper-white Fblack">
+
+                    <p class="lh35px F14">
+                        <span class="fl">{{item.homeTeam}} VS {{item.awayTeam}}</span>
+                        <span class="fr Fgray-2 F12">{{dateFormat(item.matchTime,16)}} 开赛</span>
+                    </p>
+
+                    <div class="clear h10px bor-gray bor-solid-1t"></div>
+
+                    <div class="wb100">
+                        <div class="wb50 fl lh25px">
+                            <p class="lh30px Fblack F18">{{item.lotType}} - {{item.anteValue}}</p>
+                            <p class="F14 Fgray-2">竞猜时间：{{dateFormat(item.payTime)}}</p>
+                        </div>
+                        <div class="wb40 fr lh25px text-right par5per">
+                            <p>
+                                <span v-if="item.status == 0" class="Fgray-3">等待支付</span>
+                                <span v-if="item.status == 1" class="Fgray-3">等待赛果</span>
+                                <span v-if="item.status == 2" class="Fred">中奖 <span class="Fnum">{{ item.bonus }}</span> 金币</span>
+                                <span v-if="item.status == 3" class="Fgray-2">未中奖</span>
+                                <span v-if="item.status == 4">退款</span>
+                            </p>
+                            <p class="F14"><span class="Fgray-2">购买：</span><span class="Fnum">{{item.lotMoney}}</span>金币</p>
+                        </div>
+                    </div>
+
+                    <div class="clear h5px"></div>
+
+                    <img src="images/arrow-right.png" class=" h16px absolute" style="bottom:27px; right:15px;">
+
+                </div>
+            </a>
+
+            <div class="clear"></div>
+        </template>
+
+        <div class="clear1"></div>
+
+        <div class="text-center Fgray-3 h20px lh20px center w120px F14 mab15" v-show="loading">
+            <img src="images/loading-2.gif" v-show="!last" class="h20px fl">
+            <span class="fl mal10">{{loadtext}}</span>
+        </div>
+
+        <div class="wb100 text-center" v-if="empty==true">
+            <img src="images/kb_gc.png"  class="wb25 center mat50">
+            <p class="Fgray-2 F16 lh25px h25px">还没有竞猜记录</p>
+            <p class="Fgray-1 F14 lh25px h25px">快去参加竞猜赢金币吧~</p>
+            <div class="clear1"></div>
+            <p class="Fgray-2 F14">大家都在竞猜</p>
+            <div class="clear1"></div>
+
+            <a href="javascript:;" @click="redirect('soccer_detail_bet.html?matchID='+ recommend.matchID)">
+                <div class="w200px h75px lh15px center pa15 warpper-white text-center Fblack">
+                    <div class="w80px fl">
+                        <img :src="recommend.homeTeamLogo" class="w50px h50px">
+                        <p class="mat15 wb100 h15px lh15px text-over-hidden1">{{recommend.homeTeam}}</p>
+                    </div>
+                    <div class="w40px fl">
+                        <img src="images/icon-vs2.png" class="h20px mat15">
+                    </div>
+                    <div class="w80px fl">
+                        <img :src="recommend.visitingTeamLogo" class="w50px h50px">
+                        <p class="mat15 wb100 h15px lh15px text-over-hidden1">{{recommend.visitingTeam}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    'use strict';
+
+    var vm = new Vue({
+        el: "#user_ticket_all_page",
+        data: {
+            login: false,
+            fullscreenLoading: false,
+            user: {},
+            recommend: {},
+            current: 0,
+            page: 1,
+            pageSize: 20,
+            navList: ['全部', '已中奖', '待开奖'],
+            recordList: [],
+            loadtext: '数据加载中...',
+            loading: true,
+            empty: false,
+            last: false
+        },
+        methods: {
+            getData: function getData() {
+
+                var _this = this;
+
+                baseAjax.matchOrderList(_this.page, _this.pageSize, _this.current, function (data) {
+
+                        console.log(data);
+
+                        if (data) {
+                            var _tmp = data.returnJSON.indexData;
+
+                            if (_tmp.length == 0 || _tmp.length < _this.pageSize) {
+
+                                if (_this.page == 1) {
+                                    _this.loading = false;
+                                    _this.last = true;
+                                    _this.loadtext = '暂无更多数据';
+                                } else {
+                                    _this.loading = true;
+                                    _this.last = true;
+                                    _this.loadtext = '暂无更多数据';
+                                    return false;
+                                }
+                            }
+
+                            if (_tmp.length == 0) {
+                                _this.empty = true;
+                                return false;
+                            } else {
+                                _this.empty = false;
+                            }
+
+                            //-- 判断status
+
+                            //                            var now = new Date();
+                            //
+                            //                            for(var i=0; i<_tmp.length; i++){
+                            //
+                            //                            }
+                            //
+                            //                            matchTime
+
+
+                            //                            item.status
+
+                            _this.recordList = _this.recordList.concat(_tmp);
+                        } else {
+                            _this.empty = true;
+                        }
+                    }
+                    //
+
+                );
+            },
+
+            redirect : function redirect(url) {
+                window.location.href = url;
+            },
+
+            dateFormat: function timeFormat(date, index) {
+                return date.substring(5, index);
+            },
+
+            navChange: function navChange(key) {
+                this.current = key;
+                this.recordList = [];
+                this.page = 1;
+                this.loading = true;
+                this.last = false;
+                this.loadtext = '数据加载中...';
+                this.getData();
+            },
+            twoDecimal: function twoDecimal(x) {
+                var f = parseFloat(x);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var f = Math.round(x * 100) / 100;
+                var s = f.toString();
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + 2) {
+                    s += '0';
+                }
+                return s;
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            var _current = base.getParmar('nav');
+
+            if (base.isNull(_current)) {
+                _current = 0;
+            }
+
+            _this.current = _current;
+
+            $(window).scroll(function () {
+                if (_this.empty) return false;
+                var scrollTop = $(window).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(window).height();
+                if (scrollTop + windowHeight == scrollHeight) {
+                    _this.page++;
+                    _this.getData();
+                }
+            });
+
+            //获取推荐赛事
+            baseAjax.recommendMatchInfo(function (data) {
+                console.log(data);
+                if(data){
+                    if(!base.isNull(data.returnJSON)){
+                        _this.recommend = data.returnJSON;
+                    }
+                }
+            })
+
+            _this.getData();
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                var _current = base.getParmar('nav');
+
+                if (base.isNull(_current)) {
+                    _current = 0;
+                }
+
+                _this.current = _current;
+
+                $(window).scroll(function () {
+                    if (_this.empty) return false;
+                    var scrollTop = $(window).scrollTop();
+                    var scrollHeight = $(document).height();
+                    var windowHeight = $(window).height();
+                    if (scrollTop + windowHeight == scrollHeight) {
+                        _this.page++;
+                        _this.getData();
+                    }
+                });
+
+                _this.getData();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+</script>
+
+</body>
+</html>

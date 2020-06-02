@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(base.css);
+@import url(font.css);
+@import url(header.css);
+@import url(menu.css);
+@import url(nav.css);
+@import url(banner.css);
+@import url(search.css);
+@import url(float-cart.css);
+@import url(floor-1.css);
+@import url(form.css);
+@import url(left-menu.css);
+@import url(right-menu.css);
+@import url(li.css);
+@import url(list.css);
+@import url(table.css);
+@import url(footer.css);
+@import url(links.css);
+@import url(plug-in.css);
+
+.wrapper-main{ width:100%; clear:both; background:url(../images/bg-img.jpg);}
+.wrapper-header{ width:100%; clear:both;}
+.wrapper-nav{ width:100%; clear:both; background:#d4003c;}
+.wrapper-footer{ width:100%; clear:both; background:#f8f8f8;}
+.wrapper-main{ width:100%; clear:both;}
+.wrapper-content{ width:100%; background:url(../images/bg-img.jpg);}
+.wrapper-links{ width:100%; clear:both;}
+.wrapper-header{ width:100%; clear:both;}
+.wrapper-search{ width:100%; clear:both;}
+.wrapper-table{ width:100%; clear:both;}
+.wrapper-banner{ width:100%; clear:both;  background:url(../images/bg-img.jpg);}
+.wrapper-floors{ width:100%; clear:both;}
+
+/*
+
+*{ transition:all 0.5s;}
+
+@media screen and (max-width:1020px){
+	.w1020px{ width:1020px;}
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1460px){
+	.w1020px{ width:1280px;}
+}
+
+@media screen and (min-width: 1461px) and (max-width: 1880px){
+	.w1020px{ width:1460px;}
+}
+
+@media screen and (min-width: 1881px){
+	.w1020px{ width:1880px;}
+}*/

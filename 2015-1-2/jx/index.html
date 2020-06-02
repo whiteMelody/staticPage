@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link type="text/css" rel="stylesheet" href="css/home.css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function(){
+	    var $head = $(".header");
+		var ofs = $head.offset().top;
+		var iHeight = $head.outerHeight();
+		$(window).scroll(function () {
+			var sTop = $(document).scrollTop();
+			if (sTop >= (ofs + iHeight)) {
+				$head.parent().addClass("header-fixed");
+			} else {
+				$head.parent().removeClass("header-fixed");
+			}
+		});
+		
+		var f3 = $(".floor3-content");
+		var lis = f3.find(".li-dec");
+		//load warpper
+		lis.each(function() {
+           var type = $(this).prev().attr("class");
+		   if(type.indexOf("orange")!=-1)
+		   		$(this).addClass("warpper-orange01");
+		   if(type.indexOf("blue")!=-1)
+		   		$(this).addClass("warpper-blue01");
+		   if(type.indexOf("paper")!=-1)
+		   		$(this).addClass("warpper-paper01");
+		   if(type.indexOf("green")!=-1)
+		   		$(this).addClass("warpper-green01");
+		   if(type.indexOf("pink")!=-1)
+		   		$(this).addClass("warpper-pink");
+		   if(type.indexOf("red")!=-1)
+		   		$(this).addClass("warpper-red01");
+		   if(type.indexOf("white")!=-1)
+		   		$(this).addClass("warpper-white01");
+		   if(type.indexOf("black")!=-1)
+		   		$(this).addClass("warpper-black");
+		   if(type.indexOf("none")!=-1)
+		   		return false;
+		
+		});
+		
+		var btns = f3.find(".li-btn");
+		var dec  = f3.find(".li-dec"); 
+		btns.mouseover(function(){
+			var flag = parseInt($(this).css("marginLeft"))==0 ? true:false;
+			dec.animate({"marginTop":"0px"},400);
+			btns.animate({"marginLeft":"0px"},400);
+			if(flag){
+				$(this).next().animate({"marginTop":"-400px"},800);	
+				$(this).animate({"marginLeft":"160px"},800);	
+			}else{
+				$(this).next().animate({"marginTop":"0px"},800);	
+				$(this).animate({"marginLeft":"0px"},800);	
+			}
+		});
+		
+	});
+	
+</script>
+</head>
+
+<body>
+
+    <div class="main-warpper">
+    	<div class="main">
+            <div class="header-warpper warpper-grey">
+            	<div class="header">
+                    <div class="nav">
+                    	<ul>
+                        	<li><a href="javascript:void(0)" class="gray03">[登录]</a> <a href="javascript:void(0)" class="gray03">[注册]</a></li>
+                        	<li><a href="javascript:void(0)" class="gray03">我的巨信</a></li>
+                        	<li><a href="javascript:void(0)" class="gray03">我的购物车</a></li>
+                        	<li><a href="javascript:void(0)" class="gray03">联系客服</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="top-warpper warpper-yellow01">
+            	<div class="top">
+                	<div class="top-logo">
+                    	<img src="images/logo.png" class="fl" /><span class="fl" style="margin-left:20px;">巨信网</span>
+                    </div>
+                    <div class="top-ico">
+                    	<ul>
+                        	<li><img src="images/ico-1.png" /></li>
+                        	<li><img src="images/ico-1.png" /></li>
+                        	<li><img src="images/ico-1.png" /></li>
+                        	<li><img src="images/ico-1.png" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floor warpper-white01">
+                <div class="floor3">
+                    <div class="floor3-content">
+                    	<ul>
+                        	<li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-orange">餐饮</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-paper">娱乐</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-green">生活</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-pink">购物</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-blue">进入频道</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                            <li>
+                            	<div class="li-pic"><img src="images/product1.jpg"/></div>
+                                <div class="li-btn box-red">电影</div>
+                                <div class="li-dec">住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿住宿住宿住宿住宿住宿宿住宿</div>
+                            </li>
+                    	</ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floor warpper-red">
+                <div class="floor4">
+                    <div class="floor4-content">
+                    	<ul>
+                        	<li>
+                            	<div class="li-pic"><img src="images/ico-2.png" /></div>
+                                <div class="li-dec">中国餐饮业数字化领跑者</div>
+                                <div class="li-txt">
+                                	整合了线下餐饮、娱乐、生活、购物、电影预定、酒店旅游和线上网络资源，用户可以方便的通过手机、电脑搜索周边服务。
+                                </div>
+                            </li>
+                            
+                            <li>
+                            	<div class="li-pic"><img src="images/ico-3.png" /></div>
+                                <div class="li-dec">中国餐饮业数字化领跑者</div>
+                                <div class="li-txt">
+                                	整合了线下餐饮、娱乐、生活、购物、电影预定、酒店旅游和线上网络资源，用户可以方便的通过手机、电脑搜索周边服务。
+                                </div>
+                            </li>
+                            
+                            <li>
+                            	<div class="li-pic"><img src="images/ico-4.png" /></div>
+                                <div class="li-dec">中国餐饮业数字化领跑者</div>
+                                <div class="li-txt">
+                                	整合了线下餐饮、娱乐、生活、购物、电影预定、酒店旅游和线上网络资源，用户可以方便的通过手机、电脑搜索周边服务。
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+                
+                <div class="floor warpper-green02">
+               		<div class="floor5">
+                    	<div class="floor5-title">常见问题 FAQ</div>
+                    	<div class="floor5-content">
+                        	<div class="faq">
+                            	<div class="faq-left">
+                               		<dl class="faq_num1">
+                                    	<dt>巨信网可信吗，是否有权威认证？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核，对服务的严格把关，创造了行业领先口碑。</dd>
+                                    </dl>
+                                    
+                                    <dl class="faq_num2">
+                                    	<dt>订购服务的流程有哪些？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核。</dd>
+                                    </dl>
+                                    
+                                    <dl class="faq_num3">
+                                    	<dt>如何订购服务？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核，对服务的严格把关，创造了行业领先口碑。</dd>
+                                    </dl>
+                                    
+                                    <dl class="faq_num4">
+                                    	<dt>订购服务注意事项？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核，创造了行业领先口碑。</dd>
+                                    </dl>
+                                    
+                                    <dl class="faq_num5">
+                                    	<dt>商家合作条件有哪些？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核，对服务的严格把关，创造了行业领先口碑。</dd>
+                                    </dl>
+                                    
+                                    <dl class="faq_num6">
+                                    	<dt>如何加入巨信网？</dt>
+                                        <dd>巨信网通过网络监管各个项目的审核，创造了行业领先口碑。</dd>
+                                    </dl>
+                                </div>
+                            	<div class="faq-right">
+                                    <img src="images/faq-bg.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="floor" style="background:url(images/footer-bg.png) repeat-x center;">
+                <div class="floor6">
+                	
+                	<div class="floor6-title">
+                    	<div class="floor6-pic">
+                        	<img src="images/logo01.png" width="252" height="176"/>
+                        </div>
+                        <div class="floor6-txt">
+                        	<img src="images/logo02.png" width="189" height="64" />
+                        </div>
+                        <div class="floor6-dec">
+                        	<img src="images/logo03.png"  width="527" height="40"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+</body>
+</html>

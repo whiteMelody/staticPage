@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no,email=no" name="format-detection" />
+<meta content="" name="viewport" />
+
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .ul-nav{ width: 100%; margin: 0; padding: 0;}
+        .ul-nav li{ width: auto; padding: 0 5px; margin-left:35px; float: right; height: 65px; line-height: 65px; text-align: center;  font-size:20px;  color:#4a4a4a;  }
+        .ul-nav li.active{ color: #007aff;}
+        .dialogBg{ background: rgba(0,0,0,.5); width: 100%; height: 100%; position: fixed; z-index: 99999; display: none; top:0; left:0; }
+        .download-btn{ position: absolute; top: 140px; right: 20px; width: 25%; font-size: 12px; text-align: center; color: #fff; height: 30px; line-height: 30px; border: 1px solid #fff; }
+        .download-btn-fixed{ position: fixed; top: 10px; border: none; background: #0b7ed4; transition: background .3s;}
+    </style>
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+
+<title>7English</title>
+</head>
+<body>
+
+<div class="wb100 hidden pc-page" style="display: none;">
+
+    <div class="wb100 warpper-white">
+        <div class="w1200px center">
+            <div class="wb40 fl h65px mat10 mab10">
+                <img src="images/logo.png" class="fl middle">
+            </div>
+            <div class="wb60 fr h65px mat10 mab10">
+                <ul class="ul-nav">
+                    <a href="info.html"><li>联系我们</li></a>
+                    <a href="index.html"><li class="active">首页</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="wb100 relative" style="background: url(images/bg-1.png) no-repeat center center; height: 700px;">
+        <div class="w1200px center">
+            <div class="clear h280px"></div>
+            <div class=" wb50 fr">
+                <div class="clear h40px"></div>
+                <img src="images/download-code.png" class="w120px h120px fr code-img">
+                <div class="clear"></div>
+                <p class="Fwhite h50px lh50px text-center w120px fr">扫描二维码下载</p>
+
+                <div class="clear"></div>
+                <a href="javascript:;" class="code-btn" data-type="and">
+                    <img src="images/btn-2.png" class="fl w200px">
+                </a>
+                <a href="javascript:;" class="code-btn" data-type="ios">
+                    <img src="images/btn-1.png" class="fl mal50 w200px">
+                </a>
+
+                <div class="clear1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wb100 relative" style="background: url(images/bg-2.png) no-repeat center center; height: 1326px;"></div>
+    <div class="wb100 relative" style="background: url(images/bg-3.png) no-repeat center center; height: 803px;"></div>
+    <div class="wb100 relative" style="background: url(images/bg-4.png) no-repeat center center; height: 1101px;"></div>
+
+    <div class="wb100" style="background: #0b7ed4;">
+        <div class="w1200px center pat15 pab15 F20 text-center Fwhite lh60px relative">
+            <div class="absolute" style="height: 80px; top: 10px; left: 0; width: 400px;">
+                <p class="Fwhite lh25px F18 Fb text-left">联系我们</p>
+                <p class="Fwhite lh25px F16 text-left mat5"> 7天英语交流群：486229514</p>
+                <p class="Fwhite lh25px F16 text-left">邮箱：luoanxuan@7english.cn</p>
+            </div>
+
+            <p class="Fwhite lh25px mat10">重庆蜜枣科技有限公司</p>
+            <p class="Fwhite lh25px">版权所有©7english.cn</p>
+            <div class="absolute" style="height: 160px; top: -80px; right: 0; width: 400px;">
+                <img src="images/weixin-code.jpg" class="h160px w160px fl">
+                <div class="fr lh40px text-left Fb mat40">
+                    <p class="Fblack Fb">关注微信公众号:7天口语</p>
+                    <p class="Fwhite">了解更多英语活动</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="dialogBg" id="downloadBg">
+        <img src="images/info-download2.png" class="fr w280px ma15">
+    </div>
+
+<div class="wb100 hidden mobile-page" style="display: none;">
+
+    <div class="wb100 img-area">
+        <img src="images/m-1.png" style="margin-top: -5px;">
+        <img src="images/m-2.png" style="margin-top: -5px;">
+        <img src="images/m-3.png" style="margin-top: -5px;">
+        <img src="images/m-4.png" style="margin-top: -5px;">
+        <img src="images/m-5.png" style="margin-top: -5px;">
+        <p class="h20px lh20px text-center text-center Fgray-3 F16">重庆蜜枣科技有限公司</p>
+        <p class="h40px lh40px text-center text-center Fgray-3 F16">版权所有©7english.cn</p>
+    </div>
+
+    <div class="download-btn radius15">下载APP</div>
+
+
+</div>
+
+<script>
+
+    var base = {
+
+        //通过key获取浏览器的参数
+        getParmar : function(paras,_url){
+            var url = location.href;
+            if(_url)
+                url = _url;
+            var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+            var paraObj = {};
+            for (i=0; j=paraString[i]; i++){
+                paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if(typeof(returnValue)=="undefined"){
+                return "";
+            }else{
+                returnValue = returnValue.split("#")[0];
+                return returnValue;
+            }
+        },
+        //时间戳格式化函数
+        toLocalTime : function(nS) {
+            var date = new Date(parseInt(nS) * 1000);
+            var str =  date.getFullYear().toString().substring(2,4) ;
+            var myDate = str + "-" + base.addZero(date.getMonth()+1) + "-" + base.addZero(date.getDate()) + " " + base.addZero(date.getHours()) + ":" + base.addZero(date.getMinutes()) + ":" + base.addZero(date.getSeconds());
+            return myDate;
+        },
+        //小于9补0函数
+        addZero : function(num){
+            var str = num.toString();
+            if(str.length == 1) return "0" + num;
+            else return num;
+        },
+        //判断一个值是否为空
+        isNull : function(obj){
+            if(obj == undefined || obj == null || obj == "" || obj.length == 0)
+                return true;
+            else
+                return false;
+        },
+        //获取浏览器信息
+        versions:function(){
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {         //移动终端浏览器版本信息
+                isTrident: u.indexOf('Trident') > -1, //IE内核
+                isPresto: u.indexOf('Presto') > -1, //opera内核
+                isWebKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                isGecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                isMobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                isIos: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                isAndroid: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                isIPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+                isIPad: u.indexOf('iPad') > -1, //是否iPad
+                isWebApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                isWeiXin: (u.match(/MicroMessenger/i) == 'MicroMessenger' || u.match(/MicroMessenger/i) == 'micromessenger')	//微信浏览器
+            };
+        }(),
+        language:(navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+
+    $(function(){
+
+        $(window).on('scroll', function() {
+            if ($(document).scrollTop() > 130) {
+                $(".download-btn").addClass("download-btn-fixed");
+            } else {
+                $(".download-btn").removeClass("download-btn-fixed");
+            }
+
+        });
+
+        if(base.versions.isMobile){
+            $("meta[name=viewport]").attr("content","width=device-width, initial-scale=1, user-scalable=no");
+            $(".mobile-page").show(0);
+            $(".pc-page").hide(0);
+
+        }else{
+            $("meta[name=viewport]").attr("content","");
+            $(".mobile-page").hide(0);
+            $(".pc-page").show(0);
+        }
+
+        $(".code-btn").click(function(){
+            if($(this).attr("data-type") == "ios"){
+//                $(".dialog-code[data-value=ios]").show(0);
+
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mizao.sevendayenglish";
+//                window.location.href = "https://itunes.apple.com/us/app/feng-kuang-ying-yu-ying-yu/id455568840?l=zh&ls=1&mt=8";
+            }
+
+            if($(this).attr("data-type") == "and"){
+//                $(".dialog-code[data-value=ios]").show(0);
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mizao.sevendayenglish";
+//                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mizao.sevendayenglish";
+            }
+
+            if($(this).attr("data-type") == "web"){
+//                $(".dialog-code[data-value=web]").show(0);
+                window.location.href = "http://h5.7english.cn";
+            }
+//            $(".dialogBg").show(0);
+        })
+
+        $(".download-btn").click(function(e){
+
+
+            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mizao.sevendayenglish";
+
+//            if(base.versions.isMobile){
+//
+//                if(base.versions.isWeiXin){
+//                    window.location.href = "https://itunes.apple.com/us/app/feng-kuang-ying-yu-ying-yu/id455568840?l=zh&ls=1&mt=8";
+//                }
+//
+//                if(base.versions.isAndroid){
+//                    window.location.href = "http://mzaudio.7english.cn/android/SevenDayEnglish-v1.2.apk";
+//                }else{
+//                    window.location.href = "https://itunes.apple.com/us/app/feng-kuang-ying-yu-ying-yu/id455568840?l=zh&ls=1&mt=8";
+//                }
+//
+//            }else{
+//                window.location.href = "https://itunes.apple.com/us/app/feng-kuang-ying-yu-ying-yu/id455568840?l=zh&ls=1&mt=8";
+//            }
+
+
+
+        })
+
+        $("#downloadBg").click(function(){
+            $(this).hide(0);
+        })
+
+    })
+
+</script>
+
+</body>
+</html>

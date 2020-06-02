@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/loading.css" rel="stylesheet" media="screen">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+
+    <title>登录</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| login_page
+| ------------------------------------------
+| Here are login_page html
+|
+-->
+
+<div id="login_page">
+
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading_1.gif" alt="Loader" class="loader-loader wb15"/>
+            <div class="clear h40px"></div>
+            <p class="text-center" style="color: #999999 ">正在加载中...</p>
+        </div>
+    </div>
+
+    <div class="wb100" v-if="isWeiXin == false">
+
+        <div class="clear h30px"></div>
+
+        <div class="Fgray-3 wb100">
+
+            <div class="pal15 par15 pat5 pab5 relative F14 warpper-white">
+                <div style="padding-left: 60px; padding-right: 80px;">
+                    <div class="w50px absolute F16 pa1" style="top: 5px; left:15px; height: 45px; line-height: 45px;">
+                        手机号
+                    </div>
+                    <input type="tel" class="bor-none wb100 h45px lh45px F16" v-model="mobile" placeholder="请输入手机号">
+                    <input type="button" data-role="none" class="bor-none h35px lh35px w80px warpper-gray-3 " style="position: absolute; top: 11px; right: 10px;" :class="mobile.length!=11 || lock ? 'Fgray-2' : 'Fblue'" :disabled="mobile.length!=11 || lock" @click="sendCode" :value="codeText">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="pal15 warpper-white">
+                <div class="clear bor-gray bor-solid-1b"></div>
+            </div>
+
+            <div class="pal15 par15 pat5 pab5 relative F14 warpper-white">
+                <div style="padding-left: 60px;">
+                    <div class="w50px absolute F16 pa1" style="top: 5px; left:15px ; height: 45px; line-height: 45px;">
+                        验证码
+                    </div>
+                    <input type="tel" class="bor-none wb100 h45px lh45px fl F16" v-model="code" placeholder="请输入验证码">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+            <div class="pa15">
+                <div class="wb100 h45px lh45px Fwhite F16 text-center radius5" :class="mobile.length>0 && code.length>0 ? 'warpper-green Fwhite' : 'warpper-green-5 Fwhite'" @click="login">确定</div>
+            </div>
+
+            <div class="clear1"></div>
+
+        </div>
+        <div class="pa15 Fgray-3">
+
+            <!--<div class="wb100 h10px bor-gray bor-solid-1b">-->
+            <!--<div class="w150px warpper-white center lh20px text-center Fgray-3 F14">-->
+            <!--使用第三方登录-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="clear h50px"></div>-->
+
+            <!--<a :href="'wx_login.html?call='+call">-->
+            <!--<div class="wb100 h45px lh45px warpper-green Fwhite F16 text-center radius20">微信登录</div>-->
+            <!--</a>-->
+
+        </div>
+    </div>
+
+    <div class="wb100" v-else>
+        <p class="code"></p>
+    </div>
+
+</div>
+
+<!-- sys js -->
+<script src="js/jquery-2.1.4.js"></script>
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<!-- Element-UI js -->
+<script src="js/element-ui@1.3.3.js"></script>
+<script src="js/base.js"></script>
+<script src="js/md5_ch.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<script src="js/interface_bak.js"></script>
+<script src="js/loading.js"></script>
+
+<script>
+    "use strict";
+
+    var vm = new Vue({
+        el: "#login_page",
+        data: {
+            fullscreenLoading: true,
+            mobile: "",
+            code: "",
+            call: "",
+            codeText: "获取验证码",
+            isWeiXin: true,
+            timeID: 0,
+            timer: 60,
+            lock: false,
+            favDisabled: false,
+        },
+        methods: {
+            sendCode: function sendCode() {
+
+                var _this = this;
+
+                if (this.lock) {
+                    return false;
+                } else {
+                    this.lock = true;
+                    baseAjax.loginCode(_this.mobile, function (data) {
+                        if (data) {
+                            //                            _this.resultCode = data.returnJSON;
+                            //                            _this.code = data.returnJSON;
+                            _this.timeID = setInterval(_this.clock, 1000);
+                        }
+                    });
+                }
+            },
+            clock: function clock() {
+                this.timer--;
+                this.codeText = this.timer + "秒后重发";
+
+                if (this.timer <= 0) {
+                    clearInterval(this.timeID);
+                    this.lock = false;
+                    this.timer = 60;
+                    this.codeText = "重发验证码";
+                }
+            },
+            login: function login() {
+
+                var _this = this;
+
+                if(_this.favDisabled)
+                    return;
+
+                if (base.isNull(_this.mobile)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '手机号不能为空',
+                        duration: 1500
+                    });
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+                if (base.isNull(_this.code)) {
+                    _this.$message({
+                        type: 'error',
+                        message: '验证码不能为空',
+                        duration: 1500
+                    });
+
+                    _this.favDisabled = true;
+
+                    setTimeout(function(){
+                        _this.favDisabled = false;
+                    },1500);
+
+                    return false;
+                }
+
+                var getRedBag = base.getParmar('getRedBag');
+
+                var redBagNo = '';
+
+                if(!base.isNull(getRedBag)){
+                    redBagNo = '2017090605';
+                }
+
+                baseAjax.loginInPhone(_this.mobile, _this.code, redBagNo, function (data, errorMsg) {
+
+                    if (data) {
+                        var _user = data.returnJSON;
+
+                        base.setCookie('userInfo', JSON.stringify(_user));
+
+                        if (base.isNull(_this.call)) {
+                            window.location.replace('index.html');
+                        } else {
+                            var _url = base.getParmar('callUrl');
+
+                            if (base.isNull(_url)) {
+
+                                if(!base.isNull(getRedBag)){
+                                    base.setCookie('isNewUser',true);
+
+                                    if(!base.isNull(data.extendInfo)){
+                                        base.setCookie('getRedBagTime',data.extendInfo.beginTime);
+                                    }
+
+                                    window.history.go(-1);
+                                }else{
+                                    window.history.go(-1);
+                                }
+
+                            } else {
+
+                                var local = window.location.href;
+
+                                var _i = local.indexOf('callUrl');
+
+                                //获取传递的订单金额
+
+                                _url = local.substring(_i + 8);
+
+                                var _i2 = _url.indexOf('versioncode');
+
+                                if(_i2!= -1){
+                                    //万年历分享参数
+                                    _url = _url.substring(0, _i2-1);
+                                }
+
+                                var _money = base.getParmar('money', _url);
+
+                                if(_user.coinsQty > _money){
+                                    //直接购买
+
+                                    var myTicket = {
+                                        money : _money,
+                                        odds : base.getParmar('odds', _url),
+                                        lotType : base.getParmar('lotType', _url),
+                                        val : base.getParmar('val', _url),
+                                        matchID : base.getParmar('matchID', _url)
+                                    }
+
+                                    base.setCookie('tempTicket',JSON.stringify(myTicket));
+
+                                    window.location.replace('index.html?buyTicket=true');
+                                }else{
+                                    //前去购买
+                                    window.location.replace(_url);
+                                }
+
+                            }
+                        }
+                    } else {
+                        _this.$message({
+                            type: 'error',
+                            message: errorMsg,
+                            duration: 1500
+                        });
+
+                        _this.favDisabled = true;
+
+                        setTimeout(function(){
+                            _this.favDisabled = false;
+                        },1500);
+
+                    }
+                });
+            }
+        },
+        created: function created() {
+            var _this = this;
+
+            _this.call = base.getParmar('call');
+
+            //在微信内自动调用微信授权登录
+
+            if(base.versions.isWeiXin){
+                _this.isWeiXin = true;
+
+                var code = base.getParmar('code');
+
+                if(base.isNull(code)){
+                    var appid = 'wx652688d775b8a865';
+                    var redirect_uri = encodeURI('http://h5.pwabc.cn/baopu/login.html');
+                    var response_type = 'code';
+                    var scope = 'snsapi_userinfo';
+//        var scope = 'snsapi_base';
+                    var state = '';
+
+                    if(!base.isNull(_this.call)){
+                        state = _this.call;
+                    }
+
+//                if(_this.call){
+//                    state = 'http';
+//                }
+
+                    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appid +
+                        '&redirect_uri=' + redirect_uri +
+                        '&response_type=' + response_type +
+                        '&scope=' + scope +
+                        '&state=' + state +
+                        '#wechat_redirect';
+
+                    window.location.href =  url;
+
+                }else{
+
+                    baseAjax.wxLogin(code, function (data, errorMsg) {
+
+//                        alert(JSON.stringify(data));
+
+                        if(data){
+                            //缓存用户信息
+                            var user = data.returnJSON;
+                            base.setCookie('userInfo',JSON.stringify(user));
+
+                            //缓存token
+                            var token = data.extendInfo;
+                            base.setCookie('tokenDetail',JSON.stringify(token));
+
+                            //跳转到回调页
+
+                            var _state = base.getParmar('state');
+
+                            if(base.isNull(_state)){
+                               window.location.replace('index.html');
+                            }else{
+
+                                if(_state == true || _state == 'true'){
+                                    window.location.replace('index.html');
+                                }else{
+                                    window.location.replace(_state);
+                                }
+                            }
+
+                        }else{
+                            //
+                            alert(errorMsg);
+                        }
+
+                    })
+
+                }
+
+
+            }else{
+                _this.isWeiXin = false;
+            }
+
+        }
+    });
+
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+
+                var _this = vm;
+
+                _this.call = base.getParmar('call');
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    });
+
+</script>
+
+<div style="display: none">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1264319468&web_id=1264319468" language="JavaScript"></script>
+</div>
+
+</body>
+</html>

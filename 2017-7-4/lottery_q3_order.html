@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- sys css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.3.3.css">
+    <!-- sys js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--<script src="js/jquery-1.8.3.min.js"></script>-->
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.3.3.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>快三投注单</title>
+</head>
+<body class="warpper-gray-3">
+
+<!--
+| ------------------------------------------
+| lotter_q3_order_page
+| ------------------------------------------
+| Here are lotter_q3_order_page html
+|
+-->
+
+<div id="lotter_q3_order_page" class="hidden" v-loading.fullscreen.lock="fullscreenLoading">
+
+    <div class="wb100">
+
+        <div class="wb100 h50px relative warpper-red" style="z-index: 99999;">
+            <div class="w50px h50px fl"  @click="add">
+                <div style="height: 18px; width:10px; float: left; margin-left: 15px; margin-top: 16px;" class="img-area"><img src="images/icon-back.png"></div>
+            </div>
+            <p class="wb70 text-over-hidden1 absolute text-center h50px lh50px F16 Fwhite" style="top: 0; left: 0; right: 0; margin: 0 auto;">快三 投注单</p>
+        </div>
+
+
+        <!--<ticket-header :title="'快三 投注单'" :back="true" :back_url="'lottery_q3.html?playIndex='+playIndex"></ticket-header>-->
+
+        <ticket-login :show="dialogLogin" v-on:callback="loginCallback"></ticket-login>
+
+        <ticket-pay :show="dialogPay" v-on:callback="payCallback"></ticket-pay>
+
+        <ticket-conserve :show="dialogConserve" v-on:callback="conserveCallback"></ticket-conserve>
+
+        <el-dialog
+                :visible.sync="dialogBuySuccess"
+                size="large"
+                :show-close="false">
+
+            <p class="text-center F24">购买成功</p>
+
+            <div class="clear1"></div>
+
+            <p class="Fgray-3 text-center F16">购买成功，请关注出票状态，祝您中奖</p>
+
+            <div class="clear1"></div>
+            <div class="clear1"></div>
+
+            <div class="wb100">
+                <div class="wb40 text-center radius5 Fred h38px lh38px bor-red bor-solid-1a F16 fl" @click="back">
+                    返回
+                </div>
+
+                <div class="wb40 text-center radius5 h38px lh38px pa1 fr warpper-red Fwhite F16" @click="toDetail">
+                    查看详情
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </el-dialog>
+
+        <ticket-agreement :show="dialogAgreement" v-on:closecall="closeCallback"></ticket-agreement>
+
+        <div class="clear1"></div>
+        <div class="pal15 par15 text-center Fgray-3 F14">
+            <el-row :gutter="10">
+                <el-col :span="8">
+                    <!--<a :href="'lottery_q3.html?playIndex='+playIndex">-->
+                        <div class="wb100 h40px lh40px bor-gray bor-solid-1a Fgray-3 warpper-white" @click="add">
+                            + 手动添加
+                        </div>
+                    <!--</a>-->
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="randomSelect">
+                        + 机选1注
+                    </div>
+                </el-col>
+                <el-col :span="8">
+                    <div class="wb100 h40px lh40px bor-gray bor-solid-1a warpper-white" @click="clearAll">
+                        <img src="images/icon-clear.png" class="h20px middle"> 清空全部
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="pa15">
+            <template v-for="(item,key) in ticket">
+                <template>
+                    <div class="pat15 pab15 par30 pal50 lh25px bor-gray bor-solid-1a F14 relative warpper-white">
+                        <div class="h50px w25px absolute" @click="removeTicket(item.original.id)" style="left: 15px; top: 15px;">
+                            <img src="images/icon-remove.png" style="float: left; margin-top: 15px; width: 20px;">
+                        </div>
+
+                        <a :href="'lottery_q3.html?ticketID='+item.original.id">
+                            <div class="">
+                        <p>
+                            <span class="Fred">{{item.numbers}}</span>
+                        </p>
+                        <p class="Fgray-2 F12">{{item.title}} {{item.num}}注 {{item.num * 2}}元</p>
+
+                            <div class="h50px w25px absolute" style="right: 0; top: 15px;">
+                                <img src="images/arrow-right.png" class="fr h16px mal15 mar15" style="margin-top: 17px;">
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                </template>
+                <div class="clear1"></div>
+            </template>
+        </div>
+
+
+        <div class="center over-hidden F14 Fgray-3" style="width: 233px" v-if="ticket.length>0">
+
+            <div class="fl" @click="cancel"><el-checkbox v-model="checked" style="z-index: -1"></el-checkbox></div>
+            <div class="fl mal5" @click="dialogAgreement = true">我已阅读并同意《<span class="Fblue">用户购彩协议</span>》</div>
+
+        </div>
+
+        <div class="text-center F16" style="color: #999999" v-else>亲，你还没投注哦~</div>
+
+        <div class="clear h80px"></div>
+
+        <!--<div class="wb100 fixed warpper-white" style="bottom: 100px;">-->
+            <!--<div class="pa15 F14 Fgray-3 lh30px">-->
+                <!--<span class="fl">-->
+                    <!--连续追-->
+                <!--</span>-->
+                <!--<div class="fl mal10 mar10">-->
+                    <!--<el-input-number size="small" v-model="periods" @change="periodsChange" :min="1" :max="999" />-->
+                <!--</div>-->
+                <!--<span class="fl">-->
+                    <!--期（最多可追999期）-->
+                <!--</span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="wb100 bor-gray bor-solid-1t fixed warpper-white" style="bottom: 0;">
+
+            <div class="pal15 par15 h30px lh30px pat5 pab5 warpper-gray-1 bor-gray bor-solid-1t bor-solid-1b">
+                <span class="fl Fgray-3 F14">余额：<span class="Fred">￥{{user.accountBalance}}</span></span>
+
+                <div class="w150px fr Fgray-3 F14">
+                    <div class="fl">
+                        <el-input-number class="fl" size="small" v-model="multiple" @change="multipleChange" :min="1" :max="999" />
+                    </div>
+                    <span class="fr w20px text-right">倍</span>
+                </div>
+
+            </div>
+
+            <div class="pat10 pab10 relative h40px">
+                <!--<div class="w80px text-center radius5 Fred h38px lh38px bor-red bor-solid-1a absolute F14" @click="openTrace" style="left: 15px; top: 10px;">-->
+                    <!--追号投注-->
+                <!--</div>-->
+
+                <div class="w80px text-center radius5 h38px lh38px pa1 absolute F14" :class="lock == true ? 'warpper-gray-2 Fwhite' : 'warpper-red Fwhite'" @click="submitOrder" style="right: 15px; top: 10px;">
+                    立即支付
+                </div>
+
+                <div class="  lh20px h20px F14 Fgray-3 fl pa10">
+
+
+                    <p>{{sumNum}}注 {{multiple}}倍 {{periods}}期 共<span class="Fred">{{sumPrice}}</span>元</p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let vm = new Vue({
+        el : "#lotter_q3_order_page",
+        data : {
+            fullscreenLoading : true,
+            _width : 0,
+            _height : 0,
+            multiple : 1,
+            periods : 1,
+            user : {
+                accountBalance : 0,
+                nickName : '',
+            },
+            sumNum : 0,
+            sumPrice : 0,
+            playType : 0,
+            lock: true,
+            ticketID : '',
+            dialogBuySuccess: false,
+            dialogAgreement: false,
+            dialogLogin: false,
+            dialogConserve:false,
+            dialogPay: false,
+            ticket : [],
+            checked: true,
+
+        },
+        methods : {
+
+            init(){
+
+                let _this = this;
+
+                let ticket = sessionStorage.getItem("q3_ticket");
+
+                baseAjax.userBaseInfo(function(data){
+                    if(data){
+                        if(base.isNull(data.returnJSON)){
+                            //未登录
+                        }else{
+                            //已登录
+                            _this.user = data.returnJSON;
+                            window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                        }
+                    }else{
+                        //获取失败
+                    }
+                })
+
+                ticket = JSON.parse(ticket);
+                _this.ticket = [];
+
+                if(base.isNull(ticket) || ticket.length == 0){
+                    _this.calculate();
+                    return false;
+                }
+
+                //重组票
+
+                for(let i=0; i<ticket.length; i++){
+                    let original = ticket[i];
+                    let _title = '';
+
+                    if(ticket[i].playType == 0){
+                        _title = '和';
+                    } if(ticket[i].playType == 1){
+                        _title = '二不同号';
+                    } if(ticket[i].playType == 2){
+                        _title = '三不同号';
+                    } if(ticket[i].playType == 3){
+                        _title = '二同号';
+                    } if(ticket[i].playType == 4){
+                        _title = '三同号';
+                    } if(ticket[i].playType == 5){
+                        _title = '二同号复选';
+                    } if(ticket[i].playType == 6){
+                        _title = '三同号通选';
+                    } if(ticket[i].playType == 7){
+                        _title = '三连号通选';
+                    }
+
+                    _this.ticket.push({
+                        title : _title,
+                        num : ticket[i].num,
+                        numbers : ticket[i].numbers.join(' '),
+                        original : original,
+                        duplex : true,
+                    })
+
+                }
+
+
+                if(_this.ticket.length>0){
+                    _this.ticket = _this.ticket.reverse();
+                    _this.lock = false;
+                    _this.calculate();
+                }
+
+            },
+
+            cancel(){
+
+                this.checked = !this.checked;
+
+            },
+
+            closeCallback(val){
+
+                console.log(val);
+
+                if(val == 'close'){
+                    this.dialogAgreement = false;
+                }
+            },
+
+
+            openTrace(){
+
+            },
+
+            loginCallback(val){
+
+                if(val == 'cancel'){
+                    this.dialogLogin = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消登录'
+                    });
+                }
+
+                if(val == 'success'){
+
+                    let _this = this;
+
+                    _this.dialogLogin = false;
+                   //登录成功
+                    _this.$message({
+                        type: 'success',
+                        message: '登录成功'
+                    });
+
+                    baseAjax.userBaseInfo(function(data){
+
+                        if(data){
+                            if(base.isNull(data.returnJSON)){
+                                //未登录
+                            }else{
+                                //已登录
+                                _this.user = data.returnJSON;
+                                window.sessionStorage.setItem('userInfo',JSON.stringify(data.returnJSON));
+                            }
+                        }else{
+                            //获取失败
+                        }
+
+                    })
+                }
+
+            },
+
+            payCallback(val){
+
+                if(val == 'cancel'){
+                    this.dialogPay = false;
+                    this.$message({
+                        type: 'info',
+                        message: '取消充值'
+                    });
+                }
+
+                if(val == 'success'){
+                    this.dialogPay = false;
+                    //充值成功
+                    this.$message({
+                        type: 'success',
+                        message: '充值成功'
+                    });
+                }
+            },
+
+            conserveCallback(val){
+
+                let _this = this;
+
+                if(val == 'cancel'){
+                    _this.dialogConserve = false;
+                }
+                if(val == 'success'){
+                    _this.dialogConserve = false;
+                    //保存成功
+                    window.location.href = 'lottery_q3.html?playIndex='+_this.playIndex;
+                }
+                if(val == 'fail'){
+                    _this.dialogConserve = false;
+                    //不保存
+                    _this.clearAll()
+                    window.location.href = 'lottery_q3.html?playIndex='+_this.playIndex;
+                }
+            },
+
+
+            add(){
+
+                let _this = this;
+                if(_this.ticket.length>0){
+                    _this.dialogConserve = true;
+                }else{
+                    _this.dialogConserve = false;
+                    window.location.href = 'lottery_q3.html?playIndex='+_this.playIndex;
+                }
+
+            },
+
+            toDetail(){
+
+                if(base.isNull(this.ticketID)){
+                    //投注失败
+                }else{
+                    window.location.href = 'ticket_detail.html?ticketID='+this.ticketID;
+                }
+
+                this.dialogBuySuccess = false;
+            },
+
+            back(){
+                this.dialogBuySuccess = false;
+            },
+
+            calculate(){
+                let _this = this;
+
+                let ticket = sessionStorage.getItem("q3_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                let _sumNum = 0;
+                let _sumMultiple = 0;
+
+                if(base.isNull(ticket)){
+                    _this.sumNum = 0;
+                    _this.sumPrice = 0;
+                    _this.multiple = 1;
+                    _this.periods = 1;
+                    _this.lock = true;
+                    return false;
+                }
+
+                for(let i=0; i<ticket.length; i++){
+                    _sumNum += ticket[i].num;
+                }
+
+                _this.sumNum = _sumNum;
+
+                _sumMultiple = _this.multiple;
+
+                _this.sumPrice = _sumNum * 2 * _sumMultiple * _this.periods;
+
+                if(_sumNum>0){
+                    _this.lock = false;
+                }else{
+                    _this.lock = true;
+                }
+            },
+
+            multipleChange(val){
+                this.multiple = val;
+                this.calculate();
+            },
+
+            periodsChange(val){
+                this.periods = val;
+                this.calculate();
+            },
+
+            removeTicket(id){
+                base.delTicketByID(id,'q3');
+                this.init();
+            },
+
+            clearAll(){
+                let _this = this;
+//                _this.$confirm('确认清空全部吗', '消息', {
+//                    callback: function(e) {
+//                        if(e == 'confirm'){
+                            sessionStorage.setItem('q3_ticket',JSON.stringify([]));
+                            _this.init();
+                            _this.calculate();
+//                        }
+//                    }
+//                });
+            },
+
+            randomSelect(){
+
+                let _this = this;
+
+                let rd = 0;
+
+                let _ticket = [];
+
+                if(_this.playIndex == 0){
+                    rd = base.random_num(4,17);
+                    _ticket.push(rd);
+                }
+                else if(_this.playIndex == 1){
+                    let _tmp = [];
+                    _tmp.push(base.random_num(0,5));
+                    for(let i=0; i<1; i++){
+                        let rd = base.random_num(0,5);
+                        let _flag = true;
+                        for(let i=0;i<_tmp.length; i++){
+                            if(rd == _tmp[i]){
+                                _flag = false;
+                            }
+                        }
+                        if(_flag){
+                            _tmp.push(rd);
+                        }else{
+                            i--;
+                        }
+                    }
+
+                    _ticket = _tmp;
+                }
+                else if(_this.playIndex == 2){
+                    rd = base.random_num(0,19);
+                    _ticket.push(base.group([1,2,3,4,5,6],3)[rd]);
+                }
+                else if(_this.playIndex == 3){
+                    rd = base.random_num(0,29);
+                    let _arr = [
+                        {num : 1, val : 11},
+                        {num : 2, val : 22},
+                        {num : 3, val : 33},
+                        {num : 4, val : 44},
+                        {num : 5, val : 55},
+                        {num : 6, val : 66},
+                    ];
+                    let _arr2 = [];
+                    for(let i=0; i<_arr.length; i++){
+                        for(let j=1; j<7; j++){
+                            if(_arr[i].num != j)
+                                _arr2.push( _arr[i].val + '' + j );
+                        }
+                    }
+                    _ticket.push(_arr2[rd]);
+                }
+                else if(_this.playIndex == 4){
+                    rd = base.random_num(0,5);
+                    _ticket.push([111,222,333,444,555,666][rd]);
+                }else if(_this.playIndex == 5){
+                    rd = base.random_num(0,5);
+                    _ticket.push(['11*','22*','33*','44*','55*','66*'][rd]);
+                }
+
+                let _ticketArr = sessionStorage.getItem('q3_ticket');
+
+                if(base.isNull(_ticketArr)){
+                    _ticketArr = [];
+                }else{
+                    _ticketArr = JSON.parse(_ticketArr);
+                }
+
+                _ticketArr.push({
+                    id : base.getUuid(),
+                    num : 1,
+                    numbers : _ticket,
+                    playType : _this.playIndex,
+                });
+                sessionStorage.setItem('q3_ticket',JSON.stringify(_ticketArr));
+
+                _this.init();
+
+            },
+
+            submitOrder(){
+
+                let _this = this;
+
+                if(_this.lock == true){
+                    return false;
+                }
+
+                //判断用户登录，这里弹出登录
+                let _userID = baseAjax.getUserId();
+
+                if(_userID == 0){
+                    _this.dialogLogin = true;
+                    return false;
+                }
+
+                //判断余额,余额不足弹出充值界面
+                if(baseAjax.getBalance() < _this.sumPrice){
+                    _this.dialogPay = true;
+                    return false;
+                }
+
+                //重组票
+
+                let _anteCodeList = [];
+
+                let ticket = sessionStorage.getItem("q3_ticket");
+
+                ticket = JSON.parse(ticket);
+
+                //301               和值单式
+                //302               三连号通选
+                //303               三同号通选
+                //311               单式
+                //312               和值
+                //313               二不同
+                //314               二不同复式
+                //315               二同号复式
+                //316               三不同复式
+
+
+                for(let i=0; i<ticket.length; i++){
+
+                    let _item = ticket[i];
+
+                    console.log(ticket[i].numbers)
+
+                    if(_item.playType == 0) {
+                        if (_item.num == 1) {
+                            //单式和值
+                            _anteCodeList.push({
+                                playType: 312,
+                                anteCode:  base.addZero(_item.numbers[0]),
+                            })
+                        } else {
+                            //复式和值
+
+                            for(let i=0; i<_item.numbers.length; i++){
+                                _item.numbers[i] = base.addZero(_item.numbers[i]);
+                            }
+
+                            _anteCodeList.push({
+                                playType: 312,
+                                anteCode: _item.numbers.join(','),
+                            })
+                        }
+                    }
+                    if(_item.playType == 1){
+                        //二不同号
+                        let _t = base.group(_item.numbers,2);
+                        let _num = [];
+                        for(let i=0; i<_t.length; i++){
+                            _num.push(_t[i].join(''));
+                        }
+                        _anteCodeList.push({
+                            playType: 313,
+                            anteCode: _num.join(','),
+                        })
+                    }
+                    if(_item.playType == 2 || _item.playType == 3 || _item.playType == 4){
+
+                        if (_item.num == 1) {
+                            //单式三不同号
+                            _anteCodeList.push({
+                                playType: 311,
+                                anteCode: _item.numbers[0].split("").join(","),
+                            })
+                        } else {
+                            //复式三不同号
+                            //这里拆分成多个单式
+
+                            for(let i=0; i<_item.numbers.length; i++){
+                                _anteCodeList.push({
+                                    playType: 311,
+                                    anteCode: _item.numbers[i].split("").join(","),
+                                })
+
+                            }
+                        }
+                    }
+
+                    if(_item.playType == 5){
+                        //二同号复选
+                        for(let i=0; i<_item.numbers.length; i++){
+                            _anteCodeList.push({
+                                playType: 314,
+                                anteCode: _item.numbers[i].substring(0,1)
+                            })
+                        }
+                    } if(_item.playType == 6){
+                        //三同号通选
+                        _anteCodeList.push({
+                            playType: 302,
+                            anteCode: 'aaa',
+                        })
+                    } if(_item.playType == 7){
+                        //三连号通选
+                        _anteCodeList.push({
+                            playType: 305,
+                            anteCode: 'abc',
+                        })
+                    }
+
+                }
+
+                console.log(_anteCodeList)
+
+//                return false;
+
+                //判断奖期
+
+                baseAjax.awardPeriod(lotteryType.JXK3,function(data){
+
+                    let _tmp = data.returnJSON.pop();
+
+                    if(_tmp){
+
+                        baseAjax.k3Ticket(lotteryType.JXK3, _tmp.number,_this.multiple,_anteCodeList,function (data, errorMsg) {
+
+
+
+                            if(data){
+                                _this.dialogBuySuccess = true;
+
+                                //- 2017年6月14日16:55:51
+                                //下单成功，清空所有临时票
+                                let ticket = sessionStorage.getItem("q3_ticket");
+
+                                ticket = [];
+
+                                sessionStorage.setItem("q3_ticket", JSON.stringify(ticket));
+
+                                _this.ticketID = data.returnJSON;
+
+                                _this.init();
+
+                            }else{
+                                _this.$message({
+                                    type: 'error',
+                                    message: errorMsg
+                                });
+                            }
+                        })
+                    }
+
+                });
+
+            },
+
+        },
+        created(){
+
+            let _this = this;
+
+            _this.width = $(window).width();
+            _this.height = $(window).height();
+
+            _this.width_ball = Math.floor((_this.width - 6 * 12 - 30) / 7);
+
+            let _playIndex = base.getParmar('playIndex');
+
+            if(base.isNull(_playIndex)){
+                _playIndex = 0;
+            }
+            _this.playIndex = _playIndex;
+
+            _this.init();
+
+            setTimeout(() => {
+                $("#lotter_q3_order_page").removeClass("hidden");
+                this.fullscreenLoading = false;
+            }, ajaxConfig.lazy);
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

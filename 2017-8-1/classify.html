@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+
+    <!-- 7E css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <!-- Element-UI css -->
+    <link rel="stylesheet" href="css/element-ui@1.2.4.css">
+    <!-- 7E js -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- Element-UI js -->
+    <script src="js/element-ui@1.2.4.js"></script>
+    <script src="js/vue-component.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/loading.js"></script>
+    <!--<script src="js/checkLogin.js"></script>-->
+
+    <title>分类</title>
+
+    <style>
+        .myborder{  border-right:1px solid #f3f3f3; border-left:1px solid #f1f1f1;}
+
+        .myGray{ background: #f3f3f3;}
+    </style>
+
+</head>
+<body>
+
+<!--
+| ------------------------------------------
+| classify_page
+| ------------------------------------------
+| Here are classify_page html
+|
+-->
+<div id="classify_page">
+
+    <!--<layout-loader :show="showLoader"></layout-loader>-->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="images/loading.gif" alt="Loader" class="loader-loader" />
+        </div>
+    </div>
+
+    <div class="wb100 classify_page_content hidden">
+
+        <!--<en-head></en-head>-->
+        <div class="wb100 h30px pat5 pab5">
+            <div class="head-nav" v-for="(item,index) in navText" @click="changeNav(index)">
+                <span :class="index == currentNav ? 'head-nav-active' : ''">{{item}}</span>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <template v-for="(item,index) in dataList">
+            <div class="clear h10px myGray"></div>
+            <div class="clear1"></div>
+
+                <div class="w90px center">
+                    <div class="w20px img-area fl"><img :src="item.iconUrl"></div>
+
+                    <span class="fr" v-if="index == 0" style="color:#24d6ff">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 1" style="color:#ffa42c">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 2" style="color:#5bd66f">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 3" style="color:#ff7b31">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 4" style="color:#ffa42c">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 5" style="color:#24d6ff">{{item.categoryName}}</span>
+                    <span class="fr" v-if="index == 6" style="color:#b28bef">{{item.categoryName}}</span>
+
+                </div>
+
+            <div class="clear1 bor-gray bor-solid-1b"></div>
+
+            <el-row class="wb100">
+
+                <el-col :span="8" v-for="(item2,key) in item.categoryList">
+
+                    <a :href="'channel_list.html?categoryID=' + item2.categoryID +'&title='+item2.categoryName">
+
+                        <p class="F14 lh20px h20px Fgray-3 text-center myborder mab15 mat15" v-if="key%3==1">
+                            {{item2.categoryName}}
+                        </p>
+                        <p class="F14 lh20px h20px Fgray-3 text-center mab15 mat15" v-else>
+                            {{item2.categoryName}}
+                        </p>
+
+                    </a>
+                </el-col>
+            </el-row>
+
+            <div class="clear1"></div>
+
+        </template>
+
+        <!--<en-footer></en-footer>-->
+        <!--<div class="wb100 footer-download">-->
+            <!--<div class="img-area fixed" style="bottom: -5px; left: 0; z-index: 9999999;">-->
+                <!--<img src="images/download-footer.png" @click="download">-->
+                <!--<div style="width: 40px; height: 40px; position: absolute; right: 0; top: 0; z-index: 99999;" @click="closeDownload"></div>-->
+            <!--</div>-->
+            <!--<div class="clear h60px"></div>-->
+        <!--</div>-->
+
+    </div>
+
+    <!--<en-statistics></en-statistics>-->
+
+
+</div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?02656d3a262742fe6567cff6f33b6aa7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script>
+
+    'use strict';
+
+    var vm = new Vue({
+        el: "#classify_page",
+        data: {
+            showLoader: true,
+            dataList: [],
+
+            currentNav : 0,
+            navText : ['精选','分类','我的','搜索'],
+        },
+        methods: {
+            changeNav: function changeNav(i){
+                if(i==0){
+                    window.location.href = "index.html?nav=0";
+                } else if(i==1){
+                    window.location.href = "classify.html?nav=1";
+                } else if(i==2){
+                    window.location.href = "user.html?nav=2&check=false";
+                } else if(i==3){
+                    window.location.href = "search.html?nav=3";
+                }
+            },
+            download: function download(e){
+                baseAjax.download();
+            },
+            hideBg: function hideBg(e){
+                $("#downloadBg2").hide(0);
+            },
+            closeDownload: function closeDownload(){
+                $(".footer-download").hide(0);
+            },
+
+        },
+        created: function created() {
+            var _this = this;
+
+            var icons = ['icon-datas1.png', 'icon-datas2.png', 'icon-datas3.png', 'icon-datas4.png', 'icon-datas6.png', 'icon-datas5.png', 'icon-datas7.png'];
+
+
+            var _nav = base.getParmar("nav");
+            //头部
+            if (_nav) {
+                this.currentNav = _nav;
+            } else {
+                this.currentNav = 0;
+            }
+
+            baseAjax.getCategory(function (data) {
+                var _arr = data.returnJSON;
+
+                for (var i = 0; i < _arr.length; i++) {
+                    _arr[i].iconUrl = 'images/' + icons[i];
+                }
+
+                _this.dataList = _arr;
+
+                setTimeout(function () {
+                    _this.showLoader = false;
+                    $(".classify_page_content").removeClass("hidden");
+                }, ajaxConfig.lazy);
+            });
+        }
+    });
+
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                var _this = vm;
+
+
+                var icons = ['icon-datas1.png', 'icon-datas2.png', 'icon-datas3.png', 'icon-datas4.png', 'icon-datas6.png', 'icon-datas5.png', 'icon-datas7.png'];
+
+
+                var _nav = base.getParmar("nav");
+                //头部
+                if (_nav) {
+                    this.currentNav = _nav;
+                } else {
+                    this.currentNav = 0;
+                }
+
+                baseAjax.getCategory(function (data) {
+                    var _arr = data.returnJSON;
+
+                    for (var i = 0; i < _arr.length; i++) {
+                        _arr[i].iconUrl = 'images/' + icons[i];
+                    }
+
+                    _this.dataList = _arr;
+
+                    setTimeout(function () {
+                        _this.showLoader = false;
+                        $(".classify_page_content").removeClass("hidden");
+                    }, ajaxConfig.lazy);
+                });
+
+
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+
+
+</script>
+
+</body>
+</html>
